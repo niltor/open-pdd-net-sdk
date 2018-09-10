@@ -88,7 +88,7 @@ namespace Sample
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
-    var result = pddRequest.Post({doc.ScopeName});
+    var result = Post({doc.ScopeName});
     return JsonConvert.DeserializeObject<{returnType}>(result);
 }}";
 
