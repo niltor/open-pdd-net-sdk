@@ -17,10 +17,10 @@ namespace Sample
     {
         public long? Id { get; set; }
         public string Name { get; set; }
-        public List<DocList> DocList { get; set; }
+        public List<ApiDoc> DocList { get; set; }
     }
 
-    public partial class DocList
+    public partial class ApiDoc
     {
         public string ScopeName { get; set; }
         public long? ScopeStatus { get; set; }
