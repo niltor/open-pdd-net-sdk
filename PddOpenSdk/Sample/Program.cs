@@ -1,12 +1,16 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 
 namespace Sample
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+
+            var helper = new PddApiDocHelper();
+            await helper.GetDocListByCatAsync(1);
+            Console.ReadLine();
         }
     }
 }
