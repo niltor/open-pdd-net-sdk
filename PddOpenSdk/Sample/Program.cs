@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Threading.Tasks;
 
@@ -23,6 +25,17 @@ namespace Sample
             };
             var dic = Function.ToDictionary<string>(commonParams, OrderType.ASC);
 
+
+            string jsonString = @"{""error_response"": { ""error_code"": 20006, ""error_msg"": ""请求参数 type 有误"" }}";
+
+            var jObject = JObject.Parse(jsonString);
+            if (jObject.TryGetValue("error_response", out var errorResponse))
+            {
+                // TODO:记录异常
+                System.Console.WriteLine(errorResponse["error_code"].ToString());
+            }
+
+            Console.WriteLine(JsonConvert.SerializeObject(dic));
             Console.ReadLine();
         }
     }

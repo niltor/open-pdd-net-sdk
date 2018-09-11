@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -40,7 +42,7 @@ namespace Sample
                         var docList = result.Result.DocList;
                         foreach (var doc in docList)
                         {
-                            System.Console.WriteLine(MethodBuild(doc));
+                            System.Console.WriteLine(MethodBuildAsync(doc));
                         }
                     }
                 }
@@ -51,7 +53,7 @@ namespace Sample
         /// 生成方法
         /// </summary>
         /// <param name="doc"></param>
-        public string MethodBuild(ApiDoc doc)
+        public async Task<string> MethodBuildAsync(ApiDoc doc)
         {
             // 方法命名
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
@@ -69,12 +71,15 @@ namespace Sample
 /// </summary>
 "; ;
             string methodParams = "";
+            string dicData = "";
 
             foreach (var item in requestParamList)
             {
                 string paramName = myTI.ToTitleCase(item.ParamName.Replace("_", " "));
 
-                string paramComment = $@"/// <param name=""{paramName.Replace(" ","")}"">{item.ParamDesc}</param>
+                dicData += $@"dic.Add(""{item.ParamName}"",{paramName});
+";
+                string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc}</param>
 ";
                 paramName = item.ParamType.ToLower() + " " + paramName.Replace(" ", "") + ",";
                 methodParams += paramName;
@@ -82,16 +87,48 @@ namespace Sample
             }
             methodParams = "(" + methodParams.Substring(0, methodParams.Length - 1) + ")";
 
-
             // TODO: 处理返回类型
             string returnType = "";
+            string jsonReturn = doc.CodeExample;
+            // 调用接口将json转成csharpe class
+
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
-    var result = Post({doc.ScopeName});
+    var dic = new Dictionary<string, string>();
+    {dicData}    
+    var result = Post<{returnType}>({doc.ScopeName},);
     return JsonConvert.DeserializeObject<{returnType}>(result);
 }}";
 
+        }
+
+
+        /// <summary>
+        /// json转class
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
+        protected async Task<string> JsonToClass(string json)
+        {
+            using (var hc = new HttpClient())
+            {
+
+                var data = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
+                {
+                    new KeyValuePair<string, string>("json",json)
+                });
+                var response = await hc.PostAsync("http://json2csharp.com/Home/GenerateClasses", data);
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResonse = await response.Content.ReadAsStringAsync();
+                    var jObject = JObject.Parse(jsonResonse);
+
+                    var dic = JsonConvert.DeserializeObject<IDictionary<string, string>>(jObject["Classes"].ToString());
+                    return string.Join("\n", dic.Values);
+                }
+                return default;
+            }
         }
     }
 }

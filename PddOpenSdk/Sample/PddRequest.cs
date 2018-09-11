@@ -1,5 +1,10 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sample
 {
@@ -37,19 +42,39 @@ namespace Sample
         /// </summary>
         private readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
 
+        protected static HttpClient client = new HttpClient();
 
         public PddRequest()
         {
-
         }
 
         /// <summary>
-        /// 获取AccessToken
+        /// 获取请求
         /// </summary>
+        /// <param name="code"></param>
+        /// <param name="redirectUrl"></param>
+        /// <param name="state"></param>
         /// <returns></returns>
-        protected string GetAccessToken()
+        protected string GetAccessToken(string code, string redirectUrl, string state = null)
         {
+            if (code != null && redirectUrl != null)
+            {
+                var dic = new Dictionary<string, string>
+                {
+                    { "client_id", ClientId },
+                    { "client_secret", ClientSecret },
+                    { "grant_type", "authorization_code" },
+                    { "code", code },
+                    { "redirect_uri", redirectUrl }
+                };
+                if (state != null)
+                {
+                    dic.Add("state", state);
+                }
 
+                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+
+            }
             return default;
         }
 
@@ -57,11 +82,29 @@ namespace Sample
         /// post请求
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="parmas"></param>
+        /// <param name="dic"></param>
         /// <returns></returns>
-        protected object Post(string type, params Dictionary<string, string>[] parmas)
+        protected async Task<T> PostAsync<T>(string type, Dictionary<string, string> dic)
         {
+            // TODO 合并字典
+            var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(ApiUrl, data);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = await response.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(jsonResult);
+                if (jObject.TryGetValue("error_response", out var errorResponse))
+                {
+                    // TODO:记录异常
+                    System.Console.WriteLine(errorResponse["error_code"].ToString() + errorResponse["error_msg"]);
+                    return default;
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<T>(jsonResult);
+                }
 
+            }
             return default;
         }
 
