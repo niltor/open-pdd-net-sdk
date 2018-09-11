@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Sample
@@ -29,6 +30,16 @@ namespace Sample
             {
                 return dictionary;
             }
+        }
+        /// <summary>
+        /// 将英文转化为首字母大写
+        /// </summary>
+        /// <param name="words"></param>
+        /// <returns></returns>
+        public static string ToTitleCase(string words)
+        {
+            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
+            return myTI.ToTitleCase(words);
         }
     }
 

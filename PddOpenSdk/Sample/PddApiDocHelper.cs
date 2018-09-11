@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -35,33 +35,70 @@ namespace Sample
 
                 if (response.IsSuccessStatusCode)
                 {
-                    //var json = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<PddDocListModel>(json);
                     if (result.Success.Value)
                     {
+                        string methodsContent = "";
                         var docList = result.Result.DocList;
-                        foreach (var doc in docList)
+
+                        // 取第一个作为类名
+                        var className = docList?.FirstOrDefault()?.ScopeName;
+                        if (className != null)
                         {
-                            System.Console.WriteLine(MethodBuildAsync(doc));
+                            className = className.Split(".")[1] ?? "UnNamed";
+
+                            foreach (var doc in docList)
+                            {
+                                methodsContent += await MethodBuildAsync(doc);
+                            }
+
+                            SaveRequestClass(className, methodsContent);
                         }
+
                     }
                 }
             }
         }
+        /// <summary>
+        /// 保存接口请求类
+        /// </summary>
+        /// <param name="className"></param>
+        protected void SaveRequestClass(string className, string classContent)
+        {
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Services", "PddApiRequest");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
+            {
+                Directory.CreateDirectory(resultPath);
+            }
+            string fileName = Function.ToTitleCase(className) + "ApiRequest";
+            classContent = classContent.Replace("RootObject", fileName);
+
+            string content = $@"namespace App.Services.PddApiRequest
+{{
+    public class {className} extends Request {{
+        {classContent}
+    }}
+}}
+";
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+
+        }
+
 
         /// <summary>
-        /// 生成方法
+        /// 生成接口调用方法
         /// </summary>
         /// <param name="doc"></param>
         public async Task<string> MethodBuildAsync(ApiDoc doc)
         {
             // 方法命名
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
             var scopeName = doc.ScopeName.Split('.');
-            var methodName = myTI.ToTitleCase(scopeName.Last());
+            var methodName = Function.ToTitleCase(scopeName.Last());
             for (int i = 1; i < scopeName.Length - 1; i++)
             {
-                methodName += myTI.ToTitleCase(scopeName[i]);
+                methodName += Function.ToTitleCase(scopeName[i]);
             }
             // 方法参数
 
@@ -75,7 +112,7 @@ namespace Sample
 
             foreach (var item in requestParamList)
             {
-                string paramName = myTI.ToTitleCase(item.ParamName.Replace("_", " "));
+                string paramName = Function.ToTitleCase(item.ParamName.Replace("_", " "));
 
                 dicData += $@"dic.Add(""{item.ParamName}"",{paramName});
 ";
@@ -88,10 +125,12 @@ namespace Sample
             methodParams = "(" + methodParams.Substring(0, methodParams.Length - 1) + ")";
 
             // TODO: 处理返回类型
-            string returnType = "";
+            string returnType = methodName + "ApiResult";
             string jsonReturn = doc.CodeExample;
             // 调用接口将json转成csharpe class
-
+            string classContent = await JsonToClass(jsonReturn);
+            // 保存结果类
+            SaveResultClass(returnType, classContent);
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
@@ -129,6 +168,28 @@ namespace Sample
                 }
                 return default;
             }
+        }
+
+        /// <summary>
+        /// 自动生成接口返回类
+        /// </summary>
+        protected void SaveResultClass(string className, string classContent)
+        {
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Models", "PddApiResult");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
+            {
+                Directory.CreateDirectory(resultPath);
+            }
+            string fileName = Function.ToTitleCase(className) + "ApiResult";
+            classContent = classContent.Replace("RootObject", fileName);
+            string content = $@"namespace App.Models.PddApiResult
+{{
+    {classContent}
+}}
+";
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
         }
     }
 }
