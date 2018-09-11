@@ -122,15 +122,29 @@ namespace Sample
                 methodParams += paramName;
                 methodComment += paramComment;
             }
-            methodParams = "(" + methodParams.Substring(0, methodParams.Length - 1) + ")";
+            if (string.IsNullOrEmpty(methodParams))
+            {
+                methodParams = "()";
+            }
+            else
+            {
+                methodParams = "(" + methodParams?.Substring(0, methodParams.Length - 1) + ")";
+            }
 
-            // TODO: 处理返回类型
             string returnType = methodName + "ApiResult";
             string jsonReturn = doc.CodeExample;
             // 调用接口将json转成csharpe class
             string classContent = await JsonToClass(jsonReturn);
-            // 保存结果类
-            SaveResultClass(returnType, classContent);
+            if (string.IsNullOrEmpty(classContent))
+            {
+                File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
+            }
+            else
+            {
+                // 保存结果类
+                SaveResultClass(returnType, classContent);
+            }
+
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
@@ -191,7 +205,7 @@ namespace Sample
                 Directory.CreateDirectory(resultPath);
             }
             string fileName = className;
-            classContent = classContent.Replace("RootObject", fileName);
+            classContent = classContent?.Replace("RootObject", fileName);
             string content = $@"namespace App.Models.PddApiResult
 {{
     {classContent}

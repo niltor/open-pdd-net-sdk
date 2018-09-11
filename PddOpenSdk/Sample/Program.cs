@@ -9,11 +9,11 @@ namespace Sample
         {
 
             var helper = new PddApiDocHelper();
-   
-                await helper.GetDocListByCatAsync(5);
+            for (int i = 0; i < 21; i++)
+            {
+                await helper.GetDocListByCatAsync(i);
 
-          
-
+            }
             Console.WriteLine("finish");
             Console.ReadLine();
         }
