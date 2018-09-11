@@ -59,6 +59,7 @@ namespace Sample
                 }
             }
         }
+
         /// <summary>
         /// 保存接口请求类
         /// </summary>
@@ -85,7 +86,6 @@ namespace Sample
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
         }
-
 
         /// <summary>
         /// 生成接口调用方法
@@ -142,7 +142,6 @@ namespace Sample
 
         }
 
-
         /// <summary>
         /// json转class
         /// </summary>
@@ -163,9 +162,17 @@ namespace Sample
                 {
                     string jsonResonse = await response.Content.ReadAsStringAsync();
                     var jObject = JObject.Parse(jsonResonse);
+                    if (jObject.Value<bool>("Success") == false)
+                    {
+                        System.Console.WriteLine("返回json解析错误：" + json);
+                        return default;
+                    }
+                    else
+                    {
+                        var dic = JsonConvert.DeserializeObject<IDictionary<string, string>>(jObject["Classes"].ToString());
+                        return string.Join("\n", dic.Values);
+                    }
 
-                    var dic = JsonConvert.DeserializeObject<IDictionary<string, string>>(jObject["Classes"].ToString());
-                    return string.Join("\n", dic.Values);
                 }
                 return default;
             }
@@ -183,7 +190,7 @@ namespace Sample
             {
                 Directory.CreateDirectory(resultPath);
             }
-            string fileName = className + "ApiResult";
+            string fileName = className;
             classContent = classContent.Replace("RootObject", fileName);
             string content = $@"namespace App.Models.PddApiResult
 {{
