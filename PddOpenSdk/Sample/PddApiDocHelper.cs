@@ -82,7 +82,7 @@ namespace Sample
     }}
 }}
 ";
-            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
         }
 
@@ -150,6 +150,7 @@ namespace Sample
         /// <returns></returns>
         protected async Task<string> JsonToClass(string json)
         {
+            if (string.IsNullOrEmpty(json)) return default;
             using (var hc = new HttpClient())
             {
 
@@ -182,14 +183,14 @@ namespace Sample
             {
                 Directory.CreateDirectory(resultPath);
             }
-            string fileName = Function.ToTitleCase(className) + "ApiResult";
+            string fileName = className + "ApiResult";
             classContent = classContent.Replace("RootObject", fileName);
             string content = $@"namespace App.Models.PddApiResult
 {{
     {classContent}
 }}
 ";
-            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
         }
     }
 }
