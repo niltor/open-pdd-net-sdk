@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sample
@@ -27,15 +27,16 @@ namespace Sample
         /// <summary>
         /// 商家授权地址
         /// </summary>
-        readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
+        private readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
         /// <summary>
         /// 移动端授权地址
         /// </summary>
-        readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
+        private readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
         /// <summary>
         /// 多多客授权地址
         /// </summary>
-        readonly string JinBaoUrl = "https://jinbao.pinduoduo.com/open.html";
+        private readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
+
 
         public PddRequest()
         {
@@ -48,6 +49,7 @@ namespace Sample
         /// <returns></returns>
         protected string GetAccessToken()
         {
+
             return default;
         }
 
@@ -61,6 +63,61 @@ namespace Sample
         {
 
             return default;
+        }
+
+        /// <summary>
+        /// 生成签名
+        /// </summary>
+        /// <returns></returns>
+        protected string BuildSign()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// 获取网页授权地址
+        /// </summary>
+        /// <param name="callbackUrl"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public string GetWebOAuthUrl(string callbackUrl, string state = null)
+        {
+            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl;
+            if (!string.IsNullOrEmpty(state))
+            {
+                url += "&state=" + state;
+            }
+            return url;
+        }
+        /// <summary>
+        /// 获取移动网页授权地址
+        /// </summary>
+        /// <param name="callbackUrl"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public string GetH5OAuthUrl(string callbackUrl, string state = null)
+        {
+            string url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl + "&view=h5";
+            if (!string.IsNullOrEmpty(state))
+            {
+                url += "&state=" + state;
+            }
+            return url;
+        }
+        /// <summary>
+        /// 多多客授权
+        /// </summary>
+        /// <param name="callbackUrl"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public string GetDDKOAuthUrl(string callbackUrl, string state = null)
+        {
+            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl;
+            if (!string.IsNullOrEmpty(state))
+            {
+                url += "&state=" + state;
+            }
+            return url;
         }
     }
 
