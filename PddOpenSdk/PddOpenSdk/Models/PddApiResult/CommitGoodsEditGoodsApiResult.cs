@@ -1,0 +1,16 @@
+namespace PddOpenSdk.Models.PddApiResult
+{
+    
+public class GoodsUpdateResponse
+{
+    public long goods_id { get; set; }
+    public long goods_commit_id { get; set; }
+}
+
+
+public class CommitGoodsEditGoodsApiResult
+{
+    public GoodsUpdateResponse goods_update_response { get; set; }
+}
+
+}

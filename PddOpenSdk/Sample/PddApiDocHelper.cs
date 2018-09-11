@@ -51,7 +51,7 @@ namespace Sample
                             {
                                 methodsContent += await MethodBuildAsync(doc);
                             }
-
+                            className = Function.ToTitleCase(className) + "ApiRequest";
                             SaveRequestClass(className, methodsContent);
                         }
 
@@ -78,7 +78,7 @@ namespace Sample
 
             string content = $@"namespace App.Services.PddApiRequest
 {{
-    public class {className} extends Request {{
+    public class {className} : PddRequest {{
         {classContent}
     }}
 }}
