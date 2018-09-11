@@ -51,7 +51,7 @@ namespace Sample
                             {
                                 methodsContent += await MethodBuildAsync(doc);
                             }
-                            className = Function.ToTitleCase(className) + "ApiRequest";
+                            className = Function.ToTitleCase(className);
                             SaveRequestClass(className, methodsContent);
                         }
 
@@ -76,9 +76,11 @@ namespace Sample
             string fileName = Function.ToTitleCase(className) + "ApiRequest";
             classContent = classContent.Replace("RootObject", fileName);
 
-            string content = $@"namespace App.Services.PddApiRequest
+            string content = $@"using App.Models.PddApiResult;
+using System.Threading.Tasks;
+namespace App.Services.PddApiRequest
 {{
-    public class {className} : PddRequest {{
+    public class {fileName} : PddRequest {{
         {classContent}
     }}
 }}
