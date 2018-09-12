@@ -10,7 +10,7 @@ public async Task<GetTimeApiResult> GetTimeAsync()
 {
     var dic = new Dictionary<string, string>();
         
-    var result = Post<GetTimeApiResult>(pdd.time.get,);
+    var result = Post<GetTimeApiResult>("pdd.time.get",dic);
     return JsonConvert.DeserializeObject<GetTimeApiResult>(result);
 }
     }

@@ -7,25 +7,25 @@ namespace PddOpenSdk.Services.PddApiRequest
 /// 关闭批次接口
 /// </summary>
 /// <param name="BatchId">券批次ID</param>
-public async Task<ClosePromotionCouponApiResult> ClosePromotionCouponAsync(number BatchId)
+public async Task<ClosePromotionCouponApiResult> ClosePromotionCouponAsync(int BatchId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("batch_id",Batch Id);
+    dic.Add("batch_id",BatchId);
     
-    var result = Post<ClosePromotionCouponApiResult>(pdd.promotion.coupon.close,);
+    var result = Post<ClosePromotionCouponApiResult>("pdd.promotion.coupon.close",dic);
     return JsonConvert.DeserializeObject<ClosePromotionCouponApiResult>(result);
 }/// <summary>
 /// 增加优惠券发行数量接口
 /// </summary>
 /// <param name="BatchId">券批次ID</param>
 /// <param name="AddQuantity">要增加的数量</param>
-public async Task<AddPromotionCouponQuantityApiResult> AddPromotionCouponQuantityAsync(number BatchId,number AddQuantity)
+public async Task<AddPromotionCouponQuantityApiResult> AddPromotionCouponQuantityAsync(int BatchId,int AddQuantity)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("batch_id",Batch Id);
-dic.Add("add_quantity",Add Quantity);
+    dic.Add("batch_id",BatchId);
+dic.Add("add_quantity",AddQuantity);
     
-    var result = Post<AddPromotionCouponQuantityApiResult>(pdd.promotion.coupon.quantity.add,);
+    var result = Post<AddPromotionCouponQuantityApiResult>("pdd.promotion.coupon.quantity.add",dic);
     return JsonConvert.DeserializeObject<AddPromotionCouponQuantityApiResult>(result);
 }/// <summary>
 /// 创建无门槛商品劵批次接口
@@ -37,18 +37,18 @@ dic.Add("add_quantity",Add Quantity);
 /// <param name="InitQuantity">可领取数量</param>
 /// <param name="UserLimit">每个用户限领张数</param>
 /// <param name="GoodsId">商品ID</param>
-public async Task<CreatePromotionGoodsCouponApiResult> CreatePromotionGoodsCouponAsync(string BatchDesc,number BatchStartTime,number BatchEndTime,number Discount,number InitQuantity,number UserLimit,number GoodsId)
+public async Task<CreatePromotionGoodsCouponApiResult> CreatePromotionGoodsCouponAsync(string BatchDesc,int BatchStartTime,int BatchEndTime,int Discount,int InitQuantity,int UserLimit,int GoodsId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("batch_desc",Batch Desc);
-dic.Add("batch_start_time",Batch Start Time);
-dic.Add("batch_end_time",Batch End Time);
+    dic.Add("batch_desc",BatchDesc);
+dic.Add("batch_start_time",BatchStartTime);
+dic.Add("batch_end_time",BatchEndTime);
 dic.Add("discount",Discount);
-dic.Add("init_quantity",Init Quantity);
-dic.Add("user_limit",User Limit);
-dic.Add("goods_id",Goods Id);
+dic.Add("init_quantity",InitQuantity);
+dic.Add("user_limit",UserLimit);
+dic.Add("goods_id",GoodsId);
     
-    var result = Post<CreatePromotionGoodsCouponApiResult>(pdd.promotion.goods.coupon.create,);
+    var result = Post<CreatePromotionGoodsCouponApiResult>("pdd.promotion.goods.coupon.create",dic);
     return JsonConvert.DeserializeObject<CreatePromotionGoodsCouponApiResult>(result);
 }/// <summary>
 /// 商品优惠券批次列表查询
@@ -59,17 +59,17 @@ dic.Add("goods_id",Goods Id);
 /// <param name="QueryRange">查询范围	0 全部，1 多多进宝券，2 无门槛商品券；默认1</param>
 /// <param name="BatchStatus">批次状态	1 领取中，2 已领完，3 已结束，4 已暂停</param>
 /// <param name="SortBy">排序	1 创建时间正序，2 创建时间倒序，3 开始时间正序，4 开始时间倒序，5 初始数量正序， 6 初始数量倒序，7 领取数量正序，8 领取数量倒序；默认2</param>
-public async Task<GetPromotionGoodsCouponListApiResult> GetPromotionGoodsCouponListAsync(number Page,number PageSize,number GoodsId,number QueryRange,number BatchStatus,number SortBy)
+public async Task<GetPromotionGoodsCouponListApiResult> GetPromotionGoodsCouponListAsync(int Page,int PageSize,int GoodsId,int QueryRange,int BatchStatus,int SortBy)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("page",Page);
-dic.Add("page_size",Page Size);
-dic.Add("goods_id",Goods Id);
-dic.Add("query_range",Query Range);
-dic.Add("batch_status",Batch Status);
-dic.Add("sort_by",Sort By);
+dic.Add("page_size",PageSize);
+dic.Add("goods_id",GoodsId);
+dic.Add("query_range",QueryRange);
+dic.Add("batch_status",BatchStatus);
+dic.Add("sort_by",SortBy);
     
-    var result = Post<GetPromotionGoodsCouponListApiResult>(pdd.promotion.goods.coupon.list.get,);
+    var result = Post<GetPromotionGoodsCouponListApiResult>("pdd.promotion.goods.coupon.list.get",dic);
     return JsonConvert.DeserializeObject<GetPromotionGoodsCouponListApiResult>(result);
 }/// <summary>
 /// 创建店铺首页优惠券批次接口
@@ -81,18 +81,18 @@ dic.Add("sort_by",Sort By);
 /// <param name="MinOrderAmount">使用优惠的订单最小金额	单位: 分</param>
 /// <param name="InitQuantity">可领取数量</param>
 /// <param name="UserLimit">每个用户限领张数</param>
-public async Task<CreatePromotionHomeCouponApiResult> CreatePromotionHomeCouponAsync(string BatchDesc,number BatchStartTime,number BatchEndTime,number Discount,number MinOrderAmount,number InitQuantity,number UserLimit)
+public async Task<CreatePromotionHomeCouponApiResult> CreatePromotionHomeCouponAsync(string BatchDesc,int BatchStartTime,int BatchEndTime,int Discount,int MinOrderAmount,int InitQuantity,int UserLimit)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("batch_desc",Batch Desc);
-dic.Add("batch_start_time",Batch Start Time);
-dic.Add("batch_end_time",Batch End Time);
+    dic.Add("batch_desc",BatchDesc);
+dic.Add("batch_start_time",BatchStartTime);
+dic.Add("batch_end_time",BatchEndTime);
 dic.Add("discount",Discount);
-dic.Add("min_order_amount",Min Order Amount);
-dic.Add("init_quantity",Init Quantity);
-dic.Add("user_limit",User Limit);
+dic.Add("min_order_amount",MinOrderAmount);
+dic.Add("init_quantity",InitQuantity);
+dic.Add("user_limit",UserLimit);
     
-    var result = Post<CreatePromotionHomeCouponApiResult>(pdd.promotion.home.coupon.create,);
+    var result = Post<CreatePromotionHomeCouponApiResult>("pdd.promotion.home.coupon.create",dic);
     return JsonConvert.DeserializeObject<CreatePromotionHomeCouponApiResult>(result);
 }/// <summary>
 /// 店铺优惠券批次列表接口
@@ -103,17 +103,17 @@ dic.Add("user_limit",User Limit);
 /// <param name="BatchStartTimeTo">批次开始时间（范围结束）</param>
 /// <param name="BatchStatus">批次状态	1 领取中，2 已领完，3 已结束</param>
 /// <param name="SortBy">排序	1 创建时间正序，2 创建时间倒序，3 开始时间正序，4 开始时间倒序，5 初始数量正序， 6 初始数量倒序，7 领取数量正序，8 领取数量倒序；默认2</param>
-public async Task<GetPromotionMerchantCouponListApiResult> GetPromotionMerchantCouponListAsync(number Page,number PageSize,number BatchStartTimeFrom,number BatchStartTimeTo,number BatchStatus,number SortBy)
+public async Task<GetPromotionMerchantCouponListApiResult> GetPromotionMerchantCouponListAsync(int Page,int PageSize,int BatchStartTimeFrom,int BatchStartTimeTo,int BatchStatus,int SortBy)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("page",Page);
-dic.Add("page_size",Page Size);
-dic.Add("batch_start_time_from",Batch Start Time From);
-dic.Add("batch_start_time_to",Batch Start Time To);
-dic.Add("batch_status",Batch Status);
-dic.Add("sort_by",Sort By);
+dic.Add("page_size",PageSize);
+dic.Add("batch_start_time_from",BatchStartTimeFrom);
+dic.Add("batch_start_time_to",BatchStartTimeTo);
+dic.Add("batch_status",BatchStatus);
+dic.Add("sort_by",SortBy);
     
-    var result = Post<GetPromotionMerchantCouponListApiResult>(pdd.promotion.merchant.coupon.list.get,);
+    var result = Post<GetPromotionMerchantCouponListApiResult>("pdd.promotion.merchant.coupon.list.get",dic);
     return JsonConvert.DeserializeObject<GetPromotionMerchantCouponListApiResult>(result);
 }
     }

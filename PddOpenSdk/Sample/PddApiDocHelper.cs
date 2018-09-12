@@ -78,6 +78,9 @@ namespace Sample
 
             string content = $@"using App.Models.PddApiResult;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace App.Services.PddApiRequest
 {{
     public class {fileName} : PddRequest {{
@@ -149,14 +152,12 @@ namespace App.Services.PddApiRequest
             // 保存结果类
             SaveResultClass(returnType, classContent);
 
-
-
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
-    var dic = new Dictionary<string, string>();
+    var dic = new Dictionary<string, object>();
     {dicData}    
-    var result = Post<{returnType}>(""{doc.ScopeName}"",dic);
-    return JsonConvert.DeserializeObject<{returnType}>(result);
+    var result = await PostAsync<{returnType}>(""{doc.ScopeName}"",dic);
+    return result;
 }}";
 
         }
@@ -212,11 +213,12 @@ namespace App.Services.PddApiRequest
             // 处理content为空的情况
             if (string.IsNullOrEmpty(classContent))
             {
-                classContent = "// TODO 待补充";
+                classContent = $@"public class {classContent}{{}}";
             }
             string fileName = className;
             classContent = classContent?.Replace("RootObject", fileName);
-            string content = $@"namespace App.Models.PddApiResult
+            string content = $@"using System.Collections.Generic;
+namespace App.Models.PddApiResult
 {{
     {classContent}
 }}

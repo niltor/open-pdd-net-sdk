@@ -12,17 +12,17 @@ namespace PddOpenSdk.Services.PddApiRequest
 /// <param name="GoodsName">商品名称模糊查询,outer_id,is_onsale,goods_name三选一，优先级is_onsale>outer_id>goods_name</param>
 /// <param name="PageSize">返回数量，默认 100，最大100。</param>
 /// <param name="Page">返回页码 默认 1，页码从 1 开始PS：当前采用分页返回，数量和页数会一起传，如果不传，则采用 默认值</param>
-public async Task<GetGoodsListApiResult> GetGoodsListAsync(string Type,string OuterId,number IsOnsale,string GoodsName,number PageSize,number Page)
+public async Task<GetGoodsListApiResult> GetGoodsListAsync(string Type,string OuterId,int IsOnsale,string GoodsName,int PageSize,int Page)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("outer_id",Outer Id);
-dic.Add("is_onsale",Is Onsale);
-dic.Add("goods_name",Goods Name);
-dic.Add("page_size",Page Size);
+dic.Add("outer_id",OuterId);
+dic.Add("is_onsale",IsOnsale);
+dic.Add("goods_name",GoodsName);
+dic.Add("page_size",PageSize);
 dic.Add("page",Page);
     
-    var result = Post<GetGoodsListApiResult>(pdd.goods.list.get,);
+    var result = Post<GetGoodsListApiResult>("pdd.goods.list.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsListApiResult>(result);
 }/// <summary>
 /// 商品详情接口
@@ -33,9 +33,9 @@ public async Task<GetGoodsInformationApiResult> GetGoodsInformationAsync(string 
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("goods_id",Goods Id);
+dic.Add("goods_id",GoodsId);
     
-    var result = Post<GetGoodsInformationApiResult>(pdd.goods.information.get,);
+    var result = Post<GetGoodsInformationApiResult>("pdd.goods.information.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsInformationApiResult>(result);
 }/// <summary>
 /// 商品全量修改接口
@@ -49,10 +49,10 @@ public async Task<UpdateGoodsSkuStockApiResult> UpdateGoodsSkuStockAsync(string 
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
 dic.Add("quantity",Quantity);
-dic.Add("sku_id",Sku Id);
-dic.Add("outer_id",Outer Id);
+dic.Add("sku_id",SkuId);
+dic.Add("outer_id",OuterId);
     
-    var result = Post<UpdateGoodsSkuStockApiResult>(pdd.goods.sku.stock.update,);
+    var result = Post<UpdateGoodsSkuStockApiResult>("pdd.goods.sku.stock.update",dic);
     return JsonConvert.DeserializeObject<UpdateGoodsSkuStockApiResult>(result);
 }/// <summary>
 /// 商品增量修改接口
@@ -65,24 +65,24 @@ public async Task<UpdateGoodsSkuStockIncrementApiResult> UpdateGoodsSkuStockIncr
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("sku_id",Sku Id);
-dic.Add("outer _id",Outer  Id);
-dic.Add("increment_quantity",Increment Quantity);
+dic.Add("sku_id",SkuId);
+dic.Add("outer _id",OuterId);
+dic.Add("increment_quantity",IncrementQuantity);
     
-    var result = Post<UpdateGoodsSkuStockIncrementApiResult>(pdd.goods.sku.stock.increment.update,);
+    var result = Post<UpdateGoodsSkuStockIncrementApiResult>("pdd.goods.sku.stock.increment.update",dic);
     return JsonConvert.DeserializeObject<UpdateGoodsSkuStockIncrementApiResult>(result);
 }/// <summary>
 /// 商品标准类目接口
 /// </summary>
 /// <param name="Type">该值为：pdd.goods.cats.get</param>
 /// <param name="ParentCatId">值=0时为顶点cat_id,通过树顶级节点获取cat树</param>
-public async Task<GetGoodsCatsApiResult> GetGoodsCatsAsync(string Type,number ParentCatId)
+public async Task<GetGoodsCatsApiResult> GetGoodsCatsAsync(string Type,int ParentCatId)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("parent_cat_id",Parent Cat Id);
+dic.Add("parent_cat_id",ParentCatId);
     
-    var result = Post<GetGoodsCatsApiResult>(pdd.goods.cats.get,);
+    var result = Post<GetGoodsCatsApiResult>("pdd.goods.cats.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsCatsApiResult>(result);
 }/// <summary>
 /// 商品运费模版接口
@@ -90,14 +90,14 @@ dic.Add("parent_cat_id",Parent Cat Id);
 /// <param name="Type">该值为：pdd.goods.logistics.template.get</param>
 /// <param name="Page">默认返回运费模板的页数为1，最高为100页，注意：page与page_size必须传一个</param>
 /// <param name="PageSize">默认返回20条模板数据，最多100条数据</param>
-public async Task<GetGoodsLogisticsTemplateApiResult> GetGoodsLogisticsTemplateAsync(string Type,number Page,number PageSize)
+public async Task<GetGoodsLogisticsTemplateApiResult> GetGoodsLogisticsTemplateAsync(string Type,int Page,int PageSize)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
 dic.Add("page",Page);
-dic.Add("page_size",Page Size);
+dic.Add("page_size",PageSize);
     
-    var result = Post<GetGoodsLogisticsTemplateApiResult>(pdd.goods.logistics.template.get,);
+    var result = Post<GetGoodsLogisticsTemplateApiResult>("pdd.goods.logistics.template.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsLogisticsTemplateApiResult>(result);
 }/// <summary>
 /// 商品图片上传接口
@@ -110,7 +110,7 @@ public async Task<UploadGoodsImageApiResult> UploadGoodsImageAsync(string Type,s
     dic.Add("type",Type);
 dic.Add("image",Image);
     
-    var result = Post<UploadGoodsImageApiResult>(pdd.goods.image.upload,);
+    var result = Post<UploadGoodsImageApiResult>("pdd.goods.image.upload",dic);
     return JsonConvert.DeserializeObject<UploadGoodsImageApiResult>(result);
 }/// <summary>
 /// 商品国家接口
@@ -121,7 +121,7 @@ public async Task<GetGoodsCountryApiResult> GetGoodsCountryAsync(string Type)
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
     
-    var result = Post<GetGoodsCountryApiResult>(pdd.goods.country.get,);
+    var result = Post<GetGoodsCountryApiResult>("pdd.goods.country.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsCountryApiResult>(result);
 }/// <summary>
 /// 生成商家自定义的规格
@@ -129,14 +129,14 @@ public async Task<GetGoodsCountryApiResult> GetGoodsCountryAsync(string Type)
 /// <param name="Type">该值为：pdd.goods.spec.id.get，配合pdd.goods.spec.get接口获取对应要发布的商品所属叶子类目所需的规格id，通过此接口生成对应的规格名称，例如叶子类目下某规格id为0，对应规格名称为颜色，通过此接口可以新建颜色规格下颜色、白色等。</param>
 /// <param name="ParentSpecId">拼多多标准规格ID，可以通过pdd.goods.spec.get接口获取</param>
 /// <param name="SpecName">商家编辑的规格值，如颜色规格下设置白色属性</param>
-public async Task<GetGoodsSpecIdApiResult> GetGoodsSpecIdAsync(string Type,number ParentSpecId,string SpecName)
+public async Task<GetGoodsSpecIdApiResult> GetGoodsSpecIdAsync(string Type,int ParentSpecId,string SpecName)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("parent_spec_id",Parent Spec Id);
-dic.Add("spec_name",Spec Name);
+dic.Add("parent_spec_id",ParentSpecId);
+dic.Add("spec_name",SpecName);
     
-    var result = Post<GetGoodsSpecIdApiResult>(pdd.goods.spec.id.get,);
+    var result = Post<GetGoodsSpecIdApiResult>("pdd.goods.spec.id.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsSpecIdApiResult>(result);
 }/// <summary>
 /// 商品属性类目接口
@@ -147,22 +147,22 @@ public async Task<GetGoodsSpecApiResult> GetGoodsSpecAsync(string Type,string Ca
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("cat_id",Cat Id);
+dic.Add("cat_id",CatId);
     
-    var result = Post<GetGoodsSpecApiResult>(pdd.goods.spec.get,);
+    var result = Post<GetGoodsSpecApiResult>("pdd.goods.spec.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsSpecApiResult>(result);
 }/// <summary>
 /// 获取当前授权商家可发布的商品类目信息
 /// </summary>
 /// <param name="Type">该值为：pdd.goods.authorization.cats</param>
 /// <param name="ParentCatId">默认值=0，值=0时为顶点cat_id,通过树顶级节点获取一级类目</param>
-public async Task<CatsGoodsAuthorizationApiResult> CatsGoodsAuthorizationAsync(string Type,number ParentCatId)
+public async Task<CatsGoodsAuthorizationApiResult> CatsGoodsAuthorizationAsync(string Type,int ParentCatId)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("parent_cat_id",Parent Cat Id);
+dic.Add("parent_cat_id",ParentCatId);
     
-    var result = Post<CatsGoodsAuthorizationApiResult>(pdd.goods.authorization.cats,);
+    var result = Post<CatsGoodsAuthorizationApiResult>("pdd.goods.authorization.cats",dic);
     return JsonConvert.DeserializeObject<CatsGoodsAuthorizationApiResult>(result);
 }/// <summary>
 /// 获取服饰成分含量信息
@@ -173,7 +173,7 @@ public async Task<GetGoodsFabricContentApiResult> GetGoodsFabricContentAsync(str
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
     
-    var result = Post<GetGoodsFabricContentApiResult>(pdd.goods.fabric.content.get,);
+    var result = Post<GetGoodsFabricContentApiResult>("pdd.goods.fabric.content.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsFabricContentApiResult>(result);
 }/// <summary>
 /// 获取服饰面料信息
@@ -184,7 +184,7 @@ public async Task<GetGoodsFabricApiResult> GetGoodsFabricAsync(string Type)
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
     
-    var result = Post<GetGoodsFabricApiResult>(pdd.goods.fabric.get,);
+    var result = Post<GetGoodsFabricApiResult>("pdd.goods.fabric.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsFabricApiResult>(result);
 }/// <summary>
 /// 商品新增接口
@@ -263,68 +263,68 @@ e. 图片不可以添加任何品牌相关文字或logo</param>
 /// <param name="Vid">属性值id</param>
 /// <param name="Value">属性值</param>
 /// <param name="ValueUnit">属性单位</param>
-public async Task<AddGoodsApiResult> AddGoodsAsync(string Type,string GoodsName,number GoodsType,string GoodsDesc,number CatId,number CountryId,number MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,number CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,jsonstring SpecIdList,number Weight,number Quantity,string ThumbUrl,number MultiPrice,number Price,number LimitQuantity,number IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,number CustomerNum,number BuyLimit,number OrderLimit,number Fabric,number FabricContent,string WarmTips,number ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,string OutGoodsId,string ImageUrl,string ProductionLicense,number PaperNetWeight,number PaperLength,number PaperWidth,number PaperPliesNum,number InvoiceStatus,string GoodsProperties,string OutSkuSn,number TemplatePid,number TemplateModuleId,number Pid,number Vid,string Value,string ValueUnit)
+public async Task<AddGoodsApiResult> AddGoodsAsync(string Type,string GoodsName,int GoodsType,string GoodsDesc,int CatId,int CountryId,int MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,int CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,jsonstring SpecIdList,int Weight,int Quantity,string ThumbUrl,int MultiPrice,int Price,int LimitQuantity,int IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,int CustomerNum,int BuyLimit,int OrderLimit,int Fabric,int FabricContent,string WarmTips,int ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,string OutGoodsId,string ImageUrl,string ProductionLicense,int PaperNetWeight,int PaperLength,int PaperWidth,int PaperPliesNum,int InvoiceStatus,string GoodsProperties,string OutSkuSn,int TemplatePid,int TemplateModuleId,int Pid,int Vid,string Value,string ValueUnit)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("goods_name",Goods Name);
-dic.Add("goods_type",Goods Type);
-dic.Add("goods_desc",Goods Desc);
-dic.Add("cat_id",Cat Id);
-dic.Add("country_id",Country Id);
-dic.Add("market_price",Market Price);
-dic.Add("is_pre_sale",Is Pre Sale);
-dic.Add("shipment_limit_second",Shipment Limit Second);
-dic.Add("cost_template_id",Cost Template Id);
-dic.Add("is_refundable",Is Refundable);
-dic.Add("second_hand",Second Hand);
-dic.Add("is_folt",Is Folt);
-dic.Add("sku_list",Sku List);
-dic.Add("hd_thumb_url",Hd Thumb Url);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("carousel_gallery",Carousel Gallery);
-dic.Add("detail_gallery",Detail Gallery);
-dic.Add("spec_id_list",Spec Id List);
+dic.Add("goods_name",GoodsName);
+dic.Add("goods_type",GoodsType);
+dic.Add("goods_desc",GoodsDesc);
+dic.Add("cat_id",CatId);
+dic.Add("country_id",CountryId);
+dic.Add("market_price",MarketPrice);
+dic.Add("is_pre_sale",IsPreSale);
+dic.Add("shipment_limit_second",ShipmentLimitSecond);
+dic.Add("cost_template_id",CostTemplateId);
+dic.Add("is_refundable",IsRefundable);
+dic.Add("second_hand",SecondHand);
+dic.Add("is_folt",IsFolt);
+dic.Add("sku_list",SkuList);
+dic.Add("hd_thumb_url",HdThumbUrl);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("carousel_gallery",CarouselGallery);
+dic.Add("detail_gallery",DetailGallery);
+dic.Add("spec_id_list",SpecIdList);
 dic.Add("weight",Weight);
 dic.Add("quantity",Quantity);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("multi_price",Multi Price);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("multi_price",MultiPrice);
 dic.Add("price",Price);
-dic.Add("limit_quantity",Limit Quantity);
-dic.Add("is_onsale",Is Onsale);
-dic.Add("tiny_name",Tiny Name);
+dic.Add("limit_quantity",LimitQuantity);
+dic.Add("is_onsale",IsOnsale);
+dic.Add("tiny_name",TinyName);
 dic.Add("warehouse",Warehouse);
 dic.Add("customs",Customs);
-dic.Add("is_customs",Is Customs);
-dic.Add("pre_sale_time",Pre Sale Time);
-dic.Add("customer_num",Customer Num);
-dic.Add("buy_limit",Buy Limit);
-dic.Add("order_limit",Order Limit);
+dic.Add("is_customs",IsCustoms);
+dic.Add("pre_sale_time",PreSaleTime);
+dic.Add("customer_num",CustomerNum);
+dic.Add("buy_limit",BuyLimit);
+dic.Add("order_limit",OrderLimit);
 dic.Add("fabric",Fabric);
-dic.Add("fabric_content",Fabric Content);
-dic.Add("warm_tips",Warm Tips);
-dic.Add("shelf_life",Shelf Life);
-dic.Add("start_production_date",Start Production Date);
-dic.Add("end_production_date",End Production Date);
-dic.Add("production_standard_number",Production Standard Number);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("image_url",Image Url);
-dic.Add("production_license",Production License);
-dic.Add("paper_net_weight",Paper Net Weight);
-dic.Add("paper_length",Paper Length);
-dic.Add("paper_width",Paper Width);
-dic.Add("paper_plies_num",Paper Plies Num);
-dic.Add("invoice_status",Invoice Status);
-dic.Add("goods_properties",Goods Properties);
-dic.Add("out_sku_sn",Out Sku Sn);
-dic.Add("template_pid",Template Pid);
-dic.Add("template_module_id",Template Module Id);
+dic.Add("fabric_content",FabricContent);
+dic.Add("warm_tips",WarmTips);
+dic.Add("shelf_life",ShelfLife);
+dic.Add("start_production_date",StartProductionDate);
+dic.Add("end_production_date",EndProductionDate);
+dic.Add("production_standard_number",ProductionStandardNumber);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("image_url",ImageUrl);
+dic.Add("production_license",ProductionLicense);
+dic.Add("paper_net_weight",PaperNetWeight);
+dic.Add("paper_length",PaperLength);
+dic.Add("paper_width",PaperWidth);
+dic.Add("paper_plies_num",PaperPliesNum);
+dic.Add("invoice_status",InvoiceStatus);
+dic.Add("goods_properties",GoodsProperties);
+dic.Add("out_sku_sn",OutSkuSn);
+dic.Add("template_pid",TemplatePid);
+dic.Add("template_module_id",TemplateModuleId);
 dic.Add("pid",Pid);
 dic.Add("vid",Vid);
 dic.Add("value",Value);
-dic.Add("value_unit",Value Unit);
+dic.Add("value_unit",ValueUnit);
     
-    var result = Post<AddGoodsApiResult>(pdd.goods.add,);
+    var result = Post<AddGoodsApiResult>("pdd.goods.add",dic);
     return JsonConvert.DeserializeObject<AddGoodsApiResult>(result);
 }/// <summary>
 /// 商品编辑
@@ -399,99 +399,99 @@ e. 图片不可以添加任何品牌相关文字或logo</param>
 /// <param name="Vid">属性值id</param>
 /// <param name="Value">属性值</param>
 /// <param name="ValueUnit">属性单位</param>
-public async Task<UpdateGoodsInformationApiResult> UpdateGoodsInformationAsync(number GoodsId,string GoodsName,number GoodsType,string GoodsDesc,number CatId,number CountryId,number MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,number CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,number SkuId,jsonstring SpecIdList,number Weight,number Quantity,string ThumbUrl,number MultiPrice,number Price,number LimitQuantity,number IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,number CustomerNum,number BuyLimit,number OrderLimit,number Fabric,number FabricContent,string WarmTips,number ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,number OutGoodsId,string ImageUrl,number InvoiceStatus,string GoodsProperties,number OutSkuSn,number TemplatePid,number TemplateModuleId,number Pid,number Vid,string Value,string ValueUnit)
+public async Task<UpdateGoodsInformationApiResult> UpdateGoodsInformationAsync(int GoodsId,string GoodsName,int GoodsType,string GoodsDesc,int CatId,int CountryId,int MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,int CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,int SkuId,jsonstring SpecIdList,int Weight,int Quantity,string ThumbUrl,int MultiPrice,int Price,int LimitQuantity,int IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,int CustomerNum,int BuyLimit,int OrderLimit,int Fabric,int FabricContent,string WarmTips,int ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,int OutGoodsId,string ImageUrl,int InvoiceStatus,string GoodsProperties,int OutSkuSn,int TemplatePid,int TemplateModuleId,int Pid,int Vid,string Value,string ValueUnit)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("goods_name",Goods Name);
-dic.Add("goods_type",Goods Type);
-dic.Add("goods_desc",Goods Desc);
-dic.Add("cat_id",Cat Id);
-dic.Add("country_id",Country Id);
-dic.Add("market_price",Market Price);
-dic.Add("is_pre_sale",Is Pre Sale);
-dic.Add("shipment_limit_second",Shipment Limit Second);
-dic.Add("cost_template_id",Cost Template Id);
-dic.Add("is_refundable",Is Refundable);
-dic.Add("second_hand",Second Hand);
-dic.Add("is_folt",Is Folt);
-dic.Add("sku_list",Sku List);
-dic.Add("hd_thumb_url",Hd Thumb Url);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("carousel_gallery",Carousel Gallery);
-dic.Add("detail_gallery",Detail Gallery);
-dic.Add("sku_id",Sku Id);
-dic.Add("spec_id_list",Spec Id List);
+    dic.Add("goods_id",GoodsId);
+dic.Add("goods_name",GoodsName);
+dic.Add("goods_type",GoodsType);
+dic.Add("goods_desc",GoodsDesc);
+dic.Add("cat_id",CatId);
+dic.Add("country_id",CountryId);
+dic.Add("market_price",MarketPrice);
+dic.Add("is_pre_sale",IsPreSale);
+dic.Add("shipment_limit_second",ShipmentLimitSecond);
+dic.Add("cost_template_id",CostTemplateId);
+dic.Add("is_refundable",IsRefundable);
+dic.Add("second_hand",SecondHand);
+dic.Add("is_folt",IsFolt);
+dic.Add("sku_list",SkuList);
+dic.Add("hd_thumb_url",HdThumbUrl);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("carousel_gallery",CarouselGallery);
+dic.Add("detail_gallery",DetailGallery);
+dic.Add("sku_id",SkuId);
+dic.Add("spec_id_list",SpecIdList);
 dic.Add("weight",Weight);
 dic.Add("quantity",Quantity);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("multi_price",Multi Price);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("multi_price",MultiPrice);
 dic.Add("price",Price);
-dic.Add("limit_quantity",Limit Quantity);
-dic.Add("is_onsale",Is Onsale);
-dic.Add("tiny_name",Tiny Name);
+dic.Add("limit_quantity",LimitQuantity);
+dic.Add("is_onsale",IsOnsale);
+dic.Add("tiny_name",TinyName);
 dic.Add("warehouse",Warehouse);
 dic.Add("customs",Customs);
-dic.Add("is_customs",Is Customs);
-dic.Add("pre_sale_time",Pre Sale Time);
-dic.Add("customer_num",Customer Num);
-dic.Add("buy_limit",Buy Limit);
-dic.Add("order_limit",Order Limit);
+dic.Add("is_customs",IsCustoms);
+dic.Add("pre_sale_time",PreSaleTime);
+dic.Add("customer_num",CustomerNum);
+dic.Add("buy_limit",BuyLimit);
+dic.Add("order_limit",OrderLimit);
 dic.Add("fabric",Fabric);
-dic.Add("fabric_content",Fabric Content);
-dic.Add("warm_tips",Warm Tips);
-dic.Add("shelf_life",Shelf Life);
-dic.Add("start_production_date",Start Production Date);
-dic.Add("end_production_date",End Production Date);
-dic.Add("production_standard_number",Production Standard Number);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("image_url",Image Url);
-dic.Add("invoice_status",Invoice Status);
-dic.Add("goods_properties",Goods Properties);
-dic.Add("out_sku_sn",Out Sku Sn);
-dic.Add("template_pid",Template Pid);
-dic.Add("template_module_id",Template Module Id);
+dic.Add("fabric_content",FabricContent);
+dic.Add("warm_tips",WarmTips);
+dic.Add("shelf_life",ShelfLife);
+dic.Add("start_production_date",StartProductionDate);
+dic.Add("end_production_date",EndProductionDate);
+dic.Add("production_standard_number",ProductionStandardNumber);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("image_url",ImageUrl);
+dic.Add("invoice_status",InvoiceStatus);
+dic.Add("goods_properties",GoodsProperties);
+dic.Add("out_sku_sn",OutSkuSn);
+dic.Add("template_pid",TemplatePid);
+dic.Add("template_module_id",TemplateModuleId);
 dic.Add("pid",Pid);
 dic.Add("vid",Vid);
 dic.Add("value",Value);
-dic.Add("value_unit",Value Unit);
+dic.Add("value_unit",ValueUnit);
     
-    var result = Post<UpdateGoodsInformationApiResult>(pdd.goods.information.update,);
+    var result = Post<UpdateGoodsInformationApiResult>("pdd.goods.information.update",dic);
     return JsonConvert.DeserializeObject<UpdateGoodsInformationApiResult>(result);
 }/// <summary>
 /// 商品明细
 /// </summary>
 /// <param name="GoodsId">1213414</param>
-public async Task<GetGoodsDetailApiResult> GetGoodsDetailAsync(number GoodsId)
+public async Task<GetGoodsDetailApiResult> GetGoodsDetailAsync(int GoodsId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
+    dic.Add("goods_id",GoodsId);
     
-    var result = Post<GetGoodsDetailApiResult>(pdd.goods.detail.get,);
+    var result = Post<GetGoodsDetailApiResult>("pdd.goods.detail.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsDetailApiResult>(result);
 }/// <summary>
 /// 商品上架状态设置
 /// </summary>
 /// <param name="GoodsId">拼多多商品id</param>
 /// <param name="IsOnsale">上下架状态：1:上架 0:下架</param>
-public async Task<SetGoodsSaleStatusApiResult> SetGoodsSaleStatusAsync(number GoodsId,number IsOnsale)
+public async Task<SetGoodsSaleStatusApiResult> SetGoodsSaleStatusAsync(int GoodsId,int IsOnsale)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("is_onsale",Is Onsale);
+    dic.Add("goods_id",GoodsId);
+dic.Add("is_onsale",IsOnsale);
     
-    var result = Post<SetGoodsSaleStatusApiResult>(pdd.goods.sale.status.set,);
+    var result = Post<SetGoodsSaleStatusApiResult>("pdd.goods.sale.status.set",dic);
     return JsonConvert.DeserializeObject<SetGoodsSaleStatusApiResult>(result);
 }/// <summary>
 /// 查询商品标签列表
 /// </summary>
 /// <param name="ParentOptId">值=0时为顶点opt_id,通过树顶级节点获取opt树</param>
-public async Task<GetGoodsOptApiResult> GetGoodsOptAsync(number ParentOptId)
+public async Task<GetGoodsOptApiResult> GetGoodsOptAsync(int ParentOptId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("parent_opt_id",Parent Opt Id);
+    dic.Add("parent_opt_id",ParentOptId);
     
-    var result = Post<GetGoodsOptApiResult>(pdd.goods.opt.get,);
+    var result = Post<GetGoodsOptApiResult>("pdd.goods.opt.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsOptApiResult>(result);
 }/// <summary>
 /// 创建商品物流模版
@@ -516,42 +516,42 @@ public async Task<GetGoodsOptApiResult> GetGoodsOptAsync(number ParentOptId)
 /// <param name="TownId">城区ID</param>
 /// <param name="ProvinceId">省份ID</param>
 /// <param name="FreeDeliverHouseAreaList">送货入户区域</param>
-public async Task<CreateGoodsLogisticsTemplateApiResult> CreateGoodsLogisticsTemplateAsync(string CostTemplateList,string FreeProvinceList,number CostType,boolean FreeDeliverHouse,string TemplateName,number FirstStandard,number FirstCost,number AddStandard,number AddCost,boolean IsHaveFreeMinCount,number HaveFreeMinCount,boolean IsHaveFreeMinAmount,number HaveFreeMinAmount,string CostProvinceList,number ProvinceId,number ProvinceId,number CityId,number TownId,number ProvinceId,string FreeDeliverHouseAreaList)
+public async Task<CreateGoodsLogisticsTemplateApiResult> CreateGoodsLogisticsTemplateAsync(string CostTemplateList,string FreeProvinceList,int CostType,boolean FreeDeliverHouse,string TemplateName,int FirstStandard,int FirstCost,int AddStandard,int AddCost,boolean IsHaveFreeMinCount,int HaveFreeMinCount,boolean IsHaveFreeMinAmount,int HaveFreeMinAmount,string CostProvinceList,int ProvinceId,int ProvinceId,int CityId,int TownId,int ProvinceId,string FreeDeliverHouseAreaList)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("cost_template_list",Cost Template List);
-dic.Add("free_province_list",Free Province List);
-dic.Add("cost_type",Cost Type);
-dic.Add("free_deliver_house",Free Deliver House);
-dic.Add("template_name",Template Name);
-dic.Add("first_standard",First Standard);
-dic.Add("first_cost",First Cost);
-dic.Add("add_standard",Add Standard);
-dic.Add("add_cost",Add Cost);
-dic.Add("is_have_free_min_count",Is Have Free Min Count);
-dic.Add("have_free_min_count",Have Free Min Count);
-dic.Add("is_have_free_min_amount",Is Have Free Min Amount);
-dic.Add("have_free_min_amount",Have Free Min Amount);
-dic.Add("cost_province_list",Cost Province List);
-dic.Add("province_id",Province Id);
-dic.Add("province_id",Province Id);
-dic.Add("city_id",City Id);
-dic.Add("town_id",Town Id);
-dic.Add("province_id",Province Id);
-dic.Add("free_deliver_house_area_list",Free Deliver House Area List);
+    dic.Add("cost_template_list",CostTemplateList);
+dic.Add("free_province_list",FreeProvinceList);
+dic.Add("cost_type",CostType);
+dic.Add("free_deliver_house",FreeDeliverHouse);
+dic.Add("template_name",TemplateName);
+dic.Add("first_standard",FirstStandard);
+dic.Add("first_cost",FirstCost);
+dic.Add("add_standard",AddStandard);
+dic.Add("add_cost",AddCost);
+dic.Add("is_have_free_min_count",IsHaveFreeMinCount);
+dic.Add("have_free_min_count",HaveFreeMinCount);
+dic.Add("is_have_free_min_amount",IsHaveFreeMinAmount);
+dic.Add("have_free_min_amount",HaveFreeMinAmount);
+dic.Add("cost_province_list",CostProvinceList);
+dic.Add("province_id",ProvinceId);
+dic.Add("province_id",ProvinceId);
+dic.Add("city_id",CityId);
+dic.Add("town_id",TownId);
+dic.Add("province_id",ProvinceId);
+dic.Add("free_deliver_house_area_list",FreeDeliverHouseAreaList);
     
-    var result = Post<CreateGoodsLogisticsTemplateApiResult>(pdd.goods.logistics.template.create,);
+    var result = Post<CreateGoodsLogisticsTemplateApiResult>("pdd.goods.logistics.template.create",dic);
     return JsonConvert.DeserializeObject<CreateGoodsLogisticsTemplateApiResult>(result);
 }/// <summary>
 /// 获取商品提交的商品详情
 /// </summary>
 /// <param name="GoodsCommitId">提交申请的序列id</param>
-public async Task<GetGoodsCommitDetailApiResult> GetGoodsCommitDetailAsync(number GoodsCommitId)
+public async Task<GetGoodsCommitDetailApiResult> GetGoodsCommitDetailAsync(int GoodsCommitId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_commit_id",Goods Commit Id);
+    dic.Add("goods_commit_id",GoodsCommitId);
     
-    var result = Post<GetGoodsCommitDetailApiResult>(pdd.goods.commit.detail.get,);
+    var result = Post<GetGoodsCommitDetailApiResult>("pdd.goods.commit.detail.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsCommitDetailApiResult>(result);
 }/// <summary>
 /// 商品关联信息设置接口
@@ -563,18 +563,18 @@ public async Task<GetGoodsCommitDetailApiResult> GetGoodsCommitDetailAsync(numbe
 /// <param name="SourceType">外部平台枚举值， 淘宝/天猫 0，京东1，1688 2，唯品会3，苏宁4，亚马逊,5，网易6，其他7</param>
 /// <param name="Postage">邮费</param>
 /// <param name="OutDetailUrl">外部平台商品url</param>
-public async Task<SetGoodsRelationApiResult> SetGoodsRelationAsync(number GoodsId,number OutGoodsId,number OutLowGoodsPrice,number OutHighGoodsPrice,number SourceType,number Postage,string OutDetailUrl)
+public async Task<SetGoodsRelationApiResult> SetGoodsRelationAsync(int GoodsId,int OutGoodsId,int OutLowGoodsPrice,int OutHighGoodsPrice,int SourceType,int Postage,string OutDetailUrl)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("out_low_goods_price",Out Low Goods Price);
-dic.Add("out_high_goods_price",Out High Goods Price);
-dic.Add("source_type",Source Type);
+    dic.Add("goods_id",GoodsId);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("out_low_goods_price",OutLowGoodsPrice);
+dic.Add("out_high_goods_price",OutHighGoodsPrice);
+dic.Add("source_type",SourceType);
 dic.Add("postage",Postage);
-dic.Add("out_detail_url",Out Detail Url);
+dic.Add("out_detail_url",OutDetailUrl);
     
-    var result = Post<SetGoodsRelationApiResult>(pdd.goods.relation.set,);
+    var result = Post<SetGoodsRelationApiResult>("pdd.goods.relation.set",dic);
     return JsonConvert.DeserializeObject<SetGoodsRelationApiResult>(result);
 }/// <summary>
 /// 新增或编辑草稿接口
@@ -641,56 +641,56 @@ e. 点击上传时，支持批量上传详情图</param>
 /// <param name="InvoiceStatus">invoice_status</param>
 /// <param name="GoodsProperties">商品属性列表</param>
 /// <param name="OutSkuSn">商品sku外部编码</param>
-public async Task<CommitGoodsEditGoodsApiResult> CommitGoodsEditGoodsAsync(number CatId,jsonstring SpecIdList,number Weight,number Quantity,string ThumbUrl,number MultiPrice,number Price,number LimitQuantity,number IsOnsale,string GoodsName,number GoodsType,string GoodsDesc,string TinyName,number CountryId,string Warehouse,string Customs,boolean IsCustoms,number MarketPrice,boolean IsPreSale,string PreSaleTime,string ShipmentLimitSecond,number CostTemplateId,number CustomerNum,number BuyLimit,number OrderLimit,boolean IsRefundable,boolean SecondHand,boolean IsFolt,number Fabric,number FabricContent,string WarmTips,number ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,jsonstring SkuList,number OutGoodsId,string HdThumbUrl,string ThumbUrl,string ImageUrl,jsonstring CarouselGallery,jsonstring DetailGallery,number InvoiceStatus,string GoodsProperties,number OutSkuSn)
+public async Task<CommitGoodsEditGoodsApiResult> CommitGoodsEditGoodsAsync(int CatId,jsonstring SpecIdList,int Weight,int Quantity,string ThumbUrl,int MultiPrice,int Price,int LimitQuantity,int IsOnsale,string GoodsName,int GoodsType,string GoodsDesc,string TinyName,int CountryId,string Warehouse,string Customs,boolean IsCustoms,int MarketPrice,boolean IsPreSale,string PreSaleTime,string ShipmentLimitSecond,int CostTemplateId,int CustomerNum,int BuyLimit,int OrderLimit,boolean IsRefundable,boolean SecondHand,boolean IsFolt,int Fabric,int FabricContent,string WarmTips,int ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,jsonstring SkuList,int OutGoodsId,string HdThumbUrl,string ThumbUrl,string ImageUrl,jsonstring CarouselGallery,jsonstring DetailGallery,int InvoiceStatus,string GoodsProperties,int OutSkuSn)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("cat_id",Cat Id);
-dic.Add("spec_id_list",Spec Id List);
+    dic.Add("cat_id",CatId);
+dic.Add("spec_id_list",SpecIdList);
 dic.Add("weight",Weight);
 dic.Add("quantity",Quantity);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("multi_price",Multi Price);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("multi_price",MultiPrice);
 dic.Add("price",Price);
-dic.Add("limit_quantity",Limit Quantity);
-dic.Add("is_onsale",Is Onsale);
-dic.Add("goods_name",Goods Name);
-dic.Add("goods_type",Goods Type);
-dic.Add("goods_desc",Goods Desc);
-dic.Add("tiny_name",Tiny Name);
-dic.Add("country_id",Country Id);
+dic.Add("limit_quantity",LimitQuantity);
+dic.Add("is_onsale",IsOnsale);
+dic.Add("goods_name",GoodsName);
+dic.Add("goods_type",GoodsType);
+dic.Add("goods_desc",GoodsDesc);
+dic.Add("tiny_name",TinyName);
+dic.Add("country_id",CountryId);
 dic.Add("warehouse",Warehouse);
 dic.Add("customs",Customs);
-dic.Add("is_customs",Is Customs);
-dic.Add("market_price",Market Price);
-dic.Add("is_pre_sale",Is Pre Sale);
-dic.Add("pre_sale_time",Pre Sale Time);
-dic.Add("shipment_limit_second",Shipment Limit Second);
-dic.Add("cost_template_id",Cost Template Id);
-dic.Add("customer_num",Customer Num);
-dic.Add("buy_limit",Buy Limit);
-dic.Add("order_limit",Order Limit);
-dic.Add("is_refundable",Is Refundable);
-dic.Add("second_hand",Second Hand);
-dic.Add("is_folt",Is Folt);
+dic.Add("is_customs",IsCustoms);
+dic.Add("market_price",MarketPrice);
+dic.Add("is_pre_sale",IsPreSale);
+dic.Add("pre_sale_time",PreSaleTime);
+dic.Add("shipment_limit_second",ShipmentLimitSecond);
+dic.Add("cost_template_id",CostTemplateId);
+dic.Add("customer_num",CustomerNum);
+dic.Add("buy_limit",BuyLimit);
+dic.Add("order_limit",OrderLimit);
+dic.Add("is_refundable",IsRefundable);
+dic.Add("second_hand",SecondHand);
+dic.Add("is_folt",IsFolt);
 dic.Add("fabric",Fabric);
-dic.Add("fabric_content",Fabric Content);
-dic.Add("warm_tips",Warm Tips);
-dic.Add("shelf_life",Shelf Life);
-dic.Add("start_production_date",Start Production Date);
-dic.Add("end_production_date",End Production Date);
-dic.Add("production_standard_number",Production Standard Number);
-dic.Add("sku_list",Sku List);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("hd_thumb_url",Hd Thumb Url);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("image_url",Image Url);
-dic.Add("carousel_gallery",Carousel Gallery);
-dic.Add("detail_gallery",Detail Gallery);
-dic.Add("invoice_status",Invoice Status);
-dic.Add("goods_properties",Goods Properties);
-dic.Add("out_sku_sn",Out Sku Sn);
+dic.Add("fabric_content",FabricContent);
+dic.Add("warm_tips",WarmTips);
+dic.Add("shelf_life",ShelfLife);
+dic.Add("start_production_date",StartProductionDate);
+dic.Add("end_production_date",EndProductionDate);
+dic.Add("production_standard_number",ProductionStandardNumber);
+dic.Add("sku_list",SkuList);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("hd_thumb_url",HdThumbUrl);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("image_url",ImageUrl);
+dic.Add("carousel_gallery",CarouselGallery);
+dic.Add("detail_gallery",DetailGallery);
+dic.Add("invoice_status",InvoiceStatus);
+dic.Add("goods_properties",GoodsProperties);
+dic.Add("out_sku_sn",OutSkuSn);
     
-    var result = Post<CommitGoodsEditGoodsApiResult>(pdd.goods.edit.goods.commit,);
+    var result = Post<CommitGoodsEditGoodsApiResult>("pdd.goods.edit.goods.commit",dic);
     return JsonConvert.DeserializeObject<CommitGoodsEditGoodsApiResult>(result);
 }/// <summary>
 /// 编辑并提交草稿接口
@@ -765,75 +765,75 @@ e. 图片不可以添加任何品牌相关文字或logo</param>
 /// <param name="Vid">属性值id</param>
 /// <param name="Value">属性值</param>
 /// <param name="ValueUnit">属性单位</param>
-public async Task<CommitGoodsSubmitGoodsApiResult> CommitGoodsSubmitGoodsAsync(number GoodsId,string GoodsName,number GoodsType,string GoodsDesc,number CatId,number CountryId,number MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,number CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,number InvoiceStatus,number GoodsCommitId,jsonstring SpecIdList,number Weight,number Quantity,string ThumbUrl,number MultiPrice,number Price,number LimitQuantity,number IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,number CustomerNum,number BuyLimit,number OrderLimit,number Fabric,number FabricContent,string WarmTips,number ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,number OutGoodsId,string ImageUrl,string GoodsProperties,number OutSkuSn,number TemplatePid,number TemplateModuleId,number Pid,number Vid,string Value,string ValueUnit)
+public async Task<CommitGoodsSubmitGoodsApiResult> CommitGoodsSubmitGoodsAsync(int GoodsId,string GoodsName,int GoodsType,string GoodsDesc,int CatId,int CountryId,int MarketPrice,boolean IsPreSale,string ShipmentLimitSecond,int CostTemplateId,boolean IsRefundable,boolean SecondHand,boolean IsFolt,jsonstring SkuList,string HdThumbUrl,string ThumbUrl,jsonstring CarouselGallery,jsonstring DetailGallery,int InvoiceStatus,int GoodsCommitId,jsonstring SpecIdList,int Weight,int Quantity,string ThumbUrl,int MultiPrice,int Price,int LimitQuantity,int IsOnsale,string TinyName,string Warehouse,string Customs,boolean IsCustoms,string PreSaleTime,int CustomerNum,int BuyLimit,int OrderLimit,int Fabric,int FabricContent,string WarmTips,int ShelfLife,string StartProductionDate,string EndProductionDate,string ProductionStandardNumber,int OutGoodsId,string ImageUrl,string GoodsProperties,int OutSkuSn,int TemplatePid,int TemplateModuleId,int Pid,int Vid,string Value,string ValueUnit)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("goods_name",Goods Name);
-dic.Add("goods_type",Goods Type);
-dic.Add("goods_desc",Goods Desc);
-dic.Add("cat_id",Cat Id);
-dic.Add("country_id",Country Id);
-dic.Add("market_price",Market Price);
-dic.Add("is_pre_sale",Is Pre Sale);
-dic.Add("shipment_limit_second",Shipment Limit Second);
-dic.Add("cost_template_id",Cost Template Id);
-dic.Add("is_refundable",Is Refundable);
-dic.Add("second_hand",Second Hand);
-dic.Add("is_folt",Is Folt);
-dic.Add("sku_list",Sku List);
-dic.Add("hd_thumb_url",Hd Thumb Url);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("carousel_gallery",Carousel Gallery);
-dic.Add("detail_gallery",Detail Gallery);
-dic.Add("invoice_status",Invoice Status);
-dic.Add("goods_commit_id",Goods Commit Id);
-dic.Add("spec_id_list",Spec Id List);
+    dic.Add("goods_id",GoodsId);
+dic.Add("goods_name",GoodsName);
+dic.Add("goods_type",GoodsType);
+dic.Add("goods_desc",GoodsDesc);
+dic.Add("cat_id",CatId);
+dic.Add("country_id",CountryId);
+dic.Add("market_price",MarketPrice);
+dic.Add("is_pre_sale",IsPreSale);
+dic.Add("shipment_limit_second",ShipmentLimitSecond);
+dic.Add("cost_template_id",CostTemplateId);
+dic.Add("is_refundable",IsRefundable);
+dic.Add("second_hand",SecondHand);
+dic.Add("is_folt",IsFolt);
+dic.Add("sku_list",SkuList);
+dic.Add("hd_thumb_url",HdThumbUrl);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("carousel_gallery",CarouselGallery);
+dic.Add("detail_gallery",DetailGallery);
+dic.Add("invoice_status",InvoiceStatus);
+dic.Add("goods_commit_id",GoodsCommitId);
+dic.Add("spec_id_list",SpecIdList);
 dic.Add("weight",Weight);
 dic.Add("quantity",Quantity);
-dic.Add("thumb_url",Thumb Url);
-dic.Add("multi_price",Multi Price);
+dic.Add("thumb_url",ThumbUrl);
+dic.Add("multi_price",MultiPrice);
 dic.Add("price",Price);
-dic.Add("limit_quantity",Limit Quantity);
-dic.Add("is_onsale",Is Onsale);
-dic.Add("tiny_name",Tiny Name);
+dic.Add("limit_quantity",LimitQuantity);
+dic.Add("is_onsale",IsOnsale);
+dic.Add("tiny_name",TinyName);
 dic.Add("warehouse",Warehouse);
 dic.Add("customs",Customs);
-dic.Add("is_customs",Is Customs);
-dic.Add("pre_sale_time",Pre Sale Time);
-dic.Add("customer_num",Customer Num);
-dic.Add("buy_limit",Buy Limit);
-dic.Add("order_limit",Order Limit);
+dic.Add("is_customs",IsCustoms);
+dic.Add("pre_sale_time",PreSaleTime);
+dic.Add("customer_num",CustomerNum);
+dic.Add("buy_limit",BuyLimit);
+dic.Add("order_limit",OrderLimit);
 dic.Add("fabric",Fabric);
-dic.Add("fabric_content",Fabric Content);
-dic.Add("warm_tips",Warm Tips);
-dic.Add("shelf_life",Shelf Life);
-dic.Add("start_production_date",Start Production Date);
-dic.Add("end_production_date",End Production Date);
-dic.Add("production_standard_number",Production Standard Number);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("image_url",Image Url);
-dic.Add("goods_properties",Goods Properties);
-dic.Add("out_sku_sn",Out Sku Sn);
-dic.Add("template_pid",Template Pid);
-dic.Add("template_module_id",Template Module Id);
+dic.Add("fabric_content",FabricContent);
+dic.Add("warm_tips",WarmTips);
+dic.Add("shelf_life",ShelfLife);
+dic.Add("start_production_date",StartProductionDate);
+dic.Add("end_production_date",EndProductionDate);
+dic.Add("production_standard_number",ProductionStandardNumber);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("image_url",ImageUrl);
+dic.Add("goods_properties",GoodsProperties);
+dic.Add("out_sku_sn",OutSkuSn);
+dic.Add("template_pid",TemplatePid);
+dic.Add("template_module_id",TemplateModuleId);
 dic.Add("pid",Pid);
 dic.Add("vid",Vid);
 dic.Add("value",Value);
-dic.Add("value_unit",Value Unit);
+dic.Add("value_unit",ValueUnit);
     
-    var result = Post<CommitGoodsSubmitGoodsApiResult>(pdd.goods.submit.goods.commit,);
+    var result = Post<CommitGoodsSubmitGoodsApiResult>("pdd.goods.submit.goods.commit",dic);
     return JsonConvert.DeserializeObject<CommitGoodsSubmitGoodsApiResult>(result);
 }/// <summary>
 /// 查询模板接口
 /// </summary>
 /// <param name="CatId">类目id</param>
-public async Task<GetGoodsMallTemplateApiResult> GetGoodsMallTemplateAsync(number CatId)
+public async Task<GetGoodsMallTemplateApiResult> GetGoodsMallTemplateAsync(int CatId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("cat_id",Cat Id);
+    dic.Add("cat_id",CatId);
     
-    var result = Post<GetGoodsMallTemplateApiResult>(pdd.goods.mall.template.get,);
+    var result = Post<GetGoodsMallTemplateApiResult>("pdd.goods.mall.template.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsMallTemplateApiResult>(result);
 }/// <summary>
 /// 搜索属性值接口
@@ -841,27 +841,27 @@ public async Task<GetGoodsMallTemplateApiResult> GetGoodsMallTemplateAsync(numbe
 /// <param name="TemplatePid">模板属性id</param>
 /// <param name="ParentVid">父属性值id</param>
 /// <param name="Value">属性值</param>
-public async Task<SearchGoodsTemplateValueApiResult> SearchGoodsTemplateValueAsync(number TemplatePid,number ParentVid,string Value)
+public async Task<SearchGoodsTemplateValueApiResult> SearchGoodsTemplateValueAsync(int TemplatePid,int ParentVid,string Value)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("template_pid",Template Pid);
-dic.Add("parent_vid",Parent Vid);
+    dic.Add("template_pid",TemplatePid);
+dic.Add("parent_vid",ParentVid);
 dic.Add("value",Value);
     
-    var result = Post<SearchGoodsTemplateValueApiResult>(pdd.goods.template.value.search,);
+    var result = Post<SearchGoodsTemplateValueApiResult>("pdd.goods.template.value.search",dic);
     return JsonConvert.DeserializeObject<SearchGoodsTemplateValueApiResult>(result);
 }/// <summary>
 /// 查询子属性接口
 /// </summary>
 /// <param name="TemplatePid">templatePid</param>
 /// <param name="Vid">vid</param>
-public async Task<GetGoodsTemplateSubPropertyApiResult> GetGoodsTemplateSubPropertyAsync(number TemplatePid,number Vid)
+public async Task<GetGoodsTemplateSubPropertyApiResult> GetGoodsTemplateSubPropertyAsync(int TemplatePid,int Vid)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("template_pid",Template Pid);
+    dic.Add("template_pid",TemplatePid);
 dic.Add("vid",Vid);
     
-    var result = Post<GetGoodsTemplateSubPropertyApiResult>(pdd.goods.template.sub.property.get,);
+    var result = Post<GetGoodsTemplateSubPropertyApiResult>("pdd.goods.template.sub.property.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsTemplateSubPropertyApiResult>(result);
 }/// <summary>
 /// 修改商品sku价格
@@ -871,16 +871,16 @@ dic.Add("vid",Vid);
 /// <param name="SinglePrice">单独购买价格（单位分）</param>
 /// <param name="GroupPrice">拼团购买价格（单位分）</param>
 /// <param name="SkuId">sku标识</param>
-public async Task<UpdateGoodsSkuPriceApiResult> UpdateGoodsSkuPriceAsync(string GoodsId,jsonstring SkuPriceList,number SinglePrice,number GroupPrice,number SkuId)
+public async Task<UpdateGoodsSkuPriceApiResult> UpdateGoodsSkuPriceAsync(string GoodsId,jsonstring SkuPriceList,int SinglePrice,int GroupPrice,int SkuId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("sku_price_list",Sku Price List);
-dic.Add("single_price",Single Price);
-dic.Add("group_price",Group Price);
-dic.Add("sku_id",Sku Id);
+    dic.Add("goods_id",GoodsId);
+dic.Add("sku_price_list",SkuPriceList);
+dic.Add("single_price",SinglePrice);
+dic.Add("group_price",GroupPrice);
+dic.Add("sku_id",SkuId);
     
-    var result = Post<UpdateGoodsSkuPriceApiResult>(pdd.goods.sku.price.update,);
+    var result = Post<UpdateGoodsSkuPriceApiResult>("pdd.goods.sku.price.update",dic);
     return JsonConvert.DeserializeObject<UpdateGoodsSkuPriceApiResult>(result);
 }/// <summary>
 /// 第三方平台商详字段转化到拼多多草稿箱
@@ -901,18 +901,18 @@ dic.Add("sku_id",Sku Id);
 public async Task<FieldExchangeThirdApiResult> FieldExchangeThirdAsync(long NumIid,string Title,string Cid,string Desc,string PicUrl,string StuffStatus,long CostTemplateId,string ItemImgsUrl,json string Skus,string OuterId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("num_iid",Num Iid);
+    dic.Add("num_iid",NumIid);
 dic.Add("title",Title);
 dic.Add("cid",Cid);
 dic.Add("desc",Desc);
-dic.Add("pic_url",Pic Url);
-dic.Add("stuff_status",Stuff Status);
-dic.Add("cost_template_id",Cost Template Id);
-dic.Add("item_imgs_url",Item Imgs Url);
+dic.Add("pic_url",PicUrl);
+dic.Add("stuff_status",StuffStatus);
+dic.Add("cost_template_id",CostTemplateId);
+dic.Add("item_imgs_url",ItemImgsUrl);
 dic.Add("skus",Skus);
-dic.Add("outer_id",Outer Id);
+dic.Add("outer_id",OuterId);
     
-    var result = Post<FieldExchangeThirdApiResult>(pdd.exchange.third.field,);
+    var result = Post<FieldExchangeThirdApiResult>("pdd.exchange.third.field",dic);
     return JsonConvert.DeserializeObject<FieldExchangeThirdApiResult>(result);
 }/// <summary>
 /// 查询商品推广API
@@ -921,20 +921,20 @@ dic.Add("outer_id",Outer Id);
 public async Task<QueryGoodsCpsUnitApiResult> QueryGoodsCpsUnitAsync(string GoodsId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
+    dic.Add("goods_id",GoodsId);
     
-    var result = Post<QueryGoodsCpsUnitApiResult>(pdd.goods.cps.unit.query,);
+    var result = Post<QueryGoodsCpsUnitApiResult>("pdd.goods.cps.unit.query",dic);
     return JsonConvert.DeserializeObject<QueryGoodsCpsUnitApiResult>(result);
 }/// <summary>
 /// 设置全店推广API
 /// </summary>
 /// <param name="Rate">佣金比（千分比）</param>
-public async Task<CreateGoodsCpsMallUnitApiResult> CreateGoodsCpsMallUnitAsync(number Rate)
+public async Task<CreateGoodsCpsMallUnitApiResult> CreateGoodsCpsMallUnitAsync(int Rate)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("rate",Rate);
     
-    var result = Post<CreateGoodsCpsMallUnitApiResult>(pdd.goods.cps.mall.unit.create,);
+    var result = Post<CreateGoodsCpsMallUnitApiResult>("pdd.goods.cps.mall.unit.create",dic);
     return JsonConvert.DeserializeObject<CreateGoodsCpsMallUnitApiResult>(result);
 }/// <summary>
 /// 设置单品推广API
@@ -948,20 +948,20 @@ public async Task<CreateGoodsCpsMallUnitApiResult> CreateGoodsCpsMallUnitAsync(n
 /// <param name="Discount">优惠券面额（单位为分）</param>
 /// <param name="InitQuantity">设置的优惠券张数</param>
 /// <param name="RemainQuantity">剩余的优惠券张数</param>
-public async Task<CreateGoodsCpsUnitApiResult> CreateGoodsCpsUnitAsync(string Units,number GoodsId,number Rate,number CouponId,string CouponStartTime,string CouponEndTime,number Discount,number InitQuantity,number RemainQuantity)
+public async Task<CreateGoodsCpsUnitApiResult> CreateGoodsCpsUnitAsync(string Units,int GoodsId,int Rate,int CouponId,string CouponStartTime,string CouponEndTime,int Discount,int InitQuantity,int RemainQuantity)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("units",Units);
-dic.Add("goods_id",Goods Id);
+dic.Add("goods_id",GoodsId);
 dic.Add("rate",Rate);
-dic.Add("coupon_id",Coupon Id);
-dic.Add("coupon_start_time",Coupon Start Time);
-dic.Add("coupon_end_time",Coupon End Time);
+dic.Add("coupon_id",CouponId);
+dic.Add("coupon_start_time",CouponStartTime);
+dic.Add("coupon_end_time",CouponEndTime);
 dic.Add("discount",Discount);
-dic.Add("init_quantity",Init Quantity);
-dic.Add("remain_quantity",Remain Quantity);
+dic.Add("init_quantity",InitQuantity);
+dic.Add("remain_quantity",RemainQuantity);
     
-    var result = Post<CreateGoodsCpsUnitApiResult>(pdd.goods.cps.unit.create,);
+    var result = Post<CreateGoodsCpsUnitApiResult>("pdd.goods.cps.unit.create",dic);
     return JsonConvert.DeserializeObject<CreateGoodsCpsUnitApiResult>(result);
 }/// <summary>
 /// 修改商品推广API
@@ -974,19 +974,19 @@ dic.Add("remain_quantity",Remain Quantity);
 /// <param name="Discount">优惠券面额（单位为分）</param>
 /// <param name="InitQuantity">设置的优惠券张数</param>
 /// <param name="RemainQuantity">优惠券剩余数量</param>
-public async Task<ChangeGoodsCpsUnitApiResult> ChangeGoodsCpsUnitAsync(number GoodsId,number Rate,number CouponId,string CouponStartTime,string CouponEndTime,number Discount,number InitQuantity,number RemainQuantity)
+public async Task<ChangeGoodsCpsUnitApiResult> ChangeGoodsCpsUnitAsync(int GoodsId,int Rate,int CouponId,string CouponStartTime,string CouponEndTime,int Discount,int InitQuantity,int RemainQuantity)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
+    dic.Add("goods_id",GoodsId);
 dic.Add("rate",Rate);
-dic.Add("coupon_id",Coupon Id);
-dic.Add("coupon_start_time",Coupon Start Time);
-dic.Add("coupon_end_time",Coupon End Time);
+dic.Add("coupon_id",CouponId);
+dic.Add("coupon_start_time",CouponStartTime);
+dic.Add("coupon_end_time",CouponEndTime);
 dic.Add("discount",Discount);
-dic.Add("init_quantity",Init Quantity);
-dic.Add("remain_quantity",Remain Quantity);
+dic.Add("init_quantity",InitQuantity);
+dic.Add("remain_quantity",RemainQuantity);
     
-    var result = Post<ChangeGoodsCpsUnitApiResult>(pdd.goods.cps.unit.change,);
+    var result = Post<ChangeGoodsCpsUnitApiResult>("pdd.goods.cps.unit.change",dic);
     return JsonConvert.DeserializeObject<ChangeGoodsCpsUnitApiResult>(result);
 }/// <summary>
 /// 查询商品销量验证结果
@@ -995,9 +995,9 @@ dic.Add("remain_quantity",Remain Quantity);
 public async Task<GetGoodsSoldCountAuditApiResult> GetGoodsSoldCountAuditAsync(string SerialNumber)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("serial_number",Serial Number);
+    dic.Add("serial_number",SerialNumber);
     
-    var result = Post<GetGoodsSoldCountAuditApiResult>(pdd.goods.sold.count.audit.get,);
+    var result = Post<GetGoodsSoldCountAuditApiResult>("pdd.goods.sold.count.audit.get",dic);
     return JsonConvert.DeserializeObject<GetGoodsSoldCountAuditApiResult>(result);
 }/// <summary>
 /// 同步店铺销量
@@ -1011,14 +1011,14 @@ public async Task<GetGoodsSoldCountAuditApiResult> GetGoodsSoldCountAuditAsync(s
 public async Task<SetGoodsSoldCountApiResult> SetGoodsSoldCountAsync(string PddGoodsId,string OutGoodsId,string OutSoldCountMonth,string OutSoldCountTotal,string OutMallName,string OutSourceType)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("pdd_goods_id",Pdd Goods Id);
-dic.Add("out_goods_id",Out Goods Id);
-dic.Add("out_sold_count_month",Out Sold Count Month);
-dic.Add("out_sold_count_total",Out Sold Count Total);
-dic.Add("out_mall_name",Out Mall Name);
-dic.Add("out_source_type",Out Source Type);
+    dic.Add("pdd_goods_id",PddGoodsId);
+dic.Add("out_goods_id",OutGoodsId);
+dic.Add("out_sold_count_month",OutSoldCountMonth);
+dic.Add("out_sold_count_total",OutSoldCountTotal);
+dic.Add("out_mall_name",OutMallName);
+dic.Add("out_source_type",OutSourceType);
     
-    var result = Post<SetGoodsSoldCountApiResult>(pdd.goods.sold.count.set,);
+    var result = Post<SetGoodsSoldCountApiResult>("pdd.goods.sold.count.set",dic);
     return JsonConvert.DeserializeObject<SetGoodsSoldCountApiResult>(result);
 }/// <summary>
 /// 商品映射查询接口
@@ -1027,21 +1027,10 @@ dic.Add("out_source_type",Out Source Type);
 public async Task<RelationGoodsGetApiResult> RelationGoodsGetAsync(json list PddGoodsId)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("pdd_goods_id",Pdd Goods Id);
+    dic.Add("pdd_goods_id",PddGoodsId);
     
-    var result = Post<RelationGoodsGetApiResult>(pdd.goods.get.relation,);
+    var result = Post<RelationGoodsGetApiResult>("pdd.goods.get.relation",dic);
     return JsonConvert.DeserializeObject<RelationGoodsGetApiResult>(result);
-}/// <summary>
-/// 按id获取商品运费模版接口
-/// </summary>
-/// <param name="CostTemplateId">运费模板id</param>
-public async Task<TemplateOneExpressCostApiResult> TemplateOneExpressCostAsync(integer CostTemplateId)
-{
-    var dic = new Dictionary<string, string>();
-    dic.Add("cost_template_id",Cost Template Id);
-    
-    var result = Post<TemplateOneExpressCostApiResult>(pdd.one.express.cost.template,);
-    return JsonConvert.DeserializeObject<TemplateOneExpressCostApiResult>(result);
 }
     }
 }

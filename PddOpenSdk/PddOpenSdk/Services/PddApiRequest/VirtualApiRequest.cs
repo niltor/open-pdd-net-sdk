@@ -14,11 +14,11 @@ public async Task<NotifyVirtualMobileChargeApiResult> NotifyVirtualMobileChargeA
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("order_sn",Order Sn);
-dic.Add("outer_order_sn",Outer Order Sn);
+dic.Add("order_sn",OrderSn);
+dic.Add("outer_order_sn",OuterOrderSn);
 dic.Add("status",Status);
     
-    var result = Post<NotifyVirtualMobileChargeApiResult>(pdd.virtual.mobile.charge.notify,);
+    var result = Post<NotifyVirtualMobileChargeApiResult>("pdd.virtual.mobile.charge.notify",dic);
     return JsonConvert.DeserializeObject<NotifyVirtualMobileChargeApiResult>(result);
 }
     }

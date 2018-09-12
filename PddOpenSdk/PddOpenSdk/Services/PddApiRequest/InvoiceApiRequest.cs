@@ -13,18 +13,18 @@ namespace PddOpenSdk.Services.PddApiRequest
 /// <param name="UpdateEndTime">申请结束时间, 时间戳（毫秒）</param>
 /// <param name="Page">页码，默认1</param>
 /// <param name="PageSize">每页返回数目，默认50</param>
-public async Task<QueryInvoiceApplicationApiResult> QueryInvoiceApplicationAsync(number ApplicationId,string OrderSn,number Status,number UpdateStartTime,number UpdateEndTime,number Page,number PageSize)
+public async Task<QueryInvoiceApplicationApiResult> QueryInvoiceApplicationAsync(int ApplicationId,string OrderSn,int Status,int UpdateStartTime,int UpdateEndTime,int Page,int PageSize)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("application_id",Application Id);
-dic.Add("order_sn",Order Sn);
+    dic.Add("application_id",ApplicationId);
+dic.Add("order_sn",OrderSn);
 dic.Add("status",Status);
-dic.Add("update_start_time",Update Start Time);
-dic.Add("update_end_time",Update End Time);
+dic.Add("update_start_time",UpdateStartTime);
+dic.Add("update_end_time",UpdateEndTime);
 dic.Add("page",Page);
-dic.Add("page_size",Page Size);
+dic.Add("page_size",PageSize);
     
-    var result = Post<QueryInvoiceApplicationApiResult>(pdd.invoice.application.query,);
+    var result = Post<QueryInvoiceApplicationApiResult>("pdd.invoice.application.query",dic);
     return JsonConvert.DeserializeObject<QueryInvoiceApplicationApiResult>(result);
 }/// <summary>
 /// 开票申请单审核
@@ -33,15 +33,15 @@ dic.Add("page_size",Page Size);
 /// <param name="OrderSn">订单号</param>
 /// <param name="Status">审核结果：0 = 拒绝，2 = 同意</param>
 /// <param name="Reason">驳回原因，status=0必填</param>
-public async Task<UpdateInvoiceApplicationApiResult> UpdateInvoiceApplicationAsync(number ApplicationId,string OrderSn,number Status,string Reason)
+public async Task<UpdateInvoiceApplicationApiResult> UpdateInvoiceApplicationAsync(int ApplicationId,string OrderSn,int Status,string Reason)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("application_id",Application Id);
-dic.Add("order_sn",Order Sn);
+    dic.Add("application_id",ApplicationId);
+dic.Add("order_sn",OrderSn);
 dic.Add("status",Status);
 dic.Add("reason",Reason);
     
-    var result = Post<UpdateInvoiceApplicationApiResult>(pdd.invoice.application.update,);
+    var result = Post<UpdateInvoiceApplicationApiResult>("pdd.invoice.application.update",dic);
     return JsonConvert.DeserializeObject<UpdateInvoiceApplicationApiResult>(result);
 }/// <summary>
 /// 查询已回传发票
@@ -51,10 +51,10 @@ dic.Add("reason",Reason);
 public async Task<QueryInvoiceDetailApiResult> QueryInvoiceDetailAsync(string OrderSn,string SerialNo)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("order_sn",Order Sn);
-dic.Add("serial_no",Serial No);
+    dic.Add("order_sn",OrderSn);
+dic.Add("serial_no",SerialNo);
     
-    var result = Post<QueryInvoiceDetailApiResult>(pdd.invoice.detail.query,);
+    var result = Post<QueryInvoiceDetailApiResult>("pdd.invoice.detail.query",dic);
     return JsonConvert.DeserializeObject<QueryInvoiceDetailApiResult>(result);
 }/// <summary>
 /// 开票结果回传
@@ -78,30 +78,30 @@ dic.Add("serial_no",Serial No);
 /// <param name="OriginalInvoiceCode">原蓝票代码（红票必填）</param>
 /// <param name="OriginalInvoiceNo">原蓝票号码（红票必填）</param>
 /// <param name="Memo">备注</param>
-public async Task<UploadInvoiceDetailApiResult> UploadInvoiceDetailAsync(string PayerName,string OrderSn,number ApplicationId,number BusinessType,number InvoiceKind,number InvoiceType,number InvoiceAmount,number SumPrice,string PayerRegisterNo,string TaxRate,string SumTax,string InvoiceCode,string InvoiceNo,string PayeeOperator,number InvoiceTime,string InvoiceFileContent,string OriginalInvoiceCode,string OriginalInvoiceNo,string Memo)
+public async Task<UploadInvoiceDetailApiResult> UploadInvoiceDetailAsync(string PayerName,string OrderSn,int ApplicationId,int BusinessType,int InvoiceKind,int InvoiceType,int InvoiceAmount,int SumPrice,string PayerRegisterNo,string TaxRate,string SumTax,string InvoiceCode,string InvoiceNo,string PayeeOperator,int InvoiceTime,string InvoiceFileContent,string OriginalInvoiceCode,string OriginalInvoiceNo,string Memo)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("payer_name",Payer Name);
-dic.Add("order_sn",Order Sn);
-dic.Add("application_id",Application Id);
-dic.Add("business_type",Business Type);
-dic.Add("invoice_kind",Invoice Kind);
-dic.Add("invoice_type",Invoice Type);
-dic.Add("invoice_amount",Invoice Amount);
-dic.Add("sum_price",Sum Price);
-dic.Add("payer_register_no",Payer Register No);
-dic.Add("tax_rate",Tax Rate);
-dic.Add("sum_tax",Sum Tax);
-dic.Add("invoice_code",Invoice Code);
-dic.Add("invoice_no",Invoice No);
-dic.Add("payee_operator",Payee Operator);
-dic.Add("invoice_time",Invoice Time);
-dic.Add("invoice_file_content",Invoice File Content);
-dic.Add("original_invoice_code",Original Invoice Code);
-dic.Add("original_invoice_no",Original Invoice No);
+    dic.Add("payer_name",PayerName);
+dic.Add("order_sn",OrderSn);
+dic.Add("application_id",ApplicationId);
+dic.Add("business_type",BusinessType);
+dic.Add("invoice_kind",InvoiceKind);
+dic.Add("invoice_type",InvoiceType);
+dic.Add("invoice_amount",InvoiceAmount);
+dic.Add("sum_price",SumPrice);
+dic.Add("payer_register_no",PayerRegisterNo);
+dic.Add("tax_rate",TaxRate);
+dic.Add("sum_tax",SumTax);
+dic.Add("invoice_code",InvoiceCode);
+dic.Add("invoice_no",InvoiceNo);
+dic.Add("payee_operator",PayeeOperator);
+dic.Add("invoice_time",InvoiceTime);
+dic.Add("invoice_file_content",InvoiceFileContent);
+dic.Add("original_invoice_code",OriginalInvoiceCode);
+dic.Add("original_invoice_no",OriginalInvoiceNo);
 dic.Add("memo",Memo);
     
-    var result = Post<UploadInvoiceDetailApiResult>(pdd.invoice.detail.upload,);
+    var result = Post<UploadInvoiceDetailApiResult>("pdd.invoice.detail.upload",dic);
     return JsonConvert.DeserializeObject<UploadInvoiceDetailApiResult>(result);
 }
     }

@@ -10,7 +10,7 @@ public async Task<GetMallInfoAuditApiResult> GetMallInfoAuditAsync()
 {
     var dic = new Dictionary<string, string>();
         
-    var result = Post<GetMallInfoAuditApiResult>(pdd.mall.info.audit.get,);
+    var result = Post<GetMallInfoAuditApiResult>("pdd.mall.info.audit.get",dic);
     return JsonConvert.DeserializeObject<GetMallInfoAuditApiResult>(result);
 }/// <summary>
 /// 创建新店铺
@@ -20,10 +20,10 @@ public async Task<GetMallInfoAuditApiResult> GetMallInfoAuditAsync()
 public async Task<CreateMallInfoApiResult> CreateMallInfoAsync(string UserId,string WwName)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("user_id",User Id);
-dic.Add("ww_name",Ww Name);
+    dic.Add("user_id",UserId);
+dic.Add("ww_name",WwName);
     
-    var result = Post<CreateMallInfoApiResult>(pdd.mall.info.create,);
+    var result = Post<CreateMallInfoApiResult>("pdd.mall.info.create",dic);
     return JsonConvert.DeserializeObject<CreateMallInfoApiResult>(result);
 }/// <summary>
 /// 店铺信息接口
@@ -32,7 +32,7 @@ public async Task<GetMallInfoApiResult> GetMallInfoAsync()
 {
     var dic = new Dictionary<string, string>();
         
-    var result = Post<GetMallInfoApiResult>(pdd.mall.info.get,);
+    var result = Post<GetMallInfoApiResult>("pdd.mall.info.get",dic);
     return JsonConvert.DeserializeObject<GetMallInfoApiResult>(result);
 }/// <summary>
 /// 提交校验店铺申请
@@ -43,11 +43,11 @@ public async Task<GetMallInfoApiResult> GetMallInfoAsync()
 public async Task<AddMallInfoVerifyApplicationApiResult> AddMallInfoVerifyApplicationAsync(string GoodsId,string UserId,string WwName)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("goods_id",Goods Id);
-dic.Add("user_id",User Id);
-dic.Add("ww_name",Ww Name);
+    dic.Add("goods_id",GoodsId);
+dic.Add("user_id",UserId);
+dic.Add("ww_name",WwName);
     
-    var result = Post<AddMallInfoVerifyApplicationApiResult>(pdd.mall.info.verify.application.add,);
+    var result = Post<AddMallInfoVerifyApplicationApiResult>("pdd.mall.info.verify.application.add",dic);
     return JsonConvert.DeserializeObject<AddMallInfoVerifyApplicationApiResult>(result);
 }/// <summary>
 /// 获取店铺校验码
@@ -57,10 +57,10 @@ dic.Add("ww_name",Ww Name);
 public async Task<GetMallInfoVerifyCodeApiResult> GetMallInfoVerifyCodeAsync(string UserId,string WwName)
 {
     var dic = new Dictionary<string, string>();
-    dic.Add("user_id",User Id);
-dic.Add("ww_name",Ww Name);
+    dic.Add("user_id",UserId);
+dic.Add("ww_name",WwName);
     
-    var result = Post<GetMallInfoVerifyCodeApiResult>(pdd.mall.info.verify.code.get,);
+    var result = Post<GetMallInfoVerifyCodeApiResult>("pdd.mall.info.verify.code.get",dic);
     return JsonConvert.DeserializeObject<GetMallInfoVerifyCodeApiResult>(result);
 }
     }

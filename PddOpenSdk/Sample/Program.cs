@@ -9,7 +9,7 @@ namespace Sample
         {
 
             var helper = new PddApiDocHelper();
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 22; i++)
             {
                 await helper.GetDocListByCatAsync(i);
 

@@ -12,7 +12,7 @@ public async Task<GetRefundAddressListApiResult> GetRefundAddressListAsync(strin
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
     
-    var result = Post<GetRefundAddressListApiResult>(pdd.refund.address.list.get,);
+    var result = Post<GetRefundAddressListApiResult>("pdd.refund.address.list.get",dic);
     return JsonConvert.DeserializeObject<GetRefundAddressListApiResult>(result);
 }/// <summary>
 /// 售后列表接口
@@ -24,18 +24,18 @@ public async Task<GetRefundAddressListApiResult> GetRefundAddressListAsync(strin
 /// <param name="EndUpdatedAt">必填，最后更新时间结束时间的UNIX时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时00 分 00 秒)起至现在的总秒数 PS：开始时间结束时间间距不超过 30 分钟</param>
 /// <param name="PageSize">返回数量，默认 100。最大 100</param>
 /// <param name="Page">返回页码 默认 1，页码从 1 开始 PS：当前采用分页返回，数量和页数会一起传，如果不传，则采用 默认值</param>
-public async Task<GetRefundListIncrementApiResult> GetRefundListIncrementAsync(string Type,string AfterSalesStatus,string AfterSalesType,string StartUpdatedAt,string EndUpdatedAt,number PageSize,number Page)
+public async Task<GetRefundListIncrementApiResult> GetRefundListIncrementAsync(string Type,string AfterSalesStatus,string AfterSalesType,string StartUpdatedAt,string EndUpdatedAt,int PageSize,int Page)
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("after_sales_status",After Sales Status);
-dic.Add("after_sales_type",After Sales Type);
-dic.Add("start_updated_at",Start Updated At);
-dic.Add("end_updated_at",End Updated At);
-dic.Add("page_size",Page Size);
+dic.Add("after_sales_status",AfterSalesStatus);
+dic.Add("after_sales_type",AfterSalesType);
+dic.Add("start_updated_at",StartUpdatedAt);
+dic.Add("end_updated_at",EndUpdatedAt);
+dic.Add("page_size",PageSize);
 dic.Add("page",Page);
     
-    var result = Post<GetRefundListIncrementApiResult>(pdd.refund.list.increment.get,);
+    var result = Post<GetRefundListIncrementApiResult>("pdd.refund.list.increment.get",dic);
     return JsonConvert.DeserializeObject<GetRefundListIncrementApiResult>(result);
 }/// <summary>
 /// 售后校验接口
@@ -46,9 +46,9 @@ public async Task<CheckRefundStatusApiResult> CheckRefundStatusAsync(string Type
 {
     var dic = new Dictionary<string, string>();
     dic.Add("type",Type);
-dic.Add("order_sns",Order Sns);
+dic.Add("order_sns",OrderSns);
     
-    var result = Post<CheckRefundStatusApiResult>(pdd.refund.status.check,);
+    var result = Post<CheckRefundStatusApiResult>("pdd.refund.status.check",dic);
     return JsonConvert.DeserializeObject<CheckRefundStatusApiResult>(result);
 }
     }
