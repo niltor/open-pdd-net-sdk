@@ -172,12 +172,10 @@ namespace Sample
         /// <summary>
         /// API接口名称
         /// </summary>
-        [Required]
         public string Type { get; set; }
         /// <summary>
         /// POP分配给应用的client_id
         /// </summary>
-        [Required]
         public string Client_Id { get; set; }
         /// <summary>
         /// 通过code获取的access_token(无需授权的接口，该字段不参与sign签名运算)
@@ -186,7 +184,6 @@ namespace Sample
         /// <summary>
         /// UNIX时间戳
         /// </summary>
-        [Required]
         public string TimeStamp { get; set; }
         /// <summary>
         /// 响应格式，即返回数据的格式，JSON或者XML（二选一），默认JSON，注意是大写
@@ -197,7 +194,6 @@ namespace Sample
         /// <summary>
         /// API输入参数签名结果，签名算法参考开放平台接入指南第三部分底部
         /// </summary>
-        [Required]
         public string Sign { get; set; }
 
     }

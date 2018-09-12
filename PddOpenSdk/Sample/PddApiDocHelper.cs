@@ -80,7 +80,6 @@ namespace Sample
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 namespace App.Services.PddApiRequest
 {{
     public class {fileName} : PddRequest {{
@@ -121,12 +120,16 @@ namespace App.Services.PddApiRequest
 
                 dicData += $@"dic.Add(""{item.ParamName}"",{paramName.Replace(" ", "")});
 ";
-                string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc}</param>
+                string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc?.Replace("\n", "; ")}</param>
 ";
                 // 对特殊类型处理
                 if (item.ParamType.Equals("number"))
                 {
                     item.ParamType = "int";
+                }
+                else if (item.ParamType.Equals("boolean"))
+                {
+                    item.ParamType = "bool";
                 }
                 paramName = item.ParamType.ToLower() + " " + paramName.Replace(" ", "") + ",";
                 methodParams += paramName;
@@ -213,7 +216,7 @@ namespace App.Services.PddApiRequest
             // 处理content为空的情况
             if (string.IsNullOrEmpty(classContent))
             {
-                classContent = $@"public class {classContent}{{}}";
+                classContent = $@"public class {className}{{}}";
             }
             string fileName = className;
             classContent = classContent?.Replace("RootObject", fileName);
