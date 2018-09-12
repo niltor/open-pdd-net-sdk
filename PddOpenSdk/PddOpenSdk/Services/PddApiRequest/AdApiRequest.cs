@@ -1,6 +1,6 @@
-using App.Models.PddApiResult;
+using PddOpenSdk.Models.PddApiResult;
 using System.Threading.Tasks;
-namespace App.Services.PddApiRequest
+namespace PddOpenSdk.Services.PddApiRequest
 {
     public class AdApiRequest : PddRequest {
         /// <summary>

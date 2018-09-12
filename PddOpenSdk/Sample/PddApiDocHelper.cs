@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Sample
 {
@@ -116,10 +116,15 @@ namespace App.Services.PddApiRequest
             {
                 string paramName = Function.ToTitleCase(item.ParamName.Replace("_", " "));
 
-                dicData += $@"dic.Add(""{item.ParamName}"",{paramName});
+                dicData += $@"dic.Add(""{item.ParamName}"",{paramName.Replace(" ", "")});
 ";
                 string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc}</param>
 ";
+                // 对特殊类型处理
+                if (item.ParamType.Equals("number"))
+                {
+                    item.ParamType = "int";
+                }
                 paramName = item.ParamType.ToLower() + " " + paramName.Replace(" ", "") + ",";
                 methodParams += paramName;
                 methodComment += paramComment;
@@ -141,18 +146,16 @@ namespace App.Services.PddApiRequest
             {
                 File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
             }
-            else
-            {
-                // 保存结果类
-                SaveResultClass(returnType, classContent);
-            }
+            // 保存结果类
+            SaveResultClass(returnType, classContent);
+
 
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
 {{
     var dic = new Dictionary<string, string>();
     {dicData}    
-    var result = Post<{returnType}>({doc.ScopeName},);
+    var result = Post<{returnType}>(""{doc.ScopeName}"",dic);
     return JsonConvert.DeserializeObject<{returnType}>(result);
 }}";
 
@@ -205,6 +208,11 @@ namespace App.Services.PddApiRequest
             if (!Directory.Exists(resultPath))
             {
                 Directory.CreateDirectory(resultPath);
+            }
+            // 处理content为空的情况
+            if (string.IsNullOrEmpty(classContent))
+            {
+                classContent = "// TODO 待补充";
             }
             string fileName = className;
             classContent = classContent?.Replace("RootObject", fileName);

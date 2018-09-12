@@ -1,4 +1,4 @@
-namespace App.Models.PddApiResult
+namespace PddOpenSdk.Models.PddApiResult
 {
     
 public class SingleUrlList
