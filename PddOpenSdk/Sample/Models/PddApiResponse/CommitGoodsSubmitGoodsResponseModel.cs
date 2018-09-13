@@ -13,12 +13,12 @@ public object GoodsUpdateResponse {get;set;}
 /// 商品id
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 提交申请的序列id
 /// </summary>
 [JsonProperty("goods_commit_id")]
-public string GoodsCommitId {get;set;}
+public object GoodsCommitId {get;set;}
 
     public partial class GoodsUpdateResponseResponseModel : PddResponseModel
     {
@@ -26,12 +26,12 @@ public string GoodsCommitId {get;set;}
 /// 商品id
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 提交申请的序列id
 /// </summary>
 [JsonProperty("goods_commit_id")]
-public string GoodsCommitId {get;set;}
+public object GoodsCommitId {get;set;}
 
 }
 

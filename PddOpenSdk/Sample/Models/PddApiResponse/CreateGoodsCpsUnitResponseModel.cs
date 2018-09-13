@@ -8,17 +8,17 @@ namespace App.Models.PddApiResponse
 /// 失败原因列表对象，创建成功则此参数为空
 /// </summary>
 [JsonProperty("failed_vos")]
-public List<FailedVosResponseModel> FailedVos {get;set;}
+public object FailedVos {get;set;}
 /// <summary>
 /// 创建失败的商品id
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 创建失败原因
 /// </summary>
 [JsonProperty("reason")]
-public string Reason {get;set;}
+public object Reason {get;set;}
 
     public partial class FailedVosResponseModel : PddResponseModel
     {
@@ -26,12 +26,12 @@ public string Reason {get;set;}
 /// 创建失败的商品id
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 创建失败原因
 /// </summary>
 [JsonProperty("reason")]
-public string Reason {get;set;}
+public object Reason {get;set;}
 
 }
 

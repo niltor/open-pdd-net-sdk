@@ -8,7 +8,7 @@ namespace App.Models.PddApiResponse
 /// 规格列表对象
 /// </summary>
 [JsonProperty("goods_spec_list")]
-public List<GoodsSpecListResponseModel> GoodsSpecList {get;set;}
+public object GoodsSpecList {get;set;}
 /// <summary>
 /// 规格所属的叶子类目ID
 /// </summary>
@@ -23,7 +23,7 @@ public int ParentSpecId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_spec_name")]
-public string ParentSpecName {get;set;}
+public object ParentSpecName {get;set;}
 
     public partial class GoodsSpecListResponseModel : PddResponseModel
     {
@@ -41,7 +41,7 @@ public int ParentSpecId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_spec_name")]
-public string ParentSpecName {get;set;}
+public object ParentSpecName {get;set;}
 
 }
 

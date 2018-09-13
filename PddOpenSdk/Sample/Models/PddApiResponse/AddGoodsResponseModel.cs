@@ -8,7 +8,7 @@ namespace App.Models.PddApiResponse
 /// 商品ID
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 上传商品的上传序列ID
 /// </summary>

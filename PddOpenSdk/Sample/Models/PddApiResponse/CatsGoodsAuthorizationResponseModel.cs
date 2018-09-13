@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// 类目对象列表
 /// </summary>
 [JsonProperty("goods_cats_list")]
-public List<GoodsCatsListResponseModel> GoodsCatsList {get;set;}
+public object GoodsCatsList {get;set;}
 /// <summary>
 /// 对应ID下的类目名称
 /// </summary>
 [JsonProperty("cat_name")]
-public string CatName {get;set;}
+public object CatName {get;set;}
 /// <summary>
 /// 类目ID，一级类目ID
 /// </summary>
@@ -26,7 +26,7 @@ public int CatId {get;set;}
 /// 对应ID下的类目名称
 /// </summary>
 [JsonProperty("cat_name")]
-public string CatName {get;set;}
+public object CatName {get;set;}
 /// <summary>
 /// 类目ID，一级类目ID
 /// </summary>

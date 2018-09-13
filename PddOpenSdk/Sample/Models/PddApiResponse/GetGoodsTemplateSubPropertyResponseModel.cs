@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// response
 /// </summary>
 [JsonProperty("template_sub_property_get_response")]
-public jsonstring TemplateSubPropertyGetResponse {get;set;}
+public TemplateSubPropertyGetResponse TemplateSubPropertyGetResponse {get;set;}
 /// <summary>
 /// 模板属性列表
 /// </summary>
 [JsonProperty("template_module_list")]
-public jsonstring TemplateModuleList {get;set;}
+public TemplateModuleList TemplateModuleList {get;set;}
 /// <summary>
 /// 模板模块id
 /// </summary>
@@ -23,7 +23,7 @@ public int Id {get;set;}
 /// 属性
 /// </summary>
 [JsonProperty("propertys")]
-public string Propertys {get;set;}
+public object Propertys {get;set;}
 /// <summary>
 /// 属性值可填最小范围
 /// </summary>
@@ -53,7 +53,7 @@ public int ControlType {get;set;}
 /// 属性名称
 /// </summary>
 [JsonProperty("name_alias")]
-public string NameAlias {get;set;}
+public object NameAlias {get;set;}
 /// <summary>
 /// 是否必填true/false
 /// </summary>
@@ -73,17 +73,17 @@ public int Pid {get;set;}
 /// 属性单位
 /// </summary>
 [JsonProperty("value_unit")]
-public string ValueUnit {get;set;}
+public object ValueUnit {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
 [JsonProperty("values")]
-public string Values {get;set;}
+public object Values {get;set;}
 /// <summary>
 /// 内容
 /// </summary>
 [JsonProperty("content")]
-public string Content {get;set;}
+public object Content {get;set;}
 /// <summary>
 /// id
 /// </summary>
@@ -98,7 +98,7 @@ public int Vid {get;set;}
 /// 属性值
 /// </summary>
 [JsonProperty("value")]
-public string Value {get;set;}
+public object Value {get;set;}
 
     public partial class TemplateSubPropertyGetResponseResponseModel : PddResponseModel
     {
@@ -106,7 +106,7 @@ public string Value {get;set;}
 /// 模板属性列表
 /// </summary>
 [JsonProperty("template_module_list")]
-public jsonstring TemplateModuleList {get;set;}
+public TemplateModuleList TemplateModuleList {get;set;}
 
 }
 
@@ -121,7 +121,7 @@ public int Id {get;set;}
 /// 属性
 /// </summary>
 [JsonProperty("propertys")]
-public string Propertys {get;set;}
+public object Propertys {get;set;}
 
 }
 
@@ -156,7 +156,7 @@ public int ControlType {get;set;}
 /// 属性名称
 /// </summary>
 [JsonProperty("name_alias")]
-public string NameAlias {get;set;}
+public object NameAlias {get;set;}
 /// <summary>
 /// 是否必填true/false
 /// </summary>
@@ -176,12 +176,12 @@ public int Pid {get;set;}
 /// 属性单位
 /// </summary>
 [JsonProperty("value_unit")]
-public string ValueUnit {get;set;}
+public object ValueUnit {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
 [JsonProperty("values")]
-public string Values {get;set;}
+public object Values {get;set;}
 
 }
 
@@ -191,7 +191,7 @@ public string Values {get;set;}
 /// 内容
 /// </summary>
 [JsonProperty("content")]
-public string Content {get;set;}
+public object Content {get;set;}
 
 }
 
@@ -211,7 +211,7 @@ public int Vid {get;set;}
 /// 属性值
 /// </summary>
 [JsonProperty("value")]
-public string Value {get;set;}
+public object Value {get;set;}
 
 }
 

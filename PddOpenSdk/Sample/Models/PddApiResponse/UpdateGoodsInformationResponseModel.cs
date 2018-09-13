@@ -18,7 +18,7 @@ public int GoodsCommitId {get;set;}
 /// 是否修改成功
 /// </summary>
 [JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
+public object IsSuccess {get;set;}
 
     public partial class GoodsUpdateResponseResponseModel : PddResponseModel
     {
@@ -31,7 +31,7 @@ public int GoodsCommitId {get;set;}
 /// 是否修改成功
 /// </summary>
 [JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
+public object IsSuccess {get;set;}
 
 }
 

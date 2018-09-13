@@ -8,7 +8,7 @@ namespace App.Models.PddApiResponse
 /// 全量库存更新响应对象
 /// </summary>
 [JsonProperty("sku_stock_update_response")]
-public List<SkuStockUpdateResponseResponseModel> SkuStockUpdateResponse {get;set;}
+public object SkuStockUpdateResponse {get;set;}
 /// <summary>
 /// 全量更新是否成功，true-成功，false-失败
 /// </summary>

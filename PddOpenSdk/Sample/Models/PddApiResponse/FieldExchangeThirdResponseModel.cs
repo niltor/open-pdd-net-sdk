@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// 商品ID
 /// </summary>
 [JsonProperty("goods_id")]
-public Json string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 商品草稿ID
 /// </summary>
 [JsonProperty("goods_commit_id")]
-public Json string GoodsCommitId {get;set;}
+public object GoodsCommitId {get;set;}
 
 }
 }

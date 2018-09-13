@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// response
 /// </summary>
 [JsonProperty("template_value_search_response")]
-public jsonstring TemplateValueSearchResponse {get;set;}
+public TemplateValueSearchResponse TemplateValueSearchResponse {get;set;}
 /// <summary>
 /// 属性值列表
 /// </summary>
 [JsonProperty("template_property_value_list")]
-public jsonstring TemplatePropertyValueList {get;set;}
+public TemplatePropertyValueList TemplatePropertyValueList {get;set;}
 /// <summary>
 /// id
 /// </summary>
@@ -28,7 +28,7 @@ public int Vid {get;set;}
 /// 属性值
 /// </summary>
 [JsonProperty("value")]
-public string Value {get;set;}
+public object Value {get;set;}
 
     public partial class TemplateValueSearchResponseResponseModel : PddResponseModel
     {
@@ -36,7 +36,7 @@ public string Value {get;set;}
 /// 属性值列表
 /// </summary>
 [JsonProperty("template_property_value_list")]
-public jsonstring TemplatePropertyValueList {get;set;}
+public TemplatePropertyValueList TemplatePropertyValueList {get;set;}
 
 }
 
@@ -56,7 +56,7 @@ public int Vid {get;set;}
 /// 属性值
 /// </summary>
 [JsonProperty("value")]
-public string Value {get;set;}
+public object Value {get;set;}
 
 }
 

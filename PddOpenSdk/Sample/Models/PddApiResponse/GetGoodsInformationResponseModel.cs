@@ -8,22 +8,22 @@ namespace App.Models.PddApiResponse
 /// 商品详情响应对象
 /// </summary>
 [JsonProperty("goods_info_get_response")]
-public List<GoodsInfoGetResponseResponseModel> GoodsInfoGetResponse {get;set;}
+public object GoodsInfoGetResponse {get;set;}
 /// <summary>
 /// 商品详情对象
 /// </summary>
 [JsonProperty("goods_info")]
-public List<GoodsInfoResponseModel> GoodsInfo {get;set;}
+public object GoodsInfo {get;set;}
 /// <summary>
 /// 商品编码
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 商品序列编码
 /// </summary>
 [JsonProperty("goods_sn")]
-public string GoodsSn {get;set;}
+public object GoodsSn {get;set;}
 /// <summary>
 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
 /// </summary>
@@ -33,12 +33,12 @@ public int GoodsType {get;set;}
 /// 商品一级类目
 /// </summary>
 [JsonProperty("goods_category")]
-public string GoodsCategory {get;set;}
+public object GoodsCategory {get;set;}
 /// <summary>
 /// 叶子类目
 /// </summary>
 [JsonProperty("last_category")]
-public string LastCategory {get;set;}
+public object LastCategory {get;set;}
 /// <summary>
 /// 是否七天无理由售后，0-不支持，1-支持
 /// </summary>
@@ -48,17 +48,17 @@ public int IsRefundable {get;set;}
 /// 承诺发货时间
 /// </summary>
 [JsonProperty("shipment_limit_second")]
-public string ShipmentLimitSecond {get;set;}
+public object ShipmentLimitSecond {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品图片 url
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品库存
 /// </summary>
@@ -83,12 +83,12 @@ public int GroupRequiredCustomerNum {get;set;}
 /// sku列表对象
 /// </summary>
 [JsonProperty("sku_list")]
-public List<SkuListResponseModel> SkuList {get;set;}
+public object SkuList {get;set;}
 /// <summary>
 /// 商品规格名称
 /// </summary>
 [JsonProperty("spec")]
-public string Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商品sku编码
 /// </summary>
@@ -103,17 +103,17 @@ public int SkuQuantity {get;set;}
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
 [JsonProperty("outer_id")]
-public string OuterId {get;set;}
+public object OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// sku预览图
 /// </summary>
 [JsonProperty("sku_img")]
-public string SkuImg {get;set;}
+public object SkuImg {get;set;}
 /// <summary>
 /// 拼团价格（元）
 /// </summary>
@@ -136,7 +136,7 @@ public int IsSkuOnsale {get;set;}
 /// 商品详情对象
 /// </summary>
 [JsonProperty("goods_info")]
-public List<GoodsInfoResponseModel> GoodsInfo {get;set;}
+public object GoodsInfo {get;set;}
 
 }
 
@@ -146,12 +146,12 @@ public List<GoodsInfoResponseModel> GoodsInfo {get;set;}
 /// 商品编码
 /// </summary>
 [JsonProperty("goods_id")]
-public string GoodsId {get;set;}
+public object GoodsId {get;set;}
 /// <summary>
 /// 商品序列编码
 /// </summary>
 [JsonProperty("goods_sn")]
-public string GoodsSn {get;set;}
+public object GoodsSn {get;set;}
 /// <summary>
 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
 /// </summary>
@@ -161,12 +161,12 @@ public int GoodsType {get;set;}
 /// 商品一级类目
 /// </summary>
 [JsonProperty("goods_category")]
-public string GoodsCategory {get;set;}
+public object GoodsCategory {get;set;}
 /// <summary>
 /// 叶子类目
 /// </summary>
 [JsonProperty("last_category")]
-public string LastCategory {get;set;}
+public object LastCategory {get;set;}
 /// <summary>
 /// 是否七天无理由售后，0-不支持，1-支持
 /// </summary>
@@ -176,17 +176,17 @@ public int IsRefundable {get;set;}
 /// 承诺发货时间
 /// </summary>
 [JsonProperty("shipment_limit_second")]
-public string ShipmentLimitSecond {get;set;}
+public object ShipmentLimitSecond {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品图片 url
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品库存
 /// </summary>
@@ -211,7 +211,7 @@ public int GroupRequiredCustomerNum {get;set;}
 /// sku列表对象
 /// </summary>
 [JsonProperty("sku_list")]
-public List<SkuListResponseModel> SkuList {get;set;}
+public object SkuList {get;set;}
 
 }
 
@@ -221,7 +221,7 @@ public List<SkuListResponseModel> SkuList {get;set;}
 /// 商品规格名称
 /// </summary>
 [JsonProperty("spec")]
-public string Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商品sku编码
 /// </summary>
@@ -236,17 +236,17 @@ public int SkuQuantity {get;set;}
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
 [JsonProperty("outer_id")]
-public string OuterId {get;set;}
+public object OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// sku预览图
 /// </summary>
 [JsonProperty("sku_img")]
-public string SkuImg {get;set;}
+public object SkuImg {get;set;}
 /// <summary>
 /// 拼团价格（元）
 /// </summary>

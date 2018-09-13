@@ -8,7 +8,7 @@ namespace App.Models.PddApiResponse
 /// 类目树对象
 /// </summary>
 [JsonProperty("goods_cats_list")]
-public List<GoodsCatsListResponseModel> GoodsCatsList {get;set;}
+public object GoodsCatsList {get;set;}
 /// <summary>
 /// 类目层级，1-一级类目，2-二级类目，3-三级类目，4-四级类目
 /// </summary>
@@ -18,7 +18,7 @@ public int Level {get;set;}
 /// 商品类目名称
 /// </summary>
 [JsonProperty("cat_name")]
-public string CatName {get;set;}
+public object CatName {get;set;}
 /// <summary>
 /// id所属父类目ID，其中，parent_id=0时为顶级节点
 /// </summary>
@@ -41,7 +41,7 @@ public int Level {get;set;}
 /// 商品类目名称
 /// </summary>
 [JsonProperty("cat_name")]
-public string CatName {get;set;}
+public object CatName {get;set;}
 /// <summary>
 /// id所属父类目ID，其中，parent_id=0时为顶级节点
 /// </summary>

@@ -23,7 +23,7 @@ public int GoodsStatus {get;set;}
 /// 驳回原因，仅在status=2时返回，其余状态返回空值
 /// </summary>
 [JsonProperty("commit_message")]
-public string CommitMessage {get;set;}
+public object CommitMessage {get;set;}
 /// <summary>
 /// 是否删除
 /// </summary>
@@ -43,12 +43,12 @@ public int BuyLimit {get;set;}
 /// 商品轮播图列表
 /// </summary>
 [JsonProperty("carousel_gallery_list")]
-public List<CarouselGalleryListResponseModel> CarouselGalleryList {get;set;}
+public object CarouselGalleryList {get;set;}
 /// <summary>
 /// 类目id
 /// </summary>
 [JsonProperty("cat_id")]
-public List<CatIdResponseModel> CatId {get;set;}
+public object CatId {get;set;}
 /// <summary>
 /// 运费模版id
 /// </summary>
@@ -73,22 +73,22 @@ public int GoodsType {get;set;}
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品描述， 字数限制：20-500，例如，新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
 /// </summary>
 [JsonProperty("goods_desc")]
-public string GoodsDesc {get;set;}
+public object GoodsDesc {get;set;}
 /// <summary>
 /// 新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
 /// </summary>
 [JsonProperty("tiny_name")]
-public string TinyName {get;set;}
+public object TinyName {get;set;}
 /// <summary>
 /// 保税仓
 /// </summary>
 [JsonProperty("warehouse")]
-public string Warehouse {get;set;}
+public object Warehouse {get;set;}
 /// <summary>
 /// 是否需要上报海关 0:否 1:是
 /// </summary>
@@ -98,7 +98,7 @@ public int IsCustoms {get;set;}
 /// 海关名称
 /// </summary>
 [JsonProperty("customs")]
-public string Customs {get;set;}
+public object Customs {get;set;}
 /// <summary>
 /// 市场价格，单位为分
 /// </summary>
@@ -148,7 +148,7 @@ public int FabricContentId {get;set;}
 /// 水果类目温馨提示
 /// </summary>
 [JsonProperty("warm_tips")]
-public string WarmTips {get;set;}
+public object WarmTips {get;set;}
 /// <summary>
 /// sku列表
 /// </summary>
@@ -158,27 +158,27 @@ public SkuList SkuList {get;set;}
 /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 普通缩略图
 /// </summary>
 [JsonProperty("hd_thumb_url")]
-public string HdThumbUrl {get;set;}
+public object HdThumbUrl {get;set;}
 /// <summary>
 /// 商品主图
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品详情图
 /// </summary>
 [JsonProperty("detail_gallery_list")]
-public List<DetailGalleryListResponseModel> DetailGalleryList {get;set;}
+public object DetailGalleryList {get;set;}
 /// <summary>
 /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// 保质期
 /// </summary>
@@ -188,22 +188,22 @@ public int ShelfLife {get;set;}
 /// 生产日期起始时间
 /// </summary>
 [JsonProperty("start_production_date")]
-public string StartProductionDate {get;set;}
+public object StartProductionDate {get;set;}
 /// <summary>
 /// 生产日期结束时间
 /// </summary>
 [JsonProperty("end_production_date")]
-public string EndProductionDate {get;set;}
+public object EndProductionDate {get;set;}
 /// <summary>
 /// 产品标准号 ，例如23453
 /// </summary>
 [JsonProperty("production_license")]
-public string ProductionLicense {get;set;}
+public object ProductionLicense {get;set;}
 /// <summary>
 /// 产品标准号
 /// </summary>
 [JsonProperty("production_standard_number")]
-public string ProductionStandardNumber {get;set;}
+public object ProductionStandardNumber {get;set;}
 /// <summary>
 /// 是否二手
 /// </summary>
@@ -268,17 +268,17 @@ public int Weight {get;set;}
 /// sku预览图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 商品规格列表
 /// </summary>
 [JsonProperty("spec")]
-public List<SpecResponseModel> Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商家编码（sku维度），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）
 /// </summary>
 [JsonProperty("out_sku_sn")]
-public string OutSkuSn {get;set;}
+public object OutSkuSn {get;set;}
 /// <summary>
 /// 商品规格对应的ID
 /// </summary>
@@ -288,7 +288,7 @@ public int ParentId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_name")]
-public string ParentName {get;set;}
+public object ParentName {get;set;}
 /// <summary>
 /// 生成的自定义规格ID
 /// </summary>
@@ -298,7 +298,7 @@ public int SpecId {get;set;}
 /// 商家编辑的规格值，如颜色规格下设置白色属性
 /// </summary>
 [JsonProperty("spec_name")]
-public string SpecName {get;set;}
+public object SpecName {get;set;}
 
     public partial class GoodsCommitDetailResponseResponseModel : PddResponseModel
     {
@@ -316,7 +316,7 @@ public int GoodsStatus {get;set;}
 /// 驳回原因，仅在status=2时返回，其余状态返回空值
 /// </summary>
 [JsonProperty("commit_message")]
-public string CommitMessage {get;set;}
+public object CommitMessage {get;set;}
 /// <summary>
 /// 是否删除
 /// </summary>
@@ -336,12 +336,12 @@ public int BuyLimit {get;set;}
 /// 商品轮播图列表
 /// </summary>
 [JsonProperty("carousel_gallery_list")]
-public List<CarouselGalleryListResponseModel> CarouselGalleryList {get;set;}
+public object CarouselGalleryList {get;set;}
 /// <summary>
 /// 类目id
 /// </summary>
 [JsonProperty("cat_id")]
-public List<CatIdResponseModel> CatId {get;set;}
+public object CatId {get;set;}
 /// <summary>
 /// 运费模版id
 /// </summary>
@@ -366,22 +366,22 @@ public int GoodsType {get;set;}
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品描述， 字数限制：20-500，例如，新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
 /// </summary>
 [JsonProperty("goods_desc")]
-public string GoodsDesc {get;set;}
+public object GoodsDesc {get;set;}
 /// <summary>
 /// 新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
 /// </summary>
 [JsonProperty("tiny_name")]
-public string TinyName {get;set;}
+public object TinyName {get;set;}
 /// <summary>
 /// 保税仓
 /// </summary>
 [JsonProperty("warehouse")]
-public string Warehouse {get;set;}
+public object Warehouse {get;set;}
 /// <summary>
 /// 是否需要上报海关 0:否 1:是
 /// </summary>
@@ -391,7 +391,7 @@ public int IsCustoms {get;set;}
 /// 海关名称
 /// </summary>
 [JsonProperty("customs")]
-public string Customs {get;set;}
+public object Customs {get;set;}
 /// <summary>
 /// 市场价格，单位为分
 /// </summary>
@@ -441,7 +441,7 @@ public int FabricContentId {get;set;}
 /// 水果类目温馨提示
 /// </summary>
 [JsonProperty("warm_tips")]
-public string WarmTips {get;set;}
+public object WarmTips {get;set;}
 /// <summary>
 /// sku列表
 /// </summary>
@@ -451,27 +451,27 @@ public SkuList SkuList {get;set;}
 /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 普通缩略图
 /// </summary>
 [JsonProperty("hd_thumb_url")]
-public string HdThumbUrl {get;set;}
+public object HdThumbUrl {get;set;}
 /// <summary>
 /// 商品主图
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品详情图
 /// </summary>
 [JsonProperty("detail_gallery_list")]
-public List<DetailGalleryListResponseModel> DetailGalleryList {get;set;}
+public object DetailGalleryList {get;set;}
 /// <summary>
 /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// 保质期
 /// </summary>
@@ -481,22 +481,22 @@ public int ShelfLife {get;set;}
 /// 生产日期起始时间
 /// </summary>
 [JsonProperty("start_production_date")]
-public string StartProductionDate {get;set;}
+public object StartProductionDate {get;set;}
 /// <summary>
 /// 生产日期结束时间
 /// </summary>
 [JsonProperty("end_production_date")]
-public string EndProductionDate {get;set;}
+public object EndProductionDate {get;set;}
 /// <summary>
 /// 产品标准号 ，例如23453
 /// </summary>
 [JsonProperty("production_license")]
-public string ProductionLicense {get;set;}
+public object ProductionLicense {get;set;}
 /// <summary>
 /// 产品标准号
 /// </summary>
 [JsonProperty("production_standard_number")]
-public string ProductionStandardNumber {get;set;}
+public object ProductionStandardNumber {get;set;}
 /// <summary>
 /// 是否二手
 /// </summary>
@@ -566,17 +566,17 @@ public int Weight {get;set;}
 /// sku预览图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 商品规格列表
 /// </summary>
 [JsonProperty("spec")]
-public List<SpecResponseModel> Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商家编码（sku维度），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）
 /// </summary>
 [JsonProperty("out_sku_sn")]
-public string OutSkuSn {get;set;}
+public object OutSkuSn {get;set;}
 
 }
 
@@ -591,7 +591,7 @@ public int ParentId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_name")]
-public string ParentName {get;set;}
+public object ParentName {get;set;}
 /// <summary>
 /// 生成的自定义规格ID
 /// </summary>
@@ -601,7 +601,7 @@ public int SpecId {get;set;}
 /// 商家编辑的规格值，如颜色规格下设置白色属性
 /// </summary>
 [JsonProperty("spec_name")]
-public string SpecName {get;set;}
+public object SpecName {get;set;}
 
 }
 

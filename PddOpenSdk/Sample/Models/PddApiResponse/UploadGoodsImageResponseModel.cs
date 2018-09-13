@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// 商品图片上传响应对象
 /// </summary>
 [JsonProperty("goods_image_upload_response")]
-public List<GoodsImageUploadResponseResponseModel> GoodsImageUploadResponse {get;set;}
+public object GoodsImageUploadResponse {get;set;}
 /// <summary>
 /// 返回图片url
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 
     public partial class GoodsImageUploadResponseResponseModel : PddResponseModel
     {
@@ -21,7 +21,7 @@ public string ImageUrl {get;set;}
 /// 返回图片url
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 
 }
 

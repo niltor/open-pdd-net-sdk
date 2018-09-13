@@ -252,8 +252,7 @@ $@"/// <summary>
                         paramType = $"List<{paramName}ResponseModel>";
                     }
 
-                    if ()
-                        paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                     System.Console.WriteLine(paramType + " " + paramName);
                 }
                 content += paramsContent;

@@ -28,7 +28,7 @@ public int BuyLimit {get;set;}
 /// 商品轮播图列表
 /// </summary>
 [JsonProperty("carousel_gallery_list")]
-public List<CarouselGalleryListResponseModel> CarouselGalleryList {get;set;}
+public object CarouselGalleryList {get;set;}
 /// <summary>
 /// 叶子类目ID
 /// </summary>
@@ -58,22 +58,22 @@ public int GoodsType {get;set;}
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品描述
 /// </summary>
 [JsonProperty("goods_desc")]
-public string GoodsDesc {get;set;}
+public object GoodsDesc {get;set;}
 /// <summary>
 /// 商品短标题
 /// </summary>
 [JsonProperty("tiny_name")]
-public string TinyName {get;set;}
+public object TinyName {get;set;}
 /// <summary>
 /// 保税仓
 /// </summary>
 [JsonProperty("warehouse")]
-public string Warehouse {get;set;}
+public object Warehouse {get;set;}
 /// <summary>
 /// 是否需要上报海关 0:否 1:是
 /// </summary>
@@ -83,7 +83,7 @@ public int IsCustoms {get;set;}
 /// 海关名称
 /// </summary>
 [JsonProperty("customs")]
-public string Customs {get;set;}
+public object Customs {get;set;}
 /// <summary>
 /// 市场价格，单位为分
 /// </summary>
@@ -123,7 +123,7 @@ public int IsFolt {get;set;}
 /// 水果类目温馨提示
 /// </summary>
 [JsonProperty("warm_tips")]
-public string WarmTips {get;set;}
+public object WarmTips {get;set;}
 /// <summary>
 /// sku列表
 /// </summary>
@@ -133,27 +133,27 @@ public object SkuList {get;set;}
 /// 普通缩略图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 高清缩略图
 /// </summary>
 [JsonProperty("hd_thumb_url")]
-public string HdThumbUrl {get;set;}
+public object HdThumbUrl {get;set;}
 /// <summary>
 /// 商品主图
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品详情图
 /// </summary>
 [JsonProperty("detail_gallery_list")]
-public List<DetailGalleryListResponseModel> DetailGalleryList {get;set;}
+public object DetailGalleryList {get;set;}
 /// <summary>
 /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// 是否二手 1:是 0:否
 /// </summary>
@@ -198,17 +198,17 @@ public int Weight {get;set;}
 /// sku预览图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 商品规格列表
 /// </summary>
 [JsonProperty("spec")]
-public List<SpecResponseModel> Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商家编码（sku维度），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
 [JsonProperty("out_sku_sn")]
-public string OutSkuSn {get;set;}
+public object OutSkuSn {get;set;}
 /// <summary>
 /// 自定义规格所属的规格ID
 /// </summary>
@@ -218,7 +218,7 @@ public int ParentId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_name")]
-public string ParentName {get;set;}
+public object ParentName {get;set;}
 /// <summary>
 /// 自定义规格ID
 /// </summary>
@@ -228,7 +228,7 @@ public int SpecId {get;set;}
 /// 自定义规格名称
 /// </summary>
 [JsonProperty("spec_name")]
-public string SpecName {get;set;}
+public object SpecName {get;set;}
 
     public partial class GoodsDetailGetResponseResponseModel : PddResponseModel
     {
@@ -251,7 +251,7 @@ public int BuyLimit {get;set;}
 /// 商品轮播图列表
 /// </summary>
 [JsonProperty("carousel_gallery_list")]
-public List<CarouselGalleryListResponseModel> CarouselGalleryList {get;set;}
+public object CarouselGalleryList {get;set;}
 /// <summary>
 /// 叶子类目ID
 /// </summary>
@@ -281,22 +281,22 @@ public int GoodsType {get;set;}
 /// 商品名称
 /// </summary>
 [JsonProperty("goods_name")]
-public string GoodsName {get;set;}
+public object GoodsName {get;set;}
 /// <summary>
 /// 商品描述
 /// </summary>
 [JsonProperty("goods_desc")]
-public string GoodsDesc {get;set;}
+public object GoodsDesc {get;set;}
 /// <summary>
 /// 商品短标题
 /// </summary>
 [JsonProperty("tiny_name")]
-public string TinyName {get;set;}
+public object TinyName {get;set;}
 /// <summary>
 /// 保税仓
 /// </summary>
 [JsonProperty("warehouse")]
-public string Warehouse {get;set;}
+public object Warehouse {get;set;}
 /// <summary>
 /// 是否需要上报海关 0:否 1:是
 /// </summary>
@@ -306,7 +306,7 @@ public int IsCustoms {get;set;}
 /// 海关名称
 /// </summary>
 [JsonProperty("customs")]
-public string Customs {get;set;}
+public object Customs {get;set;}
 /// <summary>
 /// 市场价格，单位为分
 /// </summary>
@@ -346,7 +346,7 @@ public int IsFolt {get;set;}
 /// 水果类目温馨提示
 /// </summary>
 [JsonProperty("warm_tips")]
-public string WarmTips {get;set;}
+public object WarmTips {get;set;}
 /// <summary>
 /// sku列表
 /// </summary>
@@ -356,27 +356,27 @@ public object SkuList {get;set;}
 /// 普通缩略图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 高清缩略图
 /// </summary>
 [JsonProperty("hd_thumb_url")]
-public string HdThumbUrl {get;set;}
+public object HdThumbUrl {get;set;}
 /// <summary>
 /// 商品主图
 /// </summary>
 [JsonProperty("image_url")]
-public string ImageUrl {get;set;}
+public object ImageUrl {get;set;}
 /// <summary>
 /// 商品详情图
 /// </summary>
 [JsonProperty("detail_gallery_list")]
-public List<DetailGalleryListResponseModel> DetailGalleryList {get;set;}
+public object DetailGalleryList {get;set;}
 /// <summary>
 /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
 [JsonProperty("outer_goods_id")]
-public string OuterGoodsId {get;set;}
+public object OuterGoodsId {get;set;}
 /// <summary>
 /// 是否二手 1:是 0:否
 /// </summary>
@@ -426,17 +426,17 @@ public int Weight {get;set;}
 /// sku预览图
 /// </summary>
 [JsonProperty("thumb_url")]
-public string ThumbUrl {get;set;}
+public object ThumbUrl {get;set;}
 /// <summary>
 /// 商品规格列表
 /// </summary>
 [JsonProperty("spec")]
-public List<SpecResponseModel> Spec {get;set;}
+public object Spec {get;set;}
 /// <summary>
 /// 商家编码（sku维度），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
 [JsonProperty("out_sku_sn")]
-public string OutSkuSn {get;set;}
+public object OutSkuSn {get;set;}
 
 }
 
@@ -451,7 +451,7 @@ public int ParentId {get;set;}
 /// 商品规格ID对应的规格名称
 /// </summary>
 [JsonProperty("parent_name")]
-public string ParentName {get;set;}
+public object ParentName {get;set;}
 /// <summary>
 /// 自定义规格ID
 /// </summary>
@@ -461,7 +461,7 @@ public int SpecId {get;set;}
 /// 自定义规格名称
 /// </summary>
 [JsonProperty("spec_name")]
-public string SpecName {get;set;}
+public object SpecName {get;set;}
 
 }
 

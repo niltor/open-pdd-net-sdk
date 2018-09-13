@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// 返回response
 /// </summary>
 [JsonProperty("goods_opt_get_response")]
-public List<GoodsOptGetResponseResponseModel> GoodsOptGetResponse {get;set;}
+public object GoodsOptGetResponse {get;set;}
 /// <summary>
 /// opt列表
 /// </summary>
 [JsonProperty("goods_opt_list")]
-public List<GoodsOptListResponseModel> GoodsOptList {get;set;}
+public object GoodsOptList {get;set;}
 /// <summary>
 /// 层级，1-一级，2-二级，3-三级，4-四级
 /// </summary>
@@ -28,7 +28,7 @@ public int ParentOptId {get;set;}
 /// 商品标签名
 /// </summary>
 [JsonProperty("opt_name")]
-public string OptName {get;set;}
+public object OptName {get;set;}
 /// <summary>
 /// 商品标签ID
 /// </summary>
@@ -41,7 +41,7 @@ public int OptId {get;set;}
 /// opt列表
 /// </summary>
 [JsonProperty("goods_opt_list")]
-public List<GoodsOptListResponseModel> GoodsOptList {get;set;}
+public object GoodsOptList {get;set;}
 
 }
 
@@ -61,7 +61,7 @@ public int ParentOptId {get;set;}
 /// 商品标签名
 /// </summary>
 [JsonProperty("opt_name")]
-public string OptName {get;set;}
+public object OptName {get;set;}
 /// <summary>
 /// 商品标签ID
 /// </summary>

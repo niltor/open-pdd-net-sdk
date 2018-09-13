@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// sku增量库存修改响应对象
 /// </summary>
 [JsonProperty("sku_stock_increment_update_response")]
-public List<SkuStockIncrementUpdateResponseResponseModel> SkuStockIncrementUpdateResponse {get;set;}
+public object SkuStockIncrementUpdateResponse {get;set;}
 /// <summary>
 /// 增量修改库存是否成功，false-失败，true-成功
 /// </summary>
 [JsonProperty("is_success")]
-public string IsSuccess {get;set;}
+public object IsSuccess {get;set;}
 
     public partial class SkuStockIncrementUpdateResponseResponseModel : PddResponseModel
     {
@@ -21,7 +21,7 @@ public string IsSuccess {get;set;}
 /// 增量修改库存是否成功，false-失败，true-成功
 /// </summary>
 [JsonProperty("is_success")]
-public string IsSuccess {get;set;}
+public object IsSuccess {get;set;}
 
 }
 

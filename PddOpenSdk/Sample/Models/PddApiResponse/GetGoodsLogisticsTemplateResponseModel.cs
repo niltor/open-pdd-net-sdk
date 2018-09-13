@@ -13,7 +13,7 @@ public int TotalCount {get;set;}
 /// 商家运费模板对象列表
 /// </summary>
 [JsonProperty("logistics_template_list")]
-public List<LogisticsTemplateListResponseModel> LogisticsTemplateList {get;set;}
+public object LogisticsTemplateList {get;set;}
 /// <summary>
 /// 不包邮区域/需要买家付邮费区域
 /// </summary>
@@ -23,12 +23,12 @@ public object CostTemplateList {get;set;}
 /// template_id
 /// </summary>
 [JsonProperty("template_id")]
-public template_id TemplateId {get;set;}
+public object TemplateId {get;set;}
 /// <summary>
 /// 运费模板名称
 /// </summary>
 [JsonProperty("template_name")]
-public string TemplateName {get;set;}
+public object TemplateName {get;set;}
 /// <summary>
 /// 计费方式，0-按件计费，1-按重量计费
 /// </summary>
@@ -43,12 +43,12 @@ public bool FreeDeliverHouse {get;set;}
 /// 送货上门地区列表
 /// </summary>
 [JsonProperty("free_deliver_house_area_list")]
-public List<FreeDeliverHouseAreaListResponseModel> FreeDeliverHouseAreaList {get;set;}
+public object FreeDeliverHouseAreaList {get;set;}
 /// <summary>
 /// 包邮省份对象
 /// </summary>
 [JsonProperty("free_province_list")]
-public List<FreeProvinceListResponseModel> FreeProvinceList {get;set;}
+public object FreeProvinceList {get;set;}
 /// <summary>
 /// 不包邮的区域
 /// </summary>
@@ -98,37 +98,37 @@ public int HaveFreeMinAmount {get;set;}
 /// 包邮送货上门的城区ID
 /// </summary>
 [JsonProperty("town_id")]
-public string TownId {get;set;}
+public object TownId {get;set;}
 /// <summary>
 /// 包邮送货上门的城市ID
 /// </summary>
 [JsonProperty("city_id")]
-public string CityId {get;set;}
+public object CityId {get;set;}
 /// <summary>
 /// 包邮送货上门的省份ID
 /// </summary>
 [JsonProperty("province_id")]
-public string ProvinceId {get;set;}
+public object ProvinceId {get;set;}
 /// <summary>
 /// 包邮送货上门的省份
 /// </summary>
 [JsonProperty("province")]
-public string Province {get;set;}
+public object Province {get;set;}
 /// <summary>
 /// 包邮送货上门的城市
 /// </summary>
 [JsonProperty("city")]
-public string City {get;set;}
+public object City {get;set;}
 /// <summary>
 /// 包邮送货上门的城区
 /// </summary>
 [JsonProperty("town")]
-public string Town {get;set;}
+public object Town {get;set;}
 /// <summary>
 /// 省份
 /// </summary>
 [JsonProperty("province")]
-public string Province {get;set;}
+public object Province {get;set;}
 /// <summary>
 /// 省份
 /// </summary>
@@ -151,12 +151,12 @@ public object CostTemplateList {get;set;}
 /// template_id
 /// </summary>
 [JsonProperty("template_id")]
-public template_id TemplateId {get;set;}
+public object TemplateId {get;set;}
 /// <summary>
 /// 运费模板名称
 /// </summary>
 [JsonProperty("template_name")]
-public string TemplateName {get;set;}
+public object TemplateName {get;set;}
 /// <summary>
 /// 计费方式，0-按件计费，1-按重量计费
 /// </summary>
@@ -171,12 +171,12 @@ public bool FreeDeliverHouse {get;set;}
 /// 送货上门地区列表
 /// </summary>
 [JsonProperty("free_deliver_house_area_list")]
-public List<FreeDeliverHouseAreaListResponseModel> FreeDeliverHouseAreaList {get;set;}
+public object FreeDeliverHouseAreaList {get;set;}
 /// <summary>
 /// 包邮省份对象
 /// </summary>
 [JsonProperty("free_province_list")]
-public List<FreeProvinceListResponseModel> FreeProvinceList {get;set;}
+public object FreeProvinceList {get;set;}
 
 }
 
@@ -236,32 +236,32 @@ public int HaveFreeMinAmount {get;set;}
 /// 包邮送货上门的城区ID
 /// </summary>
 [JsonProperty("town_id")]
-public string TownId {get;set;}
+public object TownId {get;set;}
 /// <summary>
 /// 包邮送货上门的城市ID
 /// </summary>
 [JsonProperty("city_id")]
-public string CityId {get;set;}
+public object CityId {get;set;}
 /// <summary>
 /// 包邮送货上门的省份ID
 /// </summary>
 [JsonProperty("province_id")]
-public string ProvinceId {get;set;}
+public object ProvinceId {get;set;}
 /// <summary>
 /// 包邮送货上门的省份
 /// </summary>
 [JsonProperty("province")]
-public string Province {get;set;}
+public object Province {get;set;}
 /// <summary>
 /// 包邮送货上门的城市
 /// </summary>
 [JsonProperty("city")]
-public string City {get;set;}
+public object City {get;set;}
 /// <summary>
 /// 包邮送货上门的城区
 /// </summary>
 [JsonProperty("town")]
-public string Town {get;set;}
+public object Town {get;set;}
 
 }
 
@@ -271,7 +271,7 @@ public string Town {get;set;}
 /// 省份
 /// </summary>
 [JsonProperty("province")]
-public string Province {get;set;}
+public object Province {get;set;}
 
 }
 
