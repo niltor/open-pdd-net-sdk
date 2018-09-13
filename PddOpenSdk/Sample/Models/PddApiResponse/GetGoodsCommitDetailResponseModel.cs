@@ -153,7 +153,7 @@ public object WarmTips {get;set;}
 /// sku列表
 /// </summary>
 [JsonProperty("sku_list")]
-public SkuList SkuList {get;set;}
+public SkuListResponseModel SkuList {get;set;}
 /// <summary>
 /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
 /// </summary>
@@ -446,7 +446,7 @@ public object WarmTips {get;set;}
 /// sku列表
 /// </summary>
 [JsonProperty("sku_list")]
-public SkuList SkuList {get;set;}
+public SkuListResponseModel SkuList {get;set;}
 /// <summary>
 /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
 /// </summary>

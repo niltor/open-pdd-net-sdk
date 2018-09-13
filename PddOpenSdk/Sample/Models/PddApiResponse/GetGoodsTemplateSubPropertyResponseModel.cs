@@ -8,12 +8,12 @@ namespace App.Models.PddApiResponse
 /// response
 /// </summary>
 [JsonProperty("template_sub_property_get_response")]
-public TemplateSubPropertyGetResponse TemplateSubPropertyGetResponse {get;set;}
+public TemplateSubPropertyGetResponseResponseModel TemplateSubPropertyGetResponse {get;set;}
 /// <summary>
 /// 模板属性列表
 /// </summary>
 [JsonProperty("template_module_list")]
-public TemplateModuleList TemplateModuleList {get;set;}
+public TemplateModuleListResponseModel TemplateModuleList {get;set;}
 /// <summary>
 /// 模板模块id
 /// </summary>
@@ -106,7 +106,7 @@ public object Value {get;set;}
 /// 模板属性列表
 /// </summary>
 [JsonProperty("template_module_list")]
-public TemplateModuleList TemplateModuleList {get;set;}
+public TemplateModuleListResponseModel TemplateModuleList {get;set;}
 
 }
 

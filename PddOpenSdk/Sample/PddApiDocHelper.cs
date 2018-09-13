@@ -154,23 +154,35 @@ $@"/// <summary>
 ";
                     switch (paramType)
                     {
+                        case "integer":
                         case "number":
                             paramType = param.IsMust == 0 ? "int?" : "int";
                             break;
                         case "boolean":
                             paramType = param.IsMust == 0 ? "bool?" : "bool";
                             break;
+                        case "jsonstring":
                         case "jsonString":
                             paramType = paramName;
                             break;
-                        default:
+                        case "":
+                            paramType = "object";
                             break;
+                        default:
+                            paramType = "object";
+                            break;
+                    }
+                    // 数组类型特殊处理
+                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                    {
+                        paramType = $"List<{paramName}ResponseModel>";
                     }
                     paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                 }
                 content += paramsContent;
-                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
                 content += childClass + "\r\n";
+                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+           
                 return content;
             }
             return default;
@@ -237,7 +249,7 @@ $@"/// <summary>
                             break;
                         case "jsonstring":
                         case "jsonString":
-                            paramType = paramName;
+                            paramType = paramName + "ResponseModel";
                             break;
                         case "":
                             paramType = "object";
@@ -253,7 +265,7 @@ $@"/// <summary>
                     }
 
                     paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
-                    System.Console.WriteLine(paramType + " " + paramName);
+                    //System.Console.WriteLine(paramType + " " + paramName);
                 }
                 content += paramsContent;
                 content += childClass + "\r\n";
@@ -357,8 +369,8 @@ $@"/// <summary>
             }
             string fileName = Function.ToTitleCase(className) + "ApiRequest";
 
-            string content = $@"using App.Models.PddApiResult;
-using App.Models.PddApiRequest;
+            string content = $@"using App.Models.PddApiRequest;
+using App.Models.PddApiResponse;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
