@@ -7,13 +7,13 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 商品ID
 /// </summary>
-[JsonProperty("商品ID")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 上传商品的上传序列ID
 /// </summary>
-[JsonProperty("上传商品的上传序列ID")]
+[JsonProperty("goods_commit_id")]
 public int GoodsCommitId {get;set;}
-}
-}
 
+}
+}

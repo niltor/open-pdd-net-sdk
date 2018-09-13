@@ -7,82 +7,82 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// response
 /// </summary>
-[JsonProperty("response")]
+[JsonProperty("mall_template_get_response")]
 public string MallTemplateGetResponse {get;set;}
 /// <summary>
 /// 模块
 /// </summary>
-[JsonProperty("模块")]
+[JsonProperty("modules")]
 public string Modules {get;set;}
 /// <summary>
 /// 属性
 /// </summary>
-[JsonProperty("属性")]
+[JsonProperty("propertys")]
 public string Propertys {get;set;}
 /// <summary>
 /// 模板模块id
 /// </summary>
-[JsonProperty("模板模块id")]
+[JsonProperty("id")]
 public int Id {get;set;}
 /// <summary>
 /// 属性值可填最小范围
 /// </summary>
-[JsonProperty("属性值可填最小范围")]
+[JsonProperty("min_value")]
 public int MinValue {get;set;}
 /// <summary>
 /// 属性值可填最大范围
 /// </summary>
-[JsonProperty("属性值可填最大范围")]
+[JsonProperty("max_value")]
 public int MaxValue {get;set;}
 /// <summary>
 /// control_type=1、3时校验选择数目是否超过最大值
 /// </summary>
-[JsonProperty("control_type=1、3时校验选择数目是否超过最大值")]
+[JsonProperty("choose_max_num")]
 public int ChooseMaxNum {get;set;}
 /// <summary>
 /// 值输入类型（0-文本、1-数值、4-绝对时间、5-相对时间）
 /// </summary>
-[JsonProperty("值输入类型（0-文本、1-数值、4-绝对时间、5-相对时间）")]
+[JsonProperty("value_type")]
 public int ValueType {get;set;}
 /// <summary>
 /// 控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）
 /// </summary>
-[JsonProperty("控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）")]
+[JsonProperty("control_type")]
 public int ControlType {get;set;}
 /// <summary>
 /// 属性名称
 /// </summary>
-[JsonProperty("属性名称")]
+[JsonProperty("name_alias")]
 public string NameAlias {get;set;}
 /// <summary>
 /// 是否必填true/false
 /// </summary>
-[JsonProperty("是否必填true/false")]
+[JsonProperty("required")]
 public bool Required {get;set;}
 /// <summary>
 /// 模板属性id
 /// </summary>
-[JsonProperty("模板属性id")]
+[JsonProperty("id")]
 public int Id {get;set;}
 /// <summary>
 /// 属性id
 /// </summary>
-[JsonProperty("属性id")]
+[JsonProperty("pid")]
 public int Pid {get;set;}
 /// <summary>
 /// 属性单位
 /// </summary>
-[JsonProperty("属性单位")]
+[JsonProperty("value_unit")]
 public string ValueUnit {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("values")]
 public string Values {get;set;}
 /// <summary>
 /// 内容
 /// </summary>
-[JsonProperty("内容")]
+[JsonProperty("content")]
 public string Content {get;set;}
 /// <summary>
 /// id
@@ -92,110 +92,108 @@ public int Id {get;set;}
 /// <summary>
 /// 属性值id
 /// </summary>
-[JsonProperty("属性值id")]
+[JsonProperty("vid")]
 public int Vid {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("value")]
 public string Value {get;set;}
-}
-}
 
     public partial class MallTemplateGetResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 模块
 /// </summary>
-[JsonProperty("模块")]
+[JsonProperty("modules")]
 public string Modules {get;set;}
-}
 
+}
 
     public partial class ModulesResponseModel : PddResponseModel
     {
         /// <summary>
 /// 属性
 /// </summary>
-[JsonProperty("属性")]
+[JsonProperty("propertys")]
 public string Propertys {get;set;}
 /// <summary>
 /// 模板模块id
 /// </summary>
-[JsonProperty("模板模块id")]
+[JsonProperty("id")]
 public int Id {get;set;}
-}
 
+}
 
     public partial class PropertysResponseModel : PddResponseModel
     {
         /// <summary>
 /// 属性值可填最小范围
 /// </summary>
-[JsonProperty("属性值可填最小范围")]
+[JsonProperty("min_value")]
 public int MinValue {get;set;}
 /// <summary>
 /// 属性值可填最大范围
 /// </summary>
-[JsonProperty("属性值可填最大范围")]
+[JsonProperty("max_value")]
 public int MaxValue {get;set;}
 /// <summary>
 /// control_type=1、3时校验选择数目是否超过最大值
 /// </summary>
-[JsonProperty("control_type=1、3时校验选择数目是否超过最大值")]
+[JsonProperty("choose_max_num")]
 public int ChooseMaxNum {get;set;}
 /// <summary>
 /// 值输入类型（0-文本、1-数值、4-绝对时间、5-相对时间）
 /// </summary>
-[JsonProperty("值输入类型（0-文本、1-数值、4-绝对时间、5-相对时间）")]
+[JsonProperty("value_type")]
 public int ValueType {get;set;}
 /// <summary>
 /// 控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）
 /// </summary>
-[JsonProperty("控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）")]
+[JsonProperty("control_type")]
 public int ControlType {get;set;}
 /// <summary>
 /// 属性名称
 /// </summary>
-[JsonProperty("属性名称")]
+[JsonProperty("name_alias")]
 public string NameAlias {get;set;}
 /// <summary>
 /// 是否必填true/false
 /// </summary>
-[JsonProperty("是否必填true/false")]
+[JsonProperty("required")]
 public bool Required {get;set;}
 /// <summary>
 /// 模板属性id
 /// </summary>
-[JsonProperty("模板属性id")]
+[JsonProperty("id")]
 public int Id {get;set;}
 /// <summary>
 /// 属性id
 /// </summary>
-[JsonProperty("属性id")]
+[JsonProperty("pid")]
 public int Pid {get;set;}
 /// <summary>
 /// 属性单位
 /// </summary>
-[JsonProperty("属性单位")]
+[JsonProperty("value_unit")]
 public string ValueUnit {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("values")]
 public string Values {get;set;}
-}
 
+}
 
     public partial class ValuesResponseModel : PddResponseModel
     {
         /// <summary>
 /// 内容
 /// </summary>
-[JsonProperty("内容")]
+[JsonProperty("content")]
 public string Content {get;set;}
-}
 
+}
 
     public partial class ContentResponseModel : PddResponseModel
     {
@@ -207,13 +205,15 @@ public int Id {get;set;}
 /// <summary>
 /// 属性值id
 /// </summary>
-[JsonProperty("属性值id")]
+[JsonProperty("vid")]
 public int Vid {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("value")]
 public string Value {get;set;}
+
 }
 
-
+}
+}

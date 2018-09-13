@@ -7,43 +7,43 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 生成规格响应对象
 /// </summary>
-[JsonProperty("生成规格响应对象")]
-public List<GoodsSpecIdGetResponse> GoodsSpecIdGetResponse {get;set;}
+[JsonProperty("goods_spec_id_get_response")]
+public List<GoodsSpecIdGetResponseResponseModel> GoodsSpecIdGetResponse {get;set;}
 /// <summary>
 /// 自定义规格所属的规格ID
 /// </summary>
-[JsonProperty("自定义规格所属的规格ID")]
+[JsonProperty("parent_spec_id")]
 public int ParentSpecId {get;set;}
 /// <summary>
 /// 生成的自定义规格名称
 /// </summary>
-[JsonProperty("生成的自定义规格名称")]
+[JsonProperty("spec_name")]
 public string SpecName {get;set;}
 /// <summary>
 /// 生成的自定义规格ID
 /// </summary>
-[JsonProperty("生成的自定义规格ID")]
+[JsonProperty("spec_id")]
 public int SpecId {get;set;}
-}
-}
 
     public partial class GoodsSpecIdGetResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 自定义规格所属的规格ID
 /// </summary>
-[JsonProperty("自定义规格所属的规格ID")]
+[JsonProperty("parent_spec_id")]
 public int ParentSpecId {get;set;}
 /// <summary>
 /// 生成的自定义规格名称
 /// </summary>
-[JsonProperty("生成的自定义规格名称")]
+[JsonProperty("spec_name")]
 public string SpecName {get;set;}
 /// <summary>
 /// 生成的自定义规格ID
 /// </summary>
-[JsonProperty("生成的自定义规格ID")]
+[JsonProperty("spec_id")]
 public int SpecId {get;set;}
+
 }
 
-
+}
+}

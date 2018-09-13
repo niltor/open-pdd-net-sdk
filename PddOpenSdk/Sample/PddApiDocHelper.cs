@@ -228,12 +228,14 @@ $@"/// <summary>
 ";
                     switch (paramType)
                     {
+                        case "integer":
                         case "number":
                             paramType = param.IsMust == 0 ? "int?" : "int";
                             break;
                         case "boolean":
                             paramType = param.IsMust == 0 ? "bool?" : "bool";
                             break;
+                        case "jsonstring":
                         case "jsonString":
                             paramType = paramName;
                             break;
@@ -241,14 +243,17 @@ $@"/// <summary>
                             paramType = "object";
                             break;
                         default:
+                            paramType = "object";
                             break;
                     }
-                    // 数组类型处理
-                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list"))
+                    // 数组类型特殊处理
+                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
                     {
                         paramType = $"List<{paramName}ResponseModel>";
                     }
-                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+
+                    if ()
+                        paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                     System.Console.WriteLine(paramType + " " + paramName);
                 }
                 content += paramsContent;

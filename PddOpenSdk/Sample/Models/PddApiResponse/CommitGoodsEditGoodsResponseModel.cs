@@ -7,13 +7,13 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 商品ID
 /// </summary>
-[JsonProperty("商品ID")]
+[JsonProperty("goods_id")]
 public int GoodsId {get;set;}
 /// <summary>
 /// 草稿id
 /// </summary>
-[JsonProperty("草稿id")]
+[JsonProperty("goods_commit_id")]
 public int GoodsCommitId {get;set;}
-}
-}
 
+}
+}

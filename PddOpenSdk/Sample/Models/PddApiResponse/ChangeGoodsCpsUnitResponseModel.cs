@@ -7,8 +7,8 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 是否修改成功
 /// </summary>
-[JsonProperty("是否修改成功")]
+[JsonProperty("is_change_success")]
 public bool IsChangeSuccess {get;set;}
-}
-}
 
+}
+}

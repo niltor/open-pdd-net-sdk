@@ -7,12 +7,12 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// response
 /// </summary>
-[JsonProperty("response")]
+[JsonProperty("template_value_search_response")]
 public jsonstring TemplateValueSearchResponse {get;set;}
 /// <summary>
 /// 属性值列表
 /// </summary>
-[JsonProperty("属性值列表")]
+[JsonProperty("template_property_value_list")]
 public jsonstring TemplatePropertyValueList {get;set;}
 /// <summary>
 /// id
@@ -22,25 +22,23 @@ public int Id {get;set;}
 /// <summary>
 /// 属性值id
 /// </summary>
-[JsonProperty("属性值id")]
+[JsonProperty("vid")]
 public int Vid {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("value")]
 public string Value {get;set;}
-}
-}
 
     public partial class TemplateValueSearchResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 属性值列表
 /// </summary>
-[JsonProperty("属性值列表")]
+[JsonProperty("template_property_value_list")]
 public jsonstring TemplatePropertyValueList {get;set;}
-}
 
+}
 
     public partial class TemplatePropertyValueListResponseModel : PddResponseModel
     {
@@ -52,13 +50,15 @@ public int Id {get;set;}
 /// <summary>
 /// 属性值id
 /// </summary>
-[JsonProperty("属性值id")]
+[JsonProperty("vid")]
 public int Vid {get;set;}
 /// <summary>
 /// 属性值
 /// </summary>
-[JsonProperty("属性值")]
+[JsonProperty("value")]
 public string Value {get;set;}
+
 }
 
-
+}
+}

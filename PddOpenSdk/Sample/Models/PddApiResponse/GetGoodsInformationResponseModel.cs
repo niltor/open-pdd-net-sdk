@@ -7,263 +7,263 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 商品详情响应对象
 /// </summary>
-[JsonProperty("商品详情响应对象")]
-public List<GoodsInfoGetResponse> GoodsInfoGetResponse {get;set;}
+[JsonProperty("goods_info_get_response")]
+public List<GoodsInfoGetResponseResponseModel> GoodsInfoGetResponse {get;set;}
 /// <summary>
 /// 商品详情对象
 /// </summary>
-[JsonProperty("商品详情对象")]
-public List<GoodsInfo> GoodsInfo {get;set;}
+[JsonProperty("goods_info")]
+public List<GoodsInfoResponseModel> GoodsInfo {get;set;}
 /// <summary>
 /// 商品编码
 /// </summary>
-[JsonProperty("商品编码")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 商品序列编码
 /// </summary>
-[JsonProperty("商品序列编码")]
+[JsonProperty("goods_sn")]
 public string GoodsSn {get;set;}
 /// <summary>
 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
 /// </summary>
-[JsonProperty("商品类型，1-普通商品，2-进口商品，3-直供，4-直邮")]
+[JsonProperty("goods_type")]
 public int GoodsType {get;set;}
 /// <summary>
 /// 商品一级类目
 /// </summary>
-[JsonProperty("商品一级类目")]
+[JsonProperty("goods_category")]
 public string GoodsCategory {get;set;}
 /// <summary>
 /// 叶子类目
 /// </summary>
-[JsonProperty("叶子类目")]
+[JsonProperty("last_category")]
 public string LastCategory {get;set;}
 /// <summary>
 /// 是否七天无理由售后，0-不支持，1-支持
 /// </summary>
-[JsonProperty("是否七天无理由售后，0-不支持，1-支持")]
+[JsonProperty("is_refundable")]
 public int IsRefundable {get;set;}
 /// <summary>
 /// 承诺发货时间
 /// </summary>
-[JsonProperty("承诺发货时间")]
+[JsonProperty("shipment_limit_second")]
 public string ShipmentLimitSecond {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
-[JsonProperty("商品名称")]
+[JsonProperty("goods_name")]
 public string GoodsName {get;set;}
 /// <summary>
 /// 商品图片 url
 /// </summary>
-[JsonProperty("商品图片 url")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
 /// <summary>
 /// 商品库存
 /// </summary>
-[JsonProperty("商品库存")]
+[JsonProperty("goods_quantity")]
 public int GoodsQuantity {get;set;}
 /// <summary>
 /// 商品是否上架，0-下架，1-上架；
 /// </summary>
-[JsonProperty("商品是否上架，0-下架，1-上架；")]
+[JsonProperty("is_onsale")]
 public int IsOnsale {get;set;}
 /// <summary>
 /// 商品是否全新，0-全新商品，1-二手商品
 /// </summary>
-[JsonProperty("商品是否全新，0-全新商品，1-二手商品")]
+[JsonProperty("second_hand")]
 public int SecondHand {get;set;}
 /// <summary>
 /// 成团人数
 /// </summary>
-[JsonProperty("成团人数")]
+[JsonProperty("group_required_customer_num")]
 public int GroupRequiredCustomerNum {get;set;}
 /// <summary>
 /// sku列表对象
 /// </summary>
-[JsonProperty("sku列表对象")]
-public List<SkuList> SkuList {get;set;}
+[JsonProperty("sku_list")]
+public List<SkuListResponseModel> SkuList {get;set;}
 /// <summary>
 /// 商品规格名称
 /// </summary>
-[JsonProperty("商品规格名称")]
+[JsonProperty("spec")]
 public string Spec {get;set;}
 /// <summary>
 /// 商品sku编码
 /// </summary>
-[JsonProperty("商品sku编码")]
+[JsonProperty("sku_id")]
 public int SkuId {get;set;}
 /// <summary>
 /// 商品sku库存
 /// </summary>
-[JsonProperty("商品sku库存")]
+[JsonProperty("sku_quantity")]
 public int SkuQuantity {get;set;}
 /// <summary>
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
-[JsonProperty("商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。")]
+[JsonProperty("outer_id")]
 public string OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
-[JsonProperty("商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。")]
+[JsonProperty("outer_goods_id")]
 public string OuterGoodsId {get;set;}
 /// <summary>
 /// sku预览图
 /// </summary>
-[JsonProperty("sku预览图")]
+[JsonProperty("sku_img")]
 public string SkuImg {get;set;}
 /// <summary>
 /// 拼团价格（元）
 /// </summary>
-[JsonProperty("拼团价格（元）")]
+[JsonProperty("group_price")]
 public int GroupPrice {get;set;}
 /// <summary>
 /// 单买价格（元）
 /// </summary>
-[JsonProperty("单买价格（元）")]
+[JsonProperty("single_price")]
 public int SinglePrice {get;set;}
 /// <summary>
 /// 商品sku是否上架，0-下架，1-上架
 /// </summary>
-[JsonProperty("商品sku是否上架，0-下架，1-上架")]
+[JsonProperty("is_sku_onsale")]
 public int IsSkuOnsale {get;set;}
-}
-}
 
     public partial class GoodsInfoGetResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 商品详情对象
 /// </summary>
-[JsonProperty("商品详情对象")]
-public List<GoodsInfo> GoodsInfo {get;set;}
-}
+[JsonProperty("goods_info")]
+public List<GoodsInfoResponseModel> GoodsInfo {get;set;}
 
+}
 
     public partial class GoodsInfoResponseModel : PddResponseModel
     {
         /// <summary>
 /// 商品编码
 /// </summary>
-[JsonProperty("商品编码")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 商品序列编码
 /// </summary>
-[JsonProperty("商品序列编码")]
+[JsonProperty("goods_sn")]
 public string GoodsSn {get;set;}
 /// <summary>
 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
 /// </summary>
-[JsonProperty("商品类型，1-普通商品，2-进口商品，3-直供，4-直邮")]
+[JsonProperty("goods_type")]
 public int GoodsType {get;set;}
 /// <summary>
 /// 商品一级类目
 /// </summary>
-[JsonProperty("商品一级类目")]
+[JsonProperty("goods_category")]
 public string GoodsCategory {get;set;}
 /// <summary>
 /// 叶子类目
 /// </summary>
-[JsonProperty("叶子类目")]
+[JsonProperty("last_category")]
 public string LastCategory {get;set;}
 /// <summary>
 /// 是否七天无理由售后，0-不支持，1-支持
 /// </summary>
-[JsonProperty("是否七天无理由售后，0-不支持，1-支持")]
+[JsonProperty("is_refundable")]
 public int IsRefundable {get;set;}
 /// <summary>
 /// 承诺发货时间
 /// </summary>
-[JsonProperty("承诺发货时间")]
+[JsonProperty("shipment_limit_second")]
 public string ShipmentLimitSecond {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
-[JsonProperty("商品名称")]
+[JsonProperty("goods_name")]
 public string GoodsName {get;set;}
 /// <summary>
 /// 商品图片 url
 /// </summary>
-[JsonProperty("商品图片 url")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
 /// <summary>
 /// 商品库存
 /// </summary>
-[JsonProperty("商品库存")]
+[JsonProperty("goods_quantity")]
 public int GoodsQuantity {get;set;}
 /// <summary>
 /// 商品是否上架，0-下架，1-上架；
 /// </summary>
-[JsonProperty("商品是否上架，0-下架，1-上架；")]
+[JsonProperty("is_onsale")]
 public int IsOnsale {get;set;}
 /// <summary>
 /// 商品是否全新，0-全新商品，1-二手商品
 /// </summary>
-[JsonProperty("商品是否全新，0-全新商品，1-二手商品")]
+[JsonProperty("second_hand")]
 public int SecondHand {get;set;}
 /// <summary>
 /// 成团人数
 /// </summary>
-[JsonProperty("成团人数")]
+[JsonProperty("group_required_customer_num")]
 public int GroupRequiredCustomerNum {get;set;}
 /// <summary>
 /// sku列表对象
 /// </summary>
-[JsonProperty("sku列表对象")]
-public List<SkuList> SkuList {get;set;}
-}
+[JsonProperty("sku_list")]
+public List<SkuListResponseModel> SkuList {get;set;}
 
+}
 
     public partial class SkuListResponseModel : PddResponseModel
     {
         /// <summary>
 /// 商品规格名称
 /// </summary>
-[JsonProperty("商品规格名称")]
+[JsonProperty("spec")]
 public string Spec {get;set;}
 /// <summary>
 /// 商品sku编码
 /// </summary>
-[JsonProperty("商品sku编码")]
+[JsonProperty("sku_id")]
 public int SkuId {get;set;}
 /// <summary>
 /// 商品sku库存
 /// </summary>
-[JsonProperty("商品sku库存")]
+[JsonProperty("sku_quantity")]
 public int SkuQuantity {get;set;}
 /// <summary>
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
-[JsonProperty("商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。")]
+[JsonProperty("outer_id")]
 public string OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
-[JsonProperty("商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。")]
+[JsonProperty("outer_goods_id")]
 public string OuterGoodsId {get;set;}
 /// <summary>
 /// sku预览图
 /// </summary>
-[JsonProperty("sku预览图")]
+[JsonProperty("sku_img")]
 public string SkuImg {get;set;}
 /// <summary>
 /// 拼团价格（元）
 /// </summary>
-[JsonProperty("拼团价格（元）")]
+[JsonProperty("group_price")]
 public int GroupPrice {get;set;}
 /// <summary>
 /// 单买价格（元）
 /// </summary>
-[JsonProperty("单买价格（元）")]
+[JsonProperty("single_price")]
 public int SinglePrice {get;set;}
 /// <summary>
 /// 商品sku是否上架，0-下架，1-上架
 /// </summary>
-[JsonProperty("商品sku是否上架，0-下架，1-上架")]
+[JsonProperty("is_sku_onsale")]
 public int IsSkuOnsale {get;set;}
+
 }
 
-
+}
+}

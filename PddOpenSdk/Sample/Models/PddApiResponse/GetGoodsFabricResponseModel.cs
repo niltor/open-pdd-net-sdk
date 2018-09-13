@@ -7,33 +7,33 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 服饰面料对象列表
 /// </summary>
-[JsonProperty("服饰面料对象列表")]
+[JsonProperty("goods_fabric_list[]")]
 public goods_fabric_list GoodsFabricList[] {get;set;}
 /// <summary>
 /// 服饰面料对应的ID，用于入参
 /// </summary>
-[JsonProperty("服饰面料对应的ID，用于入参")]
+[JsonProperty("code")]
 public int Code {get;set;}
 /// <summary>
 /// 对应ID下的服饰面料描述
 /// </summary>
-[JsonProperty("对应ID下的服饰面料描述")]
+[JsonProperty("desc")]
 public string Desc {get;set;}
-}
-}
 
     public partial class GoodsFabricList[]ResponseModel : PddResponseModel
     {
         /// <summary>
 /// 服饰面料对应的ID，用于入参
 /// </summary>
-[JsonProperty("服饰面料对应的ID，用于入参")]
+[JsonProperty("code")]
 public int Code {get;set;}
 /// <summary>
 /// 对应ID下的服饰面料描述
 /// </summary>
-[JsonProperty("对应ID下的服饰面料描述")]
+[JsonProperty("desc")]
 public string Desc {get;set;}
+
 }
 
-
+}
+}

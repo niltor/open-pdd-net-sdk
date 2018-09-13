@@ -7,23 +7,23 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 商品图片上传响应对象
 /// </summary>
-[JsonProperty("商品图片上传响应对象")]
-public List<GoodsImageUploadResponse> GoodsImageUploadResponse {get;set;}
+[JsonProperty("goods_image_upload_response")]
+public List<GoodsImageUploadResponseResponseModel> GoodsImageUploadResponse {get;set;}
 /// <summary>
 /// 返回图片url
 /// </summary>
-[JsonProperty("返回图片url")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
-}
-}
 
     public partial class GoodsImageUploadResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 返回图片url
 /// </summary>
-[JsonProperty("返回图片url")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
+
 }
 
-
+}
+}

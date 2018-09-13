@@ -7,23 +7,23 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 返回response
 /// </summary>
-[JsonProperty("返回response")]
+[JsonProperty("goods_sale_status_set_response")]
 public object GoodsSaleStatusSetResponse {get;set;}
 /// <summary>
 /// 是否修改成功
 /// </summary>
-[JsonProperty("是否修改成功")]
+[JsonProperty("is_success")]
 public bool IsSuccess {get;set;}
-}
-}
 
     public partial class GoodsSaleStatusSetResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 是否修改成功
 /// </summary>
-[JsonProperty("是否修改成功")]
+[JsonProperty("is_success")]
 public bool IsSuccess {get;set;}
+
 }
 
-
+}
+}

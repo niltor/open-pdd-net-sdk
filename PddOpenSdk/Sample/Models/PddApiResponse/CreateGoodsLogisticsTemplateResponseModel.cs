@@ -7,23 +7,23 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 返回resposne
 /// </summary>
-[JsonProperty("返回resposne")]
-public  GoodsLogisticsTemplateCreateResponse {get;set;}
+[JsonProperty("goods_logistics_template_create_response")]
+public object GoodsLogisticsTemplateCreateResponse {get;set;}
 /// <summary>
 /// 模版id
 /// </summary>
-[JsonProperty("模版id")]
-public  TemplateId {get;set;}
-}
-}
+[JsonProperty("template_id")]
+public object TemplateId {get;set;}
 
     public partial class GoodsLogisticsTemplateCreateResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 模版id
 /// </summary>
-[JsonProperty("模版id")]
-public  TemplateId {get;set;}
+[JsonProperty("template_id")]
+public object TemplateId {get;set;}
+
 }
 
-
+}
+}

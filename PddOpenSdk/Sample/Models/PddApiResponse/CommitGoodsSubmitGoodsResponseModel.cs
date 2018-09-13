@@ -7,33 +7,33 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 返回response
 /// </summary>
-[JsonProperty("返回response")]
-public  GoodsUpdateResponse {get;set;}
+[JsonProperty("goods_update_response")]
+public object GoodsUpdateResponse {get;set;}
 /// <summary>
 /// 商品id
 /// </summary>
-[JsonProperty("商品id")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 提交申请的序列id
 /// </summary>
-[JsonProperty("提交申请的序列id")]
+[JsonProperty("goods_commit_id")]
 public string GoodsCommitId {get;set;}
-}
-}
 
     public partial class GoodsUpdateResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 商品id
 /// </summary>
-[JsonProperty("商品id")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 提交申请的序列id
 /// </summary>
-[JsonProperty("提交申请的序列id")]
+[JsonProperty("goods_commit_id")]
 public string GoodsCommitId {get;set;}
+
 }
 
-
+}
+}

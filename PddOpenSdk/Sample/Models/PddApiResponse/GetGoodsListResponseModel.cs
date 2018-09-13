@@ -7,183 +7,183 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 商品列表响应对象
 /// </summary>
-[JsonProperty("商品列表响应对象")]
-public List<GoodsListGetResponse> GoodsListGetResponse {get;set;}
+[JsonProperty("goods_list_get_response")]
+public List<GoodsListGetResponseResponseModel> GoodsListGetResponse {get;set;}
 /// <summary>
 /// 返回商品总数
 /// </summary>
-[JsonProperty("返回商品总数")]
+[JsonProperty("total_count")]
 public int TotalCount {get;set;}
 /// <summary>
 /// 商品列表对象
 /// </summary>
-[JsonProperty("商品列表对象")]
-public List<GoodsList> GoodsList {get;set;}
+[JsonProperty("goods_list")]
+public List<GoodsListResponseModel> GoodsList {get;set;}
 /// <summary>
 /// 商品缩略图
 /// </summary>
-[JsonProperty("商品缩略图")]
+[JsonProperty("thumb_url")]
 public string ThumbUrl {get;set;}
 /// <summary>
 /// 商品编码
 /// </summary>
-[JsonProperty("商品编码")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
-[JsonProperty("商品名称")]
+[JsonProperty("goods_name")]
 public string GoodsName {get;set;}
 /// <summary>
 /// 商品图片
 /// </summary>
-[JsonProperty("商品图片")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
 /// <summary>
 /// 是否多sku，0-单sku，1-多sku
 /// </summary>
-[JsonProperty("是否多sku，0-单sku，1-多sku")]
+[JsonProperty("is_more_sku")]
 public int IsMoreSku {get;set;}
 /// <summary>
 /// 商品总数量
 /// </summary>
-[JsonProperty("商品总数量")]
+[JsonProperty("goods_quantity")]
 public int GoodsQuantity {get;set;}
 /// <summary>
 /// 是否在架上，0-下架中，1-架上
 /// </summary>
-[JsonProperty("是否在架上，0-下架中，1-架上")]
+[JsonProperty("is_onsale")]
 public int IsOnsale {get;set;}
 /// <summary>
 /// sku列表对象
 /// </summary>
-[JsonProperty("sku列表对象")]
-public List<SkuList> SkuList {get;set;}
+[JsonProperty("sku_list")]
+public List<SkuListResponseModel> SkuList {get;set;}
 /// <summary>
 /// 规格名称
 /// </summary>
-[JsonProperty("规格名称")]
+[JsonProperty("spec")]
 public string Spec {get;set;}
 /// <summary>
 /// sku编码
 /// </summary>
-[JsonProperty("sku编码")]
+[JsonProperty("sku_id")]
 public int SkuId {get;set;}
 /// <summary>
 /// sku库存
 /// </summary>
-[JsonProperty("sku库存")]
+[JsonProperty("sku_quantity")]
 public int SkuQuantity {get;set;}
 /// <summary>
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
-[JsonProperty("商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。")]
+[JsonProperty("outer_id")]
 public string OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
-[JsonProperty("商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。")]
+[JsonProperty("outer_goods_id")]
 public string OuterGoodsId {get;set;}
 /// <summary>
 /// sku是否在架上，0-下架中，1-架上
 /// </summary>
-[JsonProperty("sku是否在架上，0-下架中，1-架上")]
+[JsonProperty("is_sku_onsale")]
 public int IsSkuOnsale {get;set;}
-}
-}
 
     public partial class GoodsListGetResponseResponseModel : PddResponseModel
     {
         /// <summary>
 /// 返回商品总数
 /// </summary>
-[JsonProperty("返回商品总数")]
+[JsonProperty("total_count")]
 public int TotalCount {get;set;}
 /// <summary>
 /// 商品列表对象
 /// </summary>
-[JsonProperty("商品列表对象")]
-public List<GoodsList> GoodsList {get;set;}
-}
+[JsonProperty("goods_list")]
+public List<GoodsListResponseModel> GoodsList {get;set;}
 
+}
 
     public partial class GoodsListResponseModel : PddResponseModel
     {
         /// <summary>
 /// 商品缩略图
 /// </summary>
-[JsonProperty("商品缩略图")]
+[JsonProperty("thumb_url")]
 public string ThumbUrl {get;set;}
 /// <summary>
 /// 商品编码
 /// </summary>
-[JsonProperty("商品编码")]
+[JsonProperty("goods_id")]
 public string GoodsId {get;set;}
 /// <summary>
 /// 商品名称
 /// </summary>
-[JsonProperty("商品名称")]
+[JsonProperty("goods_name")]
 public string GoodsName {get;set;}
 /// <summary>
 /// 商品图片
 /// </summary>
-[JsonProperty("商品图片")]
+[JsonProperty("image_url")]
 public string ImageUrl {get;set;}
 /// <summary>
 /// 是否多sku，0-单sku，1-多sku
 /// </summary>
-[JsonProperty("是否多sku，0-单sku，1-多sku")]
+[JsonProperty("is_more_sku")]
 public int IsMoreSku {get;set;}
 /// <summary>
 /// 商品总数量
 /// </summary>
-[JsonProperty("商品总数量")]
+[JsonProperty("goods_quantity")]
 public int GoodsQuantity {get;set;}
 /// <summary>
 /// 是否在架上，0-下架中，1-架上
 /// </summary>
-[JsonProperty("是否在架上，0-下架中，1-架上")]
+[JsonProperty("is_onsale")]
 public int IsOnsale {get;set;}
 /// <summary>
 /// sku列表对象
 /// </summary>
-[JsonProperty("sku列表对象")]
-public List<SkuList> SkuList {get;set;}
-}
+[JsonProperty("sku_list")]
+public List<SkuListResponseModel> SkuList {get;set;}
 
+}
 
     public partial class SkuListResponseModel : PddResponseModel
     {
         /// <summary>
 /// 规格名称
 /// </summary>
-[JsonProperty("规格名称")]
+[JsonProperty("spec")]
 public string Spec {get;set;}
 /// <summary>
 /// sku编码
 /// </summary>
-[JsonProperty("sku编码")]
+[JsonProperty("sku_id")]
 public int SkuId {get;set;}
 /// <summary>
 /// sku库存
 /// </summary>
-[JsonProperty("sku库存")]
+[JsonProperty("sku_quantity")]
 public int SkuQuantity {get;set;}
 /// <summary>
 /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
 /// </summary>
-[JsonProperty("商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。")]
+[JsonProperty("outer_id")]
 public string OuterId {get;set;}
 /// <summary>
 /// 商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
 /// </summary>
-[JsonProperty("商家外部编码（商品），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。")]
+[JsonProperty("outer_goods_id")]
 public string OuterGoodsId {get;set;}
 /// <summary>
 /// sku是否在架上，0-下架中，1-架上
 /// </summary>
-[JsonProperty("sku是否在架上，0-下架中，1-架上")]
+[JsonProperty("is_sku_onsale")]
 public int IsSkuOnsale {get;set;}
+
 }
 
-
+}
+}

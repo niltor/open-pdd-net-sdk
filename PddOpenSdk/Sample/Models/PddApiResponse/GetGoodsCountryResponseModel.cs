@@ -7,33 +7,33 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 国家或地区对象列表
 /// </summary>
-[JsonProperty("国家或地区对象列表")]
-public List<CountryList> CountryList {get;set;}
+[JsonProperty("country_list")]
+public List<CountryListResponseModel> CountryList {get;set;}
 /// <summary>
 /// 国家或地区对应的ID
 /// </summary>
-[JsonProperty("国家或地区对应的ID")]
+[JsonProperty("country_id")]
 public int CountryId {get;set;}
 /// <summary>
 /// 对应ID下的国家或地区名称
 /// </summary>
-[JsonProperty("对应ID下的国家或地区名称")]
+[JsonProperty("country_name")]
 public string CountryName {get;set;}
-}
-}
 
     public partial class CountryListResponseModel : PddResponseModel
     {
         /// <summary>
 /// 国家或地区对应的ID
 /// </summary>
-[JsonProperty("国家或地区对应的ID")]
+[JsonProperty("country_id")]
 public int CountryId {get;set;}
 /// <summary>
 /// 对应ID下的国家或地区名称
 /// </summary>
-[JsonProperty("对应ID下的国家或地区名称")]
+[JsonProperty("country_name")]
 public string CountryName {get;set;}
+
 }
 
-
+}
+}

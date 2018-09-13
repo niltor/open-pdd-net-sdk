@@ -7,8 +7,8 @@ namespace App.Models.PddApiResponse
         /// <summary>
 /// 是否设置成功
 /// </summary>
-[JsonProperty("是否设置成功")]
+[JsonProperty("is_create_success")]
 public bool IsCreateSuccess {get;set;}
-}
-}
 
+}
+}
