@@ -46,56 +46,23 @@ namespace Sample
                         if (className != null)
                         {
                             className = className.Split(".")[1] ?? "UnNamed";
-
                             foreach (var doc in docList)
                             {
-                                methodsContent += await BuildRequestMethodAsync(doc);
+                                methodsContent += BuildRequestMethod(doc);
                             }
                             className = Function.ToTitleCase(className);
                             SaveRequestClass(className, methodsContent);
                         }
-
                     }
                 }
             }
         }
 
         /// <summary>
-        /// 保存接口请求类
-        /// </summary>
-        /// <param name="className"></param>
-        protected void SaveRequestClass(string className, string classContent)
-        {
-            var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Services", "PddApiRequest");
-            // 创建目录
-            if (!Directory.Exists(resultPath))
-            {
-                Directory.CreateDirectory(resultPath);
-            }
-            string fileName = Function.ToTitleCase(className) + "ApiRequest";
-
-            string content = $@"using App.Models.PddApiResult;
-using App.Models.PddApiRequest;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-namespace App.Services.PddApiRequest
-{{
-    public class {fileName} : PddRequest {{
-        {classContent}
-    }}
-}}
-";
-            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
-
-        }
-
-        /// <summary>
         /// 生成接口请求方法
         /// </summary>
         /// <param name="doc"></param>
-        public async Task<string> BuildRequestMethodAsync(ApiDoc doc)
+        public string BuildRequestMethod(ApiDoc doc)
         {
             // 方法命名
             var scopeName = doc.ScopeName.Split('.');
@@ -112,34 +79,29 @@ $@"/// <summary>
 ";
             string methodParams = "";
 
-            // 创建参数类
+            // 创建请求模型类
             string paramsModelType = methodName + "RequestModel";
             string requestContent = BuildRequestModel(paramsModelType, doc.RequestParamList);
             SaveRequestModel(paramsModelType, requestContent);
-
             string paramsModelName = methodName.First().ToString().ToLower() + methodName.Substring(1);
             methodParams = paramsModelType + " " + paramsModelName;
 
-            string returnType = methodName + "ApiResult";
-            string jsonReturn = doc.CodeExample;
-            // 调用接口将json转成csharpe class
-            string classContent = await JsonToClass(jsonReturn);
-            if (string.IsNullOrEmpty(classContent))
+            // 创建返回模型类
+            string responseModelName = methodName + "ResponseModel";
+            string responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
+            if (string.IsNullOrEmpty(responseContent))
             {
                 File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
             }
-            // 保存结果类
-            SaveResultModel(returnType, classContent);
+            SaveResponseModel(responseModelName, responseContent);
 
-            return $@"{methodComment}public async Task<{returnType}> {methodName}Async({methodParams})
+            return $@"{methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
 {{
-    var result = await PostAsync<{paramsModelType},{returnType}>(""{doc.ScopeName}"",{paramsModelName});
+    var result = await PostAsync<{paramsModelType},{responseModelName}>(""{doc.ScopeName}"",{paramsModelName});
     return result;
 }}
 ";
-
         }
-
 
         /// <summary>
         /// 生成请求类型
@@ -214,22 +176,83 @@ $@"/// <summary>
             return default;
         }
 
-        protected void SaveRequestModel(string className, string classContent)
+        /// <summary>
+        /// 生成响应类型
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="paramLists"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1)
         {
-            var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "PddApiRequest");
-            // 创建目录
-            if (!Directory.Exists(resultPath))
+            if (string.IsNullOrEmpty(className))
+                return default;
+
+            if (paramLists.Count > 0)
             {
-                Directory.CreateDirectory(resultPath);
+                string content = "";
+                if (level == 1)
+                {
+                    content += @"using System.Collections.Generic;
+using Newtonsoft.Json;
+namespace App.Models.PddApiResponse
+{";
+                }
+                content +=
+$@"
+    public partial class {className} : PddResponseModel
+    {{
+        ";
+                string paramsContent = "";
+                string childClass = "";
+                foreach (var param in paramLists)
+                {
+                    // TODO 注意：拼多多，响应内容内容字段存储混乱
+                    // 参数名
+                    var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " "))?.Replace(" ", "");
+                    // 参数类型
+                    var paramType = param.ParamDesc;
+
+                    // 如果是对象类型，生成子类模型
+                    if (param.ChildrenNum > 0)
+                    {
+                        childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
+                    }
+
+                    // 参数注释
+                    var paramComment =
+$@"/// <summary>
+/// {param.ParamName?.Replace("\n", "; ")}
+/// </summary>
+[JsonProperty(""{param.ParamName}"")]
+";
+                    switch (paramType)
+                    {
+                        case "number":
+                            paramType = param.IsMust == 0 ? "int?" : "int";
+                            break;
+                        case "boolean":
+                            paramType = param.IsMust == 0 ? "bool?" : "bool";
+                            break;
+                        case "jsonString":
+                            paramType = paramName;
+                            break;
+                        default:
+                            break;
+                    }
+                    // 数组类型处理
+                    if (paramType.Equals(param.ParamType + "[]"))
+                    {
+                        paramType = $"List<{paramName}>";
+                    }
+                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                }
+                content += paramsContent;
+                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+                content += childClass + "\r\n";
+                return content;
             }
-            // 处理content为空的情况
-            if (string.IsNullOrEmpty(classContent))
-            {
-                classContent = $@"public class {className}{{}}";
-            }
-            string fileName = className;
-            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+            return default;
         }
 
         /// <summary>
@@ -269,12 +292,14 @@ $@"/// <summary>
         }
 
         /// <summary>
-        /// 自动生成接口返回类
+        /// 保存请求模型类
         /// </summary>
-        protected void SaveResultModel(string className, string classContent)
+        /// <param name="className"></param>
+        /// <param name="classContent"></param>
+        protected void SaveRequestModel(string className, string classContent)
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "PddApiResult");
+            var resultPath = Path.Combine(currentPath, "Models", "PddApiRequest");
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
@@ -286,15 +311,58 @@ $@"/// <summary>
                 classContent = $@"public class {className}{{}}";
             }
             string fileName = className;
-            classContent = classContent?.Replace("RootObject", fileName);
-            string content = $@"using System.Collections.Generic;
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+        }
+
+        /// <summary>
+        /// 自动生成接口返回类
+        /// </summary>
+        protected void SaveResponseModel(string className, string classContent)
+        {
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Models", "PddApiResponse");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
+            {
+                Directory.CreateDirectory(resultPath);
+            }
+            // 处理content为空的情况
+            if (string.IsNullOrEmpty(classContent))
+            {
+                classContent = $@"public class {className}{{}}";
+            }
+            string fileName = className;
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
+        }
+        /// <summary>
+        /// 保存接口请求类
+        /// </summary>
+        /// <param name="className"></param>
+        protected void SaveRequestClass(string className, string classContent)
+        {
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Services", "PddApiRequest");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
+            {
+                Directory.CreateDirectory(resultPath);
+            }
+            string fileName = Function.ToTitleCase(className) + "ApiRequest";
+
+            string content = $@"using App.Models.PddApiResult;
+using App.Models.PddApiRequest;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
-namespace App.Models.PddApiResult
+using System.Collections.Generic;
+namespace App.Services.PddApiRequest
 {{
-    {classContent}
+    public class {fileName} : PddRequest {{
+        {classContent}
+    }}
 }}
 ";
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
+
         }
     }
 }
