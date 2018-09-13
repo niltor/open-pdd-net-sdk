@@ -224,7 +224,7 @@ $@"
 $@"/// <summary>
 /// {param.ParamName?.Replace("\n", "; ")}
 /// </summary>
-[JsonProperty(""{param.ParamName}"")]
+[JsonProperty(""{param.ParamType}"")]
 ";
                     switch (paramType)
                     {
@@ -237,19 +237,23 @@ $@"/// <summary>
                         case "jsonString":
                             paramType = paramName;
                             break;
+                        case "":
+                            paramType = "object";
+                            break;
                         default:
                             break;
                     }
                     // 数组类型处理
-                    if (paramType.Equals(param.ParamType + "[]"))
+                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list"))
                     {
-                        paramType = $"List<{paramName}>";
+                        paramType = $"List<{paramName}ResponseModel>";
                     }
                     paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                    System.Console.WriteLine(paramType + " " + paramName);
                 }
                 content += paramsContent;
-                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
                 content += childClass + "\r\n";
+                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
                 return content;
             }
             return default;
