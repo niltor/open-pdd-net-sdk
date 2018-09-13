@@ -49,7 +49,7 @@ namespace Sample
 
                             foreach (var doc in docList)
                             {
-                                methodsContent += await MethodBuildAsync(doc);
+                                methodsContent += await BuildRequestMethodAsync(doc);
                             }
                             className = Function.ToTitleCase(className);
                             SaveRequestClass(className, methodsContent);
@@ -76,6 +76,7 @@ namespace Sample
             string fileName = Function.ToTitleCase(className) + "ApiRequest";
 
             string content = $@"using App.Models.PddApiResult;
+using App.Models.PddApiRequest;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -91,10 +92,10 @@ namespace App.Services.PddApiRequest
         }
 
         /// <summary>
-        /// 生成接口调用方法
+        /// 生成接口请求方法
         /// </summary>
         /// <param name="doc"></param>
-        public async Task<string> MethodBuildAsync(ApiDoc doc)
+        public async Task<string> BuildRequestMethodAsync(ApiDoc doc)
         {
             // 方法命名
             var scopeName = doc.ScopeName.Split('.');
@@ -104,51 +105,20 @@ namespace App.Services.PddApiRequest
                 methodName += Function.ToTitleCase(scopeName[i]);
             }
             // 方法参数
-
-            var requestParamList = doc.RequestParamList.OrderByDescending(r => r.IsMust)
-                .Where(r => r.Level == 1).ToList();
-            string methodComment = $@"/// <summary>
+            string methodComment =
+$@"/// <summary>
 /// {doc.ApiName}
 /// </summary>
-"; ;
+";
             string methodParams = "";
-            string dicData = "";
 
-            foreach (var item in requestParamList)
-            {
-                string paramName = Function.ToTitleCase(item.ParamName.Replace("_", " "));
+            // 创建参数类
+            string paramsModelType = methodName + "RequestModel";
+            string requestContent = BuildRequestModel(paramsModelType, doc.RequestParamList);
+            SaveRequestModel(paramsModelType, requestContent);
 
-                dicData += $@"dic.Add(""{item.ParamName}"",{paramName.Replace(" ", "")});
-";
-                string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc?.Replace("\n", "; ")}</param>
-";
-                // 对特殊类型处理
-                switch (item.ParamType)
-                {
-                    case "number":
-                        item.ParamType = "int";
-                        break;
-                    case "boolean":
-                        item.ParamType = "bool";
-                        break;
-                    case "jsonstring":
-                        item.ParamType = "string";
-                        break;
-                    default:
-                        break;
-                }
-                paramName = item.ParamType.ToLower() + " " + paramName.Replace(" ", "") + ",";
-                methodParams += paramName;
-                methodComment += paramComment;
-            }
-            if (string.IsNullOrEmpty(methodParams))
-            {
-                methodParams = "()";
-            }
-            else
-            {
-                methodParams = "(" + methodParams?.Substring(0, methodParams.Length - 1) + ")";
-            }
+            string paramsModelName = methodName.First().ToString().ToLower() + methodName.Substring(1);
+            methodParams = paramsModelType + " " + paramsModelName;
 
             string returnType = methodName + "ApiResult";
             string jsonReturn = doc.CodeExample;
@@ -159,17 +129,104 @@ namespace App.Services.PddApiRequest
                 File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
             }
             // 保存结果类
-            SaveResultClass(returnType, classContent);
+            SaveResultModel(returnType, classContent);
 
-            return $@"{methodComment}public async Task<{returnType}> {methodName}Async{methodParams}
+            return $@"{methodComment}public async Task<{returnType}> {methodName}Async({methodParams})
 {{
-    var dic = new Dictionary<string, object>();
-    {dicData}    
-    var result = await PostAsync<{returnType}>(""{doc.ScopeName}"",dic);
+    var result = await PostAsync<{returnType}>(""{doc.ScopeName}"",{paramsModelName});
     return result;
 }}
 ";
 
+        }
+
+
+        /// <summary>
+        /// 生成请求类型
+        /// </summary>
+        /// <param name="paramLists"></param>
+        /// <param name="className"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
+        public string BuildRequestModel(string className, List<ParamList> paramLists, int level = 1)
+        {
+            if (string.IsNullOrEmpty(className))
+                return default;
+
+            if (paramLists.Count > 0)
+            {
+                string content = "";
+                if (level == 1)
+                {
+                    content += @"using System.Collections.Generic;
+namespace App.Models.PddApiRequest
+{";
+                }
+                content +=
+$@"
+    public virtual class {className}
+    {{
+        ";
+                string paramsContent = "";
+                string childClass = "";
+                foreach (var param in paramLists)
+                {
+                    // 参数名
+                    var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
+                    // 参数类型
+                    var paramType = param.ParamType;
+
+                    // 如果是对象类型，生成子类模型
+                    if (param.ChildrenNum > 0)
+                    {
+                        childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level);
+                    }
+
+                    // 参数注释
+                    var paramComment =
+$@"/// <summary>
+/// {param.ParamDesc?.Replace("\n", "; ")}
+/// </summary>
+";
+                    switch (paramType)
+                    {
+                        case "number":
+                            paramType = param.IsMust == 0 ? "int?" : "int";
+                            break;
+                        case "boolean":
+                            paramType = param.IsMust == 0 ? "bool?" : "bool";
+                            break;
+                        case "jsonString":
+                            paramType = paramName;
+                            break;
+                        default:
+                            break;
+                    }
+                    paramsContent += paramComment + $"public {paramType} {paramName}\r\n{{\r\n\t{{get;set;}}\r\n";
+                }
+                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+                content += childClass + "\r\n";
+                return content;
+            }
+            return default;
+        }
+
+        protected void SaveRequestModel(string className, string classContent)
+        {
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Models", "PddApiRequest");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
+            {
+                Directory.CreateDirectory(resultPath);
+            }
+            // 处理content为空的情况
+            if (string.IsNullOrEmpty(classContent))
+            {
+                classContent = $@"public class {className}{{}}";
+            }
+            string fileName = className;
+            File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
         }
 
         /// <summary>
@@ -211,7 +268,7 @@ namespace App.Services.PddApiRequest
         /// <summary>
         /// 自动生成接口返回类
         /// </summary>
-        protected void SaveResultClass(string className, string classContent)
+        protected void SaveResultModel(string className, string classContent)
         {
             var currentPath = Directory.GetCurrentDirectory();
             var resultPath = Path.Combine(currentPath, "Models", "PddApiResult");

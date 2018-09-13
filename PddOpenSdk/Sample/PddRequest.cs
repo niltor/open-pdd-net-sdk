@@ -1,10 +1,9 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Sample
 {
@@ -104,6 +103,37 @@ namespace Sample
                     return JsonConvert.DeserializeObject<T>(jsonResult);
                 }
 
+            }
+            return default;
+        }
+
+        /// <summary>
+        /// post请求封装
+        /// </summary>
+        /// <typeparam name="TModel">请求参数类型</typeparam>
+        /// <typeparam name="TResult">返回参数类型</typeparam>
+        /// <param name="type"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected async Task<TResult> PostAsync<TModel, TResult>(string type, TModel model)
+        {
+            // TODO 类型拼接请求
+            var data = new StringContent("", Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(ApiUrl, data);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = await response.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(jsonResult);
+                if (jObject.TryGetValue("error_response", out var errorResponse))
+                {
+                    // TODO:记录异常
+                    System.Console.WriteLine(errorResponse["error_code"].ToString() + errorResponse["error_msg"]);
+                    return default;
+                }
+                else
+                {
+                    return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                }
             }
             return default;
         }
