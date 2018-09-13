@@ -133,7 +133,7 @@ $@"/// <summary>
 
             return $@"{methodComment}public async Task<{returnType}> {methodName}Async({methodParams})
 {{
-    var result = await PostAsync<{returnType}>(""{doc.ScopeName}"",{paramsModelName});
+    var result = await PostAsync<{paramsModelType},{returnType}>(""{doc.ScopeName}"",{paramsModelName});
     return result;
 }}
 ";
@@ -159,12 +159,13 @@ $@"/// <summary>
                 if (level == 1)
                 {
                     content += @"using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace App.Models.PddApiRequest
 {";
                 }
                 content +=
 $@"
-    public virtual class {className}
+    public partial class {className} : PddRequestModel
     {{
         ";
                 string paramsContent = "";
@@ -179,7 +180,7 @@ $@"
                     // 如果是对象类型，生成子类模型
                     if (param.ChildrenNum > 0)
                     {
-                        childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level);
+                        childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
                     }
 
                     // 参数注释
@@ -187,6 +188,7 @@ $@"
 $@"/// <summary>
 /// {param.ParamDesc?.Replace("\n", "; ")}
 /// </summary>
+[JsonProperty(""{param.ParamName}"")]
 ";
                     switch (paramType)
                     {
@@ -202,8 +204,9 @@ $@"/// <summary>
                         default:
                             break;
                     }
-                    paramsContent += paramComment + $"public {paramType} {paramName}\r\n{{\r\n\t{{get;set;}}\r\n";
+                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                 }
+                content += paramsContent;
                 content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
                 content += childClass + "\r\n";
                 return content;
@@ -251,7 +254,7 @@ $@"/// <summary>
                     var jObject = JObject.Parse(jsonResonse);
                     if (jObject.Value<bool>("Success") == false)
                     {
-                        System.Console.WriteLine("返回json解析错误：" + json);
+                        System.Console.WriteLine("返回json解析错误：");
                         return default;
                     }
                     else
@@ -285,6 +288,7 @@ $@"/// <summary>
             string fileName = className;
             classContent = classContent?.Replace("RootObject", fileName);
             string content = $@"using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace App.Models.PddApiResult
 {{
     {classContent}
