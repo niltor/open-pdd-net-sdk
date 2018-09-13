@@ -74,7 +74,6 @@ namespace Sample
                 Directory.CreateDirectory(resultPath);
             }
             string fileName = Function.ToTitleCase(className) + "ApiRequest";
-            classContent = classContent.Replace("RootObject", fileName);
 
             string content = $@"using App.Models.PddApiResult;
 using System.Threading.Tasks;
@@ -106,7 +105,8 @@ namespace App.Services.PddApiRequest
             }
             // 方法参数
 
-            var requestParamList = doc.RequestParamList.OrderByDescending(r => r.IsMust).ToList();
+            var requestParamList = doc.RequestParamList.OrderByDescending(r => r.IsMust)
+                .Where(r => r.Level == 1).ToList();
             string methodComment = $@"/// <summary>
 /// {doc.ApiName}
 /// </summary>
@@ -123,13 +123,19 @@ namespace App.Services.PddApiRequest
                 string paramComment = $@"/// <param name=""{paramName.Replace(" ", "")}"">{item.ParamDesc?.Replace("\n", "; ")}</param>
 ";
                 // 对特殊类型处理
-                if (item.ParamType.Equals("number"))
+                switch (item.ParamType)
                 {
-                    item.ParamType = "int";
-                }
-                else if (item.ParamType.Equals("boolean"))
-                {
-                    item.ParamType = "bool";
+                    case "number":
+                        item.ParamType = "int";
+                        break;
+                    case "boolean":
+                        item.ParamType = "bool";
+                        break;
+                    case "jsonstring":
+                        item.ParamType = "string";
+                        break;
+                    default:
+                        break;
                 }
                 paramName = item.ParamType.ToLower() + " " + paramName.Replace(" ", "") + ",";
                 methodParams += paramName;
@@ -161,7 +167,8 @@ namespace App.Services.PddApiRequest
     {dicData}    
     var result = await PostAsync<{returnType}>(""{doc.ScopeName}"",dic);
     return result;
-}}";
+}}
+";
 
         }
 
