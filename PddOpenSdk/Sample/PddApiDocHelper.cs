@@ -149,7 +149,7 @@ $@"
                             break;
                         case "jsonstring":
                         case "jsonString":
-                            paramType = paramName + "ResponseModel";
+                            paramType = paramName + "RequestModel";
                             break;
                         case "":
                             paramType = "object";
@@ -161,7 +161,7 @@ $@"
                     // 数组类型特殊处理
                     if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
                     {
-                        paramType = $"List<{paramName}ResponseModel>";
+                        paramType = $"List<{paramName}RequestModel>";
                     }
 
                     // 如果是对象类型，生成子类模型
