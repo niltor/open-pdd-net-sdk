@@ -138,6 +138,31 @@ $@"
                     var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
                     // 参数类型
                     var paramType = param.ParamType;
+                    switch (paramType)
+                    {
+                        case "integer":
+                        case "number":
+                            paramType = param.IsMust == 0 ? "int?" : "int";
+                            break;
+                        case "boolean":
+                            paramType = param.IsMust == 0 ? "bool?" : "bool";
+                            break;
+                        case "jsonstring":
+                        case "jsonString":
+                            paramType = paramName + "ResponseModel";
+                            break;
+                        case "":
+                            paramType = "object";
+                            break;
+                        default:
+                            paramType = "object";
+                            break;
+                    }
+                    // 数组类型特殊处理
+                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                    {
+                        paramType = $"List<{paramName}ResponseModel>";
+                    }
 
                     // 如果是对象类型，生成子类模型
                     if (param.ChildrenNum > 0)
@@ -152,31 +177,6 @@ $@"/// <summary>
 /// </summary>
 [JsonProperty(""{param.ParamName}"")]
 ";
-                    switch (paramType)
-                    {
-                        case "integer":
-                        case "number":
-                            paramType = param.IsMust == 0 ? "int?" : "int";
-                            break;
-                        case "boolean":
-                            paramType = param.IsMust == 0 ? "bool?" : "bool";
-                            break;
-                        case "jsonstring":
-                        case "jsonString":
-                            paramType = paramName;
-                            break;
-                        case "":
-                            paramType = "object";
-                            break;
-                        default:
-                            paramType = "object";
-                            break;
-                    }
-                    // 数组类型特殊处理
-                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
-                    {
-                        paramType = $"List<{paramName}ResponseModel>";
-                    }
                     paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                 }
                 content += paramsContent;
