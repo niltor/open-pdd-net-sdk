@@ -14,30 +14,10 @@ public int SceneType {get;set;}
 /// </summary>
 [JsonProperty("keywords")]
 public object Keywords {get;set;}
-/// <summary>
-/// 关键字出价（厘）范围需在0.10~99.0元区间内
-/// </summary>
-[JsonProperty("bid")]
-public int Bid {get;set;}
-/// <summary>
-/// 关键词id
-/// </summary>
-[JsonProperty("keyword_id")]
-public int KeywordId {get;set;}
 
     public partial class KeywordsRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 关键字出价（厘）范围需在0.10~99.0元区间内
-/// </summary>
-[JsonProperty("bid")]
-public int Bid {get;set;}
-/// <summary>
-/// 关键词id
-/// </summary>
-[JsonProperty("keyword_id")]
-public int KeywordId {get;set;}
-
+        
 }
 
 }

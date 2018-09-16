@@ -214,165 +214,25 @@ public int? InvoiceStatus {get;set;}
 /// </summary>
 [JsonProperty("goods_properties")]
 public object GoodsProperties {get;set;}
-/// <summary>
-/// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku，示例：[20,5]
-/// </summary>
-[JsonProperty("spec_id_list")]
-public SpecIdListRequestModel SpecIdList {get;set;}
-/// <summary>
-/// 重量，单位为g
-/// </summary>
-[JsonProperty("weight")]
-public int Weight {get;set;}
-/// <summary>
-/// 商品sku库存初始数量，后续库存update只使用stocks.update接口进行调用
-/// </summary>
-[JsonProperty("quantity")]
-public int Quantity {get;set;}
-/// <summary>
-/// 商品sku外部编码，同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
-/// </summary>
-[JsonProperty("out_sku_sn")]
-public object OutSkuSn {get;set;}
-/// <summary>
-/// sku预览图，预览图尺寸：等宽高，且高度不低于480px，现已支持1M大小，越清晰越好卖，SKU预览图格式：仅支持JPG,PNG格式
-/// </summary>
-[JsonProperty("thumb_url")]
-public object ThumbUrl {get;set;}
-/// <summary>
-/// 商品团购价格
-/// </summary>
-[JsonProperty("multi_price")]
-public int MultiPrice {get;set;}
-/// <summary>
-/// 商品单买价格
-/// </summary>
-[JsonProperty("price")]
-public int Price {get;set;}
-/// <summary>
-/// sku购买限制，只入参999
-/// </summary>
-[JsonProperty("limit_quantity")]
-public int LimitQuantity {get;set;}
-/// <summary>
-/// sku上架状态，0-已下架，1-上架中
-/// </summary>
-[JsonProperty("is_onsale")]
-public int IsOnsale {get;set;}
-/// <summary>
-/// 模板属性id
-/// </summary>
-[JsonProperty("template_pid")]
-public int? TemplatePid {get;set;}
-/// <summary>
-/// 模板模块id
-/// </summary>
-[JsonProperty("template_module_id")]
-public int? TemplateModuleId {get;set;}
-/// <summary>
-/// 属性id
-/// </summary>
-[JsonProperty("pid")]
-public int? Pid {get;set;}
-/// <summary>
-/// 属性值id
-/// </summary>
-[JsonProperty("vid")]
-public int? Vid {get;set;}
-/// <summary>
-/// 属性值
-/// </summary>
-[JsonProperty("value")]
-public object Value {get;set;}
-/// <summary>
-/// 属性单位
-/// </summary>
-[JsonProperty("value_unit")]
-public object ValueUnit {get;set;}
 
     public partial class SkuListRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku，示例：[20,5]
-/// </summary>
-[JsonProperty("spec_id_list")]
-public SpecIdListRequestModel SpecIdList {get;set;}
-/// <summary>
-/// 重量，单位为g
-/// </summary>
-[JsonProperty("weight")]
-public int Weight {get;set;}
-/// <summary>
-/// 商品sku库存初始数量，后续库存update只使用stocks.update接口进行调用
-/// </summary>
-[JsonProperty("quantity")]
-public int Quantity {get;set;}
-/// <summary>
-/// 商品sku外部编码，同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
-/// </summary>
-[JsonProperty("out_sku_sn")]
-public object OutSkuSn {get;set;}
-/// <summary>
-/// sku预览图，预览图尺寸：等宽高，且高度不低于480px，现已支持1M大小，越清晰越好卖，SKU预览图格式：仅支持JPG,PNG格式
-/// </summary>
-[JsonProperty("thumb_url")]
-public object ThumbUrl {get;set;}
-/// <summary>
-/// 商品团购价格
-/// </summary>
-[JsonProperty("multi_price")]
-public int MultiPrice {get;set;}
-/// <summary>
-/// 商品单买价格
-/// </summary>
-[JsonProperty("price")]
-public int Price {get;set;}
-/// <summary>
-/// sku购买限制，只入参999
-/// </summary>
-[JsonProperty("limit_quantity")]
-public int LimitQuantity {get;set;}
-/// <summary>
-/// sku上架状态，0-已下架，1-上架中
-/// </summary>
-[JsonProperty("is_onsale")]
-public int IsOnsale {get;set;}
+        
+}
 
+    public partial class CarouselGalleryRequestModel : PddRequestModel
+    {
+        
+}
+
+    public partial class DetailGalleryRequestModel : PddRequestModel
+    {
+        
 }
 
     public partial class GoodsPropertiesRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 模板属性id
-/// </summary>
-[JsonProperty("template_pid")]
-public int? TemplatePid {get;set;}
-/// <summary>
-/// 模板模块id
-/// </summary>
-[JsonProperty("template_module_id")]
-public int? TemplateModuleId {get;set;}
-/// <summary>
-/// 属性id
-/// </summary>
-[JsonProperty("pid")]
-public int? Pid {get;set;}
-/// <summary>
-/// 属性值id
-/// </summary>
-[JsonProperty("vid")]
-public int? Vid {get;set;}
-/// <summary>
-/// 属性值
-/// </summary>
-[JsonProperty("value")]
-public object Value {get;set;}
-/// <summary>
-/// 属性单位
-/// </summary>
-[JsonProperty("value_unit")]
-public object ValueUnit {get;set;}
-
+        
 }
 
 }

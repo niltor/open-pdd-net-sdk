@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("ad_unit_delete_response")]
 public object AdUnitDeleteResponse {get;set;}
-/// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public object IsSuccess {get;set;}
 
     public partial class AdUnitDeleteResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public object IsSuccess {get;set;}
-
+        
 }
 
 }

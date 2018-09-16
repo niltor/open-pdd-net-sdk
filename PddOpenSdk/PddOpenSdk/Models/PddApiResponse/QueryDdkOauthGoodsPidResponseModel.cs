@@ -14,30 +14,10 @@ public object PIdList {get;set;}
 /// </summary>
 [JsonProperty("total_count")]
 public int TotalCount {get;set;}
-/// <summary>
-/// 推广位生成时间
-/// </summary>
-[JsonProperty("create_time")]
-public object CreateTime {get;set;}
-/// <summary>
-/// 推广位ID
-/// </summary>
-[JsonProperty("p_id")]
-public object PId {get;set;}
 
     public partial class PIdListResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 推广位生成时间
-/// </summary>
-[JsonProperty("create_time")]
-public object CreateTime {get;set;}
-/// <summary>
-/// 推广位ID
-/// </summary>
-[JsonProperty("p_id")]
-public object PId {get;set;}
-
+        
 }
 
 }

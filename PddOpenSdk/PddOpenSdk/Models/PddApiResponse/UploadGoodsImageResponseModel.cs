@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("goods_image_upload_response")]
 public object GoodsImageUploadResponse {get;set;}
-/// <summary>
-/// 返回图片url
-/// </summary>
-[JsonProperty("image_url")]
-public object ImageUrl {get;set;}
 
     public partial class GoodsImageUploadResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 返回图片url
-/// </summary>
-[JsonProperty("image_url")]
-public object ImageUrl {get;set;}
-
+        
 }
 
 }

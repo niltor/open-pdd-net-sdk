@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("logistics_online_send_response")]
 public object LogisticsOnlineSendResponse {get;set;}
-/// <summary>
-/// 是否成功，0-失败，1-成功
-/// </summary>
-[JsonProperty("is_success")]
-public int IsSuccess {get;set;}
 
     public partial class LogisticsOnlineSendResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 是否成功，0-失败，1-成功
-/// </summary>
-[JsonProperty("is_success")]
-public int IsSuccess {get;set;}
-
+        
 }
 
 }

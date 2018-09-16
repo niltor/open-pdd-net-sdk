@@ -24,30 +24,10 @@ public int GoodsId {get;set;}
 /// </summary>
 [JsonProperty("keywords")]
 public object Keywords {get;set;}
-/// <summary>
-/// 关键字出价（厘）范围需在0.10~99.0元区间内
-/// </summary>
-[JsonProperty("bid")]
-public int Bid {get;set;}
-/// <summary>
-/// 关键词
-/// </summary>
-[JsonProperty("word")]
-public object Word {get;set;}
 
     public partial class KeywordsRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 关键字出价（厘）范围需在0.10~99.0元区间内
-/// </summary>
-[JsonProperty("bid")]
-public int Bid {get;set;}
-/// <summary>
-/// 关键词
-/// </summary>
-[JsonProperty("word")]
-public object Word {get;set;}
-
+        
 }
 
 }

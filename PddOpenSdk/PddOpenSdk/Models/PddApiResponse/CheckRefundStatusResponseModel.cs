@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("order_sns_exists_refund")]
 public object OrderSnsExistsRefund {get;set;}
-/// <summary>
-/// 订单编号
-/// </summary>
-[JsonProperty("order_sn")]
-public object OrderSn {get;set;}
 
     public partial class OrderSnsExistsRefundResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 订单编号
-/// </summary>
-[JsonProperty("order_sn")]
-public object OrderSn {get;set;}
-
+        
 }
 
 }

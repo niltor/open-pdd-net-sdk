@@ -29,30 +29,10 @@ public int LogisticsType {get;set;}
 /// </summary>
 [JsonProperty("appointment_time")]
 public int AppointmentTime {get;set;}
-/// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
 
     public partial class VoucherListRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
-
+        
 }
 
 }

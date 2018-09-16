@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("mobile_charge_notify_response")]
 public object MobileChargeNotifyResponse {get;set;}
-/// <summary>
-/// 回调通知结果，true-成功，false-失败
-/// </summary>
-[JsonProperty("success")]
-public bool Success {get;set;}
 
     public partial class MobileChargeNotifyResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 回调通知结果，true-成功，false-失败
-/// </summary>
-[JsonProperty("success")]
-public bool Success {get;set;}
-
+        
 }
 
 }

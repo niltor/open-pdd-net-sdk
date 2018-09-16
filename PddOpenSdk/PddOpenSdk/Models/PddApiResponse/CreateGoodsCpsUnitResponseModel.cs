@@ -9,30 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("failed_vos")]
 public object FailedVos {get;set;}
-/// <summary>
-/// 创建失败的商品id
-/// </summary>
-[JsonProperty("goods_id")]
-public object GoodsId {get;set;}
-/// <summary>
-/// 创建失败原因
-/// </summary>
-[JsonProperty("reason")]
-public object Reason {get;set;}
 
     public partial class FailedVosResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 创建失败的商品id
-/// </summary>
-[JsonProperty("goods_id")]
-public object GoodsId {get;set;}
-/// <summary>
-/// 创建失败原因
-/// </summary>
-[JsonProperty("reason")]
-public object Reason {get;set;}
-
+        
 }
 
 }

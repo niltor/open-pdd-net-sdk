@@ -54,30 +54,10 @@ public object LogisticsCompanyId {get;set;}
 /// </summary>
 [JsonProperty("logistics_company")]
 public object LogisticsCompany {get;set;}
-/// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
 
     public partial class VoucherListRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
-
+        
 }
 
 }

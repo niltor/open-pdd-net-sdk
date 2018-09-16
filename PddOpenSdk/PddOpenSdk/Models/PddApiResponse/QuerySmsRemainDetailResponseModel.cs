@@ -9,30 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("sms_remain_detail_query_response")]
 public object SmsRemainDetailQueryResponse {get;set;}
-/// <summary>
-/// 剩余金额
-/// </summary>
-[JsonProperty("remain_money")]
-public int RemainMoney {get;set;}
-/// <summary>
-/// 剩余数量
-/// </summary>
-[JsonProperty("remain_number")]
-public int RemainNumber {get;set;}
 
     public partial class SmsRemainDetailQueryResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 剩余金额
-/// </summary>
-[JsonProperty("remain_money")]
-public int RemainMoney {get;set;}
-/// <summary>
-/// 剩余数量
-/// </summary>
-[JsonProperty("remain_number")]
-public int RemainNumber {get;set;}
-
+        
 }
 
 }

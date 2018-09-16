@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("ad_plan_max_cost_update_response")]
 public object AdPlanMaxCostUpdateResponse {get;set;}
-/// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public object IsSuccess {get;set;}
 
     public partial class AdPlanMaxCostUpdateResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public object IsSuccess {get;set;}
-
+        
 }
 
 }

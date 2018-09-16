@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("sku_stock_update_response")]
 public object SkuStockUpdateResponse {get;set;}
-/// <summary>
-/// 全量更新是否成功，true-成功，false-失败
-/// </summary>
-[JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
 
     public partial class SkuStockUpdateResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 全量更新是否成功，true-成功，false-失败
-/// </summary>
-[JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
-
+        
 }
 
 }

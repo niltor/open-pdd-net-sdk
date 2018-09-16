@@ -115,77 +115,76 @@ $@"/// <summary>
             if (string.IsNullOrEmpty(className))
                 return default;
 
-            if (paramLists.Count > 0)
+            paramLists = paramLists.Where(p => p.Level == level).ToList();
+
+            string content = "";
+            if (level == 1)
             {
-                string content = "";
-                if (level == 1)
-                {
-                    content += @"using System.Collections.Generic;
+                content += @"using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.PddApiRequest
 {";
-                }
-                content +=
+            }
+            content +=
 $@"
     public partial class {className} : PddRequestModel
     {{
         ";
-                string paramsContent = "";
-                string childClass = "";
-                foreach (var param in paramLists)
+            string paramsContent = "";
+            string childClass = "";
+            foreach (var param in paramLists)
+            {
+                // 参数名
+                var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
+                // 参数类型
+                var paramType = param.ParamType;
+                switch (paramType)
                 {
-                    // 参数名
-                    var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
-                    // 参数类型
-                    var paramType = param.ParamType;
-                    switch (paramType)
-                    {
-                        case "integer":
-                        case "number":
-                            paramType = param.IsMust == 0 ? "int?" : "int";
-                            break;
-                        case "boolean":
-                            paramType = param.IsMust == 0 ? "bool?" : "bool";
-                            break;
-                        case "jsonstring":
-                        case "jsonString":
-                            paramType = paramName + "RequestModel";
-                            break;
-                        case "":
-                            paramType = "object";
-                            break;
-                        default:
-                            paramType = "object";
-                            break;
-                    }
-                    // 数组类型特殊处理
-                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
-                    {
-                        paramType = $"List<{paramName}RequestModel>";
-                    }
+                    case "integer":
+                    case "number":
+                        paramType = param.IsMust == 0 ? "int?" : "int";
+                        break;
+                    case "boolean":
+                        paramType = param.IsMust == 0 ? "bool?" : "bool";
+                        break;
+                    case "jsonstring":
+                    case "jsonString":
+                        paramType = paramName + "RequestModel";
+                        break;
+                    case "":
+                        paramType = "object";
+                        break;
+                    default:
+                        paramType = "object";
+                        break;
+                }
+                // 数组类型特殊处理
+                if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                {
+                    paramType = $"List<{paramName}RequestModel>";
+                }
 
-                    // 如果是对象类型，生成子类模型
-                    if (param.ChildrenNum > 0)
-                    {
-                        childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
-                    }
+                // 如果是对象类型，生成子类模型
+                if (param.ChildrenNum > 0 || param.ParamType.Equals("jsonString"))
+                {
+                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
+                }
 
-                    // 参数注释
-                    var paramComment =
+                // 参数注释
+                var paramComment =
 $@"/// <summary>
 /// {param.ParamDesc?.Replace("\n", "; ")}
 /// </summary>
 [JsonProperty(""{param.ParamName}"")]
 ";
-                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
-                }
-                content += paramsContent;
-                content += childClass + "\r\n";
-                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
-
-                return content;
+                paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
             }
-            return default;
+            content += paramsContent;
+            content += childClass + "\r\n";
+            content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+
+            return content;
+
         }
 
         /// <summary>
@@ -199,84 +198,81 @@ $@"/// <summary>
         {
             if (string.IsNullOrEmpty(className))
                 return default;
+            paramLists = paramLists.Where(p => p.Level == level).ToList();
 
-            if (paramLists.Count > 0)
+            string content = "";
+            if (level == 1)
             {
-                string content = "";
-                if (level == 1)
-                {
-                    content += @"using System.Collections.Generic;
+                content += @"using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.PddApiResponse
 {";
-                }
-                content +=
+            }
+            content +=
 $@"
     public partial class {className} : PddResponseModel
     {{
         ";
-                string paramsContent = "";
-                string childClass = "";
-                foreach (var param in paramLists)
+            string paramsContent = "";
+            string childClass = "";
+            foreach (var param in paramLists)
+            {
+                // TODO 注意：拼多多，响应内容内容字段存储混乱
+                // 返回错误兼容
+                if (param.ParamType.Contains("[]"))
                 {
-                    // TODO 注意：拼多多，响应内容内容字段存储混乱
-                    // 返回错误兼容
-                    if (param.ParamType.Contains("[]"))
-                    {
-                        param.ParamType = param.ParamType.Replace("[]", "");
-                    }
-                    // 参数名
-                    var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
-                    // 参数类型
-                    var paramType = param.ParamDesc;
+                    param.ParamType = param.ParamType.Replace("[]", "");
+                }
+                // 参数名
+                var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
+                // 参数类型
+                var paramType = param.ParamDesc;
 
-                    // 如果是对象类型，生成子类模型
-                    if (param.ChildrenNum > 0)
-                    {
-                        childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
-                    }
-                    // 参数注释
-                    var paramComment =
+                // 如果是对象类型，生成子类模型
+                if (param.ChildrenNum > 0)
+                {
+                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
+                }
+                // 参数注释
+                var paramComment =
 $@"/// <summary>
 /// {param.ParamName?.Replace("\n", "; ")}
 /// </summary>
 [JsonProperty(""{param.ParamType}"")]
 ";
-                    switch (paramType)
-                    {
-                        case "integer":
-                        case "number":
-                            paramType = param.IsMust == 0 ? "int?" : "int";
-                            break;
-                        case "boolean":
-                            paramType = param.IsMust == 0 ? "bool?" : "bool";
-                            break;
-                        case "jsonstring":
-                        case "jsonString":
-                            paramType = paramName + "ResponseModel";
-                            break;
-                        case "":
-                            paramType = "object";
-                            break;
-                        default:
-                            paramType = "object";
-                            break;
-                    }
-                    // 数组类型特殊处理
-                    if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
-                    {
-                        paramType = $"List<{paramName}ResponseModel>";
-                    }
-
-                    paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
-                    //System.Console.WriteLine(paramType + " " + paramName);
+                switch (paramType)
+                {
+                    case "integer":
+                    case "number":
+                        paramType = param.IsMust == 0 ? "int?" : "int";
+                        break;
+                    case "boolean":
+                        paramType = param.IsMust == 0 ? "bool?" : "bool";
+                        break;
+                    case "jsonstring":
+                    case "jsonString":
+                        paramType = paramName + "ResponseModel";
+                        break;
+                    case "":
+                        paramType = "object";
+                        break;
+                    default:
+                        paramType = "object";
+                        break;
                 }
-                content += paramsContent;
-                content += childClass + "\r\n";
-                content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
-                return content;
+                // 数组类型特殊处理
+                if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                {
+                    paramType = $"List<{paramName}ResponseModel>";
+                }
+
+                paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                //System.Console.WriteLine(paramType + " " + paramName);
             }
-            return default;
+            content += paramsContent;
+            content += childClass + "\r\n";
+            content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+            return content;
         }
 
         /// <summary>

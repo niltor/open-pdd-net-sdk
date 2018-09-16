@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("home_coupon_batch_create_response")]
 public object HomeCouponBatchCreateResponse {get;set;}
-/// <summary>
-/// 批次id
-/// </summary>
-[JsonProperty("batch_id")]
-public object BatchId {get;set;}
 
     public partial class HomeCouponBatchCreateResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 批次id
-/// </summary>
-[JsonProperty("batch_id")]
-public object BatchId {get;set;}
-
+        
 }
 
 }

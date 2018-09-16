@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("goods_update_sku_price_response")]
 public object GoodsUpdateSkuPriceResponse {get;set;}
-/// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
 
     public partial class GoodsUpdateSkuPriceResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 是否成功
-/// </summary>
-[JsonProperty("is_success")]
-public bool IsSuccess {get;set;}
-
+        
 }
 
 }

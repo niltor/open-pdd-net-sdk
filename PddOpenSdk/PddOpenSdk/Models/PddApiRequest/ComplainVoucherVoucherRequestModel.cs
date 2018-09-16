@@ -44,30 +44,10 @@ public object ComplainAttachmentList {get;set;}
 /// </summary>
 [JsonProperty("complain_type")]
 public int ComplainType {get;set;}
-/// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
 
     public partial class VoucherListRequestModel : PddRequestModel
     {
-        /// <summary>
-/// 卡券ID
-/// </summary>
-[JsonProperty("voucher_id")]
-public object VoucherId {get;set;}
-/// <summary>
-/// 卡券号
-/// </summary>
-[JsonProperty("voucher_no")]
-public object VoucherNo {get;set;}
-
+        
 }
 
 }

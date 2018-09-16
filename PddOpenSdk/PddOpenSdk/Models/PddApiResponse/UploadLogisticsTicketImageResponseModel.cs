@@ -9,20 +9,10 @@ namespace PddOpenSdk.Models.PddApiResponse
 /// </summary>
 [JsonProperty("logistics_ticket_image_upload_response")]
 public object LogisticsTicketImageUploadResponse {get;set;}
-/// <summary>
-/// 图片url
-/// </summary>
-[JsonProperty("image_url")]
-public object ImageUrl {get;set;}
 
     public partial class LogisticsTicketImageUploadResponseResponseModel : PddResponseModel
     {
-        /// <summary>
-/// 图片url
-/// </summary>
-[JsonProperty("image_url")]
-public object ImageUrl {get;set;}
-
+        
 }
 
 }
