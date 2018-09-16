@@ -122,7 +122,7 @@ $@"/// <summary>
                 {
                     content += @"using System.Collections.Generic;
 using Newtonsoft.Json;
-namespace App.Models.PddApiRequest
+namespace PddOpenSdk.Models.PddApiRequest
 {";
                 }
                 content +=
@@ -207,7 +207,7 @@ $@"/// <summary>
                 {
                     content += @"using System.Collections.Generic;
 using Newtonsoft.Json;
-namespace App.Models.PddApiResponse
+namespace PddOpenSdk.Models.PddApiResponse
 {";
                 }
                 content +=
@@ -221,7 +221,7 @@ $@"
                 {
                     // TODO 注意：拼多多，响应内容内容字段存储混乱
                     // 参数名
-                    var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " "))?.Replace(" ", "");
+                    var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
                     // 参数类型
                     var paramType = param.ParamDesc;
 
@@ -369,12 +369,12 @@ $@"/// <summary>
             }
             string fileName = Function.ToTitleCase(className) + "ApiRequest";
 
-            string content = $@"using App.Models.PddApiRequest;
-using App.Models.PddApiResponse;
+            string content = $@"using PddOpenSdk.Models.PddApiRequest;
+using PddOpenSdk.Models.PddApiResponse;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-namespace App.Services.PddApiRequest
+namespace PddOpenSdk.Services.PddApiRequest
 {{
     public class {fileName} : PddRequest {{
         {classContent}
