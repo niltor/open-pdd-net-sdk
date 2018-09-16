@@ -182,7 +182,7 @@ $@"/// <summary>
                 content += paramsContent;
                 content += childClass + "\r\n";
                 content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
-           
+
                 return content;
             }
             return default;
@@ -220,6 +220,11 @@ $@"
                 foreach (var param in paramLists)
                 {
                     // TODO 注意：拼多多，响应内容内容字段存储混乱
+                    // 返回错误兼容
+                    if (param.ParamType.Contains("[]"))
+                    {
+                        param.ParamType = param.ParamType.Replace("[]", "");
+                    }
                     // 参数名
                     var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
                     // 参数类型
@@ -230,7 +235,6 @@ $@"
                     {
                         childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
                     }
-
                     // 参数注释
                     var paramComment =
 $@"/// <summary>
