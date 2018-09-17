@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PddOpenSdk", "PddOpenSdk\PddOpenSdk.csproj", "{48424733-B8B0-4B39-A918-79E50EB662F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk", "PddOpenSdk\PddOpenSdk.csproj", "{48424733-B8B0-4B39-A918-79E50EB662F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{746A369C-93C4-4F18-BFD7-E969BCBD1FD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{48424733-B8B0-4B39-A918-79E50EB662F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48424733-B8B0-4B39-A918-79E50EB662F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48424733-B8B0-4B39-A918-79E50EB662F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{746A369C-93C4-4F18-BFD7-E969BCBD1FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{746A369C-93C4-4F18-BFD7-E969BCBD1FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{746A369C-93C4-4F18-BFD7-E969BCBD1FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{746A369C-93C4-4F18-BFD7-E969BCBD1FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

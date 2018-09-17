@@ -1,19 +1,18 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.PddApiResponse
 {
     public partial class GetAdHistoryReportResponseModel : PddResponseModel
     {
         /// <summary>
-/// 返回response
-/// </summary>
-[JsonProperty("ad_mall_history_report_response")]
-public object AdMallHistoryReportResponse {get;set;}
+        /// 返回response
+        /// </summary>
+        [JsonProperty("ad_mall_history_report_response")]
+        public object AdMallHistoryReportResponse { get; set; }
 
-    public partial class AdMallHistoryReportResponseResponseModel : PddResponseModel
-    {
-        
-}
+        public partial class AdMallHistoryReportResponseResponseModel : PddResponseModel
+        {
 
-}
+        }
+
+    }
 }

@@ -1,9 +1,9 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PddOpenSdk.Services
 {
@@ -23,11 +23,11 @@ namespace PddOpenSdk.Services
         /// <summary>
         /// 平台提供
         /// </summary>
-        readonly string ClientId = "";
+        readonly string ClientId = ""; // TODO 配置中读取
         /// <summary>
         /// 平台提供
         /// </summary>
-        readonly string ClientSecret = "";
+        readonly string ClientSecret = ""; // TODO 配置中读取
         /// <summary>
         /// 商家授权地址
         /// </summary>
@@ -218,12 +218,10 @@ namespace PddOpenSdk.Services
         /// 响应格式，即返回数据的格式，JSON或者XML（二选一），默认JSON，注意是大写
         /// </summary>
         public string Data_Type { get; set; } = "JSON";
-
         public string Version { get; set; } = "V1";
         /// <summary>
         /// API输入参数签名结果，签名算法参考开放平台接入指南第三部分底部
         /// </summary>
         public string Sign { get; set; }
-
     }
 }
