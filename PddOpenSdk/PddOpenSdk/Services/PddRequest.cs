@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PddOpenSdk.Common;
 using PddOpenSdk.Models.PddApiResponse;
 
 namespace PddOpenSdk.Services
@@ -151,10 +155,32 @@ namespace PddOpenSdk.Services
         /// <summary>
         /// 生成签名
         /// </summary>
+        /// <param name="type"></param>
+        /// <param name="dic"></param>
         /// <returns></returns>
-        protected string BuildSign()
+        protected string BuildSign(string type, string token, Dictionary<string, object> dic)
         {
-            return default;
+            dic.Add("access_token", token);
+            dic.Add("type", type);
+            dic.Add("client_id", ClientId);
+            dic.Add("data_type", "JSON");
+            dic.Add("versioin", "V1");
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+            // 排序
+            dic = dic.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);
+            // 拼接
+            string signString = "";
+            foreach (var item in dic)
+            {
+                signString += item.Key + item.Value;
+            }
+            signString = ClientSecret + signString + ClientSecret;
+            // MD5加密
+            using (var md5 = MD5.Create())
+            {
+                signString = Function.GetMd5Hash(md5, signString).ToUpper();
+            }
+            return signString;
         }
 
         /// <summary>
