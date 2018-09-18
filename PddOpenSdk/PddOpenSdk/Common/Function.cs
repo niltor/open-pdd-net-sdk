@@ -17,10 +17,10 @@ namespace PddOpenSdk.Common
         /// <param name="obj"></param>
         /// <param name="sort">排序</param>
         /// <returns></returns>
-        public static Dictionary<string, TValue> ToDictionary<TValue>(object obj, OrderType sort)
+        public static Dictionary<string, object> ToDictionary(object obj, OrderType? sort = OrderType.ASC)
         {
             var json = JsonConvert.SerializeObject(obj);
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, TValue>>(json);
+            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
             if (sort == OrderType.ASC)
             {
                 return dictionary.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);

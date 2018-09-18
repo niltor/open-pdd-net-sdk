@@ -158,7 +158,7 @@ namespace PddOpenSdk.Services
         /// <param name="type"></param>
         /// <param name="dic"></param>
         /// <returns></returns>
-        protected string BuildSign(string type, string token, Dictionary<string, object> dic)
+        public string BuildSign(string type, string token, Dictionary<string, object> dic)
         {
             dic.Add("access_token", token);
             dic.Add("type", type);
