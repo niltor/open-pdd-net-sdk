@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PddOpenSdk.Models.PddApiResponse;
 
 namespace PddOpenSdk.Services
 {
@@ -58,6 +59,8 @@ namespace PddOpenSdk.Services
         {
             if (code != null && redirectUri != null)
             {
+
+                // TODO 先读取未过期token，若已过期，则刷新或重新获取
                 var dic = new Dictionary<string, string>
                 {
                     { "client_id", ClientId },
@@ -75,9 +78,11 @@ namespace PddOpenSdk.Services
                 using (var hc = new HttpClient())
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
-                    string result = await response.Content.ReadAsStringAsync();
-                    System.Console.WriteLine(result);
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
+                    // TODO 结果处理，保存token及过期时间
+                    return result?.AccessToken;
                 }
             }
             return default;
