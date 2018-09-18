@@ -15,31 +15,31 @@ namespace PddOpenSdk.Services
         /// <summary>
         /// 请求接口
         /// </summary>
-        readonly string ApiUrl = "https://gw-api.pinduoduo.com/api/router";
+        static readonly string ApiUrl = "https://gw-api.pinduoduo.com/api/router";
         /// <summary>
         /// access_token
         /// </summary>
-        readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
+        static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
         /// <summary>
         /// 平台提供
         /// </summary>
-        readonly string ClientId = ""; // TODO 配置中读取
+        readonly string ClientId = "224d8818907b438aab5262df5dfe6dde"; // TODO 配置中读取
         /// <summary>
         /// 平台提供
         /// </summary>
-        readonly string ClientSecret = ""; // TODO 配置中读取
+        readonly string ClientSecret = "d852c967bbdad36ae446ae84dfccf1c61b5a8d6f"; // TODO 配置中读取
         /// <summary>
         /// 商家授权地址
         /// </summary>
-        private readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
+        private static readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
         /// <summary>
         /// 移动端授权地址
         /// </summary>
-        private readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
+        private static readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
         /// <summary>
         /// 多多客授权地址
         /// </summary>
-        private readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
+        private static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
 
         protected static HttpClient client = new HttpClient();
 
@@ -51,12 +51,12 @@ namespace PddOpenSdk.Services
         /// 获取请求
         /// </summary>
         /// <param name="code"></param>
-        /// <param name="redirectUrl"></param>
+        /// <param name="redirectUri"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        protected string GetAccessToken(string code, string redirectUrl, string state = null)
+        public async Task<string> GetAccessTokenAsync(string code, string redirectUri, string state = null)
         {
-            if (code != null && redirectUrl != null)
+            if (code != null && redirectUri != null)
             {
                 var dic = new Dictionary<string, string>
                 {
@@ -64,7 +64,7 @@ namespace PddOpenSdk.Services
                     { "client_secret", ClientSecret },
                     { "grant_type", "authorization_code" },
                     { "code", code },
-                    { "redirect_uri", redirectUrl }
+                    { "redirect_uri", redirectUri }
                 };
                 if (state != null)
                 {
@@ -72,7 +72,13 @@ namespace PddOpenSdk.Services
                 }
 
                 var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+                using (var hc = new HttpClient())
+                {
+                    var response = await hc.PostAsync(TokenUrl, data);
+                    string result = await response.Content.ReadAsStringAsync();
+                    System.Console.WriteLine(result);
 
+                }
             }
             return default;
         }
@@ -154,7 +160,7 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         public string GetWebOAuthUrl(string callbackUrl, string state = null)
         {
-            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl;
+            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
             if (!string.IsNullOrEmpty(state))
             {
                 url += "&state=" + state;
@@ -169,7 +175,7 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         public string GetH5OAuthUrl(string callbackUrl, string state = null)
         {
-            string url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl + "&view=h5";
+            string url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl + "&view=h5";
             if (!string.IsNullOrEmpty(state))
             {
                 url += "&state=" + state;
@@ -184,7 +190,7 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         public string GetDDKOAuthUrl(string callbackUrl, string state = null)
         {
-            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_url=" + callbackUrl;
+            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
             if (!string.IsNullOrEmpty(state))
             {
                 url += "&state=" + state;
