@@ -1,12 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PddOpenSdk.Common;
+using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Services;
+using PddOpenSdk.Services.PddApiRequest;
 using Sample.Models;
 
 namespace Sample.Controllers
@@ -28,14 +28,7 @@ namespace Sample.Controllers
             };
 
             var dic = Function.ToDictionary(user);
-            string[] types = { "String", "DateTime", "Int", "Float", "Double" };
-            foreach (var item in dic.Keys.ToArray())
-            {
-                if (!types.Contains(dic[item].GetType().Name))
-                {
-                    dic[item] = JsonConvert.SerializeObject(dic[item]);
-                }
-            }
+
 
             ViewData["url"] = pddRequest.GetDDKOAuthUrl("https://pdd.guandian.tech/pdd/callback");
             return View();
@@ -50,11 +43,16 @@ namespace Sample.Controllers
             return Content(token);
         }
 
-        public IActionResult Contact()
+        public async Task<IActionResult> Test()
         {
-            ViewData["Message"] = "Your contact page.";
+            var ddk = new DdkApiRequest();
+            var result = await ddk.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
+            {
+                SortType = 0
+            });
 
-            return View();
+            System.Console.WriteLine(JsonConvert.SerializeObject(result));
+            return Content(JsonConvert.SerializeObject(result));
         }
 
         public IActionResult Privacy()

@@ -63,7 +63,6 @@ namespace PddOpenSdk.Services
         {
             if (code != null && redirectUri != null)
             {
-
                 // TODO 先读取未过期token，若已过期，则刷新或重新获取
                 var dic = new Dictionary<string, string>
                 {
@@ -86,6 +85,7 @@ namespace PddOpenSdk.Services
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
                     // TODO 结果处理，保存token及过期时间
+
                     return result?.AccessToken;
                 }
             }
@@ -133,7 +133,23 @@ namespace PddOpenSdk.Services
         protected async Task<TResult> PostAsync<TModel, TResult>(string type, TModel model)
         {
             // TODO 类型拼接请求
-            var data = new StringContent("", Encoding.UTF8, "application/json");
+            var dic = Function.ToDictionary(model);
+            var token = "df83e6adb6b347dd876648b38524e65aece86c9b";
+            dic.Add("access_token", token);
+            dic.Add("client_id", ClientId);
+            dic.Add("data_type", "JSON");
+            dic.Add("versioin", "V1");
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+
+            if (dic.Keys.Any(k => k == "type"))
+            {
+                dic.Remove("type");
+                dic.Add("type", type);
+            }
+            dic.Add("sign", BuildSign(token, dic));
+
+            var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+
             var response = await client.PostAsync(ApiUrl, data);
             if (response.IsSuccessStatusCode)
             {
@@ -158,21 +174,24 @@ namespace PddOpenSdk.Services
         /// <param name="type"></param>
         /// <param name="dic"></param>
         /// <returns></returns>
-        public string BuildSign(string type, string token, Dictionary<string, object> dic)
+        public string BuildSign(string token, Dictionary<string, object> dic)
         {
-            dic.Add("access_token", token);
-            dic.Add("type", type);
-            dic.Add("client_id", ClientId);
-            dic.Add("data_type", "JSON");
-            dic.Add("versioin", "V1");
-            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
-            // 排序
-            dic = dic.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);
+            // 去除空值并排序
+            dic = dic.Where(d => d.Value != null)
+                .OrderBy(d => d.Key)
+                .ToDictionary((d) => d.Key, (d) => d.Value);
+
             // 拼接
             string signString = "";
-            foreach (var item in dic)
+            string[] types = { "String", "DateTime", "Int", "Float", "Double" };
+            foreach (var item in dic.Keys.ToArray())
             {
-                signString += item.Key + item.Value;
+                Console.WriteLine($"====={item}:===" + dic[item]);
+                if (!types.Contains(dic[item]?.GetType().Name))
+                {
+                    dic[item] = JsonConvert.SerializeObject(dic[item]);
+                }
+                signString += item + dic[item];
             }
             signString = ClientSecret + signString + ClientSecret;
             // MD5加密
