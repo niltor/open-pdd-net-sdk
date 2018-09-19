@@ -154,12 +154,15 @@ $@"
                     case "":
                         paramType = "object";
                         break;
+                    case "list":
+                        paramType = "object[]";
+                        break;
                     default:
                         paramType = "object";
                         break;
                 }
                 // 数组类型特殊处理
-                if (param.ParamType.Equals(param.ParamType + "[]") || param.ParamType.Equals("list") || param.ParamType.Equals("[]") || param.ParamType.EndsWith("list"))
+                if (param.ParamType.Equals(param.ParamType + "[]") || param.ParamType.Equals("[]"))
                 {
                     paramType = $"List<{paramName}RequestModel>";
                 }
@@ -243,6 +246,9 @@ $@"
                     case "jsonString":
                         paramType = paramName + "ResponseModel";
                         break;
+                    case "list":
+                        paramType = "object[]";
+                        break;
                     case "":
                         paramType = "object";
                         break;
@@ -251,7 +257,7 @@ $@"
                         break;
                 }
                 // 数组类型特殊处理
-                if (orgType.Equals(param.ParamType + "[]") || orgType.Equals("list") || orgType.Equals("[]") || orgType.EndsWith("list"))
+                if (orgType.Equals(param.ParamType + "[]") || orgType.Equals("[]"))
                 {
                     paramType = $"List<{paramName}ResponseModel>";
                 }

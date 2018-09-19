@@ -132,24 +132,24 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         protected async Task<TResult> PostAsync<TModel, TResult>(string type, TModel model)
         {
-            // TODO 类型拼接请求
+            // 类型转换到字典
             var dic = Function.ToDictionary(model);
             var token = "df83e6adb6b347dd876648b38524e65aece86c9b";
+            // 添加公共参数
             dic.Add("access_token", token);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
             dic.Add("versioin", "V1");
             dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
-
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
                 dic.Add("type", type);
             }
+            // 添加签名
             dic.Add("sign", BuildSign(token, dic));
 
             var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-
             var response = await client.PostAsync(ApiUrl, data);
             if (response.IsSuccessStatusCode)
             {
@@ -180,9 +180,9 @@ namespace PddOpenSdk.Services
             dic = dic.Where(d => d.Value != null)
                 .OrderBy(d => d.Key)
                 .ToDictionary((d) => d.Key, (d) => d.Value);
-
             // 拼接
             string signString = "";
+            // 反射处理非基本类型字段的json转换
             string[] types = { "String", "DateTime", "Int", "Float", "Double" };
             foreach (var item in dic.Keys.ToArray())
             {
