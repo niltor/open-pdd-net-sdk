@@ -115,7 +115,7 @@ $@"/// <summary>
             if (string.IsNullOrEmpty(className))
                 return default;
 
-            paramLists = paramLists.Where(p => p.Level == level).ToList();
+            var currentParamLists = paramLists.Where(p => p.Level == level).ToList();
 
             string content = "";
             if (level == 1)
@@ -132,7 +132,7 @@ $@"
         ";
             string paramsContent = "";
             string childClass = "";
-            foreach (var param in paramLists)
+            foreach (var param in currentParamLists)
             {
                 // 参数名
                 var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
@@ -159,7 +159,7 @@ $@"
                         break;
                 }
                 // 数组类型特殊处理
-                if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                if (param.ParamType.Equals(param.ParamType + "[]") || param.ParamType.Equals("list") || param.ParamType.Equals("[]") || param.ParamType.EndsWith("list"))
                 {
                     paramType = $"List<{paramName}RequestModel>";
                 }
@@ -196,9 +196,11 @@ $@"/// <summary>
         /// <returns></returns>
         public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1)
         {
+            File.AppendAllText("output.txt", "==" + className + "==: " + JsonConvert.SerializeObject(paramLists) + "\r\n");
+
             if (string.IsNullOrEmpty(className))
                 return default;
-            paramLists = paramLists.Where(p => p.Level == level).ToList();
+            var currentParamLists = paramLists.Where(p => p.Level == level).ToList();
 
             string content = "";
             if (level == 1)
@@ -215,7 +217,7 @@ $@"
         ";
             string paramsContent = "";
             string childClass = "";
-            foreach (var param in paramLists)
+            foreach (var param in currentParamLists)
             {
                 // TODO 注意：拼多多，响应内容内容字段存储混乱
                 // 返回错误兼容
@@ -227,19 +229,7 @@ $@"
                 var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
                 // 参数类型
                 var paramType = param.ParamDesc;
-
-                // 如果是对象类型，生成子类模型
-                if (param.ChildrenNum > 0)
-                {
-                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
-                }
-                // 参数注释
-                var paramComment =
-$@"/// <summary>
-/// {param.ParamName?.Replace("\n", "; ")}
-/// </summary>
-[JsonProperty(""{param.ParamType}"")]
-";
+                var orgType = param.ParamDesc;
                 switch (paramType)
                 {
                     case "integer":
@@ -261,10 +251,24 @@ $@"/// <summary>
                         break;
                 }
                 // 数组类型特殊处理
-                if (paramType.Equals(param.ParamType + "[]") || paramType.Equals("list") || paramType.Equals("[]") || paramType.EndsWith("list"))
+                if (orgType.Equals(param.ParamType + "[]") || orgType.Equals("list") || orgType.Equals("[]") || orgType.EndsWith("list"))
                 {
                     paramType = $"List<{paramName}ResponseModel>";
                 }
+                // 如果是对象类型，生成子类模型
+                if (param.ChildrenNum > 0)
+                {
+                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
+
+                }
+                // 参数注释
+                var paramComment =
+$@"/// <summary>
+/// {param.ParamName?.Replace("\n", "; ")}
+/// </summary>
+[JsonProperty(""{param.ParamType}"")]
+";
+
 
                 paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                 //System.Console.WriteLine(paramType + " " + paramName);
