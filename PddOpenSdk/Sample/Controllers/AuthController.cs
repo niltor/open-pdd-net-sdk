@@ -48,7 +48,8 @@ namespace Sample.Controllers
             var ddk = new DdkApiRequest();
             var result = await ddk.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
             {
-                SortType = 0
+                SortType = 0,
+                WithCoupon = false
             });
 
             System.Console.WriteLine(JsonConvert.SerializeObject(result));

@@ -20,7 +20,7 @@ namespace PddOpenSdk.Services
         /// <summary>
         /// 请求接口
         /// </summary>
-        static readonly string ApiUrl = "https://gw-api.pinduoduo.com/api/router";
+        static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
         /// <summary>
         /// access_token
         /// </summary>
@@ -186,7 +186,6 @@ namespace PddOpenSdk.Services
             string[] types = { "String", "DateTime", "Int", "Float", "Double" };
             foreach (var item in dic.Keys.ToArray())
             {
-                Console.WriteLine($"====={item}:===" + dic[item]);
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
