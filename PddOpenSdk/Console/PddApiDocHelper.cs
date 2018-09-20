@@ -138,7 +138,7 @@ $@"
                 var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
                 // 参数类型
                 var paramType = param.ParamType;
-                switch (paramType)
+                switch (paramType.ToLower())
                 {
                     case "integer":
                     case "number":
@@ -148,7 +148,6 @@ $@"
                         paramType = param.IsMust == 0 ? "bool?" : "bool";
                         break;
                     case "jsonstring":
-                    case "jsonString":
                         paramType = paramName + "RequestModel";
                         break;
                     case "list":
@@ -158,6 +157,7 @@ $@"
                         paramType = "object";
                         break;
                     default:
+                        paramType = paramType.ToLower();
                         break;
                 }
                 // 数组类型特殊处理
@@ -167,7 +167,7 @@ $@"
                 }
 
                 // 如果是对象类型，生成子类模型
-                if (param.ChildrenNum > 0 || param.ParamType.Equals("jsonString"))
+                if (param.ChildrenNum > 0 || param.ParamType.ToLower().Equals("jsonstring"))
                 {
                     childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Level + 1, (int)param.Id);
                     paramType = paramName + "RequestModel";
@@ -199,8 +199,6 @@ $@"/// <summary>
         /// <returns></returns>
         public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1, int parentId = 0)
         {
-            File.AppendAllText("output.txt", "==" + className + "==: " + JsonConvert.SerializeObject(paramLists) + "\r\n");
-
             if (string.IsNullOrEmpty(className))
                 return default;
             var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
@@ -233,7 +231,7 @@ $@"
                 // 参数类型
                 var paramType = param.ParamDesc;
                 var orgType = param.ParamDesc;
-                switch (paramType)
+                switch (paramType.ToLower())
                 {
                     case "integer":
                     case "number":
@@ -243,7 +241,6 @@ $@"
                         paramType = param.IsMust == 0 ? "bool?" : "bool";
                         break;
                     case "jsonstring":
-                    case "jsonString":
                         paramType = paramName + "ResponseModel";
                         break;
                     case "list":
@@ -253,6 +250,7 @@ $@"
                         paramType = "object";
                         break;
                     default:
+                        paramType = paramType.ToLower();
                         break;
                 }
                 // 数组类型特殊处理
