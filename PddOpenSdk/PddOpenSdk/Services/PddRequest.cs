@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PddOpenSdk.Common;
-using PddOpenSdk.Models.PddApiResponse;
+using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services
 {
