@@ -110,12 +110,12 @@ $@"/// <summary>
         /// <param name="className"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public string BuildRequestModel(string className, List<ParamList> paramLists, int level = 1)
+        public string BuildRequestModel(string className, List<ParamList> paramLists, int level = 1, int parentId = 0)
         {
             if (string.IsNullOrEmpty(className))
                 return default;
 
-            var currentParamLists = paramLists.Where(p => p.Level == level).ToList();
+            var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
 
             string content = "";
             if (level == 1)
@@ -151,26 +151,26 @@ $@"
                     case "jsonString":
                         paramType = paramName + "RequestModel";
                         break;
-                    case "":
-                        paramType = "object";
-                        break;
                     case "list":
                         paramType = "object[]";
                         break;
-                    default:
+                    case "":
                         paramType = "object";
+                        break;
+                    default:
                         break;
                 }
                 // 数组类型特殊处理
                 if (param.ParamType.Equals(param.ParamType + "[]") || param.ParamType.Equals("[]"))
                 {
-                    paramType = $"List<{paramName}RequestModel>";
+                    paramType = $"List<{paramType}>";
                 }
 
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0 || param.ParamType.Equals("jsonString"))
                 {
-                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
+                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Level + 1, (int)param.Id);
+                    paramType = paramName + "RequestModel";
                 }
 
                 // 参数注释
@@ -197,13 +197,13 @@ $@"/// <summary>
         /// <param name="paramLists"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1)
+        public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1, int parentId = 0)
         {
             File.AppendAllText("output.txt", "==" + className + "==: " + JsonConvert.SerializeObject(paramLists) + "\r\n");
 
             if (string.IsNullOrEmpty(className))
                 return default;
-            var currentParamLists = paramLists.Where(p => p.Level == level).ToList();
+            var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
 
             string content = "";
             if (level == 1)
@@ -253,19 +253,18 @@ $@"
                         paramType = "object";
                         break;
                     default:
-                        paramType = "object";
                         break;
                 }
                 // 数组类型特殊处理
                 if (orgType.Equals(param.ParamType + "[]") || orgType.Equals("[]"))
                 {
-                    paramType = $"List<{paramName}ResponseModel>";
+                    paramType = $"List<{paramType}>";
                 }
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
-                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists.Where(p => p.ParentId == param.Id).ToList(), (int)param.Level + 1);
-
+                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists, (int)param.Level + 1, (int)param.Id);
+                    paramType = paramName + "ResponseModel";
                 }
                 // 参数注释
                 var paramComment =
