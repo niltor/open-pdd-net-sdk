@@ -157,7 +157,14 @@ $@"
                         paramType = "object";
                         break;
                     default:
-                        paramType = paramType.ToLower();
+                        if (paramType.ToLower().StartsWith("string"))
+                        {
+                            paramType = "string";
+                        }
+                        else
+                        {
+                            paramType = "object";
+                        }
                         break;
                 }
                 // 数组类型特殊处理
@@ -250,7 +257,14 @@ $@"
                         paramType = "object";
                         break;
                     default:
-                        paramType = paramType.ToLower();
+                        if (paramType.ToLower().StartsWith("string"))
+                        {
+                            paramType = "string";
+                        }
+                        else
+                        {
+                            paramType = "object";
+                        }
                         break;
                 }
                 // 数组类型特殊处理
