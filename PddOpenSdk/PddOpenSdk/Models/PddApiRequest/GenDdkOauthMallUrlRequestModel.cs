@@ -28,6 +28,11 @@ namespace PddOpenSdk.Models.PddApiRequest
         /// </summary>
         [JsonProperty("multi_group")]
         public bool? MultiGroup { get; set; }
+        /// <summary>
+        /// 自定义参数，为链接打上自定义标签。自定义参数最长限制64个字节
+        /// </summary>
+        [JsonProperty("custom_parameters")]
+        public string CustomParameters { get; set; }
 
     }
 }

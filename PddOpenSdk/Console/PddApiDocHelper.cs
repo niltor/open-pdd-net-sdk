@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -46,13 +45,15 @@ namespace Sample
                         var className = docList?.FirstOrDefault()?.ScopeName;
                         if (className != null)
                         {
+                            // 用来避免重复名称
+                            var secondName = className.Split(".")[2] ?? "UnNamed";
                             className = className.Split(".")[1] ?? "UnNamed";
                             foreach (var doc in docList)
                             {
                                 methodsContent += BuildRequestMethod(doc);
                             }
                             className = Function.ToTitleCase(className);
-                            SaveApiClass(className, methodsContent);
+                            SaveApiClass(className, methodsContent, secondName);
 
                         }
                     }
@@ -381,7 +382,7 @@ $@"/// <summary>
         /// 保存接口请求类
         /// </summary>
         /// <param name="className"></param>
-        protected void SaveApiClass(string className, string classContent)
+        protected void SaveApiClass(string className, string classContent, string secondName = "")
         {
             var currentPath = Directory.GetCurrentDirectory();
             var resultPath = Path.Combine(currentPath, "Services", "PddApi");
@@ -391,6 +392,11 @@ $@"/// <summary>
                 Directory.CreateDirectory(resultPath);
             }
             string fileName = Function.ToTitleCase(className) + "Api";
+            // 处理重复类名的情况
+            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
+            {
+                fileName = Function.ToTitleCase(className) + Function.ToTitleCase(secondName) + "Api";
+            }
 
             string content = $@"using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
@@ -399,16 +405,12 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {{
-    public class {fileName} : PddApi {{
+    public class {fileName} : PddCommonApi {{
         {classContent}
     }}
 }}
 ";
-            // 简单处理文件名称一样的情况
-            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
-            {
-                fileName = fileName + new Random().Next(1, 100);
-            }
+
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
         }

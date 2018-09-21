@@ -9,7 +9,7 @@ namespace PddOpenSdk.Models.PddApiRequest
         [JsonProperty("type")]
         public string Type { get; set; }
         /// <summary>
-        /// 订单类型（是否抽奖订单），1-非抽奖订单，2-抽奖订单
+        /// 订单类型（是否抽奖订单），0-全部，1-非抽奖订单，2-抽奖订单
         /// </summary>
         [JsonProperty("is_lucky_flag")]
         public string IsLuckyFlag { get; set; }

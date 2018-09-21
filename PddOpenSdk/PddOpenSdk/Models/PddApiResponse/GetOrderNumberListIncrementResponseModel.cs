@@ -237,7 +237,7 @@ namespace PddOpenSdk.Models.PddApiResponse
             [JsonProperty("order_status")]
             public int OrderStatus { get; set; }
             /// <summary>
-            /// 是否抽奖订单，0-抽奖订单，1-非抽奖订单
+            /// 是否抽奖订单，1-非抽奖订单，2-抽奖订单
             /// </summary>
             [JsonProperty("is_lucky_flag")]
             public int IsLuckyFlag { get; set; }

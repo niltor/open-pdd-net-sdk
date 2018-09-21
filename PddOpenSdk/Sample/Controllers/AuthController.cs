@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using PddOpenSdk.Common;
 using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Services;
-using PddOpenSdk.Services.PddApiRequest;
+using PddOpenSdk.Services.PddApi;
 using Sample.Models;
 
 namespace Sample.Controllers
@@ -15,7 +15,7 @@ namespace Sample.Controllers
     {
         public IActionResult Index()
         {
-            var pddRequest = new PddApi();
+            var pddRequest = new PddCommonApi();
 
             var user = new User
             {
@@ -37,15 +37,15 @@ namespace Sample.Controllers
         public async Task<IActionResult> Callback(string code)
         {
 
-            var pddRequest = new PddApi();
+            var pddRequest = new PddCommonApi();
             var token = await pddRequest.GetAccessTokenAsync(code, "https://pdd.guandian.tech/pdd/callback");
             System.Console.WriteLine(token);
-            return Content(token);
+            return Content(token.AccessToken);
         }
 
         public async Task<IActionResult> Test()
         {
-            var ddk = new DdkApiRequest();
+            var ddk = new DdkApi();
             var result = await ddk.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
             {
                 SortType = 0,
