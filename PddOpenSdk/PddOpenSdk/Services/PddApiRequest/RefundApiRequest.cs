@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class RefundApiRequest : PddRequest
+    public class RefundApiRequest : PddApi
     {
         /// <summary>
         /// 获取商家退货地址库

@@ -15,7 +15,7 @@ namespace Sample.Controllers
     {
         public IActionResult Index()
         {
-            var pddRequest = new PddRequest();
+            var pddRequest = new PddApi();
 
             var user = new User
             {
@@ -37,7 +37,7 @@ namespace Sample.Controllers
         public async Task<IActionResult> Callback(string code)
         {
 
-            var pddRequest = new PddRequest();
+            var pddRequest = new PddApi();
             var token = await pddRequest.GetAccessTokenAsync(code, "https://pdd.guandian.tech/pdd/callback");
             System.Console.WriteLine(token);
             return Content(token);

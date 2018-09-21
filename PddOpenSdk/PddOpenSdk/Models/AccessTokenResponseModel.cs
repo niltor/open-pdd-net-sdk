@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace PddOpenSdk.Models
 {
-    class AccessTokenResponseModel
+    public class AccessTokenResponseModel
     {
         [JsonProperty("scope")]
         public string[] Scope { get; set; }

@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class SmsApiRequest : PddRequest
+    public class SmsApiRequest : PddApi
     {
         /// <summary>
         /// 新增人群

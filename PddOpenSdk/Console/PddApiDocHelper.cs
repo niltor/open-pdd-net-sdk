@@ -51,7 +51,7 @@ namespace Sample
                                 methodsContent += BuildRequestMethod(doc);
                             }
                             className = Function.ToTitleCase(className);
-                            SaveRequestClass(className, methodsContent);
+                            SaveApiClass(className, methodsContent);
                         }
                     }
                 }
@@ -379,25 +379,25 @@ $@"/// <summary>
         /// 保存接口请求类
         /// </summary>
         /// <param name="className"></param>
-        protected void SaveRequestClass(string className, string classContent)
+        protected void SaveApiClass(string className, string classContent)
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Services", "PddApiRequest");
+            var resultPath = Path.Combine(currentPath, "Services", "PddApi");
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
                 Directory.CreateDirectory(resultPath);
             }
-            string fileName = Function.ToTitleCase(className) + "ApiRequest";
+            string fileName = Function.ToTitleCase(className) + "Api";
 
             string content = $@"using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-namespace PddOpenSdk.Services.PddApiRequest
+namespace PddOpenSdk.Services.PddApi
 {{
-    public class {fileName} : PddRequest {{
+    public class {fileName} : PddApi {{
         {classContent}
     }}
 }}

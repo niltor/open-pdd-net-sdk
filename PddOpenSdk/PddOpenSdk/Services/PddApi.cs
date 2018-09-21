@@ -15,7 +15,7 @@ namespace PddOpenSdk.Services
     /// <summary>
     /// 拼多多请求
     /// </summary>
-    public class PddRequest
+    public class PddApi
     {
         /// <summary>
         /// 请求接口
@@ -34,6 +34,10 @@ namespace PddOpenSdk.Services
         /// </summary>
         readonly string ClientSecret = "d852c967bbdad36ae446ae84dfccf1c61b5a8d6f"; // TODO 配置中读取
         /// <summary>
+        /// 回调地址
+        /// </summary>
+        readonly string RedirectUri = "http://pdd.guandian.tech/pdd/callback"; // TODO 配置中读取
+        /// <summary>
         /// 商家授权地址
         /// </summary>
         private static readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
@@ -47,9 +51,19 @@ namespace PddOpenSdk.Services
         private static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
 
         protected static HttpClient client = new HttpClient();
+        /// <summary>
+        /// token
+        /// </summary>
+        public string AccessToken;
 
-        public PddRequest()
+        public PddApi()
         {
+        }
+        public PddApi(string clientId, string clientSecret, string accessToken)
+        {
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            AccessToken = accessToken;
         }
 
         /// <summary>
@@ -59,7 +73,7 @@ namespace PddOpenSdk.Services
         /// <param name="redirectUri"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public async Task<string> GetAccessTokenAsync(string code, string redirectUri, string state = null)
+        public async Task<AccessTokenResponseModel> GetAccessTokenAsync(string code, string redirectUri, string state = null)
         {
             if (code != null && redirectUri != null)
             {
@@ -84,9 +98,7 @@ namespace PddOpenSdk.Services
                     string jsonString = await response.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
-                    // TODO 结果处理，保存token及过期时间
-
-                    return result?.AccessToken;
+                    return result;
                 }
             }
             return default;
@@ -134,9 +146,8 @@ namespace PddOpenSdk.Services
         {
             // 类型转换到字典
             var dic = Function.ToDictionary(model);
-            var token = "df83e6adb6b347dd876648b38524e65aece86c9b";
             // 添加公共参数
-            dic.Add("access_token", token);
+            dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
             dic.Add("versioin", "V1");
@@ -147,7 +158,7 @@ namespace PddOpenSdk.Services
                 dic.Add("type", type);
             }
             // 添加签名
-            dic.Add("sign", BuildSign(token, dic));
+            dic.Add("sign", BuildSign(dic));
 
             var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
             var response = await client.PostAsync(ApiUrl, data);
@@ -174,7 +185,7 @@ namespace PddOpenSdk.Services
         /// <param name="type"></param>
         /// <param name="dic"></param>
         /// <returns></returns>
-        public string BuildSign(string token, Dictionary<string, object> dic)
+        public string BuildSign(Dictionary<string, object> dic)
         {
             // 去除空值并排序
             dic = dic.Where(d => d.Value != null)

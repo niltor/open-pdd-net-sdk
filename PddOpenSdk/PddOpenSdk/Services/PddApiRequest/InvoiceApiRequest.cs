@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class InvoiceApiRequest : PddRequest
+    public class InvoiceApiRequest : PddApi
     {
         /// <summary>
         /// 开票申请单查询

@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class VirtualApiRequest : PddRequest
+    public class VirtualApiRequest : PddApi
     {
         /// <summary>
         /// 虚拟类目发货通知接口

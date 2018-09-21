@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class TimeApiRequest : PddRequest
+    public class TimeApiRequest : PddApi
     {
         /// <summary>
         /// 获取拼多多系统时间

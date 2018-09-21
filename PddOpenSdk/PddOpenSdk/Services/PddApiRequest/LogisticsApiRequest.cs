@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class LogisticsApiRequest : PddRequest
+    public class LogisticsApiRequest : PddApi
     {
         /// <summary>
         /// 客户与机器人的聊天记录获取接口

@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class VoucherApiRequest : PddRequest
+    public class VoucherApiRequest : PddApi
     {
         /// <summary>
         /// 卡券预约提货接口

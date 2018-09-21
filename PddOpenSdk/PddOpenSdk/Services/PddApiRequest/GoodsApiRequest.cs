@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class GoodsApiRequest : PddRequest
+    public class GoodsApiRequest : PddApi
     {
         /// <summary>
         /// 商品列表接口

@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class AdApiRequest : PddRequest
+    public class AdApiRequest : PddApi
     {
         /// <summary>
         /// 获取关键词推广报表信息

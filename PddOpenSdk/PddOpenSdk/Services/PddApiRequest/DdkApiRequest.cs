@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class DdkApiRequest : PddRequest
+    public class DdkApiRequest : PddApi
     {
         /// <summary>
         /// 多多进宝商品详情查询

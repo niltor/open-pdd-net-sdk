@@ -3,7 +3,7 @@ using PddOpenSdk.Models.PddApiRequest;
 using PddOpenSdk.Models.PddApiResponse;
 namespace PddOpenSdk.Services.PddApiRequest
 {
-    public class PromotionApiRequest : PddRequest
+    public class PromotionApiRequest : PddApi
     {
         /// <summary>
         /// 关闭批次接口
