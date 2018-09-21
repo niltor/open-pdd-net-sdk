@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -52,6 +53,7 @@ namespace Sample
                             }
                             className = Function.ToTitleCase(className);
                             SaveApiClass(className, methodsContent);
+
                         }
                     }
                 }
@@ -402,6 +404,11 @@ namespace PddOpenSdk.Services.PddApi
     }}
 }}
 ";
+            // 简单处理文件名称一样的情况
+            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
+            {
+                fileName = fileName + new Random().Next(1, 100);
+            }
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
         }
