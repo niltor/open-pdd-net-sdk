@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PddOpenSdk.Common;
-using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services
 {
@@ -21,117 +20,17 @@ namespace PddOpenSdk.Services
         /// 请求接口
         /// </summary>
         static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
-        /// <summary>
-        /// access_token
-        /// </summary>
-        static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
-        /// <summary>
-        /// 平台提供
-        /// </summary>
-        readonly string ClientId = "224d8818907b438aab5262df5dfe6dde"; // TODO 配置中读取
-        /// <summary>
-        /// 平台提供
-        /// </summary>
-        readonly string ClientSecret = "d852c967bbdad36ae446ae84dfccf1c61b5a8d6f"; // TODO 配置中读取
-        /// <summary>
-        /// 回调地址
-        /// </summary>
-        readonly string RedirectUri = "http://pdd.guandian.tech/pdd/callback"; // TODO 配置中读取
-        /// <summary>
-        /// 商家授权地址
-        /// </summary>
-        private static readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
-        /// <summary>
-        /// 移动端授权地址
-        /// </summary>
-        private static readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
-        /// <summary>
-        /// 多多客授权地址
-        /// </summary>
-        private static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
-
-        protected static HttpClient client = new HttpClient();
+        protected string ClientId { get; set; }
+        protected string ClientSecret { get; set; }
         /// <summary>
         /// token
         /// </summary>
-        public string AccessToken;
+        protected string AccessToken { get; set; }
+
+        protected static HttpClient client = new HttpClient();
 
         public PddCommonApi()
         {
-        }
-        public PddCommonApi(string clientId, string clientSecret, string accessToken)
-        {
-            ClientId = clientId;
-            ClientSecret = clientSecret;
-            AccessToken = accessToken;
-        }
-
-        /// <summary>
-        /// 获取请求
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="redirectUri"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public async Task<AccessTokenResponseModel> GetAccessTokenAsync(string code, string redirectUri, string state = null)
-        {
-            if (code != null && redirectUri != null)
-            {
-                // TODO 先读取未过期token，若已过期，则刷新或重新获取
-                var dic = new Dictionary<string, string>
-                {
-                    { "client_id", ClientId },
-                    { "client_secret", ClientSecret },
-                    { "grant_type", "authorization_code" },
-                    { "code", code },
-                    { "redirect_uri", redirectUri }
-                };
-                if (state != null)
-                {
-                    dic.Add("state", state);
-                }
-
-                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-                using (var hc = new HttpClient())
-                {
-                    var response = await hc.PostAsync(TokenUrl, data);
-                    string jsonString = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
-
-                    return result;
-                }
-            }
-            return default;
-        }
-
-        /// <summary>
-        /// post请求
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="dic"></param>
-        /// <returns></returns>
-        protected async Task<T> PostAsync<T>(string type, Dictionary<string, object> dic)
-        {
-            // TODO 合并字典
-            var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(ApiUrl, data);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonResult = await response.Content.ReadAsStringAsync();
-                var jObject = JObject.Parse(jsonResult);
-                if (jObject.TryGetValue("error_response", out var errorResponse))
-                {
-                    // TODO:记录异常
-                    System.Console.WriteLine(errorResponse["error_code"].ToString() + errorResponse["error_msg"]);
-                    return default;
-                }
-                else
-                {
-                    return JsonConvert.DeserializeObject<T>(jsonResult);
-                }
-
-            }
-            return default;
         }
 
         /// <summary>
@@ -144,6 +43,10 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         protected async Task<TResult> PostAsync<TModel, TResult>(string type, TModel model)
         {
+            if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret) || string.IsNullOrEmpty(AccessToken))
+            {
+                throw new Exception("请检查是否设置ClientId、ClientSecret及AccessToken");
+            }
             // 类型转换到字典
             var dic = Function.ToDictionary(model);
             // 添加公共参数
@@ -212,51 +115,7 @@ namespace PddOpenSdk.Services
             return signString;
         }
 
-        /// <summary>
-        /// 获取网页授权地址
-        /// </summary>
-        /// <param name="callbackUrl"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public string GetWebOAuthUrl(string callbackUrl, string state = null)
-        {
-            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
-            if (!string.IsNullOrEmpty(state))
-            {
-                url += "&state=" + state;
-            }
-            return url;
-        }
-        /// <summary>
-        /// 获取移动网页授权地址
-        /// </summary>
-        /// <param name="callbackUrl"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public string GetH5OAuthUrl(string callbackUrl, string state = null)
-        {
-            string url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl + "&view=h5";
-            if (!string.IsNullOrEmpty(state))
-            {
-                url += "&state=" + state;
-            }
-            return url;
-        }
-        /// <summary>
-        /// 多多客授权
-        /// </summary>
-        /// <param name="callbackUrl"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
-        public string GetDDKOAuthUrl(string callbackUrl, string state = null)
-        {
-            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
-            if (!string.IsNullOrEmpty(state))
-            {
-                url += "&state=" + state;
-            }
-            return url;
-        }
+
     }
 
     /// <summary>
