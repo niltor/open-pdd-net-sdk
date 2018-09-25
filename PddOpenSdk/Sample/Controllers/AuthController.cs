@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreMvc;
 using Newtonsoft.Json;
-using PddOpenSdk.Common;
 using PddOpenSdk.Models.PddApiRequest;
-using PddOpenSdk.Services;
 using PddOpenSdk.Services.PddApi;
 using Sample.Models;
 
@@ -13,34 +12,26 @@ namespace Sample.Controllers
 {
     public class AuthController : Controller
     {
+
+        readonly PddService _pdd;
+
+        public AuthController(PddService pdd)
+        {
+            _pdd = pdd;
+        }
         public IActionResult Index()
         {
-            var pddRequest = new PddCommonApi();
-
-            var user = new User
-            {
-                Name = "niltor",
-                Blogs = new List<Blog>
-                {
-                    new Blog{Title = "博文1" },
-                    new Blog{Title = "22"}
-                }
-            };
-
-            var dic = Function.ToDictionary(user);
-
-
-            ViewData["url"] = pddRequest.GetDDKOAuthUrl("https://pdd.guandian.tech/pdd/callback");
+            _pdd.Test();
             return View();
         }
 
         public async Task<IActionResult> Callback(string code)
         {
 
-            var pddRequest = new PddCommonApi();
-            var token = await pddRequest.GetAccessTokenAsync(code, "https://pdd.guandian.tech/pdd/callback");
-            System.Console.WriteLine(token);
-            return Content(token.AccessToken);
+            //var pddRequest = new AuthApi();
+            //var token = await pddRequest.GetAccessTokenAsync(code, "https://pdd.guandian.tech/pdd/callback");
+            //System.Console.WriteLine(token);
+            return Content("");
         }
 
         public async Task<IActionResult> Test()
