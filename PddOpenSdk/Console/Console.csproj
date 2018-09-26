@@ -15,4 +15,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JsonToClass\JsonToClass.csproj" />
+  </ItemGroup>
+
 </Project>

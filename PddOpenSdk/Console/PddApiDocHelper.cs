@@ -4,8 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Msdev.JsonToClass;
+using Msdev.JsonToClass.CodeWriters;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Sample
 {
@@ -91,7 +92,13 @@ $@"/// <summary>
 
             // 创建返回模型类
             string responseModelName = methodName + "ResponseModel";
-            string responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
+            // 根据返回示例生成
+            string responseContent = JsonToClass(responseModelName, doc.CodeExample);
+            if (string.IsNullOrEmpty(responseContent))
+            {
+                responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
+            }
+
             if (string.IsNullOrEmpty(responseContent))
             {
                 File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
@@ -304,34 +311,36 @@ $@"/// <summary>
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
-        protected async Task<string> JsonToClass(string json)
+        protected string JsonToClass(string className, string json)
         {
             if (string.IsNullOrEmpty(json)) return default;
-            using (var hc = new HttpClient())
+            var gen = new JsonClassGenerator
+            {
+                UsePascalCase = true,
+                MainClass = className,
+                UseNestedClasses = false,
+                UseProperties = true,
+                CodeWriter = new CSharpCodeWriter(),
+                Namespace = "PddOpenSdk.Models.PddApiResponse",
+                Example = json,
+                ExamplesInDocumentation = true
+            };
+            using (var sw = new StringWriter())
             {
 
-                var data = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
+                try
                 {
-                    new KeyValuePair<string, string>("json",json)
-                });
-                var response = await hc.PostAsync("http://json2csharp.com/Home/GenerateClasses", data);
-                if (response.IsSuccessStatusCode)
-                {
-                    string jsonResonse = await response.Content.ReadAsStringAsync();
-                    var jObject = JObject.Parse(jsonResonse);
-                    if (jObject.Value<bool>("Success") == false)
-                    {
-                        System.Console.WriteLine("返回json解析错误：");
-                        return default;
-                    }
-                    else
-                    {
-                        var dic = JsonConvert.DeserializeObject<IDictionary<string, string>>(jObject["Classes"].ToString());
-                        return string.Join("\n", dic.Values);
-                    }
-
+                    gen.OutputStream = sw;
+                    gen.GenerateClasses();
+                    sw.Flush();
+                    return sw.ToString();
                 }
-                return default;
+                catch (System.Exception)
+                {
+                    System.Console.WriteLine(className);
+                    return default;
+                }
+
             }
         }
 

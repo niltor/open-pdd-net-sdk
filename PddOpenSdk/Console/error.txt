@@ -1,0 +1,628 @@
+pdd.ad.chart.bykeyword.get; catId:11{{host}}/api/router?type=pdd.ad.chart.bykeyword.get&timestamp=1515941090&sign=A1E6089DB82896088863D7A3ACB42E86&client_id=145790b4d003cab1720158b26950691b&access_token=cd79b1238c3441ae8e24ad94cc968dd089beecc7&page=1&page_size=2&date=2018-01-01
+
+{
+  "ad_keyword_daily_report_response": {
+    "keyword_daily_report_list": [
+      {
+        "date": "2018-01-29",
+        "impression_num": 1356,
+        "click_num": 14,
+        "spend": 1303453,
+        "ad_info": {
+          "plan_name": "6565",
+          "keyword": "熊"
+        },
+        "conversion": {
+          "direct_order_num": 14,
+          "direct_gmv": 4000,
+          "total_order_num": 25,
+          "total_gmv": 200
+        }
+      },
+      {
+        "date": "2018-01-29",
+        "impression_num": 1323,
+        "click_num": 14,
+        "spend": 456456,
+        "ad_info": {
+          "plan_name": "6565",
+          "keyword": "憨豆熊"
+        },
+        "conversion": {
+          "direct_order_num": 14,
+          "direct_gmv": 4000,
+          "total_order_num": 25,
+          "total_gmv": 200
+        }
+      }
+    ],
+    "total_count": 12
+  }
+}
+pdd.ddk.goods.search; catId:12{
+  "goods_search_response": {
+    "goods_list": [
+      {
+        "goods_id": 595564668,
+        "goods_name": "4条装/男士内裤高档纯棉弹力棉中腰平角内裤宽松大码吸湿透气内裤男短裤底裤裤头无痕内裤青年纯棉裆四角裤衩潮平角裤",
+        "goods_desc": null,
+        "goods_thumbnail_url": "http://t04img.yangkeduo.com/images/2018-03-01/1ca25ffc5970a992d0e13d0f298280ee.jpeg",
+        "goods_image_url": "http://t05img.yangkeduo.com/images/2018-03-01/2948f580ade557320c7e9267f497940b.jpeg",
+        "goods_gallery_urls": null,
+        "sold_quantity": 67,
+        "min_group_price": 3890,
+        "min_normal_price": 4400,
+        "mall_name": "雅姿网商",
+        "category_id": 743,
+        "category_name": "男装",
+        "has_coupon": true,
+        "coupon_min_order_amount": 3700,
+        "coupon_discount": 2000,
+        "coupon_total_quantity": 5000,
+        "coupon_remain_quantity": 3800,
+        "coupon_start_time": 1520870400,
+        "coupon_end_time": 1521475199,
+        "promotion_rate": 300,
+        "goods_eval_score": 0,
+        "goods_eval_count": 0,
+        "cat_id": 288,
+        "avg_desc": 494,
+        "avg_lgst": 494,
+        "avg_serv": 494
+        "merchant_type": 1
+      }
+    ],
+    "total_count": 24
+  }
+}
+pdd.ddk.goods.pid.query; catId:12{
+  "p_id_query_response": {
+    "p_id_list": [
+      {
+        "name":123321,
+        "p_id": "81_1812886",
+        "create_time": 1517724155
+      },
+      {
+        "name":123321
+        "p_id": "81_1812888",
+        "create_time": 1517916590
+      },
+      {
+        "name":123321
+        "p_id": "81_1812889",
+        "create_time": 1517916590
+      },
+      {
+        "name":123321
+        "p_id": "81_1812890",
+        "create_time": 1517916634
+      },
+      {
+        "name":123321
+        "p_id": "81_1812891",
+        "create_time": 1517916634
+      },
+      {
+        "name":123321
+        "p_id": "81_1812892",
+        "create_time": 1517917263
+      },
+      {
+        "name":123321
+        "p_id": "81_1812893",
+        "create_time": 1517917263
+      },
+      {
+        "name":123321
+        "p_id": "81_1812894",
+        "create_time": 1517917855
+      },
+      {
+        "name":123321
+        "p_id": "81_1812895",
+        "create_time": 1517917855
+      },
+      {
+        "name":123321
+        "p_id": "81_1812896",
+        "create_time": 1517917862
+      }
+    ],
+    "total_count": 17
+  }
+}
+pdd.ddk.rp.prom.url.generate; catId:12{
+	"rp_promotion_url_generate_response": {
+		"url_list": [{
+			"url": ...
+			"short_url": ...
+			"mobile_url": ...
+			"mobile_short_url": ...
+			"we_app_web_view_url": ...
+			"we_app_web_view_short_url": ....
+			"multi_group_url": ...
+			"multi_group_short_url": ...
+			"multi_group_mobile_url": ...
+			"multi_group_mobile_short_url": "http://.../api/d/YQmY5e",
+			"multi_we_app_web_view_url": "http://.../duo_red_packet.html?pid=210035_735&customParameters=true&cpsSign=C&duoduo_type=3&launch_wx=1",
+			"multi_we_app_web_view_short_url": "http://apiv2.hutaojie.com/api/d/YQmY5e",
+			"we_app_info": {
+				"app_id": "wx32540bd863b27570",
+				"we_app_icon_url": "http://xcxcdn.yangkeduo.com/pdd_logo.png",
+				"banner_url": null,
+				"desc": "拼多多，多实惠，多乐趣。",
+				"source_display_name": "拼多多",
+				"page_path": "package_b/duoduo_envelope/duoduo_envelope?pid=210035_735&customParameters=true&cpsSign=CR210035_735_c698b734b3bd0d9584330737fed9b2b1&duoduo_type=3",
+				"user_name": "gh_0e7477744313@app",
+				"title": "送你个红包，快来领吧"
+			}
+		}, {
+			"url": ...
+			"short_url":...
+			"mobile_url": ...
+			"mobile_short_url": ...
+			"we_app_web_view_url": ...
+			"multi_group_url": ...
+			"multi_group_short_url": ...
+			"multi_group_mobile_url":...
+			"multi_group_mobile_short_url": "http://.../api/d/YQmY5k",
+			"multi_we_app_web_view_url": "http://.../duo_red_packet.html?pid=210035_2840&customParameters=true&cpsSign=CR210035_2840_1bf2f9d1cbc376549c7eb62642e87a95&duoduo_type=3&launch_wx=1",
+			"multi_we_app_web_view_short_url": "http://apiv2.hutaojie.com/api/d/YQmY5k",
+			"we_app_info": {
+				"app_id": "wx32540bd863b27570",
+				"we_app_icon_url": null,
+				"banner_url": null,
+				"desc": "拼多多，多实惠，多乐趣。",
+				"source_display_name": "拼多多",
+				"page_path": "package_b/duoduo_envelope/duoduo_envelope?pid=210035_2840&customParameters=true&cpsSign=CR210035_2840_1bf2f9d1cbc376549c7eb62642e87a95&duoduo_type=3",
+				"user_name": "gh_0e7477744313@app",
+				"title": "...
+			}
+		}]
+	}
+}
+pdd.ddk.goods.recommend.get; catId:12{
+	"goods_basic_detail_response": {
+		"list": [{
+			"create_at": 1531883968,
+			"goods_id": 2245504842,
+			"goods_name": "尊睿  儿童塑料防滑小衣架宝宝伸缩晾衣架新生儿婴儿防风衣服架",
+			"goods_desc": null,
+			"goods_thumbnail_url": "http://t00img.yangkeduo.com/goods/images/2018-08-02/1195978f51999d00cd7ea8dc1555a5c9.jpeg",
+			"goods_image_url": "http://t00img.yangkeduo.com/goods/images/2018-08-03/b7cbda264599ed86e04b4a8ef53d803f.jpeg",
+			"goods_gallery_urls": null,
+			"sold_quantity": 4570,
+			"goods_mark_price": 3900,
+			"goods_fact_price": 1190,
+			"min_group_price": 1190,
+			"min_normal_price": 1290,
+			"mall_id": 111267,
+			"mall_name": "腾达生活",
+			"merchant_type": 1,
+			"category_id": 12,
+			"category_name": "海淘",
+			"opt_id": 12,
+			"opt_name": "海淘",
+			"opt_ids": [12, 15],
+			"cat_ids": [519, 523, 802, 0],
+			"goods_type": 1,
+			"has_coupon": true,
+			"coupon_id": 114473652,
+			"coupon_min_order_amount": 200,
+			"coupon_discount": 200,
+			"coupon_total_quantity": 3000,
+			"coupon_remain_quantity": 2520,
+			"coupon_start_time": 1533571200,
+			"coupon_end_time": 1533916799,
+			"promotion_rate": 500,
+			"coupon_price": 200,
+			"goods_rate": 500,
+			"market_fee": 495,
+			"goods_eval_score": 0,
+			"goods_eval_count": 0,
+			"cat_id": null,
+			"share_desc": null,
+			"avg_desc": 487,
+			"avg_lgst": 483,
+			"avg_serv": 483,
+			"desc_pct": 0.7517,
+			"lgst_pct": 0.805,
+			"serv_pct": 0.8154,
+			"sale_num24": 4690,
+			"sale_num_today": null,
+			"rank": null,
+			"broker": null,
+			"lock_edit": null,
+			"qr_code_image_url": null
+		}
+pdd.ddk.resource.url.gen; catId:12{
+	"resource_url_response": {
+		"single_url_list": {
+			"url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2",
+	",
+			"short_url": ": "http://apiv2.hutaojie.com/api/d/Xprve8",
+	",
+			"mobile_url": ": "http://m.hutaojie.com/app.html?launch_url=duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2",
+	",
+			"mobile_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprve9",
+	",
+			"we_app_web_view_url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2&launch_wx=1",
+	",
+			"we_app_web_view_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprvea",
+	",
+			"we_app_page_path": null
+		},
+		"multi_url_list": {
+			"url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3",
+	",
+			"short_url": ": "http://apiv2.hutaojie.com/api/d/Xprveb",
+	",
+			"mobile_url": ": "http://m.hutaojie.com/app.html?launch_url=duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3",
+	",
+			"mobile_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprvec",
+	",
+			"we_app_web_view_url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3&launch_wx=1",
+	",
+			"we_app_web_view_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprved",
+	",
+			"we_app_page_path": null
+		},
+		"sign": "CE210035_735_12b26d652b895c8ae77a8a0b7553919b"
+	}
+}
+pdd.ddk.merchant.list.get; catId:12"merchant_list_response": {
+		"mall_search_info_vo_list": [{
+					"mall_id": 7606022,
+					"mall_name": "seven7",
+					"mall_rate": 110,
+					"merchant_type": 1,
+					"img_url": "http://imsproductionimg.yangkeduo.com/9c7629952e6f2ad5175f4c67042bf652.jpg",
+					"sold_quantity": 0,
+					"cat_id_list": [2, 5, 6, 11, 7],
+					"goods_num": null,
+					"avg_desc": 0,
+					"avg_lgst": 0,
+					"avg_serv": 0,
+					"desc_pct": 0,
+					"lgst_pct": 0,
+					"serv_pct": 0,
+					"mall_coupon_info_list": [{
+						"mall_id": null,
+						"coupon_id": 9251420448,
+						"coupon_type": 225,
+						"discount": 60,
+						"min_order_amount": 0,
+						"max_discount_amount": 20000,
+						"coupon_quantity": 555,
+						"coupon_remain_quantity": 505,
+						"coupon_start_time": 1535644800,
+						"coupon_end_time": 1538323199
+					}],
+					"goods_detail_vo_list": [{
+								"create_at": 1537110154,
+								"goods_id": 10083246,
+								"goods_name": "母婴配饰粉色发带",
+								"goods_desc": null,
+								"goods_thumbnail_url": "http://pddtestimg.yangkeduo.com/express/2018-05-14/1a92274881f48fac15a29d1c1894015d.jpeg",
+								"goods_image_url": "",
+								"goods_gallery_urls": null,
+								"sold_quantity": 1,
+								"min_group_price": 5000,
+								"min_normal_price": 8000,
+								"mall_name": "seven7",
+						},
+pdd.ad.chart.bykeyword.get; catId:11{{host}}/api/router?type=pdd.ad.chart.bykeyword.get&timestamp=1515941090&sign=A1E6089DB82896088863D7A3ACB42E86&client_id=145790b4d003cab1720158b26950691b&access_token=cd79b1238c3441ae8e24ad94cc968dd089beecc7&page=1&page_size=2&date=2018-01-01
+
+{
+  "ad_keyword_daily_report_response": {
+    "keyword_daily_report_list": [
+      {
+        "date": "2018-01-29",
+        "impression_num": 1356,
+        "click_num": 14,
+        "spend": 1303453,
+        "ad_info": {
+          "plan_name": "6565",
+          "keyword": "熊"
+        },
+        "conversion": {
+          "direct_order_num": 14,
+          "direct_gmv": 4000,
+          "total_order_num": 25,
+          "total_gmv": 200
+        }
+      },
+      {
+        "date": "2018-01-29",
+        "impression_num": 1323,
+        "click_num": 14,
+        "spend": 456456,
+        "ad_info": {
+          "plan_name": "6565",
+          "keyword": "憨豆熊"
+        },
+        "conversion": {
+          "direct_order_num": 14,
+          "direct_gmv": 4000,
+          "total_order_num": 25,
+          "total_gmv": 200
+        }
+      }
+    ],
+    "total_count": 12
+  }
+}
+pdd.ddk.goods.search; catId:12{
+  "goods_search_response": {
+    "goods_list": [
+      {
+        "goods_id": 595564668,
+        "goods_name": "4条装/男士内裤高档纯棉弹力棉中腰平角内裤宽松大码吸湿透气内裤男短裤底裤裤头无痕内裤青年纯棉裆四角裤衩潮平角裤",
+        "goods_desc": null,
+        "goods_thumbnail_url": "http://t04img.yangkeduo.com/images/2018-03-01/1ca25ffc5970a992d0e13d0f298280ee.jpeg",
+        "goods_image_url": "http://t05img.yangkeduo.com/images/2018-03-01/2948f580ade557320c7e9267f497940b.jpeg",
+        "goods_gallery_urls": null,
+        "sold_quantity": 67,
+        "min_group_price": 3890,
+        "min_normal_price": 4400,
+        "mall_name": "雅姿网商",
+        "category_id": 743,
+        "category_name": "男装",
+        "has_coupon": true,
+        "coupon_min_order_amount": 3700,
+        "coupon_discount": 2000,
+        "coupon_total_quantity": 5000,
+        "coupon_remain_quantity": 3800,
+        "coupon_start_time": 1520870400,
+        "coupon_end_time": 1521475199,
+        "promotion_rate": 300,
+        "goods_eval_score": 0,
+        "goods_eval_count": 0,
+        "cat_id": 288,
+        "avg_desc": 494,
+        "avg_lgst": 494,
+        "avg_serv": 494
+        "merchant_type": 1
+      }
+    ],
+    "total_count": 24
+  }
+}
+pdd.ddk.goods.pid.query; catId:12{
+  "p_id_query_response": {
+    "p_id_list": [
+      {
+        "name":123321,
+        "p_id": "81_1812886",
+        "create_time": 1517724155
+      },
+      {
+        "name":123321
+        "p_id": "81_1812888",
+        "create_time": 1517916590
+      },
+      {
+        "name":123321
+        "p_id": "81_1812889",
+        "create_time": 1517916590
+      },
+      {
+        "name":123321
+        "p_id": "81_1812890",
+        "create_time": 1517916634
+      },
+      {
+        "name":123321
+        "p_id": "81_1812891",
+        "create_time": 1517916634
+      },
+      {
+        "name":123321
+        "p_id": "81_1812892",
+        "create_time": 1517917263
+      },
+      {
+        "name":123321
+        "p_id": "81_1812893",
+        "create_time": 1517917263
+      },
+      {
+        "name":123321
+        "p_id": "81_1812894",
+        "create_time": 1517917855
+      },
+      {
+        "name":123321
+        "p_id": "81_1812895",
+        "create_time": 1517917855
+      },
+      {
+        "name":123321
+        "p_id": "81_1812896",
+        "create_time": 1517917862
+      }
+    ],
+    "total_count": 17
+  }
+}
+pdd.ddk.rp.prom.url.generate; catId:12{
+	"rp_promotion_url_generate_response": {
+		"url_list": [{
+			"url": ...
+			"short_url": ...
+			"mobile_url": ...
+			"mobile_short_url": ...
+			"we_app_web_view_url": ...
+			"we_app_web_view_short_url": ....
+			"multi_group_url": ...
+			"multi_group_short_url": ...
+			"multi_group_mobile_url": ...
+			"multi_group_mobile_short_url": "http://.../api/d/YQmY5e",
+			"multi_we_app_web_view_url": "http://.../duo_red_packet.html?pid=210035_735&customParameters=true&cpsSign=C&duoduo_type=3&launch_wx=1",
+			"multi_we_app_web_view_short_url": "http://apiv2.hutaojie.com/api/d/YQmY5e",
+			"we_app_info": {
+				"app_id": "wx32540bd863b27570",
+				"we_app_icon_url": "http://xcxcdn.yangkeduo.com/pdd_logo.png",
+				"banner_url": null,
+				"desc": "拼多多，多实惠，多乐趣。",
+				"source_display_name": "拼多多",
+				"page_path": "package_b/duoduo_envelope/duoduo_envelope?pid=210035_735&customParameters=true&cpsSign=CR210035_735_c698b734b3bd0d9584330737fed9b2b1&duoduo_type=3",
+				"user_name": "gh_0e7477744313@app",
+				"title": "送你个红包，快来领吧"
+			}
+		}, {
+			"url": ...
+			"short_url":...
+			"mobile_url": ...
+			"mobile_short_url": ...
+			"we_app_web_view_url": ...
+			"multi_group_url": ...
+			"multi_group_short_url": ...
+			"multi_group_mobile_url":...
+			"multi_group_mobile_short_url": "http://.../api/d/YQmY5k",
+			"multi_we_app_web_view_url": "http://.../duo_red_packet.html?pid=210035_2840&customParameters=true&cpsSign=CR210035_2840_1bf2f9d1cbc376549c7eb62642e87a95&duoduo_type=3&launch_wx=1",
+			"multi_we_app_web_view_short_url": "http://apiv2.hutaojie.com/api/d/YQmY5k",
+			"we_app_info": {
+				"app_id": "wx32540bd863b27570",
+				"we_app_icon_url": null,
+				"banner_url": null,
+				"desc": "拼多多，多实惠，多乐趣。",
+				"source_display_name": "拼多多",
+				"page_path": "package_b/duoduo_envelope/duoduo_envelope?pid=210035_2840&customParameters=true&cpsSign=CR210035_2840_1bf2f9d1cbc376549c7eb62642e87a95&duoduo_type=3",
+				"user_name": "gh_0e7477744313@app",
+				"title": "...
+			}
+		}]
+	}
+}
+pdd.ddk.goods.recommend.get; catId:12{
+	"goods_basic_detail_response": {
+		"list": [{
+			"create_at": 1531883968,
+			"goods_id": 2245504842,
+			"goods_name": "尊睿  儿童塑料防滑小衣架宝宝伸缩晾衣架新生儿婴儿防风衣服架",
+			"goods_desc": null,
+			"goods_thumbnail_url": "http://t00img.yangkeduo.com/goods/images/2018-08-02/1195978f51999d00cd7ea8dc1555a5c9.jpeg",
+			"goods_image_url": "http://t00img.yangkeduo.com/goods/images/2018-08-03/b7cbda264599ed86e04b4a8ef53d803f.jpeg",
+			"goods_gallery_urls": null,
+			"sold_quantity": 4570,
+			"goods_mark_price": 3900,
+			"goods_fact_price": 1190,
+			"min_group_price": 1190,
+			"min_normal_price": 1290,
+			"mall_id": 111267,
+			"mall_name": "腾达生活",
+			"merchant_type": 1,
+			"category_id": 12,
+			"category_name": "海淘",
+			"opt_id": 12,
+			"opt_name": "海淘",
+			"opt_ids": [12, 15],
+			"cat_ids": [519, 523, 802, 0],
+			"goods_type": 1,
+			"has_coupon": true,
+			"coupon_id": 114473652,
+			"coupon_min_order_amount": 200,
+			"coupon_discount": 200,
+			"coupon_total_quantity": 3000,
+			"coupon_remain_quantity": 2520,
+			"coupon_start_time": 1533571200,
+			"coupon_end_time": 1533916799,
+			"promotion_rate": 500,
+			"coupon_price": 200,
+			"goods_rate": 500,
+			"market_fee": 495,
+			"goods_eval_score": 0,
+			"goods_eval_count": 0,
+			"cat_id": null,
+			"share_desc": null,
+			"avg_desc": 487,
+			"avg_lgst": 483,
+			"avg_serv": 483,
+			"desc_pct": 0.7517,
+			"lgst_pct": 0.805,
+			"serv_pct": 0.8154,
+			"sale_num24": 4690,
+			"sale_num_today": null,
+			"rank": null,
+			"broker": null,
+			"lock_edit": null,
+			"qr_code_image_url": null
+		}
+pdd.ddk.resource.url.gen; catId:12{
+	"resource_url_response": {
+		"single_url_list": {
+			"url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2",
+	",
+			"short_url": ": "http://apiv2.hutaojie.com/api/d/Xprve8",
+	",
+			"mobile_url": ": "http://m.hutaojie.com/app.html?launch_url=duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2",
+	",
+			"mobile_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprve9",
+	",
+			"we_app_web_view_url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2&launch_wx=1",
+	",
+			"we_app_web_view_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprvea",
+	",
+			"we_app_page_path": null
+		},
+		"multi_url_list": {
+			"url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3",
+	",
+			"short_url": ": "http://apiv2.hutaojie.com/api/d/Xprveb",
+	",
+			"mobile_url": ": "http://m.hutaojie.com/app.html?launch_url=duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3",
+	",
+			"mobile_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprvec",
+	",
+			"we_app_web_view_url": ": "http://m.hutaojie.com/duo_transfer_channel.html?resourceType=4&pid=210035_735&cpsSign=CE210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=3&launch_wx=1",
+	",
+			"we_app_web_view_short_url": ": "http://apiv2.hutaojie.com/api/d/Xprved",
+	",
+			"we_app_page_path": null
+		},
+		"sign": "CE210035_735_12b26d652b895c8ae77a8a0b7553919b"
+	}
+}
+pdd.ddk.merchant.list.get; catId:12"merchant_list_response": {
+		"mall_search_info_vo_list": [{
+					"mall_id": 7606022,
+					"mall_name": "seven7",
+					"mall_rate": 110,
+					"merchant_type": 1,
+					"img_url": "http://imsproductionimg.yangkeduo.com/9c7629952e6f2ad5175f4c67042bf652.jpg",
+					"sold_quantity": 0,
+					"cat_id_list": [2, 5, 6, 11, 7],
+					"goods_num": null,
+					"avg_desc": 0,
+					"avg_lgst": 0,
+					"avg_serv": 0,
+					"desc_pct": 0,
+					"lgst_pct": 0,
+					"serv_pct": 0,
+					"mall_coupon_info_list": [{
+						"mall_id": null,
+						"coupon_id": 9251420448,
+						"coupon_type": 225,
+						"discount": 60,
+						"min_order_amount": 0,
+						"max_discount_amount": 20000,
+						"coupon_quantity": 555,
+						"coupon_remain_quantity": 505,
+						"coupon_start_time": 1535644800,
+						"coupon_end_time": 1538323199
+					}],
+					"goods_detail_vo_list": [{
+								"create_at": 1537110154,
+								"goods_id": 10083246,
+								"goods_name": "母婴配饰粉色发带",
+								"goods_desc": null,
+								"goods_thumbnail_url": "http://pddtestimg.yangkeduo.com/express/2018-05-14/1a92274881f48fac15a29d1c1894015d.jpeg",
+								"goods_image_url": "",
+								"goods_gallery_urls": null,
+								"sold_quantity": 1,
+								"min_group_price": 5000,
+								"min_normal_price": 8000,
+								"mall_name": "seven7",
+						},
