@@ -1,7 +1,8 @@
-using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Sample
 {
@@ -40,6 +41,22 @@ namespace Sample
         {
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
             return myTI.ToTitleCase(words);
+        }
+
+        /// <summary>
+        /// 追加行内容
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="append"></param>
+        /// <param name="before">是否在前面追加</param>
+        /// <returns></returns>
+        public static string AppendLine(string content, string append, bool before = false)
+        {
+            if (before)
+            {
+                return append + content + Environment.NewLine;
+            }
+            return content + append + Environment.NewLine;
         }
     }
 

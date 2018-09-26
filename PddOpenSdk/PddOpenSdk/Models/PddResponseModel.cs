@@ -1,4 +1,4 @@
-namespace PddOpenSdk.Models.PddApiResponse
+namespace PddOpenSdk.Models.Response
 {
     /// <summary>
     /// 拼多多请求模型

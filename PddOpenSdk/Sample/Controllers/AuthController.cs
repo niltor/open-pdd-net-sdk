@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreMvc;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.PddApiRequest;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Services;
 using Sample.Models;
 

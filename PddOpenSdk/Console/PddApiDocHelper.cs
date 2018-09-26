@@ -49,12 +49,26 @@ namespace Sample
                             // 用来避免重复名称
                             var secondName = className.Split(".")[2] ?? "UnNamed";
                             className = className.Split(".")[1] ?? "UnNamed";
+
+                            var currentPath = Directory.GetCurrentDirectory();
+                            var resultPath = Path.Combine(currentPath, "Services", "PddApi");
+                            // 创建目录
+                            if (!Directory.Exists(resultPath))
+                            {
+                                Directory.CreateDirectory(resultPath);
+                            }
+                            string fileName = Function.ToTitleCase(className) + "Api";
+                            // 处理重复类名的情况
+                            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
+                            {
+                                className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
+                            }
+
                             foreach (var doc in docList)
                             {
-                                methodsContent += BuildRequestMethod(doc);
+                                methodsContent += BuildRequestMethod(doc, className);
                             }
-                            className = Function.ToTitleCase(className);
-                            SaveApiClass(className, methodsContent, secondName);
+                            SaveApiClass(className, methodsContent);
 
                         }
                     }
@@ -65,9 +79,11 @@ namespace Sample
         /// <summary>
         /// 生成接口请求方法
         /// </summary>
+        /// <param name="requestClassName">请求类名称</param>
         /// <param name="doc"></param>
-        public string BuildRequestMethod(ApiDoc doc)
+        public string BuildRequestMethod(ApiDoc doc, string requestClassName = "")
         {
+            requestClassName = Function.ToTitleCase(requestClassName);
             // 方法命名
             var scopeName = doc.ScopeName.Split('.');
             var methodName = Function.ToTitleCase(scopeName.Last());
@@ -86,14 +102,14 @@ $@"/// <summary>
             // 创建请求模型类
             string paramsModelType = methodName + "RequestModel";
             string requestContent = BuildRequestModel(paramsModelType, doc.RequestParamList);
-            SaveRequestModel(paramsModelType, requestContent);
+            SaveRequestModel(paramsModelType, requestContent, requestClassName);
             string paramsModelName = methodName.First().ToString().ToLower() + methodName.Substring(1);
             methodParams = paramsModelType + " " + paramsModelName;
 
             // 创建返回模型类
             string responseModelName = methodName + "ResponseModel";
             // 根据返回示例生成
-            string responseContent = JsonToClass(responseModelName, doc.CodeExample);
+            string responseContent = JsonToClass(responseModelName, doc.CodeExample, requestClassName);
             if (string.IsNullOrEmpty(responseContent))
             {
                 responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
@@ -103,7 +119,7 @@ $@"/// <summary>
             {
                 File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
             }
-            SaveResponseModel(responseModelName, responseContent);
+            SaveResponseModel(responseModelName, responseContent, requestClassName);
 
             return $@"{methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
 {{
@@ -126,20 +142,9 @@ $@"/// <summary>
                 return default;
 
             var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
-
             string content = "";
-            if (level == 1)
-            {
-                content += @"using System.Collections.Generic;
-using Newtonsoft.Json;
-namespace PddOpenSdk.Models.PddApiRequest
-{";
-            }
-            content +=
-$@"
-    public partial class {className} : PddRequestModel
-    {{
-        ";
+            content = Function.AppendLine(content, $"public partial class {className} : PddRequestModel");
+            content = Function.AppendLine(content, "{");
             string paramsContent = "";
             string childClass = "";
             foreach (var param in currentParamLists)
@@ -201,7 +206,7 @@ $@"/// <summary>
             }
             content += paramsContent;
             content += childClass + "\r\n";
-            content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+            content += "}\r\n";
 
             return content;
 
@@ -219,20 +224,9 @@ $@"/// <summary>
             if (string.IsNullOrEmpty(className))
                 return default;
             var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
-
             string content = "";
-            if (level == 1)
-            {
-                content += @"using System.Collections.Generic;
-using Newtonsoft.Json;
-namespace PddOpenSdk.Models.PddApiResponse
-{";
-            }
-            content +=
-$@"
-    public partial class {className} : PddResponseModel
-    {{
-        ";
+            content = Function.AppendLine(content, $"public partial class {className} : PddResponseModel");
+            content = Function.AppendLine(content, "{");
             string paramsContent = "";
             string childClass = "";
             foreach (var param in currentParamLists)
@@ -296,13 +290,12 @@ $@"/// <summary>
 [JsonProperty(""{param.ParamType}"")]
 ";
 
-
                 paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
                 //System.Console.WriteLine(paramType + " " + paramName);
             }
             content += paramsContent;
             content += childClass + "\r\n";
-            content += level == 1 ? "}\r\n}\r\n" : "}\r\n";
+            content += "}\r\n";
             return content;
         }
 
@@ -311,9 +304,10 @@ $@"/// <summary>
         /// </summary>
         /// <param name="json"></param>
         /// <returns></returns>
-        protected string JsonToClass(string className, string json)
+        protected string JsonToClass(string className, string json, string dir = "")
         {
             if (string.IsNullOrEmpty(json)) return default;
+            if (!string.IsNullOrEmpty(dir)) dir = "." + dir;
             var gen = new JsonClassGenerator
             {
                 UsePascalCase = true,
@@ -321,7 +315,7 @@ $@"/// <summary>
                 UseNestedClasses = false,
                 UseProperties = true,
                 CodeWriter = new CSharpCodeWriter(),
-                Namespace = "PddOpenSdk.Models.PddApiResponse",
+                //Namespace = "PddOpenSdk.Models.Response",
                 Example = json,
                 ExamplesInDocumentation = true
             };
@@ -349,10 +343,10 @@ $@"/// <summary>
         /// </summary>
         /// <param name="className"></param>
         /// <param name="classContent"></param>
-        protected void SaveRequestModel(string className, string classContent)
+        protected void SaveRequestModel(string className, string classContent, string dir = "")
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "PddApiRequest");
+            var resultPath = Path.Combine(currentPath, "Models", "Request", dir);
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
@@ -363,6 +357,15 @@ $@"/// <summary>
             {
                 classContent = $@"public class {className}{{}}";
             }
+
+            if (!string.IsNullOrEmpty(dir)) dir = "." + dir;
+            string namespaceBlock = Function.AppendLine("", "using System.Collections.Generic;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, "using Newtonsoft.Json;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, $"using PddOpenSdk.Models.Request;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Request{dir}");
+            namespaceBlock = Function.AppendLine(namespaceBlock, "{");
+            classContent = Function.AppendLine(classContent, namespaceBlock, true);
+            classContent = Function.AppendLine(classContent, "}");
             string fileName = className;
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
         }
@@ -370,10 +373,10 @@ $@"/// <summary>
         /// <summary>
         /// 自动生成接口返回类
         /// </summary>
-        protected void SaveResponseModel(string className, string classContent)
+        protected void SaveResponseModel(string className, string classContent, string dir = "")
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "PddApiResponse");
+            var resultPath = Path.Combine(currentPath, "Models", "Response", dir);
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
@@ -384,6 +387,16 @@ $@"/// <summary>
             {
                 classContent = $@"public class {className}{{}}";
             }
+
+            if (!string.IsNullOrEmpty(dir)) dir = "." + dir;
+            string namespaceBlock = Function.AppendLine("", "using System.Collections.Generic;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, "using Newtonsoft.Json;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, "using PddOpenSdk.Models.Response;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Response{dir}");
+            namespaceBlock = Function.AppendLine(namespaceBlock, "{");
+            classContent = Function.AppendLine(classContent, namespaceBlock, true);
+            classContent = Function.AppendLine(classContent, "}");
+
             string fileName = className;
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
         }
@@ -391,24 +404,18 @@ $@"/// <summary>
         /// 保存接口请求类
         /// </summary>
         /// <param name="className"></param>
-        protected void SaveApiClass(string className, string classContent, string secondName = "")
+        protected void SaveApiClass(string className, string classContent)
         {
             var currentPath = Directory.GetCurrentDirectory();
             var resultPath = Path.Combine(currentPath, "Services", "PddApi");
-            // 创建目录
-            if (!Directory.Exists(resultPath))
-            {
-                Directory.CreateDirectory(resultPath);
-            }
+
             string fileName = Function.ToTitleCase(className) + "Api";
             // 处理重复类名的情况
-            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
-            {
-                fileName = Function.ToTitleCase(className) + Function.ToTitleCase(secondName) + "Api";
-            }
 
-            string content = $@"using PddOpenSdk.Models.PddApiRequest;
-using PddOpenSdk.Models.PddApiResponse;
+            string content = $@"using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
+using PddOpenSdk.Models.Request.{Function.ToTitleCase(className)};
+using PddOpenSdk.Models.Response.{Function.ToTitleCase(className)};
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -419,7 +426,6 @@ namespace PddOpenSdk.Services.PddApi
     }}
 }}
 ";
-
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
         }
