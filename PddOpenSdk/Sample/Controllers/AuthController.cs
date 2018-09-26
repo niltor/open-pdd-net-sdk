@@ -21,30 +21,23 @@ namespace Sample.Controllers
         }
         public IActionResult Index()
         {
-            _pdd.Test();
+            string url = _pdd.AuthApi.GetDDKOAuthUrl();
+            ViewData["url"] = url;
             return View();
         }
 
         public async Task<IActionResult> Callback(string code)
         {
 
-            //var pddRequest = new AuthApi();
-            //var token = await pddRequest.GetAccessTokenAsync(code, "https://pdd.guandian.tech/pdd/callback");
-            //System.Console.WriteLine(token);
-            return Content("");
+            var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
+            System.Console.WriteLine(token);
+            return Content(token.AccessToken);
         }
 
-        public async Task<IActionResult> Test()
+        public ActionResult Test()
         {
-            var ddk = new DdkApi();
-            var result = await ddk.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
-            {
-                SortType = 0,
-                WithCoupon = false
-            });
-
-            System.Console.WriteLine(JsonConvert.SerializeObject(result));
-            return Content(JsonConvert.SerializeObject(result));
+            _pdd.Test();
+            return Content("");
         }
 
         public IActionResult Privacy()

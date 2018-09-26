@@ -20,18 +20,15 @@ namespace PddOpenSdk.Services
         /// 请求接口
         /// </summary>
         static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
-        protected string ClientId { get; set; }
-        protected string ClientSecret { get; set; }
+        public static string ClientId;
+        public static string ClientSecret;
         /// <summary>
         /// token
         /// </summary>
-        protected string AccessToken { get; set; }
-
+        public static string AccessToken;
+        public static string RedirectUri;
         protected static HttpClient client = new HttpClient();
 
-        public PddCommonApi()
-        {
-        }
 
         /// <summary>
         /// post请求封装

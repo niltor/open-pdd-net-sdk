@@ -7,17 +7,12 @@ using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services
 {
-    public class AuthApi
+    public class AuthApi : PddCommonApi
     {
         /// <summary>
         /// access_token
         /// </summary>
         public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
-        protected readonly string ClientId = ""; 
-        /// <summary>
-        /// 平台提供
-        /// </summary>
-        protected readonly string ClientSecret = ""; 
         /// <summary>
         /// 商家授权地址
         /// </summary>
@@ -31,12 +26,10 @@ namespace PddOpenSdk.Services
         /// </summary>
         public static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
 
-        protected HttpClient client = new HttpClient();
 
-        public AuthApi(string clientId, string clientSecret)
+        public AuthApi()
         {
-            ClientId = clientId;
-            ClientSecret = clientSecret;
+
         }
 
         /// <summary>
@@ -46,9 +39,9 @@ namespace PddOpenSdk.Services
         /// <param name="redirectUri"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public async Task<AccessTokenResponseModel> GetAccessTokenAsync(string code, string redirectUri, string state = null)
+        public async Task<AccessTokenResponseModel> GetAccessTokenAsync(string code, string state = null)
         {
-            if (code != null && redirectUri != null)
+            if (code != null)
             {
                 // TODO 先读取未过期token，若已过期，则刷新或重新获取
                 var dic = new Dictionary<string, string>
@@ -57,7 +50,7 @@ namespace PddOpenSdk.Services
                     { "client_secret", ClientSecret },
                     { "grant_type", "authorization_code" },
                     { "code", code },
-                    { "redirect_uri", redirectUri }
+                    { "redirect_uri", RedirectUri }
                 };
                 if (state != null)
                 {
@@ -112,9 +105,9 @@ namespace PddOpenSdk.Services
         /// <param name="callbackUrl"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public string GetDDKOAuthUrl(string callbackUrl, string state = null)
+        public string GetDDKOAuthUrl(string state = null)
         {
-            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
+            string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
             if (!string.IsNullOrEmpty(state))
             {
                 url += "&state=" + state;

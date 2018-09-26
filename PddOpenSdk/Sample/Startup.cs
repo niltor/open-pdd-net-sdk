@@ -27,9 +27,9 @@ namespace Sample
             // TODO:批多多服务
             services.AddPdd(options =>
             {
-                options.ClientId = "";
-                options.CallbackUrl = "";
-                options.ClientSecret = "";
+                options.ClientId = Configuration.GetSection("Pdd")["ClientId"];
+                options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
+                options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -40,6 +40,7 @@ namespace Sample
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
