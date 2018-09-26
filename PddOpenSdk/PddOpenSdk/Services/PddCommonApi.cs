@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -74,6 +75,7 @@ namespace PddOpenSdk.Services
                 }
                 else
                 {
+                    File.AppendAllText("output.json", jsonResult + "\r\n");
                     return JsonConvert.DeserializeObject<TResult>(jsonResult);
                 }
             }

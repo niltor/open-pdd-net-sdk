@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreMvc;
 using Newtonsoft.Json;
 using PddOpenSdk.Models.PddApiRequest;
-using PddOpenSdk.Services.PddApi;
+using PddOpenSdk.Services;
 using Sample.Models;
 
 namespace Sample.Controllers
@@ -26,18 +25,28 @@ namespace Sample.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 测试获取token
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Callback(string code)
         {
-
             var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
-            System.Console.WriteLine(token);
+
             return Content(token.AccessToken);
         }
 
-        public ActionResult Test()
+        public async Task<ActionResult> Test()
         {
-            _pdd.Test();
-            return Content("");
+            PddCommonApi.AccessToken = "3553df33ad1a483499c83d692e74fee8f553f752";
+            var model = new SearchDdkGoodsRequestModel
+            {
+               SortType =0,
+               WithCoupon = false
+            };
+            var result = await _pdd.DdkApi.SearchDdkGoodsAsync(model);
+            return Content(JsonConvert.SerializeObject(result));
         }
 
         public IActionResult Privacy()
@@ -50,15 +59,5 @@ namespace Sample.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-    }
-
-    public class User
-    {
-        public string Name { get; set; }
-        public List<Blog> Blogs { get; set; }
-    }
-    public class Blog
-    {
-        public string Title { get; set; }
     }
 }
