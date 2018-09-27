@@ -2,7 +2,7 @@ using Microsoft.Extensions.Options;
 using PddOpenSdk.Services;
 using PddOpenSdk.Services.PddApi;
 
-namespace NetCoreMvc
+namespace PddOpenSdk.AspNetCore
 {
     /// <summary>
     /// 批多多服务

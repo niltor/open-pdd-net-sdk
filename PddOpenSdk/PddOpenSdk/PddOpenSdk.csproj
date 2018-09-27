@@ -3,6 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.1</LangVersion>
+    <RootNamespace>MSDev.PddOpenSdk</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>MSDev_NilTor</Authors>
+    <Company>Geethin</Company>
+    <Description>拼多多SDK核心类库</Description>
+    <PackageReleaseNotes>拼多多SDK核心类库</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>pdd,net core,sdk,拼多多</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>

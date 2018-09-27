@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using NetCoreMvc;
+using PddOpenSdk.AspNetCore;
 using Newtonsoft.Json;
 using PddOpenSdk.Models.Request;
 using PddOpenSdk.Models.Request.Ddk;

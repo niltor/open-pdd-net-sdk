@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PddOpenSdk.Models;
 
-namespace PddOpenSdk.Services
+namespace PddOpenSdk.Services.PddApi
 {
     public class AuthApi : PddCommonApi
     {

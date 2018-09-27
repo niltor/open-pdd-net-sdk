@@ -1,4 +1,4 @@
-namespace NetCoreMvc
+namespace PddOpenSdk.AspNetCore
 {
     public class PddOptions
     {
