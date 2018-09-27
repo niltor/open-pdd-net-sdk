@@ -20,6 +20,7 @@ ASP.NET Core项目请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`，可直接通
 ```csharp
 services.AddPdd(options =>
 {
+    // 使用appsettings 配置你的ClientId等参数
     options.ClientId = Configuration.GetSection("Pdd")["ClientId"];
     options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
     options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
@@ -37,7 +38,7 @@ public YourController(PddService pdd)
 
 ```
 
-- 获取AcessToken
+- 获取AccessToken
 
 ```csharp
 /// <summary>
@@ -54,6 +55,7 @@ public async Task<IActionResult> Callback(string code)
 
 - 调用其他接口
 
+**一定要在获取 AccessToken之后调用其他接口**
 ```csharp
 public async Task<ActionResult> Test()
 {
@@ -64,7 +66,7 @@ public async Task<ActionResult> Test()
         WithCoupon = false
     };
     // 调用相应接口方法
-    var result = await _pdd.DdkApi.SearchDdkGoodsAsync(model);
+    var result = await _pdd.DdkApi.SearchDdkGoodsAsync(requestModel);
     return Content(JsonConvert.SerializeObject(result));
 }
 ```
