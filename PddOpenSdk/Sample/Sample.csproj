@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NetCoreMvc\NetCoreMvc.csproj" />
+    <ProjectReference Include="..\NetCoreMvc\PddOpenSdk.AspNetCore.csproj" />
     <ProjectReference Include="..\PddOpenSdk\PddOpenSdk.csproj" />
   </ItemGroup>
 

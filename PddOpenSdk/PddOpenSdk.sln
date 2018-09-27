@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Console\Console.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{5410623D-B263-49EB-92BB-B9BF82629E56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreMvc", "NetCoreMvc\NetCoreMvc.csproj", "{9B2B8A99-835B-45C5-9415-D74A3630C27A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk.AspNetCore", "NetCoreMvc\PddOpenSdk.AspNetCore.csproj", "{9B2B8A99-835B-45C5-9415-D74A3630C27A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonToClass", "JsonToClass\JsonToClass.csproj", "{41C1E264-19A0-45AC-8E1D-E9CE1B80DE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonToClass", "JsonToClass\JsonToClass.csproj", "{41C1E264-19A0-45AC-8E1D-E9CE1B80DE6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
