@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class Result
+    public class SmsSellRecordResult
     {
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: [{"id":311827,"name":"新客转化2018-08-31","scene":4,"send_time":1535723911000,"status":1,"send_num":0,"send_failed_num":0,"open":1}]
         /// </summary>
         [JsonProperty("result")]
-        public IList<Result> Result { get; set; }
+        public IList<SmsSellRecordResult> Result { get; set; }
     }
 
     public class QuerySmsSellRecordListResponseModel

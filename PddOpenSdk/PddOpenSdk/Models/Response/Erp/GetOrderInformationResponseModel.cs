@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Erp
 {
-    public class ItemList
+    public class OrderInfoItemList
     {
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace PddOpenSdk.Models.Response.Erp
         /// Examples: [{"goods_id":"2525296157","sku_id":"51972265894","outer_id":"","outer_goods_id":"","goods_name":"全国联保只换不修必开发票测试","goods_price":11.01,"goods_spec":"","goods_count":1,"goods_img":"http://t00img.yangkeduo.com/goods/images/2018-08-05/30c20539280527dde161494efae95c41.jpeg"}]
         /// </summary>
         [JsonProperty("item_list")]
-        public IList<ItemList> ItemList { get; set; }
+        public IList<OrderInfoItemList> ItemList { get; set; }
 
         /// <summary>
         /// Examples: 0

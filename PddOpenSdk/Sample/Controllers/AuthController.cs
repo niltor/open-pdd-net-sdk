@@ -40,7 +40,7 @@ namespace Sample.Controllers
 
         public async Task<ActionResult> Test()
         {
-            PddCommonApi.AccessToken = "3553df33ad1a483499c83d692e74fee8f553f752";
+            PddCommonApi.AccessToken = "b4d18c1d5f6445288ecd0439a58af010113a600d";
             var model = new SearchDdkGoodsRequestModel
             {
                SortType =0,
