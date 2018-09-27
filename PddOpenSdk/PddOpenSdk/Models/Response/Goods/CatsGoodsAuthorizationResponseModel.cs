@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsCatsList
+    public class GoodsAuthCatsList
     {
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace PddOpenSdk.Models.Response.Goods
         /// Examples: [{"cat_id":2,"cat_name":"食品饮料"}]
         /// </summary>
         [JsonProperty("goods_cats_list")]
-        public IList<GoodsCatsList> GoodsCatsList { get; set; }
+        public IList<GoodsAuthCatsList> GoodsCatsList { get; set; }
     }
 
     public class CatsGoodsAuthorizationResponseModel

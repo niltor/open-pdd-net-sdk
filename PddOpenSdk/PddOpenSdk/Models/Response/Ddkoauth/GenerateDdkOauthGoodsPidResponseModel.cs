@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddkoauth
 {
-    public class PIdList
+    public class GeneratePIdList
     {
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
         /// Examples: [{"p_id":"1000098_14222229","p_id_name":null},{"p_id":"1000098_14222230","p_id_name":null}]
         /// </summary>
         [JsonProperty("p_id_list")]
-        public IList<PIdList> PIdList { get; set; }
+        public IList<GeneratePIdList> PIdList { get; set; }
     }
 
     public class GenerateDdkOauthGoodsPidResponseModel

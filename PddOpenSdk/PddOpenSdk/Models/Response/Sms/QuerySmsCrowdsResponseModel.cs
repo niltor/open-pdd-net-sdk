@@ -84,7 +84,7 @@ namespace PddOpenSdk.Models.Response.Sms
         public object MallNoneVisitDays { get; set; }
     }
 
-    public class Result
+    public class SmsCrowsResult
     {
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: [{"id":6,"type":1,"scene":null,"mall_id":null,"name":"新客户","people_num":0,"crowd":{"location_type":null,"location":null,"gender":null,"purchase_days":30,"none_purchase_days":null,"goods_favor_days":null,"mall_favor_days":null,"min_order_count":null,"max_order_count":null,"first_buy_start_time":null,"first_buy_end_time":null,"mall_visit_days":null,"mall_none_visit_days":null}}]
         /// </summary>
         [JsonProperty("result")]
-        public IList<Result> Result { get; set; }
+        public IList<SmsCrowsResult> Result { get; set; }
     }
 
     public class QuerySmsCrowdsResponseModel

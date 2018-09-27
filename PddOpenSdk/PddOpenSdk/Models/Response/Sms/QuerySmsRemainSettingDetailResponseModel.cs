@@ -57,7 +57,7 @@ namespace PddOpenSdk.Models.Response.Sms
         public object GoodsInvert { get; set; }
     }
 
-    public class Result
+    public class SmsRemainSettingResult
     {
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: {"mall_id":26218,"scene":1,"trigger_condition":{"unpaid_duration":30},"target":{"min_pay_amount":null,"max_pay_amount":null,"pay_amount_limit":null,"region_type":null,"region":null,"goods":null,"goods_invert":null},"template_id":50,"open":1,"send_num":214,"send_failed_num":135}
         /// </summary>
         [JsonProperty("result")]
-        public Result Result { get; set; }
+        public SmsRemainSettingResult Result { get; set; }
     }
 
     public class QuerySmsRemainSettingDetailResponseModel

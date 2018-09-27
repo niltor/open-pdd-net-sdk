@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Response.Sms
         public object Id { get; set; }
     }
 
-    public class Result
+    public class SmsCustomTemplateResult
     {
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: [{"id":12,"mall_id":26218,"name":"恰嵩2","updated_time":1520927111000,"content":[{"type":1,"value":"短信模板啊啊啊啊啊啊啊啊啊","id":null}],"status":1,"reason":null}]
         /// </summary>
         [JsonProperty("result")]
-        public IList<Result> Result { get; set; }
+        public IList<SmsCustomTemplateResult> Result { get; set; }
     }
 
     public class QuerySmsCustomTemplateResponseModel

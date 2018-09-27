@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class GoodsList
+    public class DdkThemeGoodsList
     {
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         public object CatId { get; set; }
     }
 
-    public class ThemeListGetResponse
+    public class DdkThemeListGetResponse
     {
 
         /// <summary>
@@ -175,7 +175,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: [{"goods_id":10071886,"goods_name":"企业海淘","goods_desc":null,"goods_thumbnail_url":"http://pddtestimg.yangkeduo.com/test/2017-12-30/4148a9a51cc9a37cfa11325646134d77.jpeg","goods_image_url":"","goods_gallery_urls":null,"sold_quantity":0,"min_group_price":2300,"min_normal_price":4400,"mall_name":"刚刚哈哈哈","category_id":18,"category_name":"电器","opt_id":18,"opt_name":"电器","cat_ids":[194,2578,2580,0],"has_coupon":false,"coupon_min_order_amount":0,"coupon_discount":0,"coupon_total_quantity":0,"coupon_remain_quantity":0,"coupon_start_time":0,"coupon_end_time":0,"promotion_rate":100,"goods_eval_score":0,"goods_eval_count":0,"cat_id":null}]
         /// </summary>
         [JsonProperty("goods_list")]
-        public IList<GoodsList> GoodsList { get; set; }
+        public IList<DdkThemeGoodsList> GoodsList { get; set; }
     }
 
     public class SearchDdkThemeGoodsResponseModel
@@ -185,7 +185,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: {"total":2,"goods_list":[{"goods_id":10071886,"goods_name":"企业海淘","goods_desc":null,"goods_thumbnail_url":"http://pddtestimg.yangkeduo.com/test/2017-12-30/4148a9a51cc9a37cfa11325646134d77.jpeg","goods_image_url":"","goods_gallery_urls":null,"sold_quantity":0,"min_group_price":2300,"min_normal_price":4400,"mall_name":"刚刚哈哈哈","category_id":18,"category_name":"电器","opt_id":18,"opt_name":"电器","cat_ids":[194,2578,2580,0],"has_coupon":false,"coupon_min_order_amount":0,"coupon_discount":0,"coupon_total_quantity":0,"coupon_remain_quantity":0,"coupon_start_time":0,"coupon_end_time":0,"promotion_rate":100,"goods_eval_score":0,"goods_eval_count":0,"cat_id":null}]}
         /// </summary>
         [JsonProperty("theme_list_get_response")]
-        public ThemeListGetResponse ThemeListGetResponse { get; set; }
+        public DdkThemeListGetResponse ThemeListGetResponse { get; set; }
     }
 
 

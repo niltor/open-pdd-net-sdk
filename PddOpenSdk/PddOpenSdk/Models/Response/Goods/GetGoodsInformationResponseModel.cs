@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class SkuList
+    public class GoodsInfoSkuList
     {
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace PddOpenSdk.Models.Response.Goods
         /// Examples: [{"spec":"","sku_id":"6113246631","sku_quantity":"2","outer_id":"","outer_goods_id":"","sku_img":"","group_price":"70.00","single_price":"90.00","is_sku_onsale":"0"},{"spec":"uu","sku_id":"6259240999","sku_quantity":"1200","outer_id":"345234","outer_goods_id":"","sku_img":"http://omsproductionimg.yangkeduo.com/images/2017-12-24/f9fcc9eb5bcda280047a865b4c2afbc7.jpeg","group_price":"6999.00","single_price":"70001.00","is_sku_onsale":"1"},{"spec":"看看","sku_id":"6259290000","sku_quantity":"1000","outer_id":"345234423","outer_goods_id":"","sku_img":"http://omsproductionimg.yangkeduo.com/images/2017-12-24/7bb52691e45803a0ccfe4a2056d38b42.jpeg","group_price":"6999.00","single_price":"9000.00","is_sku_onsale":"1"},{"spec":"sdf ","sku_id":"6576701894","sku_quantity":"0","outer_id":"0","outer_goods_id":"","sku_img":"http://omsproductionimg.yangkeduo.com/images/2017-12-29/37a1bfe00611843d66891fc554d3a6e3.png","group_price":"6999.00","single_price":"9000.00","is_sku_onsale":"1"}]
         /// </summary>
         [JsonProperty("sku_list")]
-        public IList<SkuList> SkuList { get; set; }
+        public IList<GoodsInfoSkuList> SkuList { get; set; }
     }
 
     public class GoodsInfoGetResponse

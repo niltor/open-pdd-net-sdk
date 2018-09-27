@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsUpdateResponse
+    public class GoodsSubmitResponse
     {
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Response.Goods
         /// Examples: {"goods_id":2636897500,"goods_commit_id":5165546802}
         /// </summary>
         [JsonProperty("goods_update_response")]
-        public GoodsUpdateResponse GoodsUpdateResponse { get; set; }
+        public GoodsSubmitResponse GoodsUpdateResponse { get; set; }
     }
 
 

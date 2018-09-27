@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddkoauth
 {
-    public class UrlList
+    public class CmsPromotionUrlList
     {
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
         /// Examples: [{"url":"http://m.moremorepin.com/index.html?pid=60005_612&duoduo_type=2&authDuoId=60005&sign=_LU9QoQ3pOX3DSeYl_XhNQ%3D%3D","short_url":"http://apiv2.hutaojie.com/api/d/nzErgA","mobile_url":"https://m.hutaojie.com/app.html?launch_url=index.html%3Fpid%3D60005_612%26duoduo_type%3D2%26authDuoId%3D60005%26sign%3D_LU9QoQ3pOX3DSeYl_XhNQ%253D%253D","mobile_short_url":"http://apiv2.hutaojie.com/api/d/nzErgB","multi_group_url":"http://m.moremorepin.com/index.html?pid=60005_612&duoduo_type=3&authDuoId=60005&sign=_LU9QoQ3pOX3DSeYl_XhNQ%3D%3D","multi_group_short_url":"http://apiv2.hutaojie.com/api/d/nzErgC","multi_group_mobile_url":"https://m.hutaojie.com/app.html?launch_url=index.html%3Fpid%3D60005_612%26duoduo_type%3D3%26authDuoId%3D60005%26sign%3D_LU9QoQ3pOX3DSeYl_XhNQ%253D%253D","multi_group_mobile_short_url":"http://apiv2.hutaojie.com/api/d/nzErgD"}]
         /// </summary>
         [JsonProperty("url_list")]
-        public IList<UrlList> UrlList { get; set; }
+        public IList<CmsPromotionUrlList> UrlList { get; set; }
     }
 
     public class GenerateDdkOauthCmsPromUrlResponseModel

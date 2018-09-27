@@ -30,7 +30,7 @@ namespace PddOpenSdk.Models.Response.Goods
         public string SpecName { get; set; }
     }
 
-    public class SkuList
+    public class CommitSkuList
     {
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace PddOpenSdk.Models.Response.Goods
         /// Examples: [{"sku_id":27899733839,"is_onsale":1,"limit_quantity":999,"multi_price":1900,"price":2200,"quantity":0,"weight":1000,"thumb_url":"http://t06img.yangkeduo.com/images/2018-04-15/ced035033b5d40b589140af882621c03.jpg","spec":[{"parent_id":1216,"parent_name":"尺寸","spec_id":25,"spec_name":"L"}],"out_sku_sn":"L"},{"sku_id":27899733840,"is_onsale":1,"limit_quantity":999,"multi_price":1900,"price":2200,"quantity":0,"weight":1000,"thumb_url":"http://t06img.yangkeduo.com/images/2018-04-15/ced035033b5d40b589140af882621c03.jpg","spec":[{"parent_id":1216,"parent_name":"尺寸","spec_id":2,"spec_name":"XL"}],"out_sku_sn":"XL"}]
         /// </summary>
         [JsonProperty("sku_list")]
-        public IList<SkuList> SkuList { get; set; }
+        public IList<CommitSkuList> SkuList { get; set; }
 
         /// <summary>
         /// Examples: "http://t17img.yangkeduo.com/images/2018-06-06/826765dee04448ede2ae17349c64dba3.jpeg"

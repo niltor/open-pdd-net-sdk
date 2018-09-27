@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Erp
 {
-    public class ItemList
+    public class OrderItemList
     {
 
         /// <summary>
@@ -259,7 +259,7 @@ namespace PddOpenSdk.Models.Response.Erp
         /// Examples: [{"goods_id":"2542137428","sku_id":"52494558847","outer_id":"","outer_goods_id":"","goods_name":"文化用品 > 计算器 > 计算器【预售：8月18日发完】","goods_price":4.5,"goods_spec":"","goods_count":1,"goods_img":"http://t00img.yangkeduo.com/goods/images/2018-08-07/a552b61fdb93031120ab1cf8ef0c44b6.jpeg"}]
         /// </summary>
         [JsonProperty("item_list")]
-        public IList<ItemList> ItemList { get; set; }
+        public IList<OrderItemList> ItemList { get; set; }
 
         /// <summary>
         /// Examples: 0

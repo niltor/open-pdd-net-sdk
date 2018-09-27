@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class List
+    public class DdkMallListUrlList
     {
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: [{"url":"http://m.hutaojie.com/duo_mall_coupon.html?mall_id=7606022&pid=210035_735&cpsSign=CC210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2","short_url":"http://apiv2.hutaojie.com/api/d/PVdl0A","mobile_url":"http://m.hutaojie.com/app.html?launch_url=duo_mall_coupon.html?mall_id=7606022&pid=210035_735&cpsSign=CC210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2","mobile_short_url":"http://apiv2.hutaojie.com/api/d/PVdl0B","we_app_web_view_url":"http://m.hutaojie.com/duo_mall_coupon.html?mall_id=7606022&pid=210035_735&cpsSign=CC210035_735_12b26d652b895c8ae77a8a0b7553919b&duoduo_type=2&launch_wx=1","we_app_web_view_short_url":"http://apiv2.hutaojie.com/api/d/PVdl0C"}]
         /// </summary>
         [JsonProperty("list")]
-        public IList<List> List { get; set; }
+        public IList<DdkMallListUrlList> List { get; set; }
     }
 
     public class GenDdkMallUrlResponseModel

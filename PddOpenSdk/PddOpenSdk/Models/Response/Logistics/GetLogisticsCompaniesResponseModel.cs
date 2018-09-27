@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Logistics
         /// Examples: "申通快递"
         /// </summary>
         [JsonProperty("logistics_company")]
-        public string LogisticsCompany { get; set; }
+        public string LogisticsCompanyName { get; set; }
     }
 
     public class LogisticsCompaniesGetResponse

@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Invoice
 {
-    public class InvoiceApplicationUpdateResponse
+    public partial class InvoiceApplicationUpdateResponse
     {
 
         /// <summary>

@@ -1,9 +1,8 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class Target
+    public class SmsSellSettingCrowdTarget
     {
-
         /// <summary>
         /// Examples: null
         /// </summary>
@@ -147,7 +146,7 @@ namespace PddOpenSdk.Models.Response.Sms
         public object MallNoneVisitDays { get; set; }
     }
 
-    public class Crowd
+    public class SmsSellSettingCrowd
     {
 
         /// <summary>
@@ -166,8 +165,9 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: {"location_type":null,"location":null,"gender":null,"purchase_days":null,"none_purchase_days":null,"goods_favor_days":null,"mall_favor_days":null,"min_order_count":0,"max_order_count":0,"first_buy_start_time":null,"first_buy_end_time":null,"mall_visit_days":7,"mall_none_visit_days":null}
         /// </summary>
         [JsonProperty("crowd")]
-        public Crowd2 Crowd { get; set; }
+        public Crowd2 PeopleCrowd { get; set; }
     }
+
 
     public class SmsSellSettingDetailQueryResponse
     {
@@ -242,7 +242,7 @@ namespace PddOpenSdk.Models.Response.Sms
         /// Examples: {"name":"感兴趣的用户","people_num":null,"crowd":{"location_type":null,"location":null,"gender":null,"purchase_days":null,"none_purchase_days":null,"goods_favor_days":null,"mall_favor_days":null,"min_order_count":0,"max_order_count":0,"first_buy_start_time":null,"first_buy_end_time":null,"mall_visit_days":7,"mall_none_visit_days":null}}
         /// </summary>
         [JsonProperty("crowd")]
-        public Crowd Crowd { get; set; }
+        public SmsSellSettingCrowd Crowd { get; set; }
     }
 
     public class QuerySmsSellSettingDetailResponseModel

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Promotion
 {
-    public class CouponBatchList
+    public class GoodsCouponBatchList
     {
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace PddOpenSdk.Models.Response.Promotion
         /// Examples: [{"id":9251417714,"batch_desc":"免拼yinpu1234","discount_param":200,"min_order_amount":200,"init_quantity":3011,"remain_quantity":3010,"used_quantity":0,"user_limit":1,"batch_start_time":1528128000000,"batch_end_time":1528473599000,"source_type":87,"goods_id":10079469,"goods_name":"不配送上海","image_url":"http://pddtestimg.yangkeduo.com/test/2018-04-19/b3d3c27d8797ddfd9214cedc4b4a70a8.jpeg","status":1,"created_at":1528371772000}]
         /// </summary>
         [JsonProperty("coupon_batch_list")]
-        public IList<CouponBatchList> CouponBatchList { get; set; }
+        public IList<GoodsCouponBatchList> CouponBatchList { get; set; }
     }
 
     public class GetPromotionGoodsCouponListResponseModel

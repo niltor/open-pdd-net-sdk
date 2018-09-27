@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class GoodsList
+    public class DdkMallGoodsList
     {
-
         /// <summary>
         /// Examples: null
         /// </summary>
@@ -331,7 +330,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: [{"create_at":null,"goods_id":10080856,"goods_name":"婴儿代餐粉团长送礼","goods_desc":null,"goods_thumbnail_url":"http://pddtestimg.yangkeduo.com/test/2018-05-03/ed435a59a7767b66286ada3f51f1092f.jpeg","goods_image_url":"","goods_gallery_urls":null,"sold_quantity":11,"goods_mark_price":20000,"goods_fact_price":15000,"min_group_price":15000,"min_normal_price":18000,"mall_id":7606022,"mall_name":"seven7","merchant_type":1,"category_id":4,"category_name":"母婴","opt_id":4,"opt_name":"母婴","opt_ids":[19,4,889,11,12,220,335],"cat_ids":null,"goods_type":1,"has_coupon":false,"coupon_id":null,"coupon_min_order_amount":0,"coupon_discount":0,"coupon_total_quantity":null,"coupon_remain_quantity":null,"coupon_start_time":null,"coupon_end_time":null,"promotion_rate":150,"coupon_price":0,"goods_rate":150,"market_fee":2250,"mall_cps":1,"goods_eval_score":0,"goods_eval_count":0,"cat_id":null,"share_desc":null,"avg_desc":null,"avg_lgst":null,"avg_serv":null,"desc_pct":null,"lgst_pct":null,"serv_pct":null,"sale_num24":0,"sale_num_today":null,"rank":null,"broker":null,"lock_edit":null,"qr_code_image_url":null,"mall_rate":150}]
         /// </summary>
         [JsonProperty("goods_list")]
-        public IList<GoodsList> GoodsList { get; set; }
+        public IList<DdkMallGoodsList> GoodsList { get; set; }
     }
 
     public class GetDdkMallGoodsListResponseModel

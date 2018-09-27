@@ -60,7 +60,7 @@ namespace PddOpenSdk.Models.Response.Erp
         public string GoodsImg { get; set; }
     }
 
-    public class OrderSnList
+    public class OrderSnIncrementList
     {
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace PddOpenSdk.Models.Response.Erp
         /// Examples: [{"order_sn":"180810-364770100011509","confirm_time":"2018-08-10 19:29:58","receiver_name":"展护卫","created_time":"2018-08-10 19:29:58","country":"中国","province":"北京市","city":"北京市","town":"东城区","address":"一号大街1号","receiver_phone":"1866716****","pay_amount":4.5,"goods_amount":4.5,"discount_amount":0,"postage":0,"pay_no":"2018081076041229","pay_type":"LIANLIANPAY","id_card_num":"","id_card_name":"","logistics_id":1,"tracking_number":"111122223333","shipping_time":"2018-08-10 19:43:33","order_status":2,"is_lucky_flag":1,"refund_status":1,"updated_at":"2018-08-10 19:43:34","last_ship_time":"2018-08-18 23:59:59","remark":"","receive_time":"","country_id":0,"province_id":2,"city_id":52,"town_id":500,"item_list":[{"goods_id":"2542137428","sku_id":"52494558847","outer_id":"","outer_goods_id":"","goods_name":"文化用品 > 计算器 > 计算器【预售：8月18日发完】","goods_price":4.5,"goods_spec":"","goods_count":1,"goods_img":"http://t00img.yangkeduo.com/goods/images/2018-08-07/a552b61fdb93031120ab1cf8ef0c44b6.jpeg"}],"platform_discount":0,"seller_discount":0,"capital_free_discount":0,"cat_id_1":2629,"cat_id_2":2663,"cat_id_3":2741,"cat_id_4":0,"stock_out_handle_status":-1,"is_stock_out":0,"inner_transaction_id":"XP0018081019200664302889002657","buyer_memo":"","invoice_status":0,"is_pre_sale":1,"pre_sale_time":"2018-08-18 23:59:59"}]
         /// </summary>
         [JsonProperty("order_sn_list")]
-        public IList<OrderSnList> OrderSnList { get; set; }
+        public IList<OrderSnIncrementList> OrderSnList { get; set; }
 
         /// <summary>
         /// Examples: 1

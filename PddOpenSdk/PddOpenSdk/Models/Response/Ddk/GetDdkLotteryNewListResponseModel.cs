@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class List
+    public class DdkLotteryList
     {
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: [{"pid":"210035_736","order_sn":"180904-257698037933549","goods_thumb_url":null,"goods_id":null,"goods_name":null,"pay_time":null,"updated_at":1536065890,"verify_time":null,"status":3,"custom_parameters":"333"}]
         /// </summary>
         [JsonProperty("list")]
-        public IList<List> List { get; set; }
+        public IList<DdkLotteryList> List { get; set; }
 
         /// <summary>
         /// Examples: 1

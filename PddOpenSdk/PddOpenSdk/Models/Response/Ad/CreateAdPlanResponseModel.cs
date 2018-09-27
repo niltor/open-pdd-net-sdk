@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class AdPlanCreateResponse
+    public partial class AdPlanCreateResponse
     {
 
         /// <summary>

@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class List
+    public class DdkAppNewBillList
     {
-
         /// <summary>
         /// Examples: "60013_2039"
         /// </summary>
@@ -79,7 +78,7 @@ namespace PddOpenSdk.Models.Response.Ddk
         /// Examples: [{"pid":"60013_2039","order_sn":"180515-392972355200461","goods_thumb_url":"http://pddtestimg.yangkeduo.com/test/2017-09-19/ef972ed0e60279164d8fbea31515e238.jpeg","goods_id":10073718,"goods_name":"商品锁定19","money":1000,"pay_time":null,"updated_at":1526969107,"verify_time":null,"status":1,"custom_parameters":"abcd"}]
         /// </summary>
         [JsonProperty("list")]
-        public IList<List> List { get; set; }
+        public IList<DdkAppNewBillList> List { get; set; }
 
         /// <summary>
         /// Examples: 1
