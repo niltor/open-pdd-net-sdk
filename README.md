@@ -1,5 +1,7 @@
 # 说明文档
 
+[![Build Status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/niltor.open-pdd-net-sdk)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=3)
+
 open-pdd-net-sdk，拼多多开放平台DotNet SDK。
 
 V0.0.2beta
