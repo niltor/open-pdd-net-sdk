@@ -70,12 +70,11 @@ namespace PddOpenSdk.Services
                 if (jObject.TryGetValue("error_response", out var errorResponse))
                 {
                     // TODO:记录异常
-                    System.Console.WriteLine(errorResponse["error_code"].ToString() + errorResponse["error_msg"]);
+                    File.AppendAllText("error.json", jsonResult + "\r\n");
                     return default;
                 }
                 else
                 {
-                    File.AppendAllText("output.json", jsonResult + "\r\n");
                     return JsonConvert.DeserializeObject<TResult>(jsonResult);
                 }
             }
