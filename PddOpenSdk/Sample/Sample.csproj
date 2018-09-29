@@ -6,11 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\NetCoreMvc\PddOpenSdk.AspNetCore.csproj" />
-    <ProjectReference Include="..\PddOpenSdk\PddOpenSdk.csproj" />
+    <PackageReference Include="MSDev.PddOpenSdk.AspNetCore" Version="0.0.1" />
   </ItemGroup>
 
 </Project>

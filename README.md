@@ -2,6 +2,17 @@
 
 open-pdd-net-sdk，拼多多开放平台DotNet SDK。
 
+V0.0.2beta
+
+遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
+
+## 更新说明
+
+### V0.0.2beta
+
+- 添加了仓储API
+- 添加PddService相关接口字段属性的中文注释。
+
 ## 类库说明
 
 支持基于NETStandardv2.0的项目。
@@ -11,6 +22,7 @@ ASP.NET Core项目请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`，可直接通
 其他类型使用Nuget包 `MSDev.PddOpenSdk`。
 
 ## 使用说明
+
 ### ASP.NET Core 项目使用
 
 可参考[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)
@@ -84,4 +96,3 @@ public async Task<ActionResult> Test()
 - 提交GitHub Issues（优先处理）
 - Email： zpty@outlook.com
 - QQ群：737822525
-
