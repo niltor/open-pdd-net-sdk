@@ -1,16 +1,17 @@
 # 说明文档
 
-[![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-ASP.NET%20Core-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=-1)
+V0.1beta
+
+[![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=4)
 
 open-pdd-net-sdk，拼多多开放平台DotNet SDK。
 
-V0.0.2beta
 
 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
 
 ## 更新说明
 
-### V0.0.2beta
+### V0.1beta
 
 - 添加了仓储API
 - 添加PddService相关接口字段属性的中文注释。
