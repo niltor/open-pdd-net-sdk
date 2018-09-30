@@ -2,7 +2,7 @@
 
 V0.1beta
 
-[![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=4)
+[![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=1)
 
 open-pdd-net-sdk，拼多多开放平台DotNet SDK。
 
@@ -64,13 +64,15 @@ public YourController(PddService pdd)
 public async Task<IActionResult> Callback(string code)
 {
     var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
+    // 自行维护Token过期时间
     return Content(token.AccessToken);
 }
 ```
 
 - 调用其他接口
 
-**一定要在获取 AccessToken之后调用其他接口**
+    **获取AccessToken之后才能正常调用其他接口。**
+
 ```csharp
 public async Task<ActionResult> Test()
 {

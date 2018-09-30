@@ -1,36 +1,29 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PddOpenSdk.Models.Request.Ddk;
-using PddOpenSdk.Models.Response.Ddk;
-using PddOpenSdk.Services;
-using PddOpenSdk.Services.PddApi;
 
 namespace ApiTest
 {
     [TestClass]
     public class UnitTest1
     {
-        //public UnitTest1()
-        //{
-        //    PddCommonApi.ClientId = clientId;
-        //    PddCommonApi.ClientSecret = clientSecret;
-        //    PddCommonApi.RedirectUri = RedirectUri;
-        //}
+        // TODO:环境变量
+        readonly string accessToken = "";
 
         [TestMethod]
         public void TestMethod()
         {
-            PddCommonApi.ClientId = "clientId";
-            PddCommonApi.ClientSecret = "ClientSecret";
-            PddCommonApi.RedirectUri = "RedirectUri";
-            var api = new DdkApi();
+            //PddCommonApi.ClientId = "clientId";
+            //PddCommonApi.ClientSecret = "ClientSecret";
+            //PddCommonApi.RedirectUri = "RedirectUri";
+            //PddCommonApi.AccessToken = accessToken;
 
-            var result = api.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
-            {
-                WithCoupon = false,
-                SortType = 0
-            }).Result;
+            //var api = new DdkApi();
+            //var result = api.SearchDdkGoodsAsync(new SearchDdkGoodsRequestModel
+            //{
+            //    WithCoupon = false,
+            //    SortType = 0
+            //}).Result;
 
-            Assert.IsInstanceOfType(result, typeof(SearchDdkGoodsResponseModel));
+            //Assert.IsInstanceOfType(result, typeof(SearchDdkGoodsResponseModel));
             Assert.IsNotNull(true);
         }
     }
