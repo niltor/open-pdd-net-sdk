@@ -1,10 +1,11 @@
 # 说明文档
 
 [![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=1)
- [![NuGet](https://img.shields.io/nuget/v/MSDev.PddOpenSdk.AspNetCore.svg?label=nuget)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/) 
+[![NuGet](https://img.shields.io/nuget/v/MSDev.PddOpenSdk.AspNetCore.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
+[![NuGet](https://img.shields.io/nuget/dt/MSDev.PddOpenSdk.AspNetCore.svg)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
+[![Join the chat at https://gitter.im/open-pdd-net-sdk/Lobby](https://badges.gitter.im/open-pdd-net-sdk/Lobby.svg)](https://gitter.im/open-pdd-net-sdk/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-open-pdd-net-sdk，拼多多开放平台DotNet SDK。
-
+open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
 
@@ -12,16 +13,16 @@ open-pdd-net-sdk，拼多多开放平台DotNet SDK。
 
 ### V0.1beta
 
-- 添加了仓储API
-- 添加PddService相关接口字段属性的中文注释。
+- 添加了仓储 API
+- 添加 PddService 相关接口字段属性的中文注释。
 
 ## 类库说明
 
-支持基于NETStandardv2.0的项目。
+支持基于 NETStandardv2.0 的项目。
 
-ASP.NET Core项目请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
+ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
 
-其他类型使用Nuget包 `MSDev.PddOpenSdk`。
+其他类型使用 Nuget 包 `MSDev.PddOpenSdk`。
 
 ## 使用说明
 
@@ -29,7 +30,7 @@ ASP.NET Core项目请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`，可直接通
 
 可参考[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)
 
-- 在Startup.cs中注入服务
+- 在 Startup.cs 中注入服务
 
 ```csharp
 services.AddPdd(options =>
@@ -49,10 +50,9 @@ public YourController(PddService pdd)
 {
     _pdd = pdd;
 }
-
 ```
 
-- 获取AccessToken
+- 获取 AccessToken
 
 ```csharp
 /// <summary>
@@ -70,7 +70,7 @@ public async Task<IActionResult> Callback(string code)
 
 - 调用其他接口
 
-    **获取AccessToken之后才能正常调用其他接口。**
+  **获取 AccessToken 之后才能正常调用其他接口。**
 
 ```csharp
 public async Task<ActionResult> Test()
@@ -97,6 +97,6 @@ public async Task<ActionResult> Test()
 
 欢迎通过以下方式反馈问题:
 
-- 提交GitHub Issues（优先处理）
+- 提交 GitHub Issues（优先处理）
 - Email： zpty@outlook.com
-- QQ群：737822525
+- QQ 群：737822525
