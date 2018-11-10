@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
@@ -19,7 +20,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 商品列表对象
             /// </summary>
             [JsonProperty("goods_list")]
-            public GoodsListResponseModel GoodsList { get; set; }
+            public List<GoodsListResponseModel> GoodsList { get; set; }
             public partial class GoodsListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -61,7 +62,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// sku列表对象
                 /// </summary>
                 [JsonProperty("sku_list")]
-                public SkuListResponseModel SkuList { get; set; }
+                public List<SkuListResponseModel> SkuList { get; set; }
                 public partial class SkuListResponseModel : PddResponseModel
                 {
                     /// <summary>
