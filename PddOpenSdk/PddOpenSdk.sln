@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonToClass", "JsonToClass\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "ApiTest\ApiTest.csproj", "{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PddSignTool", "PddSignTool\PddSignTool.csproj", "{910949F3-4588-4638-B961-6071211F307B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{910949F3-4588-4638-B961-6071211F307B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{910949F3-4588-4638-B961-6071211F307B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{910949F3-4588-4638-B961-6071211F307B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{910949F3-4588-4638-B961-6071211F307B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

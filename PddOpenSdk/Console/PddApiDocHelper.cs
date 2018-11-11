@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Console;
 using Msdev.JsonToClass;
 using Msdev.JsonToClass.CodeWriters;
 using Newtonsoft.Json;
@@ -109,7 +110,7 @@ $@"/// <summary>
             // 创建返回模型类
             string responseModelName = methodName + "ResponseModel";
             // 根据返回示例生成
-            string responseContent = JsonToClass(responseModelName, doc.CodeExample, requestClassName);
+            string responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
             if (string.IsNullOrEmpty(responseContent))
             {
                 responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
@@ -149,50 +150,13 @@ $@"/// <summary>
             string childClass = "";
             foreach (var param in currentParamLists)
             {
-                // 参数名
-                var paramName = Function.ToTitleCase(param.ParamName?.Replace("_", " "))?.Replace(" ", "");
-                // 参数类型
-                var paramType = param.ParamType;
-                switch (paramType.ToLower())
-                {
-                    case "integer":
-                    case "number":
-                        paramType = param.IsMust == 0 ? "int?" : "int";
-                        break;
-                    case "boolean":
-                        paramType = param.IsMust == 0 ? "bool?" : "bool";
-                        break;
-                    case "jsonstring":
-                        paramType = paramName + "RequestModel";
-                        break;
-                    case "list":
-                        paramType = "object[]";
-                        break;
-                    case "":
-                        paramType = "object";
-                        break;
-                    default:
-                        if (paramType.ToLower().StartsWith("string"))
-                        {
-                            paramType = "string";
-                        }
-                        else
-                        {
-                            paramType = "object";
-                        }
-                        break;
-                }
-                // 数组类型特殊处理
-                if (param.ParamType.Equals(param.ParamType + "[]") || param.ParamType.Equals("[]"))
-                {
-                    paramType = $"List<{paramType}>";
-                }
 
+                var attribution = NameHelper.GetAttributionName(param.ParamName, param.ParamType, param.IsMust.Value);
+                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
-                if (param.ChildrenNum > 0 || param.ParamType.ToLower().Equals("jsonstring"))
+                if (param.ChildrenNum > 0 || param.ParamType.ToLower().Contains("[]"))
                 {
                     childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Level + 1, (int)param.Id);
-                    paramType = paramName + "RequestModel";
                 }
 
                 // 参数注释
@@ -202,14 +166,12 @@ $@"/// <summary>
 /// </summary>
 [JsonProperty(""{param.ParamName}"")]
 ";
-                paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                paramsContent += paramComment + attribution;
             }
             content += paramsContent;
             content += childClass + "\r\n";
             content += "}\r\n";
-
             return content;
-
         }
 
         /// <summary>
@@ -232,55 +194,12 @@ $@"/// <summary>
             foreach (var param in currentParamLists)
             {
                 // TODO 注意：拼多多，响应内容内容字段存储混乱
-                // 返回错误兼容
-                if (param.ParamType.Contains("[]"))
-                {
-                    param.ParamType = param.ParamType.Replace("[]", "");
-                }
-                // 参数名
-                var paramName = Function.ToTitleCase(param.ParamType?.Replace("_", " ")).Replace(" ", "");
-                // 参数类型
-                var paramType = param.ParamDesc;
-                var orgType = param.ParamDesc;
-                switch (paramType.ToLower())
-                {
-                    case "integer":
-                    case "number":
-                        paramType = param.IsMust == 0 ? "int?" : "int";
-                        break;
-                    case "boolean":
-                        paramType = param.IsMust == 0 ? "bool?" : "bool";
-                        break;
-                    case "jsonstring":
-                        paramType = paramName + "ResponseModel";
-                        break;
-                    case "list":
-                        paramType = "object[]";
-                        break;
-                    case "":
-                        paramType = "object";
-                        break;
-                    default:
-                        if (paramType.ToLower().StartsWith("string"))
-                        {
-                            paramType = "string";
-                        }
-                        else
-                        {
-                            paramType = "object";
-                        }
-                        break;
-                }
-                // 数组类型特殊处理
-                if (orgType.Equals(param.ParamType + "[]") || orgType.Equals("[]"))
-                {
-                    paramType = $"List<{paramType}>";
-                }
+                var attribution = NameHelper.GetAttributionName(param.ParamType, param.ParamDesc, 1, "ResponseModel");
+                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
                     childClass += BuildResponseModel(paramName + "ResponseModel", paramLists, (int)param.Level + 1, (int)param.Id);
-                    paramType = paramName + "ResponseModel";
                 }
                 // 参数注释
                 var paramComment =
@@ -290,7 +209,7 @@ $@"/// <summary>
 [JsonProperty(""{param.ParamType}"")]
 ";
 
-                paramsContent += paramComment + $"public {paramType} {paramName} {{get;set;}}\r\n";
+                paramsContent += paramComment + attribution;
                 //System.Console.WriteLine(paramType + " " + paramName);
             }
             content += paramsContent;

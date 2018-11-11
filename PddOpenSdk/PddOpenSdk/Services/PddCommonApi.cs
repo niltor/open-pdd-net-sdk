@@ -112,8 +112,6 @@ namespace PddOpenSdk.Services
             }
             return signString;
         }
-
-
     }
 
     /// <summary>
