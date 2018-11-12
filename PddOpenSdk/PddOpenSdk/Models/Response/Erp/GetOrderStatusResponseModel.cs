@@ -2,47 +2,42 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Erp
 {
-    public class OrderStatusList
+    public partial class GetOrderStatusResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "171219-496576280321088"
-        /// </summary>
-        [JsonProperty("orderSn")]
-        public string OrderSn { get; set; }
-
-        /// <summary>
-        /// Examples: 2
-        /// </summary>
-        [JsonProperty("order_status")]
-        public int OrderStatus { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("refund_status")]
-        public int RefundStatus { get; set; }
-    }
-
-    public class OrderStatusGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"orderSn":"171219-496576280321088","order_status":2,"refund_status":1}]
-        /// </summary>
-        [JsonProperty("order_status_list")]
-        public IList<OrderStatusList> OrderStatusList { get; set; }
-    }
-
-    public class GetOrderStatusResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"order_status_list":[{"orderSn":"171219-496576280321088","order_status":2,"refund_status":1}]}
+        /// response
         /// </summary>
         [JsonProperty("order_status_get_response")]
-        public OrderStatusGetResponse OrderStatusGetResponse { get; set; }
-    }
+        public OrderStatusGetResponseResponseModel OrderStatusGetResponse { get; set; }
+        public partial class OrderStatusGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 订单状态列表对象
+            /// </summary>
+            [JsonProperty("order_status_list")]
+            public List<OrderStatusListResponseModel> OrderStatusList { get; set; }
+            public partial class OrderStatusListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 订单编号
+                /// </summary>
+                [JsonProperty("orderSn")]
+                public string Ordersn { get; set; }
+                /// <summary>
+                /// 订单发货状态，1：待发货，2：已发货待签收，3：已签收 0：异常
+                /// </summary>
+                [JsonProperty("order_status")]
+                public int? OrderStatus { get; set; }
+                /// <summary>
+                /// 订单售后状态，1：无售后或售后关闭，2：售后处理中，3：退款中，4：退款成功，0：异常
+                /// </summary>
+                [JsonProperty("refund_status")]
+                public int? RefundStatus { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

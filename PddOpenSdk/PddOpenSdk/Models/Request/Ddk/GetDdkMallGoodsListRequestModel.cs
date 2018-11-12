@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 店铺id
         /// </summary>
         [JsonProperty("mall_id")]
-        public int MallId { get; set; }
+        public long MallId { get; set; }
         /// <summary>
         /// 分页数
         /// </summary>

@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsLogisticsTemplateCreateResponse
+    public partial class CreateGoodsLogisticsTemplateResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1411709
-        /// </summary>
-        [JsonProperty("template_id")]
-        public int TemplateId { get; set; }
-    }
-
-    public class CreateGoodsLogisticsTemplateResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"template_id":1411709}
+        /// 返回resposne
         /// </summary>
         [JsonProperty("goods_logistics_template_create_response")]
-        public GoodsLogisticsTemplateCreateResponse GoodsLogisticsTemplateCreateResponse { get; set; }
-    }
+        public GoodsLogisticsTemplateCreateResponseResponseModel GoodsLogisticsTemplateCreateResponse { get; set; }
+        public partial class GoodsLogisticsTemplateCreateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 模版id
+            /// </summary>
+            [JsonProperty("template_id")]
+            public long? TemplateId { get; set; }
 
+        }
+
+    }
 
 }

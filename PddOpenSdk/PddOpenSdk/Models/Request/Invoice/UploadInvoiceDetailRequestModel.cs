@@ -17,7 +17,7 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 申请流水号
         /// </summary>
         [JsonProperty("application_id")]
-        public int ApplicationId { get; set; }
+        public long ApplicationId { get; set; }
         /// <summary>
         /// 抬头类型：0-个人，1-企业
         /// </summary>
@@ -34,15 +34,15 @@ namespace PddOpenSdk.Models.Request.Invoice
         [JsonProperty("invoice_type")]
         public int InvoiceType { get; set; }
         /// <summary>
-        /// 开票金额
+        /// 开票金额，整数，单位：分
         /// </summary>
         [JsonProperty("invoice_amount")]
-        public int InvoiceAmount { get; set; }
+        public long InvoiceAmount { get; set; }
         /// <summary>
-        /// 不含税金额
+        /// 不含税金额，整数，单位：分
         /// </summary>
         [JsonProperty("sum_price")]
-        public int SumPrice { get; set; }
+        public long SumPrice { get; set; }
         /// <summary>
         /// 税号，企业必填
         /// </summary>
@@ -52,12 +52,12 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 税率,整数
         /// </summary>
         [JsonProperty("tax_rate")]
-        public string TaxRate { get; set; }
+        public int TaxRate { get; set; }
         /// <summary>
-        /// 总税额
+        /// 总税额，整数，单位：分
         /// </summary>
         [JsonProperty("sum_tax")]
-        public string SumTax { get; set; }
+        public int SumTax { get; set; }
         /// <summary>
         /// 发票代码
         /// </summary>
@@ -87,7 +87,7 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 开票日期,时间戳（毫秒）
         /// </summary>
         [JsonProperty("invoice_time")]
-        public int InvoiceTime { get; set; }
+        public long InvoiceTime { get; set; }
         /// <summary>
         /// 发票内容，pdf文件，转码base64编码
         /// </summary>

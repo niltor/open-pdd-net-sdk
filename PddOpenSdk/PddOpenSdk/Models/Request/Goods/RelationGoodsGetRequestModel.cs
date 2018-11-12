@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Goods
 {
@@ -7,7 +8,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 拼多多商品id
         /// </summary>
         [JsonProperty("pdd_goods_id")]
-        public object PddGoodsId { get; set; }
+        public List<long> PddGoodsId { get; set; }
 
     }
 

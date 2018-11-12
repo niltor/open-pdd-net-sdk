@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Request.Virtual
     public partial class NotifyVirtualMobileChargeRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 该值为：pdd.virtual.mobile.charge.notify
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-        /// <summary>
         /// 拼多多订单编码
         /// </summary>
         [JsonProperty("order_sn")]

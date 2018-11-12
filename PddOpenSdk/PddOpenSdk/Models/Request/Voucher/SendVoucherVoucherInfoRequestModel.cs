@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Voucher
 {
@@ -17,7 +18,7 @@ namespace PddOpenSdk.Models.Request.Voucher
         /// 卡券信息列表,例子[{"voucher_id":"test voucher_id","voucher_no":"test voucher_no"}]
         /// </summary>
         [JsonProperty("voucher_list")]
-        public VoucherListRequestModel VoucherList { get; set; }
+        public List<VoucherListRequestModel> VoucherList { get; set; }
         public partial class VoucherListRequestModel : PddRequestModel
         {
             /// <summary>

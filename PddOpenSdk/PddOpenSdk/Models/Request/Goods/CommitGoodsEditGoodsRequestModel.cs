@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Goods
 {
@@ -22,7 +23,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 叶子类目ID
         /// </summary>
         [JsonProperty("cat_id")]
-        public int CatId { get; set; }
+        public long CatId { get; set; }
         /// <summary>
         /// 商品短标题（仅在部分活动中生效），字数限制为4-20字
         /// </summary>
@@ -52,7 +53,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 市场价格，单位为分
         /// </summary>
         [JsonProperty("market_price")]
-        public int? MarketPrice { get; set; }
+        public long? MarketPrice { get; set; }
         /// <summary>
         /// 是否预售,true-预售商品，false-非预售商品
         /// </summary>
@@ -62,32 +63,32 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 预售时间，is_pre_sale为1时必传，UNIX时间戳
         /// </summary>
         [JsonProperty("pre_sale_time")]
-        public string PreSaleTime { get; set; }
+        public long? PreSaleTime { get; set; }
         /// <summary>
         /// 承诺发货时间（ 秒），48小时或24小时，is_pre_sale为1时不必传
         /// </summary>
         [JsonProperty("shipment_limit_second")]
-        public string ShipmentLimitSecond { get; set; }
+        public long? ShipmentLimitSecond { get; set; }
         /// <summary>
         /// 物流运费模板ID，可使用pdd.logistics.template.get获取
         /// </summary>
         [JsonProperty("cost_template_id")]
-        public int? CostTemplateId { get; set; }
+        public long? CostTemplateId { get; set; }
         /// <summary>
         /// 团购人数
         /// </summary>
         [JsonProperty("customer_num")]
-        public int? CustomerNum { get; set; }
+        public long? CustomerNum { get; set; }
         /// <summary>
         /// 单次限量
         /// </summary>
         [JsonProperty("buy_limit")]
-        public int? BuyLimit { get; set; }
+        public long? BuyLimit { get; set; }
         /// <summary>
         /// 限购次数
         /// </summary>
         [JsonProperty("order_limit")]
-        public int? OrderLimit { get; set; }
+        public long? OrderLimit { get; set; }
         /// <summary>
         /// 是否7天无理由退换货，true-支持，false-不支持
         /// </summary>
@@ -122,7 +123,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 食品保质期，cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
         /// </summary>
         [JsonProperty("shelf_life")]
-        public int? ShelfLife { get; set; }
+        public string ShelfLife { get; set; }
         /// <summary>
         /// 生产日期起始时间， ; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
         /// </summary>
@@ -142,12 +143,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// sku对象列表
         /// </summary>
         [JsonProperty("sku_list")]
-        public SkuListRequestModel SkuList { get; set; }
+        public List<SkuListRequestModel> SkuList { get; set; }
         /// <summary>
         /// 商品goods外部编码
         /// </summary>
         [JsonProperty("out_goods_id")]
-        public int? OutGoodsId { get; set; }
+        public string OutGoodsId { get; set; }
         /// <summary>
         /// 高清缩略图，上传轮播图首图，尺寸400*400，图片格式仅支持JPG,PNG格式
         /// </summary>
@@ -167,14 +168,14 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 商品轮播图，按次序上传，图片格式支持JPEG/JPG/PNG， 图片尺寸长宽比1：1且尺寸不低于480px，图片大小最高1MB
         /// </summary>
         [JsonProperty("carousel_gallery")]
-        public CarouselGalleryRequestModel CarouselGallery { get; set; }
+        public List<string> CarouselGallery { get; set; }
         /// <summary>
         /// 商品详情图：; a. 尺寸要求宽度处于480~1200px之间，高度0-1500px之间; b. 大小1M以内; c. 数量限制在20张之间; d. 图片格式仅支持JPG,PNG格式; e. 点击上传时，支持批量上传详情图
         /// </summary>
         [JsonProperty("detail_gallery")]
-        public DetailGalleryRequestModel DetailGallery { get; set; }
+        public List<string> DetailGallery { get; set; }
         /// <summary>
-        /// invoice_status
+        /// 是否支持正品发票；0-不支持、1-支持
         /// </summary>
         [JsonProperty("invoice_status")]
         public int? InvoiceStatus { get; set; }
@@ -182,29 +183,44 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 商品属性列表
         /// </summary>
         [JsonProperty("goods_properties")]
-        public string GoodsProperties { get; set; }
+        public List<GoodsPropertiesRequestModel> GoodsProperties { get; set; }
+        /// <summary>
+        /// 0：不支持全国联保；1：支持全国联保
+        /// </summary>
+        [JsonProperty("quan_guo_lian_bao")]
+        public int? QuanGuoLianBao { get; set; }
+        /// <summary>
+        /// 只换不修的天数，目前只支持0和365
+        /// </summary>
+        [JsonProperty("zhi_huan_bu_xiu")]
+        public int? ZhiHuanBuXiu { get; set; }
+        /// <summary>
+        /// 产品标准号
+        /// </summary>
+        [JsonProperty("production_license")]
+        public string ProductionLicense { get; set; }
         public partial class SkuListRequestModel : PddRequestModel
         {
             /// <summary>
             /// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku
             /// </summary>
             [JsonProperty("spec_id_list")]
-            public SpecIdListRequestModel SpecIdList { get; set; }
+            public string SpecIdList { get; set; }
             /// <summary>
             /// 重量，单位为g
             /// </summary>
             [JsonProperty("weight")]
-            public int Weight { get; set; }
+            public long Weight { get; set; }
             /// <summary>
             /// 商品sku库存初始数量，后续库存update只使用stocks.update接口进行调用
             /// </summary>
             [JsonProperty("quantity")]
-            public int Quantity { get; set; }
+            public long Quantity { get; set; }
             /// <summary>
             /// 商品sku外部编码
             /// </summary>
             [JsonProperty("out_sku_sn")]
-            public int? OutSkuSn { get; set; }
+            public string OutSkuSn { get; set; }
             /// <summary>
             /// sku预览图，预览图尺寸：等宽高，且高度不低于480px，现已支持1M大小，越清晰越好卖，SKU预览图格式：仅支持JPG,PNG格式
             /// </summary>
@@ -214,34 +230,81 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 商品团购价格
             /// </summary>
             [JsonProperty("multi_price")]
-            public int MultiPrice { get; set; }
+            public long MultiPrice { get; set; }
             /// <summary>
             /// 商品单买价格
             /// </summary>
             [JsonProperty("price")]
-            public int Price { get; set; }
+            public long Price { get; set; }
             /// <summary>
             /// sku购买限制，只入参999
             /// </summary>
             [JsonProperty("limit_quantity")]
-            public int LimitQuantity { get; set; }
+            public long LimitQuantity { get; set; }
             /// <summary>
             /// sku上架状态，0-已下架，1-上架中
             /// </summary>
             [JsonProperty("is_onsale")]
             public int IsOnsale { get; set; }
-            public partial class SpecIdListRequestModel : PddRequestModel
-            {
-
-            }
 
         }
-        public partial class CarouselGalleryRequestModel : PddRequestModel
+        public partial class GoodsPropertiesRequestModel : PddRequestModel
         {
-
-        }
-        public partial class DetailGalleryRequestModel : PddRequestModel
-        {
+            /// <summary>
+            /// 模板模块Id
+            /// </summary>
+            [JsonProperty("template_module_id")]
+            public long? TemplateModuleId { get; set; }
+            /// <summary>
+            /// 父属性id，非销售属性不用传
+            /// </summary>
+            [JsonProperty("parent_spec_id")]
+            public long? ParentSpecId { get; set; }
+            /// <summary>
+            /// 属性id，非销售属性不用传
+            /// </summary>
+            [JsonProperty("spec_id")]
+            public long? SpecId { get; set; }
+            /// <summary>
+            /// 备注，非销售属性不用传
+            /// </summary>
+            [JsonProperty("note")]
+            public string Note { get; set; }
+            /// <summary>
+            /// 图片url，非销售属性不用传
+            /// </summary>
+            [JsonProperty("img_url")]
+            public string ImgUrl { get; set; }
+            /// <summary>
+            /// 组id，非销售属性不用传
+            /// </summary>
+            [JsonProperty("group_id")]
+            public int? GroupId { get; set; }
+            /// <summary>
+            /// 模板属性id
+            /// </summary>
+            [JsonProperty("template_pid")]
+            public long? TemplatePid { get; set; }
+            /// <summary>
+            /// 属性id
+            /// </summary>
+            [JsonProperty("pid")]
+            public long? Pid { get; set; }
+            /// <summary>
+            /// 属性值id
+            /// </summary>
+            [JsonProperty("vid")]
+            public long? Vid { get; set; }
+            /// <summary>
+            /// 属性值
+            /// </summary>
+            [JsonProperty("value")]
+            public string Value { get; set; }
+            /// <summary>
+            /// 属性单位
+            /// </summary>
+            [JsonProperty("value_unit")]
+            public string ValueUnit { get; set; }
 
         }
 

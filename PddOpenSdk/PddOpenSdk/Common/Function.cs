@@ -19,8 +19,16 @@ namespace PddOpenSdk.Common
         /// <returns></returns>
         public static Dictionary<string, object> ToDictionary(object obj, OrderType? sort = OrderType.ASC)
         {
-            var json = JsonConvert.SerializeObject(obj);
+            var json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+            });
+
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            dictionary = dictionary
+                .Where(d => d.Value != null && !string.IsNullOrEmpty(d.Value?.ToString()))
+                    .ToDictionary((d) => d.Key, (d) => d.Value);
+
             if (sort == OrderType.ASC)
             {
                 return dictionary.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);

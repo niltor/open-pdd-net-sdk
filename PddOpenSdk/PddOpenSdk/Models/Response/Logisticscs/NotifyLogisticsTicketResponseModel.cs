@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Logisticscs
 {
-    public class LogisticsTicketNotifyResponse
+    public partial class NotifyLogisticsTicketResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class NotifyLogisticsTicketResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("logistics_ticket_notify_response")]
-        public LogisticsTicketNotifyResponse LogisticsTicketNotifyResponse { get; set; }
-    }
+        public LogisticsTicketNotifyResponseResponseModel LogisticsTicketNotifyResponse { get; set; }
+        public partial class LogisticsTicketNotifyResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否修改成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool? IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

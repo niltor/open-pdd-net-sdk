@@ -1,37 +1,33 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsSpecIdGetResponse
+    public partial class GetGoodsSpecIdResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1216
-        /// </summary>
-        [JsonProperty("parent_spec_id")]
-        public int ParentSpecId { get; set; }
-
-        /// <summary>
-        /// Examples: "XL"
-        /// </summary>
-        [JsonProperty("spec_name")]
-        public string SpecName { get; set; }
-
-        /// <summary>
-        /// Examples: 2
-        /// </summary>
-        [JsonProperty("spec_id")]
-        public int SpecId { get; set; }
-    }
-
-    public class GetGoodsSpecIdResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"parent_spec_id":1216,"spec_name":"XL","spec_id":2}
+        /// 生成规格响应对象
         /// </summary>
         [JsonProperty("goods_spec_id_get_response")]
-        public GoodsSpecIdGetResponse GoodsSpecIdGetResponse { get; set; }
-    }
+        public GoodsSpecIdGetResponseResponseModel GoodsSpecIdGetResponse { get; set; }
+        public partial class GoodsSpecIdGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 自定义规格所属的规格ID
+            /// </summary>
+            [JsonProperty("parent_spec_id")]
+            public long? ParentSpecId { get; set; }
+            /// <summary>
+            /// 生成的自定义规格名称
+            /// </summary>
+            [JsonProperty("spec_name")]
+            public string SpecName { get; set; }
+            /// <summary>
+            /// 生成的自定义规格ID
+            /// </summary>
+            [JsonProperty("spec_id")]
+            public long? SpecId { get; set; }
 
+        }
+
+    }
 
 }

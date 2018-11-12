@@ -1,151 +1,131 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class TriggerCondition
+    public partial class QuerySmsRemainSettingDetailResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 30
-        /// </summary>
-        [JsonProperty("unpaid_duration")]
-        public int UnpaidDuration { get; set; }
-    }
-
-    public class Target
-    {
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("min_pay_amount")]
-        public object MinPayAmount { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("max_pay_amount")]
-        public object MaxPayAmount { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("pay_amount_limit")]
-        public object PayAmountLimit { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("region_type")]
-        public object RegionType { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("region")]
-        public object Region { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("goods")]
-        public object Goods { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("goods_invert")]
-        public object GoodsInvert { get; set; }
-    }
-
-    public class SmsRemainSettingResult
-    {
-
-        /// <summary>
-        /// Examples: 26218
-        /// </summary>
-        [JsonProperty("mall_id")]
-        public int MallId { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("scene")]
-        public int Scene { get; set; }
-
-        /// <summary>
-        /// Examples: {"unpaid_duration":30}
-        /// </summary>
-        [JsonProperty("trigger_condition")]
-        public TriggerCondition TriggerCondition { get; set; }
-
-        /// <summary>
-        /// Examples: {"min_pay_amount":null,"max_pay_amount":null,"pay_amount_limit":null,"region_type":null,"region":null,"goods":null,"goods_invert":null}
-        /// </summary>
-        [JsonProperty("target")]
-        public Target Target { get; set; }
-
-        /// <summary>
-        /// Examples: 50
-        /// </summary>
-        [JsonProperty("template_id")]
-        public int TemplateId { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("open")]
-        public int Open { get; set; }
-
-        /// <summary>
-        /// Examples: 214
-        /// </summary>
-        [JsonProperty("send_num")]
-        public int SendNum { get; set; }
-
-        /// <summary>
-        /// Examples: 135
-        /// </summary>
-        [JsonProperty("send_failed_num")]
-        public int SendFailedNum { get; set; }
-    }
-
-    public class SmsRemainSettingDetailQueryResponse
-    {
-
-        /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("success")]
-        public bool Success { get; set; }
-
-        /// <summary>
-        /// Examples: 1000000
-        /// </summary>
-        [JsonProperty("error_code")]
-        public int ErrorCode { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("error_msg")]
-        public object ErrorMsg { get; set; }
-
-        /// <summary>
-        /// Examples: {"mall_id":26218,"scene":1,"trigger_condition":{"unpaid_duration":30},"target":{"min_pay_amount":null,"max_pay_amount":null,"pay_amount_limit":null,"region_type":null,"region":null,"goods":null,"goods_invert":null},"template_id":50,"open":1,"send_num":214,"send_failed_num":135}
-        /// </summary>
-        [JsonProperty("result")]
-        public SmsRemainSettingResult Result { get; set; }
-    }
-
-    public class QuerySmsRemainSettingDetailResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"success":true,"error_code":1000000,"error_msg":null,"result":{"mall_id":26218,"scene":1,"trigger_condition":{"unpaid_duration":30},"target":{"min_pay_amount":null,"max_pay_amount":null,"pay_amount_limit":null,"region_type":null,"region":null,"goods":null,"goods_invert":null},"template_id":50,"open":1,"send_num":214,"send_failed_num":135}}
+        /// response
         /// </summary>
         [JsonProperty("sms_remain_setting_detail_query_response")]
-        public SmsRemainSettingDetailQueryResponse SmsRemainSettingDetailQueryResponse { get; set; }
-    }
+        public SmsRemainSettingDetailQueryResponseResponseModel SmsRemainSettingDetailQueryResponse { get; set; }
+        public partial class SmsRemainSettingDetailQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("success")]
+            public bool? Success { get; set; }
+            /// <summary>
+            /// 错误代码
+            /// </summary>
+            [JsonProperty("error_code")]
+            public long? ErrorCode { get; set; }
+            /// <summary>
+            /// 错误类型
+            /// </summary>
+            [JsonProperty("error_msg")]
+            public string ErrorMsg { get; set; }
+            /// <summary>
+            /// 结果
+            /// </summary>
+            [JsonProperty("result")]
+            public ResultResponseModel Result { get; set; }
+            public partial class ResultResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 店铺id
+                /// </summary>
+                [JsonProperty("mall_id")]
+                public long? MallId { get; set; }
+                /// <summary>
+                /// 设置类型
+                /// </summary>
+                [JsonProperty("scene")]
+                public int? Scene { get; set; }
+                /// <summary>
+                /// 触发状态
+                /// </summary>
+                [JsonProperty("trigger_condition")]
+                public TriggerConditionResponseModel TriggerCondition { get; set; }
+                /// <summary>
+                /// 目标
+                /// </summary>
+                [JsonProperty("target")]
+                public TargetResponseModel Target { get; set; }
+                /// <summary>
+                /// 模板id
+                /// </summary>
+                [JsonProperty("template_id")]
+                public long? TemplateId { get; set; }
+                /// <summary>
+                /// 是否开启
+                /// </summary>
+                [JsonProperty("open")]
+                public int? Open { get; set; }
+                /// <summary>
+                /// 全部条数
+                /// </summary>
+                [JsonProperty("send_num")]
+                public long? SendNum { get; set; }
+                /// <summary>
+                /// 失败条数
+                /// </summary>
+                [JsonProperty("send_failed_num")]
+                public long? SendFailedNum { get; set; }
+                public partial class TriggerConditionResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 距离系统自动取消订单，单位分钟
+                    /// </summary>
+                    [JsonProperty("unpaid_duration")]
+                    public long? UnpaidDuration { get; set; }
 
+                }
+                public partial class TargetResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 商家实收金额，最低价
+                    /// </summary>
+                    [JsonProperty("min_pay_amount")]
+                    public long? MinPayAmount { get; set; }
+                    /// <summary>
+                    /// 商家实收金额，最高价
+                    /// </summary>
+                    [JsonProperty("max_pay_amount")]
+                    public long? MaxPayAmount { get; set; }
+                    /// <summary>
+                    /// 支付金额是否不限
+                    /// </summary>
+                    [JsonProperty("pay_amount_limit")]
+                    public int? PayAmountLimit { get; set; }
+                    /// <summary>
+                    /// 地区类型
+                    /// </summary>
+                    [JsonProperty("region_type")]
+                    public int? RegionType { get; set; }
+                    /// <summary>
+                    /// 收货地区
+                    /// </summary>
+                    [JsonProperty("region")]
+                    public List<int?> Region { get; set; }
+                    /// <summary>
+                    /// 商品id列表
+                    /// </summary>
+                    [JsonProperty("goods")]
+                    public List<long?> Goods { get; set; }
+                    /// <summary>
+                    /// 是否排除商品
+                    /// </summary>
+                    [JsonProperty("goods_invert")]
+                    public int? GoodsInvert { get; set; }
+
+                }
+
+            }
+
+        }
+
+    }
 
 }

@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Invoice
 {
-    public partial class InvoiceApplicationUpdateResponse
+    public partial class UpdateInvoiceApplicationResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class UpdateInvoiceApplicationResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("invoice_application_update_response")]
-        public InvoiceApplicationUpdateResponse InvoiceApplicationUpdateResponse { get; set; }
-    }
+        public InvoiceApplicationUpdateResponseResponseModel InvoiceApplicationUpdateResponse { get; set; }
+        public partial class InvoiceApplicationUpdateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// true
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool? IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

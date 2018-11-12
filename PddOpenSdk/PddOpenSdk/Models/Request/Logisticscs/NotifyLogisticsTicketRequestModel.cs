@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Logisticscs
 {
@@ -7,12 +8,12 @@ namespace PddOpenSdk.Models.Request.Logisticscs
         /// 附件url,示例：["http://testimg.yangkeduo.com/pdd_oms/2018-01-16/411068e948835ae053a86c13f8ebb5ee.jpg"]
         /// </summary>
         [JsonProperty("attach_path_list")]
-        public string AttachPathList { get; set; }
+        public List<string> AttachPathList { get; set; }
         /// <summary>
         /// 工单id
         /// </summary>
         [JsonProperty("ticket_id")]
-        public int TicketId { get; set; }
+        public long TicketId { get; set; }
         /// <summary>
         /// 运单号
         /// </summary>
@@ -37,7 +38,7 @@ namespace PddOpenSdk.Models.Request.Logisticscs
         /// 赔付金额(单位:分)
         /// </summary>
         [JsonProperty("compensate_amount")]
-        public int CompensateAmount { get; set; }
+        public long CompensateAmount { get; set; }
         /// <summary>
         /// 责任方，0:默认, 1:消费者,2:商家,3:快递公司,4:其他
         /// </summary>

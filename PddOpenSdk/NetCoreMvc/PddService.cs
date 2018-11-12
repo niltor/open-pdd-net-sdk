@@ -48,7 +48,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 物流商API
         /// </summary>
-        public LogisticsCsApi LogisticsCsApi { get; set; } = new LogisticsCsApi();
+        public LogisticscsApi LogisticsCsApi { get; set; } = new LogisticscsApi();
         /// <summary>
         /// 店铺API
         /// </summary>

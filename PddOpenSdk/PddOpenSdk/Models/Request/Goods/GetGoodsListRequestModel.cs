@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Request.Goods
     public partial class GetGoodsListRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 该值为：pdd.goods.list.get
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-        /// <summary>
         /// 商品外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。outer_id,is_onsale,goods_name三选一，优先级is_onsale>outer_id>goods_name
         /// </summary>
         [JsonProperty("outer_id")]

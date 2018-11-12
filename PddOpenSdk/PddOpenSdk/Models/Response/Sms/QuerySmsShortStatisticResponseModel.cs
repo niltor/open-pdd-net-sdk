@@ -1,59 +1,101 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SettingAndCrowdReturnVo
+    public partial class QuerySmsShortStatisticResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 311609
-        /// </summary>
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Examples: "感兴趣的用户"
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("people_num")]
-        public int PeopleNum { get; set; }
-
-        /// <summary>
-        /// Examples: 1534312800000
-        /// </summary>
-        [JsonProperty("send_time")]
-        public long SendTime { get; set; }
-    }
-
-    public class SmsShortMsgStatisticQueryResponse
-    {
-
-        /// <summary>
-        /// Examples: {"id":311609,"name":"感兴趣的用户","people_num":0,"send_time":1534312800000}
-        /// </summary>
-        [JsonProperty("setting_and_crowd_return_vo")]
-        public SettingAndCrowdReturnVo SettingAndCrowdReturnVo { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("statistic_vo")]
-        public object StatisticVo { get; set; }
-    }
-
-    public class QuerySmsShortStatisticResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"setting_and_crowd_return_vo":{"id":311609,"name":"感兴趣的用户","people_num":0,"send_time":1534312800000},"statistic_vo":null}
+        /// response
         /// </summary>
         [JsonProperty("sms_short_msg_statistic_query_response")]
-        public SmsShortMsgStatisticQueryResponse SmsShortMsgStatisticQueryResponse { get; set; }
-    }
+        public SmsShortMsgStatisticQueryResponseResponseModel SmsShortMsgStatisticQueryResponse { get; set; }
+        public partial class SmsShortMsgStatisticQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// return
+            /// </summary>
+            [JsonProperty("setting_and_crowd_return_vo")]
+            public SettingAndCrowdReturnVoResponseModel SettingAndCrowdReturnVo { get; set; }
+            /// <summary>
+            /// statistic_vo
+            /// </summary>
+            [JsonProperty("statistic_vo")]
+            public StatisticVoResponseModel StatisticVo { get; set; }
+            public partial class SettingAndCrowdReturnVoResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 人群id
+                /// </summary>
+                [JsonProperty("id")]
+                public long? Id { get; set; }
+                /// <summary>
+                /// 人群名称
+                /// </summary>
+                [JsonProperty("name")]
+                public string Name { get; set; }
+                /// <summary>
+                /// 人群数量
+                /// </summary>
+                [JsonProperty("people_num")]
+                public long? PeopleNum { get; set; }
+                /// <summary>
+                /// 发送时间
+                /// </summary>
+                [JsonProperty("send_time")]
+                public long? SendTime { get; set; }
 
+            }
+            public partial class StatisticVoResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 商家店铺id
+                /// </summary>
+                [JsonProperty("mall_id")]
+                public long? MallId { get; set; }
+                /// <summary>
+                /// 批次id
+                /// </summary>
+                [JsonProperty("setting_id")]
+                public long? SettingId { get; set; }
+                /// <summary>
+                /// 场景id
+                /// </summary>
+                [JsonProperty("scene")]
+                public long? Scene { get; set; }
+                /// <summary>
+                /// 成功触达人数
+                /// </summary>
+                [JsonProperty("sms_succ_cnt_1d")]
+                public long? SmsSuccCnt1D { get; set; }
+                /// <summary>
+                /// 进店人数
+                /// </summary>
+                [JsonProperty("online_mall_cnt")]
+                public long? OnlineMallCnt { get; set; }
+                /// <summary>
+                /// 支付订单数量
+                /// </summary>
+                [JsonProperty("pay_mall_cnt")]
+                public long? PayMallCnt { get; set; }
+                /// <summary>
+                /// 支付订单数
+                /// </summary>
+                [JsonProperty("pay_mall_amt")]
+                public double? PayMallAmt { get; set; }
+                /// <summary>
+                /// 支付订单金额
+                /// </summary>
+                [JsonProperty("online_mall_rto")]
+                public double? OnlineMallRto { get; set; }
+                /// <summary>
+                /// 进店转化率
+                /// </summary>
+                [JsonProperty("pay_mall_rto")]
+                public double? PayMallRto { get; set; }
+
+            }
+
+        }
+
+    }
 
 }

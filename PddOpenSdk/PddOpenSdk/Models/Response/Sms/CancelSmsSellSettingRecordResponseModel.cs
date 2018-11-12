@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SmsSellSettingRecordCancelResponse
+    public partial class CancelSmsSellSettingRecordResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class CancelSmsSellSettingRecordResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("sms_sell_setting_record_cancel_response")]
-        public SmsSellSettingRecordCancelResponse SmsSellSettingRecordCancelResponse { get; set; }
-    }
+        public SmsSellSettingRecordCancelResponseResponseModel SmsSellSettingRecordCancelResponse { get; set; }
+        public partial class SmsSellSettingRecordCancelResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool? IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

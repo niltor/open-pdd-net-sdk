@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
@@ -14,12 +15,12 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 返回商品总数
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             /// <summary>
             /// 商品列表对象
             /// </summary>
             [JsonProperty("goods_list")]
-            public GoodsListResponseModel GoodsList { get; set; }
+            public List<GoodsListResponseModel> GoodsList { get; set; }
             public partial class GoodsListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -31,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品编码
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public string GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
@@ -46,22 +47,22 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 是否多sku，0-单sku，1-多sku
                 /// </summary>
                 [JsonProperty("is_more_sku")]
-                public int IsMoreSku { get; set; }
+                public int? IsMoreSku { get; set; }
                 /// <summary>
                 /// 商品总数量
                 /// </summary>
                 [JsonProperty("goods_quantity")]
-                public int GoodsQuantity { get; set; }
+                public long? GoodsQuantity { get; set; }
                 /// <summary>
                 /// 是否在架上，0-下架中，1-架上
                 /// </summary>
                 [JsonProperty("is_onsale")]
-                public int IsOnsale { get; set; }
+                public int? IsOnsale { get; set; }
                 /// <summary>
                 /// sku列表对象
                 /// </summary>
                 [JsonProperty("sku_list")]
-                public SkuListResponseModel SkuList { get; set; }
+                public List<SkuListResponseModel> SkuList { get; set; }
                 public partial class SkuListResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -73,12 +74,12 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// sku编码
                     /// </summary>
                     [JsonProperty("sku_id")]
-                    public int SkuId { get; set; }
+                    public long? SkuId { get; set; }
                     /// <summary>
                     /// sku库存
                     /// </summary>
                     [JsonProperty("sku_quantity")]
-                    public int SkuQuantity { get; set; }
+                    public long? SkuQuantity { get; set; }
                     /// <summary>
                     /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
                     /// </summary>
@@ -93,7 +94,7 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// sku是否在架上，0-下架中，1-架上
                     /// </summary>
                     [JsonProperty("is_sku_onsale")]
-                    public int IsSkuOnsale { get; set; }
+                    public int? IsSkuOnsale { get; set; }
 
                 }
 

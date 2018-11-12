@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Request.Ad
     public partial class GetAdChartBykeywordRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 该值为：pdd.ad.chart.bykeyword.get
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-        /// <summary>
         /// 报表日期，仅能查询近30天的报表数据，格式为：YYYY-MM-DD
         /// </summary>
         [JsonProperty("date")]

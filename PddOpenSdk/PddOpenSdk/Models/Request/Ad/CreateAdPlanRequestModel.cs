@@ -17,7 +17,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 单日消耗，单位厘;上限不能超过1000000元，单日消耗上限不能低于100元
         /// </summary>
         [JsonProperty("max_cost")]
-        public int MaxCost { get; set; }
+        public long MaxCost { get; set; }
 
     }
 

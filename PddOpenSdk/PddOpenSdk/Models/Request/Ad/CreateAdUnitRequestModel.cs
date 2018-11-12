@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
@@ -12,24 +13,24 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 计划id
         /// </summary>
         [JsonProperty("plan_id")]
-        public string PlanId { get; set; }
+        public long PlanId { get; set; }
         /// <summary>
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
+        public long GoodsId { get; set; }
         /// <summary>
         /// [{"word":"test","bid":200}]
         /// </summary>
         [JsonProperty("keywords")]
-        public KeywordsRequestModel Keywords { get; set; }
+        public List<KeywordsRequestModel> Keywords { get; set; }
         public partial class KeywordsRequestModel : PddRequestModel
         {
             /// <summary>
             /// 关键字出价（厘）范围需在0.10~99.0元区间内
             /// </summary>
             [JsonProperty("bid")]
-            public int Bid { get; set; }
+            public long Bid { get; set; }
             /// <summary>
             /// 关键词
             /// </summary>

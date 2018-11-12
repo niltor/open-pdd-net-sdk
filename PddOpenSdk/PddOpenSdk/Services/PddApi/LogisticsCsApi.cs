@@ -3,7 +3,7 @@ using PddOpenSdk.Models.Request.Logisticscs;
 using PddOpenSdk.Models.Response.Logisticscs;
 namespace PddOpenSdk.Services.PddApi
 {
-    public class LogisticsCsApi : PddCommonApi
+    public class LogisticscsApi : PddCommonApi
     {
         /// <summary>
         /// 客户与机器人的聊天记录获取接口

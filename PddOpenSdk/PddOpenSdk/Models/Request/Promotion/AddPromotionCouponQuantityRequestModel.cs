@@ -7,12 +7,12 @@ namespace PddOpenSdk.Models.Request.Promotion
         /// 券批次ID
         /// </summary>
         [JsonProperty("batch_id")]
-        public int BatchId { get; set; }
+        public long BatchId { get; set; }
         /// <summary>
         /// 要增加的数量
         /// </summary>
         [JsonProperty("add_quantity")]
-        public int AddQuantity { get; set; }
+        public long AddQuantity { get; set; }
 
     }
 

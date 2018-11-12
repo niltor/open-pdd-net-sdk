@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 提交申请的序列id
         /// </summary>
         [JsonProperty("goods_commit_id")]
-        public int GoodsCommitId { get; set; }
+        public long GoodsCommitId { get; set; }
 
     }
 

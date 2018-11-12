@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Request.Logisticscs
         /// 0：文本1：图片
         /// </summary>
         [JsonProperty("message_type")]
-        public object MessageType { get; set; }
+        public int MessageType { get; set; }
         /// <summary>
         /// message_type为0时不为空
         /// </summary>

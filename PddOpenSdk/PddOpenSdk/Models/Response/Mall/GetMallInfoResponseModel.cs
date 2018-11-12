@@ -1,37 +1,33 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Mall
 {
-    public class MallInfoGetResponse
+    public partial class GetMallInfoResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "http://imsproductionimg.yangkeduo.com/78186d4b00b2bba243ec1d31e19a2d76.jpg"
-        /// </summary>
-        [JsonProperty("logo")]
-        public string Logo { get; set; }
-
-        /// <summary>
-        /// Examples: "sss"
-        /// </summary>
-        [JsonProperty("mall_name")]
-        public string MallName { get; set; }
-
-        /// <summary>
-        /// Examples: "dqw"
-        /// </summary>
-        [JsonProperty("mall_desc")]
-        public string MallDesc { get; set; }
-    }
-
-    public class GetMallInfoResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"logo":"http://imsproductionimg.yangkeduo.com/78186d4b00b2bba243ec1d31e19a2d76.jpg","mall_name":"sss","mall_desc":"dqw"}
+        /// response
         /// </summary>
         [JsonProperty("mall_info_get_response")]
-        public MallInfoGetResponse MallInfoGetResponse { get; set; }
-    }
+        public MallInfoGetResponseResponseModel MallInfoGetResponse { get; set; }
+        public partial class MallInfoGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 店铺logo
+            /// </summary>
+            [JsonProperty("logo")]
+            public string Logo { get; set; }
+            /// <summary>
+            /// 店铺名称
+            /// </summary>
+            [JsonProperty("mall_name")]
+            public string MallName { get; set; }
+            /// <summary>
+            /// 店铺描述
+            /// </summary>
+            [JsonProperty("mall_desc")]
+            public string MallDesc { get; set; }
 
+        }
+
+    }
 
 }

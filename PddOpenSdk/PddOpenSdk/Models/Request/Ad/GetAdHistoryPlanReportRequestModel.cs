@@ -47,7 +47,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 计划id，当group_by=1时，plan_Id必填
         /// </summary>
         [JsonProperty("plan_id")]
-        public int? PlanId { get; set; }
+        public long? PlanId { get; set; }
 
     }
 

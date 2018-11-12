@@ -12,12 +12,12 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 计划id
         /// </summary>
         [JsonProperty("plan_id")]
-        public string PlanId { get; set; }
+        public long PlanId { get; set; }
         /// <summary>
         /// 计划日限额，单位厘
         /// </summary>
         [JsonProperty("max_cost")]
-        public int MaxCost { get; set; }
+        public long MaxCost { get; set; }
 
     }
 

@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsUpdateSkuPriceResponse
+    public partial class UpdateGoodsSkuPriceResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class UpdateGoodsSkuPriceResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("goods_update_sku_price_response")]
-        public GoodsUpdateSkuPriceResponse GoodsUpdateSkuPriceResponse { get; set; }
-    }
+        public GoodsUpdateSkuPriceResponseResponseModel GoodsUpdateSkuPriceResponse { get; set; }
+        public partial class GoodsUpdateSkuPriceResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool? IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

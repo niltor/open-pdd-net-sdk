@@ -1,31 +1,28 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SmsCrowsPeopleNumberQueryResponse
+    public partial class QuerySmsCrowdsPeopleNumberResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 9958
-        /// </summary>
-        [JsonProperty("remain")]
-        public int Remain { get; set; }
-
-        /// <summary>
-        /// Examples: 8
-        /// </summary>
-        [JsonProperty("object_num")]
-        public int ObjectNum { get; set; }
-    }
-
-    public class QuerySmsCrowdsPeopleNumberResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"remain":9958,"object_num":8}
+        /// response
         /// </summary>
         [JsonProperty("sms_crows_people_number_query_response")]
-        public SmsCrowsPeopleNumberQueryResponse SmsCrowsPeopleNumberQueryResponse { get; set; }
-    }
+        public SmsCrowsPeopleNumberQueryResponseResponseModel SmsCrowsPeopleNumberQueryResponse { get; set; }
+        public partial class SmsCrowsPeopleNumberQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 筛选人数
+            /// </summary>
+            [JsonProperty("object_num")]
+            public long? ObjectNum { get; set; }
+            /// <summary>
+            /// 短信余量
+            /// </summary>
+            [JsonProperty("remain")]
+            public long? Remain { get; set; }
 
+        }
+
+    }
 
 }

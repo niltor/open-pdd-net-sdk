@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Invoice
 {
-    public partial class InvoiceApplicationUpdateResponse
+    public partial class UploadInvoiceDetailResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: null
+        /// response
         /// </summary>
-        [JsonProperty("serial_no")]
-        public object SerialNo { get; set; }
+        [JsonProperty("invoice_detail_upload_response")]
+        public InvoiceDetailUploadResponseResponseModel InvoiceDetailUploadResponse { get; set; }
+        public partial class InvoiceDetailUploadResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 发票流水号
+            /// </summary>
+            [JsonProperty("serial_no")]
+            public string SerialNo { get; set; }
+
+        }
+
     }
-
-    public class UploadInvoiceDetailResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"serial_no":null}
-        /// </summary>
-        [JsonProperty("invoice_application_update_response")]
-        public InvoiceApplicationUpdateResponse InvoiceApplicationUpdateResponse { get; set; }
-    }
-
 
 }

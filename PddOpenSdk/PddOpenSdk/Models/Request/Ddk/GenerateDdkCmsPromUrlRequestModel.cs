@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
@@ -7,12 +8,12 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 是否生成短链接，true-是，false-否
         /// </summary>
         [JsonProperty("generate_short_url")]
-        public string GenerateShortUrl { get; set; }
+        public bool? GenerateShortUrl { get; set; }
         /// <summary>
         /// 推广位列表，例如：["60005_612"]
         /// </summary>
         [JsonProperty("p_id_list")]
-        public string PIdList { get; set; }
+        public List<string> PIdList { get; set; }
         /// <summary>
         /// 是否生成手机跳转链接。true-是，false-否，默认false
         /// </summary>
@@ -41,8 +42,8 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// <summary>
         /// 唤起微信app推广链接
         /// </summary>
-        [JsonProperty("we_app_web_wiew_url")]
-        public bool WeAppWebWiewUrl { get; set; }
+        [JsonProperty("we_app_web_view_url")]
+        public bool WeAppWebViewUrl { get; set; }
         /// <summary>
         /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 3, "默认商城"；4,"PC端专属商城"；非必填 ,默认是3,
         /// </summary>

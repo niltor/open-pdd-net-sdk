@@ -57,7 +57,7 @@ namespace Sample
         public long? Id { get; set; }
         public string ParamName { get; set; }
         public string ParamType { get; set; }
-        public long? IsMust { get; set; }
+        public int? IsMust { get; set; }
         public string ParamDesc { get; set; }
         public string Example { get; set; }
         public long? ParentId { get; set; }

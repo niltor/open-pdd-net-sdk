@@ -1,15 +1,14 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class CreateGoodsCpsMallUnitResponseModel
+    public partial class CreateGoodsCpsMallUnitResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
+        /// 是否设置成功
         /// </summary>
         [JsonProperty("is_create_success")]
-        public bool IsCreateSuccess { get; set; }
-    }
+        public bool? IsCreateSuccess { get; set; }
 
+    }
 
 }

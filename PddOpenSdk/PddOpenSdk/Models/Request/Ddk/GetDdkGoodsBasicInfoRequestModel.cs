@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
@@ -7,7 +8,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public string GoodsIdList { get; set; }
+        public List<long> GoodsIdList { get; set; }
 
     }
 

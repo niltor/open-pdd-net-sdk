@@ -12,7 +12,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 单元id
         /// </summary>
         [JsonProperty("unit_id")]
-        public int UnitId { get; set; }
+        public long UnitId { get; set; }
 
     }
 

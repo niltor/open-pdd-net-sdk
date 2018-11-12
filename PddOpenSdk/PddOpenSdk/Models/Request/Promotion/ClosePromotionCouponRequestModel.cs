@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Promotion
         /// 券批次ID
         /// </summary>
         [JsonProperty("batch_id")]
-        public int BatchId { get; set; }
+        public long BatchId { get; set; }
 
     }
 

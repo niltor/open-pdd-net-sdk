@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品ID，仅支持单个查询
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public string GoodsIdList { get; set; }
+        public List<long> GoodsIdList { get; set; }
         /// <summary>
         /// 自定义参数，为链接打上自定义标签。自定义参数最长限制64个字节。
         /// </summary>
@@ -22,7 +23,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 招商多多客ID
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public int? ZsDuoId { get; set; }
+        public long? ZsDuoId { get; set; }
 
     }
 

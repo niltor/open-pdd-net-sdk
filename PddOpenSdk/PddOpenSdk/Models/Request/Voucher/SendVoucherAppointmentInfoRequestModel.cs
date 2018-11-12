@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Voucher
 {
@@ -17,7 +18,7 @@ namespace PddOpenSdk.Models.Request.Voucher
         /// 优惠券信息列表,例子[{"voucher_id":"test voucher_id","voucher_no":"test voucher_no"}]
         /// </summary>
         [JsonProperty("voucher_list")]
-        public VoucherListRequestModel VoucherList { get; set; }
+        public List<VoucherListRequestModel> VoucherList { get; set; }
         /// <summary>
         /// 物流方式  1  物流发货   2 自提
         /// </summary>
@@ -27,7 +28,7 @@ namespace PddOpenSdk.Models.Request.Voucher
         /// 预约时间, 距离格林威治时间 1970 年 01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总毫秒数
         /// </summary>
         [JsonProperty("appointment_time")]
-        public int AppointmentTime { get; set; }
+        public long AppointmentTime { get; set; }
         public partial class VoucherListRequestModel : PddRequestModel
         {
             /// <summary>

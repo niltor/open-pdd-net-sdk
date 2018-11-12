@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class List
+    public partial class QuerySmsTemplateResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 200, 201, 202, 203, 204
-        /// </summary>
-        [JsonProperty("code")]
-        public int Code { get; set; }
-
-        /// <summary>
-        /// Examples: "小店送您的优惠券即将到期，快来享受惊喜低价吧！{店铺名}{店铺短链接}回TD退订", "叮咚！专享{优惠券面额}已到账，请尽快使用~{店铺名}{店铺短链接}回TD退订", "别告诉老板！偷偷塞给你一张优惠券，请查收~{店铺名}{店铺短链接}回TD退订", "超值价+{优惠券面额}=让你尖叫的实惠！速戳{店铺短链接}{店铺名}回TD退订", "好货嫌贵？送你一张优惠券，速抢~{店铺名}{店铺短链接}回TD退订"
-        /// </summary>
-        [JsonProperty("desc")]
-        public string Desc { get; set; }
-    }
-
-    public class SmsTemplateQueryResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"code":200,"desc":"小店送您的优惠券即将到期，快来享受惊喜低价吧！{店铺名}{店铺短链接}回TD退订"},{"code":201,"desc":"叮咚！专享{优惠券面额}已到账，请尽快使用~{店铺名}{店铺短链接}回TD退订"},{"code":202,"desc":"别告诉老板！偷偷塞给你一张优惠券，请查收~{店铺名}{店铺短链接}回TD退订"},{"code":203,"desc":"超值价+{优惠券面额}=让你尖叫的实惠！速戳{店铺短链接}{店铺名}回TD退订"},{"code":204,"desc":"好货嫌贵？送你一张优惠券，速抢~{店铺名}{店铺短链接}回TD退订"},{"code":205,"desc":"嘘寒问暖，不如优惠划算！您已获得小店发出的超值优惠券，使用时间有限，期待您的光临-{店铺名}{店铺短链接}回TD退订"},{"code":206,"desc":"老板吩咐，一定要把这张优惠券送到您手上，{优惠券面额}已到账，小店恭候您的光临-{店铺名}{店铺短链接}回TD退订"},{"code":207,"desc":"想了好久，怎样才能打开你的心扉，只好使出杀手锏——大额优惠券！这么大的便宜，你还不来吗？{店铺名}{店铺短链接}回TD退订"},{"code":208,"desc":"多少次回眸，都因为价格而与我擦肩而过！不多说了，双手奉上专享优惠券，只期待你我的下次相遇能够撞出火花！{店铺名}{店铺短链接}回TD退订"},{"code":209,"desc":"小店优选宝贝已经准备好了！您想送谁C位卖爆？{优惠券面额}已送上，快使用手中的优惠券为你的中意宝贝下一单吧！{店铺名}{店铺短链接}回TD退订"},{"code":116,"desc":"{店铺名}低价好货不等人，{优惠券面额}已发送至您的账户，点击即刻拥有 {店铺短链接} 回TD退订"},{"code":115,"desc":"{店铺名}好货上新，{优惠券面额}已发送至您的账户，快来拼拼拼！{店铺短链接} 回TD退订"},{"code":114,"desc":"亲，感谢你的选购。一张专属{优惠券面额}已发送至您的账户，记得常来{店铺名}看看哦{店铺短链接} 回TD退订"},{"code":113,"desc":"今天是个特别的日子，特别想你，专享{优惠券面额}已发送至您的账户，记得在{优惠券失效日期}前来{店铺名}使用哦{店铺短链接} 回TD退订"}]
-        /// </summary>
-        [JsonProperty("list")]
-        public IList<List> List { get; set; }
-    }
-
-    public class QuerySmsTemplateResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"list":[{"code":200,"desc":"小店送您的优惠券即将到期，快来享受惊喜低价吧！{店铺名}{店铺短链接}回TD退订"},{"code":201,"desc":"叮咚！专享{优惠券面额}已到账，请尽快使用~{店铺名}{店铺短链接}回TD退订"},{"code":202,"desc":"别告诉老板！偷偷塞给你一张优惠券，请查收~{店铺名}{店铺短链接}回TD退订"},{"code":203,"desc":"超值价+{优惠券面额}=让你尖叫的实惠！速戳{店铺短链接}{店铺名}回TD退订"},{"code":204,"desc":"好货嫌贵？送你一张优惠券，速抢~{店铺名}{店铺短链接}回TD退订"},{"code":205,"desc":"嘘寒问暖，不如优惠划算！您已获得小店发出的超值优惠券，使用时间有限，期待您的光临-{店铺名}{店铺短链接}回TD退订"},{"code":206,"desc":"老板吩咐，一定要把这张优惠券送到您手上，{优惠券面额}已到账，小店恭候您的光临-{店铺名}{店铺短链接}回TD退订"},{"code":207,"desc":"想了好久，怎样才能打开你的心扉，只好使出杀手锏——大额优惠券！这么大的便宜，你还不来吗？{店铺名}{店铺短链接}回TD退订"},{"code":208,"desc":"多少次回眸，都因为价格而与我擦肩而过！不多说了，双手奉上专享优惠券，只期待你我的下次相遇能够撞出火花！{店铺名}{店铺短链接}回TD退订"},{"code":209,"desc":"小店优选宝贝已经准备好了！您想送谁C位卖爆？{优惠券面额}已送上，快使用手中的优惠券为你的中意宝贝下一单吧！{店铺名}{店铺短链接}回TD退订"},{"code":116,"desc":"{店铺名}低价好货不等人，{优惠券面额}已发送至您的账户，点击即刻拥有 {店铺短链接} 回TD退订"},{"code":115,"desc":"{店铺名}好货上新，{优惠券面额}已发送至您的账户，快来拼拼拼！{店铺短链接} 回TD退订"},{"code":114,"desc":"亲，感谢你的选购。一张专属{优惠券面额}已发送至您的账户，记得常来{店铺名}看看哦{店铺短链接} 回TD退订"},{"code":113,"desc":"今天是个特别的日子，特别想你，专享{优惠券面额}已发送至您的账户，记得在{优惠券失效日期}前来{店铺名}使用哦{店铺短链接} 回TD退订"}]}
+        /// response
         /// </summary>
         [JsonProperty("sms_template_query_response")]
-        public SmsTemplateQueryResponse SmsTemplateQueryResponse { get; set; }
-    }
+        public SmsTemplateQueryResponseResponseModel SmsTemplateQueryResponse { get; set; }
+        public partial class SmsTemplateQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 列表
+            /// </summary>
+            [JsonProperty("result")]
+            public List<ResultResponseModel> Result { get; set; }
+            public partial class ResultResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 编号
+                /// </summary>
+                [JsonProperty("code")]
+                public long? Code { get; set; }
+                /// <summary>
+                /// 描述
+                /// </summary>
+                [JsonProperty("desc")]
+                public string Desc { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

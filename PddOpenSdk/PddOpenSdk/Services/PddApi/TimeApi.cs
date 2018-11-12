@@ -13,6 +13,14 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<GetTimeRequestModel, GetTimeResponseModel>("pdd.time.get", getTime);
             return result;
         }
+        /// <summary>
+        /// 自动切图接口
+        /// </summary>
+        public async Task<ImageUtilDivideResponseModel> ImageUtilDivideAsync(ImageUtilDivideRequestModel imageUtilDivide)
+        {
+            var result = await PostAsync<ImageUtilDivideRequestModel, ImageUtilDivideResponseModel>("pdd.util.divide.image", imageUtilDivide);
+            return result;
+        }
 
     }
 }

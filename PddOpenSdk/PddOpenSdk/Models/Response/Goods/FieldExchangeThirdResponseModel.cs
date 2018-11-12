@@ -1,27 +1,19 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class FieldExchangeThirdResponseModel
+    public partial class FieldExchangeThirdResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 2747709104
+        /// 商品ID
         /// </summary>
         [JsonProperty("goods_id")]
-        public long GoodsId { get; set; }
-
+        public string GoodsId { get; set; }
         /// <summary>
-        /// Examples: 5617860211
+        /// 商品草稿ID
         /// </summary>
         [JsonProperty("goods_commit_id")]
-        public long GoodsCommitId { get; set; }
+        public string GoodsCommitId { get; set; }
 
-        /// <summary>
-        /// Examples: 204962614
-        /// </summary>
-        [JsonProperty("mall_id")]
-        public int MallId { get; set; }
     }
-
 
 }

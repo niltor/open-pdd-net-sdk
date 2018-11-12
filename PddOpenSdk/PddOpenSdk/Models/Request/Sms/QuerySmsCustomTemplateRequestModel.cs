@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Request.Sms
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
         /// <summary>
-        /// /**;      * 自定义模板类型;      * 0,正常模板;      * 1,需要带优惠券类型的模板;      */
+        /// 自定义模板类型; 0,正常模板; 1,需要带优惠券类型的模板
         /// </summary>
         [JsonProperty("template_type")]
         public int? TemplateType { get; set; }

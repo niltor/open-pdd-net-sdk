@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// keyword_id列表，[1,2]
         /// </summary>
         [JsonProperty("keyword_ids")]
-        public string KeywordIds { get; set; }
+        public List<long> KeywordIds { get; set; }
 
     }
 

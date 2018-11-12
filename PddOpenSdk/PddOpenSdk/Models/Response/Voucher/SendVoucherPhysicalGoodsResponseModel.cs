@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Voucher
 {
-    public class VoucherPhysicalVoucherSendResponse
+    public partial class SendVoucherPhysicalGoodsResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class SendVoucherPhysicalGoodsResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("voucher_physical_voucher_send_response")]
-        public VoucherPhysicalVoucherSendResponse VoucherPhysicalVoucherSendResponse { get; set; }
-    }
+        public VoucherPhysicalVoucherSendResponseResponseModel VoucherPhysicalVoucherSendResponse { get; set; }
+        public partial class VoucherPhysicalVoucherSendResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 请求成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool? IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

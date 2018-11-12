@@ -51,13 +51,13 @@ namespace PddOpenSdk.Services
             dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
-            dic.Add("versioin", "V1");
-            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
-                dic.Add("type", type);
             }
+            dic.Add("type", type);
+
             // 添加签名
             dic.Add("sign", BuildSign(dic));
 
@@ -70,6 +70,7 @@ namespace PddOpenSdk.Services
                 if (jObject.TryGetValue("error_response", out var errorResponse))
                 {
                     // TODO:记录异常
+                    Console.WriteLine("错误信息:" + errorResponse.ToString());
                     File.AppendAllText("error.json", jsonResult + "\r\n");
                     return default;
                 }
@@ -77,6 +78,10 @@ namespace PddOpenSdk.Services
                 {
                     return JsonConvert.DeserializeObject<TResult>(jsonResult);
                 }
+            }
+            else
+            {
+                Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
             }
             return default;
         }
@@ -95,25 +100,29 @@ namespace PddOpenSdk.Services
             // 拼接
             string signString = "";
             // 反射处理非基本类型字段的json转换
-            string[] types = { "String", "DateTime", "Int", "Float", "Double" };
+            string[] types = { "String", "DateTime", "Int64", "Boolean", "Float", "Double", "Long", "Int32" };
             foreach (var item in dic.Keys.ToArray())
             {
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
+                    Console.WriteLine("签名需要转json:" + dic[item].GetType().Name);
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
                 }
-                signString += item + dic[item];
+                dic.TryGetValue(item, out var value);
+                // 避免False大写造成的签名错误
+                if (value.ToString().ToLower().Equals("false")) value = "false";
+                signString += item + value;
             }
             signString = ClientSecret + signString + ClientSecret;
+            Console.WriteLine("拼接内容:" + signString);
             // MD5加密
             using (var md5 = MD5.Create())
             {
                 signString = Function.GetMd5Hash(md5, signString).ToUpper();
             }
+            Console.WriteLine("签名:" + signString);
             return signString;
         }
-
-
     }
 
     /// <summary>

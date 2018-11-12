@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Goods
 {
@@ -7,12 +8,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public string GoodsId { get; set; }
+        public long GoodsId { get; set; }
         /// <summary>
         /// 待修改的sku价格
         /// </summary>
         [JsonProperty("sku_price_list")]
-        public SkuPriceListRequestModel SkuPriceList { get; set; }
+        public List<SkuPriceListRequestModel> SkuPriceList { get; set; }
         public partial class SkuPriceListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -24,17 +25,17 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 单独购买价格（单位分）
             /// </summary>
             [JsonProperty("single_price")]
-            public int SinglePrice { get; set; }
+            public long SinglePrice { get; set; }
             /// <summary>
             /// 拼团购买价格（单位分）
             /// </summary>
             [JsonProperty("group_price")]
-            public int GroupPrice { get; set; }
+            public long GroupPrice { get; set; }
             /// <summary>
             /// sku标识
             /// </summary>
             [JsonProperty("sku_id")]
-            public int SkuId { get; set; }
+            public long SkuId { get; set; }
 
         }
 
