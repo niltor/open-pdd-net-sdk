@@ -109,11 +109,11 @@ namespace PddOpenSdk.Services
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
                 }
                 dic.TryGetValue(item, out var value);
+                // 避免False大写造成的签名错误
                 if (value.ToString().ToLower().Equals("false")) value = "false";
                 signString += item + value;
             }
             signString = ClientSecret + signString + ClientSecret;
-
             Console.WriteLine("拼接内容:" + signString);
             // MD5加密
             using (var md5 = MD5.Create())
