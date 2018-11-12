@@ -1,31 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>7.1</LangVersion>
-    <RootNamespace>MSDev.PddOpenSdk</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>MSDev_NilTor</Authors>
-    <Company>Geethin</Company>
-    <Description>拼多多SDK核心类库
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>7.1</LangVersion>
+        <RootNamespace>MSDev.PddOpenSdk</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>MSDev_NilTor</Authors>
+        <Company>Geethin</Company>
+        <Description>拼多多SDK核心类库
 已更新同步到最新！</Description>
-    <PackageReleaseNotes>拼多多SDK核心类库
+        <PackageReleaseNotes>拼多多SDK核心类库
 已更新同步到最新！</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>pdd,net core,sdk,拼多多</PackageTags>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
-    <FileVersion>0.0.1.0</FileVersion>
-    <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
-    <Version>0.2.0</Version>
-    <PackageId>MSDev.PddOpenSdk</PackageId>
-  </PropertyGroup>
+        <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>pdd,net core,sdk,拼多多</PackageTags>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <AssemblyVersion>0.0.1.0</AssemblyVersion>
+        <FileVersion>0.0.1.0</FileVersion>
+        <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
+        <Version>0.2.0</Version>
+        <PackageId>MSDev.PddOpenSdk</PackageId>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    </ItemGroup>
 
 </Project>
