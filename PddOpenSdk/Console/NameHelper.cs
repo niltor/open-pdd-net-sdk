@@ -47,6 +47,10 @@ namespace Console
                 case "boolean":
                     type = isMust == 0 ? "bool?" : "bool";
                     break;
+                case "long":
+                case "double":
+                    type = isMust == 0 ? type + "?" : type;
+                    break;
                 case "map":
                     type = "Dictionary<string, object>";
                     break;

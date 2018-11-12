@@ -1,9 +1,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PddOpenSdk.AspNetCore;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Services;
 using Sample.Models;
@@ -40,11 +39,12 @@ namespace Sample.Controllers
 
         public async Task<ActionResult> Test()
         {
-            PddCommonApi.AccessToken = "b4d18c1d5f6445288ecd0439a58af010113a600d";
+            PddCommonApi.AccessToken = "bf4e43499f864333bfed2272e702575446daad5d";
+
             var model = new SearchDdkGoodsRequestModel
             {
-               SortType =0,
-               WithCoupon = false
+                SortType = 0,
+                WithCoupon = false,
             };
             var result = await _pdd.DdkApi.SearchDdkGoodsAsync(model);
             return Content(JsonConvert.SerializeObject(result));

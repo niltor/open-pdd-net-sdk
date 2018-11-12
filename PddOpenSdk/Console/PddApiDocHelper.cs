@@ -154,7 +154,7 @@ $@"/// <summary>
                 var attribution = NameHelper.GetAttributionName(param.ParamName, param.ParamType, param.IsMust.Value);
                 var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
-                if (param.ChildrenNum > 0 || param.ParamType.ToLower().Contains("[]"))
+                if (param.ChildrenNum > 0)
                 {
                     childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Level + 1, (int)param.Id);
                 }

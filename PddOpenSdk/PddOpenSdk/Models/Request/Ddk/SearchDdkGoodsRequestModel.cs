@@ -13,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品标签类目ID，使用pdd.goods.opt.get获取
         /// </summary>
         [JsonProperty("opt_id")]
-        public long OptId { get; set; }
+        public long? OptId { get; set; }
         /// <summary>
         /// 默认值1，商品分页数
         /// </summary>
@@ -43,7 +43,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品类目ID，使用pdd.goods.cats.get接口获取
         /// </summary>
         [JsonProperty("cat_id")]
-        public long CatId { get; set; }
+        public long? CatId { get; set; }
         /// <summary>
         /// 商品ID列表。例如：[123456,123]，当入参带有goods_id_list字段，将不会以opt_id、 cat_id、keyword维度筛选商品
         /// </summary>
@@ -53,7 +53,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 招商多多客ID
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public long ZsDuoId { get; set; }
+        public long? ZsDuoId { get; set; }
         /// <summary>
         /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店（未传为全部）
         /// </summary>
