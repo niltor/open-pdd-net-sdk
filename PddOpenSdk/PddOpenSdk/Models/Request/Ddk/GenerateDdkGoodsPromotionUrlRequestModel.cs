@@ -1,13 +1,9 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkGoodsPromotionUrlRequestModel : PddRequestModel
     {
-        /// <summary>
-        /// 该值为：pdd.ddk.goods.promotion.url.generate
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
         /// <summary>
         /// 推广位ID
         /// </summary>
@@ -17,12 +13,12 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品ID，仅支持单个查询
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public string GoodsIdList { get; set; }
+        public List<long> GoodsIdList { get; set; }
         /// <summary>
         /// 是否生成短链接，true-是，false-否
         /// </summary>
         [JsonProperty("generate_short_url")]
-        public bool GenerateShortUrl { get; set; }
+        public bool? GenerateShortUrl { get; set; }
         /// <summary>
         /// true--生成多人团推广链接 false--生成单人团推广链接（默认false）1、单人团推广链接：用户访问单人团推广链接，可直接购买商品无需拼团。2、多人团推广链接：用户访问双人团推广链接开团，若用户分享给他人参团，则开团者和参团者的佣金均结算给推手
         /// </summary>
@@ -47,7 +43,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 招商多多客ID
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public int? ZsDuoId { get; set; }
+        public long ZsDuoId { get; set; }
+        public partial class GoodsIdListRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Request.Erp
         /// 物流公司编码
         /// </summary>
         [JsonProperty("logistics_id")]
-        public int LogisticsId { get; set; }
+        public long LogisticsId { get; set; }
 
     }
 

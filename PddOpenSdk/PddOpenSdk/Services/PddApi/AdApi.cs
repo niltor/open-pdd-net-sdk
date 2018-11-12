@@ -221,6 +221,54 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<GetAdCreativeReportRequestModel, GetAdCreativeReportResponseModel>("pdd.ad.creative.report.get", getAdCreativeReport);
             return result;
         }
+        /// <summary>
+        /// 关键词历史报表数据， 一次性导出分天详情
+        /// </summary>
+        public async Task<ReportAdKeywordDailyResponseModel> ReportAdKeywordDailyAsync(ReportAdKeywordDailyRequestModel reportAdKeywordDaily)
+        {
+            var result = await PostAsync<ReportAdKeywordDailyRequestModel, ReportAdKeywordDailyResponseModel>("pdd.ad.keyword.daily.report", reportAdKeywordDaily);
+            return result;
+        }
+        /// <summary>
+        /// 根据推广单元id获取现有创意列表
+        /// </summary>
+        public async Task<QueryAdCreativeResponseModel> QueryAdCreativeAsync(QueryAdCreativeRequestModel queryAdCreative)
+        {
+            var result = await PostAsync<QueryAdCreativeRequestModel, QueryAdCreativeResponseModel>("pdd.ad.creative.query", queryAdCreative);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元修改创意图片、创意标题
+        /// </summary>
+        public async Task<UpdateAdCreativeResponseModel> UpdateAdCreativeAsync(UpdateAdCreativeRequestModel updateAdCreative)
+        {
+            var result = await PostAsync<UpdateAdCreativeRequestModel, UpdateAdCreativeResponseModel>("pdd.ad.creative.update", updateAdCreative);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元删除创意（至少需保留一个创意）
+        /// </summary>
+        public async Task<DeleteAdCreativeResponseModel> DeleteAdCreativeAsync(DeleteAdCreativeRequestModel deleteAdCreative)
+        {
+            var result = await PostAsync<DeleteAdCreativeRequestModel, DeleteAdCreativeResponseModel>("pdd.ad.creative.delete", deleteAdCreative);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元增加创意
+        /// </summary>
+        public async Task<CreateAdCreativeResponseModel> CreateAdCreativeAsync(CreateAdCreativeRequestModel createAdCreative)
+        {
+            var result = await PostAsync<CreateAdCreativeRequestModel, CreateAdCreativeResponseModel>("pdd.ad.creative.create", createAdCreative);
+            return result;
+        }
+        /// <summary>
+        /// 修改推广计划分时折扣
+        /// </summary>
+        public async Task<UpdateAdPlanDiscountResponseModel> UpdateAdPlanDiscountAsync(UpdateAdPlanDiscountRequestModel updateAdPlanDiscount)
+        {
+            var result = await PostAsync<UpdateAdPlanDiscountRequestModel, UpdateAdPlanDiscountResponseModel>("pdd.ad.plan.discount.update", updateAdPlanDiscount);
+            return result;
+        }
 
     }
 }

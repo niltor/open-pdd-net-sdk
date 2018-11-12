@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
@@ -12,12 +13,16 @@ namespace PddOpenSdk.Models.Request.Ad
         /// unit_id列表，[1,2]
         /// </summary>
         [JsonProperty("unit_ids")]
-        public string UnitIds { get; set; }
+        public List<long> UnitIds { get; set; }
         /// <summary>
         /// 1 已启用,2 已暂停
         /// </summary>
         [JsonProperty("opt_status")]
         public int OptStatus { get; set; }
+        public partial class UnitIdsRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

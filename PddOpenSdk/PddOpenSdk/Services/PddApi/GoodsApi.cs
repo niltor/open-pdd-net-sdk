@@ -22,22 +22,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 商品全量修改接口
-        /// </summary>
-        public async Task<UpdateGoodsSkuStockResponseModel> UpdateGoodsSkuStockAsync(UpdateGoodsSkuStockRequestModel updateGoodsSkuStock)
-        {
-            var result = await PostAsync<UpdateGoodsSkuStockRequestModel, UpdateGoodsSkuStockResponseModel>("pdd.goods.sku.stock.update", updateGoodsSkuStock);
-            return result;
-        }
-        /// <summary>
-        /// 商品增量修改接口
-        /// </summary>
-        public async Task<UpdateGoodsSkuStockIncrementResponseModel> UpdateGoodsSkuStockIncrementAsync(UpdateGoodsSkuStockIncrementRequestModel updateGoodsSkuStockIncrement)
-        {
-            var result = await PostAsync<UpdateGoodsSkuStockIncrementRequestModel, UpdateGoodsSkuStockIncrementResponseModel>("pdd.goods.sku.stock.increment.update", updateGoodsSkuStockIncrement);
-            return result;
-        }
-        /// <summary>
         /// 商品标准类目接口
         /// </summary>
         public async Task<GetGoodsCatsResponseModel> GetGoodsCatsAsync(GetGoodsCatsRequestModel getGoodsCats)
@@ -190,30 +174,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 查询模板接口
-        /// </summary>
-        public async Task<GetGoodsMallTemplateResponseModel> GetGoodsMallTemplateAsync(GetGoodsMallTemplateRequestModel getGoodsMallTemplate)
-        {
-            var result = await PostAsync<GetGoodsMallTemplateRequestModel, GetGoodsMallTemplateResponseModel>("pdd.goods.mall.template.get", getGoodsMallTemplate);
-            return result;
-        }
-        /// <summary>
-        /// 搜索属性值接口
-        /// </summary>
-        public async Task<SearchGoodsTemplateValueResponseModel> SearchGoodsTemplateValueAsync(SearchGoodsTemplateValueRequestModel searchGoodsTemplateValue)
-        {
-            var result = await PostAsync<SearchGoodsTemplateValueRequestModel, SearchGoodsTemplateValueResponseModel>("pdd.goods.template.value.search", searchGoodsTemplateValue);
-            return result;
-        }
-        /// <summary>
-        /// 查询子属性接口
-        /// </summary>
-        public async Task<GetGoodsTemplateSubPropertyResponseModel> GetGoodsTemplateSubPropertyAsync(GetGoodsTemplateSubPropertyRequestModel getGoodsTemplateSubProperty)
-        {
-            var result = await PostAsync<GetGoodsTemplateSubPropertyRequestModel, GetGoodsTemplateSubPropertyResponseModel>("pdd.goods.template.sub.property.get", getGoodsTemplateSubProperty);
-            return result;
-        }
-        /// <summary>
         /// 修改商品sku价格
         /// </summary>
         public async Task<UpdateGoodsSkuPriceResponseModel> UpdateGoodsSkuPriceAsync(UpdateGoodsSkuPriceRequestModel updateGoodsSkuPrice)
@@ -267,6 +227,46 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<RelationGoodsGetResponseModel> RelationGoodsGetAsync(RelationGoodsGetRequestModel relationGoodsGet)
         {
             var result = await PostAsync<RelationGoodsGetRequestModel, RelationGoodsGetResponseModel>("pdd.goods.get.relation", relationGoodsGet);
+            return result;
+        }
+        /// <summary>
+        /// 按id获取商品运费模版接口
+        /// </summary>
+        public async Task<TemplateOneExpressCostResponseModel> TemplateOneExpressCostAsync(TemplateOneExpressCostRequestModel templateOneExpressCost)
+        {
+            var result = await PostAsync<TemplateOneExpressCostRequestModel, TemplateOneExpressCostResponseModel>("pdd.one.express.cost.template", templateOneExpressCost);
+            return result;
+        }
+        /// <summary>
+        /// 商品库存更新接口
+        /// </summary>
+        public async Task<UpdateGoodsQuantityResponseModel> UpdateGoodsQuantityAsync(UpdateGoodsQuantityRequestModel updateGoodsQuantity)
+        {
+            var result = await PostAsync<UpdateGoodsQuantityRequestModel, UpdateGoodsQuantityResponseModel>("pdd.goods.quantity.update", updateGoodsQuantity);
+            return result;
+        }
+        /// <summary>
+        /// 删除草稿接口
+        /// </summary>
+        public async Task<CommitDeleteDraftResponseModel> CommitDeleteDraftAsync(CommitDeleteDraftRequestModel commitDeleteDraft)
+        {
+            var result = await PostAsync<CommitDeleteDraftRequestModel, CommitDeleteDraftResponseModel>("pdd.delete.draft.commit", commitDeleteDraft);
+            return result;
+        }
+        /// <summary>
+        /// 删除商品接口
+        /// </summary>
+        public async Task<CommitDeleteGoodsResponseModel> CommitDeleteGoodsAsync(CommitDeleteGoodsRequestModel commitDeleteGoods)
+        {
+            var result = await PostAsync<CommitDeleteGoodsRequestModel, CommitDeleteGoodsResponseModel>("pdd.delete.goods.commit", commitDeleteGoods);
+            return result;
+        }
+        /// <summary>
+        /// 获取商品类目属性
+        /// </summary>
+        public async Task<GetGoodsCatTemplateResponseModel> GetGoodsCatTemplateAsync(GetGoodsCatTemplateRequestModel getGoodsCatTemplate)
+        {
+            var result = await PostAsync<GetGoodsCatTemplateRequestModel, GetGoodsCatTemplateResponseModel>("pdd.goods.cat.template.get", getGoodsCatTemplate);
             return result;
         }
 

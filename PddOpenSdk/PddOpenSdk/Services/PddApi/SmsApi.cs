@@ -94,6 +94,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 营销类短信设置
+        /// </summary>
+        public async Task<SettingSmsSellResponseModel> SettingSmsSellAsync(SettingSmsSellRequestModel settingSmsSell)
+        {
+            var result = await PostAsync<SettingSmsSellRequestModel, SettingSmsSellResponseModel>("pdd.sms.sell.setting", settingSmsSell);
+            return result;
+        }
+        /// <summary>
         /// 营销短信设置详情
         /// </summary>
         public async Task<QuerySmsSellSettingDetailResponseModel> QuerySmsSellSettingDetailAsync(QuerySmsSellSettingDetailRequestModel querySmsSellSettingDetail)

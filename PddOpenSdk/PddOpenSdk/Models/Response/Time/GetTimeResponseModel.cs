@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Time
 {
-    public class TimeGetResponse
+    public partial class GetTimeResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "2018-08-27 13:54:06"
-        /// </summary>
-        [JsonProperty("time")]
-        public string Time { get; set; }
-    }
-
-    public class GetTimeResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"time":"2018-08-27 13:54:06"}
+        /// response
         /// </summary>
         [JsonProperty("time_get_response")]
-        public TimeGetResponse TimeGetResponse { get; set; }
-    }
+        public TimeGetResponseResponseModel TimeGetResponse { get; set; }
+        public partial class TimeGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 拼多多系统时间
+            /// </summary>
+            [JsonProperty("time")]
+            public string Time { get; set; }
 
+        }
+
+    }
 
 }

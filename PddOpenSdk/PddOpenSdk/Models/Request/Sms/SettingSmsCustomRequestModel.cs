@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Sms
 {
@@ -7,12 +8,12 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 模板id
         /// </summary>
         [JsonProperty("template_id")]
-        public int TemplateId { get; set; }
+        public long TemplateId { get; set; }
         /// <summary>
         /// 待发送手机号，["15671551276"]
         /// </summary>
         [JsonProperty("phones")]
-        public int Phones { get; set; }
+        public List<string> Phones { get; set; }
         /// <summary>
         /// 发送时间
         /// </summary>
@@ -23,6 +24,10 @@ namespace PddOpenSdk.Models.Request.Sms
         /// </summary>
         [JsonProperty("template_type")]
         public int TemplateType { get; set; }
+        public partial class PhonesRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

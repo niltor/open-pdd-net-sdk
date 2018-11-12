@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class AdKeywordCreateResponse
+    public partial class CreateAdKeywordResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class CreateAdKeywordResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_keyword_create_response")]
-        public AdKeywordCreateResponse AdKeywordCreateResponse { get; set; }
-    }
+        public AdKeywordCreateResponseResponseModel AdKeywordCreateResponse { get; set; }
+        public partial class AdKeywordCreateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

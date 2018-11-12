@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Logisticscs
 {
-    public class LogisticsCsSessionCloseResponse
+    public partial class CloseLogisticsCsSessionResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class CloseLogisticsCsSessionResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// response
         /// </summary>
         [JsonProperty("logistics_cs_session_close_response")]
-        public LogisticsCsSessionCloseResponse LogisticsCsSessionCloseResponse { get; set; }
-    }
+        public LogisticsCsSessionCloseResponseResponseModel LogisticsCsSessionCloseResponse { get; set; }
+        public partial class LogisticsCsSessionCloseResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

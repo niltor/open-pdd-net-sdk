@@ -2,203 +2,172 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class GoodsDetail
+    public partial class DetailDdkGoodsResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 545922677
-        /// </summary>
-        [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
-
-        /// <summary>
-        /// Examples: "【百草味-夏威夷果150g/300g/多规格可选】 送开口器牛皮纸袋内!"
-        /// </summary>
-        [JsonProperty("goods_name")]
-        public string GoodsName { get; set; }
-
-        /// <summary>
-        /// Examples: "【百草味-夏威夷果100g/300g多规格可选】坚果零食干果炒货 奶油味送开口器牛皮纸袋内!  我们的夏威夷果奶香四溢，酥脆爽滑，坚果中的皇后。每袋都附有开果器的!!!附在牛皮纸袋内部!!您收货后仔细找找就能发现了呢。（使用小窍门：您可以把开果器插在果果的裂缝处，然后插深一些，再转一下，这样比较好开哦）"
-        /// </summary>
-        [JsonProperty("goods_desc")]
-        public string GoodsDesc { get; set; }
-
-        /// <summary>
-        /// Examples: "http://omsproductionimg.yangkeduo.com/images/2017-11-28/34eba02f3c71f5a269e64e9042d9950d.jpeg"
-        /// </summary>
-        [JsonProperty("goods_thumbnail_url")]
-        public string GoodsThumbnailUrl { get; set; }
-
-        /// <summary>
-        /// Examples: "http://omsproductionimg.yangkeduo.com/images/2017-10-17/0b7bca0ff9378f573337f6fb8f0448a8.jpeg"
-        /// </summary>
-        [JsonProperty("goods_image_url")]
-        public string GoodsImageUrl { get; set; }
-
-        /// <summary>
-        /// Examples: ["http://omsproductionimg.yangkeduo.com/images/2017-11-28/b8ff55a74b615d06b91bd6a8785f739a.jpeg","http://t04img.yangkeduo.com/images/2018-04-08/04c90c1db3e618eeb7d3b681a53fdfcf.jpeg","http://omsproductionimg.yangkeduo.com/images/2017-10-17/3986d8258d16b4c74e56c2629f41a299.jpeg","http://t08img.yangkeduo.com/images/2018-04-08/8699ad96bfe31e7e39dbf7d233106f91.jpeg","http://t03img.yangkeduo.com/images/2018-04-08/fe4aa08cbc1f6c9a88bb00f66ab86636.jpeg"]
-        /// </summary>
-        [JsonProperty("goods_gallery_urls")]
-        public IList<string> GoodsGalleryUrls { get; set; }
-
-        /// <summary>
-        /// Examples: 92
-        /// </summary>
-        [JsonProperty("sold_quantity")]
-        public int SoldQuantity { get; set; }
-
-        /// <summary>
-        /// Examples: 1990
-        /// </summary>
-        [JsonProperty("min_group_price")]
-        public int MinGroupPrice { get; set; }
-
-        /// <summary>
-        /// Examples: 2990
-        /// </summary>
-        [JsonProperty("min_normal_price")]
-        public int MinNormalPrice { get; set; }
-
-        /// <summary>
-        /// Examples: "百草味旗舰店"
-        /// </summary>
-        [JsonProperty("mall_name")]
-        public string MallName { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("category_id")]
-        public int CategoryId { get; set; }
-
-        /// <summary>
-        /// Examples: "美食"
-        /// </summary>
-        [JsonProperty("category_name")]
-        public string CategoryName { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("opt_id")]
-        public int OptId { get; set; }
-
-        /// <summary>
-        /// Examples: "美食"
-        /// </summary>
-        [JsonProperty("opt_name")]
-        public string OptName { get; set; }
-
-        /// <summary>
-        /// Examples: [2,65,4,0]
-        /// </summary>
-        [JsonProperty("cat_ids")]
-        public IList<int> CatIds { get; set; }
-
-        /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("has_coupon")]
-        public bool HasCoupon { get; set; }
-
-        /// <summary>
-        /// Examples: 300
-        /// </summary>
-        [JsonProperty("coupon_min_order_amount")]
-        public int CouponMinOrderAmount { get; set; }
-
-        /// <summary>
-        /// Examples: 300
-        /// </summary>
-        [JsonProperty("coupon_discount")]
-        public int CouponDiscount { get; set; }
-
-        /// <summary>
-        /// Examples: 50000
-        /// </summary>
-        [JsonProperty("coupon_total_quantity")]
-        public int CouponTotalQuantity { get; set; }
-
-        /// <summary>
-        /// Examples: 49940
-        /// </summary>
-        [JsonProperty("coupon_remain_quantity")]
-        public int CouponRemainQuantity { get; set; }
-
-        /// <summary>
-        /// Examples: 1525536000
-        /// </summary>
-        [JsonProperty("coupon_start_time")]
-        public int CouponStartTime { get; set; }
-
-        /// <summary>
-        /// Examples: 1525967999
-        /// </summary>
-        [JsonProperty("coupon_end_time")]
-        public int CouponEndTime { get; set; }
-
-        /// <summary>
-        /// Examples: 150
-        /// </summary>
-        [JsonProperty("promotion_rate")]
-        public int PromotionRate { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("goods_eval_score")]
-        public int GoodsEvalScore { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("goods_eval_count")]
-        public int GoodsEvalCount { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("cat_id")]
-        public object CatId { get; set; }
-
-        /// <summary>
-        /// Examples: 494
-        /// </summary>
-        [JsonProperty("avg_desc")]
-        public int AvgDesc { get; set; }
-
-        /// <summary>
-        /// Examples: 494
-        /// </summary>
-        [JsonProperty("avg_lgst")]
-        public int AvgLgst { get; set; }
-
-        /// <summary>
-        /// Examples: 494
-        /// </summary>
-        [JsonProperty("avg_serv")]
-        public int AvgServ { get; set; }
-    }
-
-    public class GoodsDetailResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"goods_id":545922677,"goods_name":"【百草味-夏威夷果150g/300g/多规格可选】 送开口器牛皮纸袋内!","goods_desc":"【百草味-夏威夷果100g/300g多规格可选】坚果零食干果炒货 奶油味送开口器牛皮纸袋内!  我们的夏威夷果奶香四溢，酥脆爽滑，坚果中的皇后。每袋都附有开果器的!!!附在牛皮纸袋内部!!您收货后仔细找找就能发现了呢。（使用小窍门：您可以把开果器插在果果的裂缝处，然后插深一些，再转一下，这样比较好开哦）","goods_thumbnail_url":"http://omsproductionimg.yangkeduo.com/images/2017-11-28/34eba02f3c71f5a269e64e9042d9950d.jpeg","goods_image_url":"http://omsproductionimg.yangkeduo.com/images/2017-10-17/0b7bca0ff9378f573337f6fb8f0448a8.jpeg","goods_gallery_urls":["http://omsproductionimg.yangkeduo.com/images/2017-11-28/b8ff55a74b615d06b91bd6a8785f739a.jpeg","http://t04img.yangkeduo.com/images/2018-04-08/04c90c1db3e618eeb7d3b681a53fdfcf.jpeg","http://omsproductionimg.yangkeduo.com/images/2017-10-17/3986d8258d16b4c74e56c2629f41a299.jpeg","http://t08img.yangkeduo.com/images/2018-04-08/8699ad96bfe31e7e39dbf7d233106f91.jpeg","http://t03img.yangkeduo.com/images/2018-04-08/fe4aa08cbc1f6c9a88bb00f66ab86636.jpeg"],"sold_quantity":92,"min_group_price":1990,"min_normal_price":2990,"mall_name":"百草味旗舰店","category_id":1,"category_name":"美食","opt_id":1,"opt_name":"美食","cat_ids":[2,65,4,0],"has_coupon":true,"coupon_min_order_amount":300,"coupon_discount":300,"coupon_total_quantity":50000,"coupon_remain_quantity":49940,"coupon_start_time":1525536000,"coupon_end_time":1525967999,"promotion_rate":150,"goods_eval_score":0,"goods_eval_count":0,"cat_id":null,"avg_desc":494,"avg_lgst":494,"avg_serv":494}]
-        /// </summary>
-        [JsonProperty("goods_details")]
-        public IList<GoodsDetail> GoodsDetails { get; set; }
-    }
-
-    public class DetailDdkGoodsResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_details":[{"goods_id":545922677,"goods_name":"【百草味-夏威夷果150g/300g/多规格可选】 送开口器牛皮纸袋内!","goods_desc":"【百草味-夏威夷果100g/300g多规格可选】坚果零食干果炒货 奶油味送开口器牛皮纸袋内!  我们的夏威夷果奶香四溢，酥脆爽滑，坚果中的皇后。每袋都附有开果器的!!!附在牛皮纸袋内部!!您收货后仔细找找就能发现了呢。（使用小窍门：您可以把开果器插在果果的裂缝处，然后插深一些，再转一下，这样比较好开哦）","goods_thumbnail_url":"http://omsproductionimg.yangkeduo.com/images/2017-11-28/34eba02f3c71f5a269e64e9042d9950d.jpeg","goods_image_url":"http://omsproductionimg.yangkeduo.com/images/2017-10-17/0b7bca0ff9378f573337f6fb8f0448a8.jpeg","goods_gallery_urls":["http://omsproductionimg.yangkeduo.com/images/2017-11-28/b8ff55a74b615d06b91bd6a8785f739a.jpeg","http://t04img.yangkeduo.com/images/2018-04-08/04c90c1db3e618eeb7d3b681a53fdfcf.jpeg","http://omsproductionimg.yangkeduo.com/images/2017-10-17/3986d8258d16b4c74e56c2629f41a299.jpeg","http://t08img.yangkeduo.com/images/2018-04-08/8699ad96bfe31e7e39dbf7d233106f91.jpeg","http://t03img.yangkeduo.com/images/2018-04-08/fe4aa08cbc1f6c9a88bb00f66ab86636.jpeg"],"sold_quantity":92,"min_group_price":1990,"min_normal_price":2990,"mall_name":"百草味旗舰店","category_id":1,"category_name":"美食","opt_id":1,"opt_name":"美食","cat_ids":[2,65,4,0],"has_coupon":true,"coupon_min_order_amount":300,"coupon_discount":300,"coupon_total_quantity":50000,"coupon_remain_quantity":49940,"coupon_start_time":1525536000,"coupon_end_time":1525967999,"promotion_rate":150,"goods_eval_score":0,"goods_eval_count":0,"cat_id":null,"avg_desc":494,"avg_lgst":494,"avg_serv":494}]}
+        /// response
         /// </summary>
         [JsonProperty("goods_detail_response")]
-        public GoodsDetailResponse GoodsDetailResponse { get; set; }
-    }
+        public GoodsDetailResponseResponseModel GoodsDetailResponse { get; set; }
+        public partial class GoodsDetailResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 多多进宝商品对象列表
+            /// </summary>
+            [JsonProperty("goods_details")]
+            public List<GoodsDetailsResponseModel> GoodsDetails { get; set; }
+            public partial class GoodsDetailsResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 参与多多进宝的商品ID
+                /// </summary>
+                [JsonProperty("goods_id")]
+                public long GoodsId { get; set; }
+                /// <summary>
+                /// 参与多多进宝的商品标题
+                /// </summary>
+                [JsonProperty("goods_name")]
+                public string GoodsName { get; set; }
+                /// <summary>
+                /// 参与多多进宝的商品描述
+                /// </summary>
+                [JsonProperty("goods_desc")]
+                public string GoodsDesc { get; set; }
+                /// <summary>
+                /// 多多进宝商品主图
+                /// </summary>
+                [JsonProperty("goods_image_url")]
+                public string GoodsImageUrl { get; set; }
+                /// <summary>
+                /// 商品轮播图
+                /// </summary>
+                [JsonProperty("goods_gallery_urls")]
+                public List<string> GoodsGalleryUrls { get; set; }
+                /// <summary>
+                /// 已售卖件数
+                /// </summary>
+                [JsonProperty("sold_quantity")]
+                public long SoldQuantity { get; set; }
+                /// <summary>
+                /// 最低价sku的拼团价，单位为分
+                /// </summary>
+                [JsonProperty("min_group_price")]
+                public long MinGroupPrice { get; set; }
+                /// <summary>
+                /// 最低价sku的单买价，单位为分
+                /// </summary>
+                [JsonProperty("min_normal_price")]
+                public long MinNormalPrice { get; set; }
+                /// <summary>
+                /// 店铺名称
+                /// </summary>
+                [JsonProperty("mall_name")]
+                public string MallName { get; set; }
+                /// <summary>
+                /// 商品标签ID，使用pdd.goods.opt.get接口获取
+                /// </summary>
+                [JsonProperty("opt_id")]
+                public long OptId { get; set; }
+                /// <summary>
+                /// 商品标签名称
+                /// </summary>
+                [JsonProperty("opt_name")]
+                public string OptName { get; set; }
+                /// <summary>
+                /// 商品标签ID
+                /// </summary>
+                [JsonProperty("opt_ids")]
+                public List<int> OptIds { get; set; }
+                /// <summary>
+                /// 商品一~四级类目ID列表
+                /// </summary>
+                [JsonProperty("cat_ids")]
+                public List<int> CatIds { get; set; }
+                /// <summary>
+                /// 优惠券门槛金额，单位为分
+                /// </summary>
+                [JsonProperty("coupon_min_order_amount")]
+                public long CouponMinOrderAmount { get; set; }
+                /// <summary>
+                /// 优惠券面额，单位为分
+                /// </summary>
+                [JsonProperty("coupon_discount")]
+                public long CouponDiscount { get; set; }
+                /// <summary>
+                /// 优惠券总数量
+                /// </summary>
+                [JsonProperty("coupon_total_quantity")]
+                public long CouponTotalQuantity { get; set; }
+                /// <summary>
+                /// 优惠券剩余数量
+                /// </summary>
+                [JsonProperty("coupon_remain_quantity")]
+                public long CouponRemainQuantity { get; set; }
+                /// <summary>
+                /// 优惠券生效时间，UNIX时间戳
+                /// </summary>
+                [JsonProperty("coupon_start_time")]
+                public long CouponStartTime { get; set; }
+                /// <summary>
+                /// 优惠券失效时间，UNIX时间戳
+                /// </summary>
+                [JsonProperty("coupon_end_time")]
+                public long CouponEndTime { get; set; }
+                /// <summary>
+                /// 佣金比例，千分比
+                /// </summary>
+                [JsonProperty("promotion_rate")]
+                public long PromotionRate { get; set; }
+                /// <summary>
+                /// 商品评价分
+                /// </summary>
+                [JsonProperty("goods_eval_score")]
+                public double GoodsEvalScore { get; set; }
+                /// <summary>
+                /// 商品评价数
+                /// </summary>
+                [JsonProperty("goods_eval_count")]
+                public long GoodsEvalCount { get; set; }
+                /// <summary>
+                /// 商品类目ID，使用pdd.goods.cats.get接口获取
+                /// </summary>
+                [JsonProperty("cat_id")]
+                public long CatId { get; set; }
+                /// <summary>
+                /// 描述评分
+                /// </summary>
+                [JsonProperty("avg_desc")]
+                public long AvgDesc { get; set; }
+                /// <summary>
+                /// 物流评分
+                /// </summary>
+                [JsonProperty("avg_lgst")]
+                public long AvgLgst { get; set; }
+                /// <summary>
+                /// 服务评分
+                /// </summary>
+                [JsonProperty("avg_serv")]
+                public long AvgServ { get; set; }
+                /// <summary>
+                /// 描述评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("desc_pct")]
+                public double DescPct { get; set; }
+                /// <summary>
+                /// 物流评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("lgst_pct")]
+                public double LgstPct { get; set; }
+                /// <summary>
+                /// 服务评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("serv_pct")]
+                public double ServPct { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

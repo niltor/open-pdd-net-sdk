@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Sms
 {
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 拼接短信内容
         /// </summary>
         [JsonProperty("content")]
-        public ContentRequestModel Content { get; set; }
+        public List<ContentRequestModel> Content { get; set; }
         public partial class ContentRequestModel : PddRequestModel
         {
             /// <summary>
@@ -24,7 +25,7 @@ namespace PddOpenSdk.Models.Request.Sms
             /// 文本类型。1：自定义短信内容，2：店铺短链接，3：商品短链接，4：优惠券面额，5：优惠券到期时间
             /// </summary>
             [JsonProperty("type")]
-            public object Type { get; set; }
+            public int Type { get; set; }
 
         }
 

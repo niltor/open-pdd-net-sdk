@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class KeywordRelevanceList
+    public partial class GetAdKeywordRelevanceResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("relevance")]
-        public int Relevance { get; set; }
-
-        /// <summary>
-        /// Examples: "test"
-        /// </summary>
-        [JsonProperty("word")]
-        public string Word { get; set; }
-    }
-
-    public class AdKeywordRelevanceListResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"relevance":1,"word":"test"}]
-        /// </summary>
-        [JsonProperty("keyword_relevance_list")]
-        public IList<KeywordRelevanceList> KeywordRelevanceList { get; set; }
-    }
-
-    public class GetAdKeywordRelevanceResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"keyword_relevance_list":[{"relevance":1,"word":"test"}]}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_keyword_relevance_list_response")]
-        public AdKeywordRelevanceListResponse AdKeywordRelevanceListResponse { get; set; }
-    }
+        public AdKeywordRelevanceListResponseResponseModel AdKeywordRelevanceListResponse { get; set; }
+        public partial class AdKeywordRelevanceListResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 关键词相关新列表
+            /// </summary>
+            [JsonProperty("keyword_relevance_list")]
+            public List<KeywordRelevanceListResponseModel> KeywordRelevanceList { get; set; }
+            public partial class KeywordRelevanceListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 相关性
+                /// </summary>
+                [JsonProperty("relevance")]
+                public string Relevance { get; set; }
+                /// <summary>
+                /// 关键词
+                /// </summary>
+                [JsonProperty("word")]
+                public string Word { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

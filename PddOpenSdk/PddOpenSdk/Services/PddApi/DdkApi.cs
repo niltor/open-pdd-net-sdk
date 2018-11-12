@@ -62,7 +62,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 生成频道推广链接
+        /// 生成商城-频道推广链接
         /// </summary>
         public async Task<GenerateDdkCmsPromUrlResponseModel> GenerateDdkCmsPromUrlAsync(GenerateDdkCmsPromUrlRequestModel generateDdkCmsPromUrl)
         {

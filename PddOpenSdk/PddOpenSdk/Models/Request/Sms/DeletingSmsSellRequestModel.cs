@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 任务id
         /// </summary>
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
     }
 

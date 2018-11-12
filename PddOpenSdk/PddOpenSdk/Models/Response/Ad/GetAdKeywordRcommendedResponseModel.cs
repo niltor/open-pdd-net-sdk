@@ -2,71 +2,62 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class RecommendedKeywordList
+    public partial class GetAdKeywordRcommendedResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "胡"
-        /// </summary>
-        [JsonProperty("word")]
-        public string Word { get; set; }
-
-        /// <summary>
-        /// Examples: 12306
-        /// </summary>
-        [JsonProperty("score")]
-        public int Score { get; set; }
-
-        /// <summary>
-        /// Examples: 5
-        /// </summary>
-        [JsonProperty("relevance")]
-        public int Relevance { get; set; }
-
-        /// <summary>
-        /// Examples: 4.4
-        /// </summary>
-        [JsonProperty("heat")]
-        public double Heat { get; set; }
-
-        /// <summary>
-        /// Examples: 4.5
-        /// </summary>
-        [JsonProperty("trend")]
-        public double Trend { get; set; }
-
-        /// <summary>
-        /// Examples: 4.6
-        /// </summary>
-        [JsonProperty("compete")]
-        public double Compete { get; set; }
-
-        /// <summary>
-        /// Examples: 230.1
-        /// </summary>
-        [JsonProperty("avg_bid")]
-        public double AvgBid { get; set; }
-    }
-
-    public class AdRecommendedKeywordListResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"word":"胡","score":12306,"relevance":5,"heat":4.4,"trend":4.5,"compete":4.6,"avg_bid":230.1}]
-        /// </summary>
-        [JsonProperty("recommended_keyword_list")]
-        public IList<RecommendedKeywordList> RecommendedKeywordList { get; set; }
-    }
-
-    public class GetAdKeywordRcommendedResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"recommended_keyword_list":[{"word":"胡","score":12306,"relevance":5,"heat":4.4,"trend":4.5,"compete":4.6,"avg_bid":230.1}]}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_recommended_keyword_list_response")]
-        public AdRecommendedKeywordListResponse AdRecommendedKeywordListResponse { get; set; }
-    }
+        public AdRecommendedKeywordListResponseResponseModel AdRecommendedKeywordListResponse { get; set; }
+        public partial class AdRecommendedKeywordListResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 推荐关键字列表
+            /// </summary>
+            [JsonProperty("recommended_keyword_list")]
+            public List<RecommendedKeywordListResponseModel> RecommendedKeywordList { get; set; }
+            public partial class RecommendedKeywordListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 分数
+                /// </summary>
+                [JsonProperty("score")]
+                public double Score { get; set; }
+                /// <summary>
+                /// 热度
+                /// </summary>
+                [JsonProperty("heat")]
+                public double Heat { get; set; }
+                /// <summary>
+                /// 趋势
+                /// </summary>
+                [JsonProperty("trend")]
+                public double Trend { get; set; }
+                /// <summary>
+                /// 竞争力
+                /// </summary>
+                [JsonProperty("compete")]
+                public double Compete { get; set; }
+                /// <summary>
+                /// 平均出价
+                /// </summary>
+                [JsonProperty("avg_bid")]
+                public double AvgBid { get; set; }
+                /// <summary>
+                /// 相关性
+                /// </summary>
+                [JsonProperty("relevance")]
+                public int Relevance { get; set; }
+                /// <summary>
+                /// 关键词
+                /// </summary>
+                [JsonProperty("word")]
+                public string Word { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

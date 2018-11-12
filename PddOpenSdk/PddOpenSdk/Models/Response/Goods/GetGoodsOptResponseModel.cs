@@ -2,53 +2,47 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsOptList
+    public partial class GetGoodsOptResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("level")]
-        public int Level { get; set; }
-
-        /// <summary>
-        /// Examples: 1, 4, 12, 13
-        /// </summary>
-        [JsonProperty("opt_id")]
-        public int OptId { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("parent_opt_id")]
-        public int ParentOptId { get; set; }
-
-        /// <summary>
-        /// Examples: "年货", "母婴", "海淘", "水果"
-        /// </summary>
-        [JsonProperty("opt_name")]
-        public string OptName { get; set; }
-    }
-
-    public class GoodsOptGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"level":1,"opt_id":1,"parent_opt_id":0,"opt_name":"年货"},{"level":1,"opt_id":4,"parent_opt_id":0,"opt_name":"母婴"},{"level":1,"opt_id":12,"parent_opt_id":0,"opt_name":"海淘"},{"level":1,"opt_id":13,"parent_opt_id":0,"opt_name":"水果"}]
-        /// </summary>
-        [JsonProperty("goods_opt_list")]
-        public IList<GoodsOptList> GoodsOptList { get; set; }
-    }
-
-    public class GetGoodsOptResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_opt_list":[{"level":1,"opt_id":1,"parent_opt_id":0,"opt_name":"年货"},{"level":1,"opt_id":4,"parent_opt_id":0,"opt_name":"母婴"},{"level":1,"opt_id":12,"parent_opt_id":0,"opt_name":"海淘"},{"level":1,"opt_id":13,"parent_opt_id":0,"opt_name":"水果"}]}
+        /// 返回response
         /// </summary>
         [JsonProperty("goods_opt_get_response")]
-        public GoodsOptGetResponse GoodsOptGetResponse { get; set; }
-    }
+        public GoodsOptGetResponseResponseModel GoodsOptGetResponse { get; set; }
+        public partial class GoodsOptGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// opt列表
+            /// </summary>
+            [JsonProperty("goods_opt_list")]
+            public List<GoodsOptListResponseModel> GoodsOptList { get; set; }
+            public partial class GoodsOptListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 层级，1-一级，2-二级，3-三级，4-四级
+                /// </summary>
+                [JsonProperty("level")]
+                public int Level { get; set; }
+                /// <summary>
+                /// id所属父ID，其中，parent_id=0时为顶级节点
+                /// </summary>
+                [JsonProperty("parent_opt_id")]
+                public long ParentOptId { get; set; }
+                /// <summary>
+                /// 商品标签名
+                /// </summary>
+                [JsonProperty("opt_name")]
+                public string OptName { get; set; }
+                /// <summary>
+                /// 商品标签ID
+                /// </summary>
+                [JsonProperty("opt_id")]
+                public long OptId { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

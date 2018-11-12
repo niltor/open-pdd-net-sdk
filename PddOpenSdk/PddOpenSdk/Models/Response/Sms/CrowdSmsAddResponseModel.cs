@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SmsAddCrowdResponse
+    public partial class CrowdSmsAddResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("result")]
-        public object Result { get; set; }
-    }
-
-    public class CrowdSmsAddResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"result":null}
+        /// 创建结果，为空成功
         /// </summary>
         [JsonProperty("sms_add_crowd_response")]
-        public SmsAddCrowdResponse SmsAddCrowdResponse { get; set; }
-    }
+        public SmsAddCrowdResponseResponseModel SmsAddCrowdResponse { get; set; }
+        public partial class SmsAddCrowdResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 请求结果
+            /// </summary>
+            [JsonProperty("result")]
+            public string Result { get; set; }
 
+        }
+
+    }
 
 }

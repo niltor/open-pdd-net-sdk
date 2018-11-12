@@ -17,7 +17,7 @@ namespace PddOpenSdk.Models.Request.Promotion
         /// 商品ID
         /// </summary>
         [JsonProperty("goods_id")]
-        public int? GoodsId { get; set; }
+        public long GoodsId { get; set; }
         /// <summary>
         /// 查询范围	0 全部，1 多多进宝券，2 无门槛商品券；默认1
         /// </summary>

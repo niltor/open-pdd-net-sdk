@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsAuthCatsList
+    public partial class CatsGoodsAuthorizationResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 2
-        /// </summary>
-        [JsonProperty("cat_id")]
-        public int CatId { get; set; }
-
-        /// <summary>
-        /// Examples: "食品饮料"
-        /// </summary>
-        [JsonProperty("cat_name")]
-        public string CatName { get; set; }
-    }
-
-    public class GoodsAuthCatsGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"cat_id":2,"cat_name":"食品饮料"}]
-        /// </summary>
-        [JsonProperty("goods_cats_list")]
-        public IList<GoodsAuthCatsList> GoodsCatsList { get; set; }
-    }
-
-    public class CatsGoodsAuthorizationResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_cats_list":[{"cat_id":2,"cat_name":"食品饮料"}]}
+        /// response
         /// </summary>
         [JsonProperty("goods_auth_cats_get_response")]
-        public GoodsAuthCatsGetResponse GoodsAuthCatsGetResponse { get; set; }
-    }
+        public GoodsAuthCatsGetResponseResponseModel GoodsAuthCatsGetResponse { get; set; }
+        public partial class GoodsAuthCatsGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 类目对象列表
+            /// </summary>
+            [JsonProperty("goods_cats_list")]
+            public List<GoodsCatsListResponseModel> GoodsCatsList { get; set; }
+            public partial class GoodsCatsListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 对应ID下的类目名称
+                /// </summary>
+                [JsonProperty("cat_name")]
+                public string CatName { get; set; }
+                /// <summary>
+                /// 类目ID，一级类目ID
+                /// </summary>
+                [JsonProperty("cat_id")]
+                public long CatId { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

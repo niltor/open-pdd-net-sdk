@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
@@ -12,12 +13,16 @@ namespace PddOpenSdk.Models.Request.Ad
         /// ["test"]
         /// </summary>
         [JsonProperty("words")]
-        public string Words { get; set; }
+        public List<string> Words { get; set; }
         /// <summary>
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
+        public long GoodsId { get; set; }
+        public partial class WordsRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

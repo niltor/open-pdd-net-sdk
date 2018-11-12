@@ -32,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品编码
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public string GoodsId { get; set; }
+                public long GoodsId { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
@@ -52,7 +52,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品总数量
                 /// </summary>
                 [JsonProperty("goods_quantity")]
-                public int GoodsQuantity { get; set; }
+                public long GoodsQuantity { get; set; }
                 /// <summary>
                 /// 是否在架上，0-下架中，1-架上
                 /// </summary>
@@ -74,12 +74,12 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// sku编码
                     /// </summary>
                     [JsonProperty("sku_id")]
-                    public int SkuId { get; set; }
+                    public long SkuId { get; set; }
                     /// <summary>
                     /// sku库存
                     /// </summary>
                     [JsonProperty("sku_quantity")]
-                    public int SkuQuantity { get; set; }
+                    public long SkuQuantity { get; set; }
                     /// <summary>
                     /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
                     /// </summary>

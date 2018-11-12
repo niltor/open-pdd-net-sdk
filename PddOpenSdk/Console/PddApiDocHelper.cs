@@ -195,7 +195,7 @@ $@"/// <summary>
             {
                 // TODO 注意：拼多多，响应内容内容字段存储混乱
                 var attribution = NameHelper.GetAttributionName(param.ParamType, param.ParamDesc, 1, "ResponseModel");
-                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
+                var paramName = Function.ToTitleCase(param.ParamType.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {

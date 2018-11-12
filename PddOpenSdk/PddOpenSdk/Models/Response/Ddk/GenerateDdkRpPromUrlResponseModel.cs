@@ -1,122 +1,63 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GenerateDdkRpPromUrlResponseModel : PddResponseModel
     {
         /// <summary>
-        /// 返回链接
+        /// 红包推广链接返回对象
         /// </summary>
-        [JsonProperty("url_list")]
-        public UrlListResponseModel UrlList { get; set; }
-        public partial class UrlListResponseModel : PddResponseModel
+        [JsonProperty("rp_promotion_url_generate_response")]
+        public RpPromotionUrlGenerateResponseResponseModel RpPromotionUrlGenerateResponse { get; set; }
+        public partial class RpPromotionUrlGenerateResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 红包推广长链接
+            /// url_list
             /// </summary>
-            [JsonProperty("url")]
-            public string Url { get; set; }
-            /// <summary>
-            /// 红包推广短链接
-            /// </summary>
-            [JsonProperty("short_url")]
-            public string ShortUrl { get; set; }
-            /// <summary>
-            /// 红包推广唤醒拼多多APP长链接
-            /// </summary>
-            [JsonProperty("mobile_url")]
-            public string MobileUrl { get; set; }
-            /// <summary>
-            /// 红包推广唤醒拼多多APP短链接
-            /// </summary>
-            [JsonProperty("mobile_short_url")]
-            public string MobileShortUrl { get; set; }
-            /// <summary>
-            /// 红包推广唤醒微信长链接
-            /// </summary>
-            [JsonProperty("we_app_web_view_url")]
-            public string WeAppWebViewUrl { get; set; }
-            /// <summary>
-            /// 红包推广唤醒微信短链接
-            /// </summary>
-            [JsonProperty("we_app_web_view_short_url")]
-            public string WeAppWebViewShortUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团长链接
-            /// </summary>
-            [JsonProperty("multi_group_url")]
-            public string MultiGroupUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团短链接
-            /// </summary>
-            [JsonProperty("multi_group_short_url")]
-            public string MultiGroupShortUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团唤醒APP长链接
-            /// </summary>
-            [JsonProperty("multi_group_mobile_url")]
-            public string MultiGroupMobileUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团唤醒APP短链接
-            /// </summary>
-            [JsonProperty("multi_group_mobile_short_url")]
-            public string MultiGroupMobileShortUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团唤醒微信长链接
-            /// </summary>
-            [JsonProperty("multi_we_app_web_view_url")]
-            public string MultiWeAppWebViewUrl { get; set; }
-            /// <summary>
-            /// 红包推广多人团唤醒微信短链接
-            /// </summary>
-            [JsonProperty("multi_we_app_web_view_short_url")]
-            public string MultiWeAppWebViewShortUrl { get; set; }
-            /// <summary>
-            /// 小程序信息
-            /// </summary>
-            [JsonProperty("we_app_info")]
-            public WeAppInfoResponseModel WeAppInfo { get; set; }
-            public partial class WeAppInfoResponseModel : PddResponseModel
+            [JsonProperty("url_list")]
+            public List<UrlListResponseModel> UrlList { get; set; }
+            public partial class UrlListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 小程序id
+                /// 红包推广链接
                 /// </summary>
-                [JsonProperty("app_id")]
-                public string AppId { get; set; }
+                [JsonProperty("url")]
+                public string Url { get; set; }
                 /// <summary>
-                /// icon的链接
+                /// 红包推广短链接
                 /// </summary>
-                [JsonProperty("we_app_icon_url")]
-                public string WeAppIconUrl { get; set; }
+                [JsonProperty("short_url")]
+                public string ShortUrl { get; set; }
                 /// <summary>
-                /// banner图url
+                /// 红包推广移动链接
                 /// </summary>
-                [JsonProperty("banner_url")]
-                public string BannerUrl { get; set; }
+                [JsonProperty("mobile_url")]
+                public string MobileUrl { get; set; }
                 /// <summary>
-                /// 描述
+                /// 红包推广移动短链接
                 /// </summary>
-                [JsonProperty("desc")]
-                public string Desc { get; set; }
+                [JsonProperty("mobile_short_url")]
+                public string MobileShortUrl { get; set; }
                 /// <summary>
-                /// 展示标题名
+                /// 红包推广多人团链接
                 /// </summary>
-                [JsonProperty("source_display_name")]
-                public string SourceDisplayName { get; set; }
+                [JsonProperty("multi_group_url")]
+                public string MultiGroupUrl { get; set; }
                 /// <summary>
-                /// 跳转目标小程序地址
+                /// 红包推广多人团短链接
                 /// </summary>
-                [JsonProperty("page_path")]
-                public string PagePath { get; set; }
+                [JsonProperty("multi_group_short_url")]
+                public string MultiGroupShortUrl { get; set; }
                 /// <summary>
-                /// 用户名
+                /// 红包推广多人团移动链接
                 /// </summary>
-                [JsonProperty("user_name")]
-                public string UserName { get; set; }
+                [JsonProperty("multi_group_mobile_url")]
+                public string MultiGroupMobileUrl { get; set; }
                 /// <summary>
-                /// 小程序标题
+                /// 红包推广多人团移动短链接
                 /// </summary>
-                [JsonProperty("title")]
-                public string Title { get; set; }
+                [JsonProperty("multi_group_mobile_short_url")]
+                public string MultiGroupMobileShortUrl { get; set; }
 
             }
 

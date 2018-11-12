@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SmsCustomSettingResponse
+    public partial class SettingSmsCustomResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 9958
-        /// </summary>
-        [JsonProperty("result")]
-        public int Result { get; set; }
-    }
-
-    public class SettingSmsCustomResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"result":9958}
+        /// response
         /// </summary>
         [JsonProperty("sms_custom_setting_response")]
-        public SmsCustomSettingResponse SmsCustomSettingResponse { get; set; }
-    }
+        public SmsCustomSettingResponseResponseModel SmsCustomSettingResponse { get; set; }
+        public partial class SmsCustomSettingResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 结果
+            /// </summary>
+            [JsonProperty("result")]
+            public long Result { get; set; }
 
+        }
+
+    }
 
 }

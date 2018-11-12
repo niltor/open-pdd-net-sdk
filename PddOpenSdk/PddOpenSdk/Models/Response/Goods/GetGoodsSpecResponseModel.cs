@@ -2,47 +2,42 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsSpecList
+    public partial class GetGoodsSpecResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1216
-        /// </summary>
-        [JsonProperty("parent_spec_id")]
-        public int ParentSpecId { get; set; }
-
-        /// <summary>
-        /// Examples: "尺寸"
-        /// </summary>
-        [JsonProperty("parent_spec_name")]
-        public string ParentSpecName { get; set; }
-
-        /// <summary>
-        /// Examples: 8
-        /// </summary>
-        [JsonProperty("cat_id")]
-        public int CatId { get; set; }
-    }
-
-    public class GoodsSpecGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"parent_spec_id":1216,"parent_spec_name":"尺寸","cat_id":8}]
-        /// </summary>
-        [JsonProperty("goods_spec_list")]
-        public IList<GoodsSpecList> GoodsSpecList { get; set; }
-    }
-
-    public class GetGoodsSpecResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_spec_list":[{"parent_spec_id":1216,"parent_spec_name":"尺寸","cat_id":8}]}
+        /// response
         /// </summary>
         [JsonProperty("goods_spec_get_response")]
-        public GoodsSpecGetResponse GoodsSpecGetResponse { get; set; }
-    }
+        public GoodsSpecGetResponseResponseModel GoodsSpecGetResponse { get; set; }
+        public partial class GoodsSpecGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 规格列表对象
+            /// </summary>
+            [JsonProperty("goods_spec_list")]
+            public List<GoodsSpecListResponseModel> GoodsSpecList { get; set; }
+            public partial class GoodsSpecListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 规格所属的叶子类目ID
+                /// </summary>
+                [JsonProperty("cat_id")]
+                public long CatId { get; set; }
+                /// <summary>
+                /// 商品规格对应的ID
+                /// </summary>
+                [JsonProperty("parent_spec_id")]
+                public long ParentSpecId { get; set; }
+                /// <summary>
+                /// 商品规格ID对应的规格名称
+                /// </summary>
+                [JsonProperty("parent_spec_name")]
+                public string ParentSpecName { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

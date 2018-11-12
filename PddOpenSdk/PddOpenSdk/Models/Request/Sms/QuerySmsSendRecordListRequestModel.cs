@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Sms
 {
@@ -7,7 +8,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 场景id,见前面枚举值用户关怀传[1,3]  ,智能营销[4, 5, 6, 8，9] 不传的话全部
         /// </summary>
         [JsonProperty("scene")]
-        public object[] Scene { get; set; }
+        public List<long> Scene { get; set; }
         /// <summary>
         /// 开始时间 2018-08-09 15:20:12
         /// </summary>
@@ -33,6 +34,10 @@ namespace PddOpenSdk.Models.Request.Sms
         /// </summary>
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
+        public partial class SceneRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

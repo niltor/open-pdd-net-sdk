@@ -1,31 +1,28 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsSubmitResponse
+    public partial class CommitGoodsSubmitGoodsResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 2636897500
-        /// </summary>
-        [JsonProperty("goods_id")]
-        public long GoodsId { get; set; }
-
-        /// <summary>
-        /// Examples: 5165546802
-        /// </summary>
-        [JsonProperty("goods_commit_id")]
-        public long GoodsCommitId { get; set; }
-    }
-
-    public class CommitGoodsSubmitGoodsResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_id":2636897500,"goods_commit_id":5165546802}
+        /// 返回response
         /// </summary>
         [JsonProperty("goods_update_response")]
-        public GoodsSubmitResponse GoodsUpdateResponse { get; set; }
-    }
+        public GoodsUpdateResponseResponseModel GoodsUpdateResponse { get; set; }
+        public partial class GoodsUpdateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 商品id
+            /// </summary>
+            [JsonProperty("goods_id")]
+            public long GoodsId { get; set; }
+            /// <summary>
+            /// 提交申请的序列id
+            /// </summary>
+            [JsonProperty("goods_commit_id")]
+            public long GoodsCommitId { get; set; }
 
+        }
+
+    }
 
 }

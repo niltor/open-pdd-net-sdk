@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Promotion
 {
-    public class GoodsCouponBatchCreateResponse
+    public partial class CreatePromotionGoodsCouponResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 9251417797
-        /// </summary>
-        [JsonProperty("batch_id")]
-        public long BatchId { get; set; }
-    }
-
-    public class CreatePromotionGoodsCouponResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"batch_id":9251417797}
+        /// 创建无门槛商品劵批次对象
         /// </summary>
         [JsonProperty("goods_coupon_batch_create_response")]
-        public GoodsCouponBatchCreateResponse GoodsCouponBatchCreateResponse { get; set; }
-    }
+        public GoodsCouponBatchCreateResponseResponseModel GoodsCouponBatchCreateResponse { get; set; }
+        public partial class GoodsCouponBatchCreateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 创建的无门槛商品劵批次id
+            /// </summary>
+            [JsonProperty("batch_id")]
+            public long BatchId { get; set; }
 
+        }
+
+    }
 
 }

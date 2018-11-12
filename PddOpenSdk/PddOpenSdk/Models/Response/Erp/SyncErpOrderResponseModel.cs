@@ -1,33 +1,29 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Erp
 {
-    public class SyncErpOrderResponseModel
+    public partial class SyncErpOrderResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
+        /// 是否成功
         /// </summary>
         [JsonProperty("success")]
         public bool Success { get; set; }
-
         /// <summary>
-        /// Examples: 1000000
+        /// 错误代码
         /// </summary>
         [JsonProperty("error_code")]
-        public int ErrorCode { get; set; }
-
+        public long ErrorCode { get; set; }
         /// <summary>
-        /// Examples: null
+        /// 错误参数
         /// </summary>
         [JsonProperty("error_msg")]
-        public object ErrorMsg { get; set; }
-
+        public string ErrorMsg { get; set; }
         /// <summary>
-        /// Examples: true
+        /// 是否有结果
         /// </summary>
         [JsonProperty("result")]
         public bool Result { get; set; }
-    }
 
+    }
 
 }

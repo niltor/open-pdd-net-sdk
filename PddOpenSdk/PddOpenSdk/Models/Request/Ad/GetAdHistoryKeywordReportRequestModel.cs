@@ -47,7 +47,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 单元id，groupBy = 1时必须传值，groupBy = 2时可以传值
         /// </summary>
         [JsonProperty("unit_id")]
-        public int? UnitId { get; set; }
+        public long UnitId { get; set; }
         /// <summary>
         /// 关键词，仅当groupBy = 1时必须传值
         /// </summary>
@@ -57,7 +57,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 计划id，仅当groupBy = 2时可以传值
         /// </summary>
         [JsonProperty("plan_id")]
-        public int? PlanId { get; set; }
+        public long PlanId { get; set; }
 
     }
 

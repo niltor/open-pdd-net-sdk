@@ -12,7 +12,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 计划id
         /// </summary>
         [JsonProperty("plan_id")]
-        public string PlanId { get; set; }
+        public long PlanId { get; set; }
         /// <summary>
         /// 计划名
         /// </summary>

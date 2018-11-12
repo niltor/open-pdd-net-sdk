@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
@@ -9,25 +10,20 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("generate_short_url")]
         public bool? GenerateShortUrl { get; set; }
         /// <summary>
-        /// 是否生成小程序链接。true-是，false-否，默认false
-        /// </summary>
-        [JsonProperty("generate_we_app")]
-        public bool? GenerateWeApp { get; set; }
-        /// <summary>
         /// 推广位列表，例如：["60005_612"]
         /// </summary>
         [JsonProperty("p_id_list")]
-        public string PIdList { get; set; }
+        public List<string> PIdList { get; set; }
         /// <summary>
         /// 自定义参数，为链接打上自定义标签。自定义参数最长限制64个字节。
         /// </summary>
         [JsonProperty("custom_parameters")]
-        public bool? CustomParameters { get; set; }
+        public string CustomParameters { get; set; }
         /// <summary>
         /// 是否唤起微信客户端， 默认false 否，true 是
         /// </summary>
         [JsonProperty("generate_weapp_webview")]
-        public bool? GenerateWeappWebview { get; set; }
+        public bool GenerateWeappWebview { get; set; }
         /// <summary>
         /// 唤起微信app推广短链接
         /// </summary>
@@ -38,6 +34,10 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
+        public partial class PIdListRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 第三方平台商品的商品ID
         /// </summary>
         [JsonProperty("num_iid")]
-        public object NumIid { get; set; }
+        public string NumIid { get; set; }
         /// <summary>
         /// 第三方平台商品的商品标题，例如“马克杯”
         /// </summary>
@@ -42,7 +42,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 拼多多的物流运费模板ID，可使用pdd.logistics.template.get获取
         /// </summary>
         [JsonProperty("cost_template_id")]
-        public object CostTemplateId { get; set; }
+        public long CostTemplateId { get; set; }
         /// <summary>
         /// 第三方平台商品轮播图地址（包括主图)，最多传5张，例如：; “http://testimg.yangkeduo.com/pdd_oms/2018-07-13/06b79325f5235b9d420201414ca57488.jpeg”
         /// </summary>
@@ -52,12 +52,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 第三方; ; 平台商品的sku内容，包括：sku的销售属性组合字符串properties_name（必填，当您上传的商品是单品时可以不传），sku对应的商品数量quantity（必填），sku应的商品价格price（必填），sku的商家外部outer_id（选填），例如：[{"outer_id":"1","price":51, "properties_name":"1627207:28332:颜色:浅灰色","quantity":11}]
         /// </summary>
         [JsonProperty("skus")]
-        public object Skus { get; set; }
+        public string Skus { get; set; }
         /// <summary>
         /// 拼多多商品分类id，传入的第三方cid无法对应的情况下，可以选择传此id
         /// </summary>
         [JsonProperty("pdd_cid")]
-        public object PddCid { get; set; }
+        public string PddCid { get; set; }
 
     }
 

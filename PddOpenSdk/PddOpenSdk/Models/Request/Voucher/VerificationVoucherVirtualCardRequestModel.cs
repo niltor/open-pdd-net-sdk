@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Voucher
 {
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Voucher
         /// 券信息列表
         /// </summary>
         [JsonProperty("voucher_data_list")]
-        public VoucherDataListRequestModel VoucherDataList { get; set; }
+        public List<VoucherDataListRequestModel> VoucherDataList { get; set; }
         public partial class VoucherDataListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -24,7 +25,7 @@ namespace PddOpenSdk.Models.Request.Voucher
             /// 券状态更改时间
             /// </summary>
             [JsonProperty("voucher_time")]
-            public int VoucherTime { get; set; }
+            public long VoucherTime { get; set; }
             /// <summary>
             /// 券状态 1：已核销；2：已销毁
             /// </summary>

@@ -2,31 +2,28 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
-    public class ZsUnitGoodsQueryResponse
+    public partial class QueryDdkZsUnitGoodsResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: []
-        /// </summary>
-        [JsonProperty("list")]
-        public IList<object> List { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-    }
-
-    public class QueryDdkZsUnitGoodsResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"list":[],"total_count":0}
+        /// response
         /// </summary>
         [JsonProperty("zs_unit_goods_query_response")]
-        public ZsUnitGoodsQueryResponse ZsUnitGoodsQueryResponse { get; set; }
-    }
+        public ZsUnitGoodsQueryResponseResponseModel ZsUnitGoodsQueryResponse { get; set; }
+        public partial class ZsUnitGoodsQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 请求到的结果数
+            /// </summary>
+            [JsonProperty("total_count")]
+            public int TotalCount { get; set; }
+            /// <summary>
+            /// 列表
+            /// </summary>
+            [JsonProperty("list")]
+            public List<string> List { get; set; }
 
+        }
+
+    }
 
 }

@@ -1,13 +1,9 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkThemePromUrlRequestModel : PddRequestModel
     {
-        /// <summary>
-        /// 该值为:pdd.ddk.theme.prom.url.generate
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
         /// <summary>
         /// 推广位ID
         /// </summary>
@@ -17,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 主题ID列表,例如[1,235]
         /// </summary>
         [JsonProperty("theme_id_list")]
-        public string ThemeIdList { get; set; }
+        public List<long> ThemeIdList { get; set; }
         /// <summary>
         /// 是否生成短链接,true-是,false-否
         /// </summary>
@@ -48,6 +44,10 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
+        public partial class ThemeIdListRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

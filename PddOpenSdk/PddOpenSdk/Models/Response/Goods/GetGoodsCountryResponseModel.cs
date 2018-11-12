@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class CountryList
+    public partial class GetGoodsCountryResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("country_id")]
-        public int CountryId { get; set; }
-
-        /// <summary>
-        /// Examples: "安道尔"
-        /// </summary>
-        [JsonProperty("country_name")]
-        public string CountryName { get; set; }
-    }
-
-    public class GoodsCountryGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"country_id":1,"country_name":"安道尔"}]
-        /// </summary>
-        [JsonProperty("country_list")]
-        public IList<CountryList> CountryList { get; set; }
-    }
-
-    public class GetGoodsCountryResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"country_list":[{"country_id":1,"country_name":"安道尔"}]}
+        /// response
         /// </summary>
         [JsonProperty("goods_country_get_response")]
-        public GoodsCountryGetResponse GoodsCountryGetResponse { get; set; }
-    }
+        public GoodsCountryGetResponseResponseModel GoodsCountryGetResponse { get; set; }
+        public partial class GoodsCountryGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 国家或地区对象列表
+            /// </summary>
+            [JsonProperty("country_list")]
+            public List<CountryListResponseModel> CountryList { get; set; }
+            public partial class CountryListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 国家或地区对应的ID
+                /// </summary>
+                [JsonProperty("country_id")]
+                public long CountryId { get; set; }
+                /// <summary>
+                /// 对应ID下的国家或地区名称
+                /// </summary>
+                [JsonProperty("country_name")]
+                public string CountryName { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

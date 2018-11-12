@@ -2,35 +2,32 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Refund
 {
-    public class OrderSnsExistsRefund
+    public partial class CheckRefundStatusResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "180415-352642978562639"
-        /// </summary>
-        [JsonProperty("order_sn")]
-        public string OrderSn { get; set; }
-    }
-
-    public class RefundStatusCheckResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"order_sn":"180415-352642978562639"}]
-        /// </summary>
-        [JsonProperty("order_sns_exists_refund")]
-        public IList<OrderSnsExistsRefund> OrderSnsExistsRefund { get; set; }
-    }
-
-    public class CheckRefundStatusResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"order_sns_exists_refund":[{"order_sn":"180415-352642978562639"}]}
+        /// response
         /// </summary>
         [JsonProperty("refund_status_check_response")]
-        public RefundStatusCheckResponse RefundStatusCheckResponse { get; set; }
-    }
+        public RefundStatusCheckResponseResponseModel RefundStatusCheckResponse { get; set; }
+        public partial class RefundStatusCheckResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 存在售后的订单
+            /// </summary>
+            [JsonProperty("order_sns_exists_refund")]
+            public List<OrderSnsExistsRefundResponseModel> OrderSnsExistsRefund { get; set; }
+            public partial class OrderSnsExistsRefundResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 订单编号
+                /// </summary>
+                [JsonProperty("order_sn")]
+                public string OrderSn { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

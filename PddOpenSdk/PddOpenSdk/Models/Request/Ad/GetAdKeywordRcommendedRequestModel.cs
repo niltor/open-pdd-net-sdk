@@ -12,7 +12,7 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
+        public long GoodsId { get; set; }
 
     }
 

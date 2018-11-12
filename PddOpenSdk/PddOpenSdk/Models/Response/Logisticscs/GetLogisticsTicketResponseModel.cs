@@ -2,173 +2,167 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Logisticscs
 {
-    public class LogisticsTicketList
+    public partial class GetLogisticsTicketResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("status")]
-        public int Status { get; set; }
-
-        /// <summary>
-        /// Examples: "催件/延误"
-        /// </summary>
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Examples: "test001"
-        /// </summary>
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("source")]
-        public int Source { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("duty")]
-        public int Duty { get; set; }
-
-        /// <summary>
-        /// Examples: 6371869
-        /// </summary>
-        [JsonProperty("ticket_id")]
-        public int TicketId { get; set; }
-
-        /// <summary>
-        /// Examples: "490852672110"
-        /// </summary>
-        [JsonProperty("waybill_no")]
-        public string WaybillNo { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("urgent_type")]
-        public int UrgentType { get; set; }
-
-        /// <summary>
-        /// Examples: 334
-        /// </summary>
-        [JsonProperty("type_id")]
-        public int TypeId { get; set; }
-
-        /// <summary>
-        /// Examples: ["http://imgt.pinduoduo.com/pdd_ticket_image/2018-05-03/2abc157042fafce2db59f42b8d532b01.jpeg"]
-        /// </summary>
-        [JsonProperty("attach_url")]
-        public IList<string> AttachUrl { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("retreat_count")]
-        public int RetreatCount { get; set; }
-
-        /// <summary>
-        /// Examples: "test001"
-        /// </summary>
-        [JsonProperty("receive_name")]
-        public string ReceiveName { get; set; }
-
-        /// <summary>
-        /// Examples: "test001"
-        /// </summary>
-        [JsonProperty("receive_contact")]
-        public string ReceiveContact { get; set; }
-
-        /// <summary>
-        /// Examples: 1525354853
-        /// </summary>
-        [JsonProperty("created_at")]
-        public int CreatedAt { get; set; }
-
-        /// <summary>
-        /// Examples: 1525354886
-        /// </summary>
-        [JsonProperty("updated_at")]
-        public int UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Examples: ""
-        /// </summary>
-        [JsonProperty("handle_result")]
-        public string HandleResult { get; set; }
-
-        /// <summary>
-        /// Examples: 115
-        /// </summary>
-        [JsonProperty("express_company_id")]
-        public int ExpressCompanyId { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("compensate_state")]
-        public int CompensateState { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("compensate_amount")]
-        public int CompensateAmount { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("express_attachment")]
-        public object ExpressAttachment { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("sign_state")]
-        public int SignState { get; set; }
-
-        /// <summary>
-        /// Examples: ""
-        /// </summary>
-        [JsonProperty("express_dealer")]
-        public string ExpressDealer { get; set; }
-
-        /// <summary>
-        /// Examples: ""
-        /// </summary>
-        [JsonProperty("express_dealer_contact")]
-        public string ExpressDealerContact { get; set; }
-    }
-
-    public class LogisticsTicketGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"status":0,"title":"催件/延误","description":"test001","source":0,"duty":0,"ticket_id":6371869,"waybill_no":"490852672110","urgent_type":1,"type_id":334,"attach_url":["http://imgt.pinduoduo.com/pdd_ticket_image/2018-05-03/2abc157042fafce2db59f42b8d532b01.jpeg"],"retreat_count":0,"receive_name":"test001","receive_contact":"test001","created_at":1525354853,"updated_at":1525354886,"handle_result":"","express_company_id":115,"compensate_state":0,"compensate_amount":0,"express_attachment":null,"sign_state":0,"express_dealer":"","express_dealer_contact":""}]
-        /// </summary>
-        [JsonProperty("logistics_ticket_list")]
-        public IList<LogisticsTicketList> LogisticsTicketList { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-    }
-
-    public class GetLogisticsTicketResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"logistics_ticket_list":[{"status":0,"title":"催件/延误","description":"test001","source":0,"duty":0,"ticket_id":6371869,"waybill_no":"490852672110","urgent_type":1,"type_id":334,"attach_url":["http://imgt.pinduoduo.com/pdd_ticket_image/2018-05-03/2abc157042fafce2db59f42b8d532b01.jpeg"],"retreat_count":0,"receive_name":"test001","receive_contact":"test001","created_at":1525354853,"updated_at":1525354886,"handle_result":"","express_company_id":115,"compensate_state":0,"compensate_amount":0,"express_attachment":null,"sign_state":0,"express_dealer":"","express_dealer_contact":""}],"total_count":1}
+        /// response
         /// </summary>
         [JsonProperty("logistics_ticket_get_response")]
-        public LogisticsTicketGetResponse LogisticsTicketGetResponse { get; set; }
-    }
+        public LogisticsTicketGetResponseResponseModel LogisticsTicketGetResponse { get; set; }
+        public partial class LogisticsTicketGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 列表总数
+            /// </summary>
+            [JsonProperty("total_count")]
+            public int TotalCount { get; set; }
+            /// <summary>
+            /// 工单列表
+            /// </summary>
+            [JsonProperty("logistics_ticket_list")]
+            public List<LogisticsTicketListResponseModel> LogisticsTicketList { get; set; }
+            public partial class LogisticsTicketListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// send_address
+                /// </summary>
+                [JsonProperty("send_address")]
+                public string SendAddress { get; set; }
+                /// <summary>
+                /// create_type
+                /// </summary>
+                [JsonProperty("create_type")]
+                public int CreateType { get; set; }
+                /// <summary>
+                /// duty
+                /// </summary>
+                [JsonProperty("duty")]
+                public int Duty { get; set; }
+                /// <summary>
+                /// receive_address
+                /// </summary>
+                [JsonProperty("receive_address")]
+                public string ReceiveAddress { get; set; }
+                /// <summary>
+                /// 订单号生成的物流单号
+                /// </summary>
+                [JsonProperty("pre_delivery_id")]
+                public string PreDeliveryId { get; set; }
+                /// <summary>
+                /// 物流商处理结果
+                /// </summary>
+                [JsonProperty("handle_result")]
+                public string HandleResult { get; set; }
+                /// <summary>
+                /// 物流商快递编码
+                /// </summary>
+                [JsonProperty("express_company_id")]
+                public long ExpressCompanyId { get; set; }
+                /// <summary>
+                /// 赔付状态 0:默认,1:未赔付,2:已赔付
+                /// </summary>
+                [JsonProperty("compensate_state")]
+                public int CompensateState { get; set; }
+                /// <summary>
+                /// 赔付金额(单位:分)
+                /// </summary>
+                [JsonProperty("compensate_amount")]
+                public long CompensateAmount { get; set; }
+                /// <summary>
+                /// 物流商回传凭证
+                /// </summary>
+                [JsonProperty("express_attachment")]
+                public List<string> ExpressAttachment { get; set; }
+                /// <summary>
+                /// 0:默认,1:未签收,2:已签收
+                /// </summary>
+                [JsonProperty("sign_state")]
+                public int SignState { get; set; }
+                /// <summary>
+                /// 处理人
+                /// </summary>
+                [JsonProperty("express_dealer")]
+                public string ExpressDealer { get; set; }
+                /// <summary>
+                /// 处理人联系方式
+                /// </summary>
+                [JsonProperty("express_dealer_contact")]
+                public string ExpressDealerContact { get; set; }
+                /// <summary>
+                /// 工单退回次数
+                /// </summary>
+                [JsonProperty("retreat_count")]
+                public long RetreatCount { get; set; }
+                /// <summary>
+                /// 联系人姓名
+                /// </summary>
+                [JsonProperty("receive_name")]
+                public string ReceiveName { get; set; }
+                /// <summary>
+                /// 联系人电话
+                /// </summary>
+                [JsonProperty("receive_contact")]
+                public string ReceiveContact { get; set; }
+                /// <summary>
+                /// 工单创建时间戳
+                /// </summary>
+                [JsonProperty("created_at")]
+                public long CreatedAt { get; set; }
+                /// <summary>
+                /// 工单最后更新时间戳
+                /// </summary>
+                [JsonProperty("updated_at")]
+                public long UpdatedAt { get; set; }
+                /// <summary>
+                /// 问题描述
+                /// </summary>
+                [JsonProperty("title")]
+                public string Title { get; set; }
+                /// <summary>
+                /// 备注
+                /// </summary>
+                [JsonProperty("description")]
+                public string Description { get; set; }
+                /// <summary>
+                /// 问题来源，	0:买家,1:卖家
+                /// </summary>
+                [JsonProperty("source")]
+                public int Source { get; set; }
+                /// <summary>
+                /// 工单id
+                /// </summary>
+                [JsonProperty("ticket_id")]
+                public long TicketId { get; set; }
+                /// <summary>
+                /// 运单号
+                /// </summary>
+                [JsonProperty("waybill_no")]
+                public string WaybillNo { get; set; }
+                /// <summary>
+                /// 紧急度，0:中,1:紧急
+                /// </summary>
+                [JsonProperty("urgent_type")]
+                public int UrgentType { get; set; }
+                /// <summary>
+                /// 问题类型id
+                /// </summary>
+                [JsonProperty("type_id")]
+                public long TypeId { get; set; }
+                /// <summary>
+                /// 附件列表
+                /// </summary>
+                [JsonProperty("attach_url")]
+                public List<string> AttachUrl { get; set; }
+                /// <summary>
+                /// 工单状态， 0:待确认,1:跟进中,2:待回访,3:已完结
+                /// </summary>
+                [JsonProperty("status")]
+                public int Status { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

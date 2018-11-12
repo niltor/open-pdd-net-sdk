@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 申请流水号
         /// </summary>
         [JsonProperty("application_id")]
-        public int ApplicationId { get; set; }
+        public long ApplicationId { get; set; }
         /// <summary>
         /// 订单号
         /// </summary>

@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Logisticscs
 {
-    public class LogisticsProblemTypeList
+    public partial class GetLogisticsTicketProblemTypeResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 301, 422
-        /// </summary>
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Examples: "核实是否丢件", "未签收求赔付"
-        /// </summary>
-        [JsonProperty("type_desc")]
-        public string TypeDesc { get; set; }
-    }
-
-    public class LogisticsProblemTypeGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"id":301,"type_desc":"核实是否丢件"},{"id":422,"type_desc":"未签收求赔付"}]
-        /// </summary>
-        [JsonProperty("logistics_problem_type_list")]
-        public IList<LogisticsProblemTypeList> LogisticsProblemTypeList { get; set; }
-    }
-
-    public class GetLogisticsTicketProblemTypeResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"logistics_problem_type_list":[{"id":301,"type_desc":"核实是否丢件"},{"id":422,"type_desc":"未签收求赔付"}]}
+        /// 返回response
         /// </summary>
         [JsonProperty("logistics_problem_type_get_response")]
-        public LogisticsProblemTypeGetResponse LogisticsProblemTypeGetResponse { get; set; }
-    }
+        public LogisticsProblemTypeGetResponseResponseModel LogisticsProblemTypeGetResponse { get; set; }
+        public partial class LogisticsProblemTypeGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 问题类型list
+            /// </summary>
+            [JsonProperty("logistics_problem_type_list")]
+            public List<LogisticsProblemTypeListResponseModel> LogisticsProblemTypeList { get; set; }
+            public partial class LogisticsProblemTypeListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 问题类型描述
+                /// </summary>
+                [JsonProperty("type_desc")]
+                public string TypeDesc { get; set; }
+                /// <summary>
+                /// 问题类型id
+                /// </summary>
+                [JsonProperty("id")]
+                public long Id { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

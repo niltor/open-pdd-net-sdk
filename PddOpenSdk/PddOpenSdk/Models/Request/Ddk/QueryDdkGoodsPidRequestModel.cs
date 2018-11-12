@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class QueryDdkGoodsPidRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 该值为：pdd.ddk.goods.pid.query
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
-        /// <summary>
         /// 返回的页数
         /// </summary>
         [JsonProperty("page")]

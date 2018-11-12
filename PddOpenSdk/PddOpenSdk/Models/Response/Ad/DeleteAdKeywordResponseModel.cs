@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class AdKeywordDeleteResponse
+    public partial class DeleteAdKeywordResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class DeleteAdKeywordResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_keyword_delete_response")]
-        public AdKeywordDeleteResponse AdKeywordDeleteResponse { get; set; }
-    }
+        public AdKeywordDeleteResponseResponseModel AdKeywordDeleteResponse { get; set; }
+        public partial class AdKeywordDeleteResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

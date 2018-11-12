@@ -2,137 +2,122 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class UnitRealTimeReportList
+    public partial class GetAdHistoryRtUnitReportResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("impression")]
-        public int Impression { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("click")]
-        public int Click { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("ctr")]
-        public int Ctr { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("spend")]
-        public int Spend { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("cpc")]
-        public int Cpc { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("order_num")]
-        public int OrderNum { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("gmv")]
-        public int Gmv { get; set; }
-
-        /// <summary>
-        /// Examples: 0
-        /// </summary>
-        [JsonProperty("roi")]
-        public int Roi { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("cpm")]
-        public object Cpm { get; set; }
-
-        /// <summary>
-        /// Examples: 5949471
-        /// </summary>
-        [JsonProperty("unit_id")]
-        public int UnitId { get; set; }
-
-        /// <summary>
-        /// Examples: 2236482
-        /// </summary>
-        [JsonProperty("plan_id")]
-        public int PlanId { get; set; }
-
-        /// <summary>
-        /// Examples: 10088079
-        /// </summary>
-        [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("operate_status")]
-        public int OperateStatus { get; set; }
-
-        /// <summary>
-        /// Examples: "测试新增商品测试新增商品测试新增商品测试新增198"
-        /// </summary>
-        [JsonProperty("goods_name")]
-        public string GoodsName { get; set; }
-
-        /// <summary>
-        /// Examples: "http://pddtestimg.yangkeduo.com/test/2018-06-08/5d8328338f9725693ea93e1555188f29.jpeg"
-        /// </summary>
-        [JsonProperty("thumb_url")]
-        public string ThumbUrl { get; set; }
-
-        /// <summary>
-        /// Examples: 80000
-        /// </summary>
-        [JsonProperty("min_group_price")]
-        public int MinGroupPrice { get; set; }
-
-        /// <summary>
-        /// Examples: 80000
-        /// </summary>
-        [JsonProperty("max_group_price")]
-        public int MaxGroupPrice { get; set; }
-
-        /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("status")]
-        public int Status { get; set; }
-    }
-
-    public class AdUnitRealTimeReportResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"impression":0,"click":0,"ctr":0,"spend":0,"cpc":0,"order_num":0,"gmv":0,"roi":0,"cpm":null,"unit_id":5949471,"plan_id":2236482,"goods_id":10088079,"operate_status":1,"goods_name":"测试新增商品测试新增商品测试新增商品测试新增198","thumb_url":"http://pddtestimg.yangkeduo.com/test/2018-06-08/5d8328338f9725693ea93e1555188f29.jpeg","min_group_price":80000,"max_group_price":80000,"status":1}]
-        /// </summary>
-        [JsonProperty("unit_real_time_report_list")]
-        public IList<UnitRealTimeReportList> UnitRealTimeReportList { get; set; }
-    }
-
-    public class GetAdHistoryRtUnitReportResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"unit_real_time_report_list":[{"impression":0,"click":0,"ctr":0,"spend":0,"cpc":0,"order_num":0,"gmv":0,"roi":0,"cpm":null,"unit_id":5949471,"plan_id":2236482,"goods_id":10088079,"operate_status":1,"goods_name":"测试新增商品测试新增商品测试新增商品测试新增198","thumb_url":"http://pddtestimg.yangkeduo.com/test/2018-06-08/5d8328338f9725693ea93e1555188f29.jpeg","min_group_price":80000,"max_group_price":80000,"status":1}]}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_unit_real_time_report_response")]
-        public AdUnitRealTimeReportResponse AdUnitRealTimeReportResponse { get; set; }
-    }
+        public AdUnitRealTimeReportResponseResponseModel AdUnitRealTimeReportResponse { get; set; }
+        public partial class AdUnitRealTimeReportResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 报表对象列表
+            /// </summary>
+            [JsonProperty("unit_real_time_report_list")]
+            public List<UnitRealTimeReportListResponseModel> UnitRealTimeReportList { get; set; }
+            public partial class UnitRealTimeReportListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 1：推广中，2：手动暂停，3：余额不足，4：到达日限额，5：无推广单元，6：已删除
+                /// </summary>
+                [JsonProperty("status")]
+                public int Status { get; set; }
+                /// <summary>
+                /// 计划id
+                /// </summary>
+                [JsonProperty("plan_id")]
+                public long PlanId { get; set; }
+                /// <summary>
+                /// 单元id
+                /// </summary>
+                [JsonProperty("unit_id")]
+                public long UnitId { get; set; }
+                /// <summary>
+                /// 商品id
+                /// </summary>
+                [JsonProperty("goods_id")]
+                public long GoodsId { get; set; }
+                /// <summary>
+                /// 1：已启用，2：未启用
+                /// </summary>
+                [JsonProperty("operate_status")]
+                public int OperateStatus { get; set; }
+                /// <summary>
+                /// 商品名
+                /// </summary>
+                [JsonProperty("goods_name")]
+                public string GoodsName { get; set; }
+                /// <summary>
+                /// 商品图片url
+                /// </summary>
+                [JsonProperty("thumb_url")]
+                public string ThumbUrl { get; set; }
+                /// <summary>
+                /// 最小团购价
+                /// </summary>
+                [JsonProperty("min_group_price")]
+                public long MinGroupPrice { get; set; }
+                /// <summary>
+                /// 最大团购价
+                /// </summary>
+                [JsonProperty("max_group_price")]
+                public long MaxGroupPrice { get; set; }
+                /// <summary>
+                /// 广告投资回报率
+                /// </summary>
+                [JsonProperty("roi")]
+                public double Roi { get; set; }
+                /// <summary>
+                /// 千次展现成本
+                /// </summary>
+                [JsonProperty("cpm")]
+                public double Cpm { get; set; }
+                /// <summary>
+                /// 广告曝光数
+                /// </summary>
+                [JsonProperty("impression")]
+                public long Impression { get; set; }
+                /// <summary>
+                /// 广告点击数
+                /// </summary>
+                [JsonProperty("click")]
+                public long Click { get; set; }
+                /// <summary>
+                /// 广告点击率
+                /// </summary>
+                [JsonProperty("ctr")]
+                public double Ctr { get; set; }
+                /// <summary>
+                /// 广告消耗,单位厘
+                /// </summary>
+                [JsonProperty("spend")]
+                public long Spend { get; set; }
+                /// <summary>
+                /// 点击单价，单位厘
+                /// </summary>
+                [JsonProperty("cpc")]
+                public double Cpc { get; set; }
+                /// <summary>
+                /// 广告转化支付订单数
+                /// </summary>
+                [JsonProperty("order_num")]
+                public long OrderNum { get; set; }
+                /// <summary>
+                /// 广告转化支付金额，单位厘
+                /// </summary>
+                [JsonProperty("gmv")]
+                public long Gmv { get; set; }
+                /// <summary>
+                /// 日期
+                /// </summary>
+                [JsonProperty("date")]
+                public string Date { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

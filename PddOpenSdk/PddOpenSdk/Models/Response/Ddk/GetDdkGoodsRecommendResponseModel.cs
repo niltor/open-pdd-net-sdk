@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
@@ -11,10 +12,15 @@ namespace PddOpenSdk.Models.Response.Ddk
         public partial class GoodsBasicDetailResponseResponseModel : PddResponseModel
         {
             /// <summary>
+            /// total
+            /// </summary>
+            [JsonProperty("total")]
+            public int Total { get; set; }
+            /// <summary>
             /// 列表
             /// </summary>
             [JsonProperty("list")]
-            public ListResponseModel List { get; set; }
+            public List<ListResponseModel> List { get; set; }
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -41,42 +47,42 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 今日成交量
                 /// </summary>
                 [JsonProperty("sale_num_today")]
-                public int SaleNumToday { get; set; }
+                public long SaleNumToday { get; set; }
                 /// <summary>
                 /// 成交量
                 /// </summary>
                 [JsonProperty("sale_num24")]
-                public int SaleNum24 { get; set; }
+                public long SaleNum24 { get; set; }
                 /// <summary>
                 /// 服务评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("serv_pct")]
-                public object ServPct { get; set; }
+                public double ServPct { get; set; }
                 /// <summary>
                 /// 物流评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("lgst_pct")]
-                public object LgstPct { get; set; }
+                public double LgstPct { get; set; }
                 /// <summary>
                 /// 描述评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("desc_pct")]
-                public object DescPct { get; set; }
+                public double DescPct { get; set; }
                 /// <summary>
                 /// 服务评分
                 /// </summary>
                 [JsonProperty("avg_serv")]
-                public object AvgServ { get; set; }
+                public long AvgServ { get; set; }
                 /// <summary>
                 /// 物流评分
                 /// </summary>
                 [JsonProperty("avg_lgst")]
-                public object AvgLgst { get; set; }
+                public long AvgLgst { get; set; }
                 /// <summary>
                 /// 描述评分
                 /// </summary>
                 [JsonProperty("avg_desc")]
-                public object AvgDesc { get; set; }
+                public long AvgDesc { get; set; }
                 /// <summary>
                 /// 分享描述
                 /// </summary>
@@ -91,67 +97,67 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品评价数量
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
-                public int GoodsEvalCount { get; set; }
+                public long GoodsEvalCount { get; set; }
                 /// <summary>
                 /// 商品评价分
                 /// </summary>
                 [JsonProperty("goods_eval_score")]
-                public int GoodsEvalScore { get; set; }
+                public double GoodsEvalScore { get; set; }
                 /// <summary>
                 /// 市场服务费
                 /// </summary>
                 [JsonProperty("market_fee")]
-                public int MarketFee { get; set; }
+                public long MarketFee { get; set; }
                 /// <summary>
                 /// 商品等级
                 /// </summary>
                 [JsonProperty("goods_rate")]
-                public string GoodsRate { get; set; }
+                public long GoodsRate { get; set; }
                 /// <summary>
                 /// 优惠券金额
                 /// </summary>
                 [JsonProperty("coupon_price")]
-                public int CouponPrice { get; set; }
+                public long CouponPrice { get; set; }
                 /// <summary>
                 /// 佣金比例,千分比
                 /// </summary>
                 [JsonProperty("promotion_rate")]
-                public int PromotionRate { get; set; }
+                public long PromotionRate { get; set; }
                 /// <summary>
                 /// 优惠券失效时间,UNIX时间戳
                 /// </summary>
                 [JsonProperty("coupon_end_time")]
-                public int CouponEndTime { get; set; }
+                public long CouponEndTime { get; set; }
                 /// <summary>
                 /// 优惠券生效时间,UNIX时间戳
                 /// </summary>
                 [JsonProperty("coupon_start_time")]
-                public int CouponStartTime { get; set; }
+                public long CouponStartTime { get; set; }
                 /// <summary>
                 /// 优惠券剩余数量
                 /// </summary>
                 [JsonProperty("coupon_remain_quantity")]
-                public int CouponRemainQuantity { get; set; }
+                public long CouponRemainQuantity { get; set; }
                 /// <summary>
                 /// 优惠券总数量
                 /// </summary>
                 [JsonProperty("coupon_total_quantity")]
-                public int CouponTotalQuantity { get; set; }
+                public long CouponTotalQuantity { get; set; }
                 /// <summary>
                 /// 优惠券面额,单位为分
                 /// </summary>
                 [JsonProperty("coupon_discount")]
-                public int CouponDiscount { get; set; }
+                public long CouponDiscount { get; set; }
                 /// <summary>
                 /// 优惠券门槛价格,单位为分
                 /// </summary>
                 [JsonProperty("coupon_min_order_amount")]
-                public int CouponMinOrderAmount { get; set; }
+                public long CouponMinOrderAmount { get; set; }
                 /// <summary>
                 /// 优惠券id
                 /// </summary>
                 [JsonProperty("coupon_id")]
-                public string CouponId { get; set; }
+                public long CouponId { get; set; }
                 /// <summary>
                 /// 商品是否带券,true-带券,false-不带券
                 /// </summary>
@@ -161,17 +167,17 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品类型
                 /// </summary>
                 [JsonProperty("goods_type")]
-                public string GoodsType { get; set; }
+                public int GoodsType { get; set; }
                 /// <summary>
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
-                public string CatIds { get; set; }
+                public List<long> CatIds { get; set; }
                 /// <summary>
                 /// 商品一~四级标签类目ID列表
                 /// </summary>
                 [JsonProperty("opt_ids")]
-                public object[] OptIds { get; set; }
+                public List<long> OptIds { get; set; }
                 /// <summary>
                 /// 商品标签名
                 /// </summary>
@@ -206,32 +212,32 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商家id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public string MallId { get; set; }
+                public long MallId { get; set; }
                 /// <summary>
                 /// 最小单买价格，单位分
                 /// </summary>
                 [JsonProperty("min_normal_price")]
-                public int MinNormalPrice { get; set; }
+                public long MinNormalPrice { get; set; }
                 /// <summary>
                 /// 最小成团价格，单位分
                 /// </summary>
                 [JsonProperty("min_group_price")]
-                public int MinGroupPrice { get; set; }
+                public long MinGroupPrice { get; set; }
                 /// <summary>
                 /// 商品实际价格
                 /// </summary>
                 [JsonProperty("goods_fact_price")]
-                public int GoodsFactPrice { get; set; }
+                public long GoodsFactPrice { get; set; }
                 /// <summary>
                 /// 商品标准价格
                 /// </summary>
                 [JsonProperty("goods_mark_price")]
-                public int GoodsMarkPrice { get; set; }
+                public long GoodsMarkPrice { get; set; }
                 /// <summary>
                 /// 销售量
                 /// </summary>
                 [JsonProperty("sold_quantity")]
-                public int SoldQuantity { get; set; }
+                public long SoldQuantity { get; set; }
                 /// <summary>
                 /// 商品详情图列表
                 /// </summary>
@@ -261,12 +267,12 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品id
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public string GoodsId { get; set; }
+                public long GoodsId { get; set; }
                 /// <summary>
                 /// 创建时间
                 /// </summary>
                 [JsonProperty("create_at")]
-                public int CreateAt { get; set; }
+                public long CreateAt { get; set; }
 
             }
 

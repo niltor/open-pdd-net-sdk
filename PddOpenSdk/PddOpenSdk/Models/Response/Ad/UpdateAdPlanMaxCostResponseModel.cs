@@ -1,25 +1,23 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public class AdPlanMaxCostUpdateResponse
+    public partial class UpdateAdPlanMaxCostResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: true
-        /// </summary>
-        [JsonProperty("is_success")]
-        public bool IsSuccess { get; set; }
-    }
-
-    public class UpdateAdPlanMaxCostResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"is_success":true}
+        /// 返回response
         /// </summary>
         [JsonProperty("ad_plan_max_cost_update_response")]
-        public AdPlanMaxCostUpdateResponse AdPlanMaxCostUpdateResponse { get; set; }
-    }
+        public AdPlanMaxCostUpdateResponseResponseModel AdPlanMaxCostUpdateResponse { get; set; }
+        public partial class AdPlanMaxCostUpdateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 是否成功
+            /// </summary>
+            [JsonProperty("is_success")]
+            public bool IsSuccess { get; set; }
 
+        }
+
+    }
 
 }

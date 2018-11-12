@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Sms
 {
@@ -7,27 +8,27 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 选自定义的时候列表存省代表的id [10]
         /// </summary>
         [JsonProperty("location")]
-        public object Location { get; set; }
+        public List<long> Location { get; set; }
         /// <summary>
         /// 地区类型 0-不限 1-江浙沪 2-自定义
         /// </summary>
         [JsonProperty("location_type")]
-        public object LocationType { get; set; }
+        public int? LocationType { get; set; }
         /// <summary>
         /// 性别 0-全部 1-男 2-女
         /// </summary>
         [JsonProperty("gender")]
-        public object Gender { get; set; }
+        public int? Gender { get; set; }
         /// <summary>
         /// 商品收藏天数
         /// </summary>
         [JsonProperty("goods_favor_days")]
-        public object GoodsFavorDays { get; set; }
+        public long GoodsFavorDays { get; set; }
         /// <summary>
         /// 店铺收藏天数
         /// </summary>
         [JsonProperty("mall_favor_days")]
-        public object MallFavorDays { get; set; }
+        public long MallFavorDays { get; set; }
         /// <summary>
         /// 人群名称
         /// </summary>
@@ -37,22 +38,22 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 店铺无购买天数
         /// </summary>
         [JsonProperty("none_purchase_days")]
-        public object NonePurchaseDays { get; set; }
+        public long NonePurchaseDays { get; set; }
         /// <summary>
         /// 店铺有购买天数
         /// </summary>
         [JsonProperty("purchase_days")]
-        public object PurchaseDays { get; set; }
+        public long PurchaseDays { get; set; }
         /// <summary>
         /// 历史成交最小次数
         /// </summary>
         [JsonProperty("min_order_count")]
-        public object MinOrderCount { get; set; }
+        public long MinOrderCount { get; set; }
         /// <summary>
         /// 历史成交最大次数
         /// </summary>
         [JsonProperty("max_order_count")]
-        public object MaxOrderCount { get; set; }
+        public long MaxOrderCount { get; set; }
         /// <summary>
         /// 首次购买开始时间 "2017-10-19 00:00:00"
         /// </summary>
@@ -67,7 +68,11 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 店铺有访问天数
         /// </summary>
         [JsonProperty("mall_visit_days")]
-        public object MallVisitDays { get; set; }
+        public long MallVisitDays { get; set; }
+        public partial class LocationRequestModel : PddRequestModel
+        {
+
+        }
 
     }
 

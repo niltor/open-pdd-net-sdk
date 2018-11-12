@@ -47,12 +47,12 @@ namespace PddOpenSdk.Models.Request.Ad
         /// 单元id，单元id，仅当groupBy = 1时传值
         /// </summary>
         [JsonProperty("unit_id")]
-        public int? UnitId { get; set; }
+        public long UnitId { get; set; }
         /// <summary>
         /// 计划id，groupBy = 2时传值
         /// </summary>
-        [JsonProperty("plan_Id")]
-        public int? PlanId { get; set; }
+        [JsonProperty("plan_id")]
+        public long PlanId { get; set; }
 
     }
 

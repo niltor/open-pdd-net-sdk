@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 申请流水号
         /// </summary>
         [JsonProperty("application_id")]
-        public int? ApplicationId { get; set; }
+        public long ApplicationId { get; set; }
         /// <summary>
         /// 订单号；订单号和申请时间必填其一
         /// </summary>
@@ -22,12 +22,12 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 申请开始时间, 时间戳（毫秒）
         /// </summary>
         [JsonProperty("update_start_time")]
-        public int? UpdateStartTime { get; set; }
+        public long UpdateStartTime { get; set; }
         /// <summary>
         /// 申请结束时间, 时间戳（毫秒）
         /// </summary>
         [JsonProperty("update_end_time")]
-        public int? UpdateEndTime { get; set; }
+        public long UpdateEndTime { get; set; }
         /// <summary>
         /// 页码，默认1
         /// </summary>

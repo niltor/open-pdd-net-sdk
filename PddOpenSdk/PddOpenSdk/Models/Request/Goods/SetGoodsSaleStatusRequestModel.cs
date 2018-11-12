@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 拼多多商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public int GoodsId { get; set; }
+        public long GoodsId { get; set; }
         /// <summary>
         /// 上下架状态：1:上架 0:下架
         /// </summary>

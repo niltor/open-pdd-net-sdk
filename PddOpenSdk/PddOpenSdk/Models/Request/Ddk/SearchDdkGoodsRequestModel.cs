@@ -1,13 +1,9 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
     {
-        /// <summary>
-        /// 该值为：pdd.ddk.goods.search
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
         /// <summary>
         /// 商品关键词，与opt_id字段选填一个或全部填写
         /// </summary>
@@ -17,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品标签类目ID，使用pdd.goods.opt.get获取
         /// </summary>
         [JsonProperty("opt_id")]
-        public int? OptId { get; set; }
+        public long OptId { get; set; }
         /// <summary>
         /// 默认值1，商品分页数
         /// </summary>
@@ -42,44 +38,29 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 范围列表，可选值：[{"range_id":0,"range_from":1,"range_to":1500},{"range_id":1,"range_from":1,"range_to":1500}]
         /// </summary>
         [JsonProperty("range_list")]
-        public RangeListRequestModel RangeList { get; set; }
+        public string RangeList { get; set; }
         /// <summary>
         /// 商品类目ID，使用pdd.goods.cats.get接口获取
         /// </summary>
         [JsonProperty("cat_id")]
-        public int? CatId { get; set; }
+        public long CatId { get; set; }
         /// <summary>
         /// 商品ID列表。例如：[123456,123]，当入参带有goods_id_list字段，将不会以opt_id、 cat_id、keyword维度筛选商品
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public string GoodsIdList { get; set; }
+        public List<long> GoodsIdList { get; set; }
         /// <summary>
         /// 招商多多客ID
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public int? ZsDuoId { get; set; }
+        public long ZsDuoId { get; set; }
         /// <summary>
         /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店（未传为全部）
         /// </summary>
         [JsonProperty("merchant_type")]
         public int? MerchantType { get; set; }
-        public partial class RangeListRequestModel : PddRequestModel
+        public partial class GoodsIdListRequestModel : PddRequestModel
         {
-            /// <summary>
-            /// 如果左区间不限制，range_from传空就行，右区间不限制，range_to传空就行
-            /// </summary>
-            [JsonProperty("range_to")]
-            public int RangeTo { get; set; }
-            /// <summary>
-            /// 如果左区间不限制，range_from传空就行，右区间不限制，range_to传空就行
-            /// </summary>
-            [JsonProperty("range_from")]
-            public int RangeFrom { get; set; }
-            /// <summary>
-            /// 查询维度ID，枚举值如下：0-商品拼团价格区间，1-商品券后价价格区间，2-佣金比例区间，3-优惠券金额区间，4-加入多多进宝时间区间，5-销量区间，6-佣金金额区间，7-店铺描述评分区间，8-店铺物流评分区间，9-店铺服务评分区间
-            /// </summary>
-            [JsonProperty("range_id")]
-            public int RangeId { get; set; }
 
         }
 

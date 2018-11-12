@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
-        public string GoodsId { get; set; }
+        public long GoodsId { get; set; }
 
     }
 

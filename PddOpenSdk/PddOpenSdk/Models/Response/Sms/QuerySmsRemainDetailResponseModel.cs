@@ -1,31 +1,28 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
-    public class SmsRemainDetailQueryResponse
+    public partial class QuerySmsRemainDetailResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1000
-        /// </summary>
-        [JsonProperty("remain_number")]
-        public int RemainNumber { get; set; }
-
-        /// <summary>
-        /// Examples: 2200
-        /// </summary>
-        [JsonProperty("remain_money")]
-        public int RemainMoney { get; set; }
-    }
-
-    public class QuerySmsRemainDetailResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"remain_number":1000,"remain_money":2200}
+        /// response
         /// </summary>
         [JsonProperty("sms_remain_detail_query_response")]
-        public SmsRemainDetailQueryResponse SmsRemainDetailQueryResponse { get; set; }
-    }
+        public SmsRemainDetailQueryResponseResponseModel SmsRemainDetailQueryResponse { get; set; }
+        public partial class SmsRemainDetailQueryResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 剩余金额
+            /// </summary>
+            [JsonProperty("remain_money")]
+            public long RemainMoney { get; set; }
+            /// <summary>
+            /// 剩余数量
+            /// </summary>
+            [JsonProperty("remain_number")]
+            public long RemainNumber { get; set; }
 
+        }
+
+    }
 
 }

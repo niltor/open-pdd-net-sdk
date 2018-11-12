@@ -2,41 +2,37 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public class GoodsFabricContentList
+    public partial class GetGoodsFabricContentResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 1
-        /// </summary>
-        [JsonProperty("code")]
-        public int Code { get; set; }
-
-        /// <summary>
-        /// Examples: "96%及以上"
-        /// </summary>
-        [JsonProperty("desc")]
-        public string Desc { get; set; }
-    }
-
-    public class GoodsFabricContentGetResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"code":1,"desc":"96%及以上"}]
-        /// </summary>
-        [JsonProperty("goods_fabric_content_list")]
-        public IList<GoodsFabricContentList> GoodsFabricContentList { get; set; }
-    }
-
-    public class GetGoodsFabricContentResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"goods_fabric_content_list":[{"code":1,"desc":"96%及以上"}]}
+        /// response
         /// </summary>
         [JsonProperty("goods_fabric_content_get_response")]
-        public GoodsFabricContentGetResponse GoodsFabricContentGetResponse { get; set; }
-    }
+        public GoodsFabricContentGetResponseResponseModel GoodsFabricContentGetResponse { get; set; }
+        public partial class GoodsFabricContentGetResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 服饰成分含量对象列表
+            /// </summary>
+            [JsonProperty("goods_fabric_content_list")]
+            public List<GoodsFabricContentListResponseModel> GoodsFabricContentList { get; set; }
+            public partial class GoodsFabricContentListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 服饰成分含量 对应的ID，用于入参
+                /// </summary>
+                [JsonProperty("code")]
+                public long Code { get; set; }
+                /// <summary>
+                /// 对应ID下的服饰成分含量描述
+                /// </summary>
+                [JsonProperty("desc")]
+                public string Desc { get; set; }
 
+            }
+
+        }
+
+    }
 
 }
