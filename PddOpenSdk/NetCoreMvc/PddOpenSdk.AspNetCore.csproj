@@ -8,10 +8,12 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>MSDev_NilTor</Authors>
     <Company>Geethin</Company>
-    <Description>拼多多SDK ASP.NET Core依赖包</Description>
+    <Description>拼多多SDK ASP.NET Core依赖包
+已更新同步到最新！</Description>
     <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
-    <PackageReleaseNotes>拼多多SDK ASP.NET Core依赖包</PackageReleaseNotes>
+    <PackageReleaseNotes>拼多多SDK ASP.NET Core依赖包
+已更新同步到最新！</PackageReleaseNotes>
     <AssemblyVersion>0.0.1.0</AssemblyVersion>
     <FileVersion>0.0.1.0</FileVersion>
     <RepositoryType>git</RepositoryType>
@@ -19,7 +21,7 @@
     <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
