@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 总数量
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 结果
             /// </summary>
@@ -27,12 +27,12 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 模板id
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 模板名称
                 /// </summary>
@@ -42,7 +42,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 更新时间
                 /// </summary>
                 [JsonProperty("updated_time")]
-                public long UpdatedTime { get; set; }
+                public long? UpdatedTime { get; set; }
                 /// <summary>
                 /// 内容
                 /// </summary>
@@ -52,7 +52,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 状态
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
                 /// <summary>
                 /// 原因
                 /// </summary>
@@ -64,7 +64,7 @@ namespace PddOpenSdk.Models.Response.Sms
                     /// 类型
                     /// </summary>
                     [JsonProperty("type")]
-                    public int Type { get; set; }
+                    public int? Type { get; set; }
                     /// <summary>
                     /// 属性值
                     /// </summary>
@@ -74,7 +74,7 @@ namespace PddOpenSdk.Models.Response.Sms
                     /// id
                     /// </summary>
                     [JsonProperty("id")]
-                    public int Id { get; set; }
+                    public int? Id { get; set; }
 
                 }
 

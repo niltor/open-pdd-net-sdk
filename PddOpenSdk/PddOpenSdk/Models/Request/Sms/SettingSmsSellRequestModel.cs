@@ -12,7 +12,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 人群id，个性化营销短信必填
         /// </summary>
         [JsonProperty("crowd_id")]
-        public long CrowdId { get; set; }
+        public long? CrowdId { get; set; }
         /// <summary>
         /// 发送时间 必填
         /// </summary>

@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Voucher
             /// is_success
             /// </summary>
             [JsonProperty("is_success")]
-            public bool IsSuccess { get; set; }
+            public bool? IsSuccess { get; set; }
 
         }
 

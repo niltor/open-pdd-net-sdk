@@ -14,12 +14,12 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 剩余金额
             /// </summary>
             [JsonProperty("remain_money")]
-            public long RemainMoney { get; set; }
+            public long? RemainMoney { get; set; }
             /// <summary>
             /// 剩余数量
             /// </summary>
             [JsonProperty("remain_number")]
-            public long RemainNumber { get; set; }
+            public long? RemainNumber { get; set; }
 
         }
 

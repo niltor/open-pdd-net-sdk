@@ -22,12 +22,12 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// 修改时间
                 /// </summary>
                 [JsonProperty("gmt_modified")]
-                public long GmtModified { get; set; }
+                public long? GmtModified { get; set; }
                 /// <summary>
                 /// 创建时间
                 /// </summary>
                 [JsonProperty("gmt_create")]
-                public long GmtCreate { get; set; }
+                public long? GmtCreate { get; set; }
                 /// <summary>
                 /// 备注
                 /// </summary>
@@ -62,12 +62,12 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// 发票类型：0-蓝票，1-红票；目前只支持0
                 /// </summary>
                 [JsonProperty("invoice_type")]
-                public int InvoiceType { get; set; }
+                public int? InvoiceType { get; set; }
                 /// <summary>
                 /// 发票种类：0-电子，1-纸质，2-专票；目前只支持0
                 /// </summary>
                 [JsonProperty("invoice_kind")]
-                public int InvoiceKind { get; set; }
+                public int? InvoiceKind { get; set; }
                 /// <summary>
                 /// 企业税号，抬头为企业类型必填
                 /// </summary>
@@ -82,12 +82,12 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// 抬头类型：0-个人，1-企业
                 /// </summary>
                 [JsonProperty("business_type")]
-                public int BusinessType { get; set; }
+                public int? BusinessType { get; set; }
                 /// <summary>
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 订单号
                 /// </summary>
@@ -97,17 +97,17 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// 开票申请触发类型：1-申请开票，2-改抬头，3电换纸；目前只支持1
                 /// </summary>
                 [JsonProperty("trigger_status")]
-                public int TriggerStatus { get; set; }
+                public int? TriggerStatus { get; set; }
                 /// <summary>
                 /// 申请状态：0-已拒绝，1-申请中，2-已同意
                 /// </summary>
                 [JsonProperty("application_status")]
-                public int ApplicationStatus { get; set; }
+                public int? ApplicationStatus { get; set; }
                 /// <summary>
                 /// 申请流水号
                 /// </summary>
                 [JsonProperty("application_id")]
-                public long ApplicationId { get; set; }
+                public long? ApplicationId { get; set; }
 
             }
 

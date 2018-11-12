@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
             /// 请求到的结果数
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             /// <summary>
             /// 列表
             /// </summary>
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
                 /// coupon_total_quantity
                 /// </summary>
                 [JsonProperty("coupon_total_quantity")]
-                public long CouponTotalQuantity { get; set; }
+                public long? CouponTotalQuantity { get; set; }
 
             }
 

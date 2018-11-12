@@ -20,7 +20,7 @@ namespace PddOpenSdk.Models.Response.Erp
             /// 返回的订单总数，至多返回近90天的订单
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             public partial class OrderSnListResponseModel : PddResponseModel
             {
                 /// <summary>

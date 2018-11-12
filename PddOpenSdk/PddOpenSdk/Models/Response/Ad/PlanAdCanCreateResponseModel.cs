@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 是否可以创建
             /// </summary>
             [JsonProperty("creatable")]
-            public bool Creatable { get; set; }
+            public bool? Creatable { get; set; }
 
         }
 

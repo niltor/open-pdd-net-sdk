@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 请求结果
             /// </summary>
             [JsonProperty("result")]
-            public long Result { get; set; }
+            public long? Result { get; set; }
 
         }
 

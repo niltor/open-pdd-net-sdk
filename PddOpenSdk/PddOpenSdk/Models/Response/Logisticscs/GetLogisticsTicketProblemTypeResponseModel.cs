@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 问题类型id
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
 
             }
 

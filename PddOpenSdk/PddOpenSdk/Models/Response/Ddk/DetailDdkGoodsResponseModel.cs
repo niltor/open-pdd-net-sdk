@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 参与多多进宝的商品ID
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 参与多多进宝的商品标题
                 /// </summary>
@@ -47,17 +47,17 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 已售卖件数
                 /// </summary>
                 [JsonProperty("sold_quantity")]
-                public long SoldQuantity { get; set; }
+                public long? SoldQuantity { get; set; }
                 /// <summary>
                 /// 最低价sku的拼团价，单位为分
                 /// </summary>
                 [JsonProperty("min_group_price")]
-                public long MinGroupPrice { get; set; }
+                public long? MinGroupPrice { get; set; }
                 /// <summary>
                 /// 最低价sku的单买价，单位为分
                 /// </summary>
                 [JsonProperty("min_normal_price")]
-                public long MinNormalPrice { get; set; }
+                public long? MinNormalPrice { get; set; }
                 /// <summary>
                 /// 店铺名称
                 /// </summary>
@@ -67,7 +67,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品标签ID，使用pdd.goods.opt.get接口获取
                 /// </summary>
                 [JsonProperty("opt_id")]
-                public long OptId { get; set; }
+                public long? OptId { get; set; }
                 /// <summary>
                 /// 商品标签名称
                 /// </summary>
@@ -77,92 +77,92 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品标签ID
                 /// </summary>
                 [JsonProperty("opt_ids")]
-                public List<int> OptIds { get; set; }
+                public List<int?> OptIds { get; set; }
                 /// <summary>
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
-                public List<int> CatIds { get; set; }
+                public List<int?> CatIds { get; set; }
                 /// <summary>
                 /// 优惠券门槛金额，单位为分
                 /// </summary>
                 [JsonProperty("coupon_min_order_amount")]
-                public long CouponMinOrderAmount { get; set; }
+                public long? CouponMinOrderAmount { get; set; }
                 /// <summary>
                 /// 优惠券面额，单位为分
                 /// </summary>
                 [JsonProperty("coupon_discount")]
-                public long CouponDiscount { get; set; }
+                public long? CouponDiscount { get; set; }
                 /// <summary>
                 /// 优惠券总数量
                 /// </summary>
                 [JsonProperty("coupon_total_quantity")]
-                public long CouponTotalQuantity { get; set; }
+                public long? CouponTotalQuantity { get; set; }
                 /// <summary>
                 /// 优惠券剩余数量
                 /// </summary>
                 [JsonProperty("coupon_remain_quantity")]
-                public long CouponRemainQuantity { get; set; }
+                public long? CouponRemainQuantity { get; set; }
                 /// <summary>
                 /// 优惠券生效时间，UNIX时间戳
                 /// </summary>
                 [JsonProperty("coupon_start_time")]
-                public long CouponStartTime { get; set; }
+                public long? CouponStartTime { get; set; }
                 /// <summary>
                 /// 优惠券失效时间，UNIX时间戳
                 /// </summary>
                 [JsonProperty("coupon_end_time")]
-                public long CouponEndTime { get; set; }
+                public long? CouponEndTime { get; set; }
                 /// <summary>
                 /// 佣金比例，千分比
                 /// </summary>
                 [JsonProperty("promotion_rate")]
-                public long PromotionRate { get; set; }
+                public long? PromotionRate { get; set; }
                 /// <summary>
                 /// 商品评价分
                 /// </summary>
                 [JsonProperty("goods_eval_score")]
-                public double GoodsEvalScore { get; set; }
+                public double? GoodsEvalScore { get; set; }
                 /// <summary>
                 /// 商品评价数
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
-                public long GoodsEvalCount { get; set; }
+                public long? GoodsEvalCount { get; set; }
                 /// <summary>
                 /// 商品类目ID，使用pdd.goods.cats.get接口获取
                 /// </summary>
                 [JsonProperty("cat_id")]
-                public long CatId { get; set; }
+                public long? CatId { get; set; }
                 /// <summary>
                 /// 描述评分
                 /// </summary>
                 [JsonProperty("avg_desc")]
-                public long AvgDesc { get; set; }
+                public long? AvgDesc { get; set; }
                 /// <summary>
                 /// 物流评分
                 /// </summary>
                 [JsonProperty("avg_lgst")]
-                public long AvgLgst { get; set; }
+                public long? AvgLgst { get; set; }
                 /// <summary>
                 /// 服务评分
                 /// </summary>
                 [JsonProperty("avg_serv")]
-                public long AvgServ { get; set; }
+                public long? AvgServ { get; set; }
                 /// <summary>
                 /// 描述评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("desc_pct")]
-                public double DescPct { get; set; }
+                public double? DescPct { get; set; }
                 /// <summary>
                 /// 物流评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("lgst_pct")]
-                public double LgstPct { get; set; }
+                public double? LgstPct { get; set; }
                 /// <summary>
                 /// 服务评分击败同类店铺百分比
                 /// </summary>
                 [JsonProperty("serv_pct")]
-                public double ServPct { get; set; }
+                public double? ServPct { get; set; }
 
             }
 

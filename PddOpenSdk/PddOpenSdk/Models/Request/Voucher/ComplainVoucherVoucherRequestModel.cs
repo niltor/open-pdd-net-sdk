@@ -58,10 +58,6 @@ namespace PddOpenSdk.Models.Request.Voucher
             public string VoucherNo { get; set; }
 
         }
-        public partial class ComplainAttachmentListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

@@ -22,12 +22,12 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 规格所属的叶子类目ID
                 /// </summary>
                 [JsonProperty("cat_id")]
-                public long CatId { get; set; }
+                public long? CatId { get; set; }
                 /// <summary>
                 /// 商品规格对应的ID
                 /// </summary>
                 [JsonProperty("parent_spec_id")]
-                public long ParentSpecId { get; set; }
+                public long? ParentSpecId { get; set; }
                 /// <summary>
                 /// 商品规格ID对应的规格名称
                 /// </summary>

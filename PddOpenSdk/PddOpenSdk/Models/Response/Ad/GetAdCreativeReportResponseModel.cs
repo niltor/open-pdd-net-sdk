@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 数量
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 结果
             /// </summary>
@@ -32,12 +32,12 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// 商家id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 计划编号
                 /// </summary>
                 [JsonProperty("plan_id")]
-                public long PlanId { get; set; }
+                public long? PlanId { get; set; }
                 /// <summary>
                 /// 计划名称
                 /// </summary>
@@ -72,32 +72,32 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// 展现量
                 /// </summary>
                 [JsonProperty("impr_num")]
-                public long ImprNum { get; set; }
+                public long? ImprNum { get; set; }
                 /// <summary>
                 /// 点击量
                 /// </summary>
                 [JsonProperty("click_num")]
-                public long ClickNum { get; set; }
+                public long? ClickNum { get; set; }
                 /// <summary>
                 /// 花费
                 /// </summary>
                 [JsonProperty("spend")]
-                public long Spend { get; set; }
+                public long? Spend { get; set; }
                 /// <summary>
                 /// 成交订单数
                 /// </summary>
                 [JsonProperty("pay_order_num")]
-                public long PayOrderNum { get; set; }
+                public long? PayOrderNum { get; set; }
                 /// <summary>
                 /// 成交订单金额
                 /// </summary>
                 [JsonProperty("pay_gmv")]
-                public long PayGmv { get; set; }
+                public long? PayGmv { get; set; }
                 /// <summary>
                 /// CPT日消耗
                 /// </summary>
                 [JsonProperty("plan_cpt_spend")]
-                public long PlanCptSpend { get; set; }
+                public long? PlanCptSpend { get; set; }
                 /// <summary>
                 /// 跳转URL
                 /// </summary>

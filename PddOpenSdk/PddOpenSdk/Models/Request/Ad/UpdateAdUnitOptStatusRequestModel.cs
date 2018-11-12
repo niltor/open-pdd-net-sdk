@@ -19,10 +19,6 @@ namespace PddOpenSdk.Models.Request.Ad
         /// </summary>
         [JsonProperty("opt_status")]
         public int OptStatus { get; set; }
-        public partial class UnitIdsRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

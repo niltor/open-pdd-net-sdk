@@ -20,14 +20,14 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 返回推广位总数
             /// </summary>
             [JsonProperty("total_count")]
-            public long TotalCount { get; set; }
+            public long? TotalCount { get; set; }
             public partial class PIdListResponseModel : PddResponseModel
             {
                 /// <summary>
                 /// 推广位生成时间
                 /// </summary>
                 [JsonProperty("create_time")]
-                public long CreateTime { get; set; }
+                public long? CreateTime { get; set; }
                 /// <summary>
                 /// 推广位ID
                 /// </summary>

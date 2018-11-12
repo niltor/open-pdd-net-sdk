@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 广告计划id
             /// </summary>
             [JsonProperty("ad_plan_id")]
-            public long AdPlanId { get; set; }
+            public long? AdPlanId { get; set; }
 
         }
 

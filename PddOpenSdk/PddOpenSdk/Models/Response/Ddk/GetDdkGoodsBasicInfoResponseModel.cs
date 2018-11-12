@@ -22,17 +22,17 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品id
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 最小单买价格，单位分
                 /// </summary>
                 [JsonProperty("min_normal_price")]
-                public long MinNormalPrice { get; set; }
+                public long? MinNormalPrice { get; set; }
                 /// <summary>
                 /// 最小成团价格，单位分
                 /// </summary>
                 [JsonProperty("min_group_price")]
-                public long MinGroupPrice { get; set; }
+                public long? MinGroupPrice { get; set; }
                 /// <summary>
                 /// 商品缩略图
                 /// </summary>

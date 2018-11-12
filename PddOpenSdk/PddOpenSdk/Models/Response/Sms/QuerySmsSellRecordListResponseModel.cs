@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 总量
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 结果
             /// </summary>
@@ -26,7 +26,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 删除用的id
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 任务名称
                 /// </summary>
@@ -36,32 +36,32 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 短信类型
                 /// </summary>
                 [JsonProperty("scene")]
-                public int Scene { get; set; }
+                public int? Scene { get; set; }
                 /// <summary>
                 /// 计划时间
                 /// </summary>
                 [JsonProperty("send_time")]
-                public long SendTime { get; set; }
+                public long? SendTime { get; set; }
                 /// <summary>
                 /// 发送状态
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
                 /// <summary>
                 /// 发送总数
                 /// </summary>
                 [JsonProperty("send_num")]
-                public int SendNum { get; set; }
+                public int? SendNum { get; set; }
                 /// <summary>
                 /// 发送失败总数
                 /// </summary>
                 [JsonProperty("send_failed_num")]
-                public int SendFailedNum { get; set; }
+                public int? SendFailedNum { get; set; }
                 /// <summary>
                 /// 是否开启
                 /// </summary>
                 [JsonProperty("open")]
-                public int Open { get; set; }
+                public int? Open { get; set; }
 
             }
 

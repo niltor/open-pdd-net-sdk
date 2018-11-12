@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 是否支持正品发票；0-不支持、1-支持
             /// </summary>
             [JsonProperty("invoice_status")]
-            public int InvoiceStatus { get; set; }
+            public int? InvoiceStatus { get; set; }
             /// <summary>
             /// 商品属性列表
             /// </summary>
@@ -25,22 +25,22 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 只换不修的天数，目前只支持0和365
             /// </summary>
             [JsonProperty("zhi_huan_bu_xiu")]
-            public int ZhiHuanBuXiu { get; set; }
+            public int? ZhiHuanBuXiu { get; set; }
             /// <summary>
             /// 0：不支持全国联保；1：支持全国联保
             /// </summary>
             [JsonProperty("quan_guo_lian_bao")]
-            public int QuanGuoLianBao { get; set; }
+            public int? QuanGuoLianBao { get; set; }
             /// <summary>
             /// 提交申请的序列ID
             /// </summary>
             [JsonProperty("goods_commit_id")]
-            public long GoodsCommitId { get; set; }
+            public long? GoodsCommitId { get; set; }
             /// <summary>
             /// 商品状态，枚举：0-编辑中，1-待审核，2-审核通过，3-审核驳回
             /// </summary>
             [JsonProperty("goods_status")]
-            public int GoodsStatus { get; set; }
+            public int? GoodsStatus { get; set; }
             /// <summary>
             /// 驳回原因，仅在status=2时返回，其余状态返回空值
             /// </summary>
@@ -50,17 +50,17 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 是否删除
             /// </summary>
             [JsonProperty("deleted")]
-            public int Deleted { get; set; }
+            public int? Deleted { get; set; }
             /// <summary>
             /// 商品id
             /// </summary>
             [JsonProperty("goods_id")]
-            public long GoodsId { get; set; }
+            public long? GoodsId { get; set; }
             /// <summary>
             /// 购买数量限制
             /// </summary>
             [JsonProperty("buy_limit")]
-            public long BuyLimit { get; set; }
+            public long? BuyLimit { get; set; }
             /// <summary>
             /// 商品轮播图列表
             /// </summary>
@@ -70,27 +70,27 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 类目id
             /// </summary>
             [JsonProperty("cat_id")]
-            public long CatId { get; set; }
+            public long? CatId { get; set; }
             /// <summary>
             /// 运费模版id
             /// </summary>
             [JsonProperty("cost_template_id")]
-            public long CostTemplateId { get; set; }
+            public long? CostTemplateId { get; set; }
             /// <summary>
             /// 国家id
             /// </summary>
             [JsonProperty("country_id")]
-            public long CountryId { get; set; }
+            public long? CountryId { get; set; }
             /// <summary>
             /// 团购人数
             /// </summary>
             [JsonProperty("customer_num")]
-            public long CustomerNum { get; set; }
+            public long? CustomerNum { get; set; }
             /// <summary>
             /// 商品类型：1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡 暂时支持1-普通商品的上架
             /// </summary>
             [JsonProperty("goods_type")]
-            public int GoodsType { get; set; }
+            public int? GoodsType { get; set; }
             /// <summary>
             /// 商品名称
             /// </summary>
@@ -115,7 +115,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 是否需要上报海关 0:否 1:是
             /// </summary>
             [JsonProperty("is_customs")]
-            public int IsCustoms { get; set; }
+            public int? IsCustoms { get; set; }
             /// <summary>
             /// 海关名称
             /// </summary>
@@ -125,47 +125,47 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 市场价格，单位为分
             /// </summary>
             [JsonProperty("market_price")]
-            public long MarketPrice { get; set; }
+            public long? MarketPrice { get; set; }
             /// <summary>
             /// 是否预售,true-预售商品，false-非预售商品
             /// </summary>
             [JsonProperty("is_pre_sale")]
-            public int IsPreSale { get; set; }
+            public int? IsPreSale { get; set; }
             /// <summary>
             /// 预售时间
             /// </summary>
             [JsonProperty("pre_sale_time")]
-            public long PreSaleTime { get; set; }
+            public long? PreSaleTime { get; set; }
             /// <summary>
             /// 承诺发货时间（ 秒）
             /// </summary>
             [JsonProperty("shipment_limit_second")]
-            public long ShipmentLimitSecond { get; set; }
+            public long? ShipmentLimitSecond { get; set; }
             /// <summary>
             /// 限购次数
             /// </summary>
             [JsonProperty("order_limit")]
-            public long OrderLimit { get; set; }
+            public long? OrderLimit { get; set; }
             /// <summary>
             /// 是否7天无理由退换货，1-支持，0-不支持
             /// </summary>
             [JsonProperty("is_refundable")]
-            public int IsRefundable { get; set; }
+            public int? IsRefundable { get; set; }
             /// <summary>
             /// 是否支持假一赔十，0-不支持，1-支持
             /// </summary>
             [JsonProperty("is_folt")]
-            public int IsFolt { get; set; }
+            public int? IsFolt { get; set; }
             /// <summary>
             /// 面料id
             /// </summary>
             [JsonProperty("fabric_id")]
-            public int FabricId { get; set; }
+            public int? FabricId { get; set; }
             /// <summary>
             /// 服饰成分id
             /// </summary>
             [JsonProperty("fabric_content_id")]
-            public int FabricContentId { get; set; }
+            public int? FabricContentId { get; set; }
             /// <summary>
             /// 水果类目温馨提示
             /// </summary>
@@ -205,7 +205,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 保质期
             /// </summary>
             [JsonProperty("shelf_life")]
-            public long ShelfLife { get; set; }
+            public long? ShelfLife { get; set; }
             /// <summary>
             /// 生产日期起始时间
             /// </summary>
@@ -230,27 +230,27 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 是否二手
             /// </summary>
             [JsonProperty("second_hand")]
-            public int SecondHand { get; set; }
+            public int? SecondHand { get; set; }
             /// <summary>
             /// 仅在cat_id=983（卷筒纸）类目下入参，每包或者卷的净含量，计量单位是g，范围是1~999的整数
             /// </summary>
             [JsonProperty("paper_net_weight")]
-            public long PaperNetWeight { get; set; }
+            public long? PaperNetWeight { get; set; }
             /// <summary>
             /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节纸品的长度，单位是mm，范围是1~999的整数
             /// </summary>
             [JsonProperty("paper_length")]
-            public long PaperLength { get; set; }
+            public long? PaperLength { get; set; }
             /// <summary>
             /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节的宽度，单位是mm，范围是1~999的整数
             /// </summary>
             [JsonProperty("paper_width")]
-            public long PaperWidth { get; set; }
+            public long? PaperWidth { get; set; }
             /// <summary>
             /// 仅在cat_id=983（卷筒纸）类目下入参，纸张的层数，单位是层，范围是1~9的整数
             /// </summary>
             [JsonProperty("paper_plies_num")]
-            public long PaperPliesNum { get; set; }
+            public long? PaperPliesNum { get; set; }
             public partial class GoodsPropertyListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -262,7 +262,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 基础属性值Id
                 /// </summary>
                 [JsonProperty("vid")]
-                public long Vid { get; set; }
+                public long? Vid { get; set; }
                 /// <summary>
                 /// 基础属性值
                 /// </summary>
@@ -272,12 +272,12 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 模板属性Id
                 /// </summary>
                 [JsonProperty("template_pid")]
-                public long TemplatePid { get; set; }
+                public long? TemplatePid { get; set; }
                 /// <summary>
                 /// 引用属性id
                 /// </summary>
                 [JsonProperty("ref_pid")]
-                public long RefPid { get; set; }
+                public long? RefPid { get; set; }
 
             }
             public partial class SkuListResponseModel : PddResponseModel
@@ -286,37 +286,37 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// sku编码
                 /// </summary>
                 [JsonProperty("sku_id")]
-                public long SkuId { get; set; }
+                public long? SkuId { get; set; }
                 /// <summary>
                 /// 上下架状态 1：上架 0 ：下架
                 /// </summary>
                 [JsonProperty("is_onsale")]
-                public int IsOnsale { get; set; }
+                public int? IsOnsale { get; set; }
                 /// <summary>
                 /// sku购买限制
                 /// </summary>
                 [JsonProperty("limit_quantity")]
-                public long LimitQuantity { get; set; }
+                public long? LimitQuantity { get; set; }
                 /// <summary>
                 /// 商品团购价格 单位分
                 /// </summary>
                 [JsonProperty("multi_price")]
-                public long MultiPrice { get; set; }
+                public long? MultiPrice { get; set; }
                 /// <summary>
                 /// 商品单买价格 单位分
                 /// </summary>
                 [JsonProperty("price")]
-                public long Price { get; set; }
+                public long? Price { get; set; }
                 /// <summary>
                 /// 库存
                 /// </summary>
                 [JsonProperty("quantity")]
-                public long Quantity { get; set; }
+                public long? Quantity { get; set; }
                 /// <summary>
                 /// 重量，单位为g
                 /// </summary>
                 [JsonProperty("weight")]
-                public long Weight { get; set; }
+                public long? Weight { get; set; }
                 /// <summary>
                 /// sku预览图
                 /// </summary>
@@ -338,7 +338,7 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// 商品规格对应的ID
                     /// </summary>
                     [JsonProperty("parent_id")]
-                    public long ParentId { get; set; }
+                    public long? ParentId { get; set; }
                     /// <summary>
                     /// 商品规格ID对应的规格名称
                     /// </summary>
@@ -348,7 +348,7 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// 生成的自定义规格ID
                     /// </summary>
                     [JsonProperty("spec_id")]
-                    public long SpecId { get; set; }
+                    public long? SpecId { get; set; }
                     /// <summary>
                     /// 商家编辑的规格值，如颜色规格下设置白色属性
                     /// </summary>

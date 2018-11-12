@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Logistics
                 /// 是否有效，0-无效，1-有效
                 /// </summary>
                 [JsonProperty("is_enabled")]
-                public int IsEnabled { get; set; }
+                public int? IsEnabled { get; set; }
                 /// <summary>
                 /// 地区邮编
                 /// </summary>
@@ -32,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Logistics
                 /// 地区层级，1-省份，2-市级，3-区级
                 /// </summary>
                 [JsonProperty("region_type")]
-                public int RegionType { get; set; }
+                public int? RegionType { get; set; }
                 /// <summary>
                 /// 地区名称
                 /// </summary>
@@ -42,12 +42,12 @@ namespace PddOpenSdk.Models.Response.Logistics
                 /// 父地区ID，顶点id为0
                 /// </summary>
                 [JsonProperty("parent_id")]
-                public long ParentId { get; set; }
+                public long? ParentId { get; set; }
                 /// <summary>
                 /// 地区ID
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
 
             }
 

@@ -8,7 +8,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 店铺id
         /// </summary>
         [JsonProperty("mall_id_list")]
-        public List<long> MallIdList { get; set; }
+        public List<long?> MallIdList { get; set; }
         /// <summary>
         /// 店铺类型
         /// </summary>
@@ -23,7 +23,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品类目ID，使用pdd.goods.cats.get接口获取
         /// </summary>
         [JsonProperty("cat_id")]
-        public long CatId { get; set; }
+        public long? CatId { get; set; }
         /// <summary>
         /// 是否有优惠券 （0 所有；1 必须有券。）
         /// </summary>
@@ -44,14 +44,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("range_vo_list")]
         public string RangeVoList { get; set; }
-        public partial class MallIdListRequestModel : PddRequestModel
-        {
-
-        }
-        public partial class MerchantTypeListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Response.Invoice
             /// 开票日期,时间戳（毫秒）
             /// </summary>
             [JsonProperty("invoice_time")]
-            public long InvoiceTime { get; set; }
+            public long? InvoiceTime { get; set; }
             /// <summary>
             /// 开票人
             /// </summary>
@@ -59,37 +59,37 @@ namespace PddOpenSdk.Models.Response.Invoice
             /// 总税额
             /// </summary>
             [JsonProperty("sum_tax")]
-            public long SumTax { get; set; }
+            public long? SumTax { get; set; }
             /// <summary>
             /// 税率
             /// </summary>
             [JsonProperty("tax_rate")]
-            public long TaxRate { get; set; }
+            public long? TaxRate { get; set; }
             /// <summary>
             /// 不含税金额
             /// </summary>
             [JsonProperty("sum_price")]
-            public long SumPrice { get; set; }
+            public long? SumPrice { get; set; }
             /// <summary>
             /// 开票金额
             /// </summary>
             [JsonProperty("invoice_amount")]
-            public long InvoiceAmount { get; set; }
+            public long? InvoiceAmount { get; set; }
             /// <summary>
             /// 开票类型：0-蓝票，1-红票；目前只支持0
             /// </summary>
             [JsonProperty("invoice_type")]
-            public int InvoiceType { get; set; }
+            public int? InvoiceType { get; set; }
             /// <summary>
             /// 发票种类：0-电子发票，1-纸质发票，2-专票；目前只支持0
             /// </summary>
             [JsonProperty("invoice_kind")]
-            public int InvoiceKind { get; set; }
+            public int? InvoiceKind { get; set; }
             /// <summary>
             /// 审核结果：1-开票中，2-已完成
             /// </summary>
             [JsonProperty("status")]
-            public int Status { get; set; }
+            public int? Status { get; set; }
             /// <summary>
             /// 税号，企业必填
             /// </summary>
@@ -104,12 +104,12 @@ namespace PddOpenSdk.Models.Response.Invoice
             /// 抬头类型：0-个人，1-企业
             /// </summary>
             [JsonProperty("business_type")]
-            public int BusinessType { get; set; }
+            public int? BusinessType { get; set; }
             /// <summary>
             /// 店铺id
             /// </summary>
             [JsonProperty("mall_id")]
-            public long MallId { get; set; }
+            public long? MallId { get; set; }
             /// <summary>
             /// 发票流水号
             /// </summary>
@@ -124,7 +124,7 @@ namespace PddOpenSdk.Models.Response.Invoice
             /// 申请状态：0-已拒绝，1-申请中，2-已同意
             /// </summary>
             [JsonProperty("application_status")]
-            public int ApplicationStatus { get; set; }
+            public int? ApplicationStatus { get; set; }
 
         }
 

@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 自定义规格所属的规格ID
             /// </summary>
             [JsonProperty("parent_spec_id")]
-            public long ParentSpecId { get; set; }
+            public long? ParentSpecId { get; set; }
             /// <summary>
             /// 生成的自定义规格名称
             /// </summary>
@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 生成的自定义规格ID
             /// </summary>
             [JsonProperty("spec_id")]
-            public long SpecId { get; set; }
+            public long? SpecId { get; set; }
 
         }
 

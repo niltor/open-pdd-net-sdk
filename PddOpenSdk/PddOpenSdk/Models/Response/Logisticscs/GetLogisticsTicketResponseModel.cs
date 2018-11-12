@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
             /// 列表总数
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             /// <summary>
             /// 工单列表
             /// </summary>
@@ -32,12 +32,12 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// create_type
                 /// </summary>
                 [JsonProperty("create_type")]
-                public int CreateType { get; set; }
+                public int? CreateType { get; set; }
                 /// <summary>
                 /// duty
                 /// </summary>
                 [JsonProperty("duty")]
-                public int Duty { get; set; }
+                public int? Duty { get; set; }
                 /// <summary>
                 /// receive_address
                 /// </summary>
@@ -57,17 +57,17 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 物流商快递编码
                 /// </summary>
                 [JsonProperty("express_company_id")]
-                public long ExpressCompanyId { get; set; }
+                public long? ExpressCompanyId { get; set; }
                 /// <summary>
                 /// 赔付状态 0:默认,1:未赔付,2:已赔付
                 /// </summary>
                 [JsonProperty("compensate_state")]
-                public int CompensateState { get; set; }
+                public int? CompensateState { get; set; }
                 /// <summary>
                 /// 赔付金额(单位:分)
                 /// </summary>
                 [JsonProperty("compensate_amount")]
-                public long CompensateAmount { get; set; }
+                public long? CompensateAmount { get; set; }
                 /// <summary>
                 /// 物流商回传凭证
                 /// </summary>
@@ -77,7 +77,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 0:默认,1:未签收,2:已签收
                 /// </summary>
                 [JsonProperty("sign_state")]
-                public int SignState { get; set; }
+                public int? SignState { get; set; }
                 /// <summary>
                 /// 处理人
                 /// </summary>
@@ -92,7 +92,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 工单退回次数
                 /// </summary>
                 [JsonProperty("retreat_count")]
-                public long RetreatCount { get; set; }
+                public long? RetreatCount { get; set; }
                 /// <summary>
                 /// 联系人姓名
                 /// </summary>
@@ -107,12 +107,12 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 工单创建时间戳
                 /// </summary>
                 [JsonProperty("created_at")]
-                public long CreatedAt { get; set; }
+                public long? CreatedAt { get; set; }
                 /// <summary>
                 /// 工单最后更新时间戳
                 /// </summary>
                 [JsonProperty("updated_at")]
-                public long UpdatedAt { get; set; }
+                public long? UpdatedAt { get; set; }
                 /// <summary>
                 /// 问题描述
                 /// </summary>
@@ -127,12 +127,12 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 问题来源，	0:买家,1:卖家
                 /// </summary>
                 [JsonProperty("source")]
-                public int Source { get; set; }
+                public int? Source { get; set; }
                 /// <summary>
                 /// 工单id
                 /// </summary>
                 [JsonProperty("ticket_id")]
-                public long TicketId { get; set; }
+                public long? TicketId { get; set; }
                 /// <summary>
                 /// 运单号
                 /// </summary>
@@ -142,12 +142,12 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 紧急度，0:中,1:紧急
                 /// </summary>
                 [JsonProperty("urgent_type")]
-                public int UrgentType { get; set; }
+                public int? UrgentType { get; set; }
                 /// <summary>
                 /// 问题类型id
                 /// </summary>
                 [JsonProperty("type_id")]
-                public long TypeId { get; set; }
+                public long? TypeId { get; set; }
                 /// <summary>
                 /// 附件列表
                 /// </summary>
@@ -157,7 +157,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 工单状态， 0:待确认,1:跟进中,2:待回访,3:已完结
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
 
             }
 

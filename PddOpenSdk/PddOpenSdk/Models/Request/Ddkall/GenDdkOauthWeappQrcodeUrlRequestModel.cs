@@ -23,11 +23,7 @@ namespace PddOpenSdk.Models.Request.Ddkall
         /// 招商多多客ID
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public long ZsDuoId { get; set; }
-        public partial class GoodsIdListRequestModel : PddRequestModel
-        {
-
-        }
+        public long? ZsDuoId { get; set; }
 
     }
 

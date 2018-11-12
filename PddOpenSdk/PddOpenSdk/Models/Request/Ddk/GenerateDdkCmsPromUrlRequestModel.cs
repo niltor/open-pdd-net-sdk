@@ -49,10 +49,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }
-        public partial class PIdListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

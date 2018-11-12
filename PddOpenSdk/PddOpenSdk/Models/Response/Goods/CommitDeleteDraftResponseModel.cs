@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Response.Goods
         /// 操作状态，true
         /// </summary>
         [JsonProperty("open_api_response")]
-        public bool OpenApiResponse { get; set; }
+        public bool? OpenApiResponse { get; set; }
 
     }
 

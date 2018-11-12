@@ -19,10 +19,6 @@ namespace PddOpenSdk.Models.Request.Ad
         /// </summary>
         [JsonProperty("goods_id")]
         public long GoodsId { get; set; }
-        public partial class WordsRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

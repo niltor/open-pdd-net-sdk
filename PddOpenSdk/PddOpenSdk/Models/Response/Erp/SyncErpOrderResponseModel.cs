@@ -7,12 +7,12 @@ namespace PddOpenSdk.Models.Response.Erp
         /// 是否成功
         /// </summary>
         [JsonProperty("success")]
-        public bool Success { get; set; }
+        public bool? Success { get; set; }
         /// <summary>
         /// 错误代码
         /// </summary>
         [JsonProperty("error_code")]
-        public long ErrorCode { get; set; }
+        public long? ErrorCode { get; set; }
         /// <summary>
         /// 错误参数
         /// </summary>
@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Erp
         /// 是否有结果
         /// </summary>
         [JsonProperty("result")]
-        public bool Result { get; set; }
+        public bool? Result { get; set; }
 
     }
 

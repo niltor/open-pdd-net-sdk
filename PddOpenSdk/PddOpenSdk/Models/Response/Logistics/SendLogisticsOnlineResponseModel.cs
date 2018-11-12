@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Logistics
             /// 是否成功，false-失败，true-成功
             /// </summary>
             [JsonProperty("is_success")]
-            public bool IsSuccess { get; set; }
+            public bool? IsSuccess { get; set; }
 
         }
 

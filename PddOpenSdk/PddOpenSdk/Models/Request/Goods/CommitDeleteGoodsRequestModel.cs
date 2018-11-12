@@ -9,10 +9,6 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("goods_ids")]
         public List<long> GoodsIds { get; set; }
-        public partial class GoodsIdsRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

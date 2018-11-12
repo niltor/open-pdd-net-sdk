@@ -20,17 +20,17 @@ namespace PddOpenSdk.Models.Response.Ddkall
             /// 每页数量
             /// </summary>
             [JsonProperty("page_num")]
-            public int PageNum { get; set; }
+            public int? PageNum { get; set; }
             /// <summary>
             /// 分页数
             /// </summary>
             [JsonProperty("page_size")]
-            public int PageSize { get; set; }
+            public int? PageSize { get; set; }
             /// <summary>
             /// 13
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -52,7 +52,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
                 /// 商品id
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
@@ -67,7 +67,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
                 /// 最后更新时间
                 /// </summary>
                 [JsonProperty("updated_at")]
-                public long UpdatedAt { get; set; }
+                public long? UpdatedAt { get; set; }
                 /// <summary>
                 /// 审核时间
                 /// </summary>
@@ -77,7 +77,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
                 /// 订单状态： -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）;10-已处罚
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
                 /// <summary>
                 /// 自定义参数，标志订单来源于哪个自定义参数
                 /// </summary>

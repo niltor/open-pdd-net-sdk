@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 模版id
             /// </summary>
             [JsonProperty("template_id")]
-            public long TemplateId { get; set; }
+            public long? TemplateId { get; set; }
 
         }
 

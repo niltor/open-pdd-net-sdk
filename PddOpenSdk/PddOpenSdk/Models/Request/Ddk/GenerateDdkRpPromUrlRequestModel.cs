@@ -34,10 +34,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
-        public partial class PIdListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

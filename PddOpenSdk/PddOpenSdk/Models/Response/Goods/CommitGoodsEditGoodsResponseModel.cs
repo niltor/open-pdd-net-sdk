@@ -14,12 +14,12 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 草稿id
             /// </summary>
             [JsonProperty("goods_commit_id")]
-            public long GoodsCommitId { get; set; }
+            public long? GoodsCommitId { get; set; }
             /// <summary>
             /// 商品id
             /// </summary>
             [JsonProperty("goods_id")]
-            public long GoodsId { get; set; }
+            public long? GoodsId { get; set; }
 
         }
 

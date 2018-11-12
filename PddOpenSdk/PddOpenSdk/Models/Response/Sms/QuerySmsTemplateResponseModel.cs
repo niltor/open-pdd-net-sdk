@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 编号
                 /// </summary>
                 [JsonProperty("code")]
-                public long Code { get; set; }
+                public long? Code { get; set; }
                 /// <summary>
                 /// 描述
                 /// </summary>

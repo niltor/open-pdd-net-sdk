@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 总量
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 结果
             /// </summary>
@@ -37,7 +37,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 发送时间
                 /// </summary>
                 [JsonProperty("send_time")]
-                public long SendTime { get; set; }
+                public long? SendTime { get; set; }
                 /// <summary>
                 /// 短信内容
                 /// </summary>
@@ -47,17 +47,17 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 条数
                 /// </summary>
                 [JsonProperty("items_num")]
-                public long ItemsNum { get; set; }
+                public long? ItemsNum { get; set; }
                 /// <summary>
                 /// 字数
                 /// </summary>
                 [JsonProperty("words_num")]
-                public long WordsNum { get; set; }
+                public long? WordsNum { get; set; }
                 /// <summary>
                 /// 发送状态
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
 
             }
 

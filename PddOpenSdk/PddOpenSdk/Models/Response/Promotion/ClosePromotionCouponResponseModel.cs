@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Promotion
             /// 是否关闭成功，true-成功，false-失败
             /// </summary>
             [JsonProperty("is_success")]
-            public bool IsSuccess { get; set; }
+            public bool? IsSuccess { get; set; }
 
         }
 

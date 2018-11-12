@@ -32,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 退货地址ID
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 退货地址
                 /// </summary>
@@ -52,7 +52,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 店铺ID
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 是否为默认退货地址
                 /// </summary>
@@ -67,7 +67,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 退货地址所在省份ID
                 /// </summary>
                 [JsonProperty("province_id")]
-                public int ProvinceId { get; set; }
+                public int? ProvinceId { get; set; }
                 /// <summary>
                 /// 退货地址所在省份名字
                 /// </summary>
@@ -77,7 +77,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 退货地址所在城市ID
                 /// </summary>
                 [JsonProperty("city_id")]
-                public int CityId { get; set; }
+                public int? CityId { get; set; }
                 /// <summary>
                 /// 退货地址所在城市名字
                 /// </summary>
@@ -87,7 +87,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 退货地址所在区ID
                 /// </summary>
                 [JsonProperty("district_id")]
-                public int DistrictId { get; set; }
+                public int? DistrictId { get; set; }
                 /// <summary>
                 /// 退货地址所在区名字
                 /// </summary>
@@ -97,12 +97,12 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 退货地址是否合法
                 /// </summary>
                 [JsonProperty("is_legal")]
-                public bool IsLegal { get; set; }
+                public bool? IsLegal { get; set; }
                 /// <summary>
                 /// 退货地址是否有效
                 /// </summary>
                 [JsonProperty("is_validated")]
-                public bool IsValidated { get; set; }
+                public bool? IsValidated { get; set; }
 
             }
 

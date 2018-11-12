@@ -20,7 +20,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 账单总数
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -42,7 +42,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品id
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品名
                 /// </summary>
@@ -52,27 +52,27 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 奖励金额
                 /// </summary>
                 [JsonProperty("money")]
-                public long Money { get; set; }
+                public long? Money { get; set; }
                 /// <summary>
                 /// 结算时间
                 /// </summary>
                 [JsonProperty("pay_time")]
-                public long PayTime { get; set; }
+                public long? PayTime { get; set; }
                 /// <summary>
                 /// 更新时间
                 /// </summary>
                 [JsonProperty("updated_at")]
-                public long UpdatedAt { get; set; }
+                public long? UpdatedAt { get; set; }
                 /// <summary>
                 /// 审核时间
                 /// </summary>
                 [JsonProperty("verify_time")]
-                public long VerifyTime { get; set; }
+                public long? VerifyTime { get; set; }
                 /// <summary>
                 /// 状态：0-未审核、1-审核通过、2-审核失败、3-已结算
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
                 /// <summary>
                 /// 自定义参数
                 /// </summary>

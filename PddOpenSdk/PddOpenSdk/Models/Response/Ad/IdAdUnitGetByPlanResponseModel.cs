@@ -22,22 +22,22 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// 关键词个数
                 /// </summary>
                 [JsonProperty("keyword_count")]
-                public long KeywordCount { get; set; }
+                public long? KeywordCount { get; set; }
                 /// <summary>
                 /// 商品id
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 单元状态：1 - 已启用 2 - 已暂停
                 /// </summary>
                 [JsonProperty("unit_status")]
-                public int UnitStatus { get; set; }
+                public int? UnitStatus { get; set; }
                 /// <summary>
                 /// 单元id
                 /// </summary>
                 [JsonProperty("unit_id")]
-                public long UnitId { get; set; }
+                public long? UnitId { get; set; }
 
             }
 

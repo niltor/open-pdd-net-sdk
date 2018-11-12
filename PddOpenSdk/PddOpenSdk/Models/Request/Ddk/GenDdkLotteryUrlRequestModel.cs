@@ -29,10 +29,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
-        public partial class PidListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

@@ -15,12 +15,12 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 是否成功
             /// </summary>
             [JsonProperty("success")]
-            public bool Success { get; set; }
+            public bool? Success { get; set; }
             /// <summary>
             /// 错误代码
             /// </summary>
             [JsonProperty("error_code")]
-            public long ErrorCode { get; set; }
+            public long? ErrorCode { get; set; }
             /// <summary>
             /// 错误类型
             /// </summary>
@@ -37,12 +37,12 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 设置类型
                 /// </summary>
                 [JsonProperty("scene")]
-                public int Scene { get; set; }
+                public int? Scene { get; set; }
                 /// <summary>
                 /// 触发状态
                 /// </summary>
@@ -57,29 +57,29 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 模板id
                 /// </summary>
                 [JsonProperty("template_id")]
-                public long TemplateId { get; set; }
+                public long? TemplateId { get; set; }
                 /// <summary>
                 /// 是否开启
                 /// </summary>
                 [JsonProperty("open")]
-                public int Open { get; set; }
+                public int? Open { get; set; }
                 /// <summary>
                 /// 全部条数
                 /// </summary>
                 [JsonProperty("send_num")]
-                public long SendNum { get; set; }
+                public long? SendNum { get; set; }
                 /// <summary>
                 /// 失败条数
                 /// </summary>
                 [JsonProperty("send_failed_num")]
-                public long SendFailedNum { get; set; }
+                public long? SendFailedNum { get; set; }
                 public partial class TriggerConditionResponseModel : PddResponseModel
                 {
                     /// <summary>
                     /// 距离系统自动取消订单，单位分钟
                     /// </summary>
                     [JsonProperty("unpaid_duration")]
-                    public long UnpaidDuration { get; set; }
+                    public long? UnpaidDuration { get; set; }
 
                 }
                 public partial class TargetResponseModel : PddResponseModel
@@ -88,37 +88,37 @@ namespace PddOpenSdk.Models.Response.Sms
                     /// 商家实收金额，最低价
                     /// </summary>
                     [JsonProperty("min_pay_amount")]
-                    public long MinPayAmount { get; set; }
+                    public long? MinPayAmount { get; set; }
                     /// <summary>
                     /// 商家实收金额，最高价
                     /// </summary>
                     [JsonProperty("max_pay_amount")]
-                    public long MaxPayAmount { get; set; }
+                    public long? MaxPayAmount { get; set; }
                     /// <summary>
                     /// 支付金额是否不限
                     /// </summary>
                     [JsonProperty("pay_amount_limit")]
-                    public int PayAmountLimit { get; set; }
+                    public int? PayAmountLimit { get; set; }
                     /// <summary>
                     /// 地区类型
                     /// </summary>
                     [JsonProperty("region_type")]
-                    public int RegionType { get; set; }
+                    public int? RegionType { get; set; }
                     /// <summary>
                     /// 收货地区
                     /// </summary>
                     [JsonProperty("region")]
-                    public List<int> Region { get; set; }
+                    public List<int?> Region { get; set; }
                     /// <summary>
                     /// 商品id列表
                     /// </summary>
                     [JsonProperty("goods")]
-                    public List<long> Goods { get; set; }
+                    public List<long?> Goods { get; set; }
                     /// <summary>
                     /// 是否排除商品
                     /// </summary>
                     [JsonProperty("goods_invert")]
-                    public int GoodsInvert { get; set; }
+                    public int? GoodsInvert { get; set; }
 
                 }
 

@@ -48,7 +48,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 商品ID列表。例如：[123456,123]，当入参带有goods_id_list字段，将不会以opt_id、 cat_id、keyword维度筛选商品
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public List<long> GoodsIdList { get; set; }
+        public List<long?> GoodsIdList { get; set; }
         /// <summary>
         /// 招商多多客ID
         /// </summary>
@@ -59,10 +59,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("merchant_type")]
         public int? MerchantType { get; set; }
-        public partial class GoodsIdListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 创建失败的商品id
             /// </summary>
             [JsonProperty("goods_id")]
-            public long GoodsId { get; set; }
+            public long? GoodsId { get; set; }
             /// <summary>
             /// 创建失败原因
             /// </summary>

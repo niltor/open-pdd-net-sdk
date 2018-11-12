@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 类目ID，一级类目ID
                 /// </summary>
                 [JsonProperty("cat_id")]
-                public long CatId { get; set; }
+                public long? CatId { get; set; }
 
             }
 

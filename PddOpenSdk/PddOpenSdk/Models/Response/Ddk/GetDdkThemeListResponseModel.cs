@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 返回的元素数量
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 返回的主题列表
             /// </summary>
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 主题ID
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 主题图片
                 /// </summary>
@@ -42,7 +42,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 主题包含的商品数量
                 /// </summary>
                 [JsonProperty("goods_num")]
-                public long GoodsNum { get; set; }
+                public long? GoodsNum { get; set; }
 
             }
 

@@ -17,7 +17,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// sku_id和outer_id必填一个
         /// </summary>
         [JsonProperty("sku_id")]
-        public long SkuId { get; set; }
+        public long? SkuId { get; set; }
         /// <summary>
         /// sku商家编码
         /// </summary>

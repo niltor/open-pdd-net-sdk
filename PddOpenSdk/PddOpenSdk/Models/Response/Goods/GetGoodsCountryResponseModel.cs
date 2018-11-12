@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 国家或地区对应的ID
                 /// </summary>
                 [JsonProperty("country_id")]
-                public long CountryId { get; set; }
+                public long? CountryId { get; set; }
                 /// <summary>
                 /// 对应ID下的国家或地区名称
                 /// </summary>

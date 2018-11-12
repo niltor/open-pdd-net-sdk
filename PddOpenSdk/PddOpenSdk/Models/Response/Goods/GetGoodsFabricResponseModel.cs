@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 服饰面料对应的ID，用于入参
                 /// </summary>
                 [JsonProperty("code")]
-                public long Code { get; set; }
+                public long? Code { get; set; }
                 /// <summary>
                 /// 对应ID下的服饰面料描述
                 /// </summary>

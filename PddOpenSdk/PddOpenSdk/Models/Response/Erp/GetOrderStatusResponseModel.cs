@@ -27,12 +27,12 @@ namespace PddOpenSdk.Models.Response.Erp
                 /// 订单发货状态，1：待发货，2：已发货待签收，3：已签收 0：异常
                 /// </summary>
                 [JsonProperty("order_status")]
-                public int OrderStatus { get; set; }
+                public int? OrderStatus { get; set; }
                 /// <summary>
                 /// 订单售后状态，1：无售后或售后关闭，2：售后处理中，3：退款中，4：退款成功，0：异常
                 /// </summary>
                 [JsonProperty("refund_status")]
-                public int RefundStatus { get; set; }
+                public int? RefundStatus { get; set; }
 
             }
 

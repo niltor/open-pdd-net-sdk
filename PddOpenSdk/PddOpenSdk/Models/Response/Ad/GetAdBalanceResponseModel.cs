@@ -20,29 +20,29 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 总余额，单位厘
             /// </summary>
             [JsonProperty("advertiser_balance")]
-            public long AdvertiserBalance { get; set; }
+            public long? AdvertiserBalance { get; set; }
             /// <summary>
             /// 店铺id
             /// </summary>
             [JsonProperty("mall_id")]
-            public long MallId { get; set; }
+            public long? MallId { get; set; }
             public partial class AccountsBalanceResponseModel : PddResponseModel
             {
                 /// <summary>
                 /// 1 - 现金 2 - 红包
                 /// </summary>
                 [JsonProperty("account_type")]
-                public int AccountType { get; set; }
+                public int? AccountType { get; set; }
                 /// <summary>
                 /// 余额
                 /// </summary>
                 [JsonProperty("balance")]
-                public long Balance { get; set; }
+                public long? Balance { get; set; }
                 /// <summary>
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
 
             }
 

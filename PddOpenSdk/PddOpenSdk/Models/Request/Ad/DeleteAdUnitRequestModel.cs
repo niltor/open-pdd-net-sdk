@@ -14,10 +14,6 @@ namespace PddOpenSdk.Models.Request.Ad
         /// </summary>
         [JsonProperty("unit_ids")]
         public List<long> UnitIds { get; set; }
-        public partial class UnitIdsRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

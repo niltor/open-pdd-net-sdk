@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 消息id
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 消息时间戳,样式YYYY-MM-DD HH:MM:SS
                 /// </summary>
@@ -32,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Logisticscs
                 /// 0为用户 1为机器人
                 /// </summary>
                 [JsonProperty("from_type")]
-                public int FromType { get; set; }
+                public int? FromType { get; set; }
                 /// <summary>
                 /// 聊天内容，如果是图片的话，则是图片的url
                 /// </summary>

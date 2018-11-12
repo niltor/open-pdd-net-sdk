@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品编码
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品序列编码
                 /// </summary>
@@ -32,7 +32,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
                 /// </summary>
                 [JsonProperty("goods_type")]
-                public int GoodsType { get; set; }
+                public int? GoodsType { get; set; }
                 /// <summary>
                 /// 商品一级类目
                 /// </summary>
@@ -47,12 +47,12 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 是否七天无理由售后，0-不支持，1-支持
                 /// </summary>
                 [JsonProperty("is_refundable")]
-                public int IsRefundable { get; set; }
+                public int? IsRefundable { get; set; }
                 /// <summary>
                 /// 承诺发货时间
                 /// </summary>
                 [JsonProperty("shipment_limit_second")]
-                public long ShipmentLimitSecond { get; set; }
+                public long? ShipmentLimitSecond { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
@@ -67,22 +67,22 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// 商品库存
                 /// </summary>
                 [JsonProperty("goods_quantity")]
-                public int GoodsQuantity { get; set; }
+                public int? GoodsQuantity { get; set; }
                 /// <summary>
                 /// 商品是否上架，0-下架，1-上架；
                 /// </summary>
                 [JsonProperty("is_onsale")]
-                public int IsOnsale { get; set; }
+                public int? IsOnsale { get; set; }
                 /// <summary>
                 /// 商品是否全新，0-全新商品，1-二手商品
                 /// </summary>
                 [JsonProperty("second_hand")]
-                public int SecondHand { get; set; }
+                public int? SecondHand { get; set; }
                 /// <summary>
                 /// 成团人数
                 /// </summary>
                 [JsonProperty("group_required_customer_num")]
-                public long GroupRequiredCustomerNum { get; set; }
+                public long? GroupRequiredCustomerNum { get; set; }
                 /// <summary>
                 /// sku列表对象
                 /// </summary>
@@ -99,12 +99,12 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// 商品sku编码
                     /// </summary>
                     [JsonProperty("sku_id")]
-                    public long SkuId { get; set; }
+                    public long? SkuId { get; set; }
                     /// <summary>
                     /// 商品sku库存
                     /// </summary>
                     [JsonProperty("sku_quantity")]
-                    public long SkuQuantity { get; set; }
+                    public long? SkuQuantity { get; set; }
                     /// <summary>
                     /// 商家外部编码（sku），同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
                     /// </summary>
@@ -134,7 +134,7 @@ namespace PddOpenSdk.Models.Response.Goods
                     /// 商品sku是否上架，0-下架，1-上架
                     /// </summary>
                     [JsonProperty("is_sku_onsale")]
-                    public int IsSkuOnsale { get; set; }
+                    public int? IsSkuOnsale { get; set; }
 
                 }
 

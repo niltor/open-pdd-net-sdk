@@ -25,7 +25,7 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 优惠券id
             /// </summary>
             [JsonProperty("coupon_id")]
-            public long CouponId { get; set; }
+            public long? CouponId { get; set; }
             /// <summary>
             /// 优惠券开始时间
             /// </summary>
@@ -40,17 +40,17 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 优惠券面额（单位为分）
             /// </summary>
             [JsonProperty("discount")]
-            public long Discount { get; set; }
+            public long? Discount { get; set; }
             /// <summary>
             /// 设置的优惠券张数
             /// </summary>
             [JsonProperty("init_quantity")]
-            public long InitQuantity { get; set; }
+            public long? InitQuantity { get; set; }
             /// <summary>
             /// 剩余的优惠券张数
             /// </summary>
             [JsonProperty("remain_quantity")]
-            public long RemainQuantity { get; set; }
+            public long? RemainQuantity { get; set; }
 
         }
 

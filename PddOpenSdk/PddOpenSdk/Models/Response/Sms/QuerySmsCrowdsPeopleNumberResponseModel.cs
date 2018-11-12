@@ -14,12 +14,12 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 筛选人数
             /// </summary>
             [JsonProperty("object_num")]
-            public long ObjectNum { get; set; }
+            public long? ObjectNum { get; set; }
             /// <summary>
             /// 短信余量
             /// </summary>
             [JsonProperty("remain")]
-            public long Remain { get; set; }
+            public long? Remain { get; set; }
 
         }
 

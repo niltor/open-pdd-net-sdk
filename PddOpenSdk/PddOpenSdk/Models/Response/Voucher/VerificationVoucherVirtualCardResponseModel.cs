@@ -20,17 +20,17 @@ namespace PddOpenSdk.Models.Response.Voucher
             /// 商品id
             /// </summary>
             [JsonProperty("goods_id")]
-            public long GoodsId { get; set; }
+            public long? GoodsId { get; set; }
             /// <summary>
             /// 商品属性id
             /// </summary>
             [JsonProperty("sku_id")]
-            public long SkuId { get; set; }
+            public long? SkuId { get; set; }
             /// <summary>
             /// 店铺id
             /// </summary>
             [JsonProperty("mall_id")]
-            public long MallId { get; set; }
+            public long? MallId { get; set; }
             /// <summary>
             /// 券信息数组
             /// </summary>
@@ -57,17 +57,17 @@ namespace PddOpenSdk.Models.Response.Voucher
                 /// 状态
                 /// </summary>
                 [JsonProperty("status")]
-                public int Status { get; set; }
+                public int? Status { get; set; }
                 /// <summary>
                 /// 返回状态
                 /// </summary>
                 [JsonProperty("refund_status")]
-                public int RefundStatus { get; set; }
+                public int? RefundStatus { get; set; }
                 /// <summary>
                 /// 验证处
                 /// </summary>
                 [JsonProperty("verification_at")]
-                public long VerificationAt { get; set; }
+                public long? VerificationAt { get; set; }
 
             }
 

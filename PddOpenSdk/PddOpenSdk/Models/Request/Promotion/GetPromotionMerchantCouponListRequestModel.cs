@@ -17,12 +17,12 @@ namespace PddOpenSdk.Models.Request.Promotion
         /// 批次开始时间（范围开始）
         /// </summary>
         [JsonProperty("batch_start_time_from")]
-        public long BatchStartTimeFrom { get; set; }
+        public long? BatchStartTimeFrom { get; set; }
         /// <summary>
         /// 批次开始时间（范围结束）
         /// </summary>
         [JsonProperty("batch_start_time_to")]
-        public long BatchStartTimeTo { get; set; }
+        public long? BatchStartTimeTo { get; set; }
         /// <summary>
         /// 批次状态	1 领取中，2 已领完，3 已结束
         /// </summary>

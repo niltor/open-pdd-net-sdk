@@ -22,32 +22,32 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// 分数
                 /// </summary>
                 [JsonProperty("score")]
-                public double Score { get; set; }
+                public double? Score { get; set; }
                 /// <summary>
                 /// 热度
                 /// </summary>
                 [JsonProperty("heat")]
-                public double Heat { get; set; }
+                public double? Heat { get; set; }
                 /// <summary>
                 /// 趋势
                 /// </summary>
                 [JsonProperty("trend")]
-                public double Trend { get; set; }
+                public double? Trend { get; set; }
                 /// <summary>
                 /// 竞争力
                 /// </summary>
                 [JsonProperty("compete")]
-                public double Compete { get; set; }
+                public double? Compete { get; set; }
                 /// <summary>
                 /// 平均出价
                 /// </summary>
                 [JsonProperty("avg_bid")]
-                public double AvgBid { get; set; }
+                public double? AvgBid { get; set; }
                 /// <summary>
                 /// 相关性
                 /// </summary>
                 [JsonProperty("relevance")]
-                public int Relevance { get; set; }
+                public int? Relevance { get; set; }
                 /// <summary>
                 /// 关键词
                 /// </summary>

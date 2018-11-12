@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddkall
             /// total
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// url_list
             /// </summary>

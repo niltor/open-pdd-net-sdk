@@ -14,12 +14,12 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 单元id
             /// </summary>
             [JsonProperty("unit_id")]
-            public long UnitId { get; set; }
+            public long? UnitId { get; set; }
             /// <summary>
             /// 是否成功
             /// </summary>
             [JsonProperty("is_success")]
-            public bool IsSuccess { get; set; }
+            public bool? IsSuccess { get; set; }
 
         }
 

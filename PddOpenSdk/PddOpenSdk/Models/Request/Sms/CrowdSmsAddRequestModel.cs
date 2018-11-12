@@ -8,7 +8,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 选自定义的时候列表存省代表的id [10]
         /// </summary>
         [JsonProperty("location")]
-        public List<long> Location { get; set; }
+        public List<long?> Location { get; set; }
         /// <summary>
         /// 地区类型 0-不限 1-江浙沪 2-自定义
         /// </summary>
@@ -23,12 +23,12 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 商品收藏天数
         /// </summary>
         [JsonProperty("goods_favor_days")]
-        public long GoodsFavorDays { get; set; }
+        public long? GoodsFavorDays { get; set; }
         /// <summary>
         /// 店铺收藏天数
         /// </summary>
         [JsonProperty("mall_favor_days")]
-        public long MallFavorDays { get; set; }
+        public long? MallFavorDays { get; set; }
         /// <summary>
         /// 人群名称
         /// </summary>
@@ -38,22 +38,22 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 店铺无购买天数
         /// </summary>
         [JsonProperty("none_purchase_days")]
-        public long NonePurchaseDays { get; set; }
+        public long? NonePurchaseDays { get; set; }
         /// <summary>
         /// 店铺有购买天数
         /// </summary>
         [JsonProperty("purchase_days")]
-        public long PurchaseDays { get; set; }
+        public long? PurchaseDays { get; set; }
         /// <summary>
         /// 历史成交最小次数
         /// </summary>
         [JsonProperty("min_order_count")]
-        public long MinOrderCount { get; set; }
+        public long? MinOrderCount { get; set; }
         /// <summary>
         /// 历史成交最大次数
         /// </summary>
         [JsonProperty("max_order_count")]
-        public long MaxOrderCount { get; set; }
+        public long? MaxOrderCount { get; set; }
         /// <summary>
         /// 首次购买开始时间 "2017-10-19 00:00:00"
         /// </summary>
@@ -68,11 +68,7 @@ namespace PddOpenSdk.Models.Request.Sms
         /// 店铺有访问天数
         /// </summary>
         [JsonProperty("mall_visit_days")]
-        public long MallVisitDays { get; set; }
-        public partial class LocationRequestModel : PddRequestModel
-        {
-
-        }
+        public long? MallVisitDays { get; set; }
 
     }
 

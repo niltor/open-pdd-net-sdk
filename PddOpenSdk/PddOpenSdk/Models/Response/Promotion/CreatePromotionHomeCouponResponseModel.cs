@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Promotion
             /// 批次id
             /// </summary>
             [JsonProperty("batch_id")]
-            public long BatchId { get; set; }
+            public long? BatchId { get; set; }
 
         }
 

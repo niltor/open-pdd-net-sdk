@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Virtual
             /// 回调通知结果，true-成功，false-失败
             /// </summary>
             [JsonProperty("success")]
-            public bool Success { get; set; }
+            public bool? Success { get; set; }
 
         }
 

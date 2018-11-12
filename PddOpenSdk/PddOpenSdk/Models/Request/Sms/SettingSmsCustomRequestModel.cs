@@ -24,10 +24,6 @@ namespace PddOpenSdk.Models.Request.Sms
         /// </summary>
         [JsonProperty("template_type")]
         public int TemplateType { get; set; }
-        public partial class PhonesRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

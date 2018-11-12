@@ -63,7 +63,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 预售时间，is_pre_sale为true时必传，UNIX时间戳，只能为某一天的23:59:59
         /// </summary>
         [JsonProperty("pre_sale_time")]
-        public long PreSaleTime { get; set; }
+        public long? PreSaleTime { get; set; }
         /// <summary>
         /// 承诺发货时间（ 秒），普通、进口商品可选48小时或24小时；直邮、直供商品只能入参120小时；is_pre_sale为true时不必传
         /// </summary>
@@ -78,12 +78,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 团购人数
         /// </summary>
         [JsonProperty("customer_num")]
-        public long CustomerNum { get; set; }
+        public long? CustomerNum { get; set; }
         /// <summary>
         /// 单次限量
         /// </summary>
         [JsonProperty("buy_limit")]
-        public long BuyLimit { get; set; }
+        public long? BuyLimit { get; set; }
         /// <summary>
         /// 限购次数
         /// </summary>
@@ -128,12 +128,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 生产日期起始时间， UNIX时间戳; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
         /// </summary>
         [JsonProperty("start_production_date")]
-        public long StartProductionDate { get; set; }
+        public long? StartProductionDate { get; set; }
         /// <summary>
         /// 生产日期结束时间， UNIX时间戳; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
         /// </summary>
         [JsonProperty("end_production_date")]
-        public long EndProductionDate { get; set; }
+        public long? EndProductionDate { get; set; }
         /// <summary>
         /// 产品标准号， ; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
         /// </summary>
@@ -183,22 +183,22 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 仅在cat_id=983（卷筒纸）类目下入参，每包或者卷的净含量，计量单位是g，范围是1~999的整数
         /// </summary>
         [JsonProperty("paper_net_weight")]
-        public long PaperNetWeight { get; set; }
+        public long? PaperNetWeight { get; set; }
         /// <summary>
         /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节纸品的长度，单位是mm，范围是1~999的整数
         /// </summary>
         [JsonProperty("paper_length")]
-        public long PaperLength { get; set; }
+        public long? PaperLength { get; set; }
         /// <summary>
         /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节的宽度，单位是mm，范围是1~999的整数
         /// </summary>
         [JsonProperty("paper_width")]
-        public long PaperWidth { get; set; }
+        public long? PaperWidth { get; set; }
         /// <summary>
         /// 仅在cat_id=983（卷筒纸）类目下入参，纸张的层数，单位是层，范围是1~9的整数
         /// </summary>
         [JsonProperty("paper_plies_num")]
-        public long PaperPliesNum { get; set; }
+        public long? PaperPliesNum { get; set; }
         /// <summary>
         /// 是否支持开票（测试中）
         /// </summary>
@@ -268,31 +268,23 @@ namespace PddOpenSdk.Models.Request.Goods
             public int IsOnsale { get; set; }
 
         }
-        public partial class CarouselGalleryRequestModel : PddRequestModel
-        {
-
-        }
-        public partial class DetailGalleryRequestModel : PddRequestModel
-        {
-
-        }
         public partial class GoodsPropertiesRequestModel : PddRequestModel
         {
             /// <summary>
             /// 模板模块Id
             /// </summary>
             [JsonProperty("template_module_id")]
-            public long TemplateModuleId { get; set; }
+            public long? TemplateModuleId { get; set; }
             /// <summary>
             /// 父属性id，非销售属性不用传
             /// </summary>
             [JsonProperty("parent_spec_id")]
-            public long ParentSpecId { get; set; }
+            public long? ParentSpecId { get; set; }
             /// <summary>
             /// 属性id，非销售属性不用传
             /// </summary>
             [JsonProperty("spec_id")]
-            public long SpecId { get; set; }
+            public long? SpecId { get; set; }
             /// <summary>
             /// 备注，非销售属性不用传
             /// </summary>
@@ -312,17 +304,17 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 模板属性id
             /// </summary>
             [JsonProperty("template_pid")]
-            public long TemplatePid { get; set; }
+            public long? TemplatePid { get; set; }
             /// <summary>
             /// 属性id
             /// </summary>
             [JsonProperty("pid")]
-            public long Pid { get; set; }
+            public long? Pid { get; set; }
             /// <summary>
             /// 属性值id
             /// </summary>
             [JsonProperty("vid")]
-            public long Vid { get; set; }
+            public long? Vid { get; set; }
             /// <summary>
             /// 属性值
             /// </summary>

@@ -19,7 +19,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 商品id
             /// </summary>
             [JsonProperty("goods_id")]
-            public long GoodsId { get; set; }
+            public long? GoodsId { get; set; }
             /// <summary>
             /// 商品名称
             /// </summary>
@@ -34,27 +34,27 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 商品数量
             /// </summary>
             [JsonProperty("goods_quantity")]
-            public long GoodsQuantity { get; set; }
+            public long? GoodsQuantity { get; set; }
             /// <summary>
             /// 商品价格（分）
             /// </summary>
             [JsonProperty("goods_price")]
-            public long GoodsPrice { get; set; }
+            public long? GoodsPrice { get; set; }
             /// <summary>
             /// 订单价格（分）
             /// </summary>
             [JsonProperty("order_amount")]
-            public long OrderAmount { get; set; }
+            public long? OrderAmount { get; set; }
             /// <summary>
             /// 佣金比例 千分比
             /// </summary>
             [JsonProperty("promotion_rate")]
-            public long PromotionRate { get; set; }
+            public long? PromotionRate { get; set; }
             /// <summary>
             /// 佣金（分）
             /// </summary>
             [JsonProperty("promotion_amount")]
-            public long PromotionAmount { get; set; }
+            public long? PromotionAmount { get; set; }
             /// <summary>
             /// 结算批次号
             /// </summary>
@@ -64,7 +64,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 订单状态
             /// </summary>
             [JsonProperty("order_status")]
-            public int OrderStatus { get; set; }
+            public int? OrderStatus { get; set; }
             /// <summary>
             /// 订单状态描述（ -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）;10-已处罚）
             /// </summary>
@@ -74,62 +74,62 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 订单创建时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_create_time")]
-            public long OrderCreateTime { get; set; }
+            public long? OrderCreateTime { get; set; }
             /// <summary>
             /// 订单支付时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_pay_time")]
-            public long OrderPayTime { get; set; }
+            public long? OrderPayTime { get; set; }
             /// <summary>
             /// 订单成团时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_group_success_time")]
-            public long OrderGroupSuccessTime { get; set; }
+            public long? OrderGroupSuccessTime { get; set; }
             /// <summary>
             /// 订单确认收货时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_receive_time")]
-            public long OrderReceiveTime { get; set; }
+            public long? OrderReceiveTime { get; set; }
             /// <summary>
             /// 订单审核时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_verify_time")]
-            public long OrderVerifyTime { get; set; }
+            public long? OrderVerifyTime { get; set; }
             /// <summary>
             /// 订单结算时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_settle_time")]
-            public long OrderSettleTime { get; set; }
+            public long? OrderSettleTime { get; set; }
             /// <summary>
             /// 订单最后更新时间（UNIX时间戳）
             /// </summary>
             [JsonProperty("order_modify_at")]
-            public long OrderModifyAt { get; set; }
+            public long? OrderModifyAt { get; set; }
             /// <summary>
             /// 订单来源 ：0 ：关联，5 ：直接下单页RPC请求
             /// </summary>
             [JsonProperty("match_channel")]
-            public int MatchChannel { get; set; }
+            public int? MatchChannel { get; set; }
             /// <summary>
             /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
             /// </summary>
             [JsonProperty("type")]
-            public int Type { get; set; }
+            public int? Type { get; set; }
             /// <summary>
             /// 成团编号
             /// </summary>
             [JsonProperty("group_id")]
-            public long GroupId { get; set; }
+            public long? GroupId { get; set; }
             /// <summary>
             /// 多多客工具id
             /// </summary>
             [JsonProperty("auth_duo_id")]
-            public long AuthDuoId { get; set; }
+            public long? AuthDuoId { get; set; }
             /// <summary>
             /// 招商多多客id
             /// </summary>
             [JsonProperty("zs_duo_id")]
-            public long ZsDuoId { get; set; }
+            public long? ZsDuoId { get; set; }
             /// <summary>
             /// 自定义参数
             /// </summary>
@@ -144,17 +144,17 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 链接最后一次生产时间
             /// </summary>
             [JsonProperty("url_last_generate_time")]
-            public long UrlLastGenerateTime { get; set; }
+            public long? UrlLastGenerateTime { get; set; }
             /// <summary>
             /// 打点时间
             /// </summary>
             [JsonProperty("point_time")]
-            public long PointTime { get; set; }
+            public long? PointTime { get; set; }
             /// <summary>
             /// 售后状态：0：无，1：售后中，2：售后完成
             /// </summary>
             [JsonProperty("return_status")]
-            public int ReturnStatus { get; set; }
+            public int? ReturnStatus { get; set; }
             /// <summary>
             /// 推广位id
             /// </summary>

@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 返回总数
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 推广链接
             /// </summary>

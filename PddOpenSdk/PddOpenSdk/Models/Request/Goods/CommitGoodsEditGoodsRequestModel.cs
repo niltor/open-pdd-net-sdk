@@ -53,7 +53,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 市场价格，单位为分
         /// </summary>
         [JsonProperty("market_price")]
-        public long MarketPrice { get; set; }
+        public long? MarketPrice { get; set; }
         /// <summary>
         /// 是否预售,true-预售商品，false-非预售商品
         /// </summary>
@@ -63,32 +63,32 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 预售时间，is_pre_sale为1时必传，UNIX时间戳
         /// </summary>
         [JsonProperty("pre_sale_time")]
-        public long PreSaleTime { get; set; }
+        public long? PreSaleTime { get; set; }
         /// <summary>
         /// 承诺发货时间（ 秒），48小时或24小时，is_pre_sale为1时不必传
         /// </summary>
         [JsonProperty("shipment_limit_second")]
-        public long ShipmentLimitSecond { get; set; }
+        public long? ShipmentLimitSecond { get; set; }
         /// <summary>
         /// 物流运费模板ID，可使用pdd.logistics.template.get获取
         /// </summary>
         [JsonProperty("cost_template_id")]
-        public long CostTemplateId { get; set; }
+        public long? CostTemplateId { get; set; }
         /// <summary>
         /// 团购人数
         /// </summary>
         [JsonProperty("customer_num")]
-        public long CustomerNum { get; set; }
+        public long? CustomerNum { get; set; }
         /// <summary>
         /// 单次限量
         /// </summary>
         [JsonProperty("buy_limit")]
-        public long BuyLimit { get; set; }
+        public long? BuyLimit { get; set; }
         /// <summary>
         /// 限购次数
         /// </summary>
         [JsonProperty("order_limit")]
-        public long OrderLimit { get; set; }
+        public long? OrderLimit { get; set; }
         /// <summary>
         /// 是否7天无理由退换货，true-支持，false-不支持
         /// </summary>
@@ -248,31 +248,23 @@ namespace PddOpenSdk.Models.Request.Goods
             public int IsOnsale { get; set; }
 
         }
-        public partial class CarouselGalleryRequestModel : PddRequestModel
-        {
-
-        }
-        public partial class DetailGalleryRequestModel : PddRequestModel
-        {
-
-        }
         public partial class GoodsPropertiesRequestModel : PddRequestModel
         {
             /// <summary>
             /// 模板模块Id
             /// </summary>
             [JsonProperty("template_module_id")]
-            public long TemplateModuleId { get; set; }
+            public long? TemplateModuleId { get; set; }
             /// <summary>
             /// 父属性id，非销售属性不用传
             /// </summary>
             [JsonProperty("parent_spec_id")]
-            public long ParentSpecId { get; set; }
+            public long? ParentSpecId { get; set; }
             /// <summary>
             /// 属性id，非销售属性不用传
             /// </summary>
             [JsonProperty("spec_id")]
-            public long SpecId { get; set; }
+            public long? SpecId { get; set; }
             /// <summary>
             /// 备注，非销售属性不用传
             /// </summary>
@@ -292,17 +284,17 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 模板属性id
             /// </summary>
             [JsonProperty("template_pid")]
-            public long TemplatePid { get; set; }
+            public long? TemplatePid { get; set; }
             /// <summary>
             /// 属性id
             /// </summary>
             [JsonProperty("pid")]
-            public long Pid { get; set; }
+            public long? Pid { get; set; }
             /// <summary>
             /// 属性值id
             /// </summary>
             [JsonProperty("vid")]
-            public long Vid { get; set; }
+            public long? Vid { get; set; }
             /// <summary>
             /// 属性值
             /// </summary>

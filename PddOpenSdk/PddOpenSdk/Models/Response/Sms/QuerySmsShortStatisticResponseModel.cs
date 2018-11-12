@@ -26,7 +26,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 人群id
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 人群名称
                 /// </summary>
@@ -36,12 +36,12 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 人群数量
                 /// </summary>
                 [JsonProperty("people_num")]
-                public long PeopleNum { get; set; }
+                public long? PeopleNum { get; set; }
                 /// <summary>
                 /// 发送时间
                 /// </summary>
                 [JsonProperty("send_time")]
-                public long SendTime { get; set; }
+                public long? SendTime { get; set; }
 
             }
             public partial class StatisticVoResponseModel : PddResponseModel
@@ -50,47 +50,47 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 商家店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long MallId { get; set; }
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 批次id
                 /// </summary>
                 [JsonProperty("setting_id")]
-                public long SettingId { get; set; }
+                public long? SettingId { get; set; }
                 /// <summary>
                 /// 场景id
                 /// </summary>
                 [JsonProperty("scene")]
-                public long Scene { get; set; }
+                public long? Scene { get; set; }
                 /// <summary>
                 /// 成功触达人数
                 /// </summary>
                 [JsonProperty("sms_succ_cnt_1d")]
-                public long SmsSuccCnt1D { get; set; }
+                public long? SmsSuccCnt1D { get; set; }
                 /// <summary>
                 /// 进店人数
                 /// </summary>
                 [JsonProperty("online_mall_cnt")]
-                public long OnlineMallCnt { get; set; }
+                public long? OnlineMallCnt { get; set; }
                 /// <summary>
                 /// 支付订单数量
                 /// </summary>
                 [JsonProperty("pay_mall_cnt")]
-                public long PayMallCnt { get; set; }
+                public long? PayMallCnt { get; set; }
                 /// <summary>
                 /// 支付订单数
                 /// </summary>
                 [JsonProperty("pay_mall_amt")]
-                public double PayMallAmt { get; set; }
+                public double? PayMallAmt { get; set; }
                 /// <summary>
                 /// 支付订单金额
                 /// </summary>
                 [JsonProperty("online_mall_rto")]
-                public double OnlineMallRto { get; set; }
+                public double? OnlineMallRto { get; set; }
                 /// <summary>
                 /// 进店转化率
                 /// </summary>
                 [JsonProperty("pay_mall_rto")]
-                public double PayMallRto { get; set; }
+                public double? PayMallRto { get; set; }
 
             }
 

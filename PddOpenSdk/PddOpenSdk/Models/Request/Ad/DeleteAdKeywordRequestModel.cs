@@ -14,10 +14,6 @@ namespace PddOpenSdk.Models.Request.Ad
         /// </summary>
         [JsonProperty("keyword_ids")]
         public List<long> KeywordIds { get; set; }
-        public partial class KeywordIdsRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

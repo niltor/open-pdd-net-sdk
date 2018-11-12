@@ -15,12 +15,12 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 拼多多商品id
             /// </summary>
             [JsonProperty("pdd_goods_id")]
-            public long PddGoodsId { get; set; }
+            public long? PddGoodsId { get; set; }
             /// <summary>
             /// 外部平台枚举值， 淘宝/天猫 0，京东1，1688 2，唯品会3，苏宁4，亚马逊,5，网易6，其他7
             /// </summary>
             [JsonProperty("out_goods_platform")]
-            public int OutGoodsPlatform { get; set; }
+            public int? OutGoodsPlatform { get; set; }
             /// <summary>
             /// 外部平台商品id
             /// </summary>

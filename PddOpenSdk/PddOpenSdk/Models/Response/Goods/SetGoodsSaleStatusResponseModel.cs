@@ -14,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 是否修改成功
             /// </summary>
             [JsonProperty("is_success")]
-            public bool IsSuccess { get; set; }
+            public bool? IsSuccess { get; set; }
 
         }
 

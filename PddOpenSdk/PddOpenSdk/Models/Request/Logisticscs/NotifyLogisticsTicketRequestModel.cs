@@ -54,10 +54,6 @@ namespace PddOpenSdk.Models.Request.Logisticscs
         /// </summary>
         [JsonProperty("express_dealer_contact")]
         public string ExpressDealerContact { get; set; }
-        public partial class AttachPathListRequestModel : PddRequestModel
-        {
-
-        }
 
     }
 

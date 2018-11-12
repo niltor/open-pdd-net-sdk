@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Refund
             /// 返回的售后订单列表总数
             /// </summary>
             [JsonProperty("total_count")]
-            public int TotalCount { get; set; }
+            public int? TotalCount { get; set; }
             /// <summary>
             /// 售后列表对象
             /// </summary>
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 售后编号
                 /// </summary>
                 [JsonProperty("id")]
-                public long Id { get; set; }
+                public long? Id { get; set; }
                 /// <summary>
                 /// 订单编号
                 /// </summary>
@@ -47,12 +47,12 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 售后状态
                 /// </summary>
                 [JsonProperty("after_sales_status")]
-                public int AfterSalesStatus { get; set; }
+                public int? AfterSalesStatus { get; set; }
                 /// <summary>
                 /// 售后类型
                 /// </summary>
                 [JsonProperty("after_sales_type")]
-                public int AfterSalesType { get; set; }
+                public int? AfterSalesType { get; set; }
                 /// <summary>
                 /// 订单金额（元）
                 /// </summary>
@@ -97,7 +97,7 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// 商品编码
                 /// </summary>
                 [JsonProperty("goods_id")]
-                public long GoodsId { get; set; }
+                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
