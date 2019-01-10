@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
+using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Services;
 using Sample.Models;
 
@@ -41,12 +42,12 @@ namespace Sample.Controllers
         {
             PddCommonApi.AccessToken = "bf4e43499f864333bfed2272e702575446daad5d";
 
-            var model = new SearchDdkGoodsRequestModel
+            var model = new GetGoodsCatsRequestModel
             {
-                SortType = 0,
-                WithCoupon = false,
+                ParentCatId = 0
             };
-            var result = await _pdd.DdkApi.SearchDdkGoodsAsync(model);
+            var result = await _pdd.GoodsApi.GetGoodsCatsAsync(model);
+
             return Content(JsonConvert.SerializeObject(result));
         }
 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class TemplateOneExpressCostResponseModel : PddResponseModel
@@ -11,6 +12,21 @@ namespace PddOpenSdk.Models.Response.Goods
         public OneExpressCostTemplateResponseResponseModel OneExpressCostTemplateResponse { get; set; }
         public partial class OneExpressCostTemplateResponseResponseModel : PddResponseModel
         {
+            /// <summary>
+            /// 发货地省份ID
+            /// </summary>
+            [JsonProperty("province_id")]
+            public int? ProvinceId { get; set; }
+            /// <summary>
+            /// 发货地城市ID
+            /// </summary>
+            [JsonProperty("city_id")]
+            public int? CityId { get; set; }
+            /// <summary>
+            /// 发货地区ID
+            /// </summary>
+            [JsonProperty("district_id")]
+            public int? DistrictId { get; set; }
             /// <summary>
             /// 送货入户并安装服务，0-不支持、1-支持送货入户、2-支持送货入户并安装
             /// </summary>

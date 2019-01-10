@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CreateGoodsCpsMallUnitRequestModel : PddRequestModel
@@ -8,6 +10,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("rate")]
         public long Rate { get; set; }
+        /// <summary>
+        /// 合作方code
+        /// </summary>
+        [JsonProperty("erp_code")]
+        public string ErpCode { get; set; }
 
     }
 

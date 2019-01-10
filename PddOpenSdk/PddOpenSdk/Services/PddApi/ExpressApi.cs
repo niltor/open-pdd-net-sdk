@@ -1,6 +1,10 @@
-using System.Threading.Tasks;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Express;
 using PddOpenSdk.Models.Response.Express;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class ExpressApi : PddCommonApi
@@ -99,6 +103,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<QueryStockWareDetailResponseModel> QueryStockWareDetailAsync(QueryStockWareDetailRequestModel queryStockWareDetail)
         {
             var result = await PostAsync<QueryStockWareDetailRequestModel, QueryStockWareDetailResponseModel>("pdd.stock.ware.detail.query", queryStockWareDetail);
+            return result;
+        }
+        /// <summary>
+        /// 货品列表的查询接口
+        /// </summary>
+        public async Task<ListStockWareInfoResponseModel> ListStockWareInfoAsync(ListStockWareInfoRequestModel listStockWareInfo)
+        {
+            var result = await PostAsync<ListStockWareInfoRequestModel, ListStockWareInfoResponseModel>("pdd.stock.ware.info.list", listStockWareInfo);
             return result;
         }
         /// <summary>

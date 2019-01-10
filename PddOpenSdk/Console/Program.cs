@@ -7,7 +7,7 @@ namespace Sample
         static async Task Main(string[] args)
         {
             var helper = new PddApiDocHelper();
-            for (int i = 1 ; i < 22; i++)
+            for (int i = 1; i < 23; i++)
             {
                 await helper.GetDocListByCatAsync(i);
             }

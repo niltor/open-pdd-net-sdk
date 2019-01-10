@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsCatTemplateResponseModel : PddResponseModel
@@ -79,7 +80,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 [JsonProperty("required")]
                 public bool? Required { get; set; }
                 /// <summary>
-                /// 控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）
+                /// 控件类型（0-可输入、1-可勾选、3-可输入又可勾选、5-单项时间选择器-年月日、6-双项时间选择器-年月日、7-单项时间选择器-年月、8-双项时间选择器-年月）9-调色盘、10-尺码选择器、11-输入数值范围、12-输入数值乘积-2维、13-输入数值乘积-3维
                 /// </summary>
                 [JsonProperty("control_type")]
                 public int? ControlType { get; set; }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Erp
 {
     public partial class GetOrderListRequestModel : PddRequestModel
@@ -14,12 +16,12 @@ namespace PddOpenSdk.Models.Request.Erp
         [JsonProperty("refund_status")]
         public int RefundStatus { get; set; }
         /// <summary>
-        /// 必填，成团时间开始时间的时间戳，指格林威治时间 1970 年 01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
+        /// 必填，成交时间开始时间的时间戳，指格林威治时间 1970 年 01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
         /// </summary>
         [JsonProperty("start_confirm_at")]
         public long StartConfirmAt { get; set; }
         /// <summary>
-        /// 必填，成团时间结束时间的时间戳，指格林威治时间 1970 年 01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数 PS：开始时间结束时间间距不超过 24 小时
+        /// 必填，成交时间结束时间的时间戳，指格林威治时间 1970 年 01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数 PS：开始时间结束时间间距不超过 24 小时
         /// </summary>
         [JsonProperty("end_confirm_at")]
         public long EndConfirmAt { get; set; }

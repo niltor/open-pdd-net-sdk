@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class CreateAdUnitRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 0--搜索广告,1--明星店铺,2--定向广告,3--首页Banner广告（目前只支持0，暂不支持1、2、3）
+        /// 推广类型，0-搜索推广，2-展示推广; scene type为0的时候，keywords必填，bid不用填；scene type为2的时候，keywords不用填，bid必填
         /// </summary>
         [JsonProperty("scene_type")]
         public int SceneType { get; set; }
@@ -24,6 +25,16 @@ namespace PddOpenSdk.Models.Request.Ad
         /// </summary>
         [JsonProperty("keywords")]
         public List<KeywordsRequestModel> Keywords { get; set; }
+        /// <summary>
+        /// 创意列表 [{"image_url":"123.jpg","title":"test"}]
+        /// </summary>
+        [JsonProperty("creative_list")]
+        public List<CreativeListRequestModel> CreativeList { get; set; }
+        /// <summary>
+        /// 通投单元出价，单位厘，出价需在0.10~99.0元区间内。展示推广必填
+        /// </summary>
+        [JsonProperty("bid")]
+        public long? Bid { get; set; }
         public partial class KeywordsRequestModel : PddRequestModel
         {
             /// <summary>
@@ -36,6 +47,20 @@ namespace PddOpenSdk.Models.Request.Ad
             /// </summary>
             [JsonProperty("word")]
             public string Word { get; set; }
+
+        }
+        public partial class CreativeListRequestModel : PddRequestModel
+        {
+            /// <summary>
+            /// 图片地址
+            /// </summary>
+            [JsonProperty("image_url")]
+            public string ImageUrl { get; set; }
+            /// <summary>
+            /// 标题
+            /// </summary>
+            [JsonProperty("title")]
+            public string Title { get; set; }
 
         }
 

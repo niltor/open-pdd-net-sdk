@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Erp
 {
     public partial class GetOrderNumberListIncrementRequestModel : PddRequestModel
@@ -43,16 +45,6 @@ namespace PddOpenSdk.Models.Request.Erp
         /// </summary>
         [JsonProperty("trade_type")]
         public int? TradeType { get; set; }
-        /// <summary>
-        /// group_status
-        /// </summary>
-        [JsonProperty("group_status")]
-        public int? GroupStatus { get; set; }
-        /// <summary>
-        /// confirm_status
-        /// </summary>
-        [JsonProperty("confirm_status")]
-        public int ConfirmStatus { get; set; }
 
     }
 

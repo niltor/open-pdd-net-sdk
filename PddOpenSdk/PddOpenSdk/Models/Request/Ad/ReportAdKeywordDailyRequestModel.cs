@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class ReportAdKeywordDailyRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("unit_id")]
         public long UnitId { get; set; }

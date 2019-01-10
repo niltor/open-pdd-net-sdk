@@ -1,6 +1,10 @@
-using System.Threading.Tasks;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Ad;
 using PddOpenSdk.Models.Response.Ad;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class AdApi : PddCommonApi
@@ -267,6 +271,110 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<UpdateAdPlanDiscountResponseModel> UpdateAdPlanDiscountAsync(UpdateAdPlanDiscountRequestModel updateAdPlanDiscount)
         {
             var result = await PostAsync<UpdateAdPlanDiscountRequestModel, UpdateAdPlanDiscountResponseModel>("pdd.ad.plan.discount.update", updateAdPlanDiscount);
+            return result;
+        }
+        /// <summary>
+        /// 创意历史报表数据
+        /// </summary>
+        public async Task<GetAdCreativeHistoryReportResponseModel> GetAdCreativeHistoryReportAsync(GetAdCreativeHistoryReportRequestModel getAdCreativeHistoryReport)
+        {
+            var result = await PostAsync<GetAdCreativeHistoryReportRequestModel, GetAdCreativeHistoryReportResponseModel>("pdd.ad.creative.history.report.get", getAdCreativeHistoryReport);
+            return result;
+        }
+        /// <summary>
+        /// 获取可选资源位信息（日均可竞流量）
+        /// </summary>
+        public async Task<ListAdQueryLocationBidPvResponseModel> ListAdQueryLocationBidPvAsync(ListAdQueryLocationBidPvRequestModel listAdQueryLocationBidPv)
+        {
+            var result = await PostAsync<ListAdQueryLocationBidPvRequestModel, ListAdQueryLocationBidPvResponseModel>("pdd.ad.query.location.bid.pv.list", listAdQueryLocationBidPv);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元取消资源位
+        /// </summary>
+        public async Task<BidAdDeleteLocationResponseModel> BidAdDeleteLocationAsync(BidAdDeleteLocationRequestModel bidAdDeleteLocation)
+        {
+            var result = await PostAsync<BidAdDeleteLocationRequestModel, BidAdDeleteLocationResponseModel>("pdd.ad.delete.location.bid", bidAdDeleteLocation);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元修改资源位溢价（批量）
+        /// </summary>
+        public async Task<BidAdUpdateLocationResponseModel> BidAdUpdateLocationAsync(BidAdUpdateLocationRequestModel bidAdUpdateLocation)
+        {
+            var result = await PostAsync<BidAdUpdateLocationRequestModel, BidAdUpdateLocationResponseModel>("pdd.ad.update.location.bid", bidAdUpdateLocation);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元新增资源位信息（批量）
+        /// </summary>
+        public async Task<BidAdCreateLocationResponseModel> BidAdCreateLocationAsync(BidAdCreateLocationRequestModel bidAdCreateLocation)
+        {
+            var result = await PostAsync<BidAdCreateLocationRequestModel, BidAdCreateLocationResponseModel>("pdd.ad.create.location.bid", bidAdCreateLocation);
+            return result;
+        }
+        /// <summary>
+        /// 根据推广单元id获取现有资源位列表
+        /// </summary>
+        public async Task<ListAdQueryLocationBidResponseModel> ListAdQueryLocationBidAsync(ListAdQueryLocationBidRequestModel listAdQueryLocationBid)
+        {
+            var result = await PostAsync<ListAdQueryLocationBidRequestModel, ListAdQueryLocationBidResponseModel>("pdd.ad.query.location.bid.list", listAdQueryLocationBid);
+            return result;
+        }
+        /// <summary>
+        /// 资源位历史报表数据
+        /// </summary>
+        public async Task<ReportAdQueryLocationBidHistoryResponseModel> ReportAdQueryLocationBidHistoryAsync(ReportAdQueryLocationBidHistoryRequestModel reportAdQueryLocationBidHistory)
+        {
+            var result = await PostAsync<ReportAdQueryLocationBidHistoryRequestModel, ReportAdQueryLocationBidHistoryResponseModel>("pdd.ad.query.location.bid.history.report", reportAdQueryLocationBidHistory);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元增加定向（“定向”包括兴趣点）
+        /// </summary>
+        public async Task<BidAdCreateUnitResponseModel> BidAdCreateUnitAsync(BidAdCreateUnitRequestModel bidAdCreateUnit)
+        {
+            var result = await PostAsync<BidAdCreateUnitRequestModel, BidAdCreateUnitResponseModel>("pdd.ad.create.unit.bid", bidAdCreateUnit);
+            return result;
+        }
+        /// <summary>
+        /// 【定向】用户数量预估，兴趣点查询等信息
+        /// </summary>
+        public async Task<ProfileAdBidQueryResponseModel> ProfileAdBidQueryAsync(ProfileAdBidQueryRequestModel profileAdBidQuery)
+        {
+            var result = await PostAsync<ProfileAdBidQueryRequestModel, ProfileAdBidQueryResponseModel>("pdd.ad.bid.query.profile", profileAdBidQuery);
+            return result;
+        }
+        /// <summary>
+        /// 根据推广单元id获取现有定向
+        /// </summary>
+        public async Task<ListAdQueryBidResponseModel> ListAdQueryBidAsync(ListAdQueryBidRequestModel listAdQueryBid)
+        {
+            var result = await PostAsync<ListAdQueryBidRequestModel, ListAdQueryBidResponseModel>("pdd.ad.query.bid.list", listAdQueryBid);
+            return result;
+        }
+        /// <summary>
+        /// 【定向】推广单元修改通投出价、定向溢价
+        /// </summary>
+        public async Task<BidAdUpdateResponseModel> BidAdUpdateAsync(BidAdUpdateRequestModel bidAdUpdate)
+        {
+            var result = await PostAsync<BidAdUpdateRequestModel, BidAdUpdateResponseModel>("pdd.ad.update.bid", bidAdUpdate);
+            return result;
+        }
+        /// <summary>
+        /// 定向历史报表数据
+        /// </summary>
+        public async Task<ReportAdQueryUnitBidHistoryResponseModel> ReportAdQueryUnitBidHistoryAsync(ReportAdQueryUnitBidHistoryRequestModel reportAdQueryUnitBidHistory)
+        {
+            var result = await PostAsync<ReportAdQueryUnitBidHistoryRequestModel, ReportAdQueryUnitBidHistoryResponseModel>("pdd.ad.query.unit.bid.history.report", reportAdQueryUnitBidHistory);
+            return result;
+        }
+        /// <summary>
+        /// 推广单元取消定向（不可取消通投）
+        /// </summary>
+        public async Task<BidAdDeleteResponseModel> BidAdDeleteAsync(BidAdDeleteRequestModel bidAdDelete)
+        {
+            var result = await PostAsync<BidAdDeleteRequestModel, BidAdDeleteResponseModel>("pdd.ad.delete.bid", bidAdDelete);
             return result;
         }
 

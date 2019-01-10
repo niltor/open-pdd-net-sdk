@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CommitGoodsEditGoodsRequestModel : PddRequestModel
@@ -120,27 +121,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("warm_tips")]
         public string WarmTips { get; set; }
         /// <summary>
-        /// 食品保质期，cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
-        /// </summary>
-        [JsonProperty("shelf_life")]
-        public string ShelfLife { get; set; }
-        /// <summary>
-        /// 生产日期起始时间， ; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
-        /// </summary>
-        [JsonProperty("start_production_date")]
-        public string StartProductionDate { get; set; }
-        /// <summary>
-        /// 生产许可证编号， ; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
-        /// </summary>
-        [JsonProperty("end_production_date")]
-        public string EndProductionDate { get; set; }
-        /// <summary>
-        /// 产品标准号， ; cat_id in (63,64,65,92,95,99,101,3853,3862,3867,3872,3876,3900,898,897,3993,1079; )必填
-        /// </summary>
-        [JsonProperty("production_standard_number")]
-        public string ProductionStandardNumber { get; set; }
-        /// <summary>
-        /// sku对象列表
+        /// sku对象列表,实例：[{; 	"is_onsale": 1,; 	"limit_quantity": 999,; 	"price": "2200",; 	"weight": 1000,; 	"multi_price": "1900",; 	"thumb_url": "http://t06img.yangkeduo.com/images/2018-04-15/ced035033b5d40b589140af882621c03.jpg",; 	"out_sku_sn": "L",; 	"quantity": 100,; 	"spec_id_list": "[25]",; 	"oversea_sku": {; 		"measurement_code": "计量单位编码",; 		"taxation": "税费",; 		"specifications": "规格"; 	}; }]
         /// </summary>
         [JsonProperty("sku_list")]
         public List<SkuListRequestModel> SkuList { get; set; }
@@ -195,10 +176,15 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
         /// <summary>
-        /// 产品标准号
+        /// oversea_type
         /// </summary>
-        [JsonProperty("production_license")]
-        public string ProductionLicense { get; set; }
+        [JsonProperty("oversea_type")]
+        public int? OverseaType { get; set; }
+        /// <summary>
+        /// {; 	"consumption_tax_rate": 1,; 	"value_added_tax_rate": 9,; 	"hs_code": "2200",; 	"customs_broker": "sss",; 	"customs_declaration_method": 1,; 	"bonded_warehouse": "sss",; 	"bonded_warehouse_key": "pp"; }
+        /// </summary>
+        [JsonProperty("oversea_goods")]
+        public OverseaGoodsRequestModel OverseaGoods { get; set; }
         public partial class SkuListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -246,6 +232,30 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("is_onsale")]
             public int IsOnsale { get; set; }
+            /// <summary>
+            /// oversea_sku
+            /// </summary>
+            [JsonProperty("oversea_sku")]
+            public OverseaSkuRequestModel OverseaSku { get; set; }
+            public partial class OverseaSkuRequestModel : PddRequestModel
+            {
+                /// <summary>
+                /// 计量单位编码，从接口pdd.gooods.sku.measurement.list获取code
+                /// </summary>
+                [JsonProperty("measurement_code")]
+                public string MeasurementCode { get; set; }
+                /// <summary>
+                /// 税费
+                /// </summary>
+                [JsonProperty("taxation")]
+                public int Taxation { get; set; }
+                /// <summary>
+                /// 规格
+                /// </summary>
+                [JsonProperty("specifications")]
+                public string Specifications { get; set; }
+
+            }
 
         }
         public partial class GoodsPropertiesRequestModel : PddRequestModel
@@ -305,6 +315,35 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("value_unit")]
             public string ValueUnit { get; set; }
+
+        }
+        public partial class OverseaGoodsRequestModel : PddRequestModel
+        {
+            /// <summary>
+            /// 消费税率
+            /// </summary>
+            [JsonProperty("consumption_tax_rate")]
+            public int? ConsumptionTaxRate { get; set; }
+            /// <summary>
+            /// 增值税率
+            /// </summary>
+            [JsonProperty("value_added_tax_rate")]
+            public int? ValueAddedTaxRate { get; set; }
+            /// <summary>
+            /// 海关编号
+            /// </summary>
+            [JsonProperty("hs_code")]
+            public string HsCode { get; set; }
+            /// <summary>
+            /// 清关服务商
+            /// </summary>
+            [JsonProperty("customs_broker")]
+            public string CustomsBroker { get; set; }
+            /// <summary>
+            /// 保税仓唯一标识
+            /// </summary>
+            [JsonProperty("bonded_warehouse_key")]
+            public string BondedWarehouseKey { get; set; }
 
         }
 

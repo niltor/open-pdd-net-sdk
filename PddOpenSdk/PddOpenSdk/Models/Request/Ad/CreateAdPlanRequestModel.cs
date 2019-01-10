@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class CreateAdPlanRequestModel : PddRequestModel
@@ -14,10 +16,29 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("plan_name")]
         public string PlanName { get; set; }
         /// <summary>
-        /// 单日消耗，单位厘;上限不能超过1000000元，单日消耗上限不能低于100元
+        /// 单日消耗，单位厘;上限不能超过1000000元，单日消耗上限不能低于100元 , 默认不限额，即1000000 元
         /// </summary>
         [JsonProperty("max_cost")]
-        public long MaxCost { get; set; }
+        public long? MaxCost { get; set; }
+        /// <summary>
+        /// List<JsonObject> 的json string. 示例：[{"rate":1000,"index":12},{"rate":1000,"index":13}]
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<DiscountsRequestModel> Discounts { get; set; }
+        public partial class DiscountsRequestModel : PddRequestModel
+        {
+            /// <summary>
+            /// 折扣率，1000 表示 100.0%，0 表示不投放，自定义范围 500 ~ 3000（10的倍数）
+            /// </summary>
+            [JsonProperty("rate")]
+            public int Rate { get; set; }
+            /// <summary>
+            /// 时间段索引，0 ~ 23
+            /// </summary>
+            [JsonProperty("index")]
+            public int Index { get; set; }
+
+        }
 
     }
 

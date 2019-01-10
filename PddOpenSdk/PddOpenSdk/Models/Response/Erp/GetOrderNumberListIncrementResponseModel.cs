@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Erp
 {
     public partial class GetOrderNumberListIncrementResponseModel : PddResponseModel
@@ -54,7 +55,7 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("card_info_list")]
                 public List<CardInfoListResponseModel> CardInfoList { get; set; }
                 /// <summary>
-                /// 0,不支持送货、1, 送货入户不安装、2, 送货入户并安装
+                /// 送货入户并安装服务 0-不支持送货，1-送货入户不安装，2-送货入户并安装
                 /// </summary>
                 [JsonProperty("home_delivery_type")]
                 public int? HomeDeliveryType { get; set; }
@@ -64,12 +65,12 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("free_sf")]
                 public int? FreeSf { get; set; }
                 /// <summary>
-                /// 成团状态：0：拼团中、1：已成团、2：团失败、-1：全部
+                /// 成团状态：0：拼团中、1：已成团、2：团失败
                 /// </summary>
                 [JsonProperty("group_status")]
                 public int? GroupStatus { get; set; }
                 /// <summary>
-                /// 成交状态：0：未成交、1：已成交、2：已取消、-1：全部
+                /// 成交状态：0：未成交、1：已成交、2：已取消
                 /// </summary>
                 [JsonProperty("confirm_status")]
                 public int? ConfirmStatus { get; set; }
@@ -114,7 +115,7 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("after_sales_status")]
                 public int? AfterSalesStatus { get; set; }
                 /// <summary>
-                /// 是否为预售商品 表示是 0表示否
+                /// 是否为预售商品 1表示是 0表示否
                 /// </summary>
                 [JsonProperty("is_pre_sale")]
                 public int? IsPreSale { get; set; }
@@ -124,7 +125,7 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("pre_sale_time")]
                 public string PreSaleTime { get; set; }
                 /// <summary>
-                /// 1代表有 0代表无
+                /// 发票申请,1代表有 0代表无
                 /// </summary>
                 [JsonProperty("invoice_status")]
                 public int? InvoiceStatus { get; set; }
@@ -159,12 +160,12 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("cat_id_4")]
                 public long? CatId4 { get; set; }
                 /// <summary>
-                /// 缺货处理状态
+                /// 缺货处理状态，-1:无缺货处理 0: 缺货待处理 1缺货已处理
                 /// </summary>
                 [JsonProperty("stock_out_handle_status")]
                 public int? StockOutHandleStatus { get; set; }
                 /// <summary>
-                /// 是否缺货
+                /// 是否缺货 0-无缺货处理 1： 有缺货处理
                 /// </summary>
                 [JsonProperty("is_stock_out")]
                 public int? IsStockOut { get; set; }
@@ -204,7 +205,7 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("order_sn")]
                 public string OrderSn { get; set; }
                 /// <summary>
-                /// 成团时间
+                /// 成交时间
                 /// </summary>
                 [JsonProperty("confirm_time")]
                 public string ConfirmTime { get; set; }
@@ -274,7 +275,7 @@ namespace PddOpenSdk.Models.Response.Erp
                 [JsonProperty("pay_no")]
                 public string PayNo { get; set; }
                 /// <summary>
-                /// 支付方式，枚举值：QQ,WEIXIN,ALIPAY
+                /// 支付方式，枚举值：QQ,WEIXIN,ALIPAY,LIANLIANPAY
                 /// </summary>
                 [JsonProperty("pay_type")]
                 public string PayType { get; set; }

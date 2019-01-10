@@ -32,7 +32,7 @@ namespace Console
             // 名称转为Pascal命名
             name = Function.ToTitleCase(name.Replace("_", " "))?.Replace(" ", "");
 
-            // 是否为数组 
+            // 是否为数组
             if (type.Contains("[]"))
             {
                 isArray = true;

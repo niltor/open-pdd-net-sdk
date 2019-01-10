@@ -1,6 +1,10 @@
-using System.Threading.Tasks;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Erp;
 using PddOpenSdk.Models.Response.Erp;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class ErpApi : PddCommonApi
@@ -22,7 +26,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 订单列表查询接口（根据成团时间）
+        /// 订单列表查询接口（根据成交时间）
         /// </summary>
         public async Task<GetOrderListResponseModel> GetOrderListAsync(GetOrderListRequestModel getOrderList)
         {

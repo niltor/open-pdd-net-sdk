@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ddkall
 {
     public partial class GenerateDdkOauthRpPromUrlRequestModel : PddRequestModel
@@ -34,6 +35,11 @@ namespace PddOpenSdk.Models.Request.Ddkall
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
+        /// <summary>
+        /// 是否生成小程序推广
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
 
     }
 

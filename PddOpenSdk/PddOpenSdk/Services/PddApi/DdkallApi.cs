@@ -6,19 +6,19 @@ namespace PddOpenSdk.Services.PddApi
     public class DdkallApi : PddCommonApi
     {
         /// <summary>
+        /// 查询所有授权的多多客染色订单
+        /// </summary>
+        public async Task<GetDdkAllColorOrderListIncreResponseModel> GetDdkAllColorOrderListIncreAsync(GetDdkAllColorOrderListIncreRequestModel getDdkAllColorOrderListIncre)
+        {
+            var result = await PostAsync<GetDdkAllColorOrderListIncreRequestModel, GetDdkAllColorOrderListIncreResponseModel>("pdd.ddk.all.color.order.list.incre.get", getDdkAllColorOrderListIncre);
+            return result;
+        }
+        /// <summary>
         /// 查询所有授权的多多客订单
         /// </summary>
         public async Task<GetDdkAllOrderListIncrementResponseModel> GetDdkAllOrderListIncrementAsync(GetDdkAllOrderListIncrementRequestModel getDdkAllOrderListIncrement)
         {
             var result = await PostAsync<GetDdkAllOrderListIncrementRequestModel, GetDdkAllOrderListIncrementResponseModel>("pdd.ddk.all.order.list.increment.get", getDdkAllOrderListIncrement);
-            return result;
-        }
-        /// <summary>
-        /// 获取多多客拉新账单
-        /// </summary>
-        public async Task<GetDdkOauthAppNewBillListResponseModel> GetDdkOauthAppNewBillListAsync(GetDdkOauthAppNewBillListRequestModel getDdkOauthAppNewBillList)
-        {
-            var result = await PostAsync<GetDdkOauthAppNewBillListRequestModel, GetDdkOauthAppNewBillListResponseModel>("pdd.ddk.oauth.app.new.bill.list.get", getDdkOauthAppNewBillList);
             return result;
         }
         /// <summary>
@@ -94,14 +94,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 按照更新时间段增量同步推广订单信息
-        /// </summary>
-        public async Task<GetDdkOauthOrderListIncrementResponseModel> GetDdkOauthOrderListIncrementAsync(GetDdkOauthOrderListIncrementRequestModel getDdkOauthOrderListIncrement)
-        {
-            var result = await PostAsync<GetDdkOauthOrderListIncrementRequestModel, GetDdkOauthOrderListIncrementResponseModel>("pdd.ddk.oauth.order.list.increment.get", getDdkOauthOrderListIncrement);
-            return result;
-        }
-        /// <summary>
         /// 拼多多主站频道推广接口
         /// </summary>
         public async Task<GenDdkOauthResourceUrlResponseModel> GenDdkOauthResourceUrlAsync(GenDdkOauthResourceUrlRequestModel genDdkOauthResourceUrl)
@@ -123,6 +115,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkOauthThemePromUrlResponseModel> GenerateDdkOauthThemePromUrlAsync(GenerateDdkOauthThemePromUrlRequestModel generateDdkOauthThemePromUrl)
         {
             var result = await PostAsync<GenerateDdkOauthThemePromUrlRequestModel, GenerateDdkOauthThemePromUrlResponseModel>("pdd.ddk.oauth.theme.prom.url.generate", generateDdkOauthThemePromUrl);
+            return result;
+        }
+        /// <summary>
+        /// 多多客工具获取爆款排行商品接口
+        /// </summary>
+        public async Task<QueryDdkOauthTopGoodsListResponseModel> QueryDdkOauthTopGoodsListAsync(QueryDdkOauthTopGoodsListRequestModel queryDdkOauthTopGoodsList)
+        {
+            var result = await PostAsync<QueryDdkOauthTopGoodsListRequestModel, QueryDdkOauthTopGoodsListResponseModel>("pdd.ddk.oauth.top.goods.list.query", queryDdkOauthTopGoodsList);
             return result;
         }
         /// <summary>

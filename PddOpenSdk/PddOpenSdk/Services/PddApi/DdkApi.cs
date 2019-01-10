@@ -1,6 +1,10 @@
-using System.Threading.Tasks;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Response.Ddk;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class DdkApi : PddCommonApi
@@ -91,14 +95,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkThemePromUrlResponseModel> GenerateDdkThemePromUrlAsync(GenerateDdkThemePromUrlRequestModel generateDdkThemePromUrl)
         {
             var result = await PostAsync<GenerateDdkThemePromUrlRequestModel, GenerateDdkThemePromUrlResponseModel>("pdd.ddk.theme.prom.url.generate", generateDdkThemePromUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客拉新账单
-        /// </summary>
-        public async Task<GetDdkAppNewBillListResponseModel> GetDdkAppNewBillListAsync(GetDdkAppNewBillListRequestModel getDdkAppNewBillList)
-        {
-            var result = await PostAsync<GetDdkAppNewBillListRequestModel, GetDdkAppNewBillListResponseModel>("pdd.ddk.app.new.bill.list.get", getDdkAppNewBillList);
             return result;
         }
         /// <summary>
@@ -203,6 +199,22 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetDdkMerchantListResponseModel> GetDdkMerchantListAsync(GetDdkMerchantListRequestModel getDdkMerchantList)
         {
             var result = await PostAsync<GetDdkMerchantListRequestModel, GetDdkMerchantListResponseModel>("pdd.ddk.merchant.list.get", getDdkMerchantList);
+            return result;
+        }
+        /// <summary>
+        /// 新增染色补贴订单增量查询接口
+        /// </summary>
+        public async Task<GetDdkColorOrderIncrementResponseModel> GetDdkColorOrderIncrementAsync(GetDdkColorOrderIncrementRequestModel getDdkColorOrderIncrement)
+        {
+            var result = await PostAsync<GetDdkColorOrderIncrementRequestModel, GetDdkColorOrderIncrementResponseModel>("pdd.ddk.color.order.increment.get", getDdkColorOrderIncrement);
+            return result;
+        }
+        /// <summary>
+        /// 多多客获取爆款排行商品接口
+        /// </summary>
+        public async Task<QueryDdkTopGoodsListResponseModel> QueryDdkTopGoodsListAsync(QueryDdkTopGoodsListRequestModel queryDdkTopGoodsList)
+        {
+            var result = await PostAsync<QueryDdkTopGoodsListRequestModel, QueryDdkTopGoodsListResponseModel>("pdd.ddk.top.goods.list.query", queryDdkTopGoodsList);
             return result;
         }
 

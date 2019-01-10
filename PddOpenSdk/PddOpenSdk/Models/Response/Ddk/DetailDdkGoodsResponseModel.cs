@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class DetailDdkGoodsResponseModel : PddResponseModel
@@ -18,6 +19,51 @@ namespace PddOpenSdk.Models.Response.Ddk
             public List<GoodsDetailsResponseModel> GoodsDetails { get; set; }
             public partial class GoodsDetailsResponseModel : PddResponseModel
             {
+                /// <summary>
+                /// 是否有店铺券
+                /// </summary>
+                [JsonProperty("has_mall_coupon")]
+                public bool? HasMallCoupon { get; set; }
+                /// <summary>
+                /// 店铺优惠券id
+                /// </summary>
+                [JsonProperty("mall_coupon_id")]
+                public long? MallCouponId { get; set; }
+                /// <summary>
+                /// 店铺折扣
+                /// </summary>
+                [JsonProperty("mall_coupon_discount_pct")]
+                public int? MallCouponDiscountPct { get; set; }
+                /// <summary>
+                /// 最小使用金额
+                /// </summary>
+                [JsonProperty("mall_coupon_min_order_amount")]
+                public int? MallCouponMinOrderAmount { get; set; }
+                /// <summary>
+                /// 最大使用金额
+                /// </summary>
+                [JsonProperty("mall_coupon_max_discount_amount")]
+                public int? MallCouponMaxDiscountAmount { get; set; }
+                /// <summary>
+                /// 店铺券总量
+                /// </summary>
+                [JsonProperty("mall_coupon_total_quantity")]
+                public long? MallCouponTotalQuantity { get; set; }
+                /// <summary>
+                /// 店铺券余量
+                /// </summary>
+                [JsonProperty("mall_coupon_remain_quantity")]
+                public long? MallCouponRemainQuantity { get; set; }
+                /// <summary>
+                /// 店铺券使用开始时间
+                /// </summary>
+                [JsonProperty("mall_coupon_start_time")]
+                public long? MallCouponStartTime { get; set; }
+                /// <summary>
+                /// 店铺券使用结束时间
+                /// </summary>
+                [JsonProperty("mall_coupon_end_time")]
+                public long? MallCouponEndTime { get; set; }
                 /// <summary>
                 /// 参与多多进宝的商品ID
                 /// </summary>

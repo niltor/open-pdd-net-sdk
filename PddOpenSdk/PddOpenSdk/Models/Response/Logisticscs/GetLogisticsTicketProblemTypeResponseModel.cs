@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Logisticscs
 {
     public partial class GetLogisticsTicketProblemTypeResponseModel : PddResponseModel

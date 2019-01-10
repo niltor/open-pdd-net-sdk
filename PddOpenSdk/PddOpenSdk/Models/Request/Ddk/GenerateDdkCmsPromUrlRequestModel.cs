@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkCmsPromUrlRequestModel : PddRequestModel
@@ -45,7 +46,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("we_app_web_view_url")]
         public bool WeAppWebViewUrl { get; set; }
         /// <summary>
-        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 3, "默认商城"；4,"PC端专属商城"；非必填 ,默认是3,
+        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"；5，“赚多多币兑现金”；不传值为默认商城；
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }

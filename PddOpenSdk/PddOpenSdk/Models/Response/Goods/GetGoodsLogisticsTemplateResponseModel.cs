@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsLogisticsTemplateResponseModel : PddResponseModel
@@ -24,10 +25,20 @@ namespace PddOpenSdk.Models.Response.Goods
             public partial class LogisticsTemplateListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 送货入户并安装服务
+                /// 发货地省份id
                 /// </summary>
-                [JsonProperty("additional_service_type")]
-                public int? AdditionalServiceType { get; set; }
+                [JsonProperty("province_id")]
+                public int? ProvinceId { get; set; }
+                /// <summary>
+                /// 发货地城市ID
+                /// </summary>
+                [JsonProperty("city_id")]
+                public int? CityId { get; set; }
+                /// <summary>
+                /// 发货地区ID
+                /// </summary>
+                [JsonProperty("district_id")]
+                public int? DistrictId { get; set; }
                 /// <summary>
                 /// 是否顺丰包邮，1-是 0-否
                 /// </summary>
@@ -53,16 +64,6 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("cost_type")]
                 public int? CostType { get; set; }
-                /// <summary>
-                /// 是否送货上门，对于包邮地区：true-商品包邮且送货上门，false-商品包邮但不送货上门
-                /// </summary>
-                [JsonProperty("free_deliver_house")]
-                public bool? FreeDeliverHouse { get; set; }
-                /// <summary>
-                /// 送货上门地区列表
-                /// </summary>
-                [JsonProperty("free_deliver_house_area_list")]
-                public List<FreeDeliverHouseAreaListResponseModel> FreeDeliverHouseAreaList { get; set; }
                 /// <summary>
                 /// 包邮省份对象
                 /// </summary>
@@ -129,40 +130,6 @@ namespace PddOpenSdk.Models.Response.Goods
                         public int? ProvinceId { get; set; }
 
                     }
-
-                }
-                public partial class FreeDeliverHouseAreaListResponseModel : PddResponseModel
-                {
-                    /// <summary>
-                    /// 包邮送货上门的城区ID
-                    /// </summary>
-                    [JsonProperty("town_id")]
-                    public int? TownId { get; set; }
-                    /// <summary>
-                    /// 包邮送货上门的城市ID
-                    /// </summary>
-                    [JsonProperty("city_id")]
-                    public int? CityId { get; set; }
-                    /// <summary>
-                    /// 包邮送货上门的省份ID
-                    /// </summary>
-                    [JsonProperty("province_id")]
-                    public int? ProvinceId { get; set; }
-                    /// <summary>
-                    /// 包邮送货上门的省份
-                    /// </summary>
-                    [JsonProperty("province")]
-                    public string Province { get; set; }
-                    /// <summary>
-                    /// 包邮送货上门的城市
-                    /// </summary>
-                    [JsonProperty("city")]
-                    public string City { get; set; }
-                    /// <summary>
-                    /// 包邮送货上门的城区
-                    /// </summary>
-                    [JsonProperty("town")]
-                    public string Town { get; set; }
 
                 }
                 public partial class FreeProvinceListResponseModel : PddResponseModel

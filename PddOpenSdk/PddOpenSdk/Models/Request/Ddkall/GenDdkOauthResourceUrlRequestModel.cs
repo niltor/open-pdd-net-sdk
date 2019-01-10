@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ddkall
 {
     public partial class GenDdkOauthResourceUrlRequestModel : PddRequestModel
@@ -9,7 +11,7 @@ namespace PddOpenSdk.Models.Request.Ddkall
         [JsonProperty("pid")]
         public string Pid { get; set; }
         /// <summary>
-        /// 频道来源：4-限时秒杀,39997-充值中心, 39998-转链type
+        /// 频道来源：4-限时秒杀,39997-充值中心, 39998-转链type，39999-电器城
         /// </summary>
         [JsonProperty("resource_type")]
         public int? ResourceType { get; set; }

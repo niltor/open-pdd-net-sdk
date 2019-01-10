@@ -4,7 +4,7 @@ namespace PddOpenSdk.Models.Request.Stock
     public partial class MoveStockWareRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("stock_move_order_action_dto")]
         public StockMoveOrderActionDtoRequestModel StockMoveOrderActionDto { get; set; }

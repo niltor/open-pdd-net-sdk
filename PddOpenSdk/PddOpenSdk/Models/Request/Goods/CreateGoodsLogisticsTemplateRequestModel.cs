@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CreateGoodsLogisticsTemplateRequestModel : PddRequestModel
@@ -15,25 +16,30 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("free_province_list")]
         public List<FreeProvinceListRequestModel> FreeProvinceList { get; set; }
         /// <summary>
-        /// 送货入户区域
-        /// </summary>
-        [JsonProperty("free_deliver_house_area_list")]
-        public List<FreeDeliverHouseAreaListRequestModel> FreeDeliverHouseAreaList { get; set; }
-        /// <summary>
         /// 计费方式，0-按件计费，1-按重量计费
         /// </summary>
         [JsonProperty("cost_type")]
         public int CostType { get; set; }
         /// <summary>
-        /// 是否送货入户
-        /// </summary>
-        [JsonProperty("free_deliver_house")]
-        public bool FreeDeliverHouse { get; set; }
-        /// <summary>
         /// 运费模板名称
         /// </summary>
         [JsonProperty("template_name")]
         public string TemplateName { get; set; }
+        /// <summary>
+        /// 发货地省份id
+        /// </summary>
+        [JsonProperty("province_id")]
+        public int? ProvinceId { get; set; }
+        /// <summary>
+        /// 发货地城市id
+        /// </summary>
+        [JsonProperty("city_id")]
+        public int? CityId { get; set; }
+        /// <summary>
+        /// 发货地区id
+        /// </summary>
+        [JsonProperty("district_id")]
+        public int? DistrictId { get; set; }
         public partial class CostTemplateListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -99,25 +105,6 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("province_id")]
             public int ProvinceId { get; set; }
-
-        }
-        public partial class FreeDeliverHouseAreaListRequestModel : PddRequestModel
-        {
-            /// <summary>
-            /// 省份ID
-            /// </summary>
-            [JsonProperty("province_id")]
-            public int ProvinceId { get; set; }
-            /// <summary>
-            /// 城市ID
-            /// </summary>
-            [JsonProperty("city_id")]
-            public int CityId { get; set; }
-            /// <summary>
-            /// 城区ID
-            /// </summary>
-            [JsonProperty("town_id")]
-            public int TownId { get; set; }
 
         }
 

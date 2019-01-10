@@ -18,7 +18,7 @@
     public enum ErrorCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         E1000,
 

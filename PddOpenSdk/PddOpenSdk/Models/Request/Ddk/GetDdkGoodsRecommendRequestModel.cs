@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GetDdkGoodsRecommendRequestModel : PddRequestModel
@@ -18,6 +20,16 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }
+        /// <summary>
+        /// 推广位id
+        /// </summary>
+        [JsonProperty("pid")]
+        public string Pid { get; set; }
+        /// <summary>
+        /// 自定义参数
+        /// </summary>
+        [JsonProperty("custom_parameters")]
+        public string CustomParameters { get; set; }
 
     }
 

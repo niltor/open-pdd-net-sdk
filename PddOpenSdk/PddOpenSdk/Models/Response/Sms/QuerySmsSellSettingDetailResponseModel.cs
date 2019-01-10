@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Sms
 {
     public partial class QuerySmsSellSettingDetailResponseModel : PddResponseModel
@@ -87,8 +88,8 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 人群
                 /// </summary>
                 [JsonProperty("crowd")]
-                public CrowdPersonResponseModel Crowd { get; set; }
-                public partial class CrowdPersonResponseModel : PddResponseModel
+                public CrowdPeopleResponseModel Crowd { get; set; }
+                public partial class CrowdPeopleResponseModel : PddResponseModel
                 {
                     /// <summary>
                     /// 定位类型

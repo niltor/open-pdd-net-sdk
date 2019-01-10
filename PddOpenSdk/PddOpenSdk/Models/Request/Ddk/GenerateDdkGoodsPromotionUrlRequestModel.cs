@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkGoodsPromotionUrlRequestModel : PddRequestModel
@@ -44,6 +45,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("zs_duo_id")]
         public long? ZsDuoId { get; set; }
+        /// <summary>
+        /// 是否生成小程序推广
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
 
     }
 

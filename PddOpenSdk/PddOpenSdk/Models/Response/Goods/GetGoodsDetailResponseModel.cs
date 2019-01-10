@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsDetailResponseModel : PddResponseModel
@@ -12,45 +13,15 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsDetailGetResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 生产开始日期
+            /// 短标题，示例：新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
             /// </summary>
-            [JsonProperty("start_production_date")]
-            public long? StartProductionDate { get; set; }
-            /// <summary>
-            /// 食品保质期
-            /// </summary>
-            [JsonProperty("shelf_life")]
-            public long? ShelfLife { get; set; }
-            /// <summary>
-            /// 产品标准号
-            /// </summary>
-            [JsonProperty("production_standard_number")]
-            public string ProductionStandardNumber { get; set; }
-            /// <summary>
-            /// 产品标准号
-            /// </summary>
-            [JsonProperty("production_license")]
-            public string ProductionLicense { get; set; }
+            [JsonProperty("tiny_name")]
+            public string TinyName { get; set; }
             /// <summary>
             /// 是否支持正品发票；0-不支持、1-支持
             /// </summary>
             [JsonProperty("invoice_status")]
             public int? InvoiceStatus { get; set; }
-            /// <summary>
-            /// 服饰面料
-            /// </summary>
-            [JsonProperty("fabric_id")]
-            public int? FabricId { get; set; }
-            /// <summary>
-            /// 成分含量
-            /// </summary>
-            [JsonProperty("fabric_content_id")]
-            public int? FabricContentId { get; set; }
-            /// <summary>
-            /// 生产结束日期
-            /// </summary>
-            [JsonProperty("end_production_date")]
-            public long? EndProductionDate { get; set; }
             /// <summary>
             /// 商品属性列表
             /// </summary>
@@ -121,11 +92,6 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("goods_desc")]
             public string GoodsDesc { get; set; }
-            /// <summary>
-            /// 商品短标题
-            /// </summary>
-            [JsonProperty("tiny_name")]
-            public string TinyName { get; set; }
             /// <summary>
             /// 保税仓
             /// </summary>
@@ -216,6 +182,16 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("second_hand")]
             public int? SecondHand { get; set; }
+            /// <summary>
+            /// oversea_type
+            /// </summary>
+            [JsonProperty("oversea_type")]
+            public int? OverseaType { get; set; }
+            /// <summary>
+            /// oversea_goods
+            /// </summary>
+            [JsonProperty("oversea_goods")]
+            public OverseaGoodsResponseModel OverseaGoods { get; set; }
             public partial class GoodsPropertyListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -297,6 +273,11 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("out_sku_sn")]
                 public string OutSkuSn { get; set; }
+                /// <summary>
+                /// oversea_sku
+                /// </summary>
+                [JsonProperty("oversea_sku")]
+                public OverseaSkuResponseModel OverseaSku { get; set; }
                 public partial class SpecResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -321,6 +302,54 @@ namespace PddOpenSdk.Models.Response.Goods
                     public string SpecName { get; set; }
 
                 }
+                public partial class OverseaSkuResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 计量单位编码，从接口pdd.gooods.sku.measurement.list获取desc
+                    /// </summary>
+                    [JsonProperty("measurement_code")]
+                    public string MeasurementCode { get; set; }
+                    /// <summary>
+                    /// 税费
+                    /// </summary>
+                    [JsonProperty("taxation")]
+                    public int? Taxation { get; set; }
+                    /// <summary>
+                    /// 规格
+                    /// </summary>
+                    [JsonProperty("specifications")]
+                    public string Specifications { get; set; }
+
+                }
+
+            }
+            public partial class OverseaGoodsResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 消费税率
+                /// </summary>
+                [JsonProperty("consumption_tax_rate")]
+                public int? ConsumptionTaxRate { get; set; }
+                /// <summary>
+                /// 增值税率
+                /// </summary>
+                [JsonProperty("value_added_tax_rate")]
+                public int? ValueAddedTaxRate { get; set; }
+                /// <summary>
+                /// 海关编号
+                /// </summary>
+                [JsonProperty("hs_code")]
+                public string HsCode { get; set; }
+                /// <summary>
+                /// 清关服务商
+                /// </summary>
+                [JsonProperty("customs_broker")]
+                public string CustomsBroker { get; set; }
+                /// <summary>
+                /// 保税仓唯一标识
+                /// </summary>
+                [JsonProperty("bonded_warehouse_key")]
+                public string BondedWarehouseKey { get; set; }
 
             }
 

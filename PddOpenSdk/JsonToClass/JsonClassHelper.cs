@@ -166,10 +166,10 @@ namespace JsonCSharpClassGenerator
         {
             var value = GetJToken<JObject>(token);
             if (value == null) return null;
-  
-                var dict = new Dictionary<string, T>();
 
-                return dict;
+            var dict = new Dictionary<string, T>();
+
+            return dict;
         }
 
         public static Array ReadArray<K>(JArray jArray, ValueReader<K> reader, Type type)

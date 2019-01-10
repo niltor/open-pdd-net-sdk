@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkLotteryNewListResponseModel : PddResponseModel

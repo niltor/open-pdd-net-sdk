@@ -1,6 +1,10 @@
-using System.Threading.Tasks;
+using PddOpenSdk.Models.Request;
+using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Virtual;
 using PddOpenSdk.Models.Response.Virtual;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class VirtualApi : PddCommonApi
