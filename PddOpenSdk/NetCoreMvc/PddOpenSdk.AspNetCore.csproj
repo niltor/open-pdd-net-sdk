@@ -14,14 +14,14 @@
         <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
         <PackageReleaseNotes>拼多多SDK ASP.NET Core依赖包
 已更新同步到最新！</PackageReleaseNotes>
-        <AssemblyVersion>0.0.1.0</AssemblyVersion>
-        <FileVersion>0.0.1.0</FileVersion>
+        <AssemblyVersion>0.1.0.0</AssemblyVersion>
+        <FileVersion>0.1.0.0</FileVersion>
         <RepositoryType>git</RepositoryType>
         <PackageTags>aspnetcore,sdk,pdd,拼多多</PackageTags>
         <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
         <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-        <Version>0.2.0</Version>
+        <Version>1.0.0</Version>
 
     </PropertyGroup>
 
