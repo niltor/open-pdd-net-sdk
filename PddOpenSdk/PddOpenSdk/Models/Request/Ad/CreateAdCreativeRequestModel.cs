@@ -23,7 +23,7 @@ namespace PddOpenSdk.Models.Request.Ad
         public partial class CreativeRequestModel : PddRequestModel
         {
             /// <summary>
-            ///
+            /// 
             /// </summary>
             [JsonProperty("title")]
             public string Title { get; set; }

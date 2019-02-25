@@ -1,6 +1,4 @@
 using Console;
-using Msdev.JsonToClass;
-using Msdev.JsonToClass.CodeWriters;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -216,45 +214,6 @@ $@"/// <summary>
             content += childClass + "\r\n";
             content += "}\r\n";
             return content;
-        }
-
-        /// <summary>
-        /// json转class
-        /// </summary>
-        /// <param name="json"></param>
-        /// <returns></returns>
-        protected string JsonToClass(string className, string json, string dir = "")
-        {
-            if (string.IsNullOrEmpty(json)) return default;
-            if (!string.IsNullOrEmpty(dir)) dir = "." + dir;
-            var gen = new JsonClassGenerator
-            {
-                UsePascalCase = true,
-                MainClass = className,
-                UseNestedClasses = false,
-                UseProperties = true,
-                CodeWriter = new CSharpCodeWriter(),
-                //Namespace = "PddOpenSdk.Models.Response",
-                Example = json,
-                ExamplesInDocumentation = true
-            };
-            using (var sw = new StringWriter())
-            {
-
-                try
-                {
-                    gen.OutputStream = sw;
-                    gen.GenerateClasses();
-                    sw.Flush();
-                    return sw.ToString();
-                }
-                catch (System.Exception)
-                {
-                    System.Console.WriteLine(className);
-                    return default;
-                }
-
-            }
         }
 
         /// <summary>

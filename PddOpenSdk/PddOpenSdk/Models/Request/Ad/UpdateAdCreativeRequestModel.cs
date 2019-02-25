@@ -6,7 +6,7 @@ namespace PddOpenSdk.Models.Request.Ad
     public partial class UpdateAdCreativeRequestModel : PddRequestModel
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("creative_id")]
         public long CreativeId { get; set; }
@@ -28,7 +28,7 @@ namespace PddOpenSdk.Models.Request.Ad
             [JsonProperty("image_url")]
             public string ImageUrl { get; set; }
             /// <summary>
-            ///
+            /// 
             /// </summary>
             [JsonProperty("title")]
             public string Title { get; set; }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -21,7 +21,7 @@
         <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
         <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.2</Version>
 
     </PropertyGroup>
 

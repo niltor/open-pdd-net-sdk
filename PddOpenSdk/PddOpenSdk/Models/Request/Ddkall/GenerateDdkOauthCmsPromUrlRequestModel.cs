@@ -46,7 +46,7 @@ namespace PddOpenSdk.Models.Request.Ddkall
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
         /// <summary>
-        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"；5，“赚多多币兑现金”；不传值为默认商城；
+        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"；5, "养宝宝兑现金"；不传值为默认商城
         /// </summary>
         [JsonProperty("channel_type")]
         public int ChannelType { get; set; }

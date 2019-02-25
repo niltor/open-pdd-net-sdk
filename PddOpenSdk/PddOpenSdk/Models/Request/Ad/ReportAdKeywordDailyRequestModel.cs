@@ -6,7 +6,7 @@ namespace PddOpenSdk.Models.Request.Ad
     public partial class ReportAdKeywordDailyRequestModel : PddRequestModel
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("unit_id")]
         public long UnitId { get; set; }

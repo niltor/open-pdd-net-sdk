@@ -30,6 +30,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("page")]
         public int? Page { get; set; }
+        /// <summary>
+        /// 商家外部商品编码，支持多个，用逗号隔开，最多10个
+        /// </summary>
+        [JsonProperty("outer_goods_id")]
+        public string OuterGoodsId { get; set; }
 
     }
 

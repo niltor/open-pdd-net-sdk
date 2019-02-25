@@ -20,11 +20,6 @@ namespace PddOpenSdk.Models.Response.Ddk
             public partial class GoodsDetailsResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 是否有店铺券
-                /// </summary>
-                [JsonProperty("has_mall_coupon")]
-                public bool? HasMallCoupon { get; set; }
-                /// <summary>
                 /// 店铺优惠券id
                 /// </summary>
                 [JsonProperty("mall_coupon_id")]

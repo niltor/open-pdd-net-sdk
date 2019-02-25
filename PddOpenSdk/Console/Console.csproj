@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonToClass\JsonToClass.csproj" />
     <ProjectReference Include="..\PddOpenSdk\PddOpenSdk.csproj" />
   </ItemGroup>
 

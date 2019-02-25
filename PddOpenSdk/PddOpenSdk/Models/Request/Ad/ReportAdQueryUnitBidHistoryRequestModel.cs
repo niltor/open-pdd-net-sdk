@@ -41,7 +41,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("target_types")]
         public string TargetTypes { get; set; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("page_request")]
         public PageRequestRequestModel PageRequest { get; set; }

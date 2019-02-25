@@ -82,22 +82,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 获取服饰成分含量信息
-        /// </summary>
-        public async Task<GetGoodsFabricContentResponseModel> GetGoodsFabricContentAsync(GetGoodsFabricContentRequestModel getGoodsFabricContent)
-        {
-            var result = await PostAsync<GetGoodsFabricContentRequestModel, GetGoodsFabricContentResponseModel>("pdd.goods.fabric.content.get", getGoodsFabricContent);
-            return result;
-        }
-        /// <summary>
-        /// 获取服饰面料信息
-        /// </summary>
-        public async Task<GetGoodsFabricResponseModel> GetGoodsFabricAsync(GetGoodsFabricRequestModel getGoodsFabric)
-        {
-            var result = await PostAsync<GetGoodsFabricRequestModel, GetGoodsFabricResponseModel>("pdd.goods.fabric.get", getGoodsFabric);
-            return result;
-        }
-        /// <summary>
         /// 商品新增接口
         /// </summary>
         public async Task<AddGoodsResponseModel> AddGoodsAsync(AddGoodsRequestModel addGoods)
@@ -183,14 +167,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<UpdateGoodsSkuPriceResponseModel> UpdateGoodsSkuPriceAsync(UpdateGoodsSkuPriceRequestModel updateGoodsSkuPrice)
         {
             var result = await PostAsync<UpdateGoodsSkuPriceRequestModel, UpdateGoodsSkuPriceResponseModel>("pdd.goods.sku.price.update", updateGoodsSkuPrice);
-            return result;
-        }
-        /// <summary>
-        /// 第三方平台商详字段转化到拼多多草稿箱
-        /// </summary>
-        public async Task<FieldExchangeThirdResponseModel> FieldExchangeThirdAsync(FieldExchangeThirdRequestModel fieldExchangeThird)
-        {
-            var result = await PostAsync<FieldExchangeThirdRequestModel, FieldExchangeThirdResponseModel>("pdd.exchange.third.field", fieldExchangeThird);
             return result;
         }
         /// <summary>
@@ -335,6 +311,22 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CreateGoodsLogisticsSerTemplateResponseModel> CreateGoodsLogisticsSerTemplateAsync(CreateGoodsLogisticsSerTemplateRequestModel createGoodsLogisticsSerTemplate)
         {
             var result = await PostAsync<CreateGoodsLogisticsSerTemplateRequestModel, CreateGoodsLogisticsSerTemplateResponseModel>("pdd.goods.logistics.ser.template.create", createGoodsLogisticsSerTemplate);
+            return result;
+        }
+        /// <summary>
+        /// 删除单品计划接口
+        /// </summary>
+        public async Task<DeleteGoodsCpsUnitResponseModel> DeleteGoodsCpsUnitAsync(DeleteGoodsCpsUnitRequestModel deleteGoodsCpsUnit)
+        {
+            var result = await PostAsync<DeleteGoodsCpsUnitRequestModel, DeleteGoodsCpsUnitResponseModel>("pdd.goods.cps.unit.delete", deleteGoodsCpsUnit);
+            return result;
+        }
+        /// <summary>
+        /// 类目预测接口
+        /// </summary>
+        public async Task<GetGoodsOuterCatMappingResponseModel> GetGoodsOuterCatMappingAsync(GetGoodsOuterCatMappingRequestModel getGoodsOuterCatMapping)
+        {
+            var result = await PostAsync<GetGoodsOuterCatMappingRequestModel, GetGoodsOuterCatMappingResponseModel>("pdd.goods.outer.cat.mapping.get", getGoodsOuterCatMapping);
             return result;
         }
 

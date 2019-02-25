@@ -16,7 +16,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("unit_id")]
         public long UnitId { get; set; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("location_bid_list")]
         public List<LocationBidListRequestModel> LocationBidList { get; set; }

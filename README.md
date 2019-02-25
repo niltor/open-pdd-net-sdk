@@ -9,11 +9,12 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## **特别说明**
 
-当前拼多多文档已较完善，本SDK版本对应的nuget包还未更新，1.0版本会同步最新改动。当前版本建议直接拉取源代码进行使用。
-
 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
 
 ## 更新说明
+### V1.02(2019/02/25)
+
+- 同步更新到官方最新接口。
 
 ### V1.0 (2019/01/10)
 
@@ -33,7 +34,7 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## 类库说明
 
-支持基于 NETStandardv2.0 的项目，支持.NetFramework 4.6+，C#7.1。
+支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.6+，C#7.1**。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
 

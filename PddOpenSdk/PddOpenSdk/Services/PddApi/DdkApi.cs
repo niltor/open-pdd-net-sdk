@@ -217,6 +217,14 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<QueryDdkTopGoodsListRequestModel, QueryDdkTopGoodsListResponseModel>("pdd.ddk.top.goods.list.query", queryDdkTopGoodsList);
             return result;
         }
+        /// <summary>
+        /// 生成多多口令接口
+        /// </summary>
+        public async Task<GenerateDdkPhraseResponseModel> GenerateDdkPhraseAsync(GenerateDdkPhraseRequestModel generateDdkPhrase)
+        {
+            var result = await PostAsync<GenerateDdkPhraseRequestModel, GenerateDdkPhraseResponseModel>("pdd.ddk.phrase.generate", generateDdkPhrase);
+            return result;
+        }
 
     }
 }

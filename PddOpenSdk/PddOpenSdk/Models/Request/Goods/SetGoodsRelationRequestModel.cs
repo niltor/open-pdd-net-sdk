@@ -40,6 +40,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("postage")]
         public long Postage { get; set; }
+        /// <summary>
+        /// 外部平台店铺id
+        /// </summary>
+        [JsonProperty("out_mall_id")]
+        public long? OutMallId { get; set; }
 
     }
 

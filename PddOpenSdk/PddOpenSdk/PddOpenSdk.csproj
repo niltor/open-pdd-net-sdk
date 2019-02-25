@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -20,7 +20,7 @@
         <FileVersion>0.1.0.0</FileVersion>
         <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl>
         <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
-        <Version>1.0.0</Version>
+        <Version>1.0.2</Version>
         <PackageId>MSDev.PddOpenSdk</PackageId>
     </PropertyGroup>
 

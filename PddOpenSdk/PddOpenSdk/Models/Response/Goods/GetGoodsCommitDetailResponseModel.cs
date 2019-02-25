@@ -13,6 +13,26 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsCommitDetailResponseResponseModel : PddResponseModel
         {
             /// <summary>
+            /// 送货入户模版id
+            /// </summary>
+            [JsonProperty("song_huo_ru_hu")]
+            public string SongHuoRuHu { get; set; }
+            /// <summary>
+            /// 上门安装模版id
+            /// </summary>
+            [JsonProperty("shang_men_an_zhuang")]
+            public string ShangMenAnZhuang { get; set; }
+            /// <summary>
+            /// 送货入户并安装模版id
+            /// </summary>
+            [JsonProperty("song_huo_an_zhuang")]
+            public string SongHuoAnZhuang { get; set; }
+            /// <summary>
+            /// 买家自提模版id
+            /// </summary>
+            [JsonProperty("mai_jia_zi_ti")]
+            public string MaiJiaZiTi { get; set; }
+            /// <summary>
             /// 是否支持正品发票；0-不支持、1-支持
             /// </summary>
             [JsonProperty("invoice_status")]
@@ -58,7 +78,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("goods_id")]
             public long? GoodsId { get; set; }
             /// <summary>
-            /// 购买数量限制
+            /// 限购次数
             /// </summary>
             [JsonProperty("buy_limit")]
             public long? BuyLimit { get; set; }
@@ -143,7 +163,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("shipment_limit_second")]
             public long? ShipmentLimitSecond { get; set; }
             /// <summary>
-            /// 限购次数
+            /// 单次限量
             /// </summary>
             [JsonProperty("order_limit")]
             public long? OrderLimit { get; set; }
@@ -168,16 +188,6 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("sku_list")]
             public List<SkuListResponseModel> SkuList { get; set; }
             /// <summary>
-            /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
-            /// </summary>
-            [JsonProperty("thumb_url")]
-            public string ThumbUrl { get; set; }
-            /// <summary>
-            /// 普通缩略图
-            /// </summary>
-            [JsonProperty("hd_thumb_url")]
-            public string HdThumbUrl { get; set; }
-            /// <summary>
             /// 商品主图
             /// </summary>
             [JsonProperty("image_url")]
@@ -197,26 +207,6 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("second_hand")]
             public int? SecondHand { get; set; }
-            /// <summary>
-            /// 仅在cat_id=983（卷筒纸）类目下入参，每包或者卷的净含量，计量单位是g，范围是1~999的整数
-            /// </summary>
-            [JsonProperty("paper_net_weight")]
-            public long? PaperNetWeight { get; set; }
-            /// <summary>
-            /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节纸品的长度，单位是mm，范围是1~999的整数
-            /// </summary>
-            [JsonProperty("paper_length")]
-            public long? PaperLength { get; set; }
-            /// <summary>
-            /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节的宽度，单位是mm，范围是1~999的整数
-            /// </summary>
-            [JsonProperty("paper_width")]
-            public long? PaperWidth { get; set; }
-            /// <summary>
-            /// 仅在cat_id=983（卷筒纸）类目下入参，纸张的层数，单位是层，范围是1~9的整数
-            /// </summary>
-            [JsonProperty("paper_plies_num")]
-            public long? PaperPliesNum { get; set; }
             /// <summary>
             /// oversea_type
             /// </summary>
@@ -258,6 +248,11 @@ namespace PddOpenSdk.Models.Response.Goods
             }
             public partial class SkuListResponseModel : PddResponseModel
             {
+                /// <summary>
+                /// sku送装参数：长度
+                /// </summary>
+                [JsonProperty("lengtj")]
+                public long? Lengtj { get; set; }
                 /// <summary>
                 /// sku编码
                 /// </summary>

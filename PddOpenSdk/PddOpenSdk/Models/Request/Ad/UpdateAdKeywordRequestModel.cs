@@ -11,7 +11,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("scene_type")]
         public int SceneType { get; set; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("keywords")]
         public List<KeywordsRequestModel> Keywords { get; set; }

@@ -1,10 +1,6 @@
-using PddOpenSdk.Models.Request;
-using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Ad;
 using PddOpenSdk.Models.Response.Ad;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class AdApi : PddCommonApi

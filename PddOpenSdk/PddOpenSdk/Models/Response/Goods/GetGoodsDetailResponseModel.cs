@@ -13,6 +13,26 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsDetailGetResponseResponseModel : PddResponseModel
         {
             /// <summary>
+            /// 送货入户模版id
+            /// </summary>
+            [JsonProperty("song_huo_ru_hu")]
+            public string SongHuoRuHu { get; set; }
+            /// <summary>
+            /// 上门安装模版id
+            /// </summary>
+            [JsonProperty("shang_men_an_zhuang")]
+            public string ShangMenAnZhuang { get; set; }
+            /// <summary>
+            /// 送货入户并安装模版id
+            /// </summary>
+            [JsonProperty("song_huo_an_zhuang")]
+            public string SongHuoAnZhuang { get; set; }
+            /// <summary>
+            /// 买家自提模版id
+            /// </summary>
+            [JsonProperty("mai_jia_zi_ti")]
+            public string MaiJiaZiTi { get; set; }
+            /// <summary>
             /// 短标题，示例：新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
             /// </summary>
             [JsonProperty("tiny_name")]
@@ -48,7 +68,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("goods_id")]
             public long? GoodsId { get; set; }
             /// <summary>
-            /// 购买限制
+            /// 限购次数
             /// </summary>
             [JsonProperty("buy_limit")]
             public long? BuyLimit { get; set; }
@@ -128,7 +148,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("shipment_limit_second")]
             public long? ShipmentLimitSecond { get; set; }
             /// <summary>
-            /// 限购次数
+            /// 单次限量
             /// </summary>
             [JsonProperty("order_limit")]
             public long? OrderLimit { get; set; }
@@ -152,16 +172,6 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("sku_list")]
             public List<SkuListResponseModel> SkuList { get; set; }
-            /// <summary>
-            /// 普通缩略图
-            /// </summary>
-            [JsonProperty("thumb_url")]
-            public string ThumbUrl { get; set; }
-            /// <summary>
-            /// 高清缩略图
-            /// </summary>
-            [JsonProperty("hd_thumb_url")]
-            public string HdThumbUrl { get; set; }
             /// <summary>
             /// 商品主图
             /// </summary>
@@ -223,6 +233,11 @@ namespace PddOpenSdk.Models.Response.Goods
             }
             public partial class SkuListResponseModel : PddResponseModel
             {
+                /// <summary>
+                /// sku送装参数：长度
+                /// </summary>
+                [JsonProperty("length")]
+                public long? Length { get; set; }
                 /// <summary>
                 /// sku编码
                 /// </summary>

@@ -36,7 +36,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("group_by")]
         public int GroupBy { get; set; }
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("page_request")]
         public PageRequestRequestModel PageRequest { get; set; }

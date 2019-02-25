@@ -76,12 +76,12 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("customer_num")]
         public long? CustomerNum { get; set; }
         /// <summary>
-        /// 单次限量
+        /// 限购次数
         /// </summary>
         [JsonProperty("buy_limit")]
         public long? BuyLimit { get; set; }
         /// <summary>
-        /// 限购次数
+        /// 单次限量
         /// </summary>
         [JsonProperty("order_limit")]
         public int? OrderLimit { get; set; }
@@ -101,16 +101,6 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("is_folt")]
         public bool IsFolt { get; set; }
         /// <summary>
-        /// 服饰面料，fabirc枚举如下：
-        /// </summary>
-        [JsonProperty("fabric")]
-        public int? Fabric { get; set; }
-        /// <summary>
-        /// 成分含量
-        /// </summary>
-        [JsonProperty("fabric_content")]
-        public int? FabricContent { get; set; }
-        /// <summary>
         /// 水果类目温馨提示，只在水果类目商品才生效， 字数限制：商品描述goods_desc+温馨提示总计不超过500字。
         /// </summary>
         [JsonProperty("warm_tips")]
@@ -126,16 +116,6 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("out_goods_id")]
         public string OutGoodsId { get; set; }
         /// <summary>
-        /// 高清缩略图，上传轮播图首图，尺寸400*400，图片格式仅支持JPG,PNG格式
-        /// </summary>
-        [JsonProperty("hd_thumb_url")]
-        public string HdThumbUrl { get; set; }
-        /// <summary>
-        /// 普通缩略图，上传轮播图首图，尺寸200*200，图片格式仅支持JPG,PNG格式
-        /// </summary>
-        [JsonProperty("thumb_url")]
-        public string ThumbUrl { get; set; }
-        /// <summary>
         /// 商品主图，请参考拼多多首页大图，如果商品参加部分活动则必填，否则无法参加活动; a. 尺寸750 x 352px; b. 大小100k以内; c. 图片格式仅支持JPG,PNG格式; d. 图片背景应以纯白为主, 商品图案居中显示; e. 图片不可以添加任何品牌相关文字或logo
         /// </summary>
         [JsonProperty("image_url")]
@@ -150,26 +130,6 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("detail_gallery")]
         public List<string> DetailGallery { get; set; }
-        /// <summary>
-        /// 仅在cat_id=983（卷筒纸）类目下入参，每包或者卷的净含量，计量单位是g，范围是1~999的整数
-        /// </summary>
-        [JsonProperty("paper_net_weight")]
-        public long? PaperNetWeight { get; set; }
-        /// <summary>
-        /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节纸品的长度，单位是mm，范围是1~999的整数
-        /// </summary>
-        [JsonProperty("paper_length")]
-        public long? PaperLength { get; set; }
-        /// <summary>
-        /// 仅在cat_id=983（卷筒纸）类目下入参，每段/节的宽度，单位是mm，范围是1~999的整数
-        /// </summary>
-        [JsonProperty("paper_width")]
-        public long? PaperWidth { get; set; }
-        /// <summary>
-        /// 仅在cat_id=983（卷筒纸）类目下入参，纸张的层数，单位是层，范围是1~9的整数
-        /// </summary>
-        [JsonProperty("paper_plies_num")]
-        public long? PaperPliesNum { get; set; }
         /// <summary>
         /// 是否支持开票（测试中）
         /// </summary>
@@ -205,8 +165,38 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("tiny_name")]
         public string TinyName { get; set; }
+        /// <summary>
+        /// 送货入户模版id
+        /// </summary>
+        [JsonProperty("song_huo_ru_hu")]
+        public string SongHuoRuHu { get; set; }
+        /// <summary>
+        /// 上门安装模版id
+        /// </summary>
+        [JsonProperty("shang_men_an_zhuang")]
+        public string ShangMenAnZhuang { get; set; }
+        /// <summary>
+        /// 送货入户并安装模版id
+        /// </summary>
+        [JsonProperty("song_huo_an_zhuang")]
+        public string SongHuoAnZhuang { get; set; }
+        /// <summary>
+        /// 买家自提模版id
+        /// </summary>
+        [JsonProperty("mai_jia_zi_ti")]
+        public string MaiJiaZiTi { get; set; }
         public partial class SkuListRequestModel : PddRequestModel
         {
+            /// <summary>
+            /// sku 缩略图
+            /// </summary>
+            [JsonProperty("thumb_url")]
+            public string ThumbUrl { get; set; }
+            /// <summary>
+            /// sku送装参数：长度
+            /// </summary>
+            [JsonProperty("length")]
+            public long? Length { get; set; }
             /// <summary>
             /// oversea_sku
             /// </summary>
@@ -232,11 +222,6 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("out_sku_sn")]
             public string OutSkuSn { get; set; }
-            /// <summary>
-            /// sku预览图，预览图尺寸：等宽高，且高度不低于480px，现已支持1M大小，越清晰越好卖，SKU预览图格式：仅支持JPG,PNG格式
-            /// </summary>
-            [JsonProperty("thumb_url")]
-            public string ThumbUrl { get; set; }
             /// <summary>
             /// 商品团购价格
             /// </summary>
@@ -281,11 +266,6 @@ namespace PddOpenSdk.Models.Request.Goods
         public partial class GoodsPropertiesRequestModel : PddRequestModel
         {
             /// <summary>
-            /// 模板模块Id
-            /// </summary>
-            [JsonProperty("template_module_id")]
-            public long? TemplateModuleId { get; set; }
-            /// <summary>
             /// 父属性id，非销售属性不用传
             /// </summary>
             [JsonProperty("parent_spec_id")]
@@ -315,11 +295,6 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("template_pid")]
             public long? TemplatePid { get; set; }
-            /// <summary>
-            /// 属性id
-            /// </summary>
-            [JsonProperty("pid")]
-            public long? Pid { get; set; }
             /// <summary>
             /// 属性值id
             /// </summary>

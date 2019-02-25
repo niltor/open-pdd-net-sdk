@@ -6,7 +6,7 @@ namespace PddOpenSdk.Models.Request.Ad
     public partial class DeleteAdCreativeRequestModel : PddRequestModel
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("creative_id")]
         public long CreativeId { get; set; }
