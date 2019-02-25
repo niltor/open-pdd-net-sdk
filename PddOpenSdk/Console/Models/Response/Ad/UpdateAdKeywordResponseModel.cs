@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using PddOpenSdk.Models.Response;
+namespace PddOpenSdk.Models.Response.Ad
+{
+public partial class UpdateAdKeywordResponseModel : PddResponseModel
+{
+/// <summary>
+/// 返回response
+/// </summary>
+[JsonProperty("ad_keyword_update_response")]
+public AdKeywordUpdateResponseResponseModel AdKeywordUpdateResponse {get;set;}
+public partial class AdKeywordUpdateResponseResponseModel : PddResponseModel
+{
+/// <summary>
+/// 是否成功
+/// </summary>
+[JsonProperty("is_success")]
+public bool? IsSuccess {get;set;}
+
+}
+
+}
+
+}

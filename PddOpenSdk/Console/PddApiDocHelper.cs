@@ -1,13 +1,13 @@
+using Console;
+using Msdev.JsonToClass;
+using Msdev.JsonToClass.CodeWriters;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Console;
-using Msdev.JsonToClass;
-using Msdev.JsonToClass.CodeWriters;
-using Newtonsoft.Json;
 
 namespace Sample
 {
