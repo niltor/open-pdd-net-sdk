@@ -69,7 +69,7 @@ namespace PddOpenSdk.Services
                 var jObject = JObject.Parse(jsonResult);
                 if (jObject.TryGetValue("error_response", out var errorResponse))
                 {
-                    // TODO:记录异常
+                    // TODO:处理错误信息
                     Console.WriteLine("错误信息:" + errorResponse.ToString());
                     File.AppendAllText("error.json", jsonResult + "\r\n");
                     return default;
@@ -105,12 +105,13 @@ namespace PddOpenSdk.Services
             {
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
-                    Console.WriteLine("签名需要转json:" + dic[item].GetType().Name);
+                    //Console.WriteLine("签名转json:" + dic[item].GetType().Name);
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
                 }
                 dic.TryGetValue(item, out var value);
-                // 避免False大写造成的签名错误
+                // 布尔值大写造成的签名错误
                 if (value.ToString().ToLower().Equals("false")) value = "false";
+                if (value.ToString().ToLower().Equals("true")) value = "true";
                 signString += item + value;
             }
             signString = ClientSecret + signString + ClientSecret;
