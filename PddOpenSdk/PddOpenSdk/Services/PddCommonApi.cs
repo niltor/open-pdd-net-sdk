@@ -51,7 +51,7 @@ namespace PddOpenSdk.Services
             dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
-            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
@@ -60,9 +60,8 @@ namespace PddOpenSdk.Services
 
             // 添加签名
             dic.Add("sign", BuildSign(dic));
-
-            var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+            var jsonBody = JsonConvert.SerializeObject(dic);
+            var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(ApiUrl, data);
             if (response.IsSuccessStatusCode)
             {
@@ -113,7 +112,7 @@ namespace PddOpenSdk.Services
                 // 布尔值大写造成的签名错误
                 if (value.ToString().ToLower().Equals("false")) value = "false";
                 if (value.ToString().ToLower().Equals("true")) value = "true";
-                signString += item + value;
+                signString += item + value.ToString();
             }
             signString = ClientSecret + signString + ClientSecret;
             Console.WriteLine("拼接内容:" + signString);

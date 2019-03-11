@@ -40,14 +40,60 @@ namespace Sample.Controllers
 
         public async Task<ActionResult> Test()
         {
-            PddCommonApi.AccessToken = "bf4e43499f864333bfed2272e702575446daad5d";
+            PddCommonApi.AccessToken = "4b8e42e7340c427caa9ddfa6eec9511cb192d351";
 
-            var model = new GetGoodsCatsRequestModel
+            var model = new AddGoodsRequestModel
             {
-                ParentCatId = 0
+                GoodsName = "goods name",
+                GoodsType = 1,
+                GoodsDesc = "goods description",
+                CatId = 1,
+                CountryId = 1,
+                MarketPrice = 1222,
+                IsPreSale = false,
+                ShipmentLimitSecond = 3600 * 24,
+                CostTemplateId = 10000,
+                IsRefundable = true,
+                SecondHand = false,
+                IsFolt = true,
+                SkuList = new System.Collections.Generic.List<AddGoodsRequestModel.SkuListRequestModel>
+                {
+                    new AddGoodsRequestModel.SkuListRequestModel
+                    {
+                       ThumbUrl = "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
+                       OverseaSku = new AddGoodsRequestModel.SkuListRequestModel.OverseaSkuRequestModel
+                       {
+                           MeasurementCode = "123",
+                           Taxation = 0,
+                           Specifications = "spe"
+                       },
+                       SpecIdList = "[1754889520]",
+                       Weight = 200,
+                       Quantity = 10,
+                       MultiPrice = 12,
+                       Price =15,
+                       LimitQuantity = 10,
+                       IsOnsale = 1
+                    }
+                },
+                CarouselGallery = new System.Collections.Generic.List<string>
+                {
+                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
+                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
+                },
+                DetailGallery = new System.Collections.Generic.List<string>
+                {
+                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
+                }
             };
-            var result = await _pdd.GoodsApi.GetGoodsCatsAsync(model);
+            var result = await _pdd.GoodsApi.AddGoodsAsync(model);
 
+
+            //var model = new GetGoodsCatsRequestModel
+            //{
+            //    ParentCatId = 0
+            //};
+            //var result = await _pdd.GoodsApi.GetGoodsCatsAsync(model);
             return Content(JsonConvert.SerializeObject(result));
         }
 
