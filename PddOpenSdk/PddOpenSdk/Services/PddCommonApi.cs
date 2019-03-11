@@ -62,6 +62,7 @@ namespace PddOpenSdk.Services
             dic.Add("sign", BuildSign(dic));
 
             var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
             var response = await client.PostAsync(ApiUrl, data);
             if (response.IsSuccessStatusCode)
             {
