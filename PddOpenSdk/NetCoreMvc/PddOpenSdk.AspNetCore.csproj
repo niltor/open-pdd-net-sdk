@@ -25,7 +25,7 @@
     <PackageLicenseUrl>https://github.com/niltor/open-pdd-net-sdk/blob/dev/LICENSE</PackageLicenseUrl> 
     <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 
   </PropertyGroup>
