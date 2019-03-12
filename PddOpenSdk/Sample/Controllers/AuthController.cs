@@ -47,53 +47,59 @@ namespace Sample.Controllers
             //};
             //var result1 = await _pdd.GoodsApi.GetGoodsCatsAsync(model1);
 
-            var model = new AddGoodsRequestModel
+            //var model = new AddGoodsRequestModel
+            //{
+            //    GoodsName = "葡萄",
+            //    GoodsType = 1,
+            //    GoodsDesc = "葡萄串",
+            //    CatId = 1,
+            //    CountryId = 1,
+            //    MarketPrice = 12,
+            //    IsPreSale = false,
+            //    ShipmentLimitSecond = 3600 * 24,
+            //    CostTemplateId = 1000000,
+            //    IsRefundable = true,
+            //    SecondHand = false,
+            //    IsFolt = true,
+            //    SkuList = new System.Collections.Generic.List<AddGoodsRequestModel.SkuListRequestModel>
+            //    {
+            //        new AddGoodsRequestModel.SkuListRequestModel
+            //        {
+            //           ThumbUrl = "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
+            //           OverseaSku = new AddGoodsRequestModel.SkuListRequestModel.OverseaSkuRequestModel
+            //           {
+            //               MeasurementCode = "123",
+            //               Taxation = 0,
+            //               Specifications = "spe"
+            //           },
+            //           SpecIdList = "[1754889520]",
+            //           Weight = 200,
+            //           Quantity = 10,
+            //           MultiPrice = 12,
+            //           Price = 15,
+            //           LimitQuantity = 10,
+            //           IsOnsale = 1
+            //        }
+            //    },
+            //    CarouselGallery = new System.Collections.Generic.List<string>
+            //    {
+            //        "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
+            //        "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
+            //    },
+            //    DetailGallery = new System.Collections.Generic.List<string>
+            //    {
+            //        "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
+            //    }
+            //};
+            //var result = await _pdd.GoodsApi.AddGoodsAsync(model);
+
+            var model = new GenDdkWeappQrcodeUrlRequestModel
             {
-                GoodsName = "葡萄",
-                GoodsType = 1,
-                GoodsDesc = "葡萄串",
-                CatId = 1,
-                CountryId = 1,
-                MarketPrice = 12,
-                IsPreSale = false,
-                ShipmentLimitSecond = 3600 * 24,
-                CostTemplateId = 1000000,
-                IsRefundable = true,
-                SecondHand = false,
-                IsFolt = true,
-                SkuList = new System.Collections.Generic.List<AddGoodsRequestModel.SkuListRequestModel>
-                {
-                    new AddGoodsRequestModel.SkuListRequestModel
-                    {
-                       ThumbUrl = "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
-                       OverseaSku = new AddGoodsRequestModel.SkuListRequestModel.OverseaSkuRequestModel
-                       {
-                           MeasurementCode = "123",
-                           Taxation = 0,
-                           Specifications = "spe"
-                       },
-                       SpecIdList = "[1754889520]",
-                       Weight = 200,
-                       Quantity = 10,
-                       MultiPrice = 12,
-                       Price = 15,
-                       LimitQuantity = 10,
-                       IsOnsale = 1
-                    }
-                },
-                CarouselGallery = new System.Collections.Generic.List<string>
-                {
-                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
-                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
-                },
-                DetailGallery = new System.Collections.Generic.List<string>
-                {
-                    "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
-                }
+                PId = "123133",
+                GoodsIdList = new System.Collections.Generic.List<long> { 1122, 331323 }
             };
-            var result = await _pdd.GoodsApi.AddGoodsAsync(model);
 
-
+            var result = await _pdd.DdkApi.GenDdkWeappQrcodeUrlAsync(model);
 
             return Content(JsonConvert.SerializeObject(result));
         }
