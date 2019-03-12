@@ -40,19 +40,24 @@ namespace Sample.Controllers
 
         public async Task<ActionResult> Test()
         {
-            PddCommonApi.AccessToken = "4b8e42e7340c427caa9ddfa6eec9511cb192d351";
+            PddCommonApi.AccessToken = "bf4e43499f864333bfed2272e702575446daad5d";
+            //var model1 = new GetGoodsCatsRequestModel
+            //{
+            //    ParentCatId = 0
+            //};
+            //var result1 = await _pdd.GoodsApi.GetGoodsCatsAsync(model1);
 
             var model = new AddGoodsRequestModel
             {
-                GoodsName = "goods name",
+                GoodsName = "葡萄",
                 GoodsType = 1,
-                GoodsDesc = "goods description",
+                GoodsDesc = "葡萄串",
                 CatId = 1,
                 CountryId = 1,
-                MarketPrice = 1222,
+                MarketPrice = 12,
                 IsPreSale = false,
                 ShipmentLimitSecond = 3600 * 24,
-                CostTemplateId = 10000,
+                CostTemplateId = 1000000,
                 IsRefundable = true,
                 SecondHand = false,
                 IsFolt = true,
@@ -71,7 +76,7 @@ namespace Sample.Controllers
                        Weight = 200,
                        Quantity = 10,
                        MultiPrice = 12,
-                       Price =15,
+                       Price = 15,
                        LimitQuantity = 10,
                        IsOnsale = 1
                     }
@@ -89,11 +94,7 @@ namespace Sample.Controllers
             var result = await _pdd.GoodsApi.AddGoodsAsync(model);
 
 
-            //var model = new GetGoodsCatsRequestModel
-            //{
-            //    ParentCatId = 0
-            //};
-            //var result = await _pdd.GoodsApi.GetGoodsCatsAsync(model);
+
             return Content(JsonConvert.SerializeObject(result));
         }
 

@@ -21,7 +21,7 @@ namespace PddOpenSdk.Common
         {
             var json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
             });
 
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
@@ -66,7 +66,7 @@ namespace PddOpenSdk.Common
             StringBuilder sBuilder = new StringBuilder();
             for (int i = 0; i < data.Length; i++)
             {
-                sBuilder.Append(data[i].ToString("X2"));
+                sBuilder.Append(data[i].ToString("x2"));
             }
             return sBuilder.ToString();
         }

@@ -1,5 +1,3 @@
-{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523165609462897"}}
-{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523178665973032"}}
-{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523181599963694"}}
-{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523184079142090"}}
-{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523184514276477"}}
+{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523601242600580"}}
+{"error_response":{"error_msg":"签名验证失败","sub_msg":"","sub_code":null,"error_code":20004,"request_id":"15523732064393447"}}
+{"error_response":{"error_msg":"水果生鲜分类因分类调整已失效，请返回重新选择分类","sub_msg":"水果生鲜分类因分类调整已失效，请返回重新选择分类","sub_code":"isv.invalid-parameter:cat_id","error_code":50001,"request_id":"15523733536516894"}}
