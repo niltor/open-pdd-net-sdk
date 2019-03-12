@@ -5,7 +5,6 @@
     <LangVersion>7.1</LangVersion>
     <RootNamespace>MSDev.PddOpenSdk</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Authors>MSDev_NilTor</Authors>
     <Company>Geethin</Company>
     <Description>
@@ -27,6 +26,8 @@
     <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
     <Version>1.0.4</Version>
     <PackageId>MSDev.PddOpenSdk</PackageId>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Copyright />
   </PropertyGroup>
 
   <ItemGroup>
