@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>729e9412-e505-41bb-8c9b-2a8c3b500d38</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +11,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetCoreMvc\PddOpenSdk.AspNetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\logo.png" />
   </ItemGroup>
 
 </Project>
