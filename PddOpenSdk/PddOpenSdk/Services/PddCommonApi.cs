@@ -31,7 +31,6 @@ namespace PddOpenSdk.Services
         public static string RedirectUri;
         protected static HttpClient client = new HttpClient();
 
-
         /// <summary>
         /// post请求封装
         /// </summary>
