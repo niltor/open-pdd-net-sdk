@@ -29,10 +29,10 @@ namespace Console.PddModels
         public string CatName { get; set; }
 
         [JsonProperty("docList")]
-        public List<DocList> DocList { get; set; }
+        public List<PddDocInfo> DocList { get; set; }
     }
 
-    public partial class DocList
+    public partial class PddDocInfo
     {
         [JsonProperty("id")]
         public long Id { get; set; }

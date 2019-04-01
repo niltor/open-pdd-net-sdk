@@ -19,10 +19,10 @@ namespace Console.PddModels
         public object ErrorMsg { get; set; }
 
         [JsonProperty("result")]
-        public ApiDocResult Result { get; set; }
+        public ApiDocDetail Result { get; set; }
     }
 
-    public class ApiDocResult
+    public class ApiDocDetail
     {
         [JsonProperty("id")]
         public long Id { get; set; }

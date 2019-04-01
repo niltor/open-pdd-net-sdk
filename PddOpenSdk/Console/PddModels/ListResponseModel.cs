@@ -17,10 +17,10 @@ namespace Console.PddModels
         public object ErrorMsg { get; set; }
 
         [JsonProperty("result")]
-        public List<Result> Result { get; set; }
+        public List<PddCatInfo> Result { get; set; }
     }
 
-    public partial class Result
+    public class PddCatInfo
     {
         [JsonProperty("id")]
         public long Id { get; set; }
