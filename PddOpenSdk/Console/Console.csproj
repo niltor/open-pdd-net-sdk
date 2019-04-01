@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="PddModels\" />
   </ItemGroup>
 
   <ItemGroup>

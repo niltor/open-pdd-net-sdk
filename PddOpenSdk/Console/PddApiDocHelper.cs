@@ -15,6 +15,20 @@ namespace Sample
     public class PddApiDocHelper
     {
         readonly string CatApiUrl = "http://open-api.pinduoduo.com/pop/doc/list/by/cat";
+        /// <summary>
+        /// 分类列表
+        /// </summary>
+        readonly string ListUrl = "https://open-api.pinduoduo.com/pop/doc/category/list";
+        /// <summary>
+        /// 某分类下接口列表
+        /// </summary>
+        readonly string CatUrl = "https://open-api.pinduoduo.com/pop/doc/info/list/byCat";
+        /// <summary>
+        /// 接口详情内容
+        /// </summary>
+        readonly string DocInfoUrl = "https://open-api.pinduoduo.com/pop/doc/info/get";
+
+
 
         /// <summary>
         /// 获取分类下所有文档列表
