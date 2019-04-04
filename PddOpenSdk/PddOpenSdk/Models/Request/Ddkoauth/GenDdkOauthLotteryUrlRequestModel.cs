@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
+
 namespace PddOpenSdk.Models.Request.Ddkoauth
 {
     public partial class GenDdkOauthLotteryUrlRequestModel : PddRequestModel
@@ -7,7 +9,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// 推广位
         /// </summary>
         [JsonProperty("pid_list")]
-        public string PidList { get; set; }
+        public List<string> PidList { get; set; }
         /// <summary>
         /// 是否生成唤起微信客户端链接，true-是，false-否，默认false
         /// </summary>
