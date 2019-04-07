@@ -160,7 +160,7 @@ namespace Console.PddModels
         public string Url { get; set; }
     }
 
-    public enum ParamType { Double, Integer, Long, Object, ParamTypeObject, String };
+    public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map };
 
     internal static class Converter
     {
@@ -195,11 +195,22 @@ namespace Console.PddModels
                 case "OBJECT":
                     return ParamType.Object;
                 case "OBJECT[]":
-                    return ParamType.ParamTypeObject;
+                    return ParamType.ObjectArray;
+                case "STRING[]":
+                    return ParamType.StringArray;
+                case "LONG[]":
+                    return ParamType.LongArray;
+                case "INTEGER[]":
+                    return ParamType.Integer;
                 case "STRING":
                     return ParamType.String;
+                case "BOOLEAN":
+                    return ParamType.Boolean;
+                case "MAP":
+                    return ParamType.Map;
             }
-            throw new Exception("Cannot unmarshal type ParamType");
+
+            throw new Exception("Cannot unmarshal type ParamType" + value);
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -213,22 +224,37 @@ namespace Console.PddModels
             switch (value)
             {
                 case ParamType.Double:
-                    serializer.Serialize(writer, "DOUBLE");
+                    serializer.Serialize(writer, "double");
                     return;
                 case ParamType.Integer:
-                    serializer.Serialize(writer, "INTEGER");
+                    serializer.Serialize(writer, "int");
+                    return;
+                case ParamType.IntegerArray:
+                    serializer.Serialize(writer, "int[]");
                     return;
                 case ParamType.Long:
-                    serializer.Serialize(writer, "LONG");
+                    serializer.Serialize(writer, "long");
+                    return;
+                case ParamType.LongArray:
+                    serializer.Serialize(writer, "long[]");
                     return;
                 case ParamType.Object:
-                    serializer.Serialize(writer, "OBJECT");
+                    serializer.Serialize(writer, "object");
                     return;
-                case ParamType.ParamTypeObject:
-                    serializer.Serialize(writer, "OBJECT[]");
+                case ParamType.ObjectArray:
+                    serializer.Serialize(writer, "object[]");
+                    return;
+                case ParamType.StringArray:
+                    serializer.Serialize(writer, "string[]");
                     return;
                 case ParamType.String:
-                    serializer.Serialize(writer, "STRING");
+                    serializer.Serialize(writer, "string");
+                    return;
+                case ParamType.Boolean:
+                    serializer.Serialize(writer, "boolean");
+                    return;
+                case ParamType.Map:
+                    serializer.Serialize(writer, "Map");
                     return;
             }
             throw new Exception("Cannot marshal type ParamType");

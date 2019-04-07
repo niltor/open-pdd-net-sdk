@@ -35,7 +35,7 @@ namespace Console.PddModels
     public partial class PddDocInfo
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("scopeName")]
         public string ScopeName { get; set; }

@@ -1,6 +1,6 @@
-using Console;
 using Console.PddModels;
 using Newtonsoft.Json;
+using PddOpenSdk.Common;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sample
+namespace Console
 {
     /// <summary>
     /// 拼多多接口获取帮助类
@@ -36,7 +36,7 @@ namespace Sample
         /// 获取当前分类列表
         /// </summary>
         /// <returns></returns>
-        public async Task<List<PddCatInfo>> GetCatList()
+        public async Task<List<PddCatInfo>> GetCatListAsync()
         {
             using (var hc = new HttpClient())
             {
@@ -51,13 +51,13 @@ namespace Sample
         /// </summary>
         /// <param name="id">类别id</param>
         /// <returns></returns>
-        public async Task<List<PddDocInfo>> GetApiDocListByCat(int id)
+        public async Task<List<PddDocInfo>> GetApiDocListByCatAsync(long id)
         {
             using (var hc = new HttpClient())
             {
                 var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
                                                        "application/json");
-                var response = await hc.PostAsync(CatApiUrl, requestContent);
+                var response = await hc.PostAsync(CatUrl, requestContent);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
@@ -73,87 +73,92 @@ namespace Sample
         /// </summary>
         /// <param name="id">类别id</param>
         /// <returns></returns>
-        public async Task<List<PddDocInfo>> GetDocDetailById(int id)
+        public async Task<ApiDocDetail> GetDocDetailByIdAsync(string id)
         {
             using (var hc = new HttpClient())
             {
                 var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
                                                        "application/json");
-                var response = await hc.PostAsync(CatApiUrl, requestContent);
+                var response = await hc.PostAsync(DocInfoUrl, requestContent);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<CatListResponseModel>(json);
-                    return result.Result.DocList;
+                    var result = JsonConvert.DeserializeObject<ApiDocResponseModel>(json, ParamTypeConverter.Singleton);
+                    return result.Result;
                 }
             }
             return null;
         }
 
-        /// <summary>
-        /// 获取分类下所有文档列表
-        /// </summary>
-        public async Task GetDocListByCatAsync(int catId = 1)
+        public async Task TestApi(string id)
         {
-            using (var hc = new HttpClient())
+            var currentPath = Directory.GetCurrentDirectory();
+            var resultPath = Path.Combine(currentPath, "Services", "PddApi");
+            // 创建目录
+            if (!Directory.Exists(resultPath))
             {
-                var requestContent = new StringContent(JsonConvert
-                    .SerializeObject(new
-                    {
-                        id = catId
-                    }), Encoding.UTF8, "application/json");
-
-                var response = await hc.PostAsync(CatApiUrl, requestContent);
-                var json = await response.Content.ReadAsStringAsync();
-
-                if (response.IsSuccessStatusCode)
+                Directory.CreateDirectory(resultPath);
+            }
+            var docDetail = await GetDocDetailByIdAsync(id);
+            string className = docDetail.ScopeName;
+            className = className.Split(".")[1] ?? "UnNamed";
+            string methodsContent = BuildRequestMethod(docDetail, className);
+            SaveApiClass(className, methodsContent);
+        }
+        public async Task Run()
+        {
+            pddCatInfos = await GetCatListAsync();
+            if (pddCatInfos.Count > 0)
+            {
+                var currentPath = Directory.GetCurrentDirectory();
+                var resultPath = Path.Combine(currentPath, "Services", "PddApi");
+                // 创建目录
+                if (!Directory.Exists(resultPath))
                 {
-                    var result = JsonConvert.DeserializeObject<PddDocListModel>(json);
-                    if (result.Success.Value)
+                    Directory.CreateDirectory(resultPath);
+                }
+
+                foreach (var pddCatInfo in pddCatInfos)
+                {
+                    pddDocInfos = await GetApiDocListByCatAsync(pddCatInfo.Id);
+                    if (pddDocInfos.Count > 0)
                     {
                         string methodsContent = "";
-                        var docList = result.Result.DocList;
 
-                        // 取第一个作为类名
-                        var className = docList?.FirstOrDefault()?.ScopeName;
-                        if (className != null)
+                        foreach (var pddDocInfo in pddDocInfos)
                         {
-                            // 用来避免重复名称
-                            var secondName = className.Split(".")[2] ?? "UnNamed";
-                            className = className.Split(".")[1] ?? "UnNamed";
+                            var docDetail = await GetDocDetailByIdAsync(pddDocInfo.Id);
+                            // 设置类名
+                            var className = docDetail.ScopeName;
+                            if (className != null)
+                            {
+                                // 用来避免重复名称
+                                var secondName = className.Split(".")[2] ?? "UnNamed";
+                                className = className.Split(".")[1] ?? "UnNamed";
 
-                            var currentPath = Directory.GetCurrentDirectory();
-                            var resultPath = Path.Combine(currentPath, "Services", "PddApi");
-                            // 创建目录
-                            if (!Directory.Exists(resultPath))
-                            {
-                                Directory.CreateDirectory(resultPath);
-                            }
-                            string fileName = Function.ToTitleCase(className) + "Api";
-                            // 处理重复类名的情况
-                            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
-                            {
-                                className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
-                            }
 
-                            foreach (var doc in docList)
-                            {
-                                methodsContent += BuildRequestMethod(doc, className);
+                                string fileName = Function.ToTitleCase(className) + "Api";
+                                // 处理重复类名的情况
+                                if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
+                                {
+                                    className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
+                                }
                             }
+                            methodsContent += BuildRequestMethod(docDetail, className);
                             SaveApiClass(className, methodsContent);
-
                         }
                     }
                 }
             }
         }
 
+
         /// <summary>
         /// 生成接口请求方法
         /// </summary>
         /// <param name="requestClassName">请求类名称</param>
         /// <param name="doc"></param>
-        public string BuildRequestMethod(ApiDoc doc, string requestClassName = "")
+        public string BuildRequestMethod(ApiDocDetail doc, string requestClassName = "")
         {
             requestClassName = Function.ToTitleCase(requestClassName);
             // 方法命名
@@ -189,7 +194,7 @@ $@"/// <summary>
 
             if (string.IsNullOrEmpty(responseContent))
             {
-                File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.CodeExample + "\r\n");
+                File.AppendAllText("error.txt", doc.ScopeName + "; catId:" + doc.CatId + doc.ResponseCodeExample + "\r\n");
             }
             SaveResponseModel(responseModelName, responseContent, requestClassName);
 
@@ -208,12 +213,12 @@ $@"/// <summary>
         /// <param name="className"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public string BuildRequestModel(string className, List<ParamList> paramLists, int level = 1, int parentId = 0)
+        public string BuildRequestModel(string className, List<ParamList> paramLists, int parentId = 0)
         {
             if (string.IsNullOrEmpty(className))
                 return default;
 
-            var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
+            var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
             content = Function.AppendLine(content, $"public partial class {className} : PddRequestModel");
             content = Function.AppendLine(content, "{");
@@ -222,12 +227,12 @@ $@"/// <summary>
             foreach (var param in currentParamLists)
             {
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, param.ParamType, param.IsMust.Value);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value);
                 var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
-                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Level + 1, (int)param.Id);
+                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Id);
                 }
 
                 // 参数注释
@@ -252,11 +257,11 @@ $@"/// <summary>
         /// <param name="paramLists"></param>
         /// <param name="level"></param>
         /// <returns></returns>
-        public string BuildResponseModel(string className, List<ParamList> paramLists, int level = 1, int parentId = 0)
+        public string BuildResponseModel(string className, List<ParamList> paramLists, int parentId = 0)
         {
             if (string.IsNullOrEmpty(className))
                 return default;
-            var currentParamLists = paramLists.Where(p => p.Level == level && p.ParentId == parentId).ToList();
+            var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
             content = Function.AppendLine(content, $"public partial class {className} : PddResponseModel");
             content = Function.AppendLine(content, "{");
@@ -264,13 +269,13 @@ $@"/// <summary>
             string childClass = "";
             foreach (var param in currentParamLists)
             {
-                // TODO 注意：拼多多，响应 内容与类型及描述字段对应混乱
-                var attribution = NameHelper.GetAttributionName(param.ParamType, param.ParamDesc, 0, "ResponseModel");
-                var paramName = Function.ToTitleCase(param.ParamType.Replace("_", " "))?.Replace(" ", "");
+
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel");
+                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
-                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists, (int)param.Level + 1, (int)param.Id);
+                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists, (int)param.Id);
                 }
                 // 参数注释
                 var paramComment =
@@ -379,6 +384,53 @@ namespace PddOpenSdk.Services.PddApi
 ";
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
+        }
+
+        /// <summary>
+        /// 转换参数类型为C#表达
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        protected string ConvertParamType(ParamType type)
+        {
+            string result = string.Empty;
+            switch (type)
+            {
+                case ParamType.Double:
+                    result = "double";
+                    break;
+                case ParamType.Integer:
+                    result = "int";
+                    break;
+                case ParamType.IntegerArray:
+                    result = "int[]";
+                    break;
+                case ParamType.Long:
+                    result = "long";
+                    break;
+                case ParamType.LongArray:
+                    result = "long[]";
+                    break;
+                case ParamType.Object:
+                    result = "object";
+                    break;
+                case ParamType.ObjectArray:
+                    result = "object[]";
+                    break;
+                case ParamType.StringArray:
+                    result = "string[]";
+                    break;
+                case ParamType.String:
+                    result = "string";
+                    break;
+                case ParamType.Boolean:
+                    result = "boolean";
+                    break;
+                case ParamType.Map:
+                    result = "Dictionray<string, object>";
+                    break;
+            }
+            return result;
         }
     }
 }

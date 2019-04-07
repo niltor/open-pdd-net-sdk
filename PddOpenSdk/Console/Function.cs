@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Sample
+namespace Console
 {
     public class Function
     {
