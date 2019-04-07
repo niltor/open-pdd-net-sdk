@@ -15,7 +15,6 @@ namespace Console
     /// </summary>
     public class PddApiDocHelper
     {
-        readonly string CatApiUrl = "http://open-api.pinduoduo.com/pop/doc/list/by/cat";
         /// <summary>
         /// 分类列表
         /// </summary>
@@ -105,8 +104,13 @@ namespace Console
             string methodsContent = BuildRequestMethod(docDetail, className);
             SaveApiClass(className, methodsContent);
         }
-        public async Task Run()
+        /// <summary>
+        /// 全量生成所有接口模型及请求类
+        /// </summary>
+        /// <returns></returns>
+        public async Task Run(bool isUpdate = false)
         {
+            int totalNumber = 1;
             pddCatInfos = await GetCatListAsync();
             if (pddCatInfos.Count > 0)
             {
@@ -141,9 +145,18 @@ namespace Console
                         }
                         foreach (var pddDocInfo in pddDocInfos)
                         {
+                            // 是否只获取更新的接口
+                            if (isUpdate)
+                            {
+                                if (!pddDocInfo.ScopeTips.ToLower().Equals("new"))
+                                {
+                                    continue;
+                                }
+                            }
                             var docDetail = await GetDocDetailByIdAsync(pddDocInfo.Id);
                             methodsContent += BuildRequestMethod(docDetail, className);
-                            System.Console.WriteLine(docDetail.ScopeName + "...执行完成!");
+                            System.Console.WriteLine($"[{totalNumber}]" + docDetail.ScopeName + "...Done!");
+                            totalNumber++;
                         }
                         SaveApiClass(className, methodsContent);
                     }
@@ -279,7 +292,7 @@ $@"/// <summary>
                 // 参数注释
                 var paramComment =
 $@"/// <summary>
-/// {param.ParamName?.Replace("\n", "; ")}
+/// {param.ParamDesc?.Replace("\n", "; ")}
 /// </summary>
 [JsonProperty(""{param.ParamName}"")]
 ";

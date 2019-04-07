@@ -1,21 +1,17 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public partial class PlanAdCanCreateResponseModel : PddResponseModel
-    {
+    public partial class PlanAdCanCreateResponseModel : PddResponseModel {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty("ad_plan_create_response")]
+        [JsonProperty ("ad_plan_create_response")]
         public AdPlanCreateResponseResponseModel AdPlanCreateResponse { get; set; }
-        public partial class AdPlanCreateResponseResponseModel : PddResponseModel
-        {
+        public partial class AdPlanCreateResponseResponseModel : PddResponseModel {
             /// <summary>
             /// 是否可以创建
             /// </summary>
-            [JsonProperty("creatable")]
+            [JsonProperty ("creatable")]
             public bool? Creatable { get; set; }
 
         }

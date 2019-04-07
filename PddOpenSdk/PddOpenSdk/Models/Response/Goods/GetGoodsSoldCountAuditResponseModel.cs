@@ -1,22 +1,18 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public partial class GetGoodsSoldCountAuditResponseModel : PddResponseModel
-    {
+    public partial class GetGoodsSoldCountAuditResponseModel : PddResponseModel {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty("goods_sold_count_audit_get_response")]
+        [JsonProperty ("goods_sold_count_audit_get_response")]
         public GoodsSoldCountAuditGetResponseResponseModel GoodsSoldCountAuditGetResponse { get; set; }
-        public partial class GoodsSoldCountAuditGetResponseResponseModel : PddResponseModel
-        {
+        public partial class GoodsSoldCountAuditGetResponseResponseModel : PddResponseModel {
             /// <summary>
             /// 审核状态
             /// </summary>
-            [JsonProperty("audit_status")]
-            public int? AuditStatus { get; set; }
+            [JsonProperty ("audit_status")]
+            public int AuditStatus { get; set; }
 
         }
 

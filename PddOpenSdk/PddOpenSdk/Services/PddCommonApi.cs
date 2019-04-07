@@ -1,4 +1,3 @@
-using MSDev.PddOpenSdk.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PddOpenSdk.Common;
@@ -6,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -30,7 +28,7 @@ namespace PddOpenSdk.Services
         /// </summary>
         public static string AccessToken;
         public static string RedirectUri;
-        protected static HttpClient client = new HttpClient();
+        protected static HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
 
         /// <summary>
         /// post请求封装
@@ -70,28 +68,39 @@ namespace PddOpenSdk.Services
             var paramsDic = BuildSign(dic);
             var jsonBody = JsonConvert.SerializeObject(paramsDic);
             var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(ApiUrl, data);
-            if (response.IsSuccessStatusCode)
+
+            try
             {
-                var jsonResult = await response.Content.ReadAsStringAsync();
-                var jObject = JObject.Parse(jsonResult);
-                if (jObject.TryGetValue("error_response", out var errorResponse))
+                var response = await client.PostAsync(ApiUrl, data);
+                if (response.IsSuccessStatusCode)
                 {
-                    // TODO:处理错误信息
-                    Console.WriteLine("错误信息:" + errorResponse.ToString());
-                    File.AppendAllText("error.json", jsonResult + "\r\n");
-                    return default;
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    var jObject = JObject.Parse(jsonResult);
+                    if (jObject.TryGetValue("error_response", out var errorResponse))
+                    {
+                        // TODO:处理错误信息
+                        Console.WriteLine("错误信息:" + errorResponse.ToString());
+                        File.AppendAllText("error.json", jsonResult + "\r\n");
+                        return default;
+                    }
+                    else
+                    {
+                        return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                    }
                 }
                 else
                 {
-                    return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                    Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
                 }
+                return default;
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
+                // TODO:异常处理
+                Console.WriteLine(e.Message);
+                return default;
             }
-            return default;
+
         }
         /// <summary>
         /// 生成签名
