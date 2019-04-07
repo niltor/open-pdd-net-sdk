@@ -11,13 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Request\" />
-    <Folder Include="Models\Request\Ad\" />
-    <Folder Include="Models\Response\" />
-    <Folder Include="Models\Response\Ad\" />
+    <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="PddModels\" />
-    <Folder Include="Services\PddApi\" />
   </ItemGroup>
 
   <ItemGroup>
