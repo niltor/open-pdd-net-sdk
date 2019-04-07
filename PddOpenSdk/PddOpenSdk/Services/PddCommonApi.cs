@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,7 +32,6 @@ namespace PddOpenSdk.Services
         public static string RedirectUri;
         protected static HttpClient client = new HttpClient();
 
-
         /// <summary>
         /// post请求封装
         /// </summary>
@@ -52,16 +52,23 @@ namespace PddOpenSdk.Services
             dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
-            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+#if NET452
+            var Unix = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            dic.Add("timestamp", (long)(DateTime.UtcNow-Unix).TotalMilliseconds);
+#endif
+#if NETSTANDARD2_0
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
+
+#endif
+
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
             }
             dic.Add("type", type);
-
             // 添加签名
-            dic.Add("sign", BuildSign(dic));
-            var jsonBody = JsonConvert.SerializeObject(dic);
+            var paramsDic = BuildSign(dic);
+            var jsonBody = JsonConvert.SerializeObject(paramsDic);
             var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(ApiUrl, data);
             if (response.IsSuccessStatusCode)
@@ -92,8 +99,9 @@ namespace PddOpenSdk.Services
         /// <param name="type"></param>
         /// <param name="dic"></param>
         /// <returns></returns>
-        public string BuildSign(Dictionary<string, object> dic)
+        public Dictionary<string, object> BuildSign(Dictionary<string, object> dic)
         {
+            var result = new Dictionary<string, object>();
             // 去除空值并排序
             dic = dic.Where(d => d.Value != null)
                 .OrderBy(d => d.Key)
@@ -106,7 +114,6 @@ namespace PddOpenSdk.Services
             {
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
-                    //Console.WriteLine("签名转json:" + dic[item].GetType().Name);
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
                 }
                 dic.TryGetValue(item, out var value);
@@ -114,6 +121,7 @@ namespace PddOpenSdk.Services
                 if (value.ToString().ToLower().Equals("false")) value = "false";
                 if (value.ToString().ToLower().Equals("true")) value = "true";
                 signString += item + value.ToString();
+                result.Add(item, value.ToString());
             }
             signString = ClientSecret + signString + ClientSecret;
             Console.WriteLine("拼接内容:" + signString);
@@ -123,7 +131,8 @@ namespace PddOpenSdk.Services
                 signString = Function.GetMd5Hash(md5, signString).ToUpper();
             }
             Console.WriteLine("签名:" + signString);
-            return signString;
+            result.Add("sign", signString);
+            return result;
         }
     }
 

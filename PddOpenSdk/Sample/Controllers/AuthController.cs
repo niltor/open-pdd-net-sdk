@@ -1,5 +1,8 @@
+using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PddOpenSdk.AspNetCore;
@@ -12,16 +15,18 @@ namespace Sample.Controllers
 {
     public class AuthController : Controller
     {
-
+        readonly IHostingEnvironment _env;
         readonly PddService _pdd;
-
-        public AuthController(PddService pdd)
+        readonly string AccessToken = "2f80862fdd4e40328539593a0af50037d046758c";
+        public AuthController(PddService pdd, IHostingEnvironment env)
         {
             _pdd = pdd;
+            _env = env;
+            PddCommonApi.AccessToken = AccessToken;
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetDDKOAuthUrl();
+            string url = _pdd.AuthApi.GetWebOAuthUrl(PddCommonApi.RedirectUri);
             ViewData["url"] = url;
             return View();
         }
@@ -38,21 +43,58 @@ namespace Sample.Controllers
             return Content(token.AccessToken);
         }
 
+        /// <summary>
+        /// 测试
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActionResult> Test()
         {
-            PddCommonApi.AccessToken = "4b8e42e7340c427caa9ddfa6eec9511cb192d351";
+            var model = new GenDdkWeappQrcodeUrlRequestModel
+            {
+                PId = "123133",
+                GoodsIdList = new System.Collections.Generic.List<long> { 1122, 331323 }
+            };
 
+            var result = await _pdd.DdkApi.GenDdkWeappQrcodeUrlAsync(model);
+
+            return Json(result);
+        }
+
+        /// <summary>
+        /// 测试图片上传
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> TestImageUpload()
+        {
+            var filePath = Path.Combine(_env.WebRootPath, "images", "logo.png");
+            byte[] bytes = System.IO.File.ReadAllBytes(filePath);
+            string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
+
+            var model = new UploadGoodsImageRequestModel
+            {
+                Image = base64
+            };
+            var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model);
+            return Json(base64);
+        }
+
+        /// <summary>
+        /// 上传商品测试
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> TestGoodsUpload()
+        {
             var model = new AddGoodsRequestModel
             {
-                GoodsName = "goods name",
+                GoodsName = "葡萄",
                 GoodsType = 1,
-                GoodsDesc = "goods description",
+                GoodsDesc = "葡萄串",
                 CatId = 1,
                 CountryId = 1,
-                MarketPrice = 1222,
+                MarketPrice = 12,
                 IsPreSale = false,
                 ShipmentLimitSecond = 3600 * 24,
-                CostTemplateId = 10000,
+                CostTemplateId = 1000000,
                 IsRefundable = true,
                 SecondHand = false,
                 IsFolt = true,
@@ -71,7 +113,7 @@ namespace Sample.Controllers
                        Weight = 200,
                        Quantity = 10,
                        MultiPrice = 12,
-                       Price =15,
+                       Price = 15,
                        LimitQuantity = 10,
                        IsOnsale = 1
                     }
@@ -87,14 +129,7 @@ namespace Sample.Controllers
                 }
             };
             var result = await _pdd.GoodsApi.AddGoodsAsync(model);
-
-
-            //var model = new GetGoodsCatsRequestModel
-            //{
-            //    ParentCatId = 0
-            //};
-            //var result = await _pdd.GoodsApi.GetGoodsCatsAsync(model);
-            return Content(JsonConvert.SerializeObject(result));
+            return Json(result);
         }
 
         public IActionResult Privacy()

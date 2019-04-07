@@ -12,6 +12,20 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
 
 ## 更新说明
+
+### V1.10(2019/03/19)
+
+- 核心类库添加了对 `Net452` 框架的支持，方便非Net Core直接使用核心类库。
+- 测试了图片上传功能。官方文档并没有明确图片上传的内容，只是说提交一个base64字符串，实际上你需要上传的内容应该类似下面:
+
+  `data:image/png;base64,XXXXXX`
+
+你需要在你的base64前面拼接上`data:image`相关信息，这样才能成功，否则会提示图片格式错误。
+
+### V1.04(2019/03/12)
+
+- 修复复杂请求模型，签名验证错误的问题。
+
 ### V1.02(2019/02/25)
 
 - 同步更新到官方最新接口。
@@ -34,7 +48,7 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## 类库说明
 
-支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.6+，C#7.1**。
+支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.5.2+，C#7.1**。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
 
@@ -46,7 +60,40 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 
 该项目是可以遍历并自动生成所有请求模型类、返回模型类以及请求服务类，生成后部分会有重名，更改即可。
 
+### PddOpenSdk 核心类库使用
+
+支持 `.Net Framework4.5.2`及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+
+使用示例:
+
+```csharp
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        // 先使用code换取token
+        string code = "";
+        var authApi = new AuthApi();
+        await authApi.GetAccessTokenAsync(code);
+        // 设置ClientId与ClientSecret
+        PddCommonApi.ClientId = "ID";
+        PddCommonApi.ClientSecret = "Secret";
+        // 构造请求内容
+        var model = new GenDdkWeappQrcodeUrlRequestModel
+        {
+            PId = "123133",
+            GoodsIdList = new System.Collections.Generic.List<long> { 1122, 331323 }
+        };
+        var api = new DdkApi();
+        var result = await api.GenDdkWeappQrcodeUrlAsync(model);
+
+    }
+}
+```
+
 ### ASP.NET Core 项目使用
+
+先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
 可参考[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)
 

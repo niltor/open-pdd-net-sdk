@@ -1,4 +1,5 @@
 using Console;
+using Console.PddModels;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +16,79 @@ namespace Sample
     public class PddApiDocHelper
     {
         readonly string CatApiUrl = "http://open-api.pinduoduo.com/pop/doc/list/by/cat";
+        /// <summary>
+        /// 分类列表
+        /// </summary>
+        readonly string ListUrl = "https://open-api.pinduoduo.com/pop/doc/category/list";
+        /// <summary>
+        /// 某分类下接口列表
+        /// </summary>
+        readonly string CatUrl = "https://open-api.pinduoduo.com/pop/doc/info/list/byCat";
+        /// <summary>
+        /// 接口详情内容
+        /// </summary>
+        readonly string DocInfoUrl = "https://open-api.pinduoduo.com/pop/doc/info/get";
+
+        public List<PddCatInfo> pddCatInfos { get; set; }
+        public List<PddDocInfo> pddDocInfos { get; set; }
+
+        /// <summary>
+        /// 获取当前分类列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<PddCatInfo>> GetCatList()
+        {
+            using (var hc = new HttpClient())
+            {
+                var response = await hc.GetStringAsync(ListUrl);
+                var result = JsonConvert.DeserializeObject<ListResponseModel>(response);
+                return result.Result;
+            }
+        }
+
+        /// <summary>
+        /// 获取某类别下接口列表
+        /// </summary>
+        /// <param name="id">类别id</param>
+        /// <returns></returns>
+        public async Task<List<PddDocInfo>> GetApiDocListByCat(int id)
+        {
+            using (var hc = new HttpClient())
+            {
+                var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
+                                                       "application/json");
+                var response = await hc.PostAsync(CatApiUrl, requestContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<CatListResponseModel>(json);
+                    return result.Result.DocList;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取接口详细信息
+        /// </summary>
+        /// <param name="id">类别id</param>
+        /// <returns></returns>
+        public async Task<List<PddDocInfo>> GetDocDetailById(int id)
+        {
+            using (var hc = new HttpClient())
+            {
+                var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
+                                                       "application/json");
+                var response = await hc.PostAsync(CatApiUrl, requestContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<CatListResponseModel>(json);
+                    return result.Result.DocList;
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// 获取分类下所有文档列表
@@ -23,7 +97,6 @@ namespace Sample
         {
             using (var hc = new HttpClient())
             {
-
                 var requestContent = new StringContent(JsonConvert
                     .SerializeObject(new
                     {
