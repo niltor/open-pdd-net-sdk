@@ -124,29 +124,28 @@ namespace Console
                     if (pddDocInfos.Count > 0)
                     {
                         string methodsContent = "";
-
+                        string scopeName = pddDocInfos.LastOrDefault().ScopeName;
+                        string className = "";
+                        // 设置类名
+                        if (scopeName != null)
+                        {
+                            // 用来避免重复名称
+                            var secondName = scopeName.Split(".")[2] ?? "UnNamed";
+                            className = scopeName.Split(".")[1] ?? "UnNamed";
+                            string fileName = Function.ToTitleCase(className) + "Api";
+                            // 处理重复类名的情况
+                            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
+                            {
+                                className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
+                            }
+                        }
                         foreach (var pddDocInfo in pddDocInfos)
                         {
                             var docDetail = await GetDocDetailByIdAsync(pddDocInfo.Id);
-                            // 设置类名
-                            var className = docDetail.ScopeName;
-                            if (className != null)
-                            {
-                                // 用来避免重复名称
-                                var secondName = className.Split(".")[2] ?? "UnNamed";
-                                className = className.Split(".")[1] ?? "UnNamed";
-
-
-                                string fileName = Function.ToTitleCase(className) + "Api";
-                                // 处理重复类名的情况
-                                if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
-                                {
-                                    className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
-                                }
-                            }
                             methodsContent += BuildRequestMethod(docDetail, className);
-                            SaveApiClass(className, methodsContent);
+                            System.Console.WriteLine(docDetail.ScopeName + "...执行完成!");
                         }
+                        SaveApiClass(className, methodsContent);
                     }
                 }
             }
@@ -282,7 +281,7 @@ $@"/// <summary>
 $@"/// <summary>
 /// {param.ParamName?.Replace("\n", "; ")}
 /// </summary>
-[JsonProperty(""{param.ParamType}"")]
+[JsonProperty(""{param.ParamName}"")]
 ";
 
                 paramsContent += paramComment + attribution;
@@ -427,7 +426,7 @@ namespace PddOpenSdk.Services.PddApi
                     result = "boolean";
                     break;
                 case ParamType.Map:
-                    result = "Dictionray<string, object>";
+                    result = "Map";
                     break;
             }
             return result;
