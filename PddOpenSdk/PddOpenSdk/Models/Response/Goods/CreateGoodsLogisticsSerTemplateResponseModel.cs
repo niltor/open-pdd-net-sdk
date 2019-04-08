@@ -1,21 +1,17 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public partial class CreateGoodsLogisticsSerTemplateResponseModel : PddResponseModel
-    {
+    public partial class CreateGoodsLogisticsSerTemplateResponseModel : PddResponseModel {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty("goods_logistics_ser_template_create_response")]
+        [JsonProperty ("goods_logistics_ser_template_create_response")]
         public GoodsLogisticsSerTemplateCreateResponseResponseModel GoodsLogisticsSerTemplateCreateResponse { get; set; }
-        public partial class GoodsLogisticsSerTemplateCreateResponseResponseModel : PddResponseModel
-        {
+        public partial class GoodsLogisticsSerTemplateCreateResponseResponseModel : PddResponseModel {
             /// <summary>
             /// 模版id
             /// </summary>
-            [JsonProperty("template_id")]
+            [JsonProperty ("template_id")]
             public string TemplateId { get; set; }
 
         }

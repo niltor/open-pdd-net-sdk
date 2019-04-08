@@ -1,3 +1,6 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PddOpenSdk.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,9 +9,6 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PddOpenSdk.Common;
 
 namespace PddOpenSdk.Services
 {
@@ -28,8 +28,7 @@ namespace PddOpenSdk.Services
         /// </summary>
         public static string AccessToken;
         public static string RedirectUri;
-        protected static HttpClient client = new HttpClient();
-
+        protected static HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
 
         /// <summary>
         /// post请求封装
@@ -51,39 +50,57 @@ namespace PddOpenSdk.Services
             dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
+#if NET452
+            var Unix = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            dic.Add("timestamp", (long)(DateTime.UtcNow-Unix).TotalMilliseconds);
+#endif
+#if NETSTANDARD2_0
             dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
+
+#endif
+
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
             }
             dic.Add("type", type);
-
             // 添加签名
-            dic.Add("sign", BuildSign(dic));
+            var paramsDic = BuildSign(dic);
+            var jsonBody = JsonConvert.SerializeObject(paramsDic);
+            var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
-            var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(ApiUrl, data);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var jsonResult = await response.Content.ReadAsStringAsync();
-                var jObject = JObject.Parse(jsonResult);
-                if (jObject.TryGetValue("error_response", out var errorResponse))
+                var response = await client.PostAsync(ApiUrl, data);
+                if (response.IsSuccessStatusCode)
                 {
-                    // TODO:记录异常
-                    Console.WriteLine("错误信息:" + errorResponse.ToString());
-                    File.AppendAllText("error.json", jsonResult + "\r\n");
-                    return default;
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    var jObject = JObject.Parse(jsonResult);
+                    if (jObject.TryGetValue("error_response", out var errorResponse))
+                    {
+                        // TODO:处理错误信息
+                        Console.WriteLine("错误信息:" + errorResponse.ToString());
+                        File.AppendAllText("error.json", jsonResult + "\r\n");
+                        return default;
+                    }
+                    else
+                    {
+                        return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                    }
                 }
                 else
                 {
-                    return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                    Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
                 }
+                return default;
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
+                // TODO:异常处理
+                Console.WriteLine(e.Message);
+                return default;
             }
-            return default;
+
         }
         /// <summary>
         /// 生成签名
@@ -91,8 +108,9 @@ namespace PddOpenSdk.Services
         /// <param name="type"></param>
         /// <param name="dic"></param>
         /// <returns></returns>
-        public string BuildSign(Dictionary<string, object> dic)
+        public Dictionary<string, object> BuildSign(Dictionary<string, object> dic)
         {
+            var result = new Dictionary<string, object>();
             // 去除空值并排序
             dic = dic.Where(d => d.Value != null)
                 .OrderBy(d => d.Key)
@@ -105,13 +123,14 @@ namespace PddOpenSdk.Services
             {
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
-                    Console.WriteLine("签名需要转json:" + dic[item].GetType().Name);
                     dic[item] = JsonConvert.SerializeObject(dic[item]);
                 }
                 dic.TryGetValue(item, out var value);
-                // 避免False大写造成的签名错误
+                // 布尔值大写造成的签名错误
                 if (value.ToString().ToLower().Equals("false")) value = "false";
-                signString += item + value;
+                if (value.ToString().ToLower().Equals("true")) value = "true";
+                signString += item + value.ToString();
+                result.Add(item, value.ToString());
             }
             signString = ClientSecret + signString + ClientSecret;
             Console.WriteLine("拼接内容:" + signString);
@@ -121,7 +140,8 @@ namespace PddOpenSdk.Services
                 signString = Function.GetMd5Hash(md5, signString).ToUpper();
             }
             Console.WriteLine("签名:" + signString);
-            return signString;
+            result.Add("sign", signString);
+            return result;
         }
     }
 

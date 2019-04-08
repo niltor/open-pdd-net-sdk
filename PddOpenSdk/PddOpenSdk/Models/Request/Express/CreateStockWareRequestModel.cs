@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Express
 {
     public partial class CreateStockWareRequestModel : PddRequestModel
@@ -93,12 +92,12 @@ namespace PddOpenSdk.Models.Request.Express
         public partial class WareInfosRequestModel : PddRequestModel
         {
             /// <summary>
-            ///
+            /// 
             /// </summary>
             [JsonProperty("ware_quantity")]
             public int WareQuantity { get; set; }
             /// <summary>
-            ///
+            /// 
             /// </summary>
             [JsonProperty("ware_id")]
             public long WareId { get; set; }

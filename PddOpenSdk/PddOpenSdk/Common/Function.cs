@@ -21,7 +21,7 @@ namespace PddOpenSdk.Common
         {
             var json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
             {
-                NullValueHandling = NullValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
             });
 
             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);

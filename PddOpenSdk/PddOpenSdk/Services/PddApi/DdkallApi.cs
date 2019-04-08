@@ -1,6 +1,6 @@
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ddkall;
 using PddOpenSdk.Models.Response.Ddkall;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class DdkallApi : PddCommonApi
@@ -91,6 +91,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetDdkOauthOrderDetailResponseModel> GetDdkOauthOrderDetailAsync(GetDdkOauthOrderDetailRequestModel getDdkOauthOrderDetail)
         {
             var result = await PostAsync<GetDdkOauthOrderDetailRequestModel, GetDdkOauthOrderDetailResponseModel>("pdd.ddk.oauth.order.detail.get", getDdkOauthOrderDetail);
+            return result;
+        }
+        /// <summary>
+        /// 多多客工具生成多多口令接口
+        /// </summary>
+        public async Task<GenerateDdkOauthPhraseResponseModel> GenerateDdkOauthPhraseAsync(GenerateDdkOauthPhraseRequestModel generateDdkOauthPhrase)
+        {
+            var result = await PostAsync<GenerateDdkOauthPhraseRequestModel, GenerateDdkOauthPhraseResponseModel>("pdd.ddk.oauth.phrase.generate", generateDdkOauthPhrase);
             return result;
         }
         /// <summary>

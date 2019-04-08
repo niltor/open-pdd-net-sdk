@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ddkall
 {
     public partial class GenDdkOauthWeappQrcodeUrlResponseModel : PddResponseModel

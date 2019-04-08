@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
 namespace PddOpenSdk.Models.Request.Erp
 {
     public partial class SyncErpOrderRequestModel : PddRequestModel

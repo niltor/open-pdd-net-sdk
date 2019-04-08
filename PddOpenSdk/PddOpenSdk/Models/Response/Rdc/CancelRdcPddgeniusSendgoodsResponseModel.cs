@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Rdc
 {
     public partial class CancelRdcPddgeniusSendgoodsResponseModel : PddResponseModel

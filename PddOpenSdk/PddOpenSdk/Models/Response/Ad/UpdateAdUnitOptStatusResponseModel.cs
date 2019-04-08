@@ -1,21 +1,17 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ad
 {
-    public partial class UpdateAdUnitOptStatusResponseModel : PddResponseModel
-    {
+    public partial class UpdateAdUnitOptStatusResponseModel : PddResponseModel {
         /// <summary>
         /// 返回response
         /// </summary>
-        [JsonProperty("ad_unit_opt_status_update_response")]
+        [JsonProperty ("ad_unit_opt_status_update_response")]
         public AdUnitOptStatusUpdateResponseResponseModel AdUnitOptStatusUpdateResponse { get; set; }
-        public partial class AdUnitOptStatusUpdateResponseResponseModel : PddResponseModel
-        {
+        public partial class AdUnitOptStatusUpdateResponseResponseModel : PddResponseModel {
             /// <summary>
             /// 是否成功
             /// </summary>
-            [JsonProperty("is_success")]
+            [JsonProperty ("is_success")]
             public bool? IsSuccess { get; set; }
 
         }

@@ -13,10 +13,10 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Services\" />
+    <Folder Include="PddModels\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonToClass\JsonToClass.csproj" />
     <ProjectReference Include="..\PddOpenSdk\PddOpenSdk.csproj" />
   </ItemGroup>
 

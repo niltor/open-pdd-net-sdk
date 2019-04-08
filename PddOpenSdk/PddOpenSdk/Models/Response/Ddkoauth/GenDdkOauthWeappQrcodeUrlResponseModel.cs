@@ -1,25 +1,21 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddkoauth
 {
-    public class WeappQrcodeGenerateResponse
-    {
-
+    public partial class GenDdkOauthWeappQrcodeUrlResponseModel : PddResponseModel {
         /// <summary>
-        /// Examples: "http://xcxcdn.yangkeduo.com/duobaoSpread/2543453159/1000098_11919498/2.jpg"
+        /// response
         /// </summary>
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        [JsonProperty ("weapp_qrcode_generate_response")]
+        public WeappQrcodeGenerateResponseResponseModel WeappQrcodeGenerateResponse { get; set; }
+        public partial class WeappQrcodeGenerateResponseResponseModel : PddResponseModel {
+            /// <summary>
+            /// 单品推广小程序二维码url
+            /// </summary>
+            [JsonProperty ("url")]
+            public string Url { get; set; }
+
+        }
+
     }
-
-    public class GenDdkOauthWeappQrcodeUrlResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"url":"http://xcxcdn.yangkeduo.com/duobaoSpread/2543453159/1000098_11919498/2.jpg"}
-        /// </summary>
-        [JsonProperty("weapp_qrcode_generate_response")]
-        public WeappQrcodeGenerateResponse WeappQrcodeGenerateResponse { get; set; }
-    }
-
 
 }

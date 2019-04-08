@@ -20,7 +20,7 @@ namespace Console
         /// <param name="type">参数类型</param>
         /// <param name="isMust">是否必须</param>
         /// <returns></returns>
-        public static string GetAttributionName(string name, string type, int isMust = 1, string modelType = "RequestModel")
+        public static string GetAttributionName(string name, string type, long isMust = 1, string modelType = "RequestModel")
         {
             if (string.IsNullOrEmpty(name)) return string.Empty;
 
