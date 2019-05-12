@@ -62,6 +62,7 @@ namespace PddOpenSdk.Services.PddApi
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
                     string jsonString = await response.Content.ReadAsStringAsync();
+                    System.Console.WriteLine(jsonString);
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
                     AccessToken = result.AccessToken;
