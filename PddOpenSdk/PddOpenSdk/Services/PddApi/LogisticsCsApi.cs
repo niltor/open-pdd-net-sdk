@@ -1,5 +1,5 @@
-using PddOpenSdk.Models.Request.Logisticscs;
-using PddOpenSdk.Models.Response.Logisticscs;
+using PddOpenSdk.Models.Request.Logisticsticket;
+using PddOpenSdk.Models.Response.Logisticsticket;
 using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {

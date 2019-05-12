@@ -327,187 +327,187 @@ namespace PddOpenSdk.Models.Response.Order
                 /// 商品规格对象
                 /// </summary>
                 [JsonProperty("$item_list")]
-                public List<ItemListResponseModel> ItemList {get;set;}
-            /// <summary>
-            /// 平台优惠金额
-            /// </summary>
-            [JsonProperty("platform_discount")]
-            public double? PlatformDiscount { get; set; }
-            /// <summary>
-            /// 店铺优惠金额
-            /// </summary>
-            [JsonProperty("seller_discount")]
-            public double? SellerDiscount { get; set; }
-            /// <summary>
-            /// 收件人地址,不拼接省市区
-            /// </summary>
-            [JsonProperty("receiver_address")]
-            public string ReceiverAddress { get; set; }
-            public partial class CardInfoListResponseModel : PddResponseModel
-            {
+                public List<ItemListResponseModel> ItemList { get; set; }
                 /// <summary>
-                /// 卡号
+                /// 平台优惠金额
                 /// </summary>
-                [JsonProperty("card_no")]
-                public string CardNo { get; set; }
+                [JsonProperty("platform_discount")]
+                public double? PlatformDiscount { get; set; }
                 /// <summary>
-                /// 卡密
+                /// 店铺优惠金额
                 /// </summary>
-                [JsonProperty("mask_password")]
-                public string MaskPassword { get; set; }
-
-            }
-            public partial class StepOrderInfoResponseModel : PddResponseModel
-            {
+                [JsonProperty("seller_discount")]
+                public double? SellerDiscount { get; set; }
                 /// <summary>
-                /// 分阶段已付定金 单位：元
+                /// 收件人地址,不拼接省市区
                 /// </summary>
-                [JsonProperty("advanced_paid_fee")]
-                public double? AdvancedPaidFee { get; set; }
-                /// <summary>
-                /// 分阶段已付金额 单位：元
-                /// </summary>
-                [JsonProperty("step_paid_fee")]
-                public double? StepPaidFee { get; set; }
-                /// <summary>
-                /// 膨胀金额 单位：元
-                /// </summary>
-                [JsonProperty("step_discount_amount")]
-                public double? StepDiscountAmount { get; set; }
-                /// <summary>
-                /// 定金订单状态：0-定金未付尾款未付、1-定金已付尾款未付、2-定金已付尾款已付
-                /// </summary>
-                [JsonProperty("step_trade_status")]
-                public int? StepTradeStatus { get; set; }
-
-            }
-            public partial class OrderDepotInfoResponseModel : PddResponseModel
-            {
-                /// <summary>
-                /// 子货品列表（组合货品才会有子货品信息）
-                /// </summary>
-                [JsonProperty("ware_sub_info_list")]
-                public List<WareSubInfoListResponseModel> WareSubInfoList { get; set; }
-                /// <summary>
-                /// 货品编码
-                /// </summary>
-                [JsonProperty("ware_sn")]
-                public string WareSn { get; set; }
-                /// <summary>
-                /// 货品类型（0：普通货品:1：组合货品）
-                /// </summary>
-                [JsonProperty("ware_type")]
-                public int? WareType { get; set; }
-                /// <summary>
-                /// 货品名称
-                /// </summary>
-                [JsonProperty("ware_name")]
-                public string WareName { get; set; }
-                /// <summary>
-                /// 货品id
-                /// </summary>
-                [JsonProperty("ware_id")]
-                public string WareId { get; set; }
-                /// <summary>
-                /// 仓库编码
-                /// </summary>
-                [JsonProperty("depot_code")]
-                public string DepotCode { get; set; }
-                /// <summary>
-                /// 仓库名称
-                /// </summary>
-                [JsonProperty("depot_name")]
-                public string DepotName { get; set; }
-                /// <summary>
-                /// 仓库id
-                /// </summary>
-                [JsonProperty("depot_id")]
-                public string DepotId { get; set; }
-                /// <summary>
-                /// 仓库类型，1：自有仓 2：订阅仓 两者都不是则传空
-                /// </summary>
-                [JsonProperty("depot_type")]
-                public int? DepotType { get; set; }
-                public partial class WareSubInfoListResponseModel : PddResponseModel
+                [JsonProperty("receiver_address")]
+                public string ReceiverAddress { get; set; }
+                public partial class CardInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>
-                    /// 子货品编码
+                    /// 卡号
+                    /// </summary>
+                    [JsonProperty("card_no")]
+                    public string CardNo { get; set; }
+                    /// <summary>
+                    /// 卡密
+                    /// </summary>
+                    [JsonProperty("mask_password")]
+                    public string MaskPassword { get; set; }
+
+                }
+                public partial class StepOrderInfoResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 分阶段已付定金 单位：元
+                    /// </summary>
+                    [JsonProperty("advanced_paid_fee")]
+                    public double? AdvancedPaidFee { get; set; }
+                    /// <summary>
+                    /// 分阶段已付金额 单位：元
+                    /// </summary>
+                    [JsonProperty("step_paid_fee")]
+                    public double? StepPaidFee { get; set; }
+                    /// <summary>
+                    /// 膨胀金额 单位：元
+                    /// </summary>
+                    [JsonProperty("step_discount_amount")]
+                    public double? StepDiscountAmount { get; set; }
+                    /// <summary>
+                    /// 定金订单状态：0-定金未付尾款未付、1-定金已付尾款未付、2-定金已付尾款已付
+                    /// </summary>
+                    [JsonProperty("step_trade_status")]
+                    public int? StepTradeStatus { get; set; }
+
+                }
+                public partial class OrderDepotInfoResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 子货品列表（组合货品才会有子货品信息）
+                    /// </summary>
+                    [JsonProperty("ware_sub_info_list")]
+                    public List<WareSubInfoListResponseModel> WareSubInfoList { get; set; }
+                    /// <summary>
+                    /// 货品编码
                     /// </summary>
                     [JsonProperty("ware_sn")]
                     public string WareSn { get; set; }
                     /// <summary>
-                    /// 子货品数量
+                    /// 货品类型（0：普通货品:1：组合货品）
                     /// </summary>
-                    [JsonProperty("ware_quantity")]
-                    public long? WareQuantity { get; set; }
+                    [JsonProperty("ware_type")]
+                    public int? WareType { get; set; }
                     /// <summary>
-                    /// 子货品名称
+                    /// 货品名称
                     /// </summary>
                     [JsonProperty("ware_name")]
                     public string WareName { get; set; }
                     /// <summary>
-                    /// 子货品1id
+                    /// 货品id
                     /// </summary>
                     [JsonProperty("ware_id")]
-                    public long? WareId { get; set; }
+                    public string WareId { get; set; }
+                    /// <summary>
+                    /// 仓库编码
+                    /// </summary>
+                    [JsonProperty("depot_code")]
+                    public string DepotCode { get; set; }
+                    /// <summary>
+                    /// 仓库名称
+                    /// </summary>
+                    [JsonProperty("depot_name")]
+                    public string DepotName { get; set; }
+                    /// <summary>
+                    /// 仓库id
+                    /// </summary>
+                    [JsonProperty("depot_id")]
+                    public string DepotId { get; set; }
+                    /// <summary>
+                    /// 仓库类型，1：自有仓 2：订阅仓 两者都不是则传空
+                    /// </summary>
+                    [JsonProperty("depot_type")]
+                    public int? DepotType { get; set; }
+                    public partial class WareSubInfoListResponseModel : PddResponseModel
+                    {
+                        /// <summary>
+                        /// 子货品编码
+                        /// </summary>
+                        [JsonProperty("ware_sn")]
+                        public string WareSn { get; set; }
+                        /// <summary>
+                        /// 子货品数量
+                        /// </summary>
+                        [JsonProperty("ware_quantity")]
+                        public long? WareQuantity { get; set; }
+                        /// <summary>
+                        /// 子货品名称
+                        /// </summary>
+                        [JsonProperty("ware_name")]
+                        public string WareName { get; set; }
+                        /// <summary>
+                        /// 子货品1id
+                        /// </summary>
+                        [JsonProperty("ware_id")]
+                        public long? WareId { get; set; }
+
+                    }
+
+                }
+                public partial class ItemListResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 商品编号
+                    /// </summary>
+                    [JsonProperty("goods_id")]
+                    public long? GoodsId { get; set; }
+                    /// <summary>
+                    /// 商品规格编码
+                    /// </summary>
+                    [JsonProperty("sku_id")]
+                    public long? SkuId { get; set; }
+                    /// <summary>
+                    /// 商家外部编码（sku），注意：编辑商品后必须等待商品审核通过后方可生效，订单中商品信息为交易快照的商品信息。
+                    /// </summary>
+                    [JsonProperty("outer_id")]
+                    public string OuterId { get; set; }
+                    /// <summary>
+                    /// 商家外部编码（商品），注意：编辑商品后必须等待商品审核通过后方可生效，订单中商品信息为交易快照的商品信息。
+                    /// </summary>
+                    [JsonProperty("outer_goods_id")]
+                    public string OuterGoodsId { get; set; }
+                    /// <summary>
+                    /// 商品名称
+                    /// </summary>
+                    [JsonProperty("goods_name")]
+                    public string GoodsName { get; set; }
+                    /// <summary>
+                    /// 商品销售价格
+                    /// </summary>
+                    [JsonProperty("goods_price")]
+                    public double? GoodsPrice { get; set; }
+                    /// <summary>
+                    /// 商品规格，使用（规格值1,规格值2）组合作为sku的表示，中间以英文逗号隔开
+                    /// </summary>
+                    [JsonProperty("goods_spec")]
+                    public string GoodsSpec { get; set; }
+                    /// <summary>
+                    /// 商品数量
+                    /// </summary>
+                    [JsonProperty("goods_count")]
+                    public long? GoodsCount { get; set; }
+                    /// <summary>
+                    /// 商品图片
+                    /// </summary>
+                    [JsonProperty("goods_img")]
+                    public string GoodsImg { get; set; }
 
                 }
 
             }
-            public partial class ItemListResponseModel : PddResponseModel
-{
-/// <summary>
-/// 商品编号
-/// </summary>
-[JsonProperty("goods_id")]
-            public long? GoodsId { get; set; }
-            /// <summary>
-            /// 商品规格编码
-            /// </summary>
-            [JsonProperty("sku_id")]
-            public long? SkuId { get; set; }
-            /// <summary>
-            /// 商家外部编码（sku），注意：编辑商品后必须等待商品审核通过后方可生效，订单中商品信息为交易快照的商品信息。
-            /// </summary>
-            [JsonProperty("outer_id")]
-            public string OuterId { get; set; }
-            /// <summary>
-            /// 商家外部编码（商品），注意：编辑商品后必须等待商品审核通过后方可生效，订单中商品信息为交易快照的商品信息。
-            /// </summary>
-            [JsonProperty("outer_goods_id")]
-            public string OuterGoodsId { get; set; }
-            /// <summary>
-            /// 商品名称
-            /// </summary>
-            [JsonProperty("goods_name")]
-            public string GoodsName { get; set; }
-            /// <summary>
-            /// 商品销售价格
-            /// </summary>
-            [JsonProperty("goods_price")]
-            public double? GoodsPrice { get; set; }
-            /// <summary>
-            /// 商品规格，使用（规格值1,规格值2）组合作为sku的表示，中间以英文逗号隔开
-            /// </summary>
-            [JsonProperty("goods_spec")]
-            public string GoodsSpec { get; set; }
-            /// <summary>
-            /// 商品数量
-            /// </summary>
-            [JsonProperty("goods_count")]
-            public long? GoodsCount { get; set; }
-            /// <summary>
-            /// 商品图片
-            /// </summary>
-            [JsonProperty("goods_img")]
-            public string GoodsImg { get; set; }
 
         }
 
     }
-
-}
-
-}
 
 }

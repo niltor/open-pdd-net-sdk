@@ -3,7 +3,7 @@ using PddOpenSdk.Models.Response.Ddkoauth;
 using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
-    public class DdkOauthApi : PddCommonApi
+    public class DdkoauthApi : PddCommonApi
     {
         /// <summary>
         /// 查询所有授权的多多客订单
