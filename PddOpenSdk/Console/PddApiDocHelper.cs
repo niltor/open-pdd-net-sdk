@@ -238,7 +238,6 @@ $@"/// <summary>
             string childClass = "";
             foreach (var param in currentParamLists)
             {
-
                 var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value);
                 var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
                 // 如果是对象类型，生成子类模型
@@ -439,7 +438,10 @@ namespace PddOpenSdk.Services.PddApi
                     result = "boolean";
                     break;
                 case ParamType.Map:
-                    result = "Map";
+                    result = "map";
+                    break;
+                case ParamType.MapArray:
+                    result = "map[]";
                     break;
             }
             return result;

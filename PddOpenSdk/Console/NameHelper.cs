@@ -41,7 +41,7 @@ namespace Console
             // 类型映射
             switch (type)
             {
-                case "integer":
+                case "int":
                     type = isMust == 0 ? "int?" : "int";
                     break;
                 case "boolean":
