@@ -1,22 +1,24 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public partial class CommitGoodsEditGoodsResponseModel : PddResponseModel {
+    public partial class CommitGoodsEditGoodsResponseModel : PddResponseModel
+    {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty ("goods_update_response")]
+        [JsonProperty("goods_update_response")]
         public GoodsUpdateResponseResponseModel GoodsUpdateResponse { get; set; }
-        public partial class GoodsUpdateResponseResponseModel : PddResponseModel {
+        public partial class GoodsUpdateResponseResponseModel : PddResponseModel
+        {
             /// <summary>
             /// 草稿id
             /// </summary>
-            [JsonProperty ("goods_commit_id")]
+            [JsonProperty("goods_commit_id")]
             public long? GoodsCommitId { get; set; }
             /// <summary>
             /// 商品id
             /// </summary>
-            [JsonProperty ("goods_id")]
+            [JsonProperty("goods_id")]
             public long? GoodsId { get; set; }
 
         }

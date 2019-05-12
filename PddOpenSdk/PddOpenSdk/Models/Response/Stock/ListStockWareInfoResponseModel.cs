@@ -1,34 +1,37 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Stock
 {
-    public partial class ListStockWareInfoResponseModel : PddResponseModel {
+    public partial class ListStockWareInfoResponseModel : PddResponseModel
+    {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty ("stock_ware_info_list_response")]
+        [JsonProperty("stock_ware_info_list_response")]
         public StockWareInfoListResponseResponseModel StockWareInfoListResponse { get; set; }
-        public partial class StockWareInfoListResponseResponseModel : PddResponseModel {
+        public partial class StockWareInfoListResponseResponseModel : PddResponseModel
+        {
             /// <summary>
             /// 货品信息列表
             /// </summary>
-            [JsonProperty ("ware_list")]
+            [JsonProperty("ware_list")]
             public List<WareListResponseModel> WareList { get; set; }
-            public partial class WareListResponseModel : PddResponseModel {
+            public partial class WareListResponseModel : PddResponseModel
+            {
                 /// <summary>
                 /// 货品编码
                 /// </summary>
-                [JsonProperty ("ware_sn")]
+                [JsonProperty("ware_sn")]
                 public string WareSn { get; set; }
                 /// <summary>
                 /// 货品ID
                 /// </summary>
-                [JsonProperty ("ware_id")]
+                [JsonProperty("ware_id")]
                 public long? WareId { get; set; }
                 /// <summary>
                 /// 是否删除
                 /// </summary>
-                [JsonProperty ("is_deleted")]
+                [JsonProperty("is_deleted")]
                 public bool? IsDeleted { get; set; }
 
             }

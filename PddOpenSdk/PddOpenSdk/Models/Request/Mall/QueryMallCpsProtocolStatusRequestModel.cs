@@ -1,6 +1,7 @@
 namespace PddOpenSdk.Models.Request.Mall
 {
-    public partial class QueryMallCpsProtocolStatusRequestModel : PddRequestModel {
+    public partial class QueryMallCpsProtocolStatusRequestModel : PddRequestModel
+    {
 
     }
 

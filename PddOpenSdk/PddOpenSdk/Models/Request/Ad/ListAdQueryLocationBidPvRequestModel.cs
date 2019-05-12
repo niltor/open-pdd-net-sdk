@@ -1,11 +1,12 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
-    public partial class ListAdQueryLocationBidPvRequestModel : PddRequestModel {
+    public partial class ListAdQueryLocationBidPvRequestModel : PddRequestModel
+    {
         /// <summary>
         /// 推广类型  2-展示推广
         /// </summary>
-        [JsonProperty ("scene_type")]
+        [JsonProperty("scene_type")]
         public int SceneType { get; set; }
 
     }

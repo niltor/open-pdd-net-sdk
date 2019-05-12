@@ -1,17 +1,19 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public partial class UploadGoodsImageResponseModel : PddResponseModel {
+    public partial class UploadGoodsImageResponseModel : PddResponseModel
+    {
         /// <summary>
         /// 商品图片上传响应对象
         /// </summary>
-        [JsonProperty ("goods_image_upload_response")]
+        [JsonProperty("goods_image_upload_response")]
         public GoodsImageUploadResponseResponseModel GoodsImageUploadResponse { get; set; }
-        public partial class GoodsImageUploadResponseResponseModel : PddResponseModel {
+        public partial class GoodsImageUploadResponseResponseModel : PddResponseModel
+        {
             /// <summary>
             /// 返回图片url
             /// </summary>
-            [JsonProperty ("image_url")]
+            [JsonProperty("image_url")]
             public string ImageUrl { get; set; }
 
         }

@@ -1,17 +1,19 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
-    public partial class ResumeGoodsCpsMallUnitResponseModel : PddResponseModel {
+    public partial class ResumeGoodsCpsMallUnitResponseModel : PddResponseModel
+    {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty ("goods_cps_mall_unit_resume_response")]
+        [JsonProperty("goods_cps_mall_unit_resume_response")]
         public GoodsCpsMallUnitResumeResponseResponseModel GoodsCpsMallUnitResumeResponse { get; set; }
-        public partial class GoodsCpsMallUnitResumeResponseResponseModel : PddResponseModel {
+        public partial class GoodsCpsMallUnitResumeResponseResponseModel : PddResponseModel
+        {
             /// <summary>
             /// 是否成功
             /// </summary>
-            [JsonProperty ("result")]
+            [JsonProperty("result")]
             public bool? Result { get; set; }
 
         }
