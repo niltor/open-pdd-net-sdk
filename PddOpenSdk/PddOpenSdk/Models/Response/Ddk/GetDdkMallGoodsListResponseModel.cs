@@ -284,6 +284,29 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("mall_rate")]
                 public long? MallRate { get; set; }
 
+                /// <summary>
+                /// 店铺优惠券结束时间
+                /// </summary>
+                [JsonProperty("mall_coupon_end_time")]
+                public long? MallCouponEndTime { set; get; }
+
+                /// <summary>
+                /// 是否有店铺优惠券
+                /// </summary>
+                [JsonProperty("has_mall_coupon")]
+                public bool HasMallCoupon { set; get; }
+
+                /// <summary>
+                /// 是否可用
+                /// </summary>
+                [JsonProperty("is_valid")]
+                public bool IsValid { set; get; }
+
+                /// <summary>
+                /// 店铺优惠券剩余数量
+                /// </summary>
+                [JsonProperty("mall_coupon_remain_quantity")]
+                public long? MallCouponRemainQuantity { set; get; }
             }
 
         }

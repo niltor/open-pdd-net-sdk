@@ -114,6 +114,41 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("custom_parameters")]
                 public string CustomParameters { get; set; }
 
+                [JsonProperty("auth_duo_id")]
+                public long? AuthDuoId { set; get; }
+
+                [JsonProperty("batch_no")]
+                public string BatchNo { set; get; }
+
+                [JsonProperty("custom_parameters")]
+                public string CustomParameters { set; get; }
+                [JsonProperty("duo_coupon_amount")]
+                public long? DuoCouponAmount { set; get; }
+
+                [JsonProperty("group_id")]
+                public long? GroupId { set; get; }
+                /// <summary>
+                /// 订单来源 ：0 ：关联，5 ：直接下单页RPC请求
+                /// </summary>
+                [JsonProperty("match_channel")]
+                public int MatchChannel { get; set; }
+                /// <summary>
+                /// 招商多多客id
+                /// </summary>
+                [JsonProperty("zs_duo_id")]
+                public long? ZsDuoId { get; set; }
+                [JsonProperty("verify_time")]
+                public long? VerifyTime { set; get; }
+                /// <summary>
+                /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
+                /// </summary>
+                [JsonProperty("type")]
+                public int Type { get; set; }
+                /// <summary>
+                /// 订单确认收货时间（UNIX时间戳）
+                /// </summary>
+                [JsonProperty("order_receive_time")]
+                public long? OrderReceiveTime { get; set; }
             }
 
         }
