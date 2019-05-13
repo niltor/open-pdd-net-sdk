@@ -17,7 +17,7 @@ namespace Sample.Controllers
     {
         readonly IHostingEnvironment _env;
         readonly PddService _pdd;
-        readonly string AccessToken = "2f80862fdd4e40328539593a0af50037d046758c";
+        readonly string AccessToken = "7b8c75b717044ddf8a7e1cd48f5b492212a3623e";
         public AuthController(PddService pdd, IHostingEnvironment env)
         {
             _pdd = pdd;
@@ -26,7 +26,7 @@ namespace Sample.Controllers
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetWebOAuthUrl(PddCommonApi.RedirectUri);
+            string url = _pdd.AuthApi.GetDDKOAuthUrl(PddCommonApi.RedirectUri);
             ViewData["url"] = url;
             return View();
         }
@@ -39,7 +39,6 @@ namespace Sample.Controllers
         public async Task<IActionResult> Callback(string code)
         {
             var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
-
             return Content(token.AccessToken);
         }
 
@@ -49,13 +48,13 @@ namespace Sample.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Test()
         {
-            var model = new GenDdkWeappQrcodeUrlRequestModel
+            var model = new QueryDdkTopGoodsListRequestModel
             {
-                PId = "123133",
-                GoodsIdList = new System.Collections.Generic.List<long> { 1122, 331323 }
+                PId = "1",
             };
 
-            var result = await _pdd.DdkApi.GenDdkWeappQrcodeUrlAsync(model);
+            return Content(JsonConvert.SerializeObject(model));
+            var result = await _pdd.DdkApi.QueryDdkTopGoodsListAsync(model);
 
             return Json(result);
         }

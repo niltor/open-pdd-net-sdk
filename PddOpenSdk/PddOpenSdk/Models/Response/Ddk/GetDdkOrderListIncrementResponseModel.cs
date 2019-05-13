@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkOrderListIncrementResponseModel : PddResponseModel
@@ -74,10 +74,10 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("promotion_amount")]
                 public long? PromotionAmount { get; set; }
                 /// <summary>
-                /// 订单状态：  -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）
+                /// 订单状态： -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）
                 /// </summary>
                 [JsonProperty("order_status")]
-                public int OrderStatus { get; set; }
+                public int? OrderStatus { get; set; }
                 /// <summary>
                 /// 订单状态描述
                 /// </summary>
@@ -108,6 +108,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("order_modify_at")]
                 public long? OrderModifyAt { get; set; }
+                /// <summary>
+                /// 自定义参数
+                /// </summary>
+                [JsonProperty("custom_parameters")]
+                public string CustomParameters { get; set; }
 
                 [JsonProperty("auth_duo_id")]
                 public long? AuthDuoId { set; get; }

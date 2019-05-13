@@ -1,6 +1,5 @@
 using Console.PddModels;
 using Newtonsoft.Json;
-using PddOpenSdk.Common;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -229,6 +228,7 @@ $@"/// <summary>
         {
             if (string.IsNullOrEmpty(className))
                 return default;
+            className = className.Replace("$", "");
 
             var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
@@ -238,9 +238,8 @@ $@"/// <summary>
             string childClass = "";
             foreach (var param in currentParamLists)
             {
-
                 var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value);
-                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
+                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
@@ -283,7 +282,7 @@ $@"/// <summary>
             {
 
                 var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel");
-                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "");
+                var paramName = Function.ToTitleCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
@@ -439,7 +438,10 @@ namespace PddOpenSdk.Services.PddApi
                     result = "boolean";
                     break;
                 case ParamType.Map:
-                    result = "Map";
+                    result = "map";
+                    break;
+                case ParamType.MapArray:
+                    result = "map[]";
                     break;
             }
             return result;

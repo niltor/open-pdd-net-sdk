@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkMallGoodsListResponseModel : PddResponseModel
@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 返回商品总数
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 商品信息列表，具体信息见下（注：目前仅返回商品基础信息，其余为空，凡示例中为null的目前均返回为空，获取这些字段请调用pdd.ddk.goods,detail接口）
             /// </summary>
@@ -97,7 +97,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店（未传为全部）
                 /// </summary>
                 [JsonProperty("merchant_type")]
-                public int MerchantType { get; set; }
+                public int? MerchantType { get; set; }
                 /// <summary>
                 /// 商品类目id
                 /// </summary>
@@ -132,7 +132,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
                 /// </summary>
                 [JsonProperty("goods_type")]
-                public int GoodsType { get; set; }
+                public int? GoodsType { get; set; }
                 /// <summary>
                 /// 是否有优惠券
                 /// </summary>
@@ -197,7 +197,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 该商品所在店铺是否参与全店推广，0：否，1：是
                 /// </summary>
                 [JsonProperty("mall_cps")]
-                public int MallCps { get; set; }
+                public int? MallCps { get; set; }
                 /// <summary>
                 /// 商品评价分
                 /// </summary>

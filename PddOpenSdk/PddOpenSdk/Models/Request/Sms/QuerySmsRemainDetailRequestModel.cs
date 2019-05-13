@@ -1,6 +1,7 @@
 namespace PddOpenSdk.Models.Request.Sms
 {
-    public partial class QuerySmsRemainDetailRequestModel : PddRequestModel {
+    public partial class QuerySmsRemainDetailRequestModel : PddRequestModel
+    {
 
     }
 

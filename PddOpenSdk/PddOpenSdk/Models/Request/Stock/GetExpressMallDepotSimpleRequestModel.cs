@@ -1,6 +1,7 @@
 namespace PddOpenSdk.Models.Request.Stock
 {
-    public partial class GetExpressMallDepotSimpleRequestModel : PddRequestModel {
+    public partial class GetExpressMallDepotSimpleRequestModel : PddRequestModel
+    {
 
     }
 

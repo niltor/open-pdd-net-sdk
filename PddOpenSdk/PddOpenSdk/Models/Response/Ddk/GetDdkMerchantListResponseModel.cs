@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkMerchantListResponseModel : PddResponseModel
@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// total
             /// </summary>
             [JsonProperty("total")]
-            public int Total { get; set; }
+            public int? Total { get; set; }
             /// <summary>
             /// 店铺信息列表
             /// </summary>
@@ -23,7 +23,6 @@ namespace PddOpenSdk.Models.Response.Ddk
             public List<MallSearchInfoVoListResponseModel> MallSearchInfoVoList { get; set; }
             public partial class MallSearchInfoVoListResponseModel : PddResponseModel
             {
-
                 /// <summary>
                 /// 店铺描述评分
                 /// </summary>
@@ -71,7 +70,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("img_url")]
                 public string ImgUrl { set; get; }
-
                 /// <summary>
                 /// 店铺id
                 /// </summary>
@@ -112,12 +110,12 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("goods_detail_vo_list")]
                 public List<GoodsDetailVoListResponseModel> GoodsDetailVoList { get; set; }
-
                 /// <summary>
                 /// 店铺券列表
                 /// </summary>
                 [JsonProperty("mall_coupon_info_list")]
                 public List<MallCouponInfoListResponseModel> MallCouponInfoList { set; get; }
+
                 public partial class GoodsDetailVoListResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -179,7 +177,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店
                     /// </summary>
                     [JsonProperty("merchant_type")]
-                    public int MerchantType { get; set; }
+                    public int? MerchantType { get; set; }
                     /// <summary>
                     /// 商品类目
                     /// </summary>
@@ -214,7 +212,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 商品所在店铺是否开通全店推广 0：否，1：是
                     /// </summary>
                     [JsonProperty("mall_cps")]
-                    public int MallCps { get; set; }
+                    public int? MallCps { get; set; }
                     /// <summary>
                     /// 商品是否有优惠券（指单品券）
                     /// </summary>

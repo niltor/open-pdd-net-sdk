@@ -1,11 +1,12 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Sms
 {
-    public partial class CancelSmsSellSettingRecordRequestModel : PddRequestModel {
+    public partial class CancelSmsSellSettingRecordRequestModel : PddRequestModel
+    {
         /// <summary>
         /// 任务id
         /// </summary>
-        [JsonProperty ("id")]
+        [JsonProperty("id")]
         public long Id { get; set; }
 
     }

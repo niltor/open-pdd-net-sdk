@@ -1,17 +1,19 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Logisticsticket
 {
-    public partial class CloseLogisticsCsSessionResponseModel : PddResponseModel {
+    public partial class CloseLogisticsCsSessionResponseModel : PddResponseModel
+    {
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty ("logistics_cs_session_close_response")]
+        [JsonProperty("logistics_cs_session_close_response")]
         public LogisticsCsSessionCloseResponseResponseModel LogisticsCsSessionCloseResponse { get; set; }
-        public partial class LogisticsCsSessionCloseResponseResponseModel : PddResponseModel {
+        public partial class LogisticsCsSessionCloseResponseResponseModel : PddResponseModel
+        {
             /// <summary>
             /// 是否成功
             /// </summary>
-            [JsonProperty ("is_success")]
+            [JsonProperty("is_success")]
             public bool? IsSuccess { get; set; }
 
         }

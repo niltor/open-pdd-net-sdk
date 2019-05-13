@@ -3,7 +3,6 @@ using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace Console.PddModels
 {
@@ -133,7 +132,7 @@ namespace Console.PddModels
         public ParamType ParamType { get; set; }
 
         [JsonProperty("isMust", NullValueHandling = NullValueHandling.Ignore)]
-        public long? IsMust { get; set; }
+        public long? IsMust { get; set; } = 0;
 
         [JsonProperty("defaultValue", NullValueHandling = NullValueHandling.Ignore)]
         public string DefaultValue { get; set; }
@@ -160,7 +159,7 @@ namespace Console.PddModels
         public string Url { get; set; }
     }
 
-    public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map };
+    public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map, MapArray };
 
     internal static class Converter
     {
@@ -208,9 +207,11 @@ namespace Console.PddModels
                     return ParamType.Boolean;
                 case "MAP":
                     return ParamType.Map;
+                case "MAP[]":
+                    return ParamType.MapArray;
             }
 
-            throw new Exception("Cannot unmarshal type ParamType" + value);
+            throw new Exception("Cannot unmarshal type ParamType " + value);
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -254,7 +255,10 @@ namespace Console.PddModels
                     serializer.Serialize(writer, "boolean");
                     return;
                 case ParamType.Map:
-                    serializer.Serialize(writer, "Map");
+                    serializer.Serialize(writer, "map");
+                    return;
+                case ParamType.MapArray:
+                    serializer.Serialize(writer, "map[]");
                     return;
             }
             throw new Exception("Cannot marshal type ParamType");

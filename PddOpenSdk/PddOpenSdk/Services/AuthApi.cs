@@ -1,9 +1,9 @@
+using Newtonsoft.Json;
+using PddOpenSdk.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services.PddApi
 {
@@ -62,6 +62,7 @@ namespace PddOpenSdk.Services.PddApi
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
                     string jsonString = await response.Content.ReadAsStringAsync();
+                    System.Console.WriteLine(jsonString);
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
                     AccessToken = result.AccessToken;

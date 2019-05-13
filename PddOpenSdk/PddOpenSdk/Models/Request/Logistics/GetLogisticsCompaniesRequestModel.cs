@@ -1,6 +1,7 @@
 namespace PddOpenSdk.Models.Request.Logistics
 {
-    public partial class GetLogisticsCompaniesRequestModel : PddRequestModel {
+    public partial class GetLogisticsCompaniesRequestModel : PddRequestModel
+    {
 
     }
 

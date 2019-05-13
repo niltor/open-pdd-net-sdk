@@ -39,13 +39,14 @@ class Program
 {
     static async Task Main(string[] args)
     {
+        // 设置ClientId与ClientSecret
+        PddCommonApi.ClientId = "ID";
+        PddCommonApi.ClientSecret = "Secret";
         // 先使用code换取token
         string code = "";
         var authApi = new AuthApi();
         await authApi.GetAccessTokenAsync(code);
-        // 设置ClientId与ClientSecret
-        PddCommonApi.ClientId = "ID";
-        PddCommonApi.ClientSecret = "Secret";
+    
         // 构造请求内容
         var model = new GenDdkWeappQrcodeUrlRequestModel
         {

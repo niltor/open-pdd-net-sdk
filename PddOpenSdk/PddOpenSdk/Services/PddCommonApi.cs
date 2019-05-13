@@ -40,16 +40,24 @@ namespace PddOpenSdk.Services
         /// <returns></returns>
         protected async Task<TResult> PostAsync<TModel, TResult>(string type, TModel model)
         {
-            if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret) || string.IsNullOrEmpty(AccessToken))
+            if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret))
             {
-                throw new Exception("请检查是否设置ClientId、ClientSecret及AccessToken");
+                throw new Exception("请检查是否设置ClientId、ClientSecret");
             }
+
             // 类型转换到字典
             var dic = Function.ToDictionary(model);
             // 添加公共参数
-            dic.Add("access_token", AccessToken);
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
+            if (string.IsNullOrEmpty(AccessToken))
+            {
+                Console.WriteLine("当前请求未设置AccessToken");
+            }
+            else
+            {
+                dic.Add("access_token", AccessToken);
+            }
 #if NET452
             var Unix = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             dic.Add("timestamp", (long)(DateTime.UtcNow-Unix).TotalMilliseconds);
@@ -58,7 +66,6 @@ namespace PddOpenSdk.Services
             dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
 
 #endif
-
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");

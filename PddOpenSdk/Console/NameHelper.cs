@@ -1,5 +1,3 @@
-using PddOpenSdk.Common;
-
 namespace Console
 {
     /// <summary>
@@ -30,7 +28,7 @@ namespace Console
             name = name.ToLower();
             type = type.ToLower();
             // 名称转为Pascal命名
-            name = Function.ToTitleCase(name.Replace("_", " "))?.Replace(" ", "");
+            name = Function.ToTitleCase(name.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
 
             // 是否为数组
             if (type.Contains("[]"))
@@ -41,7 +39,7 @@ namespace Console
             // 类型映射
             switch (type)
             {
-                case "integer":
+                case "int":
                     type = isMust == 0 ? "int?" : "int";
                     break;
                 case "boolean":

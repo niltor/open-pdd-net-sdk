@@ -24,15 +24,15 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 多多客户工具API
         /// </summary>
-        public DdkOauthApi DdkOauthApi { get; set; } = new DdkOauthApi();
+        public DdkoauthApi DdkOauthApi { get; set; } = new DdkoauthApi();
         /// <summary>
         /// 订单API
         /// </summary>
-        public ErpApi ErpApi { get; set; } = new ErpApi();
+        public OrderApi ErpApi { get; set; } = new OrderApi();
         /// <summary>
         /// 订单API
         /// </summary>
-        public ErpApi OrderApi { get; set; } = new ErpApi();
+        public OrderApi OrderApi { get; set; } = new OrderApi();
         /// <summary>
         /// 商品API
         /// </summary>
@@ -68,7 +68,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 工具API
         /// </summary>
-        public TimeApi TimeApi { get; set; } = new TimeApi();
+        public UtilApi UtilApi { get; set; } = new UtilApi();
         /// <summary>
         /// 虚拟类目API
         /// </summary>
@@ -90,13 +90,9 @@ namespace PddOpenSdk.AspNetCore
             PddCommonApi.ClientSecret = _options.Value.ClientSecret;
             PddCommonApi.RedirectUri = _options.Value.CallbackUrl;
         }
-
-
         public void Test()
         {
-
             System.Console.WriteLine(PddCommonApi.ClientId);
-
         }
     }
 }
