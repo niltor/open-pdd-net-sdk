@@ -97,7 +97,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("customer_num")]
             public long? CustomerNum { get; set; }
             /// <summary>
-            /// 商品类型：1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡 暂时支持1-普通商品的上架
+            /// 商品类型：1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡,18-CC行邮 暂时支持1-普通商品的上架
             /// </summary>
             [JsonProperty("goods_type")]
             public int? GoodsType { get; set; }
@@ -191,11 +191,6 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("second_hand")]
             public int? SecondHand { get; set; }
-            /// <summary>
-            /// oversea_type
-            /// </summary>
-            [JsonProperty("oversea_type")]
-            public int? OverseaType { get; set; }
             /// <summary>
             /// oversea_goods
             /// </summary>

@@ -111,7 +111,7 @@ namespace PddOpenSdk.Models.Response.Order
                 /// <summary>
                 /// 订单商品列表
                 /// </summary>
-                [JsonProperty("$item_list")]
+                [JsonProperty("item_list")]
                 public List<ItemListResponseModel> ItemList { get; set; }
                 /// <summary>
                 /// 订单备注

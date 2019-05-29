@@ -12,7 +12,6 @@ namespace Sample
             await helper.Run();
             System.Console.WriteLine("finish");
             System.Console.ReadLine();
-
         }
     }
 }

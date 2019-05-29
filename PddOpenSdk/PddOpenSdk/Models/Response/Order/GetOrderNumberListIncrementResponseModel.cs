@@ -326,7 +326,7 @@ namespace PddOpenSdk.Models.Response.Order
                 /// <summary>
                 /// 商品规格对象
                 /// </summary>
-                [JsonProperty("$item_list")]
+                [JsonProperty("item_list")]
                 public List<ItemListResponseModel> ItemList { get; set; }
                 /// <summary>
                 /// 平台优惠金额

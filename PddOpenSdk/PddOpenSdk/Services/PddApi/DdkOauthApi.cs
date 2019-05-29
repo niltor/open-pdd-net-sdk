@@ -62,14 +62,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 多多客工具查询转盘拉新订单列表
-        /// </summary>
-        public async Task<GetDdkOauthLotteryNewListResponseModel> GetDdkOauthLotteryNewListAsync(GetDdkOauthLotteryNewListRequestModel getDdkOauthLotteryNewList)
-        {
-            var result = await PostAsync<GetDdkOauthLotteryNewListRequestModel, GetDdkOauthLotteryNewListResponseModel>("pdd.ddk.oauth.lottery.new.list.get", getDdkOauthLotteryNewList);
-            return result;
-        }
-        /// <summary>
         /// 多多客工具生成转盘抽免单url
         /// </summary>
         public async Task<GenDdkOauthLotteryUrlResponseModel> GenDdkOauthLotteryUrlAsync(GenDdkOauthLotteryUrlRequestModel genDdkOauthLotteryUrl)

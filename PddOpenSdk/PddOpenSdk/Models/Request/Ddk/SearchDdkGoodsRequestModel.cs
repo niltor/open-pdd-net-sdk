@@ -64,6 +64,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 店铺类型数组
+        /// </summary>
+        [JsonProperty("merchant_type_list")]
+        public int? MerchantTypeList { get; set; }
 
     }
 

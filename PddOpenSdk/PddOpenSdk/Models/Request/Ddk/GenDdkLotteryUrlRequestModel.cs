@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 是否生成大转盘和主题的小程序推广链接
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
 
     }
 

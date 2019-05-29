@@ -44,6 +44,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
+        /// <summary>
+        /// 是否生成小程序链接
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
 
     }
 

@@ -10,7 +10,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("goods_name")]
         public string GoodsName { get; set; }
         /// <summary>
-        /// 1-国内普通商品，2-进口，3-直供（保税），4-直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡
+        /// 1-国内普通商品，2-进口，3-直供（保税），4-直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡,18-CC行邮
         /// </summary>
         [JsonProperty("goods_type")]
         public int GoodsType { get; set; }
@@ -149,11 +149,6 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
-        /// <summary>
-        /// oversea_type
-        /// </summary>
-        [JsonProperty("oversea_type")]
-        public int? OverseaType { get; set; }
         /// <summary>
         /// {; 	"consumption_tax_rate": 1,; 	"value_added_tax_rate": 9,; 	"hs_code": "2200",; 	"customs_broker": "sss",; 	"bonded_warehouse_key": "pp"; }
         /// </summary>

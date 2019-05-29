@@ -44,6 +44,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("generate_we_app")]
         public bool? GenerateWeApp { get; set; }
+        /// <summary>
+        /// 是否生成微博推广
+        /// </summary>
+        [JsonProperty("generate_weiboapp_webview")]
+        public bool? GenerateWeiboappWebview { get; set; }
 
     }
 

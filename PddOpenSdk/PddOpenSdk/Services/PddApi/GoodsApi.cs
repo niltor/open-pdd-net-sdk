@@ -294,30 +294,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 编辑并提交草稿接口
-        /// </summary>
-        public async Task<CommitGoodsSubmitGoodsResponseModel> CommitGoodsSubmitGoodsAsync(CommitGoodsSubmitGoodsRequestModel commitGoodsSubmitGoods)
-        {
-            var result = await PostAsync<CommitGoodsSubmitGoodsRequestModel, CommitGoodsSubmitGoodsResponseModel>("pdd.goods.submit.goods.commit", commitGoodsSubmitGoods);
-            return result;
-        }
-        /// <summary>
-        /// 获取商品提交的商品详情
-        /// </summary>
-        public async Task<GetGoodsCommitDetailResponseModel> GetGoodsCommitDetailAsync(GetGoodsCommitDetailRequestModel getGoodsCommitDetail)
-        {
-            var result = await PostAsync<GetGoodsCommitDetailRequestModel, GetGoodsCommitDetailResponseModel>("pdd.goods.commit.detail.get", getGoodsCommitDetail);
-            return result;
-        }
-        /// <summary>
-        /// 商品明细
-        /// </summary>
-        public async Task<GetGoodsDetailResponseModel> GetGoodsDetailAsync(GetGoodsDetailRequestModel getGoodsDetail)
-        {
-            var result = await PostAsync<GetGoodsDetailRequestModel, GetGoodsDetailResponseModel>("pdd.goods.detail.get", getGoodsDetail);
-            return result;
-        }
-        /// <summary>
         /// 商品新增接口
         /// </summary>
         public async Task<AddGoodsResponseModel> AddGoodsAsync(AddGoodsRequestModel addGoods)
@@ -339,6 +315,30 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CommitGoodsEditGoodsResponseModel> CommitGoodsEditGoodsAsync(CommitGoodsEditGoodsRequestModel commitGoodsEditGoods)
         {
             var result = await PostAsync<CommitGoodsEditGoodsRequestModel, CommitGoodsEditGoodsResponseModel>("pdd.goods.edit.goods.commit", commitGoodsEditGoods);
+            return result;
+        }
+        /// <summary>
+        /// 编辑并提交草稿接口
+        /// </summary>
+        public async Task<CommitGoodsSubmitGoodsResponseModel> CommitGoodsSubmitGoodsAsync(CommitGoodsSubmitGoodsRequestModel commitGoodsSubmitGoods)
+        {
+            var result = await PostAsync<CommitGoodsSubmitGoodsRequestModel, CommitGoodsSubmitGoodsResponseModel>("pdd.goods.submit.goods.commit", commitGoodsSubmitGoods);
+            return result;
+        }
+        /// <summary>
+        /// 获取商品提交的商品详情
+        /// </summary>
+        public async Task<GetGoodsCommitDetailResponseModel> GetGoodsCommitDetailAsync(GetGoodsCommitDetailRequestModel getGoodsCommitDetail)
+        {
+            var result = await PostAsync<GetGoodsCommitDetailRequestModel, GetGoodsCommitDetailResponseModel>("pdd.goods.commit.detail.get", getGoodsCommitDetail);
+            return result;
+        }
+        /// <summary>
+        /// 商品明细
+        /// </summary>
+        public async Task<GetGoodsDetailResponseModel> GetGoodsDetailAsync(GetGoodsDetailRequestModel getGoodsDetail)
+        {
+            var result = await PostAsync<GetGoodsDetailRequestModel, GetGoodsDetailResponseModel>("pdd.goods.detail.get", getGoodsDetail);
             return result;
         }
 

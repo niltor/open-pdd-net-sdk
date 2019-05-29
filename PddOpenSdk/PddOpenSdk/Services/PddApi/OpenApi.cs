@@ -6,6 +6,14 @@ namespace PddOpenSdk.Services.PddApi
     public class OpenApi : PddCommonApi
     {
         /// <summary>
+        /// 根据运单号查询短信发送记录
+        /// </summary>
+        public async Task<RecordOpenMsgServiceQueryExpressMsgResponseModel> RecordOpenMsgServiceQueryExpressMsgAsync(RecordOpenMsgServiceQueryExpressMsgRequestModel recordOpenMsgServiceQueryExpressMsg)
+        {
+            var result = await PostAsync<RecordOpenMsgServiceQueryExpressMsgRequestModel, RecordOpenMsgServiceQueryExpressMsgResponseModel>("pdd.open.msg.service.query.express.msg.record", recordOpenMsgServiceQueryExpressMsg);
+            return result;
+        }
+        /// <summary>
         /// 查询短信发送记录
         /// </summary>
         public async Task<RecordOpenMsgServiceQueryMsgResponseModel> RecordOpenMsgServiceQueryMsgAsync(RecordOpenMsgServiceQueryMsgRequestModel recordOpenMsgServiceQueryMsg)
@@ -19,6 +27,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<MsgOpenMsgServiceSendBatchResponseModel> MsgOpenMsgServiceSendBatchAsync(MsgOpenMsgServiceSendBatchRequestModel msgOpenMsgServiceSendBatch)
         {
             var result = await PostAsync<MsgOpenMsgServiceSendBatchRequestModel, MsgOpenMsgServiceSendBatchResponseModel>("pdd.open.msg.service.send.batch.msg", msgOpenMsgServiceSendBatch);
+            return result;
+        }
+        /// <summary>
+        /// 根据运单号发短信
+        /// </summary>
+        public async Task<MsgOpenMsgServiceSendExpressResponseModel> MsgOpenMsgServiceSendExpressAsync(MsgOpenMsgServiceSendExpressRequestModel msgOpenMsgServiceSendExpress)
+        {
+            var result = await PostAsync<MsgOpenMsgServiceSendExpressRequestModel, MsgOpenMsgServiceSendExpressResponseModel>("pdd.open.msg.service.send.express.msg", msgOpenMsgServiceSendExpress);
             return result;
         }
         /// <summary>

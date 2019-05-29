@@ -11,11 +11,6 @@ namespace PddOpenSdk.Models.Response.Ddk
         public partial class OrderDetailResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 优惠券价？
-            /// </summary>
-            [JsonProperty("duo_coupon_amount")]
-            public long? DuoCouponAmount { set; get; }
-            /// <summary>
             /// 订单编号
             /// </summary>
             [JsonProperty("order_sn")]

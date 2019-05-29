@@ -248,6 +248,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("sales_tip")]
                 public string SalesTip { get; set; }
+                /// <summary>
+                /// 活动类型，0-无活动;1-秒杀;3-限量折扣;12-限时折扣;13-大促活动;14-名品折扣;15-品牌清仓;16-食品超市;17-一元幸运团;18-爱逛街;19-时尚穿搭;20-男人帮;21-9块9;22-竞价活动;23-榜单活动;24-幸运半价购;25-定金预售;26-幸运人气购;27-特色主题活动;28-断码清仓;29-一元话费;30-电器城;31-每日好店;32-品牌卡;101-大促搜索池;102-大促品类分会场;
+                /// </summary>
+                [JsonProperty("activity_type")]
+                public int? ActivityType { get; set; }
 
             }
 

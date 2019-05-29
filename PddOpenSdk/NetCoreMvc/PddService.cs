@@ -81,6 +81,18 @@ namespace PddOpenSdk.AspNetCore
         /// 仓储API
         /// </summary>
         public StockApi StockApi { get; set; } = new StockApi();
+        /// <summary>
+        /// 消息服务
+        /// </summary>
+        public PmcApi PmcApi { get; set; } = new PmcApi();
+        /// <summary>
+        /// 财务API
+        /// </summary>
+        public FinanceApi FinanceApi { get; set; } = new FinanceApi();
+        /// <summary>
+        /// 开平短信
+        /// </summary>
+        public OpenApi OpenApi { get; set; } = new OpenApi();
         private readonly IOptions<PddOptions> _options;
 
         public PddService(IOptions<PddOptions> options)

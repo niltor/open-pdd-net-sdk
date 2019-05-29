@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 是否生成小程序链接
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
 
     }
 
