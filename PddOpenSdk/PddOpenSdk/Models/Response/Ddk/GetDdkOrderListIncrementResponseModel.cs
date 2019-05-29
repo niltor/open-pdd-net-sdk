@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkOrderListIncrementResponseModel : PddResponseModel
@@ -75,7 +74,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("promotion_amount")]
                 public long? PromotionAmount { get; set; }
                 /// <summary>
-                /// 订单状态：  -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）
+                /// 订单状态： -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）
                 /// </summary>
                 [JsonProperty("order_status")]
                 public int? OrderStatus { get; set; }
@@ -109,7 +108,47 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("order_modify_at")]
                 public long? OrderModifyAt { get; set; }
+                /// <summary>
+                /// 自定义参数
+                /// </summary>
+                [JsonProperty("custom_parameters")]
+                public string CustomParameters { get; set; }
 
+                [JsonProperty("auth_duo_id")]
+                public long? AuthDuoId { set; get; }
+
+                [JsonProperty("batch_no")]
+                public string BatchNo { set; get; }
+
+                [JsonProperty("custom_parameters")]
+                public string CustomParameters { set; get; }
+                [JsonProperty("duo_coupon_amount")]
+                public long? DuoCouponAmount { set; get; }
+
+                [JsonProperty("group_id")]
+                public long? GroupId { set; get; }
+                /// <summary>
+                /// 订单来源 ：0 ：关联，5 ：直接下单页RPC请求
+                /// </summary>
+                [JsonProperty("match_channel")]
+                public int MatchChannel { get; set; }
+                /// <summary>
+                /// 招商多多客id
+                /// </summary>
+                [JsonProperty("zs_duo_id")]
+                public long? ZsDuoId { get; set; }
+                [JsonProperty("verify_time")]
+                public long? VerifyTime { set; get; }
+                /// <summary>
+                /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
+                /// </summary>
+                [JsonProperty("type")]
+                public int Type { get; set; }
+                /// <summary>
+                /// 订单确认收货时间（UNIX时间戳）
+                /// </summary>
+                [JsonProperty("order_receive_time")]
+                public long? OrderReceiveTime { get; set; }
             }
 
         }

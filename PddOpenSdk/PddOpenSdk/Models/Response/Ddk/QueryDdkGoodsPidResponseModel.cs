@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class QueryDdkGoodsPidResponseModel : PddResponseModel
@@ -13,15 +12,15 @@ namespace PddOpenSdk.Models.Response.Ddk
         public partial class PIdQueryResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 多多进宝推广位对象列表
-            /// </summary>
-            [JsonProperty("p_id_list")]
-            public List<PIdListResponseModel> PIdList { get; set; }
-            /// <summary>
             /// 返回推广位总数
             /// </summary>
             [JsonProperty("total_count")]
             public long? TotalCount { get; set; }
+            /// <summary>
+            /// 多多进宝推广位对象列表
+            /// </summary>
+            [JsonProperty("p_id_list")]
+            public List<PIdListResponseModel> PIdList { get; set; }
             public partial class PIdListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -34,6 +33,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("p_id")]
                 public string PId { get; set; }
+                /// <summary>
+                /// 推广位名称
+                /// </summary>
+                [JsonProperty("pid_name")]
+                public string PidName { get; set; }
 
             }
 

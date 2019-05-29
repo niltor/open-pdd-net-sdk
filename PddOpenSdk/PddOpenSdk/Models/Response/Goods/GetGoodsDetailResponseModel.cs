@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsDetailResponseModel : PddResponseModel
@@ -202,6 +201,21 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("oversea_goods")]
             public OverseaGoodsResponseModel OverseaGoods { get; set; }
+            /// <summary>
+            /// 缺重包退
+            /// </summary>
+            [JsonProperty("lack_of_weight_claim")]
+            public int? LackOfWeightClaim { get; set; }
+            /// <summary>
+            /// 坏果包赔
+            /// </summary>
+            [JsonProperty("bad_fruit_claim")]
+            public int? BadFruitClaim { get; set; }
+            /// <summary>
+            /// 商品视频
+            /// </summary>
+            [JsonProperty("carousel_video")]
+            public List<CarouselVideoResponseModel> CarouselVideo { get; set; }
             public partial class GoodsPropertyListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -365,6 +379,20 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("bonded_warehouse_key")]
                 public string BondedWarehouseKey { get; set; }
+
+            }
+            public partial class CarouselVideoResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 商品视频id
+                /// </summary>
+                [JsonProperty("file_id")]
+                public string FileId { get; set; }
+                /// <summary>
+                /// 商品视频url
+                /// </summary>
+                [JsonProperty("video_url")]
+                public string VideoUrl { get; set; }
 
             }
 

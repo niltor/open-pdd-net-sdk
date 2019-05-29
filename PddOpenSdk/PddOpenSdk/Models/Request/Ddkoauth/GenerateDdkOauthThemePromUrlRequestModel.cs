@@ -1,13 +1,9 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddkoauth
 {
     public partial class GenerateDdkOauthThemePromUrlRequestModel : PddRequestModel
     {
-        /// <summary>
-        /// 该值为:pdd.ddk.oauth.theme.prom.url.generate
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
         /// <summary>
         /// 推广位ID
         /// </summary>
@@ -17,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// 主题ID列表,例如[1,235]
         /// </summary>
         [JsonProperty("theme_id_list")]
-        public string ThemeIdList { get; set; }
+        public List<long> ThemeIdList { get; set; }
         /// <summary>
         /// 是否生成短链接,true-是,false-否
         /// </summary>

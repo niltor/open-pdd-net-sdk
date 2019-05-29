@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// 店铺id
         /// </summary>
         [JsonProperty("mall_id")]
-        public int MallId { get; set; }
+        public long MallId { get; set; }
         /// <summary>
         /// 推广位
         /// </summary>

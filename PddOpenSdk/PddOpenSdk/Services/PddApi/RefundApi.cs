@@ -1,10 +1,18 @@
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Refund;
 using PddOpenSdk.Models.Response.Refund;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class RefundApi : PddCommonApi
     {
+        /// <summary>
+        /// 取消发货
+        /// </summary>
+        public async Task<CancelRdcPddgeniusSendgoodsResponseModel> CancelRdcPddgeniusSendgoodsAsync(CancelRdcPddgeniusSendgoodsRequestModel cancelRdcPddgeniusSendgoods)
+        {
+            var result = await PostAsync<CancelRdcPddgeniusSendgoodsRequestModel, CancelRdcPddgeniusSendgoodsResponseModel>("pdd.rdc.pddgenius.sendgoods.cancel", cancelRdcPddgeniusSendgoods);
+            return result;
+        }
         /// <summary>
         /// 获取商家退货地址库
         /// </summary>

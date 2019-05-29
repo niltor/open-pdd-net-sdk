@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GenerateDdkGoodsPidResponseModel : PddResponseModel
@@ -22,13 +21,18 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// <summary>
                 /// 推广位名称
                 /// </summary>
-                [JsonProperty("p_id_name")]
-                public string PIdName { get; set; }
+                [JsonProperty("pid_name")]
+                public string PidName { get; set; }
                 /// <summary>
                 /// 调用方推广位ID
                 /// </summary>
                 [JsonProperty("p_id")]
                 public string PId { get; set; }
+                /// <summary>
+                /// 推广位创建时间
+                /// </summary>
+                [JsonProperty("create_time")]
+                public long? CreateTime { get; set; }
 
             }
 

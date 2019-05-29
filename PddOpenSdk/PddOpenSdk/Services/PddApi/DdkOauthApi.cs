@@ -1,16 +1,16 @@
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ddkoauth;
 using PddOpenSdk.Models.Response.Ddkoauth;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
-    public class DdkOauthApi : PddCommonApi
+    public class DdkoauthApi : PddCommonApi
     {
         /// <summary>
-        /// 获取多多客拉新账单
+        /// 查询所有授权的多多客订单
         /// </summary>
-        public async Task<GetDdkOauthAppNewBillListResponseModel> GetDdkOauthAppNewBillListAsync(GetDdkOauthAppNewBillListRequestModel getDdkOauthAppNewBillList)
+        public async Task<GetDdkAllOrderListIncrementResponseModel> GetDdkAllOrderListIncrementAsync(GetDdkAllOrderListIncrementRequestModel getDdkAllOrderListIncrement)
         {
-            var result = await PostAsync<GetDdkOauthAppNewBillListRequestModel, GetDdkOauthAppNewBillListResponseModel>("pdd.ddk.oauth.app.new.bill.list.get", getDdkOauthAppNewBillList);
+            var result = await PostAsync<GetDdkAllOrderListIncrementRequestModel, GetDdkAllOrderListIncrementResponseModel>("pdd.ddk.all.order.list.increment.get", getDdkAllOrderListIncrement);
             return result;
         }
         /// <summary>
@@ -43,6 +43,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkOauthGoodsPromUrlResponseModel> GenerateDdkOauthGoodsPromUrlAsync(GenerateDdkOauthGoodsPromUrlRequestModel generateDdkOauthGoodsPromUrl)
         {
             var result = await PostAsync<GenerateDdkOauthGoodsPromUrlRequestModel, GenerateDdkOauthGoodsPromUrlResponseModel>("pdd.ddk.oauth.goods.prom.url.generate", generateDdkOauthGoodsPromUrl);
+            return result;
+        }
+        /// <summary>
+        /// 运营频道商品查询API
+        /// </summary>
+        public async Task<GetDdkOauthGoodsRecommendResponseModel> GetDdkOauthGoodsRecommendAsync(GetDdkOauthGoodsRecommendRequestModel getDdkOauthGoodsRecommend)
+        {
+            var result = await PostAsync<GetDdkOauthGoodsRecommendRequestModel, GetDdkOauthGoodsRecommendResponseModel>("pdd.ddk.oauth.goods.recommend.get", getDdkOauthGoodsRecommend);
             return result;
         }
         /// <summary>
@@ -86,11 +94,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 按照更新时间段增量同步推广订单信息
+        /// 多多客工具生成多多口令接口
         /// </summary>
-        public async Task<GetDdkOauthOrderListIncrementResponseModel> GetDdkOauthOrderListIncrementAsync(GetDdkOauthOrderListIncrementRequestModel getDdkOauthOrderListIncrement)
+        public async Task<GenerateDdkOauthPhraseResponseModel> GenerateDdkOauthPhraseAsync(GenerateDdkOauthPhraseRequestModel generateDdkOauthPhrase)
         {
-            var result = await PostAsync<GetDdkOauthOrderListIncrementRequestModel, GetDdkOauthOrderListIncrementResponseModel>("pdd.ddk.oauth.order.list.increment.get", getDdkOauthOrderListIncrement);
+            var result = await PostAsync<GenerateDdkOauthPhraseRequestModel, GenerateDdkOauthPhraseResponseModel>("pdd.ddk.oauth.phrase.generate", generateDdkOauthPhrase);
             return result;
         }
         /// <summary>
@@ -118,11 +126,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 多多客工具生成单品推广小程序二维码
+        /// 多多客工具获取爆款排行商品接口
         /// </summary>
-        public async Task<GenDdkOauthWeappQrcodeUrlResponseModel> GenDdkOauthWeappQrcodeUrlAsync(GenDdkOauthWeappQrcodeUrlRequestModel genDdkOauthWeappQrcodeUrl)
+        public async Task<QueryDdkOauthTopGoodsListResponseModel> QueryDdkOauthTopGoodsListAsync(QueryDdkOauthTopGoodsListRequestModel queryDdkOauthTopGoodsList)
         {
-            var result = await PostAsync<GenDdkOauthWeappQrcodeUrlRequestModel, GenDdkOauthWeappQrcodeUrlResponseModel>("pdd.ddk.oauth.weapp.qrcode.url.gen", genDdkOauthWeappQrcodeUrl);
+            var result = await PostAsync<QueryDdkOauthTopGoodsListRequestModel, QueryDdkOauthTopGoodsListResponseModel>("pdd.ddk.oauth.top.goods.list.query", queryDdkOauthTopGoodsList);
             return result;
         }
         /// <summary>

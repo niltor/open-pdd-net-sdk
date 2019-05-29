@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class SearchDdkGoodsResponseModel : PddResponseModel
@@ -244,6 +243,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("serv_pct")]
                 public double? ServPct { get; set; }
+                /// <summary>
+                /// 模糊销量
+                /// </summary>
+                [JsonProperty("sales_tip")]
+                public string SalesTip { get; set; }
 
             }
 

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class BidAdCreateLocationRequestModel : PddRequestModel

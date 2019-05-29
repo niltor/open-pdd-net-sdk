@@ -87,7 +87,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 人群
                 /// </summary>
                 [JsonProperty("crowd")]
-                public CrowdResponseModel Crowd { get; set; }
+                public CrowdPeopleResponseModel Crowd { get; set; }
                 public partial class CrowdPeopleResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -185,7 +185,7 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 收获地区
                 /// </summary>
                 [JsonProperty("region")]
-                public List<int?> Region { get; set; }
+                public int? Region { get; set; }
                 /// <summary>
                 /// 地区类型
                 /// </summary>

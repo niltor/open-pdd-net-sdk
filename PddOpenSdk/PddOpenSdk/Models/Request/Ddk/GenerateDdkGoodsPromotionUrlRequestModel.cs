@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkGoodsPromotionUrlRequestModel : PddRequestModel
@@ -31,11 +30,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
         /// <summary>
-        /// 是否开启订单拉新，true表示开启（订单拉新奖励特权仅支持白名单，请联系工作人员开通）
-        /// </summary>
-        [JsonProperty("pull_new")]
-        public bool? PullNew { get; set; }
-        /// <summary>
         /// 是否生成唤起微信客户端链接，true-是，false-否，默认false
         /// </summary>
         [JsonProperty("generate_weapp_webview")]
@@ -50,6 +44,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("generate_we_app")]
         public bool? GenerateWeApp { get; set; }
+        /// <summary>
+        /// 是否生成微博推广链接
+        /// </summary>
+        [JsonProperty("generate_weiboapp_webview")]
+        public bool? GenerateWeiboappWebview { get; set; }
 
     }
 

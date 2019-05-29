@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GetDdkMerchantListRequestModel : PddRequestModel
@@ -14,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 店铺类型
         /// </summary>
         [JsonProperty("merchant_type_list")]
-        public List<int?> MerchantTypeList { get; set; }
+        public List<int> MerchantTypeList { get; set; }
         /// <summary>
         /// 查询范围0----商品拼团价格区间；1----商品券后价价格区间；2----佣金比例区间；3----优惠券金额区间；4----加入多多进宝时间区间；5----销量区间；6----佣金金额区间
         /// </summary>

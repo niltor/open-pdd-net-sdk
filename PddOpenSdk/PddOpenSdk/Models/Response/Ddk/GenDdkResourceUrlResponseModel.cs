@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GenDdkResourceUrlResponseModel : PddResponseModel
@@ -45,16 +43,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("mobile_short_url")]
                 public string MobileShortUrl { get; set; }
                 /// <summary>
-                /// 频道推广唤醒微信长链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_url")]
-                public string WeAppWebViewUrl { get; set; }
-                /// <summary>
-                /// 频道推广唤醒微信短链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_short_url")]
-                public string WeAppWebViewShortUrl { get; set; }
-                /// <summary>
                 /// 小程序信息
                 /// </summary>
                 [JsonProperty("we_app_page_path")]
@@ -83,16 +71,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("mobile_short_url")]
                 public string MobileShortUrl { get; set; }
-                /// <summary>
-                /// 频道推广唤醒微信长链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_url")]
-                public string WeAppWebViewUrl { get; set; }
-                /// <summary>
-                /// 频道推广唤醒微信短链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_short_url")]
-                public string WeAppWebViewShortUrl { get; set; }
                 /// <summary>
                 /// 小程序信息
                 /// </summary>

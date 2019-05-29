@@ -118,27 +118,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 新建推广计划
-        /// </summary>
-        public async Task<CreateAdPlanResponseModel> CreateAdPlanAsync(CreateAdPlanRequestModel createAdPlan)
-        {
-            var result = await PostAsync<CreateAdPlanRequestModel, CreateAdPlanResponseModel>("pdd.ad.plan.create", createAdPlan);
-            return result;
-        }
-        /// <summary>
         /// 获取现有计划基础信息
         /// </summary>
         public async Task<GetAdPlanInfoListResponseModel> GetAdPlanInfoListAsync(GetAdPlanInfoListRequestModel getAdPlanInfoList)
         {
             var result = await PostAsync<GetAdPlanInfoListRequestModel, GetAdPlanInfoListResponseModel>("pdd.ad.plan.info.list.get", getAdPlanInfoList);
-            return result;
-        }
-        /// <summary>
-        /// 获取拼多多推广账户余额
-        /// </summary>
-        public async Task<GetAdBalanceResponseModel> GetAdBalanceAsync(GetAdBalanceRequestModel getAdBalance)
-        {
-            var result = await PostAsync<GetAdBalanceRequestModel, GetAdBalanceResponseModel>("pdd.ad.balance.get", getAdBalance);
             return result;
         }
         /// <summary>
@@ -155,14 +139,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetAdHistoryRtUnitReportResponseModel> GetAdHistoryRtUnitReportAsync(GetAdHistoryRtUnitReportRequestModel getAdHistoryRtUnitReport)
         {
             var result = await PostAsync<GetAdHistoryRtUnitReportRequestModel, GetAdHistoryRtUnitReportResponseModel>("pdd.ad.history.rt.unit.report.get", getAdHistoryRtUnitReport);
-            return result;
-        }
-        /// <summary>
-        /// 推广计划实时报表数据
-        /// </summary>
-        public async Task<GetAdHistoryRtPlanReportResponseModel> GetAdHistoryRtPlanReportAsync(GetAdHistoryRtPlanReportRequestModel getAdHistoryRtPlanReport)
-        {
-            var result = await PostAsync<GetAdHistoryRtPlanReportRequestModel, GetAdHistoryRtPlanReportResponseModel>("pdd.ad.history.rt.plan.report.get", getAdHistoryRtPlanReport);
             return result;
         }
         /// <summary>
@@ -270,14 +246,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 创意历史报表数据
-        /// </summary>
-        public async Task<GetAdCreativeHistoryReportResponseModel> GetAdCreativeHistoryReportAsync(GetAdCreativeHistoryReportRequestModel getAdCreativeHistoryReport)
-        {
-            var result = await PostAsync<GetAdCreativeHistoryReportRequestModel, GetAdCreativeHistoryReportResponseModel>("pdd.ad.creative.history.report.get", getAdCreativeHistoryReport);
-            return result;
-        }
-        /// <summary>
         /// 获取可选资源位信息（日均可竞流量）
         /// </summary>
         public async Task<ListAdQueryLocationBidPvResponseModel> ListAdQueryLocationBidPvAsync(ListAdQueryLocationBidPvRequestModel listAdQueryLocationBidPv)
@@ -371,6 +339,38 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<BidAdDeleteResponseModel> BidAdDeleteAsync(BidAdDeleteRequestModel bidAdDelete)
         {
             var result = await PostAsync<BidAdDeleteRequestModel, BidAdDeleteResponseModel>("pdd.ad.delete.bid", bidAdDelete);
+            return result;
+        }
+        /// <summary>
+        /// 获取拼多多推广账户余额
+        /// </summary>
+        public async Task<GetAdBalanceResponseModel> GetAdBalanceAsync(GetAdBalanceRequestModel getAdBalance)
+        {
+            var result = await PostAsync<GetAdBalanceRequestModel, GetAdBalanceResponseModel>("pdd.ad.balance.get", getAdBalance);
+            return result;
+        }
+        /// <summary>
+        /// 新建推广计划
+        /// </summary>
+        public async Task<CreateAdPlanResponseModel> CreateAdPlanAsync(CreateAdPlanRequestModel createAdPlan)
+        {
+            var result = await PostAsync<CreateAdPlanRequestModel, CreateAdPlanResponseModel>("pdd.ad.plan.create", createAdPlan);
+            return result;
+        }
+        /// <summary>
+        /// 创意历史报表数据
+        /// </summary>
+        public async Task<GetAdCreativeHistoryReportResponseModel> GetAdCreativeHistoryReportAsync(GetAdCreativeHistoryReportRequestModel getAdCreativeHistoryReport)
+        {
+            var result = await PostAsync<GetAdCreativeHistoryReportRequestModel, GetAdCreativeHistoryReportResponseModel>("pdd.ad.creative.history.report.get", getAdCreativeHistoryReport);
+            return result;
+        }
+        /// <summary>
+        /// 推广计划实时报表数据
+        /// </summary>
+        public async Task<GetAdHistoryRtPlanReportResponseModel> GetAdHistoryRtPlanReportAsync(GetAdHistoryRtPlanReportRequestModel getAdHistoryRtPlanReport)
+        {
+            var result = await PostAsync<GetAdHistoryRtPlanReportRequestModel, GetAdHistoryRtPlanReportResponseModel>("pdd.ad.history.rt.plan.report.get", getAdHistoryRtPlanReport);
             return result;
         }
 

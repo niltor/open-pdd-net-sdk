@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdHistoryRtPlanReportResponseModel : PddResponseModel
@@ -104,6 +103,11 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// </summary>
                 [JsonProperty("date")]
                 public string Date { get; set; }
+                /// <summary>
+                /// 推广类型（1-商品推广，2-店铺推广）
+                /// </summary>
+                [JsonProperty("product_type")]
+                public int? ProductType { get; set; }
 
             }
 

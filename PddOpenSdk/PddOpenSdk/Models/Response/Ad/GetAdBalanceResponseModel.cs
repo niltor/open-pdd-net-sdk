@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdBalanceResponseModel : PddResponseModel
@@ -13,20 +12,20 @@ namespace PddOpenSdk.Models.Response.Ad
         public partial class AdBalanceGetResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 账户列表
+            /// 店铺id
             /// </summary>
-            [JsonProperty("accounts_balance")]
-            public List<AccountsBalanceResponseModel> AccountsBalance { get; set; }
+            [JsonProperty("mall_id")]
+            public long? MallId { get; set; }
             /// <summary>
             /// 总余额，单位厘
             /// </summary>
             [JsonProperty("advertiser_balance")]
             public long? AdvertiserBalance { get; set; }
             /// <summary>
-            /// 店铺id
+            /// 账户列表
             /// </summary>
-            [JsonProperty("mall_id")]
-            public long? MallId { get; set; }
+            [JsonProperty("accounts_balance")]
+            public List<AccountsBalanceResponseModel> AccountsBalance { get; set; }
             public partial class AccountsBalanceResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -40,10 +39,15 @@ namespace PddOpenSdk.Models.Response.Ad
                 [JsonProperty("balance")]
                 public long? Balance { get; set; }
                 /// <summary>
+                /// 可消费余额
+                /// </summary>
+                [JsonProperty("spendable_balance")]
+                public long? SpendableBalance { get; set; }
+                /// <summary>
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
-                public long? MallId { get; set; }
+                public int? MallId { get; set; }
 
             }
 

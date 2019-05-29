@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class DeleteAdPlanResponseModel : PddResponseModel

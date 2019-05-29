@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GenerateDdkGoodsPromotionUrlResponseModel : PddResponseModel
@@ -54,6 +53,16 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("we_app_info")]
                 public WeAppInfoResponseModel WeAppInfo { get; set; }
+                /// <summary>
+                /// 微博推广短链接
+                /// </summary>
+                [JsonProperty("weibo_app_web_view_short_url")]
+                public string WeiboAppWebViewShortUrl { get; set; }
+                /// <summary>
+                /// 微博推广链接
+                /// </summary>
+                [JsonProperty("weibo_app_web_view_url")]
+                public string WeiboAppWebViewUrl { get; set; }
                 public partial class WeAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>

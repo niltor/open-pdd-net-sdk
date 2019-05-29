@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddkoauth
 {
     public partial class GenerateDdkOauthCmsPromUrlRequestModel : PddRequestModel
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// 推广位列表，例如：["60005_612"]
         /// </summary>
         [JsonProperty("p_id_list")]
-        public string PIdList { get; set; }
+        public List<string> PIdList { get; set; }
         /// <summary>
         /// 是否生成手机跳转链接。true-是，false-否，默认false
         /// </summary>
@@ -44,7 +45,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
         /// <summary>
-        /// 0, "9.9包邮", 1, "今日爆款", 2, "品牌清仓", 3, "默认商城", 非必填 ,默认是3
+        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"
         /// </summary>
         [JsonProperty("channel_type")]
         public int ChannelType { get; set; }

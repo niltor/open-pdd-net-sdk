@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkOrderDetailResponseModel : PddResponseModel
@@ -12,6 +10,11 @@ namespace PddOpenSdk.Models.Response.Ddk
         public OrderDetailResponseResponseModel OrderDetailResponse { get; set; }
         public partial class OrderDetailResponseResponseModel : PddResponseModel
         {
+            /// <summary>
+            /// 优惠券价？
+            /// </summary>
+            [JsonProperty("duo_coupon_amount")]
+            public long? DuoCouponAmount { set; get; }
             /// <summary>
             /// 订单编号
             /// </summary>

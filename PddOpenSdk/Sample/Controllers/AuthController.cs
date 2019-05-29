@@ -26,7 +26,7 @@ namespace Sample.Controllers
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetWebOAuthUrl(PddCommonApi.RedirectUri);
+            string url = _pdd.AuthApi.GetDDKOAuthUrl(PddCommonApi.RedirectUri);
             ViewData["url"] = url;
             return View();
         }
@@ -39,7 +39,6 @@ namespace Sample.Controllers
         public async Task<IActionResult> Callback(string code)
         {
             var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
-
             return Content(token.AccessToken);
         }
 

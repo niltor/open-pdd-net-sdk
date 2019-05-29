@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Sms
 {
     public partial class QuerySmsRemainSettingDetailResponseModel : PddResponseModel
@@ -109,7 +108,7 @@ namespace PddOpenSdk.Models.Response.Sms
                     /// 收货地区
                     /// </summary>
                     [JsonProperty("region")]
-                    public List<int?> Region { get; set; }
+                    public int? Region { get; set; }
                     /// <summary>
                     /// 商品id列表
                     /// </summary>

@@ -1,42 +1,43 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddkoauth
 {
-    public class GeneratePIdList
+    public partial class GenerateDdkOauthGoodsPidResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: "1000098_14222229", "1000098_14222230"
-        /// </summary>
-        [JsonProperty("p_id")]
-        public string PId { get; set; }
-
-        /// <summary>
-        /// Examples: null
-        /// </summary>
-        [JsonProperty("p_id_name")]
-        public object PIdName { get; set; }
-    }
-
-    public class PIdGenerateResponse
-    {
-
-        /// <summary>
-        /// Examples: [{"p_id":"1000098_14222229","p_id_name":null},{"p_id":"1000098_14222230","p_id_name":null}]
-        /// </summary>
-        [JsonProperty("p_id_list")]
-        public IList<GeneratePIdList> PIdList { get; set; }
-    }
-
-    public class GenerateDdkOauthGoodsPidResponseModel
-    {
-
-        /// <summary>
-        /// Examples: {"p_id_list":[{"p_id":"1000098_14222229","p_id_name":null},{"p_id":"1000098_14222230","p_id_name":null}]}
+        /// response
         /// </summary>
         [JsonProperty("p_id_generate_response")]
-        public PIdGenerateResponse PIdGenerateResponse { get; set; }
-    }
+        public PIdGenerateResponseResponseModel PIdGenerateResponse { get; set; }
+        public partial class PIdGenerateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 多多进宝推广位对象列表
+            /// </summary>
+            [JsonProperty("p_id_list")]
+            public List<PIdListResponseModel> PIdList { get; set; }
+            public partial class PIdListResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 推广位创建时间
+                /// </summary>
+                [JsonProperty("create_time")]
+                public long? CreateTime { get; set; }
+                /// <summary>
+                /// 调用方推广位ID
+                /// </summary>
+                [JsonProperty("p_id")]
+                public string PId { get; set; }
+                /// <summary>
+                /// 推广位名称
+                /// </summary>
+                [JsonProperty("pid_name")]
+                public string PidName { get; set; }
 
+            }
+
+        }
+
+    }
 
 }

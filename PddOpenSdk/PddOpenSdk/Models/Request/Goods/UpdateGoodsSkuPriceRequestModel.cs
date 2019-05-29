@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class UpdateGoodsSkuPriceRequestModel : PddRequestModel
@@ -15,6 +14,16 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("sku_price_list")]
         public List<SkuPriceListRequestModel> SkuPriceList { get; set; }
+        /// <summary>
+        /// 市场价 （单位分）
+        /// </summary>
+        [JsonProperty("market_price")]
+        public long? MarketPrice { get; set; }
+        /// <summary>
+        /// 市场价 （单位元）
+        /// </summary>
+        [JsonProperty("market_price_in_yuan")]
+        public string MarketPriceInYuan { get; set; }
         public partial class SkuPriceListRequestModel : PddRequestModel
         {
             /// <summary>

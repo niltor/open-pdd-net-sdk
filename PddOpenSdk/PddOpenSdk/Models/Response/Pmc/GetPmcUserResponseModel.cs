@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Pmc
 {
     public partial class GetPmcUserResponseModel : PddResponseModel
@@ -19,11 +18,6 @@ namespace PddOpenSdk.Models.Response.Pmc
             public PmcUserResponseModel PmcUser { get; set; }
             public partial class PmcUserResponseModel : PddResponseModel
             {
-                /// <summary>
-                /// 用户开通的消息类型列表。如果为空表示应用开通的所有类型
-                /// </summary>
-                [JsonProperty("topics")]
-                public List<string> Topics { get; set; }
                 /// <summary>
                 /// 用户最后开通时间
                 /// </summary>
@@ -44,6 +38,11 @@ namespace PddOpenSdk.Models.Response.Pmc
                 /// </summary>
                 [JsonProperty("owner_id")]
                 public string OwnerId { get; set; }
+                /// <summary>
+                /// 用户开通的消息类型列表。如果为空表示应用开通的所有类型
+                /// </summary>
+                [JsonProperty("topics")]
+                public List<string> Topics { get; set; }
 
             }
 

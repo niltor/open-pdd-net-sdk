@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CommitGoodsSubmitGoodsRequestModel : PddRequestModel
@@ -195,6 +194,16 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("mai_jia_zi_ti")]
         public string MaiJiaZiTi { get; set; }
+        /// <summary>
+        /// 坏果包赔
+        /// </summary>
+        [JsonProperty("bad_fruit_claim")]
+        public int? BadFruitClaim { get; set; }
+        /// <summary>
+        /// 缺重包退
+        /// </summary>
+        [JsonProperty("lack_of_weight_claim")]
+        public int? LackOfWeightClaim { get; set; }
         public partial class SkuListRequestModel : PddRequestModel
         {
             /// <summary>

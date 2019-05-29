@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkMerchantListResponseModel : PddResponseModel
@@ -18,22 +17,105 @@ namespace PddOpenSdk.Models.Response.Ddk
             [JsonProperty("total")]
             public int? Total { get; set; }
             /// <summary>
-            /// 店铺券列表
+            /// 店铺信息列表
             /// </summary>
             [JsonProperty("mall_search_info_vo_list")]
             public List<MallSearchInfoVoListResponseModel> MallSearchInfoVoList { get; set; }
             public partial class MallSearchInfoVoListResponseModel : PddResponseModel
             {
                 /// <summary>
+                /// 店铺描述评分
+                /// </summary>
+                [JsonProperty("avg_desc")]
+                public double AvgDesc { set; get; }
+
+                /// <summary>
+                /// 店铺服务评分
+                /// </summary>
+                [JsonProperty("avg_serv")]
+                public double AvgServ { set; get; }
+
+                /// <summary>
+                /// 店铺物流评分
+                /// </summary>
+                [JsonProperty("avg_lgst")]
+                public double AvgLgst { set; get; }
+
+                /// <summary>
+                /// 服务评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("serv_pct")]
+                public double ServPct { set; get; }
+
+                /// <summary>
+                /// 销售数量
+                /// </summary>
+                [JsonProperty("sold_quantity")]
+                public long SoldQuantity { set; get; }
+
+                /// <summary>
+                /// 店铺分类列表
+                /// </summary>
+                [JsonProperty("cat_id_list")]
+                public List<int> CatIdList { set; get; }
+
+                /// <summary>
+                /// 物流评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("lgst_pct")]
+                public double LgstPct { set; get; }
+
+                /// <summary>
+                /// 店铺图片
+                /// </summary>
+                [JsonProperty("img_url")]
+                public string ImgUrl { set; get; }
+                /// <summary>
                 /// 店铺id
                 /// </summary>
                 [JsonProperty("mall_id")]
                 public long? MallId { get; set; }
+
+                /// <summary>
+                /// 店铺名称
+                /// </summary>
+                [JsonProperty("mall_name")]
+                public string MallName { get; set; }
+
+                /// <summary>
+                /// 商品数量
+                /// </summary>
+                [JsonProperty("goods_num")]
+                public long? GoodsNum { set; get; }
+
+                /// <summary>
+                /// 店铺佣金率
+                /// </summary>
+                [JsonProperty("mall_rate")]
+                public int MallRate { set; get; }
+
+                /// <summary>
+                /// 描述评分击败同类店铺百分比
+                /// </summary>
+                [JsonProperty("desc_pct")]
+                public double? DescPct { set; get; }
+
+                /// <summary>
+                /// 店铺类型 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店
+                /// </summary>
+                [JsonProperty("merchant_type")]
+                public int MerchantType { set; get; }
                 /// <summary>
                 /// 商品详情列表
                 /// </summary>
                 [JsonProperty("goods_detail_vo_list")]
                 public List<GoodsDetailVoListResponseModel> GoodsDetailVoList { get; set; }
+                /// <summary>
+                /// 店铺券列表
+                /// </summary>
+                [JsonProperty("mall_coupon_info_list")]
+                public List<MallCouponInfoListResponseModel> MallCouponInfoList { set; get; }
+
                 public partial class GoodsDetailVoListResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -120,12 +202,12 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 商品标签列表
                     /// </summary>
                     [JsonProperty("opt_ids")]
-                    public List<int?> OptIds { get; set; }
+                    public List<int> OptIds { get; set; }
                     /// <summary>
                     /// 商品类目列表
                     /// </summary>
                     [JsonProperty("cat_ids")]
-                    public List<int?> CatIds { get; set; }
+                    public List<int> CatIds { get; set; }
                     /// <summary>
                     /// 商品所在店铺是否开通全店推广 0：否，1：是
                     /// </summary>
@@ -217,6 +299,141 @@ namespace PddOpenSdk.Models.Response.Ddk
                     [JsonProperty("serv_pct")]
                     public double? ServPct { get; set; }
 
+                    /// <summary>
+                    /// 店铺优惠券结束时间
+                    /// </summary>
+                    [JsonProperty("mall_coupon_end_time")]
+                    public long? MallCouponEndTime { set; get; }
+
+                    /// <summary>
+                    /// 是否有店铺优惠券
+                    /// </summary>
+                    [JsonProperty("has_mall_coupon")]
+                    public bool HasMallCoupon { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券剩余数量
+                    /// </summary>
+                    [JsonProperty("mall_coupon_remain_quantity")]
+                    public long? MallCouponRemainQuantity { set; get; }
+
+                    /// <summary>
+                    /// CPS签名
+                    /// </summary>
+                    [JsonProperty("cps_sign")]
+                    public string CpsSign { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券折扣百分比
+                    /// </summary>
+                    [JsonProperty("mall_coupon_discount_pct")]
+                    public string MallCouponDiscountPct { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券最小门槛金额（单位为分）
+                    /// </summary>
+                    [JsonProperty("mall_coupon_min_order_amount")]
+                    public long? MallCouponMinOrderAmount { set; get; }
+
+                    /// <summary>
+                    /// 售卖建议
+                    /// </summary>
+                    [JsonProperty("sales_tip")]
+                    public string SalesTip { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券Id
+                    /// </summary>
+                    [JsonProperty("mall_coupon_id")]
+                    public long? MallCouponId { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券开始时间
+                    /// </summary>
+                    [JsonProperty("mall_coupon_start_time")]
+                    public long? MallCouponStartTime { set; get; }
+
+                    /// <summary>
+                    /// 店铺佣金率
+                    /// </summary>
+                    [JsonProperty("mall_rate")]
+                    public int MallRate { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券总数量
+                    /// </summary>
+                    [JsonProperty("mall_coupon_total_quantity")]
+                    public long? MallCouponTotalQuantity { set; get; }
+
+                    /// <summary>
+                    /// 店铺优惠券最大使用门槛金额
+                    /// </summary>
+                    [JsonProperty("mall_coupon_max_discount_amount")]
+                    public long? MallCouponMacDiscountAmount { set; get; }
+
+                }
+
+                public partial class MallCouponInfoListResponseModel
+                {
+                    /// <summary>
+                    /// 优惠券数量
+                    /// </summary>
+                    [JsonProperty("coupon_quantity")]
+                    public long CouponQuantity { set; get; }
+
+                    /// <summary>
+                    /// 使用优惠券的门槛金额（单位为分）
+                    /// </summary>
+                    [JsonProperty("min_order_amount")]
+                    public long MinOrderAmount { set; get; }
+
+                    /// <summary>
+                    /// 优惠券Id
+                    /// </summary>
+                    [JsonProperty("coupon_id")]
+                    public long CouponId { set; get; }
+
+                    /// <summary>
+                    /// 优惠券剩余数量
+                    /// </summary>
+                    [JsonProperty("coupon_remain_quantity")]
+                    public long CouponRemainQuantity { set; get; }
+
+                    /// <summary>
+                    /// 店铺id
+                    /// </summary>
+                    [JsonProperty("mall_id")]
+                    public long? MallId { get; set; }
+
+                    /// <summary>
+                    /// 折扣率 3.1 折 = 31
+                    /// </summary>
+                    [JsonProperty("discount")]
+                    public long DisCount { get; set; }
+
+                    /// <summary>
+                    /// 优惠券开始时间
+                    /// </summary>
+                    [JsonProperty("coupon_start_time")]
+                    public long CouponStartTime { get; set; }
+
+                    /// <summary>
+                    /// 优惠券类型
+                    /// </summary>
+                    [JsonProperty("coupon_type")]
+                    public int CouponType { get; set; }
+
+                    /// <summary>
+                    /// 最大折扣金额
+                    /// </summary>
+                    [JsonProperty("max_discount_amount")]
+                    public long CouponDiscountAmount { get; set; }
+
+                    /// <summary>
+                    /// 优惠券结束时间
+                    /// </summary>
+                    [JsonProperty("coupon_end_time")]
+                    public long CouponEndTime { get; set; }
                 }
 
             }

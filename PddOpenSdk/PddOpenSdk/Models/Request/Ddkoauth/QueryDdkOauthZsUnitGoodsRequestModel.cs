@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// 招商多多客id
         /// </summary>
         [JsonProperty("zs_duo_id")]
-        public int ZsDuoId { get; set; }
+        public long ZsDuoId { get; set; }
         /// <summary>
         /// 页码，默认为1
         /// </summary>

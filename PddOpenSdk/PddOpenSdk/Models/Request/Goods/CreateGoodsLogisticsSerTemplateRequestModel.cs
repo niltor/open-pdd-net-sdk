@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CreateGoodsLogisticsSerTemplateRequestModel : PddRequestModel
@@ -21,15 +20,39 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("price_unit")]
         public int? PriceUnit { get; set; }
         /// <summary>
-        /// 分类目基础价格配置,入参为string，[{; 	"cat_id4": 1,; 	"cat_id3": 2,; 	"list": [{; 		"limit_type": 1,; 		"value": 1,; 		"content": [{; 			"price": 1,; 			"max_pro": 1,; 			"min_pro": 1; 		}]; 	}]; }]
-        /// </summary>
-        [JsonProperty("cat_list")]
-        public List<CatListRequestModel> CatList { get; set; }
-        /// <summary>
-        /// 服务地区范围配置，此入参为string,[{; 	"value": 1,; 	"district_id": 2,; 	"city_id": 2,; 	"province_id": 2; }]
+        /// 服务地区范围配置，此入参为string,[{ "value": 1, "district_id": 2, "city_id": 2, "province_id": 2 }]
         /// </summary>
         [JsonProperty("service_area_list")]
         public List<ServiceAreaListRequestModel> ServiceAreaList { get; set; }
+        /// <summary>
+        /// 分类目基础价格配置,入参为string，[{	"cat_id4": 1,	"cat_id3": 2,	"list": [{		"limit_type": 1,		"value": 1,		"content": [{			"price": 1,			"max_pro": 1,			"min_pro": 1		}]	}]}]
+        /// </summary>
+        [JsonProperty("cat_list")]
+        public List<CatListRequestModel> CatList { get; set; }
+        public partial class ServiceAreaListRequestModel : PddRequestModel
+        {
+            /// <summary>
+            /// 溢价值：按分溢价时，输入价格分的数字，表示value分；按百分比溢价时，输入0-500之间的数字，表示0%——500%备注：买家自提服务类型时，不用传该字段
+            /// </summary>
+            [JsonProperty("value")]
+            public string Value { get; set; }
+            /// <summary>
+            /// 区id，如果是全省或全市选中，则区id为0
+            /// </summary>
+            [JsonProperty("district_id")]
+            public string DistrictId { get; set; }
+            /// <summary>
+            /// 市id，如果是全省选中，则市id为0
+            /// </summary>
+            [JsonProperty("city_id")]
+            public string CityId { get; set; }
+            /// <summary>
+            /// 省id
+            /// </summary>
+            [JsonProperty("province_id")]
+            public string ProvinceId { get; set; }
+
+        }
         public partial class CatListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -58,12 +81,12 @@ namespace PddOpenSdk.Models.Request.Goods
                 /// 按“件”收取费用时配置的内容：按件限价时输入数字，表示每件商品附加费用$value分；按属性限价时不用传value和content必须设置一个
                 /// </summary>
                 [JsonProperty("value")]
-                public long? Value { get; set; }
+                public long Value { get; set; }
                 /// <summary>
                 /// 分类目收取服务费用方式：1-按件收取费用，2-按属性收取费用
                 /// </summary>
                 [JsonProperty("limit_type")]
-                public int LimitType { get; set; }
+                public int? LimitType { get; set; }
                 public partial class ContentRequestModel : PddRequestModel
                 {
                     /// <summary>
@@ -85,30 +108,6 @@ namespace PddOpenSdk.Models.Request.Goods
                 }
 
             }
-
-        }
-        public partial class ServiceAreaListRequestModel : PddRequestModel
-        {
-            /// <summary>
-            /// 溢价值：按分溢价时，输入价格分的数字，表示value分；按百分比溢价时，输入0-500之间的数字，表示0%——500%备注：买家自提服务类型时，不用传该字段
-            /// </summary>
-            [JsonProperty("value")]
-            public int? Value { get; set; }
-            /// <summary>
-            /// 区id，如果是全省或全市选中，则区id为0
-            /// </summary>
-            [JsonProperty("district_id")]
-            public int DistrictId { get; set; }
-            /// <summary>
-            /// 市id，如果是全省选中，则市id为0
-            /// </summary>
-            [JsonProperty("city_id")]
-            public int CityId { get; set; }
-            /// <summary>
-            /// 省id
-            /// </summary>
-            [JsonProperty("province_id")]
-            public int ProvinceId { get; set; }
 
         }
 

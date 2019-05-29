@@ -1,15 +1,14 @@
 using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Stock
 {
-    public class MoveStockWareResponseModel
+    public partial class MoveStockWareResponseModel : PddResponseModel
     {
-
         /// <summary>
-        /// Examples: 6001
+        /// 调整单ID
         /// </summary>
         [JsonProperty("open_api_response")]
-        public int OpenApiResponse { get; set; }
-    }
+        public long? OpenApiResponse { get; set; }
 
+    }
 
 }

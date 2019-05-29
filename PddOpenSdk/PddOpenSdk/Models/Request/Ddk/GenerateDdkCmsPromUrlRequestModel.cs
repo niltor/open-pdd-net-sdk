@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkCmsPromUrlRequestModel : PddRequestModel
@@ -10,11 +9,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("generate_short_url")]
         public bool? GenerateShortUrl { get; set; }
-        /// <summary>
-        /// 推广位列表，例如：["60005_612"]
-        /// </summary>
-        [JsonProperty("p_id_list")]
-        public List<string> PIdList { get; set; }
         /// <summary>
         /// 是否生成手机跳转链接。true-是，false-否，默认false
         /// </summary>
@@ -46,10 +40,15 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("we_app_web_view_url")]
         public bool WeAppWebViewUrl { get; set; }
         /// <summary>
-        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"；5, "养宝宝兑现金"；不传值为默认商城
+        /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }
+        /// <summary>
+        /// 推广位列表，例如：["60005_612"]
+        /// </summary>
+        [JsonProperty("p_id_list")]
+        public List<string> PIdList { get; set; }
 
     }
 

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdCreativeHistoryReportResponseModel : PddResponseModel
@@ -104,6 +103,16 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// </summary>
                 [JsonProperty("date")]
                 public string Date { get; set; }
+                /// <summary>
+                /// 图片url
+                /// </summary>
+                [JsonProperty("image_url")]
+                public string ImageUrl { get; set; }
+                /// <summary>
+                /// 创意名称
+                /// </summary>
+                [JsonProperty("title")]
+                public string Title { get; set; }
 
             }
 

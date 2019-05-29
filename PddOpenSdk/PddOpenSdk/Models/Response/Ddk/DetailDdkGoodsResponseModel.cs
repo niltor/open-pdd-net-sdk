@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class DetailDdkGoodsResponseModel : PddResponseModel
@@ -118,12 +117,12 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品标签ID
                 /// </summary>
                 [JsonProperty("opt_ids")]
-                public List<int?> OptIds { get; set; }
+                public int? OptIds { get; set; }
                 /// <summary>
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
-                public List<int?> CatIds { get; set; }
+                public int? CatIds { get; set; }
                 /// <summary>
                 /// 优惠券门槛金额，单位为分
                 /// </summary>
@@ -204,6 +203,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("serv_pct")]
                 public double? ServPct { get; set; }
+                /// <summary>
+                /// 模糊销量
+                /// </summary>
+                [JsonProperty("sales_tip")]
+                public string SalesTip { get; set; }
 
             }
 

@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkGoodsRecommendResponseModel : PddResponseModel
@@ -274,6 +273,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("create_at")]
                 public long? CreateAt { get; set; }
+                /// <summary>
+                /// 模糊销量
+                /// </summary>
+                [JsonProperty("sales_tip")]
+                public string SalesTip { get; set; }
 
             }
 

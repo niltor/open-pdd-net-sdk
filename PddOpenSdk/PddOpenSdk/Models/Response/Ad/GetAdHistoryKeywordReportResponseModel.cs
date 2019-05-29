@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Response;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdHistoryKeywordReportResponseModel : PddResponseModel
@@ -79,6 +78,20 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// </summary>
                 [JsonProperty("date")]
                 public string Date { get; set; }
+                public partial class ExternalFieldsResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// key
+                    /// </summary>
+                    [JsonProperty("key")]
+                    public string Key { get; set; }
+                    /// <summary>
+                    /// value
+                    /// </summary>
+                    [JsonProperty("value")]
+                    public string Value { get; set; }
+
+                }
 
             }
 

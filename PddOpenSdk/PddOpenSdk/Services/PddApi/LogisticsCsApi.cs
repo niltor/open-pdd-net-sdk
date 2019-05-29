@@ -1,10 +1,6 @@
-using PddOpenSdk.Models.Request;
-using PddOpenSdk.Models.Response;
-using PddOpenSdk.Models.Request.Logisticscs;
-using PddOpenSdk.Models.Response.Logisticscs;
+using PddOpenSdk.Models.Request.Logisticsticket;
+using PddOpenSdk.Models.Response.Logisticsticket;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class LogisticscsApi : PddCommonApi

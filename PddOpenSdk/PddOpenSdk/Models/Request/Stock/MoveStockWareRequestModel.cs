@@ -1,10 +1,11 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Stock
 {
     public partial class MoveStockWareRequestModel : PddRequestModel
     {
         /// <summary>
-        ///
+        /// 
         /// </summary>
         [JsonProperty("stock_move_order_action_dto")]
         public StockMoveOrderActionDtoRequestModel StockMoveOrderActionDto { get; set; }
@@ -12,14 +13,14 @@ namespace PddOpenSdk.Models.Request.Stock
         /// List<JsonObject>的json string, 一次传入StockMoveRecordActionDTO list size不超过30个
         /// </summary>
         [JsonProperty("stock_move_record_action_dto_list")]
-        public StockMoveRecordActionDtoListRequestModel StockMoveRecordActionDtoList { get; set; }
+        public List<StockMoveRecordActionDtoListRequestModel> StockMoveRecordActionDtoList { get; set; }
         public partial class StockMoveOrderActionDtoRequestModel : PddRequestModel
         {
             /// <summary>
             /// 调整方向。1, "入库"；2, "出库"；3, "库存同步"
             /// </summary>
             [JsonProperty("move_direction")]
-            public object MoveDirection { get; set; }
+            public int MoveDirection { get; set; }
             /// <summary>
             /// 调整单备注
             /// </summary>
@@ -29,7 +30,7 @@ namespace PddOpenSdk.Models.Request.Stock
             /// 业务类型。1, "采购"；2, "调拨"；3, "退货"；4, "盘点"；5, "发货"；6, "库存同步"
             /// </summary>
             [JsonProperty("business_type")]
-            public object BusinessType { get; set; }
+            public int BusinessType { get; set; }
             /// <summary>
             /// 仓库编码
             /// </summary>
@@ -39,7 +40,7 @@ namespace PddOpenSdk.Models.Request.Stock
             /// 调整时间
             /// </summary>
             [JsonProperty("move_time")]
-            public object MoveTime { get; set; }
+            public long MoveTime { get; set; }
             /// <summary>
             /// 调整单号
             /// </summary>
@@ -58,7 +59,7 @@ namespace PddOpenSdk.Models.Request.Stock
             /// 调整数量
             /// </summary>
             [JsonProperty("move_num")]
-            public object MoveNum { get; set; }
+            public long MoveNum { get; set; }
             /// <summary>
             /// 货品sn
             /// </summary>

@@ -1,10 +1,6 @@
-using PddOpenSdk.Models.Request;
-using PddOpenSdk.Models.Response;
 using PddOpenSdk.Models.Request.Logistics;
 using PddOpenSdk.Models.Response.Logistics;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 namespace PddOpenSdk.Services.PddApi
 {
     public class LogisticsApi : PddCommonApi
@@ -47,6 +43,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<QueryLogisticsOnlineStatusResponseModel> QueryLogisticsOnlineStatusAsync(QueryLogisticsOnlineStatusRequestModel queryLogisticsOnlineStatus)
         {
             var result = await PostAsync<QueryLogisticsOnlineStatusRequestModel, QueryLogisticsOnlineStatusResponseModel>("pdd.logistics.online.status.query", queryLogisticsOnlineStatus);
+            return result;
+        }
+        /// <summary>
+        /// 轨迹查询接口
+        /// </summary>
+        public async Task<GetLogisticsOrdertraceResponseModel> GetLogisticsOrdertraceAsync(GetLogisticsOrdertraceRequestModel getLogisticsOrdertrace)
+        {
+            var result = await PostAsync<GetLogisticsOrdertraceRequestModel, GetLogisticsOrdertraceResponseModel>("pdd.logistics.ordertrace.get", getLogisticsOrdertrace);
             return result;
         }
 

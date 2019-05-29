@@ -1,6 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using PddOpenSdk.Models.Request;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
@@ -36,7 +35,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("with_coupon")]
         public bool? WithCoupon { get; set; }
         /// <summary>
-        /// 范围列表，可选值：[{"range_id":0,"range_from":1,"range_to":1500},{"range_id":1,"range_from":1,"range_to":1500}]
+        /// 筛选范围列表 样例：[{"range_id":0,"range_from":1,"range_to":1500},{"range_id":1,"range_from":1,"range_to":1500}] range_id枚举及描述： 0，最小成团价 1，券后价 2，佣金比例 3，优惠券价格 4，广告创建时间 5，销量 6，佣金金额 7，店铺描述分 8，店铺物流分 9，店铺服务分 10， 店铺描述分击败同行业百分比 11， 店铺物流分击败同行业百分比 12，店铺服务分击败同行业百分比 13，商品分 17 ，优惠券/最小团购价 18，过去两小时pv 19，过去两小时销量
         /// </summary>
         [JsonProperty("range_list")]
         public string RangeList { get; set; }
@@ -50,11 +49,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("goods_id_list")]
         public List<long?> GoodsIdList { get; set; }
-        /// <summary>
-        /// 招商多多客ID
-        /// </summary>
-        [JsonProperty("zs_duo_id")]
-        public long? ZsDuoId { get; set; }
         /// <summary>
         /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店（未传为全部）
         /// </summary>
