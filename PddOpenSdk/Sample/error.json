@@ -9,3 +9,6 @@
 {"error_response":{"error_msg":"图片格式错误","sub_msg":"图片格式错误","sub_code":"48001","error_code":50001,"request_id":"15529801825049744"}}
 {"error_response":{"error_msg":"图片格式错误","sub_msg":"图片格式错误","sub_code":"48001","error_code":50001,"request_id":"15529808975209571"}}
 {"error_response":{"error_msg":"图片格式错误","sub_msg":"图片格式错误","sub_code":"48001","error_code":50001,"request_id":"15529809346953960"}}
+{"error_response":{"error_msg":"参数错误:duoId和pid不匹配","sub_msg":"","sub_code":null,"error_code":10000,"request_id":"15573066183218472"}}
+{"error_response":{"error_msg":"用户没有授权访问此接口","sub_msg":"","sub_code":null,"error_code":20031,"request_id":"15573068017589130"}}
+{"error_response":{"error_msg":"用户没有授权访问此接口","sub_msg":"","sub_code":null,"error_code":20031,"request_id":"15573068060209013"}}
