@@ -1,0 +1,23 @@
+using Newtonsoft.Json;
+namespace PddOpenSdk.Models.Response.Goodsedit
+{
+    public partial class UpdateGoodsLogisticsSerTemplateResponseModel : PddResponseModel
+    {
+        /// <summary>
+        /// response
+        /// </summary>
+        [JsonProperty("goods_logistics_ser_template_create_response")]
+        public GoodsLogisticsSerTemplateCreateResponseResponseModel GoodsLogisticsSerTemplateCreateResponse { get; set; }
+        public partial class GoodsLogisticsSerTemplateCreateResponseResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 模版id
+            /// </summary>
+            [JsonProperty("template_id")]
+            public string TemplateId { get; set; }
+
+        }
+
+    }
+
+}

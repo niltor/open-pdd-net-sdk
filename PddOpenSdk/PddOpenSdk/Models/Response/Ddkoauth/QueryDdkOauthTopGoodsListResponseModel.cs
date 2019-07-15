@@ -56,8 +56,8 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// <summary>
                 /// 已售卖件数
                 /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
+                [JsonProperty("sales_tip")]
+                public long? SalesTip { get; set; }
                 /// <summary>
                 /// 最小拼团价（单位为分）
                 /// </summary>

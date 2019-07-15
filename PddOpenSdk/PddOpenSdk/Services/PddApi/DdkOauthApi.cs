@@ -125,14 +125,6 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<QueryDdkOauthTopGoodsListRequestModel, QueryDdkOauthTopGoodsListResponseModel>("pdd.ddk.oauth.top.goods.list.query", queryDdkOauthTopGoodsList);
             return result;
         }
-        /// <summary>
-        /// 查询招商推广计划商品接口
-        /// </summary>
-        public async Task<QueryDdkOauthZsUnitGoodsResponseModel> QueryDdkOauthZsUnitGoodsAsync(QueryDdkOauthZsUnitGoodsRequestModel queryDdkOauthZsUnitGoods)
-        {
-            var result = await PostAsync<QueryDdkOauthZsUnitGoodsRequestModel, QueryDdkOauthZsUnitGoodsResponseModel>("pdd.ddk.oauth.zs.unit.goods.query", queryDdkOauthZsUnitGoods);
-            return result;
-        }
 
     }
 }
