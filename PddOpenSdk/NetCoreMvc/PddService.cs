@@ -93,6 +93,14 @@ namespace PddOpenSdk.AspNetCore
         /// 开平短信
         /// </summary>
         public OpenApi OpenApi { get; set; } = new OpenApi();
+        /// <summary>
+        /// 方舟天气API
+        /// </summary>
+        public XinzhiApi XinzhiApi { get; set; } = new XinzhiApi();
+        /// <summary>
+        /// 电子面单API
+        /// </summary>
+        public WaybillApi WaybillApi { get; set; } = new WaybillApi();
         private readonly IOptions<PddOptions> _options;
 
         public PddService(IOptions<PddOptions> options)
