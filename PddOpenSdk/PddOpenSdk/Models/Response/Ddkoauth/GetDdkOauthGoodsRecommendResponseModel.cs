@@ -216,8 +216,8 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// <summary>
                 /// 销售量
                 /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
+                [JsonProperty("sales_tip")]
+                public string SalesTip { get; set; }
                 /// <summary>
                 /// 商品详情图列表
                 /// </summary>
@@ -253,11 +253,6 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// </summary>
                 [JsonProperty("create_at")]
                 public long? CreateAt { get; set; }
-                /// <summary>
-                /// 模糊销量
-                /// </summary>
-                [JsonProperty("sales_tip")]
-                public string SalesTip { get; set; }
 
             }
 

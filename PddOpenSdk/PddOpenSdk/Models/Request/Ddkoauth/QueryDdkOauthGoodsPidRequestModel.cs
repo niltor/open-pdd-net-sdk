@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddkoauth
 {
     public partial class QueryDdkOauthGoodsPidRequestModel : PddRequestModel
@@ -13,6 +14,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
+        /// <summary>
+        /// 推广位id列表
+        /// </summary>
+        [JsonProperty("pid_list")]
+        public List<string> PidList { get; set; }
 
     }
 

@@ -16,6 +16,11 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
             /// </summary>
             [JsonProperty("p_id_list")]
             public List<PIdListResponseModel> PIdList { get; set; }
+            /// <summary>
+            /// PID剩余数量
+            /// </summary>
+            [JsonProperty("remain_pid_count")]
+            public int? RemainPidCount { get; set; }
             public partial class PIdListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -24,15 +29,15 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 [JsonProperty("create_time")]
                 public long? CreateTime { get; set; }
                 /// <summary>
-                /// 调用方推广位ID
-                /// </summary>
-                [JsonProperty("p_id")]
-                public string PId { get; set; }
-                /// <summary>
                 /// 推广位名称
                 /// </summary>
                 [JsonProperty("pid_name")]
                 public string PidName { get; set; }
+                /// <summary>
+                /// 调用方推广位ID
+                /// </summary>
+                [JsonProperty("p_id")]
+                public string PId { get; set; }
 
             }
 
