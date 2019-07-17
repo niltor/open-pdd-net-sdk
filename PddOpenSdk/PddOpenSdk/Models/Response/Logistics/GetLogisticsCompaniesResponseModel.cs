@@ -33,7 +33,11 @@ namespace PddOpenSdk.Models.Response.Logistics
                 /// </summary>
                 [JsonProperty("logistics_company")]
                 public string LogisticsCompany { get; set; }
-
+                /// <summary>
+                /// 物流公司代码
+                /// </summary>
+                [JsonProperty("code")]
+                public string Code { get; set; }
             }
 
         }
