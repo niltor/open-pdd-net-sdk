@@ -62,7 +62,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("goods_status")]
             public int? GoodsStatus { get; set; }
             /// <summary>
-            /// 驳回原因，仅在status=2时返回，其余状态返回空值
+            /// 驳回原因，仅在status=3时返回，其余状态返回空值
             /// </summary>
             [JsonProperty("commit_message")]
             public string CommitMessage { get; set; }
@@ -97,7 +97,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("cost_template_id")]
             public long? CostTemplateId { get; set; }
             /// <summary>
-            /// 国家id
+            /// 国家或地区ID（填写海淘商品的货源地），country_id可以通过pdd.goods.country.get获取，仅在goods_type为2、3、4、18时（海淘商品）入参生效，其余goods_type传0
             /// </summary>
             [JsonProperty("country_id")]
             public long? CountryId { get; set; }
@@ -107,7 +107,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("customer_num")]
             public long? CustomerNum { get; set; }
             /// <summary>
-            /// 商品类型：1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡,18-CC行邮 暂时支持1-普通商品的上架
+            /// 1-国内普通商品，2-海外进口，3-保税仓BC直供，4-海外BC直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡,18-海外CC个人行邮
             /// </summary>
             [JsonProperty("goods_type")]
             public int? GoodsType { get; set; }
@@ -127,7 +127,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("tiny_name")]
             public string TinyName { get; set; }
             /// <summary>
-            /// 保税仓
+            /// 只在商品类型选择“直供商品”时入参，店铺可填入的保税仓可通过“pdd.mall.info.bonded.warehouse.get”查询
             /// </summary>
             [JsonProperty("warehouse")]
             public string Warehouse { get; set; }
@@ -137,7 +137,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("is_customs")]
             public int? IsCustoms { get; set; }
             /// <summary>
-            /// 海关名称
+            /// 只在商品类型选择“直邮商品”时入参，店铺可填入的报关海关可通过“pdd.mall.info.bonded.warehouse.get”查询
             /// </summary>
             [JsonProperty("customs")]
             public string Customs { get; set; }
@@ -187,7 +187,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("sku_list")]
             public List<SkuListResponseModel> SkuList { get; set; }
             /// <summary>
-            /// 商品主图
+            /// 商品活动主图
             /// </summary>
             [JsonProperty("image_url")]
             public string ImageUrl { get; set; }
@@ -226,6 +226,16 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("carousel_video")]
             public List<CarouselVideoResponseModel> CarouselVideo { get; set; }
+            /// <summary>
+            /// 原产地id，是指海淘商品的生产地址
+            /// </summary>
+            [JsonProperty("origin_country_id")]
+            public int? OriginCountryId { get; set; }
+            /// <summary>
+            /// 是否当日发货,0 否，1 是
+            /// </summary>
+            [JsonProperty("delivery_one_day")]
+            public int? DeliveryOneDay { get; set; }
             public partial class GoodsPropertyListResponseModel : PddResponseModel
             {
                 /// <summary>

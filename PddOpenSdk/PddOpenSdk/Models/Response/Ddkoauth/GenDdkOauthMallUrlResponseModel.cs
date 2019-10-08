@@ -48,6 +48,11 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// </summary>
                 [JsonProperty("we_app_web_view_short_url")]
                 public string WeAppWebViewShortUrl { get; set; }
+                /// <summary>
+                /// schema的链接
+                /// </summary>
+                [JsonProperty("schema_url")]
+                public string SchemaUrl { get; set; }
 
             }
 

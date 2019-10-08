@@ -63,6 +63,11 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// </summary>
                 [JsonProperty("multi_group_mobile_short_url")]
                 public string MultiGroupMobileShortUrl { get; set; }
+                /// <summary>
+                /// schema的链接
+                /// </summary>
+                [JsonProperty("schema_url")]
+                public string SchemaUrl { get; set; }
 
             }
 

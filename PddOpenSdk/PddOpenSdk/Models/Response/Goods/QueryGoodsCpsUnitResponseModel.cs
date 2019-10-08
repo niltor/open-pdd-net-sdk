@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Response.Goods
     public partial class QueryGoodsCpsUnitResponseModel : PddResponseModel
     {
         /// <summary>
-        /// 单品推广计划单元id
-        /// </summary>
-        [JsonProperty("unit_id")]
-        public long? UnitId { get; set; }
-        /// <summary>
         /// 商品id
         /// </summary>
         [JsonProperty("goods_id")]
@@ -19,7 +14,7 @@ namespace PddOpenSdk.Models.Response.Goods
         [JsonProperty("rate")]
         public int? Rate { get; set; }
         /// <summary>
-        /// 修改后第二天生效的佣金费率（千分比）
+        /// 即将生效的全店推广计划佣金比（千分比），若没有则为null
         /// </summary>
         [JsonProperty("rate_to_be")]
         public int? RateToBe { get; set; }
@@ -29,7 +24,7 @@ namespace PddOpenSdk.Models.Response.Goods
         [JsonProperty("status")]
         public int? Status { get; set; }
         /// <summary>
-        /// 修改后第二天生效的状态，1-推广中，2-暂停，3-删除
+        /// 即将生效的全店推广计划状态：1-推广中，2-暂停推广，若没有则为null
         /// </summary>
         [JsonProperty("status_to_be")]
         public int? StatusToBe { get; set; }
@@ -38,13 +33,18 @@ namespace PddOpenSdk.Models.Response.Goods
         /// </summary>
         [JsonProperty("coupon_vo")]
         public CouponVoResponseModel CouponVo { get; set; }
+        /// <summary>
+        /// 通用推广计划佣金生效时间
+        /// </summary>
+        [JsonProperty("rate_to_be_day")]
+        public string RateToBeDay { get; set; }
+        /// <summary>
+        /// 通用推广计划状态生效时间
+        /// </summary>
+        [JsonProperty("status_to_be_day")]
+        public string StatusToBeDay { get; set; }
         public partial class CouponVoResponseModel : PddResponseModel
         {
-            /// <summary>
-            /// coupon_id
-            /// </summary>
-            [JsonProperty("coupon_id")]
-            public long? CouponId { get; set; }
             /// <summary>
             /// coupon_start_time
             /// </summary>

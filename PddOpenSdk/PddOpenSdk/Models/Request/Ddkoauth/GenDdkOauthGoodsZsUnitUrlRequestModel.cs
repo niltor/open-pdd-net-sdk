@@ -13,6 +13,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("pid")]
         public string Pid { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public string GenerateSchemaUrl { get; set; }
 
     }
 

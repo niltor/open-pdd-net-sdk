@@ -63,6 +63,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("we_app_info")]
                 public WeAppInfoResponseModel WeAppInfo { get; set; }
+                /// <summary>
+                /// schema的链接
+                /// </summary>
+                [JsonProperty("schema_url")]
+                public string SchemaUrl { get; set; }
                 public partial class WeAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -94,7 +99,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 用户名
                     /// </summary>
                     [JsonProperty("user_name")]
-                    public int? UserName { get; set; }
+                    public string UserName { get; set; }
                     /// <summary>
                     /// 小程序标题
                     /// </summary>

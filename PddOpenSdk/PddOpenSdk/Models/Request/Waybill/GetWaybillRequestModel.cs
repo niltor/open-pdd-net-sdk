@@ -12,6 +12,11 @@ namespace PddOpenSdk.Models.Request.Waybill
         public partial class ParamWaybillCloudPrintApplyNewRequestRequestModel : PddRequestModel
         {
             /// <summary>
+            /// 设定取号返回的云打印报文是否加密
+            /// </summary>
+            [JsonProperty("need_encrypt")]
+            public bool? NeedEncrypt { get; set; }
+            /// <summary>
             /// 发货人信息
             /// </summary>
             [JsonProperty("sender")]
@@ -26,11 +31,6 @@ namespace PddOpenSdk.Models.Request.Waybill
             /// </summary>
             [JsonProperty("wp_code")]
             public string WpCode { get; set; }
-            /// <summary>
-            /// 设定取号返回的云打印报文是否加密，true-加密，false-明文
-            /// </summary>
-            [JsonProperty("need_encrypt")]
-            public bool? NeedEncrypt { get; set; }
             public partial class SenderRequestModel : PddRequestModel
             {
                 /// <summary>
@@ -87,6 +87,11 @@ namespace PddOpenSdk.Models.Request.Waybill
             public partial class TradeOrderInfoDtosRequestModel : PddRequestModel
             {
                 /// <summary>
+                /// 物流服务内容链接
+                /// </summary>
+                [JsonProperty("logistics_services")]
+                public string LogisticsServices { get; set; }
+                /// <summary>
                 /// 请求id
                 /// </summary>
                 [JsonProperty("object_id")]
@@ -116,11 +121,6 @@ namespace PddOpenSdk.Models.Request.Waybill
                 /// </summary>
                 [JsonProperty("user_id")]
                 public long UserId { get; set; }
-                /// <summary>
-                /// 物流服务内容链接
-                /// </summary>
-                [JsonProperty("logistics_services")]
-                public string LogisticsServices { get; set; }
                 public partial class OrderInfoRequestModel : PddRequestModel
                 {
                     /// <summary>
@@ -138,7 +138,12 @@ namespace PddOpenSdk.Models.Request.Waybill
                 public partial class PackageInfoRequestModel : PddRequestModel
                 {
                     /// <summary>
-                    /// id
+                    /// 快运货品描述
+                    /// </summary>
+                    [JsonProperty("goods_description")]
+                    public string GoodsDescription { get; set; }
+                    /// <summary>
+                    /// 包裹id,拆合单使用
                     /// </summary>
                     [JsonProperty("id")]
                     public string Id { get; set; }
@@ -147,6 +152,16 @@ namespace PddOpenSdk.Models.Request.Waybill
                     /// </summary>
                     [JsonProperty("items")]
                     public List<ItemsRequestModel> Items { get; set; }
+                    /// <summary>
+                    /// 快运包装方式描述
+                    /// </summary>
+                    [JsonProperty("packaging_description")]
+                    public string PackagingDescription { get; set; }
+                    /// <summary>
+                    /// 子母件总包裹数
+                    /// </summary>
+                    [JsonProperty("total_packages_count")]
+                    public int? TotalPackagesCount { get; set; }
                     /// <summary>
                     /// 体积, 单位 ml
                     /// </summary>
@@ -163,7 +178,7 @@ namespace PddOpenSdk.Models.Request.Waybill
                         /// 数量
                         /// </summary>
                         [JsonProperty("count")]
-                        public int? Count { get; set; }
+                        public int Count { get; set; }
                         /// <summary>
                         /// 名称
                         /// </summary>

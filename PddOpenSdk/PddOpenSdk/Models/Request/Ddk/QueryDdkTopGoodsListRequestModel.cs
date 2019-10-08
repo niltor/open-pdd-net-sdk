@@ -9,7 +9,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("p_id")]
         public string PId { get; set; }
         /// <summary>
-        /// 从多少位置开始请求；默认值 ： 0
+        /// 从多少位置开始请求；默认值 ： 0，offset需是limit的整数倍，仅支持整页翻页
         /// </summary>
         [JsonProperty("offset")]
         public int? Offset { get; set; }

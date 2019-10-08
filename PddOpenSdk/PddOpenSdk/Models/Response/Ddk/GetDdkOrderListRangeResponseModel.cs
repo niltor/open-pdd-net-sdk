@@ -108,6 +108,21 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("promotion_rate")]
                 public long? PromotionRate { get; set; }
+                /// <summary>
+                /// 是否是 cpa 新用户，1表示是，0表示否
+                /// </summary>
+                [JsonProperty("cpa_new")]
+                public int? CpaNew { get; set; }
+                /// <summary>
+                /// 自定义参数
+                /// </summary>
+                [JsonProperty("custom_parameters")]
+                public string CustomParameters { get; set; }
+                /// <summary>
+                /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
+                /// </summary>
+                [JsonProperty("type")]
+                public int? Type { get; set; }
 
             }
 

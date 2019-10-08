@@ -66,10 +66,68 @@ namespace PddOpenSdk.Models.Response.Waybill
                     [JsonProperty("recycled_quantity")]
                     public long? RecycledQuantity { get; set; }
                     /// <summary>
+                    /// 服务类型列表
+                    /// </summary>
+                    [JsonProperty("service_info_cols")]
+                    public List<ServiceInfoColsResponseModel> ServiceInfoCols { get; set; }
+                    /// <summary>
                     /// 当前网点下的发货地址
                     /// </summary>
                     [JsonProperty("shipp_address_cols")]
                     public List<ShippAddressColsResponseModel> ShippAddressCols { get; set; }
+                    public partial class ServiceInfoColsResponseModel : PddResponseModel
+                    {
+                        /// <summary>
+                        /// 是否必须
+                        /// </summary>
+                        [JsonProperty("required")]
+                        public bool? Required { get; set; }
+                        /// <summary>
+                        /// 服务属性类型列表
+                        /// </summary>
+                        [JsonProperty("service_attributes")]
+                        public List<ServiceAttributesResponseModel> ServiceAttributes { get; set; }
+                        /// <summary>
+                        /// 服务code
+                        /// </summary>
+                        [JsonProperty("service_code")]
+                        public string ServiceCode { get; set; }
+                        /// <summary>
+                        /// 服务描述
+                        /// </summary>
+                        [JsonProperty("service_desc")]
+                        public string ServiceDesc { get; set; }
+                        /// <summary>
+                        /// 服务名称
+                        /// </summary>
+                        [JsonProperty("service_name")]
+                        public string ServiceName { get; set; }
+                        public partial class ServiceAttributesResponseModel : PddResponseModel
+                        {
+                            /// <summary>
+                            /// 属性code
+                            /// </summary>
+                            [JsonProperty("attribute_code")]
+                            public string AttributeCode { get; set; }
+                            /// <summary>
+                            /// 属性名称
+                            /// </summary>
+                            [JsonProperty("attribute_name")]
+                            public string AttributeName { get; set; }
+                            /// <summary>
+                            /// 属性类型
+                            /// </summary>
+                            [JsonProperty("attribute_type")]
+                            public string AttributeType { get; set; }
+                            /// <summary>
+                            /// 属性描述
+                            /// </summary>
+                            [JsonProperty("type_desc")]
+                            public string TypeDesc { get; set; }
+
+                        }
+
+                    }
                     public partial class ShippAddressColsResponseModel : PddResponseModel
                     {
                         /// <summary>

@@ -22,6 +22,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 查询CPA数据
+        /// </summary>
+        public async Task<QueryDdkOauthFinanceCpaResponseModel> QueryDdkOauthFinanceCpaAsync(QueryDdkOauthFinanceCpaRequestModel queryDdkOauthFinanceCpa)
+        {
+            var result = await PostAsync<QueryDdkOauthFinanceCpaRequestModel, QueryDdkOauthFinanceCpaResponseModel>("pdd.ddk.oauth.finance.cpa.query", queryDdkOauthFinanceCpa);
+            return result;
+        }
+        /// <summary>
         /// 多多进宝推广位创建接口
         /// </summary>
         public async Task<GenerateDdkOauthGoodsPidResponseModel> GenerateDdkOauthGoodsPidAsync(GenerateDdkOauthGoodsPidRequestModel generateDdkOauthGoodsPid)

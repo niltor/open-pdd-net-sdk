@@ -113,6 +113,56 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("custom_parameters")]
                 public string CustomParameters { get; set; }
+                /// <summary>
+                /// 是否是 cpa 新用户，1表示是，0表示否
+                /// </summary>
+                [JsonProperty("cpa_new")]
+                public int? CpaNew { get; set; }
+                /// <summary>
+                /// 订单推广类型
+                /// </summary>
+                [JsonProperty("type")]
+                public int? Type { get; set; }
+                /// <summary>
+                /// 结算时间
+                /// </summary>
+                [JsonProperty("order_settle_time")]
+                public long? OrderSettleTime { get; set; }
+                /// <summary>
+                /// 多多客工具id
+                /// </summary>
+                [JsonProperty("auth_duo_id")]
+                public long? AuthDuoId { get; set; }
+                /// <summary>
+                /// 结算批次号
+                /// </summary>
+                [JsonProperty("batch_no")]
+                public string BatchNo { get; set; }
+                /// <summary>
+                /// 确认收货时间
+                /// </summary>
+                [JsonProperty("order_receive_time")]
+                public long? OrderReceiveTime { get; set; }
+                /// <summary>
+                /// 成团编号
+                /// </summary>
+                [JsonProperty("group_id")]
+                public long? GroupId { get; set; }
+                /// <summary>
+                /// 审核失败原因
+                /// </summary>
+                [JsonProperty("fail_reason")]
+                public string FailReason { get; set; }
+                /// <summary>
+                /// 订单ID
+                /// </summary>
+                [JsonProperty("order_id")]
+                public string OrderId { get; set; }
+                /// <summary>
+                /// 招商多多客id
+                /// </summary>
+                [JsonProperty("zs_duo_id")]
+                public long? ZsDuoId { get; set; }
 
             }
 

@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Response.Goods
                 [JsonProperty("goods_sn")]
                 public string GoodsSn { get; set; }
                 /// <summary>
-                /// 商品类型，1-普通商品，2-进口商品，3-直供，4-直邮
+                /// 1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡,18-CC行邮
                 /// </summary>
                 [JsonProperty("goods_type")]
                 public int? GoodsType { get; set; }

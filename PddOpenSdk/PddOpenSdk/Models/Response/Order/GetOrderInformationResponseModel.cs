@@ -164,7 +164,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("is_stock_out")]
                 public int? IsStockOut { get; set; }
                 /// <summary>
-                /// 国家编码
+                /// 国家或地区编码
                 /// </summary>
                 [JsonProperty("country_id")]
                 public int? CountryId { get; set; }
@@ -204,7 +204,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("created_time")]
                 public string CreatedTime { get; set; }
                 /// <summary>
-                /// 收件地国家
+                /// 收件地国家或地区
                 /// </summary>
                 [JsonProperty("country")]
                 public string Country { get; set; }

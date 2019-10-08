@@ -69,6 +69,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("merchant_type_list")]
         public int? MerchantTypeList { get; set; }
+        /// <summary>
+        /// 是否为品牌商品
+        /// </summary>
+        [JsonProperty("is_brand_goods")]
+        public bool? IsBrandGoods { get; set; }
 
     }
 

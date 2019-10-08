@@ -1,15 +1,14 @@
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Services;
 using Sample.Models;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Sample.Controllers
 {
@@ -52,7 +51,7 @@ namespace Sample.Controllers
             {
                 PId = "1",
             };
-            
+
 
             var result = await _pdd.DdkApi.QueryDdkTopGoodsListAsync(model);
 

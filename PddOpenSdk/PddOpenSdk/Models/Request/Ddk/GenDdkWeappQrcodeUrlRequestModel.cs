@@ -24,6 +24,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("zs_duo_id")]
         public long? ZsDuoId { get; set; }
+        /// <summary>
+        /// 是否生成店铺收藏券推广链接
+        /// </summary>
+        [JsonProperty("generate_mall_collect_coupon")]
+        public bool? GenerateMallCollectCoupon { get; set; }
 
     }
 

@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Response.Logistics
                 [JsonProperty("status_desc")]
                 public string StatusDesc { get; set; }
                 /// <summary>
-                /// 节点说明 ，指明当前节点揽收、派送，签收。
+                /// 节点说明 ，指明当前节点揽收、派送，签收。 GOT 揽件 SEND 派件  SIGN 签收 ARRIVAL 到件 DEPARTURE 发件 FAIL 问题件 REJECTION 拒签 STAY_IN_WAREHOUSE 留仓 SIGN_ON_BEHALF 代收点代签 OTHER 其他 RETURN 退件 IN_ CABINET 入柜/入代收点 OUT_ CABINET 出柜/出代收点
                 /// </summary>
                 [JsonProperty("action")]
                 public string Action { get; set; }

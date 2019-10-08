@@ -63,6 +63,11 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// </summary>
                 [JsonProperty("weibo_app_web_view_url")]
                 public string WeiboAppWebViewUrl { get; set; }
+                /// <summary>
+                /// schema的链接
+                /// </summary>
+                [JsonProperty("schema_url")]
+                public string SchemaUrl { get; set; }
                 public partial class WeAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>

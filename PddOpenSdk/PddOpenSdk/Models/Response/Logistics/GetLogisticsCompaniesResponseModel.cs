@@ -38,6 +38,7 @@ namespace PddOpenSdk.Models.Response.Logistics
                 /// </summary>
                 [JsonProperty("code")]
                 public string Code { get; set; }
+
             }
 
         }

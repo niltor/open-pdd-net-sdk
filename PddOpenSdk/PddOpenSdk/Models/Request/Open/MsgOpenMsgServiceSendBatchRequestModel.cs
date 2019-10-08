@@ -5,7 +5,7 @@ namespace PddOpenSdk.Models.Request.Open
     public partial class MsgOpenMsgServiceSendBatchRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 接收短信的手机号码集合
+        /// 接收短信的手机号码集合, ["15900000000", "17600000000"]
         /// </summary>
         [JsonProperty("phone_numbers")]
         public List<string> PhoneNumbers { get; set; }

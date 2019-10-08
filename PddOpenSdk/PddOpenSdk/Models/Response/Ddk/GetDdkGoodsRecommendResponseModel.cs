@@ -29,61 +29,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("qr_code_image_url")]
                 public string QrCodeImageUrl { get; set; }
                 /// <summary>
-                /// 编辑锁定
-                /// </summary>
-                [JsonProperty("lock_edit")]
-                public string LockEdit { get; set; }
-                /// <summary>
-                /// 代理人
-                /// </summary>
-                [JsonProperty("broker")]
-                public string Broker { get; set; }
-                /// <summary>
-                /// 顺序
-                /// </summary>
-                [JsonProperty("rank")]
-                public string Rank { get; set; }
-                /// <summary>
-                /// 今日成交量
-                /// </summary>
-                [JsonProperty("sale_num_today")]
-                public long? SaleNumToday { get; set; }
-                /// <summary>
-                /// 成交量
-                /// </summary>
-                [JsonProperty("sale_num24")]
-                public long? SaleNum24 { get; set; }
-                /// <summary>
-                /// 服务评分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("serv_pct")]
-                public double? ServPct { get; set; }
-                /// <summary>
-                /// 物流评分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("lgst_pct")]
-                public double? LgstPct { get; set; }
-                /// <summary>
-                /// 描述评分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("desc_pct")]
-                public double? DescPct { get; set; }
-                /// <summary>
-                /// 服务评分
-                /// </summary>
-                [JsonProperty("avg_serv")]
-                public long? AvgServ { get; set; }
-                /// <summary>
-                /// 物流评分
-                /// </summary>
-                [JsonProperty("avg_lgst")]
-                public long? AvgLgst { get; set; }
-                /// <summary>
-                /// 描述评分
-                /// </summary>
-                [JsonProperty("avg_desc")]
-                public long? AvgDesc { get; set; }
-                /// <summary>
                 /// 分享描述
                 /// </summary>
                 [JsonProperty("share_desc")]
@@ -98,11 +43,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
                 public long? GoodsEvalCount { get; set; }
-                /// <summary>
-                /// 商品评价分
-                /// </summary>
-                [JsonProperty("goods_eval_score")]
-                public double? GoodsEvalScore { get; set; }
                 /// <summary>
                 /// 市场服务费
                 /// </summary>
@@ -234,11 +174,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_mark_price")]
                 public long? GoodsMarkPrice { get; set; }
                 /// <summary>
-                /// 销售量
-                /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
-                /// <summary>
                 /// 商品详情图列表
                 /// </summary>
                 [JsonProperty("goods_gallery_urls")]
@@ -274,10 +209,25 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("create_at")]
                 public long? CreateAt { get; set; }
                 /// <summary>
-                /// 模糊销量
+                /// 销售量
                 /// </summary>
                 [JsonProperty("sales_tip")]
                 public string SalesTip { get; set; }
+                /// <summary>
+                /// 描述分
+                /// </summary>
+                [JsonProperty("desc_txt")]
+                public string DescTxt { get; set; }
+                /// <summary>
+                /// 服务分
+                /// </summary>
+                [JsonProperty("serv_txt")]
+                public string ServTxt { get; set; }
+                /// <summary>
+                /// 物流分
+                /// </summary>
+                [JsonProperty("lgst_txt")]
+                public string LgstTxt { get; set; }
 
             }
 

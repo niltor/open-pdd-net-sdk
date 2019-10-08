@@ -113,6 +113,16 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
                 /// </summary>
                 [JsonProperty("custom_parameters")]
                 public string CustomParameters { get; set; }
+                /// <summary>
+                /// 是否是 cpa 新用户，1表示是，0表示否
+                /// </summary>
+                [JsonProperty("cpa_new")]
+                public int? CpaNew { get; set; }
+                /// <summary>
+                /// 场景工具商佣金
+                /// </summary>
+                [JsonProperty("scene_at_market_fee")]
+                public int? SceneAtMarketFee { get; set; }
 
             }
 

@@ -33,6 +33,16 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 是否生成店铺收藏券推广链接
+        /// </summary>
+        [JsonProperty("generate_mall_collect_coupon")]
+        public bool? GenerateMallCollectCoupon { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public bool? GenerateSchemaUrl { get; set; }
 
     }
 

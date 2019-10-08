@@ -30,14 +30,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 订单全量列表
-        /// </summary>
-        public async Task<GetOrderNumberListResponseModel> GetOrderNumberListAsync(GetOrderNumberListRequestModel getOrderNumberList)
-        {
-            var result = await PostAsync<GetOrderNumberListRequestModel, GetOrderNumberListResponseModel>("pdd.order.number.list.get", getOrderNumberList);
-            return result;
-        }
-        /// <summary>
         /// 订单增量接口
         /// </summary>
         public async Task<GetOrderNumberListIncrementResponseModel> GetOrderNumberListIncrementAsync(GetOrderNumberListIncrementRequestModel getOrderNumberListIncrement)

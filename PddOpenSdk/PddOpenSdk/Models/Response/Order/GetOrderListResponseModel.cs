@@ -214,7 +214,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("province")]
                 public string Province { get; set; }
                 /// <summary>
-                /// 国家
+                /// 国家或地区
                 /// </summary>
                 [JsonProperty("country")]
                 public string Country { get; set; }
@@ -254,7 +254,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("province_id")]
                 public int? ProvinceId { get; set; }
                 /// <summary>
-                /// 国家编码
+                /// 国家或地区编码
                 /// </summary>
                 [JsonProperty("country_id")]
                 public int? CountryId { get; set; }

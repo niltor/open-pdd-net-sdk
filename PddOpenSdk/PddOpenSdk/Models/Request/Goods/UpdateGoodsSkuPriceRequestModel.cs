@@ -24,6 +24,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("market_price_in_yuan")]
         public string MarketPriceInYuan { get; set; }
+        /// <summary>
+        /// 提交后上架状态，0:上架,1:保持原样
+        /// </summary>
+        [JsonProperty("sync_goods_operate")]
+        public int? SyncGoodsOperate { get; set; }
         public partial class SkuPriceListRequestModel : PddRequestModel
         {
             /// <summary>

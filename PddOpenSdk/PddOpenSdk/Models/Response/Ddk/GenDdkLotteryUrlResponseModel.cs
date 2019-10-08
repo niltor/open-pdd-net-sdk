@@ -80,6 +80,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// </summary>
                     [JsonProperty("we_app_page_path")]
                     public string WeAppPagePath { get; set; }
+                    /// <summary>
+                    /// schema的链接
+                    /// </summary>
+                    [JsonProperty("schema_url")]
+                    public string SchemaUrl { get; set; }
 
                 }
                 public partial class MultiUrlListResponseModel : PddResponseModel
@@ -119,6 +124,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// </summary>
                     [JsonProperty("we_app_page_path")]
                     public string WeAppPagePath { get; set; }
+                    /// <summary>
+                    /// schema的链接
+                    /// </summary>
+                    [JsonProperty("schema_url")]
+                    public string SchemaUrl { get; set; }
 
                 }
                 public partial class WeAppInfoResponseModel : PddResponseModel

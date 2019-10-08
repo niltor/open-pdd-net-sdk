@@ -106,11 +106,6 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
             [JsonProperty("order_modify_at")]
             public long? OrderModifyAt { get; set; }
             /// <summary>
-            /// 订单来源 ：0 ：关联，5 ：直接下单页RPC请求
-            /// </summary>
-            [JsonProperty("match_channel")]
-            public int? MatchChannel { get; set; }
-            /// <summary>
             /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
             /// </summary>
             [JsonProperty("type")]
@@ -160,6 +155,11 @@ namespace PddOpenSdk.Models.Response.Ddkoauth
             /// </summary>
             [JsonProperty("pid")]
             public string Pid { get; set; }
+            /// <summary>
+            /// 是否是 cpa 新用户，1表示是，0表示否
+            /// </summary>
+            [JsonProperty("cpa_new")]
+            public int? CpaNew { get; set; }
 
         }
 

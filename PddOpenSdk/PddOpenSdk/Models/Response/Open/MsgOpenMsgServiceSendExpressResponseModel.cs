@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Response.Open
     public partial class MsgOpenMsgServiceSendExpressResponseModel : PddResponseModel
     {
         /// <summary>
-        /// 回执id
-        /// </summary>
-        [JsonProperty("biz_id")]
-        public string BizId { get; set; }
-        /// <summary>
         /// 状态码
         /// </summary>
         [JsonProperty("code")]
@@ -19,10 +14,10 @@ namespace PddOpenSdk.Models.Response.Open
         [JsonProperty("message")]
         public string Message { get; set; }
         /// <summary>
-        /// 请求标识Id
+        /// 回执id
         /// </summary>
-        [JsonProperty("request_id")]
-        public string RequestId { get; set; }
+        [JsonProperty("biz_id")]
+        public string BizId { get; set; }
 
     }
 

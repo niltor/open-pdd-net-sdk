@@ -6,6 +6,14 @@ namespace PddOpenSdk.Services.PddApi
     public class WaybillApi : PddCommonApi
     {
         /// <summary>
+        /// 生成打印机渲染命令（通过打印机命令打印）
+        /// </summary>
+        public async Task<RenderCloudprintCmdprintResponseModel> RenderCloudprintCmdprintAsync(RenderCloudprintCmdprintRequestModel renderCloudprintCmdprint)
+        {
+            var result = await PostAsync<RenderCloudprintCmdprintRequestModel, RenderCloudprintCmdprintResponseModel>("pdd.cloudprint.cmdprint.render", renderCloudprintCmdprint);
+            return result;
+        }
+        /// <summary>
         /// 获取商家的自定义区模板信息
         /// </summary>
         public async Task<GetCloudprintCustomaresResponseModel> GetCloudprintCustomaresAsync(GetCloudprintCustomaresRequestModel getCloudprintCustomares)

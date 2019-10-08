@@ -54,11 +54,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_gallery_urls")]
                 public List<string> GoodsGalleryUrls { get; set; }
                 /// <summary>
-                /// 已售卖件数
-                /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
-                /// <summary>
                 /// 最小拼团价格,单位为分
                 /// </summary>
                 [JsonProperty("min_group_price")]
@@ -129,20 +124,30 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("promotion_rate")]
                 public long? PromotionRate { get; set; }
                 /// <summary>
-                /// 商品评价分
-                /// </summary>
-                [JsonProperty("goods_eval_score")]
-                public double? GoodsEvalScore { get; set; }
-                /// <summary>
                 /// 商品评价数量
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
                 public long? GoodsEvalCount { get; set; }
                 /// <summary>
-                /// 模糊销量
+                /// 已售卖件数
                 /// </summary>
                 [JsonProperty("sales_tip")]
                 public string SalesTip { get; set; }
+                /// <summary>
+                /// 描述分
+                /// </summary>
+                [JsonProperty("desc_txt")]
+                public string DescTxt { get; set; }
+                /// <summary>
+                /// 服务分
+                /// </summary>
+                [JsonProperty("serv_txt")]
+                public string ServTxt { get; set; }
+                /// <summary>
+                /// 物流分
+                /// </summary>
+                [JsonProperty("lgst_txt")]
+                public string LgstTxt { get; set; }
 
             }
 

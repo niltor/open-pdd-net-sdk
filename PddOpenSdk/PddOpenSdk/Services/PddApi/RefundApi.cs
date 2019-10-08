@@ -22,6 +22,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 售后单详情接口
+        /// </summary>
+        public async Task<GetRefundInformationResponseModel> GetRefundInformationAsync(GetRefundInformationRequestModel getRefundInformation)
+        {
+            var result = await PostAsync<GetRefundInformationRequestModel, GetRefundInformationResponseModel>("pdd.refund.information.get", getRefundInformation);
+            return result;
+        }
+        /// <summary>
         /// 售后列表接口
         /// </summary>
         public async Task<GetRefundListIncrementResponseModel> GetRefundListIncrementAsync(GetRefundListIncrementRequestModel getRefundListIncrement)

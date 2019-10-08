@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("out_high_goods_price")]
         public long OutHighGoodsPrice { get; set; }
         /// <summary>
-        /// 外部平台枚举值， 淘宝/天猫 0，京东1，1688 2，唯品会3，苏宁4，亚马逊,5，网易6，其他7
+        /// 外部平台枚举值， 0-淘宝/天猫 ，1-京东，2-1688，3-唯品会，4-苏宁，5-亚马逊，6-网易，8-微店，9-网商园，10-蘑菇街，11-vvic搜款网，12-搜鞋网，13-一起做网店17zwd，14-杭州女装网，15-折800，16-当当，17-青创网，18-开山网，19-新款网
         /// </summary>
         [JsonProperty("source_type")]
         public int SourceType { get; set; }

@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("channel_type")]
         public int ChannelType { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public string GenerateSchemaUrl { get; set; }
 
     }
 

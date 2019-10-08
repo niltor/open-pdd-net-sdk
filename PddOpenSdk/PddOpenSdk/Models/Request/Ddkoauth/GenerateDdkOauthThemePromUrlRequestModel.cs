@@ -44,6 +44,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("we_app_web_wiew_url")]
         public bool? WeAppWebWiewUrl { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public bool? GenerateSchemaUrl { get; set; }
 
     }
 

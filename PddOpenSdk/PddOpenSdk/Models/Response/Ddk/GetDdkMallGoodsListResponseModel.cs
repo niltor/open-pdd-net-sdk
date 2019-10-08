@@ -61,8 +61,8 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// <summary>
                 /// 已售卖件数
                 /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
+                [JsonProperty("sales_tip")]
+                public string SalesTip { get; set; }
                 /// <summary>
                 /// 商品市场价（单位为分）
                 /// </summary>
@@ -199,11 +199,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("mall_cps")]
                 public int? MallCps { get; set; }
                 /// <summary>
-                /// 商品评价分
-                /// </summary>
-                [JsonProperty("goods_eval_score")]
-                public double? GoodsEvalScore { get; set; }
-                /// <summary>
                 /// 商品评价数
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
@@ -219,36 +214,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("share_desc")]
                 public string ShareDesc { get; set; }
                 /// <summary>
-                /// 描述评分
-                /// </summary>
-                [JsonProperty("avg_desc")]
-                public long? AvgDesc { get; set; }
-                /// <summary>
-                /// 物流评分
-                /// </summary>
-                [JsonProperty("avg_lgst")]
-                public long? AvgLgst { get; set; }
-                /// <summary>
-                /// 服务评分
-                /// </summary>
-                [JsonProperty("avg_serv")]
-                public long? AvgServ { get; set; }
-                /// <summary>
-                /// 描述分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("desc_pct")]
-                public long? DescPct { get; set; }
-                /// <summary>
-                /// 物流分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("lgst_pct")]
-                public double? LgstPct { get; set; }
-                /// <summary>
-                /// 服务分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("serv_pct")]
-                public double? ServPct { get; set; }
-                /// <summary>
                 /// 最近24小时多多进宝商品销量
                 /// </summary>
                 [JsonProperty("sale_num24")]
@@ -259,21 +224,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("sale_num_today")]
                 public long? SaleNumToday { get; set; }
                 /// <summary>
-                /// 商品排名
-                /// </summary>
-                [JsonProperty("rank")]
-                public long? Rank { get; set; }
-                /// <summary>
-                /// 对接小二
-                /// </summary>
-                [JsonProperty("broker")]
-                public string Broker { get; set; }
-                /// <summary>
-                /// 锁定编辑状态
-                /// </summary>
-                [JsonProperty("lock_edit")]
-                public int? LockEdit { get; set; }
-                /// <summary>
                 /// 聊天二维码图片url
                 /// </summary>
                 [JsonProperty("qr_code_image_url")]
@@ -283,6 +233,21 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("mall_rate")]
                 public long? MallRate { get; set; }
+                /// <summary>
+                /// 描述分
+                /// </summary>
+                [JsonProperty("desc_txt")]
+                public string DescTxt { get; set; }
+                /// <summary>
+                /// 服务分
+                /// </summary>
+                [JsonProperty("serv_txt")]
+                public string ServTxt { get; set; }
+                /// <summary>
+                /// 物流分
+                /// </summary>
+                [JsonProperty("lgst_txt")]
+                public string LgstTxt { get; set; }
 
             }
 

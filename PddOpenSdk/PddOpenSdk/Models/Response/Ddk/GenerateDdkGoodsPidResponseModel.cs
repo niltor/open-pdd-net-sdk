@@ -16,8 +16,18 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// </summary>
             [JsonProperty("p_id_list")]
             public List<PIdListResponseModel> PIdList { get; set; }
+            /// <summary>
+            /// PID剩余数量
+            /// </summary>
+            [JsonProperty("remain_pid_count")]
+            public int? RemainPidCount { get; set; }
             public partial class PIdListResponseModel : PddResponseModel
             {
+                /// <summary>
+                /// 推广位创建时间
+                /// </summary>
+                [JsonProperty("create_time")]
+                public long? CreateTime { get; set; }
                 /// <summary>
                 /// 推广位名称
                 /// </summary>
@@ -28,11 +38,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("p_id")]
                 public string PId { get; set; }
-                /// <summary>
-                /// 推广位创建时间
-                /// </summary>
-                [JsonProperty("create_time")]
-                public long? CreateTime { get; set; }
 
             }
 

@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("p_id_list")]
         public List<string> PIdList { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public bool? GenerateSchemaUrl { get; set; }
 
     }
 

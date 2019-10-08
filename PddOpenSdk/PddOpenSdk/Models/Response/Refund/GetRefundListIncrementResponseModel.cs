@@ -128,6 +128,11 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// </summary>
                 [JsonProperty("updated_time")]
                 public string UpdatedTime { get; set; }
+                /// <summary>
+                /// 极速退款标志位 1：极速退款，0：非极速退款
+                /// </summary>
+                [JsonProperty("speed_refund_flag")]
+                public int? SpeedRefundFlag { get; set; }
 
             }
 

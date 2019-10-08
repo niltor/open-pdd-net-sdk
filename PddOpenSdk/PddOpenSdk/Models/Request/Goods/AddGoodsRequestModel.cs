@@ -10,7 +10,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("goods_name")]
         public string GoodsName { get; set; }
         /// <summary>
-        /// 1-国内普通商品，2-进口，3-直供（保税），4-直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡,18-CC行邮
+        /// 1-国内普通商品，2-海外进口，3-保税仓BC直供，4-海外BC直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡,18-海外CC个人行邮
         /// </summary>
         [JsonProperty("goods_type")]
         public int GoodsType { get; set; }
@@ -25,17 +25,17 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("cat_id")]
         public long CatId { get; set; }
         /// <summary>
-        /// 国家ID，country_id可以通过pdd.goods.country.get获取，仅在goods_type为2、3时（海淘商品）入参生效，其余goods_type传0
+        /// 国家或地区ID（填写海淘商品的货源地），country_id可以通过pdd.goods.country.get获取，仅在goods_type为2、3、4、18时（海淘商品）入参生效，其余goods_type传0
         /// </summary>
         [JsonProperty("country_id")]
         public int CountryId { get; set; }
         /// <summary>
-        /// 保税仓，只在goods_type=3（直供商品）时入参，入参枚举值为：宁波保税仓、杭州保税仓、广州保税仓、深圳保税仓、重庆保税仓、郑州保税仓、福建保税仓、天津保税仓、上海保税仓、银川保税仓、成都保税仓
+        /// 只在商品类型选择“直供商品”时入参，店铺可填入的保税仓可通过“pdd.mall.info.bonded.warehouse.get”查询
         /// </summary>
         [JsonProperty("warehouse")]
         public string Warehouse { get; set; }
         /// <summary>
-        /// 海关名称，只在goods_type=3（直供商品）时入参且is_customs=true，入参枚举值为：广州、杭州、宁波、郑州、郑州(保税物流中心)、重庆、西安、上海、郑州(综保区)、深圳、福建、天津
+        /// 只在商品类型选择“直邮商品”时入参，店铺可填入的报关海关可通过“pdd.mall.info.bonded.warehouse.get”查询
         /// </summary>
         [JsonProperty("customs")]
         public string Customs { get; set; }
@@ -115,7 +115,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("out_goods_id")]
         public string OutGoodsId { get; set; }
         /// <summary>
-        /// 商品主图，请参考拼多多首页大图，如果商品参加部分活动则必填，否则无法参加活动; a. 尺寸750 x 352px; b. 大小100k以内; c. 图片格式仅支持JPG,PNG格式; d. 图片背景应以纯白为主, 商品图案居中显示; e. 图片不可以添加任何品牌相关文字或logo
+        /// 商品活动主图
         /// </summary>
         [JsonProperty("image_url")]
         public string ImageUrl { get; set; }
@@ -155,7 +155,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("oversea_goods")]
         public OverseaGoodsRequestModel OverseaGoods { get; set; }
         /// <summary>
-        /// 短标题，示例：新包装，保证产品的口感和新鲜度。单颗独立小包装，双重营养，1斤家庭分享装，更实惠新疆一级骏枣夹核桃仁。
+        /// 商品短标题（仅在部分活动中生效），字数限制为8-20字
         /// </summary>
         [JsonProperty("tiny_name")]
         public string TinyName { get; set; }
@@ -194,6 +194,16 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("carousel_video")]
         public List<CarouselVideoRequestModel> CarouselVideo { get; set; }
+        /// <summary>
+        /// 原产地id，是指海淘商品的生产地址，仅在goods type=3/4的时候必填，可以通过pdd.goods.country.get获取
+        /// </summary>
+        [JsonProperty("origin_country_id")]
+        public int? OriginCountryId { get; set; }
+        /// <summary>
+        /// 是否当日发货,0 否，1 是
+        /// </summary>
+        [JsonProperty("delivery_one_day")]
+        public int? DeliveryOneDay { get; set; }
         public partial class SkuListRequestModel : PddRequestModel
         {
             /// <summary>

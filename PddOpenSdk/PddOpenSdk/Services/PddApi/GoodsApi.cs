@@ -14,14 +14,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 商品详情接口
-        /// </summary>
-        public async Task<GetGoodsInformationResponseModel> GetGoodsInformationAsync(GetGoodsInformationRequestModel getGoodsInformation)
-        {
-            var result = await PostAsync<GetGoodsInformationRequestModel, GetGoodsInformationResponseModel>("pdd.goods.information.get", getGoodsInformation);
-            return result;
-        }
-        /// <summary>
         /// 商品标准类目接口
         /// </summary>
         public async Task<GetGoodsCatsResponseModel> GetGoodsCatsAsync(GetGoodsCatsRequestModel getGoodsCats)
@@ -99,22 +91,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CreateGoodsLogisticsTemplateResponseModel> CreateGoodsLogisticsTemplateAsync(CreateGoodsLogisticsTemplateRequestModel createGoodsLogisticsTemplate)
         {
             var result = await PostAsync<CreateGoodsLogisticsTemplateRequestModel, CreateGoodsLogisticsTemplateResponseModel>("pdd.goods.logistics.template.create", createGoodsLogisticsTemplate);
-            return result;
-        }
-        /// <summary>
-        /// 商品关联信息设置接口
-        /// </summary>
-        public async Task<SetGoodsRelationResponseModel> SetGoodsRelationAsync(SetGoodsRelationRequestModel setGoodsRelation)
-        {
-            var result = await PostAsync<SetGoodsRelationRequestModel, SetGoodsRelationResponseModel>("pdd.goods.relation.set", setGoodsRelation);
-            return result;
-        }
-        /// <summary>
-        /// 查询商品推广API
-        /// </summary>
-        public async Task<QueryGoodsCpsUnitResponseModel> QueryGoodsCpsUnitAsync(QueryGoodsCpsUnitRequestModel queryGoodsCpsUnit)
-        {
-            var result = await PostAsync<QueryGoodsCpsUnitRequestModel, QueryGoodsCpsUnitResponseModel>("pdd.goods.cps.unit.query", queryGoodsCpsUnit);
             return result;
         }
         /// <summary>
@@ -214,22 +190,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 查询全店推广API
-        /// </summary>
-        public async Task<QueryGoodsCpsMallUnitResponseModel> QueryGoodsCpsMallUnitAsync(QueryGoodsCpsMallUnitRequestModel queryGoodsCpsMallUnit)
-        {
-            var result = await PostAsync<QueryGoodsCpsMallUnitRequestModel, QueryGoodsCpsMallUnitResponseModel>("pdd.goods.cps.mall.unit.query", queryGoodsCpsMallUnit);
-            return result;
-        }
-        /// <summary>
-        /// 修改商品sku价格
-        /// </summary>
-        public async Task<UpdateGoodsSkuPriceResponseModel> UpdateGoodsSkuPriceAsync(UpdateGoodsSkuPriceRequestModel updateGoodsSkuPrice)
-        {
-            var result = await PostAsync<UpdateGoodsSkuPriceRequestModel, UpdateGoodsSkuPriceResponseModel>("pdd.goods.sku.price.update", updateGoodsSkuPrice);
-            return result;
-        }
-        /// <summary>
         /// 恢复全店推广API
         /// </summary>
         public async Task<ResumeGoodsCpsMallUnitResponseModel> ResumeGoodsCpsMallUnitAsync(ResumeGoodsCpsMallUnitRequestModel resumeGoodsCpsMallUnit)
@@ -294,6 +254,70 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 商品详情接口
+        /// </summary>
+        public async Task<GetGoodsInformationResponseModel> GetGoodsInformationAsync(GetGoodsInformationRequestModel getGoodsInformation)
+        {
+            var result = await PostAsync<GetGoodsInformationRequestModel, GetGoodsInformationResponseModel>("pdd.goods.information.get", getGoodsInformation);
+            return result;
+        }
+        /// <summary>
+        /// 草稿列表接口
+        /// </summary>
+        public async Task<GetGoodsCommitListResponseModel> GetGoodsCommitListAsync(GetGoodsCommitListRequestModel getGoodsCommitList)
+        {
+            var result = await PostAsync<GetGoodsCommitListRequestModel, GetGoodsCommitListResponseModel>("pdd.goods.commit.list.get", getGoodsCommitList);
+            return result;
+        }
+        /// <summary>
+        /// 草稿状态查询接口
+        /// </summary>
+        public async Task<GetGoodsCommitStatusResponseModel> GetGoodsCommitStatusAsync(GetGoodsCommitStatusRequestModel getGoodsCommitStatus)
+        {
+            var result = await PostAsync<GetGoodsCommitStatusRequestModel, GetGoodsCommitStatusResponseModel>("pdd.goods.commit.status.get", getGoodsCommitStatus);
+            return result;
+        }
+        /// <summary>
+        /// 批量goodsId查询最新的审核状态
+        /// </summary>
+        public async Task<GetGoodsLatestCommitStatusResponseModel> GetGoodsLatestCommitStatusAsync(GetGoodsLatestCommitStatusRequestModel getGoodsLatestCommitStatus)
+        {
+            var result = await PostAsync<GetGoodsLatestCommitStatusRequestModel, GetGoodsLatestCommitStatusResponseModel>("pdd.goods.latest.commit.status.get", getGoodsLatestCommitStatus);
+            return result;
+        }
+        /// <summary>
+        /// 查询全店推广API
+        /// </summary>
+        public async Task<QueryGoodsCpsMallUnitResponseModel> QueryGoodsCpsMallUnitAsync(QueryGoodsCpsMallUnitRequestModel queryGoodsCpsMallUnit)
+        {
+            var result = await PostAsync<QueryGoodsCpsMallUnitRequestModel, QueryGoodsCpsMallUnitResponseModel>("pdd.goods.cps.mall.unit.query", queryGoodsCpsMallUnit);
+            return result;
+        }
+        /// <summary>
+        /// 查询商品推广API
+        /// </summary>
+        public async Task<QueryGoodsCpsUnitResponseModel> QueryGoodsCpsUnitAsync(QueryGoodsCpsUnitRequestModel queryGoodsCpsUnit)
+        {
+            var result = await PostAsync<QueryGoodsCpsUnitRequestModel, QueryGoodsCpsUnitResponseModel>("pdd.goods.cps.unit.query", queryGoodsCpsUnit);
+            return result;
+        }
+        /// <summary>
+        /// 修改商品sku价格
+        /// </summary>
+        public async Task<UpdateGoodsSkuPriceResponseModel> UpdateGoodsSkuPriceAsync(UpdateGoodsSkuPriceRequestModel updateGoodsSkuPrice)
+        {
+            var result = await PostAsync<UpdateGoodsSkuPriceRequestModel, UpdateGoodsSkuPriceResponseModel>("pdd.goods.sku.price.update", updateGoodsSkuPrice);
+            return result;
+        }
+        /// <summary>
+        /// 模板属性值搜索接口
+        /// </summary>
+        public async Task<SearchGoodsTemplatePropertyValueResponseModel> SearchGoodsTemplatePropertyValueAsync(SearchGoodsTemplatePropertyValueRequestModel searchGoodsTemplatePropertyValue)
+        {
+            var result = await PostAsync<SearchGoodsTemplatePropertyValueRequestModel, SearchGoodsTemplatePropertyValueResponseModel>("pdd.goods.template.property.value.search", searchGoodsTemplatePropertyValue);
+            return result;
+        }
+        /// <summary>
         /// 商品新增接口
         /// </summary>
         public async Task<AddGoodsResponseModel> AddGoodsAsync(AddGoodsRequestModel addGoods)
@@ -331,6 +355,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetGoodsCommitDetailResponseModel> GetGoodsCommitDetailAsync(GetGoodsCommitDetailRequestModel getGoodsCommitDetail)
         {
             var result = await PostAsync<GetGoodsCommitDetailRequestModel, GetGoodsCommitDetailResponseModel>("pdd.goods.commit.detail.get", getGoodsCommitDetail);
+            return result;
+        }
+        /// <summary>
+        /// 商品关联信息设置接口
+        /// </summary>
+        public async Task<SetGoodsRelationResponseModel> SetGoodsRelationAsync(SetGoodsRelationRequestModel setGoodsRelation)
+        {
+            var result = await PostAsync<SetGoodsRelationRequestModel, SetGoodsRelationResponseModel>("pdd.goods.relation.set", setGoodsRelation);
             return result;
         }
         /// <summary>

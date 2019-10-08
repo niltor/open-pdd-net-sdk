@@ -4,7 +4,7 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class GetDdkGoodsRecommendRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 从多少位置开始请求；默认值 ： 0
+        /// 从多少位置开始请求；默认值 ： 0，offset需是limit的整数倍，仅支持整页翻页
         /// </summary>
         [JsonProperty("offset")]
         public int? Offset { get; set; }

@@ -39,6 +39,16 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("generate_we_app")]
         public bool? GenerateWeApp { get; set; }
+        /// <summary>
+        /// CPA新人红包，0-默认红包，2 – 新人红包，默认0
+        /// </summary>
+        [JsonProperty("channel_type")]
+        public int? ChannelType { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public bool? GenerateSchemaUrl { get; set; }
 
     }
 

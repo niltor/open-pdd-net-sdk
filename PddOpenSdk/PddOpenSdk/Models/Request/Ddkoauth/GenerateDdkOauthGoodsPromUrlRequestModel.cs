@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Request.Ddkoauth
         /// </summary>
         [JsonProperty("generate_weiboapp_webview")]
         public bool? GenerateWeiboappWebview { get; set; }
+        /// <summary>
+        /// 是否返回 schema URL
+        /// </summary>
+        [JsonProperty("generate_schema_url")]
+        public bool? GenerateSchemaUrl { get; set; }
 
     }
 

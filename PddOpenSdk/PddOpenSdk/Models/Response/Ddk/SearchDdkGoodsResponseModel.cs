@@ -104,11 +104,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_gallery_urls")]
                 public List<string> GoodsGalleryUrls { get; set; }
                 /// <summary>
-                /// 已售卖件数
-                /// </summary>
-                [JsonProperty("sold_quantity")]
-                public long? SoldQuantity { get; set; }
-                /// <summary>
                 /// 最小拼团价（单位为分）
                 /// </summary>
                 [JsonProperty("min_group_price")]
@@ -204,47 +199,12 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("promotion_rate")]
                 public long? PromotionRate { get; set; }
                 /// <summary>
-                /// 商品评价分
-                /// </summary>
-                [JsonProperty("goods_eval_score")]
-                public double? GoodsEvalScore { get; set; }
-                /// <summary>
                 /// 商品评价数量
                 /// </summary>
                 [JsonProperty("goods_eval_count")]
                 public long? GoodsEvalCount { get; set; }
                 /// <summary>
-                /// 描述评分
-                /// </summary>
-                [JsonProperty("avg_desc")]
-                public long? AvgDesc { get; set; }
-                /// <summary>
-                /// 物流评分
-                /// </summary>
-                [JsonProperty("avg_lgst")]
-                public long? AvgLgst { get; set; }
-                /// <summary>
-                /// 服务评分
-                /// </summary>
-                [JsonProperty("avg_serv")]
-                public long? AvgServ { get; set; }
-                /// <summary>
-                /// 描述分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("desc_pct")]
-                public double? DescPct { get; set; }
-                /// <summary>
-                /// 物流分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("lgst_pct")]
-                public double? LgstPct { get; set; }
-                /// <summary>
-                /// 服务分击败同类店铺百分比
-                /// </summary>
-                [JsonProperty("serv_pct")]
-                public double? ServPct { get; set; }
-                /// <summary>
-                /// 模糊销量
+                /// 已售卖件数
                 /// </summary>
                 [JsonProperty("sales_tip")]
                 public string SalesTip { get; set; }
@@ -253,6 +213,76 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("activity_type")]
                 public int? ActivityType { get; set; }
+                /// <summary>
+                /// 服务标签: 4-送货入户并安装,5-送货入户,6-电子发票,9-坏果包赔,11-闪电退款,12-24小时发货,13-48小时发货,17-顺丰包邮,18-只换不修,19-全国联保,20-分期付款,24-极速退款,25-品质保障,26-缺重包退,27-当日发货,28-可定制化,29-预约配送,1000001-正品发票,1000002-送货入户并安装
+                /// </summary>
+                [JsonProperty("service_tags")]
+                public List<long?> ServiceTags { get; set; }
+                /// <summary>
+                /// 店铺收藏券id
+                /// </summary>
+                [JsonProperty("clt_cpn_batch_sn")]
+                public string CltCpnBatchSn { get; set; }
+                /// <summary>
+                /// 店铺收藏券起始时间
+                /// </summary>
+                [JsonProperty("clt_cpn_start_time")]
+                public long? CltCpnStartTime { get; set; }
+                /// <summary>
+                /// 店铺收藏券截止时间
+                /// </summary>
+                [JsonProperty("clt_cpn_end_time")]
+                public long? CltCpnEndTime { get; set; }
+                /// <summary>
+                /// 店铺收藏券总量
+                /// </summary>
+                [JsonProperty("clt_cpn_quantity")]
+                public long? CltCpnQuantity { get; set; }
+                /// <summary>
+                /// 店铺收藏券剩余量
+                /// </summary>
+                [JsonProperty("clt_cpn_remain_quantity")]
+                public long? CltCpnRemainQuantity { get; set; }
+                /// <summary>
+                /// 店铺收藏券面额，单位为分
+                /// </summary>
+                [JsonProperty("clt_cpn_discount")]
+                public long? CltCpnDiscount { get; set; }
+                /// <summary>
+                /// 店铺收藏券使用门槛价格，单位为分
+                /// </summary>
+                [JsonProperty("clt_cpn_min_amt")]
+                public long? CltCpnMinAmt { get; set; }
+                /// <summary>
+                /// 描述分
+                /// </summary>
+                [JsonProperty("desc_txt")]
+                public string DescTxt { get; set; }
+                /// <summary>
+                /// 服务分
+                /// </summary>
+                [JsonProperty("serv_txt")]
+                public string ServTxt { get; set; }
+                /// <summary>
+                /// 物流分
+                /// </summary>
+                [JsonProperty("lgst_txt")]
+                public string LgstTxt { get; set; }
+                /// <summary>
+                /// 推广计划类型 3:定向 4:招商
+                /// </summary>
+                [JsonProperty("plan_type")]
+                public int? PlanType { get; set; }
+                /// <summary>
+                /// 招商团长id
+                /// </summary>
+                [JsonProperty("zs_duo_id")]
+                public long? ZsDuoId { get; set; }
+                /// <summary>
+                /// 快手专享
+                /// </summary>
+                [JsonProperty("only_scene_auth")]
+                public bool? OnlySceneAuth { get; set; }
 
             }
 

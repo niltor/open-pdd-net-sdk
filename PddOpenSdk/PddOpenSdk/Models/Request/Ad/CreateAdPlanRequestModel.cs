@@ -30,12 +30,12 @@ namespace PddOpenSdk.Models.Request.Ad
             /// 折扣率，1000 表示 100.0%，0 表示不投放，自定义范围 500 ~ 3000（10的倍数）
             /// </summary>
             [JsonProperty("rate")]
-            public int Rate { get; set; }
+            public int? Rate { get; set; }
             /// <summary>
             /// 时间段索引，0 ~ 23
             /// </summary>
             [JsonProperty("index")]
-            public int Index { get; set; }
+            public int? Index { get; set; }
 
         }
 

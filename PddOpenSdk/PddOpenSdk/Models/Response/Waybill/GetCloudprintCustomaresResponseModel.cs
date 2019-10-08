@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Waybill
 {
     public partial class GetCloudprintCustomaresResponseModel : PddResponseModel
@@ -18,22 +19,41 @@ namespace PddOpenSdk.Models.Response.Waybill
             public partial class ResultResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// datas
+                /// 
                 /// </summary>
                 [JsonProperty("datas")]
-                public DatasResponseModel Datas { get; set; }
+                public List<DatasResponseModel> Datas { get; set; }
                 public partial class DatasResponseModel : PddResponseModel
                 {
                     /// <summary>
-                    /// custom_area_id
+                    /// 
                     /// </summary>
                     [JsonProperty("custom_area_id")]
                     public int? CustomAreaId { get; set; }
                     /// <summary>
-                    /// custom_area_name
+                    /// 
                     /// </summary>
                     [JsonProperty("custom_area_name")]
                     public string CustomAreaName { get; set; }
+                    /// <summary>
+                    /// 
+                    /// </summary>
+                    [JsonProperty("custom_area_url")]
+                    public string CustomAreaUrl { get; set; }
+                    /// <summary>
+                    /// 
+                    /// </summary>
+                    [JsonProperty("keys")]
+                    public List<KeysResponseModel> Keys { get; set; }
+                    public partial class KeysResponseModel : PddResponseModel
+                    {
+                        /// <summary>
+                        /// 
+                        /// </summary>
+                        [JsonProperty("key_name")]
+                        public string KeyName { get; set; }
+
+                    }
 
                 }
 

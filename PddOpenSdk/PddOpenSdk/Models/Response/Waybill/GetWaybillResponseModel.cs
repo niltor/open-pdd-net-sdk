@@ -24,6 +24,11 @@ namespace PddOpenSdk.Models.Response.Waybill
                 [JsonProperty("object_id")]
                 public string ObjectId { get; set; }
                 /// <summary>
+                /// 快运母单号
+                /// </summary>
+                [JsonProperty("parent_waybill_code")]
+                public string ParentWaybillCode { get; set; }
+                /// <summary>
                 /// 面单信息
                 /// </summary>
                 [JsonProperty("print_data")]
