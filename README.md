@@ -33,7 +33,7 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 支持 `.Net Framework4.5.2`及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 使用示例:
-
+- 基本请求及错误信息
 ```csharp
 class Program
 {
@@ -56,15 +56,33 @@ class Program
         var api = new DdkApi();
         var result = await api.GenDdkWeappQrcodeUrlAsync(model);
 
+        // 获取Pdd官方返回的错误信息
+        var errorResponse = _pdd.DdkApi.ErrorResponse.Value;
+        Console.WriteLine(errorResponse.Error_msg);
+
     }
 }
+```
+
+- 图片上传示例
+```csharp
+    var filePath = Path.Combine("images", "logo.png");
+    byte[] bytes = System.IO.File.ReadAllBytes(filePath);
+
+    // 构造图片上传内容
+    string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
+    var model = new UploadGoodsImageRequestModel
+    {
+        Image = base64
+    };
+    var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model)
 ```
 
 ### ASP.NET Core 项目使用
 
 先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-可参考[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)
+更多 [示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
 
 - 在 Startup.cs 中注入服务
 
