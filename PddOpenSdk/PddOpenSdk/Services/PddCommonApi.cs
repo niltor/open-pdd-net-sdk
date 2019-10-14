@@ -30,6 +30,13 @@ namespace PddOpenSdk.Services
         public static string RedirectUri;
         protected static HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
 
+        public ErrorResponse ErrorResponse;
+
+        public PddCommonApi()
+        {
+
+        }
+
         /// <summary>
         /// post请求封装
         /// </summary>
@@ -79,15 +86,15 @@ namespace PddOpenSdk.Services
             try
             {
                 var response = await client.PostAsync(ApiUrl, data);
+                ErrorResponse = new ErrorResponse();
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResult = await response.Content.ReadAsStringAsync();
                     var jObject = JObject.Parse(jsonResult);
                     if (jObject.TryGetValue("error_response", out var errorResponse))
                     {
-                        // TODO:处理错误信息
+                        ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonResult);
                         Console.WriteLine("错误信息:" + errorResponse.ToString());
-                        File.AppendAllText("error.json", jsonResult + "\r\n");
                         return default;
                     }
                     else
@@ -183,4 +190,20 @@ namespace PddOpenSdk.Services
         /// </summary>
         public string Sign { get; set; }
     }
+
+
+    public class ErrorResponse
+    {
+        public Error_Response Value { get; set; }
+    }
+
+    public class Error_Response
+    {
+        public string Error_msg { get; set; }
+        public string Sub_msg { get; set; }
+        public object Sub_code { get; set; }
+        public int Error_code { get; set; }
+        public string Request_id { get; set; }
+    }
+
 }
