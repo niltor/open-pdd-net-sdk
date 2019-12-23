@@ -1,8 +1,8 @@
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Console
 {
@@ -40,7 +40,12 @@ namespace Console
         public static string ToTitleCase(string words)
         {
             TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-            return myTI.ToTitleCase(words);
+            var title = myTI.ToTitleCase(words);
+            if (title == words)
+            {
+                title = title.First().ToString() + title.Substring(1);
+            }
+            return title;
         }
 
         /// <summary>

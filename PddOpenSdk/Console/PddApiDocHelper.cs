@@ -1,11 +1,11 @@
-using Console.PddModels;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Console.PddModels;
+using Newtonsoft.Json;
 
 namespace Console
 {
@@ -29,6 +29,41 @@ namespace Console
 
         public List<PddCatInfo> pddCatInfos { get; set; }
         public List<PddDocInfo> pddDocInfos { get; set; }
+        /// <summary>
+        /// 目录与类名映射
+        /// </summary>
+        public Dictionary<string, string> CatMapClassName = new Dictionary<string, string>();
+
+        public PddApiDocHelper()
+        {
+            #region 初始化映射类名
+            CatMapClassName.Add("1", "Order");
+            CatMapClassName.Add("2", "Refund");
+            CatMapClassName.Add("3", "Logistics");
+            CatMapClassName.Add("4", "Virtual");
+            CatMapClassName.Add("5", "Goods");
+            CatMapClassName.Add("11", "Ad");
+            CatMapClassName.Add("12", "Ddk");
+            CatMapClassName.Add("13", "DdkTools");
+            CatMapClassName.Add("14", "LogisticsCompany");
+            CatMapClassName.Add("15", "Promotion");
+            CatMapClassName.Add("16", "Voucher");
+            CatMapClassName.Add("17", "Invoice");
+            CatMapClassName.Add("18", "Mall");
+            CatMapClassName.Add("19", "Sms");
+            CatMapClassName.Add("20", "Util");
+            CatMapClassName.Add("21", "Stock");
+            CatMapClassName.Add("22", "Pmc");
+            CatMapClassName.Add("23", "WayBill");
+            CatMapClassName.Add("24", "Finance");
+            CatMapClassName.Add("26", "OpenMsg");
+            CatMapClassName.Add("27", "Xinzhi");
+            CatMapClassName.Add("30", "Vas");
+            CatMapClassName.Add("32", "SmsVendor");
+            CatMapClassName.Add("34", "MallTicket");
+            CatMapClassName.Add("35", "User");
+            #endregion
+        }
 
         /// <summary>
         /// 获取当前分类列表
@@ -124,24 +159,13 @@ namespace Console
                 foreach (var pddCatInfo in pddCatInfos)
                 {
                     pddDocInfos = await GetApiDocListByCatAsync(pddCatInfo.Id);
+
+                    // 获取映射类名
+                    CatMapClassName.TryGetValue(pddCatInfo.Id.ToString(), out string className);
                     if (pddDocInfos.Count > 0)
                     {
                         string methodsContent = "";
-                        string scopeName = pddDocInfos.LastOrDefault().ScopeName;
-                        string className = "";
-                        // 设置类名
-                        if (scopeName != null)
-                        {
-                            // 用来避免重复名称
-                            var secondName = scopeName.Split(".")[2] ?? "UnNamed";
-                            className = scopeName.Split(".")[1] ?? "UnNamed";
-                            string fileName = Function.ToTitleCase(className) + "Api";
-                            // 处理重复类名的情况
-                            if (File.Exists(Path.Combine(resultPath, fileName + ".cs")))
-                            {
-                                className = Function.ToTitleCase(className) + Function.ToTitleCase(secondName);
-                            }
-                        }
+                        className ??= "UnNamed";
                         foreach (var pddDocInfo in pddDocInfos)
                         {
                             // 是否只获取更新的接口
@@ -171,7 +195,6 @@ namespace Console
         /// <param name="doc"></param>
         public string BuildRequestMethod(ApiDocDetail doc, string requestClassName = "")
         {
-            requestClassName = Function.ToTitleCase(requestClassName);
             // 方法命名
             var scopeName = doc.ScopeName.Split('.');
             var methodName = Function.ToTitleCase(scopeName.Last());

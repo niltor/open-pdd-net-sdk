@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Console.PddModels
 {
@@ -177,7 +177,10 @@ namespace Console.PddModels
 
     internal class ParamTypeConverter : JsonConverter
     {
-        public override bool CanConvert(Type t) => t == typeof(ParamType) || t == typeof(ParamType?);
+        public override bool CanConvert(Type t)
+        {
+            return t == typeof(ParamType) || t == typeof(ParamType?);
+        }
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
