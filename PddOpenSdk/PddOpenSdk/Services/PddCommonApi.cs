@@ -36,9 +36,9 @@ namespace PddOpenSdk.Services
         public PddCommonApi()
         {
         }
-        public PddCommonApi(string acesstoken)
+        public PddCommonApi(string accesstoken)
         {
-            AccessToken = acesstoken;
+            AccessToken = accesstoken;
         }
 
         /// <summary>
