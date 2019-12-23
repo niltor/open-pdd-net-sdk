@@ -23,18 +23,22 @@ namespace PddOpenSdk.Services
         static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
         public static string ClientId;
         public static string ClientSecret;
+        public static string RedirectUri;
+
         /// <summary>
         /// token
         /// </summary>
-        public static string AccessToken;
-        public static string RedirectUri;
+        public string AccessToken { get; set; }
         protected static HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
 
         public ErrorResponse ErrorResponse;
 
         public PddCommonApi()
         {
-
+        }
+        public PddCommonApi(string acesstoken)
+        {
+            AccessToken = acesstoken;
         }
 
         /// <summary>
