@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class BidAdCreateUnitRequestModel : PddRequestModel
@@ -37,7 +37,7 @@ namespace PddOpenSdk.Models.Request.Ad
             [JsonProperty("sub_level_target_id")]
             public long SubLevelTargetId { get; set; }
             /// <summary>
-            /// 1：通投（必有）; 2：访客重定向; 3：相似商品定向; 4：叶子类目定向; 5：相似店铺定向; 6：近期对我的商品相关属性感兴趣的用户; 7：人群包定向
+            /// 定向类型。1表示通投，2表示访客重定向，3表示相似商品定向，4表示叶子类目定向，5表示相似店铺定向，6表示兴趣点定向，7表示人群包定向，8表示地域定向人群，9表示商品高潜人群，10表示高品质商品偏好人群，11表示大促偏好人群，12表示爱分享人群
             /// </summary>
             [JsonProperty("target_type")]
             public int TargetType { get; set; }

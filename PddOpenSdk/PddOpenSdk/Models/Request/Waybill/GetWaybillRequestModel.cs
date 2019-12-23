@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Waybill
 {
     public partial class GetWaybillRequestModel : PddRequestModel
@@ -80,6 +80,11 @@ namespace PddOpenSdk.Models.Request.Waybill
                     /// </summary>
                     [JsonProperty("town")]
                     public string Town { get; set; }
+                    /// <summary>
+                    /// 国家/地区
+                    /// </summary>
+                    [JsonProperty("country")]
+                    public string Country { get; set; }
 
                 }
 
@@ -237,6 +242,11 @@ namespace PddOpenSdk.Models.Request.Waybill
                         /// </summary>
                         [JsonProperty("town")]
                         public string Town { get; set; }
+                        /// <summary>
+                        /// 国家
+                        /// </summary>
+                        [JsonProperty("country")]
+                        public string Country { get; set; }
 
                     }
 

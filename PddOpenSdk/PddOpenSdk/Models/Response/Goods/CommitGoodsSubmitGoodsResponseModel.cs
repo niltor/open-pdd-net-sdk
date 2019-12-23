@@ -11,15 +11,15 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsUpdateResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 商品id
-            /// </summary>
-            [JsonProperty("goods_id")]
-            public long? GoodsId { get; set; }
-            /// <summary>
             /// 提交申请的序列id
             /// </summary>
             [JsonProperty("goods_commit_id")]
             public long? GoodsCommitId { get; set; }
+            /// <summary>
+            /// 商品id
+            /// </summary>
+            [JsonProperty("goods_id")]
+            public long? GoodsId { get; set; }
 
         }
 

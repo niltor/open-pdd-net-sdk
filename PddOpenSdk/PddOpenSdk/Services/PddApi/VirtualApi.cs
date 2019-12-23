@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Virtual;
 using PddOpenSdk.Models.Response.Virtual;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class VirtualApi : PddCommonApi

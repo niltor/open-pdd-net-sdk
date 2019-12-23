@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Xinzhi;
 using PddOpenSdk.Models.Response.Xinzhi;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class XinzhiApi : PddCommonApi

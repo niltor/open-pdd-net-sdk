@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Promotion;
 using PddOpenSdk.Models.Response.Promotion;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class PromotionApi : PddCommonApi

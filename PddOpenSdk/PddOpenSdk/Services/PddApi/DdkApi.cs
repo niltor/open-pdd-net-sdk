@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Response.Ddk;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class DdkApi : PddCommonApi
@@ -158,14 +158,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 生成多多口令接口
-        /// </summary>
-        public async Task<GenerateDdkPhraseResponseModel> GenerateDdkPhraseAsync(GenerateDdkPhraseRequestModel generateDdkPhrase)
-        {
-            var result = await PostAsync<GenerateDdkPhraseRequestModel, GenerateDdkPhraseResponseModel>("pdd.ddk.phrase.generate", generateDdkPhrase);
-            return result;
-        }
-        /// <summary>
         /// 生成多多进宝频道推广
         /// </summary>
         public async Task<GenDdkResourceUrlResponseModel> GenDdkResourceUrlAsync(GenDdkResourceUrlRequestModel genDdkResourceUrl)
@@ -174,7 +166,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 生成红包推广链接
+        /// 生成营销工具推广链接
         /// </summary>
         public async Task<GenerateDdkRpPromUrlResponseModel> GenerateDdkRpPromUrlAsync(GenerateDdkRpPromUrlRequestModel generateDdkRpPromUrl)
         {

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkGoodsRecommendResponseModel : PddResponseModel
@@ -21,6 +21,11 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// </summary>
             [JsonProperty("list")]
             public List<ListResponseModel> List { get; set; }
+            /// <summary>
+            /// 搜索id
+            /// </summary>
+            [JsonProperty("search_id")]
+            public string SearchId { get; set; }
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -228,6 +233,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("lgst_txt")]
                 public string LgstTxt { get; set; }
+                /// <summary>
+                /// 搜索id
+                /// </summary>
+                [JsonProperty("search_id")]
+                public string SearchId { get; set; }
 
             }
 

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class QueryAdCreativeResponseModel : PddResponseModel
@@ -57,7 +57,7 @@ namespace PddOpenSdk.Models.Response.Ad
             [JsonProperty("impression")]
             public int? Impression { get; set; }
             /// <summary>
-            /// 状态：1-推广中，2-手动暂停，3-已删除
+            /// 创意状态。1表示推广中，2表示手动暂停，3表示已删除，4表示待发布，5表示已驳回
             /// </summary>
             [JsonProperty("status")]
             public int? Status { get; set; }

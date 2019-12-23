@@ -24,7 +24,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 多多客户工具API
         /// </summary>
-        public DdkoauthApi DdkOauthApi { get; set; } = new DdkoauthApi();
+        public DdktoolsApi DdkOauthApi { get; set; } = new DdktoolsApi();
         /// <summary>
         /// 订单API
         /// </summary>
@@ -48,7 +48,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 物流商API
         /// </summary>
-        public LogisticsticketApi LogisticsCsApi { get; set; } = new LogisticsticketApi();
+        public LogisticscompanyApi LogisticsCsApi { get; set; } = new LogisticscompanyApi();
         /// <summary>
         /// 店铺API
         /// </summary>
@@ -92,7 +92,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 开平短信
         /// </summary>
-        public OpenApi OpenApi { get; set; } = new OpenApi();
+        public OpenmsgApi OpenApi { get; set; } = new OpenmsgApi();
         /// <summary>
         /// 方舟天气API
         /// </summary>
@@ -101,6 +101,14 @@ namespace PddOpenSdk.AspNetCore
         /// 电子面单API
         /// </summary>
         public WaybillApi WaybillApi { get; set; } = new WaybillApi();
+        /// <summary>
+        /// 服务市场API
+        /// </summary>
+        public VasApi VasApi { get; set; } = new VasApi();
+        /// <summary>
+        /// 短信供应商API
+        /// </summary>
+        public SmsvendorApi SmsvendorApi { get; set; } = new SmsvendorApi();
         private readonly IOptions<PddOptions> _options;
 
         public PddService(IOptions<PddOptions> options)
@@ -109,10 +117,6 @@ namespace PddOpenSdk.AspNetCore
             PddCommonApi.ClientId = _options.Value.ClientId;
             PddCommonApi.ClientSecret = _options.Value.ClientSecret;
             PddCommonApi.RedirectUri = _options.Value.CallbackUrl;
-        }
-        public void Test()
-        {
-            System.Console.WriteLine(PddCommonApi.ClientId);
         }
     }
 }

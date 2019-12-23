@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkMallGoodsListResponseModel : PddResponseModel
@@ -213,16 +213,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("share_desc")]
                 public string ShareDesc { get; set; }
-                /// <summary>
-                /// 最近24小时多多进宝商品销量
-                /// </summary>
-                [JsonProperty("sale_num24")]
-                public long? SaleNum24 { get; set; }
-                /// <summary>
-                /// 今日销量
-                /// </summary>
-                [JsonProperty("sale_num_today")]
-                public long? SaleNumToday { get; set; }
                 /// <summary>
                 /// 聊天二维码图片url
                 /// </summary>

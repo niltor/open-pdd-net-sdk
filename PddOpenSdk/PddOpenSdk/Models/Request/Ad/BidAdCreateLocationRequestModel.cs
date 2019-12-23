@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class BidAdCreateLocationRequestModel : PddRequestModel
@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("unit_id")]
         public long UnitId { get; set; }
         /// <summary>
-        /// 
+        /// location_bids
         /// </summary>
         [JsonProperty("location_bids")]
         public List<LocationBidsRequestModel> LocationBids { get; set; }
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Request.Ad
             [JsonProperty("bid_premium_rate")]
             public int BidPremiumRate { get; set; }
             /// <summary>
-            /// 资源位类型（1：类目商品页，2：商品详情页，3：营销活动页）
+            /// 资源位类型。0表示基础流量包，1表示类目商品页，2表示商品详情页，3表示营销活动页，4表示店铺收藏页，5表示订单评价页，6表示优选活动页
             /// </summary>
             [JsonProperty("location_type")]
             public int LocationType { get; set; }

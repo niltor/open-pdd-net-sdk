@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdHistoryRtKeywordReportResponseModel : PddResponseModel
@@ -44,7 +44,7 @@ namespace PddOpenSdk.Models.Response.Ad
                 [JsonProperty("quality_score")]
                 public long? QualityScore { get; set; }
                 /// <summary>
-                /// 1：推广中，2：手动暂停，3：余额不足，4：到达日限额，5：无推广单元，6：已删除
+                /// 关键词状态。1表示推广中，2表示已删除
                 /// </summary>
                 [JsonProperty("status")]
                 public int? Status { get; set; }

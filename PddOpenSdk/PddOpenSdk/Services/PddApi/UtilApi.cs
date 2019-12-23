@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Util;
 using PddOpenSdk.Models.Response.Util;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class UtilApi : PddCommonApi
@@ -19,14 +19,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<ImageUtilDivideBase64ResponseModel> ImageUtilDivideBase64Async(ImageUtilDivideBase64RequestModel imageUtilDivideBase64)
         {
             var result = await PostAsync<ImageUtilDivideBase64RequestModel, ImageUtilDivideBase64ResponseModel>("pdd.util.divide.base64.image", imageUtilDivideBase64);
-            return result;
-        }
-        /// <summary>
-        /// 自动切图接口
-        /// </summary>
-        public async Task<ImageUtilDivideResponseModel> ImageUtilDivideAsync(ImageUtilDivideRequestModel imageUtilDivide)
-        {
-            var result = await PostAsync<ImageUtilDivideRequestModel, ImageUtilDivideResponseModel>("pdd.util.divide.image", imageUtilDivide);
             return result;
         }
 

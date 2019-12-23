@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenDdkLotteryUrlRequestModel : PddRequestModel
@@ -39,6 +39,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("generate_schema_url")]
         public bool? GenerateSchemaUrl { get; set; }
+        /// <summary>
+        /// 是否生成qq小程序
+        /// </summary>
+        [JsonProperty("generate_qq_app")]
+        public bool? GenerateQqApp { get; set; }
 
     }
 

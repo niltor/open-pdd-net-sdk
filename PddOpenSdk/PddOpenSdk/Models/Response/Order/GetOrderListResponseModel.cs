@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Order
 {
     public partial class GetOrderListResponseModel : PddResponseModel
@@ -21,6 +21,11 @@ namespace PddOpenSdk.Models.Response.Order
             /// </summary>
             [JsonProperty("total_count")]
             public int? TotalCount { get; set; }
+            /// <summary>
+            /// 是否存在下一页
+            /// </summary>
+            [JsonProperty("has_next")]
+            public bool? HasNext { get; set; }
             public partial class OrderListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -43,16 +48,6 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("card_info_list")]
                 public List<CardInfoListResponseModel> CardInfoList { get; set; }
-                /// <summary>
-                /// 身份证号码
-                /// </summary>
-                [JsonProperty("id_card_num")]
-                public string IdCardNum { get; set; }
-                /// <summary>
-                /// 身份证姓名
-                /// </summary>
-                [JsonProperty("id_card_name")]
-                public string IdCardName { get; set; }
                 /// <summary>
                 /// 是否顺丰包邮，1-是 0-否
                 /// </summary>
@@ -289,7 +284,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("cat_id_1")]
                 public long? CatId1 { get; set; }
                 /// <summary>
-                /// 支付申报订单号
+                /// 支付申报订单号（多多国际清关请使用此字段，单号以XP开头）
                 /// </summary>
                 [JsonProperty("inner_transaction_id")]
                 public string InnerTransactionId { get; set; }
@@ -343,6 +338,16 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("receiver_address")]
                 public string ReceiverAddress { get; set; }
+                /// <summary>
+                /// 是否门店自提，1-是，0-否
+                /// </summary>
+                [JsonProperty("self_contained")]
+                public int? SelfContained { get; set; }
+                /// <summary>
+                /// 风控订单状态(0-正常订单， 1-风控中订单)
+                /// </summary>
+                [JsonProperty("risk_control_status")]
+                public int? RiskControlStatus { get; set; }
                 public partial class CardInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>

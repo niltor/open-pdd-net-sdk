@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Voucher;
 using PddOpenSdk.Models.Response.Voucher;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class VoucherApi : PddCommonApi
@@ -11,6 +11,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<SendVoucherAppointmentInfoResponseModel> SendVoucherAppointmentInfoAsync(SendVoucherAppointmentInfoRequestModel sendVoucherAppointmentInfo)
         {
             var result = await PostAsync<SendVoucherAppointmentInfoRequestModel, SendVoucherAppointmentInfoResponseModel>("pdd.voucher.appointment.info.send", sendVoucherAppointmentInfo);
+            return result;
+        }
+        /// <summary>
+        /// 卡券（电子）核销接口（平台生成卡密）
+        /// </summary>
+        public async Task<VerificationVoucherOtaCardResponseModel> VerificationVoucherOtaCardAsync(VerificationVoucherOtaCardRequestModel verificationVoucherOtaCard)
+        {
+            var result = await PostAsync<VerificationVoucherOtaCardRequestModel, VerificationVoucherOtaCardResponseModel>("pdd.voucher.ota.card.verification", verificationVoucherOtaCard);
             return result;
         }
         /// <summary>

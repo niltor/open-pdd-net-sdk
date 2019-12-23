@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class SearchDdkGoodsResponseModel : PddResponseModel
@@ -20,7 +20,12 @@ namespace PddOpenSdk.Models.Response.Ddk
             /// 返回商品总数
             /// </summary>
             [JsonProperty("total_count")]
-            public int? TotalCount { get; set; }
+            public string TotalCount { get; set; }
+            /// <summary>
+            /// 搜索id
+            /// </summary>
+            [JsonProperty("search_id")]
+            public string SearchId { get; set; }
             public partial class GoodsListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -283,6 +288,16 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("only_scene_auth")]
                 public bool? OnlySceneAuth { get; set; }
+                /// <summary>
+                /// 搜索id
+                /// </summary>
+                [JsonProperty("search_id")]
+                public string SearchId { get; set; }
+                /// <summary>
+                /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
+                /// </summary>
+                [JsonProperty("activity_tags")]
+                public int? ActivityTags { get; set; }
 
             }
 

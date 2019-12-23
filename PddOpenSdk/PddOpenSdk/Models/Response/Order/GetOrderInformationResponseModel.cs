@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Order
 {
     public partial class GetOrderInformationResponseModel : PddResponseModel
@@ -33,16 +33,6 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("home_install_value")]
                 public double? HomeInstallValue { get; set; }
-                /// <summary>
-                /// 身份证姓名
-                /// </summary>
-                [JsonProperty("id_card_name")]
-                public string IdCardName { get; set; }
-                /// <summary>
-                /// 身份证号码
-                /// </summary>
-                [JsonProperty("id_card_num")]
-                public string IdCardNum { get; set; }
                 /// <summary>
                 /// 成交状态：0：未成交、1：已成交、2：已取消
                 /// </summary>
@@ -129,7 +119,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("buyer_memo")]
                 public string BuyerMemo { get; set; }
                 /// <summary>
-                /// 支付申报订单号
+                /// 支付申报订单号（多多国际清关请使用此字段，单号以XP开头）
                 /// </summary>
                 [JsonProperty("inner_transaction_id")]
                 public string InnerTransactionId { get; set; }
@@ -338,6 +328,21 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("receiver_address")]
                 public string ReceiverAddress { get; set; }
+                /// <summary>
+                /// 是否门店自提，1-是，0-否
+                /// </summary>
+                [JsonProperty("self_contained")]
+                public int? SelfContained { get; set; }
+                /// <summary>
+                /// 风控订单状态(0-正常订单， 1-风控中订单)
+                /// </summary>
+                [JsonProperty("risk_control_status")]
+                public int? RiskControlStatus { get; set; }
+                /// <summary>
+                /// 门店信息
+                /// </summary>
+                [JsonProperty("store_info")]
+                public StoreInfoResponseModel StoreInfo { get; set; }
                 public partial class StepOrderInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -496,6 +501,25 @@ namespace PddOpenSdk.Models.Response.Order
                     /// </summary>
                     [JsonProperty("goods_img")]
                     public string GoodsImg { get; set; }
+
+                }
+                public partial class StoreInfoResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 门店id
+                    /// </summary>
+                    [JsonProperty("store_id")]
+                    public long? StoreId { get; set; }
+                    /// <summary>
+                    /// 门店名称
+                    /// </summary>
+                    [JsonProperty("store_name")]
+                    public string StoreName { get; set; }
+                    /// <summary>
+                    /// 门店自定义编码
+                    /// </summary>
+                    [JsonProperty("store_number")]
+                    public string StoreNumber { get; set; }
 
                 }
 

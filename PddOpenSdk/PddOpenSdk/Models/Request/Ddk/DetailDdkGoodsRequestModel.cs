@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class DetailDdkGoodsRequestModel : PddRequestModel
@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("plan_type")]
         public int? PlanType { get; set; }
+        /// <summary>
+        /// 搜索id
+        /// </summary>
+        [JsonProperty("search_id")]
+        public string SearchId { get; set; }
 
     }
 

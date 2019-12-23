@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class ReportAdQueryUnitBidHistoryResponseModel : PddResponseModel
@@ -79,17 +79,17 @@ namespace PddOpenSdk.Models.Response.Ad
                 [JsonProperty("date")]
                 public string Date { get; set; }
                 /// <summary>
-                /// 定向状态，0表示未删除，1表示已删除
+                /// 定向状态。0表示未删除，1表示已删除。分天查询时该字段无值
                 /// </summary>
                 [JsonProperty("status")]
                 public int? Status { get; set; }
                 /// <summary>
-                /// 兴趣点名称
+                /// targetType值为6时表示兴趣点名称，targetType值为7时表示人群包名称，targetType值为8时表示地域名称。分天查询时该字段无值
                 /// </summary>
                 [JsonProperty("sub_level_target_name")]
                 public string SubLevelTargetName { get; set; }
                 /// <summary>
-                /// 兴趣点id
+                /// targetType值为6时表示兴趣点ID，targetType值为7时表示人群包ID，targetType值为8时表示地域ID。分天查询时该字段无值
                 /// </summary>
                 [JsonProperty("sub_level_target_id")]
                 public long? SubLevelTargetId { get; set; }

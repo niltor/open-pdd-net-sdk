@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Pmc;
 using PddOpenSdk.Models.Response.Pmc;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class PmcApi : PddCommonApi

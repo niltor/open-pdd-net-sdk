@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Stock;
 using PddOpenSdk.Models.Response.Stock;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class StockApi : PddCommonApi

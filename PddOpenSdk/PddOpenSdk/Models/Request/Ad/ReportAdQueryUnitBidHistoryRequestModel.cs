@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("group_by")]
         public int GroupBy { get; set; }
         /// <summary>
-        /// 分天查询时必填; 1：通投; 2：浏览或购买过店内商品的用户; 3：浏览或购买过相似商品的用户; 4：近期有推广商品所属叶子类目行为的用户; 5：近期对我的店铺的竞品店铺感兴趣的用户; 6：近期对我的商品相关属性感兴趣的用户; 7：人群包定向
+        /// 分定向类型。分天查询时必填。1表示通投，2表示访客重定向，3表示相似商品定向，4表示叶子类目定向，5表示相似店铺定向，6表示兴趣点定向，7表示人群包定向，8表示地域定向人群，9表示商品高潜人群，10表示高品质商品偏好人群，11表示大促偏好人群，12表示爱分享人群
         /// </summary>
         [JsonProperty("target_type")]
         public int TargetType { get; set; }
@@ -34,12 +34,12 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("sub_level_target_id")]
         public long? SubLevelTargetId { get; set; }
         /// <summary>
-        /// 汇总报销必填 定向类型列表，表示需要哪些定向类型的数据，多个定向以逗号隔开，例如 "1,2,3,4,5,6,7"
+        /// 定向类型列表。汇总报销必填。多个定向以英文逗号隔开，值所代表的含义参见target_type字段
         /// </summary>
         [JsonProperty("target_types")]
         public string TargetTypes { get; set; }
         /// <summary>
-        /// 
+        /// page_request
         /// </summary>
         [JsonProperty("page_request")]
         public PageRequestRequestModel PageRequest { get; set; }

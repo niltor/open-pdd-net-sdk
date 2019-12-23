@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Sms
 {
     public partial class QuerySmsSellSettingDetailResponseModel : PddResponseModel
@@ -45,7 +45,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// 人群
             /// </summary>
             [JsonProperty("crowd")]
-            public CrowdResponseModel Crowd { get; set; }
+            public CrowdPeopleResponseModel Crowd { get; set; }
             /// <summary>
             /// 任务id
             /// </summary>
@@ -71,7 +71,7 @@ namespace PddOpenSdk.Models.Response.Sms
             /// </summary>
             [JsonProperty("target")]
             public TargetResponseModel Target { get; set; }
-            public partial class CrowdResponseModel : PddResponseModel
+            public partial class CrowdPeopleResponseModel : PddResponseModel
             {
                 /// <summary>
                 /// 人群名称
@@ -87,8 +87,8 @@ namespace PddOpenSdk.Models.Response.Sms
                 /// 人群
                 /// </summary>
                 [JsonProperty("crowd")]
-                public CrowdPeopleResponseModel Crowd { get; set; }
-                public partial class CrowdPeopleResponseModel : PddResponseModel
+                public CrowdResponseModel Crowd { get; set; }
+                public partial class CrowdResponseModel : PddResponseModel
                 {
                     /// <summary>
                     /// 定位类型

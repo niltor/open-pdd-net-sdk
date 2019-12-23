@@ -19,12 +19,12 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("planId")]
         public long? Planid { get; set; }
         /// <summary>
-        /// 分天数据查询时必填，资源位类型，0：基础流量包，1：类目商品页，2：商品详情页，3：营销活动页
+        /// 分天数据查询时必填，资源位类型。0表示基础流量包，1表示类目商品页，2表示商品详情页，3表示营销活动页，4表示店铺收藏页，5表示订单评价页，6表示优选活动页
         /// </summary>
         [JsonProperty("location_type")]
         public int? LocationType { get; set; }
         /// <summary>
-        /// 汇总报表查询时必填，资源位类型列表，多个资源位以逗号隔开
+        /// 汇总报表查询时必填，资源位类型列表，多个资源位以逗号隔开。值所代表的含义参见location_type字段.
         /// </summary>
         [JsonProperty("location_types")]
         public string LocationTypes { get; set; }
@@ -34,7 +34,7 @@ namespace PddOpenSdk.Models.Request.Ad
         [JsonProperty("group_by")]
         public int GroupBy { get; set; }
         /// <summary>
-        /// 
+        /// page_request
         /// </summary>
         [JsonProperty("page_request")]
         public PageRequestRequestModel PageRequest { get; set; }

@@ -4,7 +4,7 @@ namespace PddOpenSdk.Models.Request.Logistics
     public partial class SendLogisticsOnlineRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 发货个性内容。 形如：imei=11,22,3333; 以 “imei=” 开头，以英文分号“;”结尾，中间为手机IMEI串号信息，多个串号以英文逗号 “,”拼接释义：该订单包含三个手机IMEI串号，分别为11、22和3333，
+        /// 发货个性内容，支持imei（手机串号），deviceSn（设备序列号）内容。形如：imei=11,22,3333; 以 “imei=” 开头，以英文分号“;”结尾，中间为手机IMEI串号信息，多个串号以英文逗号 “,”拼接释义：该订单包含三个手机IMEI串号，分别为11、22和3333；其他内容的格式同理。
         /// </summary>
         [JsonProperty("feature")]
         public string Feature { get; set; }

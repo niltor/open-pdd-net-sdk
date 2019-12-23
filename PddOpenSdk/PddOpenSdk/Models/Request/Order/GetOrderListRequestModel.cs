@@ -38,6 +38,11 @@ namespace PddOpenSdk.Models.Request.Order
         /// </summary>
         [JsonProperty("trade_type")]
         public int? TradeType { get; set; }
+        /// <summary>
+        /// 是否启用has_next的分页方式，如果指定true,则返回的结果中不包含总记录数，但是会新增一个是否存在下一页的的字段，通过此种方式获取增量交易，效率在原有的基础上有80%的提升。
+        /// </summary>
+        [JsonProperty("use_has_next")]
+        public bool? UseHasNext { get; set; }
 
     }
 

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class GetAdHistoryRtUnitReportResponseModel : PddResponseModel
@@ -19,7 +19,7 @@ namespace PddOpenSdk.Models.Response.Ad
             public partial class UnitRealTimeReportListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 1：推广中，2：手动暂停，3：余额不足，4：到达日限额，5：无推广单元，6：已删除
+                /// 单元状态。1表示推广中，2表示手动暂停，3表示商品售罄，4表示商品下架，5表示限制推广，6表示已删除，7表示审核中，8表示无推广中创意，9表示审核驳回，10表示品牌词重审驳回
                 /// </summary>
                 [JsonProperty("status")]
                 public int? Status { get; set; }

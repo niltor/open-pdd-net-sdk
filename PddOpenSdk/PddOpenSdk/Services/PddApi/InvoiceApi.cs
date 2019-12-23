@@ -1,6 +1,6 @@
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Invoice;
 using PddOpenSdk.Models.Response.Invoice;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class InvoiceApi : PddCommonApi
@@ -19,6 +19,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<UpdateInvoiceApplicationResponseModel> UpdateInvoiceApplicationAsync(UpdateInvoiceApplicationRequestModel updateInvoiceApplication)
         {
             var result = await PostAsync<UpdateInvoiceApplicationRequestModel, UpdateInvoiceApplicationResponseModel>("pdd.invoice.application.update", updateInvoiceApplication);
+            return result;
+        }
+        /// <summary>
+        /// 订单发票冲红
+        /// </summary>
+        public async Task<InvalidInvoiceDetailResponseModel> InvalidInvoiceDetailAsync(InvalidInvoiceDetailRequestModel invalidInvoiceDetail)
+        {
+            var result = await PostAsync<InvalidInvoiceDetailRequestModel, InvalidInvoiceDetailResponseModel>("pdd.invoice.detail.invalid", invalidInvoiceDetail);
             return result;
         }
         /// <summary>

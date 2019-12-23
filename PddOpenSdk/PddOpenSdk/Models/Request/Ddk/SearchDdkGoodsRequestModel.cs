@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
@@ -74,6 +74,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("is_brand_goods")]
         public bool? IsBrandGoods { get; set; }
+        /// <summary>
+        /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
+        /// </summary>
+        [JsonProperty("activity_tags")]
+        public int? ActivityTags { get; set; }
 
     }
 

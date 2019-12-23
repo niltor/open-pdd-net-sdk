@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class ReportAdQueryLocationBidHistoryResponseModel : PddResponseModel
@@ -84,12 +84,12 @@ namespace PddOpenSdk.Models.Response.Ad
                 [JsonProperty("status")]
                 public int? Status { get; set; }
                 /// <summary>
-                /// 资源位id
+                /// 资源位ID。汇总报表查询时该字段才有值
                 /// </summary>
                 [JsonProperty("location_id")]
                 public long? LocationId { get; set; }
                 /// <summary>
-                /// 资源位类型
+                /// 分天数据查询时必填，资源位类型。0表示基础流量包，1表示类目商品页，2表示商品详情页，3表示营销活动页，4表示店铺收藏页，5表示订单评价页，6表示优选活动页
                 /// </summary>
                 [JsonProperty("location_type")]
                 public int? LocationType { get; set; }
