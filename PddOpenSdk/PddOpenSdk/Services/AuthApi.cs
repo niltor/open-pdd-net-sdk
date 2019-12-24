@@ -65,7 +65,44 @@ namespace PddOpenSdk.Services.PddApi
                     System.Console.WriteLine(jsonString);
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
 
-                    AccessToken = result.AccessToken;
+                    //AccessToken = result.AccessToken;这边不用赋值了
+                    return result;
+                }
+            }
+            return default;
+        }
+
+        /// <summary>
+        /// 获取刷新Token请求
+        /// </summary>
+        /// <param name="refresh_token">刷新授权</param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public async Task<AccessTokenResponseModel> GetRefreshTokenAsync(string refresh_token, string state = null)
+        {
+            if (refresh_token != null)
+            {
+                // TODO 先读取未过期token，若已过期，则刷新或重新获取
+                var dic = new Dictionary<string, string>
+                {
+                    { "client_id", ClientId },
+                    { "client_secret", ClientSecret },
+                    { "grant_type", "refresh_token" },
+                    { "refresh_token", refresh_token }
+                };
+                if (state != null)
+                {
+                    dic.Add("state", state);
+                }
+
+                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+                using (var hc = new HttpClient())
+                {
+                    var response = await hc.PostAsync(TokenUrl, data);
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    System.Console.WriteLine(jsonString);
+                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+
                     return result;
                 }
             }
