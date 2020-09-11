@@ -1,3 +1,7 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using PddOpenSdk.AspNetCore;
@@ -5,18 +9,14 @@ using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Services;
 using Sample.Models;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Sample.Controllers
 {
     public class AuthController : Controller
     {
-        readonly IHostingEnvironment _env;
-        readonly PddService _pdd;
-        readonly string AccessToken = "7f7fb3f53dc74417a32ecd920396c4791fefa93f";
+        private readonly IHostingEnvironment _env;
+        private readonly PddService _pdd;
+        private readonly string AccessToken = "7f7fb3f53dc74417a32ecd920396c4791fefa93f";
         public AuthController(PddService pdd, IHostingEnvironment env)
         {
             _pdd = pdd;

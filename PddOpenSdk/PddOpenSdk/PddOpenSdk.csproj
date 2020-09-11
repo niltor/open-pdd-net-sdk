@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <RootNamespace>MSDev.PddOpenSdk</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>MSDev_NilTor</Authors>

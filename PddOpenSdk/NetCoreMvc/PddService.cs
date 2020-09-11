@@ -94,17 +94,13 @@ namespace PddOpenSdk.AspNetCore
         /// </summary>
         public OpenmsgApi OpenApi { get; set; } = new OpenmsgApi();
         /// <summary>
-        /// 方舟天气API
-        /// </summary>
-        public XinzhiApi XinzhiApi { get; set; } = new XinzhiApi();
-        /// <summary>
         /// 电子面单API
         /// </summary>
         public WaybillApi WaybillApi { get; set; } = new WaybillApi();
         /// <summary>
         /// 服务市场API
         /// </summary>
-        public VasApi VasApi { get; set; } = new VasApi();
+        public ServiceMarket ServiceMarket { get; set; } = new ServiceMarket();
         /// <summary>
         /// 短信供应商API
         /// </summary>

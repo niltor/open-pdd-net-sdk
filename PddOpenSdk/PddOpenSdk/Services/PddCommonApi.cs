@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PddOpenSdk.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +6,9 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PddOpenSdk.Common;
 
 namespace PddOpenSdk.Services
 {
@@ -20,7 +20,7 @@ namespace PddOpenSdk.Services
         /// <summary>
         /// 请求接口
         /// </summary>
-        static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
+        private static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
         public static string ClientId;
         public static string ClientSecret;
         /// <summary>
@@ -37,6 +37,93 @@ namespace PddOpenSdk.Services
         public PddCommonApi()
         {
         }
+        public async Task<TResult> PostFileAsync<TModel, TResult>(string type, TModel model)
+        {
+            // 类型转换到字典
+            var dic = Function.ToDictionary(model);
+            var filePath = dic.Where(d => d.Key == "file_path")
+                .Select(s => s.Value)
+                .FirstOrDefault()?.ToString();
+
+            if (!File.Exists(filePath))
+            {
+                return default;
+            }
+
+            // 添加公共参数
+            dic.Add("client_id", ClientId);
+            dic.Add("data_type", "JSON");
+            if (string.IsNullOrEmpty(AccessToken))
+            {
+                Console.WriteLine("当前请求未设置AccessToken");
+            }
+            else
+            {
+                dic.Add("access_token", AccessToken);
+            }
+#if NET452
+            var Unix = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            dic.Add("timestamp", (long)(DateTime.UtcNow - Unix).TotalMilliseconds);
+#endif
+#if NETSTANDARD2_0
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
+
+#endif
+            if (dic.Keys.Any(k => k == "type"))
+            {
+                dic.Remove("type");
+            }
+            if (dic.Keys.Any(k => k == "file_path"))
+            {
+                dic.Remove("file_path");
+            }
+            dic.Add("type", type);
+            // 添加签名
+            var paramsDic = BuildSign(dic);
+            var data = paramsDic.ToDictionary(s => s.Key, s => s.Value.ToString());
+            using var content = new MultipartFormDataContent("------WebKitFormBoundaryxIAL5jDsXOFEIKEN");
+
+            var streamContent = new StreamContent(new FileStream(filePath, FileMode.Open));
+            content.Add(streamContent, "file", "upload.jpg");
+            foreach (var item in data)
+            {
+                content.Add(new StringContent(item.Value), item.Key);
+            }
+            using var client = new HttpClient();
+            try
+            {
+                var response = await client.PostAsync("https://gw-upload.pinduoduo.com/api/upload", content);
+                //ErrorResponse = new ErrorResponse();
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    var jObject = JObject.Parse(jsonResult);
+                    if (jObject.TryGetValue("error_response", out var errorResponse))
+                    {
+                        //ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonResult);
+                        Console.WriteLine("错误信息:" + errorResponse.ToString());
+                        return default;
+                    }
+                    else
+                    {
+                        return JsonConvert.DeserializeObject<TResult>(jsonResult);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
+                }
+                return default;
+            }
+            catch (Exception e)
+            {
+                // TODO:异常处理
+                Console.WriteLine(e.Message);
+                return default;
+            }
+        }
+
+
 
         /// <summary>
         /// post请求封装
@@ -55,6 +142,12 @@ namespace PddOpenSdk.Services
 
             // 类型转换到字典
             var dic = Function.ToDictionary(model);
+
+            // 判断是否为文件上传
+            if (dic.Keys.Any(k => k == "file_path"))
+            {
+                return await PostFileAsync<TModel, TResult>(type, model);
+            }
             // 添加公共参数
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
@@ -117,6 +210,9 @@ namespace PddOpenSdk.Services
             }
 
         }
+
+
+
         /// <summary>
         /// 生成签名
         /// </summary>
@@ -142,8 +238,16 @@ namespace PddOpenSdk.Services
                 }
                 dic.TryGetValue(item, out var value);
                 // 布尔值大写造成的签名错误
-                if (value.ToString().ToLower().Equals("false")) value = "false";
-                if (value.ToString().ToLower().Equals("true")) value = "true";
+                if (value.ToString().ToLower().Equals("false"))
+                {
+                    value = "false";
+                }
+
+                if (value.ToString().ToLower().Equals("true"))
+                {
+                    value = "true";
+                }
+
                 signString += item + value.ToString();
                 result.Add(item, value.ToString());
             }

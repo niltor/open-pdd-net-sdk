@@ -6,7 +6,7 @@ namespace ApiTest
     public class UnitTest1
     {
         // TODO:环境变量
-        readonly string accessToken = "";
+        private readonly string accessToken = "";
 
         [TestMethod]
         public void TestMethod()

@@ -159,7 +159,7 @@ namespace Console.PddModels
         public string Url { get; set; }
     }
 
-    public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map, MapArray };
+    public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map, MapArray, File };
 
     internal static class Converter
     {
@@ -184,7 +184,11 @@ namespace Console.PddModels
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
-            if (reader.TokenType == JsonToken.Null) return null;
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return null;
+            }
+
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
@@ -212,6 +216,11 @@ namespace Console.PddModels
                     return ParamType.Map;
                 case "MAP[]":
                     return ParamType.MapArray;
+                case "FILE":
+                    return ParamType.File;
+                default:
+                    return ParamType.Object;
+
             }
 
             throw new Exception("Cannot unmarshal type ParamType " + value);

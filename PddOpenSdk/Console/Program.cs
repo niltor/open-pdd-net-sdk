@@ -3,9 +3,9 @@ using Console;
 
 namespace Sample
 {
-    class Program
+    internal class Program
     {
-        static async Task Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var helper = new PddApiDocHelper();
             await helper.Run();

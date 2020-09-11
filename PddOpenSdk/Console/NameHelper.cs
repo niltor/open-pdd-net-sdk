@@ -20,7 +20,10 @@ namespace Console
         /// <returns></returns>
         public static string GetAttributionName(string name, string type, long isMust = 1, string modelType = "RequestModel")
         {
-            if (string.IsNullOrEmpty(name)) return string.Empty;
+            if (string.IsNullOrEmpty(name))
+            {
+                return string.Empty;
+            }
 
             string attributionName = "";
             bool isArray = false;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 
 namespace Console
@@ -46,6 +47,36 @@ namespace Console
                 title = title.First().ToString() + title.Substring(1);
             }
             return title;
+        }
+        public static string ToPascalCase(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return string.Empty;
+            }
+            StringBuilder resultBuilder = new StringBuilder();
+            foreach (char c in str)
+            {
+                if (!char.IsLetterOrDigit(c))
+                {
+                    resultBuilder.Append(' ');
+                }
+                else
+                {
+                    resultBuilder.Append(c);
+                }
+            }
+            var result = resultBuilder.ToString();
+            result = string.Join(string.Empty, result.Split(' ').Select(r => ToUpperFirst(r)).ToArray());
+            return result;
+        }
+        public static string ToUpperFirst(string str)
+        {
+            if (string.IsNullOrWhiteSpace(str))
+            {
+                return string.Empty;
+            }
+            return char.ToUpper(str[0]) + str.Substring(1);
         }
 
         /// <summary>
