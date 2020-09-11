@@ -16,7 +16,7 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## 类库说明
 
-支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.5.2+，C#7.1**。
+支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.5.2+，C#8.0**。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
 
