@@ -24,7 +24,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 多多客户工具API
         /// </summary>
-        public DdktoolsApi DdkOauthApi { get; set; } = new DdktoolsApi();
+        public DdkToolsApi DdkOauthApi { get; set; } = new DdkToolsApi();
         /// <summary>
         /// 订单API
         /// </summary>
@@ -48,7 +48,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 物流商API
         /// </summary>
-        public LogisticscompanyApi LogisticsCsApi { get; set; } = new LogisticscompanyApi();
+        public LogisticsCompanyApi LogisticsCsApi { get; set; } = new LogisticsCompanyApi();
         /// <summary>
         /// 店铺API
         /// </summary>
@@ -61,10 +61,6 @@ namespace PddOpenSdk.AspNetCore
         /// 售后API
         /// </summary>
         public RefundApi RefundApi { get; set; } = new RefundApi();
-        /// <summary>
-        /// 营销短信API
-        /// </summary>
-        public SmsApi SmsApi { get; set; } = new SmsApi();
         /// <summary>
         /// 工具API
         /// </summary>
@@ -92,19 +88,19 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 开平短信
         /// </summary>
-        public OpenmsgApi OpenApi { get; set; } = new OpenmsgApi();
+        public OpenMsgApi OpenApi { get; set; } = new OpenMsgApi();
         /// <summary>
         /// 电子面单API
         /// </summary>
-        public WaybillApi WaybillApi { get; set; } = new WaybillApi();
+        public WayBillApi WaybillApi { get; set; } = new WayBillApi();
         /// <summary>
         /// 服务市场API
         /// </summary>
-        public ServiceMarket ServiceMarket { get; set; } = new ServiceMarket();
+        public ServiceMarketApi ServiceMarketApi { get; set; } = new ServiceMarketApi();
         /// <summary>
         /// 短信供应商API
         /// </summary>
-        public SmsvendorApi SmsvendorApi { get; set; } = new SmsvendorApi();
+        public SmsVendorApi SmsvendorApi { get; set; } = new SmsVendorApi();
         private readonly IOptions<PddOptions> _options;
 
         public PddService(IOptions<PddOptions> options)
