@@ -28,10 +28,10 @@ namespace Console
             string attributionName = "";
             bool isArray = false;
 
-            name = name.ToLower();
+            //name = name.ToLower();
             type = type.ToLower();
             // 名称转为Pascal命名
-            name = Function.ToTitleCase(name.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
+            name = Function.ToPascalCase(name.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
 
             // 是否为数组
             if (type.Contains("[]"))
@@ -56,9 +56,12 @@ namespace Console
                     type = "Dictionary<string, object>";
                     break;
                 case "object":
-                    type = name + modelType;
+                    type = Function.ToPascalCase(name + modelType);
+                    break;
+                case "string":
                     break;
                 default:
+                    type = Function.ToPascalCase(type);
                     break;
             }
             if (isArray)
