@@ -149,13 +149,11 @@ public async Task<ActionResult> Test()
 
 ## 已知问题
 
-- 签名错误问题，主要检查一下时间戳的获取是否正确。
-- 由于拼多多官方文档中存在一些问题，可能会有一些返回模型是有问题的，无法正确解析到类型，导致没有正确返回数据！遇到这类问题，可直接修改源代码，提交代码合并申请；或者直接找作者反馈。
-
+ l
 ## 问题反馈
 
 欢迎通过以下方式反馈问题:
 
-- 提交 GitHub Issues（优先处理）
-- Email： zpty@outlook.com
+- 提交 GitHub Issues
+- Email： zpty@outlook.com（优先处理）
 - QQ 群：737822525
