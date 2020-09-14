@@ -100,7 +100,7 @@ namespace PddOpenSdk.AspNetCore
         /// <summary>
         /// 短信供应商API
         /// </summary>
-        public SmsVendorApi SmsvendorApi { get; set; } = new SmsVendorApi();
+        public SmsVendorApi SmsVendorApi { get; set; } = new SmsVendorApi();
         private readonly IOptions<PddOptions> _options;
 
         public PddService(IOptions<PddOptions> options)

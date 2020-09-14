@@ -231,7 +231,7 @@ $@"/// <summary>
 /// {doc.ApiName}
 /// </summary>
 ";
-            string methodParams = "";
+            string methodParams;
 
             // 创建请求模型类
             string paramsModelType = methodName + "RequestModel";

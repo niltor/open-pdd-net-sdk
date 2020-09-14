@@ -25,7 +25,7 @@ namespace Console
                 return string.Empty;
             }
 
-            string attributionName = "";
+            string attributionName;
             bool isArray = false;
 
             //name = name.ToLower();
@@ -66,6 +66,7 @@ namespace Console
             }
             if (isArray)
             {
+                // TODO:可使用复数形式
                 type = $"List<{type}>";
             }
 

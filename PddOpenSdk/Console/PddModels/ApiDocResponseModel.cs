@@ -209,6 +209,7 @@ namespace Console.PddModels
                 case "INTEGER[]":
                     return ParamType.Integer;
                 case "STRING":
+                case "VOID":
                     return ParamType.String;
                 case "BOOLEAN":
                     return ParamType.Boolean;
@@ -271,6 +272,9 @@ namespace Console.PddModels
                     return;
                 case ParamType.MapArray:
                     serializer.Serialize(writer, "map[]");
+                    return;
+                default:
+                    serializer.Serialize(writer, "string");
                     return;
             }
             throw new Exception("Cannot marshal type ParamType");
