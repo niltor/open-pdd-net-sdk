@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.LogisticsCompany
 {
     public partial class GetLogisticsTicketResponseModel : PddResponseModel
@@ -147,7 +147,7 @@ namespace PddOpenSdk.Models.Response.LogisticsCompany
                 /// 物流投诉标签
                 /// </summary>
                 [JsonProperty("sub_type_ids")]
-                public int? SubTypeIds { get; set; }
+                public List<int?> SubTypeIds { get; set; }
                 /// <summary>
                 /// 工单id
                 /// </summary>

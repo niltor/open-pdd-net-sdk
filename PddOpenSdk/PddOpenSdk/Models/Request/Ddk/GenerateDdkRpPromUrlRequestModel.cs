@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkRpPromUrlRequestModel : PddRequestModel
@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("p_id_list")]
         public List<string> PIdList { get; set; }
+        /// <summary>
+        /// 初始金额（单位分），有效金额枚举值：300、500、700、1100和1600，默认300
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
         public partial class DiyLotteryParamRequestModel : PddRequestModel
         {
             /// <summary>

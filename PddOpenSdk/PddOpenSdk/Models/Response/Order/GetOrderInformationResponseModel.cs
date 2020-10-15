@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Order
 {
     public partial class GetOrderInformationResponseModel : PddResponseModel
@@ -378,6 +378,26 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("order_change_amount")]
                 public double? OrderChangeAmount { get; set; }
+                /// <summary>
+                /// 订单备注标记，1-红色，2-黄色，3-绿色，4-蓝色，5-紫色
+                /// </summary>
+                [JsonProperty("remark_tag")]
+                public int? RemarkTag { get; set; }
+                /// <summary>
+                /// 订单备注标记名称
+                /// </summary>
+                [JsonProperty("remark_tag_name")]
+                public string RemarkTagName { get; set; }
+                /// <summary>
+                /// 是否多多批发，1-是，0-否
+                /// </summary>
+                [JsonProperty("duoduo_wholesale")]
+                public int? DuoduoWholesale { get; set; }
+                /// <summary>
+                /// 市场业务类型，0-普通订单，1-拼内购订单
+                /// </summary>
+                [JsonProperty("mkt_biz_type")]
+                public int? MktBizType { get; set; }
                 public partial class StepOrderInfoResponseModel : PddResponseModel
                 {
                     /// <summary>

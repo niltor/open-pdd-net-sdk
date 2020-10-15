@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsDetailResponseModel : PddResponseModel
@@ -151,6 +151,16 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("outer_goods_id")]
             public string OuterGoodsId { get; set; }
+            /// <summary>
+            /// 第三方商品Id
+            /// </summary>
+            [JsonProperty("out_source_goods_id")]
+            public string OutSourceGoodsId { get; set; }
+            /// <summary>
+            /// 第三方商品来源
+            /// </summary>
+            [JsonProperty("out_source_type")]
+            public int? OutSourceType { get; set; }
             /// <summary>
             /// oversea_goods
             /// </summary>
@@ -368,6 +378,11 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("out_sku_sn")]
                 public string OutSkuSn { get; set; }
+                /// <summary>
+                /// 第三方sku Id
+                /// </summary>
+                [JsonProperty("out_source_sku_id")]
+                public string OutSourceSkuId { get; set; }
                 /// <summary>
                 /// oversea_sku
                 /// </summary>

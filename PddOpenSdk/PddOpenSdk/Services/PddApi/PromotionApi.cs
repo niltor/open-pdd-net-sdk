@@ -1,7 +1,7 @@
 
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Promotion;
 using PddOpenSdk.Models.Response.Promotion;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class PromotionApi : PddCommonApi
@@ -46,6 +46,46 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CreatePromotionHomeCouponResponseModel> CreatePromotionHomeCouponAsync(CreatePromotionHomeCouponRequestModel createPromotionHomeCoupon)
         {
             var result = await PostAsync<CreatePromotionHomeCouponRequestModel, CreatePromotionHomeCouponResponseModel>("pdd.promotion.home.coupon.create", createPromotionHomeCoupon);
+            return result;
+        }
+        /// <summary>
+        /// 限时限量购活动结束接口
+        /// </summary>
+        public async Task<CancelPromotionLimitedActivityResponseModel> CancelPromotionLimitedActivityAsync(CancelPromotionLimitedActivityRequestModel cancelPromotionLimitedActivity)
+        {
+            var result = await PostAsync<CancelPromotionLimitedActivityRequestModel, CancelPromotionLimitedActivityResponseModel>("pdd.promotion.limited.activity.cancel", cancelPromotionLimitedActivity);
+            return result;
+        }
+        /// <summary>
+        /// 限时限量购活动创建接口
+        /// </summary>
+        public async Task<CreatePromotionLimitedActivityResponseModel> CreatePromotionLimitedActivityAsync(CreatePromotionLimitedActivityRequestModel createPromotionLimitedActivity)
+        {
+            var result = await PostAsync<CreatePromotionLimitedActivityRequestModel, CreatePromotionLimitedActivityResponseModel>("pdd.promotion.limited.activity.create", createPromotionLimitedActivity);
+            return result;
+        }
+        /// <summary>
+        /// 限时限量购活动列表查询
+        /// </summary>
+        public async Task<GetPromotionLimitedDiscountListResponseModel> GetPromotionLimitedDiscountListAsync(GetPromotionLimitedDiscountListRequestModel getPromotionLimitedDiscountList)
+        {
+            var result = await PostAsync<GetPromotionLimitedDiscountListRequestModel, GetPromotionLimitedDiscountListResponseModel>("pdd.promotion.limited.discount.list.get", getPromotionLimitedDiscountList);
+            return result;
+        }
+        /// <summary>
+        /// 限时限量购可选商品查询接口
+        /// </summary>
+        public async Task<GetPromotionLimitedQualifiedGoodsResponseModel> GetPromotionLimitedQualifiedGoodsAsync(GetPromotionLimitedQualifiedGoodsRequestModel getPromotionLimitedQualifiedGoods)
+        {
+            var result = await PostAsync<GetPromotionLimitedQualifiedGoodsRequestModel, GetPromotionLimitedQualifiedGoodsResponseModel>("pdd.promotion.limited.qualified.goods.get", getPromotionLimitedQualifiedGoods);
+            return result;
+        }
+        /// <summary>
+        /// 限时限量购可选sku查询接口
+        /// </summary>
+        public async Task<GetPromotionLimitedQualifiedSkuResponseModel> GetPromotionLimitedQualifiedSkuAsync(GetPromotionLimitedQualifiedSkuRequestModel getPromotionLimitedQualifiedSku)
+        {
+            var result = await PostAsync<GetPromotionLimitedQualifiedSkuRequestModel, GetPromotionLimitedQualifiedSkuResponseModel>("pdd.promotion.limited.qualified.sku.get", getPromotionLimitedQualifiedSku);
             return result;
         }
         /// <summary>

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsSizespecTemplateResponseModel : PddResponseModel
@@ -111,7 +111,7 @@ namespace PddOpenSdk.Models.Response.Goods
                         /// 可批量的尺码元素id
                         /// </summary>
                         [JsonProperty("batchable_element_ids")]
-                        public int? BatchableElementIds { get; set; }
+                        public List<int?> BatchableElementIds { get; set; }
                         /// <summary>
                         /// 尺码元素
                         /// </summary>

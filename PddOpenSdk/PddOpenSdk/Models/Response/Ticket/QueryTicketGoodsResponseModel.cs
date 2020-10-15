@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ticket
 {
     public partial class QueryTicketGoodsResponseModel : PddResponseModel

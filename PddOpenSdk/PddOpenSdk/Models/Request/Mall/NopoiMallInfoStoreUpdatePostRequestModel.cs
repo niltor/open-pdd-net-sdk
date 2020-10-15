@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Mall
 {
     public partial class NopoiMallInfoStoreUpdatePostRequestModel : PddRequestModel
@@ -12,7 +13,7 @@ namespace PddOpenSdk.Models.Request.Mall
         /// 一周营业时间
         /// </summary>
         [JsonProperty("business_week_list")]
-        public int BusinessWeekList { get; set; }
+        public List<int> BusinessWeekList { get; set; }
         /// <summary>
         /// 市
         /// </summary>

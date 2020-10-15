@@ -207,7 +207,7 @@ namespace Console.PddModels
                 case "LONG[]":
                     return ParamType.LongArray;
                 case "INTEGER[]":
-                    return ParamType.Integer;
+                    return ParamType.IntegerArray;
                 case "STRING":
                 case "VOID":
                     return ParamType.String;

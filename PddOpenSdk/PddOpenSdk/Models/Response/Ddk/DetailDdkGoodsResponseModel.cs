@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class DetailDdkGoodsResponseModel : PddResponseModel
@@ -37,7 +37,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
-                public int? CatIds { get; set; }
+                public List<int?> CatIds { get; set; }
                 /// <summary>
                 /// 店铺收藏券id
                 /// </summary>
@@ -237,7 +237,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品标签ID
                 /// </summary>
                 [JsonProperty("opt_ids")]
-                public int? OptIds { get; set; }
+                public List<int?> OptIds { get; set; }
                 /// <summary>
                 /// 商品标签名称
                 /// </summary>
@@ -262,7 +262,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 服务标签: 4-送货入户并安装,5-送货入户,6-电子发票,9-坏果包赔,11-闪电退款,12-24小时发货,13-48小时发货,17-顺丰包邮,18-只换不修,1可定制化,29-预约配送,1000001-正品发票,1000002-送货入户并安装
                 /// </summary>
                 [JsonProperty("service_tags")]
-                public int? ServiceTags { get; set; }
+                public List<int?> ServiceTags { get; set; }
                 /// <summary>
                 /// 服务分
                 /// </summary>

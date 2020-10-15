@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class ListAdApiUnitBidQueryResponseModel : PddResponseModel
@@ -173,7 +173,7 @@ namespace PddOpenSdk.Models.Response.Ad
                             /// 地域Id列表。具体地域Id编码参见接口返回：pdd.ad.api.unit.bid.query.targeting.tag.list
                             /// </summary>
                             [JsonProperty("areaIds")]
-                            public int? AreaIds { get; set; }
+                            public List<int?> AreaIds { get; set; }
 
                         }
 

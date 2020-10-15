@@ -1,7 +1,7 @@
 
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Models.Response.Goods;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class GoodsApi : PddCommonApi
@@ -38,6 +38,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CatsGoodsAuthorizationResponseModel> CatsGoodsAuthorizationAsync(CatsGoodsAuthorizationRequestModel catsGoodsAuthorization)
         {
             var result = await PostAsync<CatsGoodsAuthorizationRequestModel, CatsGoodsAuthorizationResponseModel>("pdd.goods.authorization.cats", catsGoodsAuthorization);
+            return result;
+        }
+        /// <summary>
+        /// 类目商品发布规则查询接口
+        /// </summary>
+        public async Task<GetGoodsCatRuleResponseModel> GetGoodsCatRuleAsync(GetGoodsCatRuleRequestModel getGoodsCatRule)
+        {
+            var result = await PostAsync<GetGoodsCatRuleRequestModel, GetGoodsCatRuleResponseModel>("pdd.goods.cat.rule.get", getGoodsCatRule);
             return result;
         }
         /// <summary>
@@ -430,6 +438,22 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetGoodsSpecIdResponseModel> GetGoodsSpecIdAsync(GetGoodsSpecIdRequestModel getGoodsSpecId)
         {
             var result = await PostAsync<GetGoodsSpecIdRequestModel, GetGoodsSpecIdResponseModel>("pdd.goods.spec.id.get", getGoodsSpecId);
+            return result;
+        }
+        /// <summary>
+        /// 标品详情接口
+        /// </summary>
+        public async Task<GetGoodsSpuResponseModel> GetGoodsSpuAsync(GetGoodsSpuRequestModel getGoodsSpu)
+        {
+            var result = await PostAsync<GetGoodsSpuRequestModel, GetGoodsSpuResponseModel>("pdd.goods.spu.get", getGoodsSpu);
+            return result;
+        }
+        /// <summary>
+        /// 标品搜索接口
+        /// </summary>
+        public async Task<SearchGoodsSpuResponseModel> SearchGoodsSpuAsync(SearchGoodsSpuRequestModel searchGoodsSpu)
+        {
+            var result = await PostAsync<SearchGoodsSpuRequestModel, SearchGoodsSpuResponseModel>("pdd.goods.spu.search", searchGoodsSpu);
             return result;
         }
         /// <summary>

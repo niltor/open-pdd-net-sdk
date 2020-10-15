@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GetDdkMerchantListRequestModel : PddRequestModel
@@ -28,7 +28,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 店铺类型
         /// </summary>
         [JsonProperty("merchant_type_list")]
-        public int? MerchantTypeList { get; set; }
+        public List<int?> MerchantTypeList { get; set; }
         /// <summary>
         /// 分页数
         /// </summary>

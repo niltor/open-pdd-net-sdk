@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Stock
 {
     public partial class GetExpressDepotInfoResponseModel : PddResponseModel
@@ -114,7 +114,7 @@ namespace PddOpenSdk.Models.Response.Stock
                     /// 区id列表
                     /// </summary>
                     [JsonProperty("value")]
-                    public int? Value { get; set; }
+                    public List<int?> Value { get; set; }
 
                 }
 

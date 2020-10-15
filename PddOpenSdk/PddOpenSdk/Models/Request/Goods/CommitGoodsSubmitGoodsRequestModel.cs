@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CommitGoodsSubmitGoodsRequestModel : PddRequestModel
@@ -175,6 +175,16 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("out_goods_id")]
         public string OutGoodsId { get; set; }
         /// <summary>
+        /// 第三方商品Id
+        /// </summary>
+        [JsonProperty("out_source_goods_id")]
+        public string OutSourceGoodsId { get; set; }
+        /// <summary>
+        /// 第三方商品来源
+        /// </summary>
+        [JsonProperty("out_source_type")]
+        public int? OutSourceType { get; set; }
+        /// <summary>
         /// {; 	"consumption_tax_rate": 1,; 	"value_added_tax_rate": 9,; 	"hs_code": "2200",; 	"customs_broker": "sss",; 	"customs_declaration_method": 1,; 	"bonded_warehouse": "sss",; 	"bonded_warehouse_key": "pp"; }
         /// </summary>
         [JsonProperty("oversea_goods")]
@@ -315,7 +325,7 @@ namespace PddOpenSdk.Models.Request.Goods
             [JsonProperty("parent_spec_id")]
             public long? ParentSpecId { get; set; }
             /// <summary>
-            /// 引用属性id
+            /// ref_pid
             /// </summary>
             [JsonProperty("ref_pid")]
             public long? RefPid { get; set; }
@@ -444,6 +454,11 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("out_sku_sn")]
             public string OutSkuSn { get; set; }
+            /// <summary>
+            /// 第三方sku Id
+            /// </summary>
+            [JsonProperty("out_source_sku_id")]
+            public string OutSourceSkuId { get; set; }
             /// <summary>
             /// oversea_sku
             /// </summary>

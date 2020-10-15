@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ad
 {
     public partial class PageAdApiGoodsQueryResponseModel : PddResponseModel
@@ -37,13 +37,13 @@ namespace PddOpenSdk.Models.Response.Ad
                 /// 
                 /// </summary>
                 [JsonProperty("result")]
-                public List<ResultsResponseModel> Result { get; set; }
+                public List<ResultDataResponseModel> Result { get; set; }
                 /// <summary>
                 /// 
                 /// </summary>
                 [JsonProperty("total")]
                 public long? Total { get; set; }
-                public partial class ResultsResponseModel : PddResponseModel
+                public partial class ResultDataResponseModel : PddResponseModel
                 {
                     /// <summary>
                     /// 商品类目Id

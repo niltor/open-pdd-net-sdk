@@ -1,11 +1,11 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.DdkTools
 {
     public partial class GenerateDdkOauthRpPromUrlRequestModel : PddRequestModel
     {
         /// <summary>
-        /// -1-活动列表，0-默认红包，2–新人红包，3-刮刮卡，4-转盘 ，5-员工内购，6-购物车，7-大促会场
+        /// -1-活动列表，0-默认红包，2–新人红包，3-刮刮卡，5-员工内购，6-购物车，7-大促会场，8-直播间列表集合页，10-生成绑定备案链接
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }
@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("p_id_list")]
         public List<string> PIdList { get; set; }
+        /// <summary>
+        /// 初始金额（单位分），有效金额枚举值：300、500、700、1100和1600，默认300
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
         public partial class DiyLotteryParamRequestModel : PddRequestModel
         {
             /// <summary>

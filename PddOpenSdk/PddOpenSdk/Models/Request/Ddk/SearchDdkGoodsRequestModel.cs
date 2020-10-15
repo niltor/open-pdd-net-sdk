@@ -1,21 +1,21 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
+        /// 商品活动标记数组，例：[4,7]，4-秒杀，7-百亿补贴，24-品牌高佣，20-行业精选，21-金牌商家，10044-潜力爆品，10475-爆品上新，其他的值请忽略
         /// </summary>
         [JsonProperty("activity_tags")]
-        public int? ActivityTags { get; set; }
+        public List<int?> ActivityTags { get; set; }
         /// <summary>
         /// 商品类目ID，使用pdd.goods.cats.get接口获取
         /// </summary>
         [JsonProperty("cat_id")]
         public long? CatId { get; set; }
         /// <summary>
-        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key
+        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为： {"uid":"11111","sid":"22222","new":1} ，其中 uid 为用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 为上下文信息标识，例如sessionId等，非必填。new字段标识是否是新用户，如果为新用户，uid请传入用户唯一标识，例如小程序的openid、app的设备号等（可自行加密）。该json字符串中也可以加入其他自定义的key。
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
@@ -48,7 +48,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// 店铺类型数组
         /// </summary>
         [JsonProperty("merchant_type_list")]
-        public int? MerchantTypeList { get; set; }
+        public List<int?> MerchantTypeList { get; set; }
         /// <summary>
         /// 商品标签类目ID，使用pdd.goods.opt.get获取
         /// </summary>
@@ -84,6 +84,16 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("with_coupon")]
         public bool? WithCoupon { get; set; }
+        /// <summary>
+        /// 自定义屏蔽一级/二级/三级类目ID，自定义数量不超过20个;使用pdd.goods.cats.get接口获取cat_id
+        /// </summary>
+        [JsonProperty("block_cats")]
+        public List<int?> BlockCats { get; set; }
+        /// <summary>
+        /// 屏蔽商品类目包：1-拼多多小程序屏蔽类目;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药
+        /// </summary>
+        [JsonProperty("block_cat_packages")]
+        public List<int?> BlockCatPackages { get; set; }
         public partial class RangeListRequestModel : PddRequestModel
         {
             /// <summary>

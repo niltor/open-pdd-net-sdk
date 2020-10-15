@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.DdkTools
 {
     public partial class GenerateDdkOauthCmsPromUrlRequestModel : PddRequestModel
@@ -44,6 +44,16 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("p_id_list")]
         public List<string> PIdList { get; set; }
+        /// <summary>
+        /// 是否生成小程序推广
+        /// </summary>
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
+        /// <summary>
+        /// 搜索关键词
+        /// </summary>
+        [JsonProperty("keyword")]
+        public string Keyword { get; set; }
 
     }
 

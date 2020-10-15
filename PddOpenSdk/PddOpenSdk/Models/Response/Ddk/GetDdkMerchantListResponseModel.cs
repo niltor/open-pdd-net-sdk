@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class GetDdkMerchantListResponseModel : PddResponseModel
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品类目列表
                 /// </summary>
                 [JsonProperty("cat_id_list")]
-                public int? CatIdList { get; set; }
+                public List<int?> CatIdList { get; set; }
                 /// <summary>
                 /// 店铺收藏券ID
                 /// </summary>
@@ -149,7 +149,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 商品标签列表，与optIds一样，兼容老版本
                     /// </summary>
                     [JsonProperty("cat_ids")]
-                    public int? CatIds { get; set; }
+                    public List<int?> CatIds { get; set; }
                     /// <summary>
                     /// 店铺收藏券ID
                     /// </summary>
@@ -359,7 +359,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 商品标签列表
                     /// </summary>
                     [JsonProperty("opt_ids")]
-                    public int? OptIds { get; set; }
+                    public List<int?> OptIds { get; set; }
                     /// <summary>
                     /// 商品标签名
                     /// </summary>
@@ -379,7 +379,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                     /// 服务类型
                     /// </summary>
                     [JsonProperty("service_tags")]
-                    public int? ServiceTags { get; set; }
+                    public List<int?> ServiceTags { get; set; }
                     /// <summary>
                     /// 服务评分
                     /// </summary>

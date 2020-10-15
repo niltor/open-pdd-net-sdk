@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class SearchDdkThemeGoodsResponseModel : PddResponseModel
@@ -27,7 +27,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
-                public int? CatIds { get; set; }
+                public List<int?> CatIds { get; set; }
                 /// <summary>
                 /// 优惠券面额,单位为分
                 /// </summary>
