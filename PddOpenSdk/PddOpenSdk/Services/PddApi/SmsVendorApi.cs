@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.SmsVendor;
 using PddOpenSdk.Models.Response.SmsVendor;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class SmsVendorApi : PddCommonApi
     {
         public SmsVendorApi() { }
-        public SmsVendorApi(string accessToken) { AccessToken = accessToken; }
+        public SmsVendorApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 短信明细回执
         /// </summary>

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkRpPromUrlRequestModel : PddRequestModel
@@ -54,6 +54,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
+        /// <summary>
+        /// 刮刮卡指定金额（单位分），可指定2-100元间数值，即有效区间为：[200,10000]
+        /// </summary>
+        [JsonProperty("scratch_card_amount")]
+        public long? ScratchCardAmount { get; set; }
         public partial class DiyLotteryParamRequestModel : PddRequestModel
         {
             /// <summary>

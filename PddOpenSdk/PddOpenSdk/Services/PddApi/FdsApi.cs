@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Fds;
 using PddOpenSdk.Models.Response.Fds;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class FdsApi : PddCommonApi
     {
         public FdsApi() { }
-        public FdsApi(string accessToken) { AccessToken = accessToken; }
+        public FdsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 订单详情
         /// </summary>

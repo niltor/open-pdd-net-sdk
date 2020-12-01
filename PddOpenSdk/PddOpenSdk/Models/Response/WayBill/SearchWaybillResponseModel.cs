@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.WayBill
 {
     public partial class SearchWaybillResponseModel : PddResponseModel
@@ -75,6 +75,11 @@ namespace PddOpenSdk.Models.Response.WayBill
                     /// </summary>
                     [JsonProperty("shipp_address_cols")]
                     public List<ShippAddressColsResponseModel> ShippAddressCols { get; set; }
+                    /// <summary>
+                    /// 增值服务账号
+                    /// </summary>
+                    [JsonProperty("vas_account_cols")]
+                    public List<VasAccountColsResponseModel> VasAccountCols { get; set; }
                     public partial class ServiceInfoColsResponseModel : PddResponseModel
                     {
                         /// <summary>
@@ -155,6 +160,35 @@ namespace PddOpenSdk.Models.Response.WayBill
                         /// </summary>
                         [JsonProperty("country")]
                         public string Country { get; set; }
+
+                    }
+                    public partial class VasAccountColsResponseModel : PddResponseModel
+                    {
+                        /// <summary>
+                        /// 账户类型描述
+                        /// </summary>
+                        [JsonProperty("account_type_desc")]
+                        public string AccountTypeDesc { get; set; }
+                        /// <summary>
+                        /// 电子面单余额数量
+                        /// </summary>
+                        [JsonProperty("quantity")]
+                        public long? Quantity { get; set; }
+                        /// <summary>
+                        /// 已用面单数量
+                        /// </summary>
+                        [JsonProperty("allocated_quantity")]
+                        public long? AllocatedQuantity { get; set; }
+                        /// <summary>
+                        /// 取消的面单总数
+                        /// </summary>
+                        [JsonProperty("cancel_quantity")]
+                        public long? CancelQuantity { get; set; }
+                        /// <summary>
+                        /// 已回收用面单数量
+                        /// </summary>
+                        [JsonProperty("recycled_quantity")]
+                        public long? RecycledQuantity { get; set; }
 
                     }
 

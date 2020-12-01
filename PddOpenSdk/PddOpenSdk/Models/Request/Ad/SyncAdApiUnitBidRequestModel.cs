@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class SyncAdApiUnitBidRequestModel : PddRequestModel
@@ -22,7 +22,7 @@ namespace PddOpenSdk.Models.Request.Ad
         public partial class AdUnitBidsRequestModel : PddRequestModel
         {
             /// <summary>
-            /// 定向信息。仅支持地域定向和天气定向。
+            /// 定向信息。仅支持地域定向。
             /// </summary>
             [JsonProperty("adTargetingVO")]
             public AdTargetingVORequestModel AdTargetingVO { get; set; }
@@ -37,7 +37,7 @@ namespace PddOpenSdk.Models.Request.Ad
             [JsonProperty("bidValue")]
             public long BidValue { get; set; }
             /// <summary>
-            /// 二级定向Id。当出价资源位展示场景人群定向下的兴趣点或人群包时，该字段必须赋值且值不得为0。
+            /// 二级定向Id。默认为0。
             /// </summary>
             [JsonProperty("subBidReferenceId")]
             public long SubBidReferenceId { get; set; }

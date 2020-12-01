@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Stock;
 using PddOpenSdk.Models.Response.Stock;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class StockApi : PddCommonApi
     {
         public StockApi() { }
-        public StockApi(string accessToken) { AccessToken = accessToken; }
+        public StockApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 增加仓库
         /// </summary>
@@ -142,6 +142,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<UpdateStockWareResponseModel> UpdateStockWareAsync(UpdateStockWareRequestModel updateStockWare)
         {
             var result = await PostAsync<UpdateStockWareRequestModel, UpdateStockWareResponseModel>("pdd.stock.ware.update", updateStockWare);
+            return result;
+        }
+        /// <summary>
+        /// 货品仓库库存信息查询
+        /// </summary>
+        public async Task<QueryStockWareWarehouseResponseModel> QueryStockWareWarehouseAsync(QueryStockWareWarehouseRequestModel queryStockWareWarehouse)
+        {
+            var result = await PostAsync<QueryStockWareWarehouseRequestModel, QueryStockWareWarehouseResponseModel>("pdd.stock.ware.warehouse.query", queryStockWareWarehouse);
             return result;
         }
 

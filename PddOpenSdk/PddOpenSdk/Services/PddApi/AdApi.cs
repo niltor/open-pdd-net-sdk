@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ad;
 using PddOpenSdk.Models.Response.Ad;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class AdApi : PddCommonApi
     {
         public AdApi() { }
-        public AdApi(string accessToken) { AccessToken = accessToken; }
+        public AdApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 广告主开户
         /// </summary>
@@ -217,14 +217,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 获取DMP人群包
-        /// </summary>
-        public async Task<ProfileAdApiUnitBidQueryAudienceResponseModel> ProfileAdApiUnitBidQueryAudienceAsync(ProfileAdApiUnitBidQueryAudienceRequestModel profileAdApiUnitBidQueryAudience)
-        {
-            var result = await PostAsync<ProfileAdApiUnitBidQueryAudienceRequestModel, ProfileAdApiUnitBidQueryAudienceResponseModel>("pdd.ad.api.unit.bid.query.audience.profile", profileAdApiUnitBidQueryAudience);
-            return result;
-        }
-        /// <summary>
         /// 获取可用资源位
         /// </summary>
         public async Task<ProfileAdApiUnitBidQueryBaseLocationResponseModel> ProfileAdApiUnitBidQueryBaseLocationAsync(ProfileAdApiUnitBidQueryBaseLocationRequestModel profileAdApiUnitBidQueryBaseLocation)
@@ -238,14 +230,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<ProfileAdApiUnitBidQueryBaseTargetResponseModel> ProfileAdApiUnitBidQueryBaseTargetAsync(ProfileAdApiUnitBidQueryBaseTargetRequestModel profileAdApiUnitBidQueryBaseTarget)
         {
             var result = await PostAsync<ProfileAdApiUnitBidQueryBaseTargetRequestModel, ProfileAdApiUnitBidQueryBaseTargetResponseModel>("pdd.ad.api.unit.bid.query.base.target.profile", profileAdApiUnitBidQueryBaseTarget);
-            return result;
-        }
-        /// <summary>
-        /// 获取可用兴趣点定向
-        /// </summary>
-        public async Task<ProfileAdApiUnitBidQueryInterestResponseModel> ProfileAdApiUnitBidQueryInterestAsync(ProfileAdApiUnitBidQueryInterestRequestModel profileAdApiUnitBidQueryInterest)
-        {
-            var result = await PostAsync<ProfileAdApiUnitBidQueryInterestRequestModel, ProfileAdApiUnitBidQueryInterestResponseModel>("pdd.ad.api.unit.bid.query.interest.profile", profileAdApiUnitBidQueryInterest);
             return result;
         }
         /// <summary>

@@ -1,21 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Order;
 using PddOpenSdk.Models.Response.Order;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class OrderApi : PddCommonApi
     {
         public OrderApi() { }
-        public OrderApi(string accessToken) { AccessToken = accessToken; }
-        /// <summary>
-        /// 查询订单承诺信息
-        /// </summary>
-        public async Task<GetChatPromiseInfoResponseModel> GetChatPromiseInfoAsync(GetChatPromiseInfoRequestModel getChatPromiseInfo)
-        {
-            var result = await PostAsync<GetChatPromiseInfoRequestModel, GetChatPromiseInfoResponseModel>("pdd.chat.promise.info.get", getChatPromiseInfo);
-            return result;
-        }
+        public OrderApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// erp打单信息同步
         /// </summary>
@@ -54,6 +46,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetOrderNumberListIncrementResponseModel> GetOrderNumberListIncrementAsync(GetOrderNumberListIncrementRequestModel getOrderNumberListIncrement)
         {
             var result = await PostAsync<GetOrderNumberListIncrementRequestModel, GetOrderNumberListIncrementResponseModel>("pdd.order.number.list.increment.get", getOrderNumberListIncrement);
+            return result;
+        }
+        /// <summary>
+        /// 查询订单承诺信息
+        /// </summary>
+        public async Task<GetOrderPromiseInfoResponseModel> GetOrderPromiseInfoAsync(GetOrderPromiseInfoRequestModel getOrderPromiseInfo)
+        {
+            var result = await PostAsync<GetOrderPromiseInfoRequestModel, GetOrderPromiseInfoResponseModel>("pdd.order.promise.info.get", getOrderPromiseInfo);
             return result;
         }
         /// <summary>

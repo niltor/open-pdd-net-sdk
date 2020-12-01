@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.OpenMsg;
 using PddOpenSdk.Models.Response.OpenMsg;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class OpenMsgApi : PddCommonApi
     {
         public OpenMsgApi() { }
-        public OpenMsgApi(string accessToken) { AccessToken = accessToken; }
+        public OpenMsgApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 根据运单号查询短信发送记录
         /// </summary>

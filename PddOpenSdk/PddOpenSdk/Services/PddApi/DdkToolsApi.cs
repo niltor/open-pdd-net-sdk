@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.DdkTools;
 using PddOpenSdk.Models.Response.DdkTools;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class DdkToolsApi : PddCommonApi
     {
         public DdkToolsApi() { }
-        public DdkToolsApi(string accessToken) { AccessToken = accessToken; }
+        public DdkToolsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 查询所有授权的多多客订单
         /// </summary>
@@ -22,6 +22,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkOauthCmsPromUrlResponseModel> GenerateDdkOauthCmsPromUrlAsync(GenerateDdkOauthCmsPromUrlRequestModel generateDdkOauthCmsPromUrl)
         {
             var result = await PostAsync<GenerateDdkOauthCmsPromUrlRequestModel, GenerateDdkOauthCmsPromUrlResponseModel>("pdd.ddk.oauth.cms.prom.url.generate", generateDdkOauthCmsPromUrl);
+            return result;
+        }
+        /// <summary>
+        /// 多多进宝商品详情查询
+        /// </summary>
+        public async Task<DetailDdkOauthGoodsResponseModel> DetailDdkOauthGoodsAsync(DetailDdkOauthGoodsRequestModel detailDdkOauthGoods)
+        {
+            var result = await PostAsync<DetailDdkOauthGoodsRequestModel, DetailDdkOauthGoodsResponseModel>("pdd.ddk.oauth.goods.detail", detailDdkOauthGoods);
             return result;
         }
         /// <summary>
@@ -57,27 +65,19 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 多多进宝商品查询
+        /// </summary>
+        public async Task<SearchDdkOauthGoodsResponseModel> SearchDdkOauthGoodsAsync(SearchDdkOauthGoodsRequestModel searchDdkOauthGoods)
+        {
+            var result = await PostAsync<SearchDdkOauthGoodsRequestModel, SearchDdkOauthGoodsResponseModel>("pdd.ddk.oauth.goods.search", searchDdkOauthGoods);
+            return result;
+        }
+        /// <summary>
         /// 生成招商推广链接
         /// </summary>
         public async Task<GenDdkOauthGoodsZsUnitUrlResponseModel> GenDdkOauthGoodsZsUnitUrlAsync(GenDdkOauthGoodsZsUnitUrlRequestModel genDdkOauthGoodsZsUnitUrl)
         {
             var result = await PostAsync<GenDdkOauthGoodsZsUnitUrlRequestModel, GenDdkOauthGoodsZsUnitUrlResponseModel>("pdd.ddk.oauth.goods.zs.unit.url.gen", genDdkOauthGoodsZsUnitUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客工具生成转盘抽免单url
-        /// </summary>
-        public async Task<GenDdkOauthLotteryUrlResponseModel> GenDdkOauthLotteryUrlAsync(GenDdkOauthLotteryUrlRequestModel genDdkOauthLotteryUrl)
-        {
-            var result = await PostAsync<GenDdkOauthLotteryUrlRequestModel, GenDdkOauthLotteryUrlResponseModel>("pdd.ddk.oauth.lottery.url.gen", genDdkOauthLotteryUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客工具生成店铺推广链接API
-        /// </summary>
-        public async Task<GenDdkOauthMallUrlResponseModel> GenDdkOauthMallUrlAsync(GenDdkOauthMallUrlRequestModel genDdkOauthMallUrl)
-        {
-            var result = await PostAsync<GenDdkOauthMallUrlRequestModel, GenDdkOauthMallUrlResponseModel>("pdd.ddk.oauth.mall.url.gen", genDdkOauthMallUrl);
             return result;
         }
         /// <summary>
@@ -97,6 +97,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 批量绑定推广位的媒体id
+        /// </summary>
+        public async Task<BindDdkOauthPidMediaidResponseModel> BindDdkOauthPidMediaidAsync(BindDdkOauthPidMediaidRequestModel bindDdkOauthPidMediaid)
+        {
+            var result = await PostAsync<BindDdkOauthPidMediaidRequestModel, BindDdkOauthPidMediaidResponseModel>("pdd.ddk.oauth.pid.mediaid.bind", bindDdkOauthPidMediaid);
+            return result;
+        }
+        /// <summary>
         /// 拼多多主站频道推广接口
         /// </summary>
         public async Task<GenDdkOauthResourceUrlResponseModel> GenDdkOauthResourceUrlAsync(GenDdkOauthResourceUrlRequestModel genDdkOauthResourceUrl)
@@ -110,14 +118,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkOauthRpPromUrlResponseModel> GenerateDdkOauthRpPromUrlAsync(GenerateDdkOauthRpPromUrlRequestModel generateDdkOauthRpPromUrl)
         {
             var result = await PostAsync<GenerateDdkOauthRpPromUrlRequestModel, GenerateDdkOauthRpPromUrlResponseModel>("pdd.ddk.oauth.rp.prom.url.generate", generateDdkOauthRpPromUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多进宝主题推广链接生成接口
-        /// </summary>
-        public async Task<GenerateDdkOauthThemePromUrlResponseModel> GenerateDdkOauthThemePromUrlAsync(GenerateDdkOauthThemePromUrlRequestModel generateDdkOauthThemePromUrl)
-        {
-            var result = await PostAsync<GenerateDdkOauthThemePromUrlRequestModel, GenerateDdkOauthThemePromUrlResponseModel>("pdd.ddk.oauth.theme.prom.url.generate", generateDdkOauthThemePromUrl);
             return result;
         }
         /// <summary>

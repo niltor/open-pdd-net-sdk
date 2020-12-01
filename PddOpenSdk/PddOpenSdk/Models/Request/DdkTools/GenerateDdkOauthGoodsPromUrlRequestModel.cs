@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.DdkTools
 {
     public partial class GenerateDdkOauthGoodsPromUrlRequestModel : PddRequestModel
@@ -9,6 +9,16 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 是否使用多多客专属推广计划
+        /// </summary>
+        [JsonProperty("force_duo_id")]
+        public bool? ForceDuoId { get; set; }
+        /// <summary>
+        /// 是否生成带授权的单品链接。如果未授权，则会走授权流程
+        /// </summary>
+        [JsonProperty("generate_authority_url")]
+        public bool? GenerateAuthorityUrl { get; set; }
         /// <summary>
         /// 是否生成店铺收藏券推广链接
         /// </summary>
@@ -48,7 +58,12 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// 商品ID，仅支持单个查询
         /// </summary>
         [JsonProperty("goods_id_list")]
-        public List<long> GoodsIdList { get; set; }
+        public List<long?> GoodsIdList { get; set; }
+        /// <summary>
+        /// 商品goodsSign，用于查询指定商品，goods_id_list和goods_sign必须传入其中一个，建议传入goods_sign
+        /// </summary>
+        [JsonProperty("goods_sign")]
+        public string GoodsSign { get; set; }
         /// <summary>
         /// true--生成多人团推广链接 false--生成单人团推广链接（默认false）1、单人团推广链接：用户访问单人团推广链接，可直接购买商品无需拼团。2、多人团推广链接：用户访问双人团推广链接开团，若用户分享给他人参团，则开团者和参团者的佣金均结算给推手
         /// </summary>
@@ -69,16 +84,6 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("zs_duo_id")]
         public long? ZsDuoId { get; set; }
-        /// <summary>
-        /// 是否使用多多客专属推广计划
-        /// </summary>
-        [JsonProperty("force_duo_id")]
-        public bool? ForceDuoId { get; set; }
-        /// <summary>
-        /// 是否生成带授权的单品链接。如果未授权，则会走授权流程
-        /// </summary>
-        [JsonProperty("generate_authority_url")]
-        public bool? GenerateAuthorityUrl { get; set; }
 
     }
 

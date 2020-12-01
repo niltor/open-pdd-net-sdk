@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Models.Response.Goods;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class GoodsApi : PddCommonApi
     {
         public GoodsApi() { }
-        public GoodsApi(string accessToken) { AccessToken = accessToken; }
+        public GoodsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 删除草稿接口
         /// </summary>

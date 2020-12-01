@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Invoice
 {
     public partial class QueryInvoiceApplicationResponseModel : PddResponseModel
@@ -19,11 +19,6 @@ namespace PddOpenSdk.Models.Response.Invoice
             public partial class InvoiceApplicationListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 申请流水号
-                /// </summary>
-                [JsonProperty("application_id")]
-                public long? ApplicationId { get; set; }
-                /// <summary>
                 /// 申请状态：0-已拒绝，1-申请中，2-已同意
                 /// </summary>
                 [JsonProperty("application_status")]
@@ -33,16 +28,6 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// </summary>
                 [JsonProperty("business_type")]
                 public int? BusinessType { get; set; }
-                /// <summary>
-                /// 创建时间
-                /// </summary>
-                [JsonProperty("gmt_create")]
-                public long? GmtCreate { get; set; }
-                /// <summary>
-                /// 修改时间
-                /// </summary>
-                [JsonProperty("gmt_modified")]
-                public long? GmtModified { get; set; }
                 /// <summary>
                 /// 开票金额，暂为null，取买家实付
                 /// </summary>
@@ -128,6 +113,16 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// </summary>
                 [JsonProperty("trigger_status")]
                 public int? TriggerStatus { get; set; }
+                /// <summary>
+                /// 申请时间秒级时间戳
+                /// </summary>
+                [JsonProperty("apply_time")]
+                public int? ApplyTime { get; set; }
+                /// <summary>
+                /// 是否正品发票 0=非正品发票 1=是正品发票
+                /// </summary>
+                [JsonProperty("quality_goods_invoice")]
+                public int? QualityGoodsInvoice { get; set; }
 
             }
 

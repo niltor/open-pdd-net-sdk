@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PddOpenSdk.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +6,9 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PddOpenSdk.Common;
 
 namespace PddOpenSdk.Services
 {
@@ -21,14 +21,11 @@ namespace PddOpenSdk.Services
         /// 请求接口
         /// </summary>
         private static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
-        public static string ClientId;
-        public static string ClientSecret;
-        /// <summary>
-        /// token
-        /// </summary>
-        public static string AccessToken;
-        public static string RedirectUri;
 
+        public string AccessToken { get; set; }
+        public string ClientId { get; set; }
+        public string ClientSecret { get; set; }
+        public string RedirectUri { get; set; }
         public string Ace { get; set; }
         protected static HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(10) };
 
@@ -36,6 +33,12 @@ namespace PddOpenSdk.Services
 
         public PddCommonApi()
         {
+        }
+        public PddCommonApi(string clientId, string clientSecret, string accessToken)
+        {
+            ClientId = clientId;
+            ClientSecret = clientSecret;
+            AccessToken = accessToken;
         }
         public async Task<TResult> PostFileAsync<TModel, TResult>(string type, TModel model)
         {

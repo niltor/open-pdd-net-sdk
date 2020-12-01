@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Order
 {
     public partial class GetOrderListResponseModel : PddResponseModel
@@ -403,6 +403,11 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("mkt_biz_type")]
                 public int? MktBizType { get; set; }
+                /// <summary>
+                /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货
+                /// </summary>
+                [JsonProperty("order_tag_list")]
+                public List<OrderTagListResponseModel> OrderTagList { get; set; }
                 public partial class CardInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -561,6 +566,20 @@ namespace PddOpenSdk.Models.Response.Order
                         public long? WareId { get; set; }
 
                     }
+
+                }
+                public partial class OrderTagListResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 标签名称
+                    /// </summary>
+                    [JsonProperty("name")]
+                    public string Name { get; set; }
+                    /// <summary>
+                    /// 是否有标签：0=无标签，1=有标签
+                    /// </summary>
+                    [JsonProperty("value")]
+                    public int? Value { get; set; }
 
                 }
 

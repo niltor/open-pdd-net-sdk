@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Voucher;
 using PddOpenSdk.Models.Response.Voucher;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class VoucherApi : PddCommonApi
     {
         public VoucherApi() { }
-        public VoucherApi(string accessToken) { AccessToken = accessToken; }
+        public VoucherApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 卡券预约提货接口
         /// </summary>
@@ -38,6 +38,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetVoucherRealtimeOrdernoResponseModel> GetVoucherRealtimeOrdernoAsync(GetVoucherRealtimeOrdernoRequestModel getVoucherRealtimeOrderno)
         {
             var result = await PostAsync<GetVoucherRealtimeOrdernoRequestModel, GetVoucherRealtimeOrdernoResponseModel>("pdd.voucher.realtime.orderno.get", getVoucherRealtimeOrderno);
+            return result;
+        }
+        /// <summary>
+        /// 批量添加卡券
+        /// </summary>
+        public async Task<AddVoucherVirtualCardBatchResponseModel> AddVoucherVirtualCardBatchAsync(AddVoucherVirtualCardBatchRequestModel addVoucherVirtualCardBatch)
+        {
+            var result = await PostAsync<AddVoucherVirtualCardBatchRequestModel, AddVoucherVirtualCardBatchResponseModel>("pdd.voucher.virtual.card.batch.add", addVoucherVirtualCardBatch);
             return result;
         }
         /// <summary>

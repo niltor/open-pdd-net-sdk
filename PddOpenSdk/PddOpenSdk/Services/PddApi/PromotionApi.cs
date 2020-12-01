@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Promotion;
 using PddOpenSdk.Models.Response.Promotion;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class PromotionApi : PddCommonApi
     {
         public PromotionApi() { }
-        public PromotionApi(string accessToken) { AccessToken = accessToken; }
+        public PromotionApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 关闭批次接口
         /// </summary>

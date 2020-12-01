@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class DetailDdkGoodsResponseModel : PddResponseModel
@@ -288,6 +288,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("unified_tags")]
                 public List<string> UnifiedTags { get; set; }
+                /// <summary>
+                /// 商品goodsSign
+                /// </summary>
+                [JsonProperty("goods_sign")]
+                public string GoodsSign { get; set; }
 
             }
 

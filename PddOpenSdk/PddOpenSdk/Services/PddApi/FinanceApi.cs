@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Finance;
 using PddOpenSdk.Models.Response.Finance;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class FinanceApi : PddCommonApi
     {
         public FinanceApi() { }
-        public FinanceApi(string accessToken) { AccessToken = accessToken; }
+        public FinanceApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 商家货款日账单下载链接查询接口
         /// </summary>

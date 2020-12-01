@@ -19,15 +19,15 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
         /// <summary>
-        /// 最近90天内多多进宝商品订单更新时间--查询时间开始。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-        /// </summary>
-        [JsonProperty("start_update_time")]
-        public long StartUpdateTime { get; set; }
-        /// <summary>
         /// 订单类型：1-推广订单；2-直播间订单
         /// </summary>
         [JsonProperty("query_order_type")]
         public int? QueryOrderType { get; set; }
+        /// <summary>
+        /// 最近90天内多多进宝商品订单更新时间--查询时间开始。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
+        /// </summary>
+        [JsonProperty("start_update_time")]
+        public long StartUpdateTime { get; set; }
 
     }
 

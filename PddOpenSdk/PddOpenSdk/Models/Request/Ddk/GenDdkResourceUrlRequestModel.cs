@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("pid")]
         public string Pid { get; set; }
         /// <summary>
-        /// 4-限时秒杀,39997-充值中心, 39998-转链type，39996-百亿补贴
+        /// 4-限时秒杀,39997-充值中心, 39998-转链type，39996-百亿补贴，40000-领券中心
         /// </summary>
         [JsonProperty("resource_type")]
         public int? ResourceType { get; set; }

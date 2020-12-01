@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Goods
 {
     public partial class GetGoodsCatRuleResponseModel : PddResponseModel
@@ -16,6 +16,11 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("spu_rule")]
             public SpuRuleResponseModel SpuRule { get; set; }
+            /// <summary>
+            /// 类目物流类型规则
+            /// </summary>
+            [JsonProperty("cat_delivery_type")]
+            public List<CatDeliveryTypeResponseModel> CatDeliveryType { get; set; }
             public partial class SpuRuleResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -42,6 +47,20 @@ namespace PddOpenSdk.Models.Response.Goods
                     public long? RefPid { get; set; }
 
                 }
+
+            }
+            public partial class CatDeliveryTypeResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 是否可选择物流类型
+                /// </summary>
+                [JsonProperty("can_select_delivery_type")]
+                public bool? CanSelectDeliveryType { get; set; }
+                /// <summary>
+                /// 商品类型
+                /// </summary>
+                [JsonProperty("goods_type")]
+                public int? GoodsType { get; set; }
 
             }
 

@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ticket;
 using PddOpenSdk.Models.Response.Ticket;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class TicketApi : PddCommonApi
     {
         public TicketApi() { }
-        public TicketApi(string accessToken) { AccessToken = accessToken; }
+        public TicketApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 门票商品查询接口
         /// </summary>

@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Logistics;
 using PddOpenSdk.Models.Response.Logistics;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class LogisticsApi : PddCommonApi
     {
         public LogisticsApi() { }
-        public LogisticsApi(string accessToken) { AccessToken = accessToken; }
+        public LogisticsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 获取拼多多标准国家地址库
         /// </summary>

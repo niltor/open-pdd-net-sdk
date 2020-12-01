@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Virtual;
 using PddOpenSdk.Models.Response.Virtual;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class VirtualApi : PddCommonApi
     {
         public VirtualApi() { }
-        public VirtualApi(string accessToken) { AccessToken = accessToken; }
+        public VirtualApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 虚拟游戏类区服列表接口
         /// </summary>

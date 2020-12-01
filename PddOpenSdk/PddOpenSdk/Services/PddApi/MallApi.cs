@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Mall;
 using PddOpenSdk.Models.Response.Mall;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class MallApi : PddCommonApi
     {
         public MallApi() { }
-        public MallApi(string accessToken) { AccessToken = accessToken; }
+        public MallApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 门店组添加门店
         /// </summary>

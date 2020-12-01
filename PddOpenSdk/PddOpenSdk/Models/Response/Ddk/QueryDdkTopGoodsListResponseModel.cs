@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.Ddk
 {
     public partial class QueryDdkTopGoodsListResponseModel : PddResponseModel
@@ -99,6 +99,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_name")]
                 public string GoodsName { get; set; }
                 /// <summary>
+                /// 商品goodsSign
+                /// </summary>
+                [JsonProperty("goods_sign")]
+                public string GoodsSign { get; set; }
+                /// <summary>
                 /// 商品缩略图
                 /// </summary>
                 [JsonProperty("goods_thumbnail_url")]
@@ -144,6 +149,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("opt_name")]
                 public string OptName { get; set; }
                 /// <summary>
+                /// 比价行为预判定佣金，需要用户备案
+                /// </summary>
+                [JsonProperty("predict_promotion_rate")]
+                public long? PredictPromotionRate { get; set; }
+                /// <summary>
                 /// 佣金比例，千分比
                 /// </summary>
                 [JsonProperty("promotion_rate")]
@@ -163,11 +173,6 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("serv_txt")]
                 public string ServTxt { get; set; }
-                /// <summary>
-                /// 比价行为预判定佣金，需要用户备案
-                /// </summary>
-                [JsonProperty("predict_promotion_rate")]
-                public long? PredictPromotionRate { get; set; }
 
             }
 

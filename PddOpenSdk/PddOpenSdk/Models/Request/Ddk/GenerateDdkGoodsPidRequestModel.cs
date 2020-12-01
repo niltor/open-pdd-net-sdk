@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class GenerateDdkGoodsPidRequestModel : PddRequestModel
@@ -14,6 +14,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("p_id_name_list")]
         public List<string> PIdNameList { get; set; }
+        /// <summary>
+        /// 媒体id
+        /// </summary>
+        [JsonProperty("media_id")]
+        public long? MediaId { get; set; }
 
     }
 

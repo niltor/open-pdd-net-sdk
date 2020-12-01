@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.LogisticsCompany
 {
     public partial class NotifyLogisticsTicketRequestModel : PddRequestModel

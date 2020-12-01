@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Goods
 {
     public partial class CommitGoodsEditGoodsRequestModel : PddRequestModel
@@ -249,6 +249,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
+        /// <summary>
+        /// 发货方式。0：无物流发货；1：有物流发货。
+        /// </summary>
+        [JsonProperty("delivery_type")]
+        public int? DeliveryType { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>

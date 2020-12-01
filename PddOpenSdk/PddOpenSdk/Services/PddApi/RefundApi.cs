@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Refund;
 using PddOpenSdk.Models.Response.Refund;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class RefundApi : PddCommonApi
     {
         public RefundApi() { }
-        public RefundApi(string accessToken) { AccessToken = accessToken; }
+        public RefundApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 退货入库
         /// </summary>

@@ -1,43 +1,19 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Response.Ddk;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class DdkApi : PddCommonApi
     {
         public DdkApi() { }
-        public DdkApi(string accessToken) { AccessToken = accessToken; }
+        public DdkApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 生成商城-频道推广链接
         /// </summary>
         public async Task<GenerateDdkCmsPromUrlResponseModel> GenerateDdkCmsPromUrlAsync(GenerateDdkCmsPromUrlRequestModel generateDdkCmsPromUrl)
         {
             var result = await PostAsync<GenerateDdkCmsPromUrlRequestModel, GenerateDdkCmsPromUrlResponseModel>("pdd.ddk.cms.prom.url.generate", generateDdkCmsPromUrl);
-            return result;
-        }
-        /// <summary>
-        /// 查询优惠券信息
-        /// </summary>
-        public async Task<QueryDdkCouponInfoResponseModel> QueryDdkCouponInfoAsync(QueryDdkCouponInfoRequestModel queryDdkCouponInfo)
-        {
-            var result = await PostAsync<QueryDdkCouponInfoRequestModel, QueryDdkCouponInfoResponseModel>("pdd.ddk.coupon.info.query", queryDdkCouponInfo);
-            return result;
-        }
-        /// <summary>
-        /// 查询CPA数据
-        /// </summary>
-        public async Task<QueryDdkFinanceCpaResponseModel> QueryDdkFinanceCpaAsync(QueryDdkFinanceCpaRequestModel queryDdkFinanceCpa)
-        {
-            var result = await PostAsync<QueryDdkFinanceCpaRequestModel, QueryDdkFinanceCpaResponseModel>("pdd.ddk.finance.cpa.query", queryDdkFinanceCpa);
-            return result;
-        }
-        /// <summary>
-        /// 获取商品基本信息接口
-        /// </summary>
-        public async Task<GetDdkGoodsBasicInfoResponseModel> GetDdkGoodsBasicInfoAsync(GetDdkGoodsBasicInfoRequestModel getDdkGoodsBasicInfo)
-        {
-            var result = await PostAsync<GetDdkGoodsBasicInfoRequestModel, GetDdkGoodsBasicInfoResponseModel>("pdd.ddk.goods.basic.info.get", getDdkGoodsBasicInfo);
             return result;
         }
         /// <summary>
@@ -89,14 +65,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 查询商品的推广计划
-        /// </summary>
-        public async Task<QueryDdkGoodsUnitResponseModel> QueryDdkGoodsUnitAsync(QueryDdkGoodsUnitRequestModel queryDdkGoodsUnit)
-        {
-            var result = await PostAsync<QueryDdkGoodsUnitRequestModel, QueryDdkGoodsUnitResponseModel>("pdd.ddk.goods.unit.query", queryDdkGoodsUnit);
-            return result;
-        }
-        /// <summary>
         /// 多多进宝转链接口
         /// </summary>
         public async Task<GenDdkGoodsZsUnitUrlResponseModel> GenDdkGoodsZsUnitUrlAsync(GenDdkGoodsZsUnitUrlRequestModel genDdkGoodsZsUnitUrl)
@@ -105,67 +73,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 查询直播间详情
-        /// </summary>
-        public async Task<DetailDdkLiveResponseModel> DetailDdkLiveAsync(DetailDdkLiveRequestModel detailDdkLive)
-        {
-            var result = await PostAsync<DetailDdkLiveRequestModel, DetailDdkLiveResponseModel>("pdd.ddk.live.detail", detailDdkLive);
-            return result;
-        }
-        /// <summary>
-        /// 查询直播间列表
-        /// </summary>
-        public async Task<ListDdkLiveResponseModel> ListDdkLiveAsync(ListDdkLiveRequestModel listDdkLive)
-        {
-            var result = await PostAsync<ListDdkLiveRequestModel, ListDdkLiveResponseModel>("pdd.ddk.live.list", listDdkLive);
-            return result;
-        }
-        /// <summary>
-        /// 生成直播间推广链接
-        /// </summary>
-        public async Task<GenDdkLiveUrlResponseModel> GenDdkLiveUrlAsync(GenDdkLiveUrlRequestModel genDdkLiveUrl)
-        {
-            var result = await PostAsync<GenDdkLiveUrlRequestModel, GenDdkLiveUrlResponseModel>("pdd.ddk.live.url.gen", genDdkLiveUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客生成转盘抽免单url
-        /// </summary>
-        public async Task<GenDdkLotteryUrlResponseModel> GenDdkLotteryUrlAsync(GenDdkLotteryUrlRequestModel genDdkLotteryUrl)
-        {
-            var result = await PostAsync<GenDdkLotteryUrlRequestModel, GenDdkLotteryUrlResponseModel>("pdd.ddk.lottery.url.gen", genDdkLotteryUrl);
-            return result;
-        }
-        /// <summary>
-        /// 查询店铺商品
-        /// </summary>
-        public async Task<GetDdkMallGoodsListResponseModel> GetDdkMallGoodsListAsync(GetDdkMallGoodsListRequestModel getDdkMallGoodsList)
-        {
-            var result = await PostAsync<GetDdkMallGoodsListRequestModel, GetDdkMallGoodsListResponseModel>("pdd.ddk.mall.goods.list.get", getDdkMallGoodsList);
-            return result;
-        }
-        /// <summary>
-        /// 多多客生成店铺推广链接API
-        /// </summary>
-        public async Task<GenDdkMallUrlResponseModel> GenDdkMallUrlAsync(GenDdkMallUrlRequestModel genDdkMallUrl)
-        {
-            var result = await PostAsync<GenDdkMallUrlRequestModel, GenDdkMallUrlResponseModel>("pdd.ddk.mall.url.gen", genDdkMallUrl);
-            return result;
-        }
-        /// <summary>
         /// 查询是否绑定备案
         /// </summary>
         public async Task<QueryDdkMemberAuthorityResponseModel> QueryDdkMemberAuthorityAsync(QueryDdkMemberAuthorityRequestModel queryDdkMemberAuthority)
         {
             var result = await PostAsync<QueryDdkMemberAuthorityRequestModel, QueryDdkMemberAuthorityResponseModel>("pdd.ddk.member.authority.query", queryDdkMemberAuthority);
-            return result;
-        }
-        /// <summary>
-        /// 多多客查店铺列表接口
-        /// </summary>
-        public async Task<GetDdkMerchantListResponseModel> GetDdkMerchantListAsync(GetDdkMerchantListRequestModel getDdkMerchantList)
-        {
-            var result = await PostAsync<GetDdkMerchantListRequestModel, GetDdkMerchantListResponseModel>("pdd.ddk.merchant.list.get", getDdkMerchantList);
             return result;
         }
         /// <summary>
@@ -193,6 +105,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 批量绑定推广位的媒体id
+        /// </summary>
+        public async Task<BindDdkPidMediaidResponseModel> BindDdkPidMediaidAsync(BindDdkPidMediaidRequestModel bindDdkPidMediaid)
+        {
+            var result = await PostAsync<BindDdkPidMediaidRequestModel, BindDdkPidMediaidResponseModel>("pdd.ddk.pid.mediaid.bind", bindDdkPidMediaid);
+            return result;
+        }
+        /// <summary>
         /// 生成多多进宝频道推广
         /// </summary>
         public async Task<GenDdkResourceUrlResponseModel> GenDdkResourceUrlAsync(GenDdkResourceUrlRequestModel genDdkResourceUrl)
@@ -209,43 +129,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 多多进宝主题商品查询
-        /// </summary>
-        public async Task<SearchDdkThemeGoodsResponseModel> SearchDdkThemeGoodsAsync(SearchDdkThemeGoodsRequestModel searchDdkThemeGoods)
-        {
-            var result = await PostAsync<SearchDdkThemeGoodsRequestModel, SearchDdkThemeGoodsResponseModel>("pdd.ddk.theme.goods.search", searchDdkThemeGoods);
-            return result;
-        }
-        /// <summary>
-        /// 多多进宝主题列表查询
-        /// </summary>
-        public async Task<GetDdkThemeListResponseModel> GetDdkThemeListAsync(GetDdkThemeListRequestModel getDdkThemeList)
-        {
-            var result = await PostAsync<GetDdkThemeListRequestModel, GetDdkThemeListResponseModel>("pdd.ddk.theme.list.get", getDdkThemeList);
-            return result;
-        }
-        /// <summary>
-        /// 多多进宝主题推广链接生成
-        /// </summary>
-        public async Task<GenerateDdkThemePromUrlResponseModel> GenerateDdkThemePromUrlAsync(GenerateDdkThemePromUrlRequestModel generateDdkThemePromUrl)
-        {
-            var result = await PostAsync<GenerateDdkThemePromUrlRequestModel, GenerateDdkThemePromUrlResponseModel>("pdd.ddk.theme.prom.url.generate", generateDdkThemePromUrl);
-            return result;
-        }
-        /// <summary>
         /// 多多客获取爆款排行商品接口
         /// </summary>
         public async Task<QueryDdkTopGoodsListResponseModel> QueryDdkTopGoodsListAsync(QueryDdkTopGoodsListRequestModel queryDdkTopGoodsList)
         {
             var result = await PostAsync<QueryDdkTopGoodsListRequestModel, QueryDdkTopGoodsListResponseModel>("pdd.ddk.top.goods.list.query", queryDdkTopGoodsList);
-            return result;
-        }
-        /// <summary>
-        /// 多多客生成单品推广小程序二维码url
-        /// </summary>
-        public async Task<GenDdkWeappQrcodeUrlResponseModel> GenDdkWeappQrcodeUrlAsync(GenDdkWeappQrcodeUrlRequestModel genDdkWeappQrcodeUrl)
-        {
-            var result = await PostAsync<GenDdkWeappQrcodeUrlRequestModel, GenDdkWeappQrcodeUrlResponseModel>("pdd.ddk.weapp.qrcode.url.gen", genDdkWeappQrcodeUrl);
             return result;
         }
 

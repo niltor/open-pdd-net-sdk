@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.DdkTools
 {
     public partial class QueryDdkOauthGoodsPidResponseModel : PddResponseModel
@@ -38,6 +38,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("p_id")]
                 public string PId { get; set; }
+                /// <summary>
+                /// 媒体id
+                /// </summary>
+                [JsonProperty("media_id")]
+                public long? MediaId { get; set; }
 
             }
 

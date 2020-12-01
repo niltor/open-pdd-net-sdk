@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.DdkTools
 {
     public partial class GetDdkOauthGoodsRecommendResponseModel : PddResponseModel
@@ -129,6 +129,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("goods_rate")]
                 public long? GoodsRate { get; set; }
                 /// <summary>
+                /// 商品goodsSign
+                /// </summary>
+                [JsonProperty("goods_sign")]
+                public string GoodsSign { get; set; }
+                /// <summary>
                 /// 商品缩略图
                 /// </summary>
                 [JsonProperty("goods_thumbnail_url")]
@@ -194,10 +199,20 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("opt_name")]
                 public string OptName { get; set; }
                 /// <summary>
+                /// 比价行为预判定佣金，需要用户备案
+                /// </summary>
+                [JsonProperty("predict_promotion_rate")]
+                public long? PredictPromotionRate { get; set; }
+                /// <summary>
                 /// 佣金比例,千分比
                 /// </summary>
                 [JsonProperty("promotion_rate")]
                 public long? PromotionRate { get; set; }
+                /// <summary>
+                /// 二维码主图
+                /// </summary>
+                [JsonProperty("qr_code_image_url")]
+                public string QrCodeImageUrl { get; set; }
                 /// <summary>
                 /// 销售量
                 /// </summary>
@@ -218,11 +233,6 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("share_desc")]
                 public string ShareDesc { get; set; }
-                /// <summary>
-                /// 比价行为预判定佣金，需要用户备案
-                /// </summary>
-                [JsonProperty("predict_promotion_rate")]
-                public long? PredictPromotionRate { get; set; }
 
             }
 

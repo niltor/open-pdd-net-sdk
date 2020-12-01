@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Fds
 {
     public partial class GetFdsWaybillRequestModel : PddRequestModel

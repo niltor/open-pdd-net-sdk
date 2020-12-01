@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ad
 {
     public partial class CreateAdApiUnitRequestModel : PddRequestModel
@@ -201,7 +201,7 @@ namespace PddOpenSdk.Models.Request.Ad
                 [JsonProperty("bidValue")]
                 public long BidValue { get; set; }
                 /// <summary>
-                /// 人群定向二级Id。当人群定向为展示场景下的兴趣点或人群包时，该字段必须赋值且值不得为0。兴趣点可取值参考接口：pdd.ad.api.unit.bid.query.interest.profile。人群包可用值参考接口：pdd.ad.api.unit.bid.query.audience.profile
+                /// 人群定向二级Id。默认为0。
                 /// </summary>
                 [JsonProperty("subBidReferenceId")]
                 public long SubBidReferenceId { get; set; }

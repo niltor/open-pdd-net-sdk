@@ -19,6 +19,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
         /// <summary>
+        /// 订单类型：1-推广订单；2-直播间订单
+        /// </summary>
+        [JsonProperty("query_order_type")]
+        public int? QueryOrderType { get; set; }
+        /// <summary>
         /// 是否返回总数，默认为true，如果指定false, 则返回的结果中不包含总记录数，通过此种方式获取增量数据，效率在原有的基础上有80%的提升。
         /// </summary>
         [JsonProperty("return_count")]
@@ -28,11 +33,6 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("start_update_time")]
         public long StartUpdateTime { get; set; }
-        /// <summary>
-        /// 订单类型：1-推广订单；2-直播间订单
-        /// </summary>
-        [JsonProperty("query_order_type")]
-        public int? QueryOrderType { get; set; }
 
     }
 

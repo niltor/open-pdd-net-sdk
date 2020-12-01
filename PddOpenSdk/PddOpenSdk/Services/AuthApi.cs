@@ -1,9 +1,9 @@
-using Newtonsoft.Json;
-using PddOpenSdk.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services.PddApi
 {
@@ -27,10 +27,9 @@ namespace PddOpenSdk.Services.PddApi
         public static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
 
 
-        public AuthApi()
-        {
-
-        }
+        public AuthApi() { }
+        public AuthApi(string clientId, string clientSecret, string accessToken)
+            : base(clientId, clientSecret, accessToken) { }
 
         /// <summary>
         /// 获取Token请求

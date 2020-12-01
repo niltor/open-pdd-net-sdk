@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.DdkTools
 {
     public partial class GetDdkAllOrderListIncrementResponseModel : PddResponseModel
@@ -24,6 +24,21 @@ namespace PddOpenSdk.Models.Response.DdkTools
             public partial class OrderListResponseModel : PddResponseModel
             {
                 /// <summary>
+                /// 多多客工具id
+                /// </summary>
+                [JsonProperty("auth_duo_id")]
+                public long? AuthDuoId { get; set; }
+                /// <summary>
+                /// 结算批次号
+                /// </summary>
+                [JsonProperty("batch_no")]
+                public string BatchNo { get; set; }
+                /// <summary>
+                /// 商品一~四级类目ID列表
+                /// </summary>
+                [JsonProperty("cat_ids")]
+                public List<long?> CatIds { get; set; }
+                /// <summary>
                 /// 是否是 cpa 新用户，1表示是，0表示否
                 /// </summary>
                 [JsonProperty("cpa_new")]
@@ -33,6 +48,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("custom_parameters")]
                 public string CustomParameters { get; set; }
+                /// <summary>
+                /// 订单审核失败原因
+                /// </summary>
+                [JsonProperty("fail_reason")]
+                public string FailReason { get; set; }
                 /// <summary>
                 /// 商品ID
                 /// </summary>
@@ -54,10 +74,25 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("goods_quantity")]
                 public long? GoodsQuantity { get; set; }
                 /// <summary>
+                /// 商品goodsSign
+                /// </summary>
+                [JsonProperty("goods_sign")]
+                public string GoodsSign { get; set; }
+                /// <summary>
                 /// 商品缩略图
                 /// </summary>
                 [JsonProperty("goods_thumbnail_url")]
                 public string GoodsThumbnailUrl { get; set; }
+                /// <summary>
+                /// 成团编号
+                /// </summary>
+                [JsonProperty("group_id")]
+                public long? GroupId { get; set; }
+                /// <summary>
+                /// 是否直推 ，1表示是，0表示否
+                /// </summary>
+                [JsonProperty("is_direct")]
+                public int? IsDirect { get; set; }
                 /// <summary>
                 /// 实际支付金额，单位为分
                 /// </summary>
@@ -84,6 +119,16 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("order_pay_time")]
                 public long? OrderPayTime { get; set; }
                 /// <summary>
+                /// 确认收货时间
+                /// </summary>
+                [JsonProperty("order_receive_time")]
+                public long? OrderReceiveTime { get; set; }
+                /// <summary>
+                /// 结算时间
+                /// </summary>
+                [JsonProperty("order_settle_time")]
+                public long? OrderSettleTime { get; set; }
+                /// <summary>
                 /// 推广订单编号
                 /// </summary>
                 [JsonProperty("order_sn")]
@@ -103,6 +148,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("order_verify_time")]
                 public long? OrderVerifyTime { get; set; }
+                /// <summary>
+                /// 比价状态：0：正常，1：比价
+                /// </summary>
+                [JsonProperty("price_compare_status")]
+                public int? PriceCompareStatus { get; set; }
                 /// <summary>
                 /// 佣金金额，单位为分
                 /// </summary>
@@ -124,56 +174,6 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("scene_at_market_fee")]
                 public int? SceneAtMarketFee { get; set; }
                 /// <summary>
-                /// 商品一~四级类目ID列表
-                /// </summary>
-                [JsonProperty("cat_ids")]
-                public List<long?> CatIds { get; set; }
-                /// <summary>
-                /// 结算批次号
-                /// </summary>
-                [JsonProperty("batch_no")]
-                public string BatchNo { get; set; }
-                /// <summary>
-                /// 订单审核失败原因
-                /// </summary>
-                [JsonProperty("fail_reason")]
-                public string FailReason { get; set; }
-                /// <summary>
-                /// 确认收货时间
-                /// </summary>
-                [JsonProperty("order_receive_time")]
-                public long? OrderReceiveTime { get; set; }
-                /// <summary>
-                /// 结算时间
-                /// </summary>
-                [JsonProperty("order_settle_time")]
-                public long? OrderSettleTime { get; set; }
-                /// <summary>
-                /// 订单推广类型
-                /// </summary>
-                [JsonProperty("type")]
-                public long? Type { get; set; }
-                /// <summary>
-                /// 成团编号
-                /// </summary>
-                [JsonProperty("group_id")]
-                public long? GroupId { get; set; }
-                /// <summary>
-                /// 多多客工具id
-                /// </summary>
-                [JsonProperty("auth_duo_id")]
-                public long? AuthDuoId { get; set; }
-                /// <summary>
-                /// 招商多多客id
-                /// </summary>
-                [JsonProperty("zs_duo_id")]
-                public long? ZsDuoId { get; set; }
-                /// <summary>
-                /// 是否直推 ，1表示是，0表示否
-                /// </summary>
-                [JsonProperty("is_direct")]
-                public int? IsDirect { get; set; }
-                /// <summary>
                 /// 直播间订单推广duoId
                 /// </summary>
                 [JsonProperty("sep_duo_id")]
@@ -183,6 +183,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("sep_market_fee")]
                 public int? SepMarketFee { get; set; }
+                /// <summary>
+                /// 直播间推广自定义参数
+                /// </summary>
+                [JsonProperty("sep_parameters")]
+                public string SepParameters { get; set; }
                 /// <summary>
                 /// 直播间订单推广位
                 /// </summary>
@@ -194,10 +199,15 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("sep_rate")]
                 public int? SepRate { get; set; }
                 /// <summary>
-                /// 直播间推广自定义参数
+                /// 订单推广类型
                 /// </summary>
-                [JsonProperty("sep_parameters")]
-                public string SepParameters { get; set; }
+                [JsonProperty("type")]
+                public long? Type { get; set; }
+                /// <summary>
+                /// 招商多多客id
+                /// </summary>
+                [JsonProperty("zs_duo_id")]
+                public long? ZsDuoId { get; set; }
 
             }
 

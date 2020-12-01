@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Util;
 using PddOpenSdk.Models.Response.Util;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class UtilApi : PddCommonApi
     {
         public UtilApi() { }
-        public UtilApi(string accessToken) { AccessToken = accessToken; }
+        public UtilApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 批量数据解密接口
         /// </summary>
@@ -38,6 +38,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<BatchOpenKmsSearchResponseModel> BatchOpenKmsSearchAsync(BatchOpenKmsSearchRequestModel batchOpenKmsSearch)
         {
             var result = await PostAsync<BatchOpenKmsSearchRequestModel, BatchOpenKmsSearchResponseModel>("pdd.open.kms.search.batch", batchOpenKmsSearch);
+            return result;
+        }
+        /// <summary>
+        /// 非拼面单报备接口
+        /// </summary>
+        public async Task<ReportOpenWaybillTypeResponseModel> ReportOpenWaybillTypeAsync(ReportOpenWaybillTypeRequestModel reportOpenWaybillType)
+        {
+            var result = await PostAsync<ReportOpenWaybillTypeRequestModel, ReportOpenWaybillTypeResponseModel>("pdd.open.waybill.type.report", reportOpenWaybillType);
             return result;
         }
         /// <summary>

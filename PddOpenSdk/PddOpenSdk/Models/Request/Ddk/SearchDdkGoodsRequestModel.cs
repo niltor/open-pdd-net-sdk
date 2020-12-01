@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.Ddk
 {
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
@@ -20,7 +20,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
         /// <summary>
-        /// 已经废弃，不再支持该功能
+        /// 已经废弃，不再支持该功能。建议使用goods_sign_list进行商品查询
         /// </summary>
         [JsonProperty("goods_id_list")]
         public List<long?> GoodsIdList { get; set; }
@@ -94,6 +94,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("block_cat_packages")]
         public List<int?> BlockCatPackages { get; set; }
+        /// <summary>
+        /// goodsSign列表，支持通过goodsSign查询商品
+        /// </summary>
+        [JsonProperty("goods_sign_list")]
+        public List<string> GoodsSignList { get; set; }
         public partial class RangeListRequestModel : PddRequestModel
         {
             /// <summary>

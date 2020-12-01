@@ -1,13 +1,21 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Pmc;
 using PddOpenSdk.Models.Response.Pmc;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class PmcApi : PddCommonApi
     {
         public PmcApi() { }
-        public PmcApi(string accessToken) { AccessToken = accessToken; }
+        public PmcApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
+        /// <summary>
+        /// 消息队列积压数量查询
+        /// </summary>
+        public async Task<QueryPmcAccrueResponseModel> QueryPmcAccrueAsync(QueryPmcAccrueRequestModel queryPmcAccrue)
+        {
+            var result = await PostAsync<QueryPmcAccrueRequestModel, QueryPmcAccrueResponseModel>("pdd.pmc.accrue.query", queryPmcAccrue);
+            return result;
+        }
         /// <summary>
         /// 取消用户的消息服务
         /// </summary>

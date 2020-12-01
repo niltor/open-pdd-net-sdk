@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.WayBill;
 using PddOpenSdk.Models.Response.WayBill;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class WayBillApi : PddCommonApi
     {
         public WayBillApi() { }
-        public WayBillApi(string accessToken) { AccessToken = accessToken; }
+        public WayBillApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 生成打印机渲染命令（通过打印机命令打印）
         /// </summary>

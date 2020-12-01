@@ -19,15 +19,15 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
         /// <summary>
-        /// 支付起始时间
-        /// </summary>
-        [JsonProperty("start_time")]
-        public string StartTime { get; set; }
-        /// <summary>
         /// 订单类型：1-推广订单；2-直播间订单
         /// </summary>
         [JsonProperty("query_order_type")]
         public int? QueryOrderType { get; set; }
+        /// <summary>
+        /// 支付起始时间
+        /// </summary>
+        [JsonProperty("start_time")]
+        public string StartTime { get; set; }
 
     }
 

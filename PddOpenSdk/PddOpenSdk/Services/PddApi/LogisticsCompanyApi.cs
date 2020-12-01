@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.LogisticsCompany;
 using PddOpenSdk.Models.Response.LogisticsCompany;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class LogisticsCompanyApi : PddCommonApi
     {
         public LogisticsCompanyApi() { }
-        public LogisticsCompanyApi(string accessToken) { AccessToken = accessToken; }
+        public LogisticsCompanyApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 客户与机器人的聊天记录获取接口
         /// </summary>

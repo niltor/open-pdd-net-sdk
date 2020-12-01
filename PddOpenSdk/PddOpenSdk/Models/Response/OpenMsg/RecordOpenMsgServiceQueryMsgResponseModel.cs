@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Response.OpenMsg
 {
     public partial class RecordOpenMsgServiceQueryMsgResponseModel : PddResponseModel

@@ -1,13 +1,13 @@
 
+using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Invoice;
 using PddOpenSdk.Models.Response.Invoice;
-using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class InvoiceApi : PddCommonApi
     {
         public InvoiceApi() { }
-        public InvoiceApi(string accessToken) { AccessToken = accessToken; }
+        public InvoiceApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
         /// 开票申请单查询
         /// </summary>

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 namespace PddOpenSdk.Models.Request.WayBill
 {
     public partial class GetWaybillRequestModel : PddRequestModel
@@ -56,22 +56,22 @@ namespace PddOpenSdk.Models.Request.WayBill
                 public partial class AddressRequestModel : PddRequestModel
                 {
                     /// <summary>
-                    /// 城市
+                    /// 城市，仅支持非空值
                     /// </summary>
                     [JsonProperty("city")]
                     public string City { get; set; }
                     /// <summary>
-                    /// 详细地址
+                    /// 详细地址，仅支持非空值
                     /// </summary>
                     [JsonProperty("detail")]
                     public string Detail { get; set; }
                     /// <summary>
-                    /// 区
+                    /// 区，仅支持非空值
                     /// </summary>
                     [JsonProperty("district")]
                     public string District { get; set; }
                     /// <summary>
-                    /// 省
+                    /// 省，仅支持非空值
                     /// </summary>
                     [JsonProperty("province")]
                     public string Province { get; set; }
@@ -218,22 +218,22 @@ namespace PddOpenSdk.Models.Request.WayBill
                     public partial class AddressRequestModel : PddRequestModel
                     {
                         /// <summary>
-                        /// 城市
+                        /// 城市，仅支持非空值
                         /// </summary>
                         [JsonProperty("city")]
                         public string City { get; set; }
                         /// <summary>
-                        /// 详细地址
+                        /// 详细地址，仅支持非空值
                         /// </summary>
                         [JsonProperty("detail")]
                         public string Detail { get; set; }
                         /// <summary>
-                        /// 区
+                        /// 区，仅支持非空值
                         /// </summary>
                         [JsonProperty("district")]
                         public string District { get; set; }
                         /// <summary>
-                        /// 省
+                        /// 省，仅支持非空值
                         /// </summary>
                         [JsonProperty("province")]
                         public string Province { get; set; }

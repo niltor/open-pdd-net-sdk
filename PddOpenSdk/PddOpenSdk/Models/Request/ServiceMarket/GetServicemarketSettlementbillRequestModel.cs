@@ -9,7 +9,7 @@ namespace PddOpenSdk.Models.Request.ServiceMarket
         [JsonProperty("page")]
         public int Page { get; set; }
         /// <summary>
-        /// 分页大小，最大不能超过1000
+        /// 分页大小，最大不能超过100
         /// </summary>
         [JsonProperty("page_size")]
         public int PageSize { get; set; }
