@@ -455,7 +455,7 @@ namespace PddOpenSdk.Services.PddApi
 {{
     public class {fileName} : PddCommonApi {{
         public {fileName}(){{}}
-        public {fileName}(string accessToken){{AccessToken = accessToken;}}
+        public {fileName}(string clientId, string clientSecret, string accessToken): base(clientId, clientSecret, accessToken){{}}
         {classContent}
     }}
 }}

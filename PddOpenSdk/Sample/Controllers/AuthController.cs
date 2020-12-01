@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Request.Goods;
@@ -14,18 +15,17 @@ namespace Sample.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
         private readonly PddService _pdd;
         private readonly string AccessToken = "7f7fb3f53dc74417a32ecd920396c4791fefa93f";
-        public AuthController(PddService pdd, IHostingEnvironment env)
+        public AuthController(PddService pdd, IWebHostEnvironment env)
         {
             _pdd = pdd;
             _env = env;
-            PddCommonApi.AccessToken = AccessToken;
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetDDKOAuthUrl(PddCommonApi.RedirectUri);
+            string url = _pdd.AuthApi.GetDDKOAuthUrl();
             ViewData["url"] = url;
             return View();
         }
@@ -37,8 +37,29 @@ namespace Sample.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Callback(string code)
         {
-            var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
+            var token = await _pdd.GetAccessTokenAsync(code);
             return Content(token.AccessToken);
+        }
+
+        /// <summary>
+        /// 多租户测试
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> MultiTenantAsync()
+        {
+            var service = new PddService(new PddOptions
+            {
+                ClientId = "",
+                ClientSecret = "",
+                CallbackUrl = ""
+            });
+            await service.GetAccessTokenAsync(code: "");
+            var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
+                new GetDdkGoodsRecommendRequestModel
+                {
+                    CatId = 20100
+                });
+            return Json(result);
         }
 
         /// <summary>

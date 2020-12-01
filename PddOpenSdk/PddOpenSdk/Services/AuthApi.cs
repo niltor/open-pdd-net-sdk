@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -25,11 +26,12 @@ namespace PddOpenSdk.Services.PddApi
         /// 多多客授权地址
         /// </summary>
         public static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
-
-
         public AuthApi() { }
-        public AuthApi(string clientId, string clientSecret, string accessToken)
-            : base(clientId, clientSecret, accessToken) { }
+        public AuthApi(string clientId, string clientSecret, string accessToken, string redirectUrl)
+            : base(clientId, clientSecret, accessToken)
+        {
+            RedirectUri = redirectUrl;
+        }
 
         /// <summary>
         /// 获取Token请求
@@ -63,8 +65,6 @@ namespace PddOpenSdk.Services.PddApi
                     string jsonString = await response.Content.ReadAsStringAsync();
                     System.Console.WriteLine(jsonString);
                     var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
-
-                    //AccessToken = result.AccessToken;这边不用赋值了
                     return result;
                 }
             }
