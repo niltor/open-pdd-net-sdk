@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>PddOpenSdk.AspNetCore</AssemblyName>
     <RootNamespace>MSDev.PddOpenSdk.AspNetCore</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -23,7 +23,7 @@
     <PackageLicenseUrl></PackageLicenseUrl> 
     <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-    <Version>2.1.0</Version>
+    <Version>2.2.0-beta</Version>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 

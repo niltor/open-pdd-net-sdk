@@ -1,4 +1,4 @@
-# 说明文档
+# 说明文档(ver<2.2.0 )
 
 [![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=1)
 [![NuGet](https://img.shields.io/nuget/v/MSDev.PddOpenSdk.AspNetCore.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
@@ -9,8 +9,8 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## **特别说明**
 
-遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
-
+- 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
+- 从`2.2.0`版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
 ## 更新说明
 更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/dev/CHANGELOG.md)。
 
@@ -37,6 +37,26 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 支持 `.Net Framework4.5.2`及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 使用示例:
+
+#### 2.2.0及以后版本
+```csharp
+var service = new PddService(new PddOptions
+{
+    ClientId = "",
+    ClientSecret = "",
+    CallbackUrl = ""
+});
+// 获取token
+await service.GetAccessTokenAsync(code: "");
+// 接口请求
+var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
+    new GetDdkGoodsRecommendRequestModel
+    {
+        CatId = 20100
+    });
+```
+
+#### 2.1.0及以前版本：
 - 基本请求及错误信息
 ```csharp
 class Program
@@ -86,7 +106,7 @@ class Program
 
 先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-更多 [示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
 
 - 在 Startup.cs 中注入服务
 
@@ -110,8 +130,48 @@ public YourController(PddService pdd)
 }
 ```
 
-- 获取 AccessToken
+#### 2.2.0及以后版本
+```csharp
+/// <summary>
+/// 测试获取token
+/// </summary>
+/// <param name="code"></param>
+/// <returns></returns>
+public async Task<IActionResult> Callback(string code)
+{
+    var token = await _pdd.GetAccessTokenAsync(code);
+    return Content(token.AccessToken);
+}
 
+/// <summary>
+/// 多租户测试
+/// </summary>
+/// <returns></returns>
+public async Task<ActionResult> MultiTenantAsync()
+{
+    var service = new PddService(new PddOptions
+    {
+        ClientId = "",
+        ClientSecret = "",
+        CallbackUrl = "",
+        // 也可直接将token
+        // AccessToken=""
+
+    });
+    // 如果没有token，可通过该方法获取token
+    await service.GetAccessTokenAsync(code: "");
+    var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
+        new GetDdkGoodsRecommendRequestModel
+        {
+            CatId = 20100
+        });
+    return Json(result);
+}
+```
+
+#### 2.1.0及以前版本
+
+- 获取 AccessToken
 ```csharp
 /// <summary>
 /// 测试获取token
@@ -149,7 +209,6 @@ public async Task<ActionResult> Test()
 
 ## 已知问题
 
- l
 ## 问题反馈
 
 欢迎通过以下方式反馈问题:

@@ -51,7 +51,10 @@ namespace Sample.Controllers
             {
                 ClientId = "",
                 ClientSecret = "",
-                CallbackUrl = ""
+                CallbackUrl = "",
+                // 也可直接将token
+                // AccessToken=""
+
             });
             await service.GetAccessTokenAsync(code: "");
             var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
