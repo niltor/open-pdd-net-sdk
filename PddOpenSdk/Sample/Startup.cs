@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using MSDev.PddOpenSdk.AspNetCore;
 
 namespace Sample
 {
@@ -32,6 +33,7 @@ namespace Sample
                 options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
                 options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
             });
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 {
@@ -61,7 +63,6 @@ namespace Sample
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-
         }
     }
 }

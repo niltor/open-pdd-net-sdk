@@ -64,6 +64,29 @@ public async Task<ActionResult> MultiTenantAsync()
     return Json(result);
 }
 ```
+##### 使用socket消息订阅服务
+- 在`StartUp.cs`添加`PddOption`选项。
+    ```csharp
+
+    ```
+- 创建一个`XXXHostService`类，继承`PddSocketHostServiceBase`。
+- 重写`OnMessage`方法，以进行消息的自定义处理。
+- 在`Program.cs`中添加后台服务。
+    ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                }).ConfigureServices(services =>
+                {
+                    services.AddHostedService<XXXHostService>();
+                });
+    ```
+
+
+可参考`Sample`项目。
+
 
 #### 2.1.0及以前版本
 
