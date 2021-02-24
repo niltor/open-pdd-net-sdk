@@ -8,9 +8,9 @@
     <Authors>NilTor</Authors>
     <Company>Geethin</Company>
     <Description>拼多多SDK核心类库
-已更新同步到最新(202012)</Description>
+已更新同步到最新(202102)</Description>
     <PackageReleaseNotes>拼多多SDK核心类库
-已更新同步到最新(202012)
+已更新同步到最新(202102)
 </PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
@@ -21,7 +21,7 @@
     <FileVersion>0.1.0.0</FileVersion>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
-    <Version>2.2.0-beta</Version>
+    <Version>2.3.0-beta</Version>
     <PackageId>MSDev.PddOpenSdk</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Copyright />

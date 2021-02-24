@@ -1,13 +1,10 @@
-# 说明
+### 使用说明
 
-## 介绍
+先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-为ASP.NET Core 用户提供简单快捷的依赖注入方式来使用拼多多的SDK
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
 
-## 使用方法
-可参考[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)
-
-- 在Startup.cs中注入服务
+- 在 Startup.cs 中注入服务
 
 ```csharp
 services.AddPdd(options =>
@@ -27,11 +24,50 @@ public YourController(PddService pdd)
 {
     _pdd = pdd;
 }
-
 ```
 
-- 获取AccessToken
+#### 2.2.0及以后版本
+```csharp
+/// <summary>
+/// 测试获取token
+/// </summary>
+/// <param name="code"></param>
+/// <returns></returns>
+public async Task<IActionResult> Callback(string code)
+{
+    var token = await _pdd.GetAccessTokenAsync(code);
+    return Content(token.AccessToken);
+}
 
+/// <summary>
+/// 多租户测试
+/// </summary>
+/// <returns></returns>
+public async Task<ActionResult> MultiTenantAsync()
+{
+    var service = new PddService(new PddOptions
+    {
+        ClientId = "",
+        ClientSecret = "",
+        CallbackUrl = "",
+        // 也可直接将token
+        // AccessToken=""
+
+    });
+    // 如果没有token，可通过该方法获取token
+    await service.GetAccessTokenAsync(code: "");
+    var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
+        new GetDdkGoodsRecommendRequestModel
+        {
+            CatId = 20100
+        });
+    return Json(result);
+}
+```
+
+#### 2.1.0及以前版本
+
+- 获取 AccessToken
 ```csharp
 /// <summary>
 /// 测试获取token
@@ -48,7 +84,7 @@ public async Task<IActionResult> Callback(string code)
 
 - 调用其他接口
 
-    **获取AccessToken之后才能正常调用其他接口。**
+  **获取 AccessToken 之后才能正常调用其他接口。**
 
 ```csharp
 public async Task<ActionResult> Test()
