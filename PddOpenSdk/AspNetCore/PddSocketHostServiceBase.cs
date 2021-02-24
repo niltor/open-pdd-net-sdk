@@ -35,8 +35,8 @@ namespace MSDev.PddOpenSdk.AspNetCore
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("socket 线程启动.");
+            _logger.LogInformation("socket 开始连接.");
             OpenSocketAsync().Wait();
-            _logger.LogInformation("socket 连接.");
             _timer = new Timer(KeepOnline, null, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(5));
             _logger.LogInformation("socket 心跳定时器运行.");
             return Task.CompletedTask;
@@ -57,7 +57,11 @@ namespace MSDev.PddOpenSdk.AspNetCore
         public void KeepOnline(object state)
         {
             var msg = new SocketMessageModel("HeartBeat");
-            connection.SendAsync("SendMessage", JsonConvert.SerializeObject(msg)).Wait();
+            if (connection.State == HubConnectionState.Connected)
+            {
+                connection.SendAsync("SendMessage", JsonConvert.SerializeObject(msg)).Wait();
+            }
+
         }
 
         public async Task OpenSocketAsync()
@@ -66,6 +70,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
             var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
             var url = @$"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
+            _logger.LogInformation("==========url:" + url);
             // 构建连接 
             connection = new HubConnectionBuilder()
                 .WithUrl(new Uri(url))

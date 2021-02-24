@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using MSDev.PddOpenSdk.AspNetCore;
+using PddOpenSdk.AspNetCore;
 
 namespace Sample
 {
@@ -26,6 +27,8 @@ namespace Sample
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            // 获取选项
+            services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
             // 拼多多服务
             services.AddPdd(options =>
             {

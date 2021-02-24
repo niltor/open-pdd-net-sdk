@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk.AspNetCore", "As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTest", "ApiTest\ApiTest.csproj", "{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{748049E5-2BBE-4756-8C6A-056C7E38E1BA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAF3E8DD-9E88-4E70-BCBF-EE40BDCE380D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{748049E5-2BBE-4756-8C6A-056C7E38E1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{748049E5-2BBE-4756-8C6A-056C7E38E1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{748049E5-2BBE-4756-8C6A-056C7E38E1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{748049E5-2BBE-4756-8C6A-056C7E38E1BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

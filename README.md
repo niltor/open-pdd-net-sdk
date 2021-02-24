@@ -16,15 +16,12 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## 类库说明
 
-支持基于 NETStandardv2.0 的项目，支持 **.NetFramework 4.5.2+，C#8.0**。
+核心类库 `MSDev.PddOpenSdk` 支持基于 .Net Standardv2.0 的项目，支持 ~~.NetFramework 4.5.2+~~，**C#8.0**。
+控制台、客户端等类型项目可使用。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
 
-其他类型使用 Nuget 包 `MSDev.PddOpenSdk`。
-
-## 使用说明
-
-### Console项目
+## Console项目
 
 该项目是通过官方接口获取并自动生成所有请求模型类、返回模型类以及请求服务类，生成后部分类名会有重名,更改成不同的类名即可。
 
@@ -32,6 +29,7 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 
 执行成功后，可使用Visual Studio自带的代码清理，对所有文件进行代码格式化操作。
 
+## 使用说明
 ### PddOpenSdk 核心类库使用
 
 支持 `.Net Framework4.5.2`及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
@@ -168,6 +166,30 @@ public async Task<ActionResult> MultiTenantAsync()
     return Json(result);
 }
 ```
+
+#### 使用socket消息订阅服务
+
+- 在`StartUp.cs`添加`PddOption`选项。
+    ```csharp
+        // 获取选项
+        services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
+    ```
+- 创建一个`XXXHostService`类，继承`PddSocketHostServiceBase`。
+- 重写`OnMessage`方法，以进行消息的自定义处理。
+- 在`Program.cs`中添加启用服务的代码，如：
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            }).ConfigureServices(services =>
+            {
+                services.AddHostedService<XXXHostService>();
+            });
+    ```
+
+`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
 
 #### 2.1.0及以前版本
 

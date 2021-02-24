@@ -21,7 +21,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>aspnetcore,sdk,pdd,拼多多</PackageTags>
     <PackageLicenseUrl></PackageLicenseUrl> 
-    <PackageIconUrl>https://raw.githubusercontent.com/niltor/open-pdd-net-sdk/dev/logo.ico</PackageIconUrl>
+    <PackageIcon>..\logo.jpg</PackageIcon>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
     <Version>2.3.0-beta</Version>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -39,6 +39,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PddOpenSdk\PddOpenSdk.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
