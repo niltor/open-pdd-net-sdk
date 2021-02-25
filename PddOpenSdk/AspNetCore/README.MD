@@ -7,15 +7,17 @@
 - 在 Startup.cs 中注入服务
 
 ```csharp
-services.AddPdd(options =>
-{
-    // 使用appsettings 配置你的ClientId等参数
-    options.ClientId = Configuration.GetSection("Pdd")["ClientId"];
-    options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
-    options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
-});
+services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
+services.AddPdd();
 ```
-
+- `appsettings.json `配置项参考:
+```json
+"Pdd": {
+    "ClientId": "",
+    "ClientSecret": "",
+    "RedirectUri": ""
+}
+```
 - 然后在控制器使用注入服务
 
 ```csharp

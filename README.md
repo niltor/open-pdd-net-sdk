@@ -116,7 +116,14 @@ class Program
 services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
 services.AddPdd();
 ```
-
+- `appsettings.json `配置项参考:
+```json
+"Pdd": {
+    "ClientId": "",
+    "ClientSecret": "",
+    "RedirectUri": ""
+}
+```
 - 然后在控制器使用注入服务
 
 ```csharp
