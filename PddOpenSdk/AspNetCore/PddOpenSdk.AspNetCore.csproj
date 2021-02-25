@@ -21,7 +21,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>aspnetcore,sdk,pdd,拼多多</PackageTags>
     <PackageLicenseUrl></PackageLicenseUrl> 
-    <PackageIcon>..\logo.jpg</PackageIcon>
+    <PackageIcon>logo.jpg</PackageIcon>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
     <Version>2.3.0-beta</Version>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
@@ -29,12 +29,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageReference Include="Websocket.Client" Version="4.3.30" />
   </ItemGroup>
 
   <ItemGroup>

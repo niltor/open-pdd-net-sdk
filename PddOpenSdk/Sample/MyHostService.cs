@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MSDev.PddOpenSdk.AspNetCore;
@@ -20,10 +19,9 @@ namespace Sample
         public override void OnMessage()
         {
             // 接收信息
-            connection.On<string, string>("ReceiveMessage", (user, message) =>
+            client.MessageReceived.Subscribe((message) =>
              {
-                 _logger.LogInformation("收到信息:" + message);
-                 var msg = JsonConvert.DeserializeObject<SocketMessageModel>(message);
+                 var msg = JsonConvert.DeserializeObject<SocketMessageModel>(message.Text);
                  if (msg.CommandType.ToLower().Equals("heartbeat"))
                  {
                      // 心跳报文不处理
@@ -31,14 +29,12 @@ namespace Sample
                  else
                  {
                      _logger.LogInformation("报文:" + msg.Message.Content);
-                     // 你可能会进行数据库的操作，可以先获取数据库上下文服务
                      using (var scope = Services.CreateScope())
                      {
+                         // 获取你自己的数据库上下文服务
                          //var context = scope.ServiceProvider.GetRequiredService<DbContext>();
-
                      }
                  }
-
              });
         }
 

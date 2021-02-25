@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MSDev.PddOpenSdk.Models;
@@ -12,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Websocket.Client;
 
 namespace MSDev.PddOpenSdk.AspNetCore
 {
@@ -20,7 +20,8 @@ namespace MSDev.PddOpenSdk.AspNetCore
         protected PddOptions _options;
         protected readonly ILogger<PddSocketHostServiceBase> _logger;
         protected Timer _timer; // 定时发送，避免被断开
-        protected HubConnection connection;
+
+        protected WebsocketClient client;
         public static string socketUrl = "wss://message-api.pinduoduo.com";
         public IServiceProvider Services { get; }
         public PddSocketHostServiceBase(
@@ -31,13 +32,20 @@ namespace MSDev.PddOpenSdk.AspNetCore
             _logger = logger;
             Services = services;
             _options = options.Value;
+
+            // 获取当前时间戳，并构造加密字段
+            var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
+            var url = @$"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
+            client = new WebsocketClient(new Uri(url));
+
         }
         public Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("socket 线程启动.");
             _logger.LogInformation("socket 开始连接.");
             OpenSocketAsync().Wait();
-            _timer = new Timer(KeepOnline, null, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(5));
+            _timer = new Timer(KeepOnline, null, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(10));
             _logger.LogInformation("socket 心跳定时器运行.");
             return Task.CompletedTask;
         }
@@ -46,7 +54,6 @@ namespace MSDev.PddOpenSdk.AspNetCore
         {
             _logger.LogInformation("后台服务结束.");
             _timer?.Change(Timeout.Infinite, 0);
-            connection.DisposeAsync();
             return Task.CompletedTask;
         }
 
@@ -57,30 +64,18 @@ namespace MSDev.PddOpenSdk.AspNetCore
         public void KeepOnline(object state)
         {
             var msg = new SocketMessageModel("HeartBeat");
-            if (connection.State == HubConnectionState.Connected)
+            if (client.IsRunning)
             {
-                connection.SendAsync("SendMessage", JsonConvert.SerializeObject(msg)).Wait();
+                client.Send(JsonConvert.SerializeObject(msg));
             }
-
         }
 
         public async Task OpenSocketAsync()
         {
-            // 获取当前时间戳，并构造加密字段
-            var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
-            var url = @$"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
-            _logger.LogInformation("==========url:" + url);
-            // 构建连接 
-            connection = new HubConnectionBuilder()
-                .WithUrl(new Uri(url))
-                .WithAutomaticReconnect()
-                .Build();
-            // 连接
             try
             {
-                await connection.StartAsync();
-
+                client.ReconnectTimeout = TimeSpan.FromSeconds(30);
+                await client.Start();
             }
             catch (Exception ex)
             {
@@ -93,10 +88,9 @@ namespace MSDev.PddOpenSdk.AspNetCore
         public virtual void OnMessage()
         {
             // 接收信息
-            connection.On<string, string>("ReceiveMessage", (user, message) =>
-            {
-                _logger.LogInformation("收到信息:" + message);
-            });
+            client.MessageReceived.Subscribe(msg =>
+                _logger.LogInformation($"Message received: {msg}")
+            );
         }
 
         /// <summary>
@@ -104,15 +98,9 @@ namespace MSDev.PddOpenSdk.AspNetCore
         /// </summary>
         public virtual void OnReconnectiong()
         {
-            connection.Reconnecting += error =>
-            {
-                if (connection.State == HubConnectionState.Reconnecting)
-                {
-                    _logger.LogInformation("重新连接中...");
+            client.ReconnectionHappened.Subscribe(info =>
+                _logger.LogInformation($"Reconnection happened, type: {info.Type}"));
 
-                }
-                return Task.CompletedTask;
-            };
         }
 
         public string Digest(string clientId, string secret, long sysTime)
@@ -125,13 +113,14 @@ namespace MSDev.PddOpenSdk.AspNetCore
             {
                 sb.Append(data[i].ToString("x2"));
             }
-            return sb.ToString();
+            return Convert.ToBase64String(Encoding.UTF8.GetBytes(sb.ToString()));
         }
 
         public void Dispose()
         {
             _timer?.Dispose();
-            connection.DisposeAsync();
+            client.Dispose();
+            //connection.DisposeAsync();
         }
     }
 }

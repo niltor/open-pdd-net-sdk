@@ -36,7 +36,6 @@ namespace Sample
                 options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
                 options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
             });
-
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 {
@@ -65,6 +64,7 @@ namespace Sample
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }
