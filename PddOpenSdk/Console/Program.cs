@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using Console;
+using System.Threading.Tasks;
 
 namespace Sample
 {

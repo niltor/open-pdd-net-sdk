@@ -1,10 +1,9 @@
-using System;
+using Newtonsoft.Json;
+using PddOpenSdk.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using PddOpenSdk.Models;
 
 namespace PddOpenSdk.Services.PddApi
 {

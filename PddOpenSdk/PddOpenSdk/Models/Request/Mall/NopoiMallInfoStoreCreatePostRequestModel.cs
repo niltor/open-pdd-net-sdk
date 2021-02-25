@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Mall
 {
     public partial class NopoiMallInfoStoreCreatePostRequestModel : PddRequestModel

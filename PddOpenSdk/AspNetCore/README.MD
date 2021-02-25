@@ -64,29 +64,31 @@ public async Task<ActionResult> MultiTenantAsync()
     return Json(result);
 }
 ```
-##### 使用socket消息订阅服务
+#### 使用socket消息订阅服务
+
 - 在`StartUp.cs`添加`PddOption`选项。
     ```csharp
         // 获取选项
         services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
     ```
 - 创建一个`XXXHostService`类，继承`PddSocketHostServiceBase`。
-- 重写`OnMessage`方法，以进行消息的自定义处理。
-- 在`Program.cs`中添加后台服务。
+- 重写`XXXHostService`的`OnMessage`方法，以进行消息的自定义处理。
+- 在`Program.cs`中添加启用服务的代码，如：
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                }).ConfigureServices(services =>
-                {
-                    services.AddHostedService<XXXHostService>();
-                });
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            }).ConfigureServices(services =>
+            {
+                services.AddHostedService<XXXHostService>();
+            });
     ```
 
+`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
 
-可参考`Sample`项目。
+- 心跳检测每10秒进行一次，后续会添加更多自定义内容。
 
 
 #### 2.1.0及以前版本

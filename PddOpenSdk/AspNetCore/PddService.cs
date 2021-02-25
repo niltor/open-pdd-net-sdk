@@ -1,12 +1,11 @@
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using PddOpenSdk.Models;
+using PddOpenSdk.Services.PddApi;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using PddOpenSdk.Models;
-using PddOpenSdk.Services;
-using PddOpenSdk.Services.PddApi;
 
 namespace PddOpenSdk.AspNetCore
 {
@@ -113,6 +112,8 @@ namespace PddOpenSdk.AspNetCore
         public PddService(IOptions<PddOptions> options)
         {
             _options = options;
+
+            System.Console.WriteLine("clientId:" + _options.Value.ClientId);
             AuthApi = new AuthApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken, _options.Value.CallbackUrl);
             SmsVendorApi = new SmsVendorApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
             AdApi = new AdApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);

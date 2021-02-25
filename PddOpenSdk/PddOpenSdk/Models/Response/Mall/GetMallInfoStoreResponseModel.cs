@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Mall
 {
     public partial class GetMallInfoStoreResponseModel : PddResponseModel

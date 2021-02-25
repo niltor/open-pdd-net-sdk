@@ -1,15 +1,13 @@
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using PddOpenSdk.AspNetCore;
+using PddOpenSdk.Models.Request.Ddk;
+using PddOpenSdk.Models.Request.Goods;
+using Sample.Models;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using PddOpenSdk.AspNetCore;
-using PddOpenSdk.Models.Request.Ddk;
-using PddOpenSdk.Models.Request.Goods;
-using PddOpenSdk.Services;
-using Sample.Models;
 
 namespace Sample.Controllers
 {

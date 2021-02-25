@@ -1,7 +1,7 @@
 
-using System.Threading.Tasks;
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Models.Response.Goods;
+using System.Threading.Tasks;
 namespace PddOpenSdk.Services.PddApi
 {
     public class GoodsApi : PddCommonApi
