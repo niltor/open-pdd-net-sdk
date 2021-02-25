@@ -106,32 +106,31 @@ namespace PddOpenSdk.AspNetCore
         /// 短信供应商API
         /// </summary>
         public SmsVendorApi SmsVendorApi { get; }
-        private readonly IOptions<PddOptions> _options;
+        private readonly PddOptions _options;
         public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
 
         public PddService(IOptions<PddOptions> options)
         {
-            _options = options;
+            _options = options.Value;
 
-            System.Console.WriteLine("clientId:" + _options.Value.ClientId);
-            AuthApi = new AuthApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken, _options.Value.CallbackUrl);
-            SmsVendorApi = new SmsVendorApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            AdApi = new AdApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            DdkApi = new DdkApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            OrderApi = new OrderApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            GoodsApi = new GoodsApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            InvoiceApi = new InvoiceApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            LogisticsApi = new LogisticsApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            MallApi = new MallApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            PromotionApi = new PromotionApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            RefundApi = new RefundApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            UtilApi = new UtilApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            VirtualApi = new VirtualApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            VoucherApi = new VoucherApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            StockApi = new StockApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            PmcApi = new PmcApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            FinanceApi = new FinanceApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
-            ServiceMarketApi = new ServiceMarketApi(_options.Value.ClientId, _options.Value.ClientSecret, _options.Value.AccessToken);
+            AuthApi = new AuthApi(_options.ClientId, _options.ClientSecret, _options.AccessToken, _options.CallbackUrl);
+            SmsVendorApi = new SmsVendorApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            AdApi = new AdApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            DdkApi = new DdkApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            OrderApi = new OrderApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            GoodsApi = new GoodsApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            InvoiceApi = new InvoiceApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            LogisticsApi = new LogisticsApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            MallApi = new MallApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            PromotionApi = new PromotionApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            RefundApi = new RefundApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            UtilApi = new UtilApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            VirtualApi = new VirtualApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            VoucherApi = new VoucherApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            StockApi = new StockApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            PmcApi = new PmcApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            FinanceApi = new FinanceApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
+            ServiceMarketApi = new ServiceMarketApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
         }
 
         public PddService(PddOptions options)
@@ -183,11 +182,11 @@ namespace PddOpenSdk.AspNetCore
                 // TODO 先读取未过期token，若已过期，则刷新或重新获取
                 var dic = new Dictionary<string, string>
                 {
-                    { "client_id", _options.Value.ClientId },
-                    { "client_secret", _options.Value.ClientSecret },
+                    { "client_id", _options.ClientId },
+                    { "client_secret", _options.ClientSecret },
                     { "grant_type", "authorization_code" },
                     { "code", code },
-                    { "redirect_uri", _options.Value.CallbackUrl}
+                    { "redirect_uri", _options.CallbackUrl}
                 };
                 if (state != null)
                 {
@@ -215,8 +214,8 @@ namespace PddOpenSdk.AspNetCore
                 // TODO 先读取未过期token，若已过期，则刷新或重新获取
                 var dic = new Dictionary<string, string>
                 {
-                    { "client_id", _options.Value.ClientId },
-                    { "client_secret", _options.Value.ClientSecret },
+                    { "client_id", _options.ClientId },
+                    { "client_secret", _options.ClientSecret },
                     { "grant_type", "refresh_token" },
                     { "refresh_token", refresh_token }
                 };

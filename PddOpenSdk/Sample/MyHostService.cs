@@ -24,10 +24,11 @@ namespace Sample
                  var msg = JsonConvert.DeserializeObject<SocketMessageModel>(message.Text);
                  if (msg.CommandType.ToLower().Equals("heartbeat"))
                  {
-                     // 心跳报文不处理
+                     // TODO:心跳报文不处理
                  }
                  else
                  {
+                     // TODO:自定义处理逻辑
                      _logger.LogInformation("报文:" + msg.Message.Content);
                      using (var scope = Services.CreateScope())
                      {

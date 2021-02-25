@@ -35,6 +35,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
             var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
             var url = @$"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
+
             client = new WebsocketClient(new Uri(url));
 
         }
@@ -97,7 +98,9 @@ namespace MSDev.PddOpenSdk.AspNetCore
         public virtual void OnReconnectiong()
         {
             client.ReconnectionHappened.Subscribe(info =>
-                _logger.LogInformation($"Reconnection happened, type: {info.Type}"));
+                {
+                    //_logger.LogInformation($"Reconnection happened, type: {info.Type}");
+                });
 
         }
 

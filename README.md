@@ -10,7 +10,8 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 ## **特别说明**
 
 - 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
-- 从`2.2.0`版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
+- `2.2.0 `版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
+- `2.3.0` 提供消息服务支持，核心类库不再支持 `.net framework`.
 ## 更新说明
 更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/dev/CHANGELOG.md)。
 
@@ -30,9 +31,12 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 执行成功后，可使用Visual Studio自带的代码清理，对所有文件进行代码格式化操作。
 
 ## 使用说明
+
 ### PddOpenSdk 核心类库使用
 
-支持 `.Net Framework4.5.2`及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+适用于客户端、控制台等程序，Web应用请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`。
+
+支持 ~~`.Net Framework4.5.2`~~ 及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 使用示例:
 
@@ -109,13 +113,8 @@ class Program
 - 在 Startup.cs 中注入服务
 
 ```csharp
-services.AddPdd(options =>
-{
-    // 使用appsettings 配置你的ClientId等参数
-    options.ClientId = Configuration.GetSection("Pdd")["ClientId"];
-    options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
-    options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
-});
+services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
+services.AddPdd();
 ```
 
 - 然后在控制器使用注入服务
@@ -175,7 +174,7 @@ public async Task<ActionResult> MultiTenantAsync()
         services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
     ```
 - 创建一个`XXXHostService`类，继承`PddSocketHostServiceBase`。
-- 重写`OnMessage`方法，以进行消息的自定义处理。
+- 重写`XXXHostService`的`OnMessage`方法，以进行消息的自定义处理。
 - 在`Program.cs`中添加启用服务的代码，如：
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -191,6 +190,7 @@ public async Task<ActionResult> MultiTenantAsync()
 
 `XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
 
+- 心跳检测每10秒进行一次，后续会添加更多自定义内容。
 #### 2.1.0及以前版本
 
 - 获取 AccessToken

@@ -29,12 +29,8 @@ namespace Sample
             // 获取选项
             services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
             // 拼多多服务
-            services.AddPdd(options =>
-            {
-                options.ClientId = Configuration.GetSection("Pdd")["ClientId"];
-                options.CallbackUrl = Configuration.GetSection("Pdd")["RedirectUri"];
-                options.ClientSecret = Configuration.GetSection("Pdd")["ClientSecret"];
-            });
+            services.AddPdd();
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 {
