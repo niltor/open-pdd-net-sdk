@@ -134,11 +134,6 @@ namespace PddOpenSdk.Models.Response.Ad
                 [JsonProperty("minGroupPrice")]
                 public long? MinGroupPrice { get; set; }
                 /// <summary>
-                /// OCPC开启日期
-                /// </summary>
-                [JsonProperty("ocpcStartDate")]
-                public string OcpcStartDate { get; set; }
-                /// <summary>
                 /// 优化目标。0表示不优化。1表示优化ROI，2表示优化转化成本。
                 /// </summary>
                 [JsonProperty("optimizationGoal")]
@@ -235,6 +230,25 @@ namespace PddOpenSdk.Models.Response.Ad
                     /// </summary>
                     [JsonProperty("optimizationStartTime")]
                     public string OptimizationStartTime { get; set; }
+                    /// <summary>
+                    /// 可选优化目标信息列表
+                    /// </summary>
+                    [JsonProperty("optionalOptimizationBidOutputMessageList")]
+                    public List<OptionalOptimizationBidOutputMessageListResponseModel> OptionalOptimizationBidOutputMessageList { get; set; }
+                    public partial class OptionalOptimizationBidOutputMessageListResponseModel : PddResponseModel
+                    {
+                        /// <summary>
+                        /// 可选优化目标出价
+                        /// </summary>
+                        [JsonProperty("optimizationBid")]
+                        public long? OptimizationBid { get; set; }
+                        /// <summary>
+                        /// 可选优化目标
+                        /// </summary>
+                        [JsonProperty("optimizationGoal")]
+                        public int? OptimizationGoal { get; set; }
+
+                    }
 
                 }
 

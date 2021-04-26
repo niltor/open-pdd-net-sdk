@@ -24,6 +24,11 @@ namespace PddOpenSdk.Models.Response.Invoice
                 [JsonProperty("application_status")]
                 public int? ApplicationStatus { get; set; }
                 /// <summary>
+                /// 申请时间
+                /// </summary>
+                [JsonProperty("apply_time")]
+                public int? ApplyTime { get; set; }
+                /// <summary>
                 /// 抬头类型：0-个人，1-企业
                 /// </summary>
                 [JsonProperty("business_type")]
@@ -89,6 +94,11 @@ namespace PddOpenSdk.Models.Response.Invoice
                 [JsonProperty("payer_register_no")]
                 public string PayerRegisterNo { get; set; }
                 /// <summary>
+                /// 是否正品发票：0=非正品发票，1=非正品发票
+                /// </summary>
+                [JsonProperty("quality_goods_invoice")]
+                public int? QualityGoodsInvoice { get; set; }
+                /// <summary>
                 /// 驳回原因
                 /// </summary>
                 [JsonProperty("reason")]
@@ -113,16 +123,6 @@ namespace PddOpenSdk.Models.Response.Invoice
                 /// </summary>
                 [JsonProperty("trigger_status")]
                 public int? TriggerStatus { get; set; }
-                /// <summary>
-                /// 申请时间秒级时间戳
-                /// </summary>
-                [JsonProperty("apply_time")]
-                public int? ApplyTime { get; set; }
-                /// <summary>
-                /// 是否正品发票 0=非正品发票 1=是正品发票
-                /// </summary>
-                [JsonProperty("quality_goods_invoice")]
-                public int? QualityGoodsInvoice { get; set; }
 
             }
 

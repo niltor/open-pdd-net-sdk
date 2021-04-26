@@ -12,25 +12,25 @@ namespace PddOpenSdk.Models.Response.Virtual
         public partial class GameServerQueryResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 区服信息
-            /// </summary>
-            [JsonProperty("item_list")]
-            public List<ItemListResponseModel> ItemList { get; set; }
-            /// <summary>
             /// 游戏CODE
             /// </summary>
             [JsonProperty("goods_config_code")]
             public string GoodsConfigCode { get; set; }
+            /// <summary>
+            /// 游戏ID
+            /// </summary>
+            [JsonProperty("goods_config_id")]
+            public long? GoodsConfigId { get; set; }
             /// <summary>
             /// 游戏配置名称
             /// </summary>
             [JsonProperty("goods_config_name")]
             public string GoodsConfigName { get; set; }
             /// <summary>
-            /// 游戏ID
+            /// 区服信息
             /// </summary>
-            [JsonProperty("goods_config_id")]
-            public long? GoodsConfigId { get; set; }
+            [JsonProperty("item_list")]
+            public List<ItemListResponseModel> ItemList { get; set; }
             public partial class ItemListResponseModel : PddResponseModel
             {
                 /// <summary>

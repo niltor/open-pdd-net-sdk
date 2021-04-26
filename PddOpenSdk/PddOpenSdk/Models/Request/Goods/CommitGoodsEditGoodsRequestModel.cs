@@ -254,6 +254,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("delivery_type")]
         public int? DeliveryType { get; set; }
+        /// <summary>
+        /// 是否成团预售。0：不是；1:是。
+        /// </summary>
+        [JsonProperty("is_group_pre_sale")]
+        public int? IsGroupPreSale { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>
@@ -479,6 +484,11 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("weight")]
             public long Weight { get; set; }
+            /// <summary>
+            /// sku属性
+            /// </summary>
+            [JsonProperty("sku_properties")]
+            public List<SkuPropertiesRequestModel> SkuProperties { get; set; }
             public partial class OverseaSkuRequestModel : PddRequestModel
             {
                 /// <summary>
@@ -496,6 +506,30 @@ namespace PddOpenSdk.Models.Request.Goods
                 /// </summary>
                 [JsonProperty("taxation")]
                 public int Taxation { get; set; }
+
+            }
+            public partial class SkuPropertiesRequestModel : PddRequestModel
+            {
+                /// <summary>
+                /// 属性单位
+                /// </summary>
+                [JsonProperty("punit")]
+                public string Punit { get; set; }
+                /// <summary>
+                /// 属性id
+                /// </summary>
+                [JsonProperty("ref_pid")]
+                public long RefPid { get; set; }
+                /// <summary>
+                /// 属性值
+                /// </summary>
+                [JsonProperty("value")]
+                public string Value { get; set; }
+                /// <summary>
+                /// 属性值id
+                /// </summary>
+                [JsonProperty("vid")]
+                public long Vid { get; set; }
 
             }
 

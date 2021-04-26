@@ -9,6 +9,14 @@ namespace PddOpenSdk.Services.PddApi
         public TicketApi() { }
         public TicketApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
+        /// 旅游门票区域编码查询
+        /// </summary>
+        public async Task<GetTicketAreacodeResponseModel> GetTicketAreacodeAsync(GetTicketAreacodeRequestModel getTicketAreacode)
+        {
+            var result = await PostAsync<GetTicketAreacodeRequestModel, GetTicketAreacodeResponseModel>("pdd.ticket.areacode.get", getTicketAreacode);
+            return result;
+        }
+        /// <summary>
         /// 门票商品查询接口
         /// </summary>
         public async Task<QueryTicketGoodsResponseModel> QueryTicketGoodsAsync(QueryTicketGoodsRequestModel queryTicketGoods)
@@ -38,6 +46,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<NotifycationTicketOrderRefundResponseModel> NotifycationTicketOrderRefundAsync(NotifycationTicketOrderRefundRequestModel notifycationTicketOrderRefund)
         {
             var result = await PostAsync<NotifycationTicketOrderRefundRequestModel, NotifycationTicketOrderRefundResponseModel>("pdd.ticket.order.refund.notifycation", notifycationTicketOrderRefund);
+            return result;
+        }
+        /// <summary>
+        /// 旅游门票拼多多景区编码查询
+        /// </summary>
+        public async Task<GetTicketScenicResponseModel> GetTicketScenicAsync(GetTicketScenicRequestModel getTicketScenic)
+        {
+            var result = await PostAsync<GetTicketScenicRequestModel, GetTicketScenicResponseModel>("pdd.ticket.scenic.get", getTicketScenic);
             return result;
         }
         /// <summary>

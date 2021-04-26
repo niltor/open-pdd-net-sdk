@@ -4,6 +4,11 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class GetDdkOrderListIncrementRequestModel : PddRequestModel
     {
         /// <summary>
+        /// 是否为礼金订单，查询礼金订单时，订单类型不填（默认推广订单）。
+        /// </summary>
+        [JsonProperty("cash_gift_order")]
+        public bool? CashGiftOrder { get; set; }
+        /// <summary>
         /// 查询结束时间，和开始时间相差不能超过24小时。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
         /// </summary>
         [JsonProperty("end_update_time")]

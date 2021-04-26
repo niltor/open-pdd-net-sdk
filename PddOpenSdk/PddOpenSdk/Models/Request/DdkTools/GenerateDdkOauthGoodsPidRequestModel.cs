@@ -5,6 +5,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
     public partial class GenerateDdkOauthGoodsPidRequestModel : PddRequestModel
     {
         /// <summary>
+        /// 媒体id
+        /// </summary>
+        [JsonProperty("media_id")]
+        public long? MediaId { get; set; }
+        /// <summary>
         /// 要生成的推广位数量，默认为10，范围为：1~100
         /// </summary>
         [JsonProperty("number")]
@@ -14,11 +19,6 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("p_id_name_list")]
         public List<string> PIdNameList { get; set; }
-        /// <summary>
-        /// 媒体id
-        /// </summary>
-        [JsonProperty("media_id")]
-        public long? MediaId { get; set; }
 
     }
 

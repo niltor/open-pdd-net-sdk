@@ -14,12 +14,12 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("quantity")]
         public long Quantity { get; set; }
         /// <summary>
-        /// sku_id和outer_id必填一个
+        /// sku_id和outer_id必填一个，优先使用sku_id
         /// </summary>
         [JsonProperty("sku_id")]
         public long? SkuId { get; set; }
         /// <summary>
-        /// sku商家编码
+        /// sku商家编码，如果sku_id未填，则使用outer_id
         /// </summary>
         [JsonProperty("outer_id")]
         public string OuterId { get; set; }

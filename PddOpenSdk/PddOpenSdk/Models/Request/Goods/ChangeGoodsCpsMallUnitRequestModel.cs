@@ -7,7 +7,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 全店推广计划佣金比（千分比）
         /// </summary>
         [JsonProperty("rate")]
-        public int? Rate { get; set; }
+        public int Rate { get; set; }
 
     }
 

@@ -4,6 +4,11 @@ namespace PddOpenSdk.Models.Request.Order
     public partial class SyncErpOrderRequestModel : PddRequestModel
     {
         /// <summary>
+        /// 物流公司编码
+        /// </summary>
+        [JsonProperty("logistics_id")]
+        public long LogisticsId { get; set; }
+        /// <summary>
         /// 订单号
         /// </summary>
         [JsonProperty("order_sn")]
@@ -18,11 +23,6 @@ namespace PddOpenSdk.Models.Request.Order
         /// </summary>
         [JsonProperty("waybill_no")]
         public string WaybillNo { get; set; }
-        /// <summary>
-        /// 物流公司编码
-        /// </summary>
-        [JsonProperty("logistics_id")]
-        public long LogisticsId { get; set; }
 
     }
 

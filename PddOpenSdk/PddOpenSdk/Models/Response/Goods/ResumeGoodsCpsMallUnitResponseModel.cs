@@ -11,7 +11,7 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsCpsMallUnitResumeResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 是否成功
+            /// 结果
             /// </summary>
             [JsonProperty("result")]
             public bool? Result { get; set; }

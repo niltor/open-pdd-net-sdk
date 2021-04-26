@@ -6,9 +6,9 @@ namespace PddOpenSdk.Models.Response.Goods
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty("goods_cps_mall_unit_query_response")]
-        public GoodsCpsMallUnitQueryResponseResponseModel GoodsCpsMallUnitQueryResponse { get; set; }
-        public partial class GoodsCpsMallUnitQueryResponseResponseModel : PddResponseModel
+        [JsonProperty("goods_cps_mall_unit_pause_response")]
+        public GoodsCpsMallUnitPauseResponseResponseModel GoodsCpsMallUnitPauseResponse { get; set; }
+        public partial class GoodsCpsMallUnitPauseResponseResponseModel : PddResponseModel
         {
             /// <summary>
             /// 是否成功

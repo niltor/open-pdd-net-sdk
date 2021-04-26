@@ -4,6 +4,11 @@ namespace PddOpenSdk.Models.Request.Invoice
     public partial class UploadInvoiceDetailRequestModel : PddRequestModel
     {
         /// <summary>
+        /// 申请流水号
+        /// </summary>
+        [JsonProperty("application_id")]
+        public long? ApplicationId { get; set; }
+        /// <summary>
         /// 抬头类型：0-个人，1-企业
         /// </summary>
         [JsonProperty("business_type")]

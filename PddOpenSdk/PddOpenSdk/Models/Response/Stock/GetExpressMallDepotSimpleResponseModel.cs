@@ -22,15 +22,15 @@ namespace PddOpenSdk.Models.Response.Stock
             [JsonProperty("depot_str")]
             public string DepotStr { get; set; }
             /// <summary>
-            /// 仓库名称
-            /// </summary>
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            /// <summary>
             /// 仓库类型(暂时1表示自建仓)
             /// </summary>
             [JsonProperty("depot_type")]
             public int? DepotType { get; set; }
+            /// <summary>
+            /// 仓库名称
+            /// </summary>
+            [JsonProperty("name")]
+            public string Name { get; set; }
 
         }
 

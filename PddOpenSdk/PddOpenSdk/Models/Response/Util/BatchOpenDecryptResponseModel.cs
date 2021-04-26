@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Response.Util
                 [JsonProperty("data_tag")]
                 public string DataTag { get; set; }
                 /// <summary>
-                /// 1、虚拟卡密;2、虚拟卡号;3、支付商品编码;4、支付单号;5、收件人;6、收件人手机号;7、收件人完整地址;8、收件人详细地址;9、快递单号;10、身份证号;11、身份证姓名
+                /// 1、虚拟卡密;2、虚拟卡号;3、支付申报订单号;4、支付单号;5、收件人;6、收件人手机号;7、收件人完整地址;8、收件人详细地址;9、快递单号;10、身份证号;11、身份证姓名
                 /// </summary>
                 [JsonProperty("data_type")]
                 public int? DataType { get; set; }

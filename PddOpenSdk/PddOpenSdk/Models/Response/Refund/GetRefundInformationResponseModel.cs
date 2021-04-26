@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Response.Refund
 {
     public partial class GetRefundInformationResponseModel : PddResponseModel
@@ -83,6 +84,110 @@ namespace PddOpenSdk.Models.Response.Refund
         /// </summary>
         [JsonProperty("expire_time")]
         public long? ExpireTime { get; set; }
+        /// <summary>
+        /// 退货物流名称
+        /// </summary>
+        [JsonProperty("shipping_name")]
+        public string ShippingName { get; set; }
+        /// <summary>
+        /// 1纠纷退款 0非纠纷退款
+        /// </summary>
+        [JsonProperty("dispute_refund_status")]
+        public int? DisputeRefundStatus { get; set; }
+        /// <summary>
+        /// 0-未勾选 1-消费者选择的收货状态为未收到货 2-消费者选择的收货状态为已收到货
+        /// </summary>
+        [JsonProperty("user_shipping_status")]
+        public string UserShippingStatus { get; set; }
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        [JsonProperty("updated_time")]
+        public string UpdatedTime { get; set; }
+        /// <summary>
+        /// 换货详情,售后类型是换货才有值
+        /// </summary>
+        [JsonProperty("exchange_shipping_detail")]
+        public ExchangeShippingDetailResponseModel ExchangeShippingDetail { get; set; }
+        /// <summary>
+        /// 商品规格ID
+        /// </summary>
+        [JsonProperty("sku_id")]
+        public string SkuId { get; set; }
+        /// <summary>
+        /// 是否介入 1介入 0未介入
+        /// </summary>
+        [JsonProperty("join_or_not")]
+        public string JoinOrNot { get; set; }
+        /// <summary>
+        /// 用户申请售后上传的图片列表
+        /// </summary>
+        [JsonProperty("images")]
+        public List<string> Images { get; set; }
+        /// <summary>
+        /// 用户申请输入的描述信息
+        /// </summary>
+        [JsonProperty("remark")]
+        public string Remark { get; set; }
+        public partial class ExchangeShippingDetailResponseModel : PddResponseModel
+        {
+            /// <summary>
+            /// 消费者回寄的物流id
+            /// </summary>
+            [JsonProperty("customer_send_back_ship_id")]
+            public int? CustomerSendBackShipId { get; set; }
+            /// <summary>
+            /// 消费者回寄的物流单号
+            /// </summary>
+            [JsonProperty("customer_send_back_trunk_number")]
+            public string CustomerSendBackTrunkNumber { get; set; }
+            /// <summary>
+            /// 换货发货的物品名称
+            /// </summary>
+            [JsonProperty("exchange_goods_name")]
+            public string ExchangeGoodsName { get; set; }
+            /// <summary>
+            /// 换货发货的物品数量
+            /// </summary>
+            [JsonProperty("exchange_goods_number")]
+            public int? ExchangeGoodsNumber { get; set; }
+            /// <summary>
+            /// 换货的物品价格(单位分)
+            /// </summary>
+            [JsonProperty("exchange_goods_price")]
+            public long? ExchangeGoodsPrice { get; set; }
+            /// <summary>
+            /// 商家换货发货的详细地址
+            /// </summary>
+            [JsonProperty("merchant_exchange_detail_address")]
+            public string MerchantExchangeDetailAddress { get; set; }
+            /// <summary>
+            /// 商家换货发货的收货人手机号
+            /// </summary>
+            [JsonProperty("merchant_exchange_detail_phone")]
+            public string MerchantExchangeDetailPhone { get; set; }
+            /// <summary>
+            /// 商家换货发货的收货人名字
+            /// </summary>
+            [JsonProperty("merchant_exchange_detail_receiver")]
+            public string MerchantExchangeDetailReceiver { get; set; }
+            /// <summary>
+            /// 商家换货发货的物流id
+            /// </summary>
+            [JsonProperty("merchant_exchange_ship_id")]
+            public int? MerchantExchangeShipId { get; set; }
+            /// <summary>
+            /// 商家换货发货的物流单号
+            /// </summary>
+            [JsonProperty("merchant_exchange_trunk_number")]
+            public string MerchantExchangeTrunkNumber { get; set; }
+            /// <summary>
+            /// 换货商品规格ID
+            /// </summary>
+            [JsonProperty("sku_id_exchange")]
+            public string SkuIdExchange { get; set; }
+
+        }
 
     }
 

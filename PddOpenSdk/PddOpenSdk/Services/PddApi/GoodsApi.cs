@@ -33,6 +33,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 商品建议价格获取接口
+        /// </summary>
+        public async Task<GetGoodsAdvicePriceResponseModel> GetGoodsAdvicePriceAsync(GetGoodsAdvicePriceRequestModel getGoodsAdvicePrice)
+        {
+            var result = await PostAsync<GetGoodsAdvicePriceRequestModel, GetGoodsAdvicePriceResponseModel>("pdd.goods.advice.price.get", getGoodsAdvicePrice);
+            return result;
+        }
+        /// <summary>
         /// 获取当前授权商家可发布的商品类目信息
         /// </summary>
         public async Task<CatsGoodsAuthorizationResponseModel> CatsGoodsAuthorizationAsync(CatsGoodsAuthorizationRequestModel catsGoodsAuthorization)
@@ -422,6 +430,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<UpdateGoodsSkuPriceResponseModel> UpdateGoodsSkuPriceAsync(UpdateGoodsSkuPriceRequestModel updateGoodsSkuPrice)
         {
             var result = await PostAsync<UpdateGoodsSkuPriceRequestModel, UpdateGoodsSkuPriceResponseModel>("pdd.goods.sku.price.update", updateGoodsSkuPrice);
+            return result;
+        }
+        /// <summary>
+        /// 根据skuId查询sku详情
+        /// </summary>
+        public async Task<GetGoodsSkusResponseModel> GetGoodsSkusAsync(GetGoodsSkusRequestModel getGoodsSkus)
+        {
+            var result = await PostAsync<GetGoodsSkusRequestModel, GetGoodsSkusResponseModel>("pdd.goods.skus.get", getGoodsSkus);
             return result;
         }
         /// <summary>

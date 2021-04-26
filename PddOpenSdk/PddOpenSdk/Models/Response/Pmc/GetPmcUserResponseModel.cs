@@ -19,11 +19,6 @@ namespace PddOpenSdk.Models.Response.Pmc
             public partial class PmcUserResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 用户最后开通时间
-                /// </summary>
-                [JsonProperty("modified")]
-                public string Modified { get; set; }
-                /// <summary>
                 /// 用户首次开通时间
                 /// </summary>
                 [JsonProperty("created")]
@@ -33,6 +28,11 @@ namespace PddOpenSdk.Models.Response.Pmc
                 /// </summary>
                 [JsonProperty("is_expire")]
                 public int? IsExpire { get; set; }
+                /// <summary>
+                /// 用户最后开通时间
+                /// </summary>
+                [JsonProperty("modified")]
+                public string Modified { get; set; }
                 /// <summary>
                 /// 用户ID
                 /// </summary>

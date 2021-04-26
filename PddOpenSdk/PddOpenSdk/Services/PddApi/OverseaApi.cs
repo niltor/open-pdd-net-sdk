@@ -24,6 +24,14 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<GetOverseaClearanceRequestModel, GetOverseaClearanceResponseModel>("pdd.oversea.clearance.get", getOverseaClearance);
             return result;
         }
+        /// <summary>
+        /// 同步海淘订单申报失败情况
+        /// </summary>
+        public async Task<NotifyOverseaDeclarationFailResponseModel> NotifyOverseaDeclarationFailAsync(NotifyOverseaDeclarationFailRequestModel notifyOverseaDeclarationFail)
+        {
+            var result = await PostAsync<NotifyOverseaDeclarationFailRequestModel, NotifyOverseaDeclarationFailResponseModel>("pdd.oversea.declaration.fail.notify", notifyOverseaDeclarationFail);
+            return result;
+        }
 
     }
 }

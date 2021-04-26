@@ -10,7 +10,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("media_id")]
         public long MediaId { get; set; }
         /// <summary>
-        /// pid列表
+        /// 推广位列表，例如：["60005_612"]，最多支持同时传入1000个
         /// </summary>
         [JsonProperty("pid_list")]
         public List<string> PidList { get; set; }

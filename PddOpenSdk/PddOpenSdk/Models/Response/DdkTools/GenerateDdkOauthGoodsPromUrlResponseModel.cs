@@ -19,12 +19,12 @@ namespace PddOpenSdk.Models.Response.DdkTools
             public partial class GoodsPromotionUrlListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 唤醒拼多多app的推广短链接
+                /// 对应出参mobile_url的短链接，与mobile_url功能一致。
                 /// </summary>
                 [JsonProperty("mobile_short_url")]
                 public string MobileShortUrl { get; set; }
                 /// <summary>
-                /// 唤醒拼多多app的推广长链接
+                /// 使用此推广链接，用户安装拼多多APP的情况下会唤起APP，否则唤起H5页面
                 /// </summary>
                 [JsonProperty("mobile_url")]
                 public string MobileUrl { get; set; }
@@ -34,45 +34,25 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("qq_app_info")]
                 public QqAppInfoResponseModel QqAppInfo { get; set; }
                 /// <summary>
-                /// schema的链接
+                /// 使用此推广链接，用户安装拼多多APP的情况下会唤起APP（需客户端支持schema跳转协议）
                 /// </summary>
                 [JsonProperty("schema_url")]
                 public string SchemaUrl { get; set; }
                 /// <summary>
-                /// 推广短链接
+                /// 对应出参url的短链接，与url功能一致
                 /// </summary>
                 [JsonProperty("short_url")]
                 public string ShortUrl { get; set; }
                 /// <summary>
-                /// 推广长链接
+                /// 普通推广长链接，唤起H5页面
                 /// </summary>
                 [JsonProperty("url")]
                 public string Url { get; set; }
                 /// <summary>
-                /// 微博推广短链接
-                /// </summary>
-                [JsonProperty("weibo_app_web_view_short_url")]
-                public string WeiboAppWebViewShortUrl { get; set; }
-                /// <summary>
-                /// 微博推广链接
-                /// </summary>
-                [JsonProperty("weibo_app_web_view_url")]
-                public string WeiboAppWebViewUrl { get; set; }
-                /// <summary>
-                /// 小程序信息
+                /// 拼多多福利券微信小程序信息
                 /// </summary>
                 [JsonProperty("we_app_info")]
                 public WeAppInfoResponseModel WeAppInfo { get; set; }
-                /// <summary>
-                /// 唤起微信app推广短链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_short_url")]
-                public string WeAppWebViewShortUrl { get; set; }
-                /// <summary>
-                /// 唤起微信app推广链接
-                /// </summary>
-                [JsonProperty("we_app_web_view_url")]
-                public string WeAppWebViewUrl { get; set; }
                 public partial class QqAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -120,7 +100,7 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 public partial class WeAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
-                    /// 拼多多小程序id
+                    /// 小程序id
                     /// </summary>
                     [JsonProperty("app_id")]
                     public string AppId { get; set; }

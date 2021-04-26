@@ -41,6 +41,11 @@ namespace PddOpenSdk.Models.Request.WayBill
             /// </summary>
             [JsonProperty("print_command_type")]
             public string PrintCommandType { get; set; }
+            /// <summary>
+            /// 返回值编码方式，枚举值：gzip(默认值)、gzip_byte(推荐值)
+            /// </summary>
+            [JsonProperty("cmd_encoding")]
+            public string CmdEncoding { get; set; }
             public partial class ConfigRequestModel : PddRequestModel
             {
                 /// <summary>

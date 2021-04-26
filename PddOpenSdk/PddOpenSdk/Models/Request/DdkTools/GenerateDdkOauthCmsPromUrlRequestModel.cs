@@ -30,10 +30,15 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("generate_short_url")]
         public bool? GenerateShortUrl { get; set; }
         /// <summary>
-        /// 是否唤起微信客户端， 默认false 否，true 是
+        /// 是否生成拼多多福利券微信小程序推广信息
         /// </summary>
-        [JsonProperty("generate_weapp_webview")]
-        public bool? GenerateWeappWebview { get; set; }
+        [JsonProperty("generate_we_app")]
+        public bool? GenerateWeApp { get; set; }
+        /// <summary>
+        /// 搜索关键词
+        /// </summary>
+        [JsonProperty("keyword")]
+        public string Keyword { get; set; }
         /// <summary>
         /// 单人团多人团标志。true-多人团，false-单人团 默认false
         /// </summary>
@@ -44,16 +49,6 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("p_id_list")]
         public List<string> PIdList { get; set; }
-        /// <summary>
-        /// 是否生成小程序推广
-        /// </summary>
-        [JsonProperty("generate_we_app")]
-        public bool? GenerateWeApp { get; set; }
-        /// <summary>
-        /// 搜索关键词
-        /// </summary>
-        [JsonProperty("keyword")]
-        public string Keyword { get; set; }
 
     }
 

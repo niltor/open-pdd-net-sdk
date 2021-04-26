@@ -18,6 +18,11 @@ namespace PddOpenSdk.Models.Request.Voucher
         /// </summary>
         [JsonProperty("store_name")]
         public string StoreName { get; set; }
+        /// <summary>
+        /// 拼多多订单编号
+        /// </summary>
+        [JsonProperty("order_sn")]
+        public string OrderSn { get; set; }
 
     }
 

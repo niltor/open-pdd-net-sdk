@@ -44,16 +44,6 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("activity_type")]
                 public int? ActivityType { get; set; }
                 /// <summary>
-                /// 商品类目ID，使用pdd.goods.cats.get接口获取
-                /// </summary>
-                [JsonProperty("category_id")]
-                public long? CategoryId { get; set; }
-                /// <summary>
-                /// 商品类目名
-                /// </summary>
-                [JsonProperty("category_name")]
-                public string CategoryName { get; set; }
-                /// <summary>
                 /// 商品类目id
                 /// </summary>
                 [JsonProperty("cat_ids")]
@@ -134,27 +124,32 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("desc_txt")]
                 public string DescTxt { get; set; }
                 /// <summary>
+                /// 额外优惠券
+                /// </summary>
+                [JsonProperty("extra_coupon_amount")]
+                public long? ExtraCouponAmount { get; set; }
+                /// <summary>
                 /// 商品描述
                 /// </summary>
                 [JsonProperty("goods_desc")]
                 public string GoodsDesc { get; set; }
-                /// <summary>
-                /// 商品id
-                /// </summary>
-                [JsonProperty("goods_id")]
-                public long? GoodsId { get; set; }
                 /// <summary>
                 /// 商品主图
                 /// </summary>
                 [JsonProperty("goods_image_url")]
                 public string GoodsImageUrl { get; set; }
                 /// <summary>
+                /// 商品特殊标签列表。例: [1]，1-APP专享
+                /// </summary>
+                [JsonProperty("goods_labels")]
+                public List<int?> GoodsLabels { get; set; }
+                /// <summary>
                 /// 商品名称
                 /// </summary>
                 [JsonProperty("goods_name")]
                 public string GoodsName { get; set; }
                 /// <summary>
-                /// 商品goodsSign
+                /// 商品goodsSign，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
                 /// </summary>
                 [JsonProperty("goods_sign")]
                 public string GoodsSign { get; set; }
@@ -269,7 +264,7 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("opt_name")]
                 public string OptName { get; set; }
                 /// <summary>
-                /// 推广计划类型 3:定向 4:招商
+                /// 推广计划类型: 1-全店推广 2-单品推广 3-定向推广 4-招商推广 5-分销推广
                 /// </summary>
                 [JsonProperty("plan_type")]
                 public int? PlanType { get; set; }
@@ -304,7 +299,17 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("serv_txt")]
                 public string ServTxt { get; set; }
                 /// <summary>
-                /// 优惠标签列表
+                /// 招商分成服务费比例，千分比
+                /// </summary>
+                [JsonProperty("share_rate")]
+                public int? ShareRate { get; set; }
+                /// <summary>
+                /// 优势渠道专属商品补贴金额。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+                /// </summary>
+                [JsonProperty("subsidy_amount")]
+                public int? SubsidyAmount { get; set; }
+                /// <summary>
+                /// 优惠标签列表，包括："X元券","比全网低X元","服务费","精选素材","近30天低价","同款低价","同款好评","同款热销","旗舰店","一降到底","招商优选","商家优选","好价再降X元","全站销量XX","实时热销榜第X名","实时好评榜第X名","额外补X元"等
                 /// </summary>
                 [JsonProperty("unified_tags")]
                 public List<string> UnifiedTags { get; set; }

@@ -35,6 +35,11 @@ namespace PddOpenSdk.Models.Response.Mall
             /// </summary>
             [JsonProperty("merchant_type")]
             public int? MerchantType { get; set; }
+            /// <summary>
+            /// 店铺身份,0:厂商 1:分销商 2:都不是 3:都是
+            /// </summary>
+            [JsonProperty("mall_character")]
+            public int? MallCharacter { get; set; }
 
         }
 

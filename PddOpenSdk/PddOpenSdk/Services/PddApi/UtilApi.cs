@@ -41,6 +41,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 虚拟号查询接口
+        /// </summary>
+        public async Task<CheckOpenVirtualNumberResponseModel> CheckOpenVirtualNumberAsync(CheckOpenVirtualNumberRequestModel checkOpenVirtualNumber)
+        {
+            var result = await PostAsync<CheckOpenVirtualNumberRequestModel, CheckOpenVirtualNumberResponseModel>("pdd.open.virtual.number.check", checkOpenVirtualNumber);
+            return result;
+        }
+        /// <summary>
         /// 非拼面单报备接口
         /// </summary>
         public async Task<ReportOpenWaybillTypeResponseModel> ReportOpenWaybillTypeAsync(ReportOpenWaybillTypeRequestModel reportOpenWaybillType)

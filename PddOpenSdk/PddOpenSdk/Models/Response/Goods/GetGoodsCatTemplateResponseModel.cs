@@ -27,6 +27,11 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("input_max_spec_num")]
             public long? InputMaxSpecNum { get; set; }
             /// <summary>
+            /// is_single_item
+            /// </summary>
+            [JsonProperty("is_single_item")]
+            public bool? IsSingleItem { get; set; }
+            /// <summary>
             /// 最大sku数目上限
             /// </summary>
             [JsonProperty("max_sku_num")]
@@ -78,6 +83,11 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("is_condition_show")]
                 public bool? IsConditionShow { get; set; }
+                /// <summary>
+                /// is_key
+                /// </summary>
+                [JsonProperty("is_key")]
+                public bool? IsKey { get; set; }
                 /// <summary>
                 /// 是否父属性
                 /// </summary>
@@ -133,6 +143,11 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("required_rule_type")]
                 public int? RequiredRuleType { get; set; }
+                /// <summary>
+                /// show_only_standard
+                /// </summary>
+                [JsonProperty("show_only_standard")]
+                public bool? ShowOnlyStandard { get; set; }
                 /// <summary>
                 /// 若属性按条件展示,则只有show_vids中的值被选择时属性才可使用
                 /// </summary>

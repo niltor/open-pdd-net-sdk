@@ -124,11 +124,6 @@ namespace PddOpenSdk.Models.Request.Ad
                 /// </summary>
                 [JsonProperty("keywordSetBid")]
                 public long? KeywordSetBid { get; set; }
-                /// <summary>
-                /// 优化目标。1表示优化ROI，2表示优化订单量。
-                /// </summary>
-                [JsonProperty("performanceGoal")]
-                public int? PerformanceGoal { get; set; }
 
             }
             public partial class AdProductCreateMessageRequestModel : PddRequestModel
@@ -160,25 +155,44 @@ namespace PddOpenSdk.Models.Request.Ad
                 public partial class OptimizationMessageRequestModel : PddRequestModel
                 {
                     /// <summary>
-                    /// 数据积累期出价。当使用OCPC时对该字段赋值。
+                    /// 数据积累期出价。当使用OCPX时对该字段赋值。
                     /// </summary>
                     [JsonProperty("accumulationBid")]
                     public long? AccumulationBid { get; set; }
                     /// <summary>
-                    /// 智能投放期出价。当使用OCPC时对该字段赋值。
+                    /// 智能投放期出价。当使用OCPX时对该字段赋值。
                     /// </summary>
                     [JsonProperty("optimizationBid")]
                     public long? OptimizationBid { get; set; }
                     /// <summary>
-                    /// 优化目标。0表示不优化。1表示优化ROI，2表示优化转化成本.自定义单元时，该值必传0；当单元使用展示自动调价功能(ECPC)时，该值必须传1；当单元使用展示OCPC功能（plan_strategy=3）时，该值必须传2。目前ECPC及OCPC仅支持展示广告。
+                    /// 优化目标。0表示不优化。1表示优化ROI，2表示优化转化成本.自定义单元时，该值必传0；当单元使用展示自动调价功能(ECPC)时，该值必须传1；当单元使用展示OCPC功能（plan_strategy=3）时，该值必须传2。
                     /// </summary>
                     [JsonProperty("optimizationGoal")]
                     public int OptimizationGoal { get; set; }
                     /// <summary>
-                    /// 优化方式。0表示不优化，1表示ECPC，2表示OCPC。当单元使用ECPC时，该值必须传1；当使用OCPC时，该值必须传2。目前ECPC及OCPC仅支持展示广告。
+                    /// 优化方式。0表示不优化，1表示ECPC，2表示OCPC。当单元使用ECPC时，该值必须传1；当使用OCPC时，该值必须传2。
                     /// </summary>
                     [JsonProperty("optimizationMethod")]
                     public int? OptimizationMethod { get; set; }
+                    /// <summary>
+                    /// 可选优化出价列表。当使用OCPX时对该字段赋值。
+                    /// </summary>
+                    [JsonProperty("optionalOptimizationBidMessageList")]
+                    public List<OptionalOptimizationBidMessageListRequestModel> OptionalOptimizationBidMessageList { get; set; }
+                    public partial class OptionalOptimizationBidMessageListRequestModel : PddRequestModel
+                    {
+                        /// <summary>
+                        /// 可选优化出价价格
+                        /// </summary>
+                        [JsonProperty("optimizationBid")]
+                        public long OptimizationBid { get; set; }
+                        /// <summary>
+                        /// 可选优化出价目标。3表示优化店铺关注，4表示优化商品收藏，5表示优化询单
+                        /// </summary>
+                        [JsonProperty("optimizationGoal")]
+                        public int OptimizationGoal { get; set; }
+
+                    }
 
                 }
 

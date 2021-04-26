@@ -24,17 +24,17 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("parent_vid")]
         public long? ParentVid { get; set; }
         /// <summary>
-        /// 模板属性id
+        /// 模板属性id，废弃中，请入参属性id
         /// </summary>
         [JsonProperty("template_pid")]
-        public long TemplatePid { get; set; }
+        public long? TemplatePid { get; set; }
         /// <summary>
         /// 需要模糊搜索的属性值
         /// </summary>
         [JsonProperty("value")]
         public string Value { get; set; }
         /// <summary>
-        /// 引用属性id
+        /// 属性id
         /// </summary>
         [JsonProperty("ref_pid")]
         public long? RefPid { get; set; }

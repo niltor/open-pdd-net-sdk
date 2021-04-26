@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("page_size")]
         public int? PageSize { get; set; }
         /// <summary>
-        /// 推广位id列表
+        /// 推广位列表，例如：["60005_612"]
         /// </summary>
         [JsonProperty("pid_list")]
         public List<string> PidList { get; set; }

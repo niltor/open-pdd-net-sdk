@@ -5,7 +5,7 @@ namespace PddOpenSdk.Models.Response.WayBill
     public partial class GetCloudprintStdtemplatesResponseModel : PddResponseModel
     {
         /// <summary>
-        /// Response
+        /// response
         /// </summary>
         [JsonProperty("pdd_cloudprint_stdtemplates_get_response")]
         public PddCloudprintStdtemplatesGetResponseResponseModel PddCloudprintStdtemplatesGetResponse { get; set; }
@@ -38,6 +38,11 @@ namespace PddOpenSdk.Models.Response.WayBill
                     public partial class StandardTemplatesResponseModel : PddResponseModel
                     {
                         /// <summary>
+                        /// 模板id
+                        /// </summary>
+                        [JsonProperty("standard_template_id")]
+                        public long? StandardTemplateId { get; set; }
+                        /// <summary>
                         /// 模板名称
                         /// </summary>
                         [JsonProperty("standard_template_name")]
@@ -52,11 +57,6 @@ namespace PddOpenSdk.Models.Response.WayBill
                         /// </summary>
                         [JsonProperty("standard_waybill_type")]
                         public int? StandardWaybillType { get; set; }
-                        /// <summary>
-                        /// 标准模板id
-                        /// </summary>
-                        [JsonProperty("standard_template_id")]
-                        public long? StandardTemplateId { get; set; }
 
                     }
 

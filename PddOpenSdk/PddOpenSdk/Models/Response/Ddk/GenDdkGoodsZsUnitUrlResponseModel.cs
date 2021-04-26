@@ -41,12 +41,12 @@ namespace PddOpenSdk.Models.Response.Ddk
             [JsonProperty("multi_group_url")]
             public string MultiGroupUrl { get; set; }
             /// <summary>
-            /// 单人团推广短链接
+            /// 对应出参url的短链接，与url功能一致。
             /// </summary>
             [JsonProperty("short_url")]
             public string ShortUrl { get; set; }
             /// <summary>
-            /// 单人团推广长链接
+            /// 普通推广长链接，唤起H5页面
             /// </summary>
             [JsonProperty("url")]
             public string Url { get; set; }

@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("create_time")]
                 public long? CreateTime { get; set; }
                 /// <summary>
+                /// 媒体id
+                /// </summary>
+                [JsonProperty("media_id")]
+                public long? MediaId { get; set; }
+                /// <summary>
                 /// 推广位名称
                 /// </summary>
                 [JsonProperty("pid_name")]
@@ -38,11 +43,6 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("p_id")]
                 public string PId { get; set; }
-                /// <summary>
-                /// 媒体id
-                /// </summary>
-                [JsonProperty("media_id")]
-                public long? MediaId { get; set; }
 
             }
 

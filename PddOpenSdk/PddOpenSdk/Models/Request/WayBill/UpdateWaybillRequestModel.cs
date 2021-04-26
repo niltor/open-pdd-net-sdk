@@ -57,12 +57,12 @@ namespace PddOpenSdk.Models.Request.WayBill
                 /// 体积
                 /// </summary>
                 [JsonProperty("volume")]
-                public long? Volume { get; set; }
+                public int? Volume { get; set; }
                 /// <summary>
                 /// 重量
                 /// </summary>
                 [JsonProperty("weight")]
-                public long? Weight { get; set; }
+                public int? Weight { get; set; }
                 public partial class ItemsRequestModel : PddRequestModel
                 {
                     /// <summary>
@@ -109,6 +109,11 @@ namespace PddOpenSdk.Models.Request.WayBill
                     [JsonProperty("city")]
                     public string City { get; set; }
                     /// <summary>
+                    /// 国家
+                    /// </summary>
+                    [JsonProperty("country")]
+                    public string Country { get; set; }
+                    /// <summary>
                     /// 详细地址
                     /// </summary>
                     [JsonProperty("detail")]
@@ -128,11 +133,6 @@ namespace PddOpenSdk.Models.Request.WayBill
                     /// </summary>
                     [JsonProperty("town")]
                     public string Town { get; set; }
-                    /// <summary>
-                    /// 国家/地区
-                    /// </summary>
-                    [JsonProperty("country")]
-                    public string Country { get; set; }
 
                 }
 

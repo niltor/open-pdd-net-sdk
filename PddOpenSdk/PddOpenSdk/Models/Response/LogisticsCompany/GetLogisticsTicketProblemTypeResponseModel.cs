@@ -19,15 +19,15 @@ namespace PddOpenSdk.Models.Response.LogisticsCompany
             public partial class LogisticsProblemTypeListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 问题类型描述
-                /// </summary>
-                [JsonProperty("type_desc")]
-                public string TypeDesc { get; set; }
-                /// <summary>
                 /// 问题类型id
                 /// </summary>
                 [JsonProperty("id")]
                 public long? Id { get; set; }
+                /// <summary>
+                /// 问题类型描述
+                /// </summary>
+                [JsonProperty("type_desc")]
+                public string TypeDesc { get; set; }
 
             }
 

@@ -69,12 +69,12 @@ namespace Sample.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Test()
         {
-            var model = new QueryDdkTopGoodsListRequestModel
+            var model = new GetDdkGoodsRecommendRequestModel
             {
-                PId = "1",
+                CatId = 20100
             };
-            
-            var result = await _pdd.DdkApi.QueryDdkTopGoodsListAsync(model);
+
+            var result = await _pdd.DdkApi.GetDdkGoodsRecommendAsync(model);
             // 获取Pdd官方返回的错误信息
             var errorResponse = _pdd.DdkApi.ErrorResponse.Value;
             Console.WriteLine(errorResponse.Error_msg);

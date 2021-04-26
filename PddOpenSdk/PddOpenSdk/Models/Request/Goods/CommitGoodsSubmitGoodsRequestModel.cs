@@ -60,6 +60,11 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("delivery_one_day")]
         public int? DeliveryOneDay { get; set; }
         /// <summary>
+        /// 发货方式。0：无物流发货；1：有物流发货。
+        /// </summary>
+        [JsonProperty("delivery_type")]
+        public int? DeliveryType { get; set; }
+        /// <summary>
         /// 商品详情图：; a. 尺寸要求宽度处于480~1200px之间，高度0-1500px之间; b. 大小1M以内; c. 数量限制在20张之间; d. 图片格式仅支持JPG,PNG格式; e. 点击上传时，支持批量上传详情图
         /// </summary>
         [JsonProperty("detail_gallery")]
@@ -129,6 +134,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("is_folt")]
         public bool IsFolt { get; set; }
+        /// <summary>
+        /// 是否成团预售
+        /// </summary>
+        [JsonProperty("is_group_pre_sale")]
+        public int? IsGroupPreSale { get; set; }
         /// <summary>
         /// 是否预售,true-预售商品，false-非预售商品
         /// </summary>
@@ -264,11 +274,6 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
-        /// <summary>
-        /// 发货方式。0：无物流发货；1：有物流发货。
-        /// </summary>
-        [JsonProperty("delivery_type")]
-        public int? DeliveryType { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>
@@ -480,6 +485,11 @@ namespace PddOpenSdk.Models.Request.Goods
             [JsonProperty("quantity")]
             public long Quantity { get; set; }
             /// <summary>
+            /// sku属性
+            /// </summary>
+            [JsonProperty("sku_properties")]
+            public List<SkuPropertiesRequestModel> SkuProperties { get; set; }
+            /// <summary>
             /// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku
             /// </summary>
             [JsonProperty("spec_id_list")]
@@ -511,6 +521,30 @@ namespace PddOpenSdk.Models.Request.Goods
                 /// </summary>
                 [JsonProperty("taxation")]
                 public int Taxation { get; set; }
+
+            }
+            public partial class SkuPropertiesRequestModel : PddRequestModel
+            {
+                /// <summary>
+                /// 属性单位
+                /// </summary>
+                [JsonProperty("punit")]
+                public string Punit { get; set; }
+                /// <summary>
+                /// 属性id
+                /// </summary>
+                [JsonProperty("ref_pid")]
+                public long RefPid { get; set; }
+                /// <summary>
+                /// 属性值
+                /// </summary>
+                [JsonProperty("value")]
+                public string Value { get; set; }
+                /// <summary>
+                /// 属性值id
+                /// </summary>
+                [JsonProperty("vid")]
+                public long? Vid { get; set; }
 
             }
 

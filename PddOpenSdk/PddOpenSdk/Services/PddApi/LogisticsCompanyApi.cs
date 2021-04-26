@@ -72,6 +72,22 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<GetLogisticsTicketProblemTypeRequestModel, GetLogisticsTicketProblemTypeResponseModel>("pdd.logistics.ticket.problem.type.get", getLogisticsTicketProblemType);
             return result;
         }
+        /// <summary>
+        /// 轨迹订阅接口
+        /// </summary>
+        public async Task<SubLogisticsCoTrackResponseModel> SubLogisticsCoTrackAsync(SubLogisticsCoTrackRequestModel subLogisticsCoTrack)
+        {
+            var result = await PostAsync<SubLogisticsCoTrackRequestModel, SubLogisticsCoTrackResponseModel>("pdd.logistics.co.track.sub", subLogisticsCoTrack);
+            return result;
+        }
+        /// <summary>
+        /// 服务时间查询接口
+        /// </summary>
+        public async Task<QueryServiceMailServiceTimeResponseModel> QueryServiceMailServiceTimeAsync(QueryServiceMailServiceTimeRequestModel queryServiceMailServiceTime)
+        {
+            var result = await PostAsync<QueryServiceMailServiceTimeRequestModel, QueryServiceMailServiceTimeResponseModel>("pdd.service.mail.service.time.query", queryServiceMailServiceTime);
+            return result;
+        }
 
     }
 }

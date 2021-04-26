@@ -17,6 +17,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 平台卡密核销验券
+        /// </summary>
+        public async Task<VerificationVoucherOtaCardPrepareResponseModel> VerificationVoucherOtaCardPrepareAsync(VerificationVoucherOtaCardPrepareRequestModel verificationVoucherOtaCardPrepare)
+        {
+            var result = await PostAsync<VerificationVoucherOtaCardPrepareRequestModel, VerificationVoucherOtaCardPrepareResponseModel>("pdd.voucher.ota.card.prepare.verification", verificationVoucherOtaCardPrepare);
+            return result;
+        }
+        /// <summary>
         /// 卡券（电子）核销接口（平台生成卡密）
         /// </summary>
         public async Task<VerificationVoucherOtaCardResponseModel> VerificationVoucherOtaCardAsync(VerificationVoucherOtaCardRequestModel verificationVoucherOtaCard)
@@ -38,6 +46,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetVoucherRealtimeOrdernoResponseModel> GetVoucherRealtimeOrdernoAsync(GetVoucherRealtimeOrdernoRequestModel getVoucherRealtimeOrderno)
         {
             var result = await PostAsync<GetVoucherRealtimeOrdernoRequestModel, GetVoucherRealtimeOrdernoResponseModel>("pdd.voucher.realtime.orderno.get", getVoucherRealtimeOrderno);
+            return result;
+        }
+        /// <summary>
+        /// 卡券API核销券码
+        /// </summary>
+        public async Task<SyncVoucherRealtimeVerifyResponseModel> SyncVoucherRealtimeVerifyAsync(SyncVoucherRealtimeVerifyRequestModel syncVoucherRealtimeVerify)
+        {
+            var result = await PostAsync<SyncVoucherRealtimeVerifyRequestModel, SyncVoucherRealtimeVerifyResponseModel>("pdd.voucher.realtime.verify.sync", syncVoucherRealtimeVerify);
             return result;
         }
         /// <summary>

@@ -35,6 +35,11 @@ namespace PddOpenSdk.Models.Response.Oversea
             /// </summary>
             [JsonProperty("pay_type")]
             public string PayType { get; set; }
+            /// <summary>
+            /// 订单号
+            /// </summary>
+            [JsonProperty("order_sn")]
+            public string OrderSn { get; set; }
 
         }
 

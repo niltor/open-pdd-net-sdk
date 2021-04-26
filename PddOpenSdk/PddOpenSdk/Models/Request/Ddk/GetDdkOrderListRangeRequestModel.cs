@@ -4,7 +4,12 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class GetDdkOrderListRangeRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 支付结束时间
+        /// 是否为礼金订单，查询礼金订单时，订单类型不填（默认推广订单）。
+        /// </summary>
+        [JsonProperty("cash_gift_order")]
+        public bool? CashGiftOrder { get; set; }
+        /// <summary>
+        /// 支付结束时间，格式: "yyyy-MM-dd HH:mm:ss" ，比如 "2020-12-01 00:00:00"
         /// </summary>
         [JsonProperty("end_time")]
         public string EndTime { get; set; }
@@ -24,7 +29,7 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("query_order_type")]
         public int? QueryOrderType { get; set; }
         /// <summary>
-        /// 支付起始时间
+        /// 支付起始时间，格式: "yyyy-MM-dd HH:mm:ss" ，比如 "2020-12-01 00:00:00"
         /// </summary>
         [JsonProperty("start_time")]
         public string StartTime { get; set; }

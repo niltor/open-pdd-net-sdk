@@ -19,41 +19,32 @@ namespace PddOpenSdk.Models.Response.WayBill
             public partial class ResultResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 
+                /// datas
                 /// </summary>
                 [JsonProperty("datas")]
                 public List<DatasResponseModel> Datas { get; set; }
                 public partial class DatasResponseModel : PddResponseModel
                 {
                     /// <summary>
-                    /// 
+                    /// custom_area_id
                     /// </summary>
                     [JsonProperty("custom_area_id")]
-                    public int? CustomAreaId { get; set; }
+                    public long? CustomAreaId { get; set; }
                     /// <summary>
-                    /// 
+                    /// custom_area_name
                     /// </summary>
                     [JsonProperty("custom_area_name")]
                     public string CustomAreaName { get; set; }
                     /// <summary>
-                    /// 
+                    /// custom_area_url
                     /// </summary>
                     [JsonProperty("custom_area_url")]
                     public string CustomAreaUrl { get; set; }
                     /// <summary>
-                    /// 
+                    /// keys
                     /// </summary>
                     [JsonProperty("keys")]
-                    public List<KeysResponseModel> Keys { get; set; }
-                    public partial class KeysResponseModel : PddResponseModel
-                    {
-                        /// <summary>
-                        /// 
-                        /// </summary>
-                        [JsonProperty("key_name")]
-                        public string KeyName { get; set; }
-
-                    }
+                    public List<object> Keys { get; set; }
 
                 }
 

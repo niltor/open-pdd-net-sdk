@@ -25,6 +25,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 获取所有已支持便携式打印机
+        /// </summary>
+        public async Task<GetCloudprintPortableprinterResponseModel> GetCloudprintPortableprinterAsync(GetCloudprintPortableprinterRequestModel getCloudprintPortableprinter)
+        {
+            var result = await PostAsync<GetCloudprintPortableprinterRequestModel, GetCloudprintPortableprinterResponseModel>("pdd.cloudprint.portableprinter.get", getCloudprintPortableprinter);
+            return result;
+        }
+        /// <summary>
         /// 获取所有标准电子面单模板
         /// </summary>
         public async Task<GetCloudprintStdtemplatesResponseModel> GetCloudprintStdtemplatesAsync(GetCloudprintStdtemplatesRequestModel getCloudprintStdtemplates)

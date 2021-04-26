@@ -185,6 +185,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 切换计划至ocpc
+        /// </summary>
+        public async Task<OcpcAdApiPlanUpdatePlanToResponseModel> OcpcAdApiPlanUpdatePlanToAsync(OcpcAdApiPlanUpdatePlanToRequestModel ocpcAdApiPlanUpdatePlanTo)
+        {
+            var result = await PostAsync<OcpcAdApiPlanUpdatePlanToRequestModel, OcpcAdApiPlanUpdatePlanToResponseModel>("pdd.ad.api.plan.update.plan.to.ocpc", ocpcAdApiPlanUpdatePlanTo);
+            return result;
+        }
+        /// <summary>
         /// 广告主分天报表查询
         /// </summary>
         public async Task<QueryAdApiReportDailyReportResponseModel> QueryAdApiReportDailyReportAsync(QueryAdApiReportDailyReportRequestModel queryAdApiReportDailyReport)

@@ -34,15 +34,10 @@ namespace PddOpenSdk.Models.Response.Ddk
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 类目id
+                /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
                 /// </summary>
-                [JsonProperty("category_id")]
-                public string CategoryId { get; set; }
-                /// <summary>
-                /// 分类名称
-                /// </summary>
-                [JsonProperty("category_name")]
-                public string CategoryName { get; set; }
+                [JsonProperty("activity_tags")]
+                public List<int?> ActivityTags { get; set; }
                 /// <summary>
                 /// 商品类目id
                 /// </summary>
@@ -99,25 +94,25 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("desc_txt")]
                 public string DescTxt { get; set; }
                 /// <summary>
+                /// 额外优惠券
+                /// </summary>
+                [JsonProperty("extra_coupon_amount")]
+                public long? ExtraCouponAmount { get; set; }
+                /// <summary>
                 /// 商品描述
                 /// </summary>
                 [JsonProperty("goods_desc")]
                 public string GoodsDesc { get; set; }
                 /// <summary>
-                /// 商品详情图列表
-                /// </summary>
-                [JsonProperty("goods_gallery_urls")]
-                public string GoodsGalleryUrls { get; set; }
-                /// <summary>
-                /// 商品id
-                /// </summary>
-                [JsonProperty("goods_id")]
-                public long? GoodsId { get; set; }
-                /// <summary>
                 /// 商品主图
                 /// </summary>
                 [JsonProperty("goods_image_url")]
                 public string GoodsImageUrl { get; set; }
+                /// <summary>
+                /// 商品特殊标签列表。例: [1]，1-APP专享
+                /// </summary>
+                [JsonProperty("goods_labels")]
+                public List<int?> GoodsLabels { get; set; }
                 /// <summary>
                 /// 商品名称
                 /// </summary>
@@ -129,7 +124,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_rate")]
                 public long? GoodsRate { get; set; }
                 /// <summary>
-                /// 商品goodsSign
+                /// 商品goodsSign，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
                 /// </summary>
                 [JsonProperty("goods_sign")]
                 public string GoodsSign { get; set; }
@@ -214,6 +209,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("qr_code_image_url")]
                 public string QrCodeImageUrl { get; set; }
                 /// <summary>
+                /// 商品近1小时在多多进宝的实时销量（仅实时热销榜提供）
+                /// </summary>
+                [JsonProperty("realtime_sales_tip")]
+                public string RealtimeSalesTip { get; set; }
+                /// <summary>
                 /// 销售量
                 /// </summary>
                 [JsonProperty("sales_tip")]
@@ -233,6 +233,21 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("share_desc")]
                 public string ShareDesc { get; set; }
+                /// <summary>
+                /// 招商分成服务费比例，千分比
+                /// </summary>
+                [JsonProperty("share_rate")]
+                public int? ShareRate { get; set; }
+                /// <summary>
+                /// 优势渠道专属商品补贴金额。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+                /// </summary>
+                [JsonProperty("subsidy_amount")]
+                public int? SubsidyAmount { get; set; }
+                /// <summary>
+                /// 优惠标签列表，包括："X元券","比全网低X元","服务费","精选素材","近30天低价","同款低价","同款好评","同款热销","旗舰店","一降到底","招商优选","商家优选","好价再降X元","全站销量XX","实时热销榜第X名","实时好评榜第X名","额外补X元"等
+                /// </summary>
+                [JsonProperty("unified_tags")]
+                public List<string> UnifiedTags { get; set; }
 
             }
 

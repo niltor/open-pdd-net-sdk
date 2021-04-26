@@ -219,12 +219,12 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("address")]
                 public string Address { get; set; }
                 /// <summary>
-                /// 收件人姓名
+                /// 收件人姓名。订单状态为待发货状态，且订单未被风控打标的情况下返回密文数据；其余情况返回空字符串。
                 /// </summary>
                 [JsonProperty("receiver_name")]
                 public string ReceiverName { get; set; }
                 /// <summary>
-                /// 收件人电话，仅订单状态为待发货状态下返回明文，其他状态下返回脱敏手机号，例如“1387677****”
+                /// 收件人电话。订单状态为待发货状态，且订单未被风控打标的情况下返回密文数据；其余情况返回空字符串。
                 /// </summary>
                 [JsonProperty("receiver_phone")]
                 public string ReceiverPhone { get; set; }
@@ -324,7 +324,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("capital_free_discount")]
                 public double? CapitalFreeDiscount { get; set; }
                 /// <summary>
-                /// 收件人地址，不拼接省市区
+                /// 收件人地址，不拼接省市区。订单状态为待发货状态，且订单未被风控打标的情况下返回密文数据；其余情况返回空字符串。
                 /// </summary>
                 [JsonProperty("receiver_address")]
                 public string ReceiverAddress { get; set; }
@@ -399,10 +399,15 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("mkt_biz_type")]
                 public int? MktBizType { get; set; }
                 /// <summary>
-                /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货
+                /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源
                 /// </summary>
                 [JsonProperty("order_tag_list")]
                 public List<OrderTagListResponseModel> OrderTagList { get; set; }
+                /// <summary>
+                /// 赠品列表
+                /// </summary>
+                [JsonProperty("gift_list")]
+                public List<GiftListResponseModel> GiftList { get; set; }
                 public partial class StepOrderInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -594,6 +599,55 @@ namespace PddOpenSdk.Models.Response.Order
                     /// </summary>
                     [JsonProperty("value")]
                     public int? Value { get; set; }
+
+                }
+                public partial class GiftListResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 赠品数量
+                    /// </summary>
+                    [JsonProperty("goods_count")]
+                    public int? GoodsCount { get; set; }
+                    /// <summary>
+                    /// 赠品id
+                    /// </summary>
+                    [JsonProperty("goods_id")]
+                    public long? GoodsId { get; set; }
+                    /// <summary>
+                    /// 赠品图片
+                    /// </summary>
+                    [JsonProperty("goods_img")]
+                    public string GoodsImg { get; set; }
+                    /// <summary>
+                    /// 赠品名称
+                    /// </summary>
+                    [JsonProperty("goods_name")]
+                    public string GoodsName { get; set; }
+                    /// <summary>
+                    /// 赠品销售价格
+                    /// </summary>
+                    [JsonProperty("goods_price")]
+                    public double? GoodsPrice { get; set; }
+                    /// <summary>
+                    /// 赠品规格
+                    /// </summary>
+                    [JsonProperty("goods_spec")]
+                    public string GoodsSpec { get; set; }
+                    /// <summary>
+                    /// 商家外部商品编码
+                    /// </summary>
+                    [JsonProperty("outer_goods_id")]
+                    public string OuterGoodsId { get; set; }
+                    /// <summary>
+                    /// 商家外部sku编码
+                    /// </summary>
+                    [JsonProperty("outer_id")]
+                    public string OuterId { get; set; }
+                    /// <summary>
+                    /// 赠品规格编码
+                    /// </summary>
+                    [JsonProperty("sku_id")]
+                    public long? SkuId { get; set; }
 
                 }
 

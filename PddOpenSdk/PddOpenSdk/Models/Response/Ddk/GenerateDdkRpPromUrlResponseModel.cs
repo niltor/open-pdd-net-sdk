@@ -38,12 +38,12 @@ namespace PddOpenSdk.Models.Response.Ddk
             public partial class UrlListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 推广移动短链接
+                /// 推广移动短链接，对应出参mobile_url的短链接，与mobile_url功能一致。
                 /// </summary>
                 [JsonProperty("mobile_short_url")]
                 public string MobileShortUrl { get; set; }
                 /// <summary>
-                /// 推广移动链接
+                /// 推广移动链接，用户安装拼多多APP的情况下会唤起APP，否则唤起H5页面
                 /// </summary>
                 [JsonProperty("mobile_url")]
                 public string MobileUrl { get; set; }
@@ -53,7 +53,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("multi_group_mobile_short_url")]
                 public string MultiGroupMobileShortUrl { get; set; }
                 /// <summary>
-                /// 推广多人团移动链接
+                /// 推广多人团移动链接，用户安装拼多多APP的情况下会唤起APP，否则唤起H5页面
                 /// </summary>
                 [JsonProperty("multi_group_mobile_url")]
                 public string MultiGroupMobileUrl { get; set; }
@@ -63,7 +63,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("multi_group_short_url")]
                 public string MultiGroupShortUrl { get; set; }
                 /// <summary>
-                /// 推广多人团链接
+                /// 推广多人团链接，唤起H5页面
                 /// </summary>
                 [JsonProperty("multi_group_url")]
                 public string MultiGroupUrl { get; set; }
@@ -73,22 +73,22 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("qq_app_info")]
                 public QqAppInfoResponseModel QqAppInfo { get; set; }
                 /// <summary>
-                /// schema的链接
+                /// schema链接，用户安装拼多多APP的情况下会唤起APP（需客户端支持schema跳转协议）
                 /// </summary>
                 [JsonProperty("schema_url")]
                 public string SchemaUrl { get; set; }
                 /// <summary>
-                /// 推广短链接
+                /// 推广短链接，对应出参url的短链接，与url功能一致
                 /// </summary>
                 [JsonProperty("short_url")]
                 public string ShortUrl { get; set; }
                 /// <summary>
-                /// 推广链接
+                /// 普通推广长链接，唤起H5页面
                 /// </summary>
                 [JsonProperty("url")]
                 public string Url { get; set; }
                 /// <summary>
-                /// 小程序信息
+                /// 拼多多福利券微信小程序信息
                 /// </summary>
                 [JsonProperty("we_app_info")]
                 public WeAppInfoResponseModel WeAppInfo { get; set; }
@@ -139,7 +139,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 public partial class WeAppInfoResponseModel : PddResponseModel
                 {
                     /// <summary>
-                    /// 拼多多小程序id
+                    /// 小程序id
                     /// </summary>
                     [JsonProperty("app_id")]
                     public string AppId { get; set; }

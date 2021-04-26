@@ -9,6 +9,30 @@ namespace PddOpenSdk.Services.PddApi
         public DdkApi() { }
         public DdkApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
+        /// 创建多多礼金
+        /// </summary>
+        public async Task<CreateDdkCashgiftResponseModel> CreateDdkCashgiftAsync(CreateDdkCashgiftRequestModel createDdkCashgift)
+        {
+            var result = await PostAsync<CreateDdkCashgiftRequestModel, CreateDdkCashgiftResponseModel>("pdd.ddk.cashgift.create", createDdkCashgift);
+            return result;
+        }
+        /// <summary>
+        /// 查询多多礼金效果数据
+        /// </summary>
+        public async Task<QueryDdkCashgiftDataResponseModel> QueryDdkCashgiftDataAsync(QueryDdkCashgiftDataRequestModel queryDdkCashgiftData)
+        {
+            var result = await PostAsync<QueryDdkCashgiftDataRequestModel, QueryDdkCashgiftDataResponseModel>("pdd.ddk.cashgift.data.query", queryDdkCashgiftData);
+            return result;
+        }
+        /// <summary>
+        /// 多多礼金状态更新
+        /// </summary>
+        public async Task<UpdateDdkCashgiftStatusResponseModel> UpdateDdkCashgiftStatusAsync(UpdateDdkCashgiftStatusRequestModel updateDdkCashgiftStatus)
+        {
+            var result = await PostAsync<UpdateDdkCashgiftStatusRequestModel, UpdateDdkCashgiftStatusResponseModel>("pdd.ddk.cashgift.status.update", updateDdkCashgiftStatus);
+            return result;
+        }
+        /// <summary>
         /// 生成商城-频道推广链接
         /// </summary>
         public async Task<GenerateDdkCmsPromUrlResponseModel> GenerateDdkCmsPromUrlAsync(GenerateDdkCmsPromUrlRequestModel generateDdkCmsPromUrl)
@@ -126,14 +150,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkRpPromUrlResponseModel> GenerateDdkRpPromUrlAsync(GenerateDdkRpPromUrlRequestModel generateDdkRpPromUrl)
         {
             var result = await PostAsync<GenerateDdkRpPromUrlRequestModel, GenerateDdkRpPromUrlResponseModel>("pdd.ddk.rp.prom.url.generate", generateDdkRpPromUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客获取爆款排行商品接口
-        /// </summary>
-        public async Task<QueryDdkTopGoodsListResponseModel> QueryDdkTopGoodsListAsync(QueryDdkTopGoodsListRequestModel queryDdkTopGoodsList)
-        {
-            var result = await PostAsync<QueryDdkTopGoodsListRequestModel, QueryDdkTopGoodsListResponseModel>("pdd.ddk.top.goods.list.query", queryDdkTopGoodsList);
             return result;
         }
 

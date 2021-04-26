@@ -34,6 +34,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("batch_no")]
                 public string BatchNo { get; set; }
                 /// <summary>
+                /// 订单关联礼金活动Id
+                /// </summary>
+                [JsonProperty("cash_gift_id")]
+                public long? CashGiftId { get; set; }
+                /// <summary>
                 /// 商品一~四级类目ID列表
                 /// </summary>
                 [JsonProperty("cat_ids")]
@@ -74,7 +79,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("goods_quantity")]
                 public long? GoodsQuantity { get; set; }
                 /// <summary>
-                /// 商品goodsSign
+                /// goodsSign是加密后的goodsId，goodsId已下线，请使用goodsSign来替代。需要注意的是：推广链接带有goodsSign信息时，订单会返回原goodsSign；反之，会生成新的goodsSign返回。
                 /// </summary>
                 [JsonProperty("goods_sign")]
                 public string GoodsSign { get; set; }
@@ -134,7 +139,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("order_sn")]
                 public string OrderSn { get; set; }
                 /// <summary>
-                /// 订单状态： -1 未支付; 0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算；8-非多多进宝商品（无佣金订单）
+                /// 订单状态：0-已支付；1-已成团；2-确认收货；3-审核成功；4-审核失败（不可提现）；5-已经结算 ;10-已处罚
                 /// </summary>
                 [JsonProperty("order_status")]
                 public int? OrderStatus { get; set; }
@@ -193,6 +198,21 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("sep_rate")]
                 public int? SepRate { get; set; }
+                /// <summary>
+                /// 招商分成服务费金额，单位为分
+                /// </summary>
+                [JsonProperty("share_amount")]
+                public int? ShareAmount { get; set; }
+                /// <summary>
+                /// 招商分成服务费比例，千分比
+                /// </summary>
+                [JsonProperty("share_rate")]
+                public int? ShareRate { get; set; }
+                /// <summary>
+                /// 优势渠道专属商品补贴金额。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+                /// </summary>
+                [JsonProperty("subsidy_amount")]
+                public int? SubsidyAmount { get; set; }
                 /// <summary>
                 /// 订单类型：0：领券页面， 1： 红包页， 2：领券页， 3： 题页
                 /// </summary>

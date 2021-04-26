@@ -29,7 +29,7 @@ namespace PddOpenSdk.Models.Request.Refund
             /// 物流公司id
             /// </summary>
             [JsonProperty("reverse_logistics_id")]
-            public int ReverseLogisticsId { get; set; }
+            public int? ReverseLogisticsId { get; set; }
             /// <summary>
             /// 物流单号
             /// </summary>

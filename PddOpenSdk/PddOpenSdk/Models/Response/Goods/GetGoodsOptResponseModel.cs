@@ -24,20 +24,20 @@ namespace PddOpenSdk.Models.Response.Goods
                 [JsonProperty("level")]
                 public int? Level { get; set; }
                 /// <summary>
-                /// id所属父ID，其中，parent_id=0时为顶级节点
+                /// 商品标签ID
                 /// </summary>
-                [JsonProperty("parent_opt_id")]
-                public long? ParentOptId { get; set; }
+                [JsonProperty("opt_id")]
+                public long? OptId { get; set; }
                 /// <summary>
                 /// 商品标签名
                 /// </summary>
                 [JsonProperty("opt_name")]
                 public string OptName { get; set; }
                 /// <summary>
-                /// 商品标签ID
+                /// id所属父ID，其中，parent_id=0时为顶级节点
                 /// </summary>
-                [JsonProperty("opt_id")]
-                public long? OptId { get; set; }
+                [JsonProperty("parent_opt_id")]
+                public long? ParentOptId { get; set; }
 
             }
 

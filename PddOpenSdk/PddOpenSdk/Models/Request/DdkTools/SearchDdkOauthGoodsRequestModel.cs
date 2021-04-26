@@ -5,7 +5,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
     public partial class SearchDdkOauthGoodsRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 商品活动标记数组，例：[4,7]，4-秒杀，7-百亿补贴，24-品牌高佣，20-行业精选，21-金牌商家，10044-潜力爆品，10475-爆品上新，其他的值请忽略
+        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
         /// </summary>
         [JsonProperty("activity_tags")]
         public List<int?> ActivityTags { get; set; }
@@ -15,7 +15,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("block_cats")]
         public List<int?> BlockCats { get; set; }
         /// <summary>
-        /// 屏蔽商品类目包：1-拼多多小程序屏蔽类目;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药
+        /// 屏蔽商品类目包：1-拼多多小程序屏蔽的类目&关键词;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药
         /// </summary>
         [JsonProperty("block_cat_packages")]
         public List<int?> BlockCatPackages { get; set; }
@@ -25,12 +25,17 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("cat_id")]
         public long? CatId { get; set; }
         /// <summary>
-        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为： {"uid":"11111","sid":"22222","new":1} ，其中 uid 为用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 为上下文信息标识，例如sessionId等，非必填。new字段标识是否是新用户，如果为新用户，uid请传入用户唯一标识，例如小程序的openid、app的设备号等（可自行加密）。该json字符串中也可以加入其他自定义的key。
+        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为： {"uid":"11111","sid":"22222"} ，其中 uid 为用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 为上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
         /// <summary>
-        /// goodsSign列表，支持通过goodsSign查询商品
+        /// 是否使用工具商专属推广计划，默认为false
+        /// </summary>
+        [JsonProperty("force_auth_duo_id")]
+        public bool? ForceAuthDuoId { get; set; }
+        /// <summary>
+        /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
         /// </summary>
         [JsonProperty("goods_sign_list")]
         public List<string> GoodsSignList { get; set; }
@@ -40,7 +45,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("is_brand_goods")]
         public bool? IsBrandGoods { get; set; }
         /// <summary>
-        /// 商品关键词，与opt_id字段选填一个或全部填写，不支持纯数字(goods_id)搜索
+        /// 商品关键词，与opt_id字段选填一个或全部填写。可支持goods_id、拼多多链接（即拼多多app商详的链接）、进宝长链/短链（即为pdd.ddk.goods.promotion.url.generate接口生成的长短链）
         /// </summary>
         [JsonProperty("keyword")]
         public string Keyword { get; set; }
@@ -55,7 +60,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("merchant_type")]
         public int? MerchantType { get; set; }
         /// <summary>
-        /// 店铺类型数组
+        /// 店铺类型数组，例如：[1,2]
         /// </summary>
         [JsonProperty("merchant_type_list")]
         public List<int?> MerchantTypeList { get; set; }

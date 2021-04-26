@@ -41,6 +41,14 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 编辑商家订单备注
+        /// </summary>
+        public async Task<UpdateOrderNoteResponseModel> UpdateOrderNoteAsync(UpdateOrderNoteRequestModel updateOrderNote)
+        {
+            var result = await PostAsync<UpdateOrderNoteRequestModel, UpdateOrderNoteResponseModel>("pdd.order.note.update", updateOrderNote);
+            return result;
+        }
+        /// <summary>
         /// 订单增量接口
         /// </summary>
         public async Task<GetOrderNumberListIncrementResponseModel> GetOrderNumberListIncrementAsync(GetOrderNumberListIncrementRequestModel getOrderNumberListIncrement)
@@ -62,6 +70,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetOrderStatusResponseModel> GetOrderStatusAsync(GetOrderStatusRequestModel getOrderStatus)
         {
             var result = await PostAsync<GetOrderStatusRequestModel, GetOrderStatusResponseModel>("pdd.order.status.get", getOrderStatus);
+            return result;
+        }
+        /// <summary>
+        /// 修改订单收件地址接口
+        /// </summary>
+        public async Task<AddressOrderUpdateResponseModel> AddressOrderUpdateAsync(AddressOrderUpdateRequestModel addressOrderUpdate)
+        {
+            var result = await PostAsync<AddressOrderUpdateRequestModel, AddressOrderUpdateResponseModel>("pdd.order.update.address", addressOrderUpdate);
             return result;
         }
 

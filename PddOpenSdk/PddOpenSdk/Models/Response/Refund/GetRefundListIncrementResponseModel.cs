@@ -133,6 +133,21 @@ namespace PddOpenSdk.Models.Response.Refund
                 /// </summary>
                 [JsonProperty("speed_refund_flag")]
                 public int? SpeedRefundFlag { get; set; }
+                /// <summary>
+                /// 退货物流公司名称
+                /// </summary>
+                [JsonProperty("shipping_name")]
+                public string ShippingName { get; set; }
+                /// <summary>
+                /// 0-未勾选 1-消费者选择的收货状态为未收到货 2-消费者选择的收货状态为已收到货
+                /// </summary>
+                [JsonProperty("user_shipping_status")]
+                public string UserShippingStatus { get; set; }
+                /// <summary>
+                /// 1纠纷退款 0非纠纷退款
+                /// </summary>
+                [JsonProperty("dispute_refund_status")]
+                public int? DisputeRefundStatus { get; set; }
 
             }
 

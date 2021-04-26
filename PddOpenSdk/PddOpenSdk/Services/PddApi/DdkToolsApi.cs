@@ -17,6 +17,22 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 创建多多礼金
+        /// </summary>
+        public async Task<CreateDdkOauthCashgiftResponseModel> CreateDdkOauthCashgiftAsync(CreateDdkOauthCashgiftRequestModel createDdkOauthCashgift)
+        {
+            var result = await PostAsync<CreateDdkOauthCashgiftRequestModel, CreateDdkOauthCashgiftResponseModel>("pdd.ddk.oauth.cashgift.create", createDdkOauthCashgift);
+            return result;
+        }
+        /// <summary>
+        /// 多多礼金状态更新
+        /// </summary>
+        public async Task<UpdateDdkOauthCashgiftStatusResponseModel> UpdateDdkOauthCashgiftStatusAsync(UpdateDdkOauthCashgiftStatusRequestModel updateDdkOauthCashgiftStatus)
+        {
+            var result = await PostAsync<UpdateDdkOauthCashgiftStatusRequestModel, UpdateDdkOauthCashgiftStatusResponseModel>("pdd.ddk.oauth.cashgift.status.update", updateDdkOauthCashgiftStatus);
+            return result;
+        }
+        /// <summary>
         /// 生成商城推广链接接口
         /// </summary>
         public async Task<GenerateDdkOauthCmsPromUrlResponseModel> GenerateDdkOauthCmsPromUrlAsync(GenerateDdkOauthCmsPromUrlRequestModel generateDdkOauthCmsPromUrl)
@@ -73,7 +89,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 生成招商推广链接
+        /// 多多进宝转链接口
         /// </summary>
         public async Task<GenDdkOauthGoodsZsUnitUrlResponseModel> GenDdkOauthGoodsZsUnitUrlAsync(GenDdkOauthGoodsZsUnitUrlRequestModel genDdkOauthGoodsZsUnitUrl)
         {
@@ -118,14 +134,6 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GenerateDdkOauthRpPromUrlResponseModel> GenerateDdkOauthRpPromUrlAsync(GenerateDdkOauthRpPromUrlRequestModel generateDdkOauthRpPromUrl)
         {
             var result = await PostAsync<GenerateDdkOauthRpPromUrlRequestModel, GenerateDdkOauthRpPromUrlResponseModel>("pdd.ddk.oauth.rp.prom.url.generate", generateDdkOauthRpPromUrl);
-            return result;
-        }
-        /// <summary>
-        /// 多多客工具获取爆款排行商品接口
-        /// </summary>
-        public async Task<QueryDdkOauthTopGoodsListResponseModel> QueryDdkOauthTopGoodsListAsync(QueryDdkOauthTopGoodsListRequestModel queryDdkOauthTopGoodsList)
-        {
-            var result = await PostAsync<QueryDdkOauthTopGoodsListRequestModel, QueryDdkOauthTopGoodsListResponseModel>("pdd.ddk.oauth.top.goods.list.query", queryDdkOauthTopGoodsList);
             return result;
         }
 

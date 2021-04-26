@@ -4,7 +4,7 @@ namespace PddOpenSdk.Models.Response.Goods
     public partial class QueryGoodsCpsMallUnitResponseModel : PddResponseModel
     {
         /// <summary>
-        /// response
+        /// respone
         /// </summary>
         [JsonProperty("goods_cps_mall_unit_query_response")]
         public GoodsCpsMallUnitQueryResponseResponseModel GoodsCpsMallUnitQueryResponse { get; set; }
@@ -21,6 +21,11 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("rate_to_be")]
             public int? RateToBe { get; set; }
             /// <summary>
+            /// 全店推广计划佣金生效时间
+            /// </summary>
+            [JsonProperty("rate_to_be_day")]
+            public string RateToBeDay { get; set; }
+            /// <summary>
             /// 全店推广计划状态：1-推广中，2-暂停推广
             /// </summary>
             [JsonProperty("status")]
@@ -29,12 +34,7 @@ namespace PddOpenSdk.Models.Response.Goods
             /// 修改后生效的状态，1-推广中，2-暂停，3-删除
             /// </summary>
             [JsonProperty("status_to_be")]
-            public string StatusToBe { get; set; }
-            /// <summary>
-            /// 全店推广计划佣金生效时间
-            /// </summary>
-            [JsonProperty("rate_to_be_day")]
-            public string RateToBeDay { get; set; }
+            public int? StatusToBe { get; set; }
             /// <summary>
             /// 全店推广计划状态生效时间
             /// </summary>

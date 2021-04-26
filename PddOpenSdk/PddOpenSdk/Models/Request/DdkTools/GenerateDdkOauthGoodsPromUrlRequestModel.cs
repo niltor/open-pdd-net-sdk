@@ -5,6 +5,16 @@ namespace PddOpenSdk.Models.Request.DdkTools
     public partial class GenerateDdkOauthGoodsPromUrlRequestModel : PddRequestModel
     {
         /// <summary>
+        /// 多多礼金ID
+        /// </summary>
+        [JsonProperty("cash_gift_id")]
+        public long? CashGiftId { get; set; }
+        /// <summary>
+        /// 自定义礼金标题，用于向用户展示渠道专属福利，不超过12个字
+        /// </summary>
+        [JsonProperty("cash_gift_name")]
+        public string CashGiftName { get; set; }
+        /// <summary>
         /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key
         /// </summary>
         [JsonProperty("custom_parameters")]
@@ -40,30 +50,15 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("generate_short_url")]
         public bool? GenerateShortUrl { get; set; }
         /// <summary>
-        /// 是否生成唤起微信客户端链接，true-是，false-否，默认false
-        /// </summary>
-        [JsonProperty("generate_weapp_webview")]
-        public bool? GenerateWeappWebview { get; set; }
-        /// <summary>
-        /// 是否生成微博推广链接
-        /// </summary>
-        [JsonProperty("generate_weiboapp_webview")]
-        public bool? GenerateWeiboappWebview { get; set; }
-        /// <summary>
-        /// 是否生成小程序推广
+        /// 是否生成拼多多福利券微信小程序推广信息
         /// </summary>
         [JsonProperty("generate_we_app")]
         public bool? GenerateWeApp { get; set; }
         /// <summary>
-        /// 商品ID，仅支持单个查询
+        /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，支持批量生链。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
         /// </summary>
-        [JsonProperty("goods_id_list")]
-        public List<long?> GoodsIdList { get; set; }
-        /// <summary>
-        /// 商品goodsSign，用于查询指定商品，goods_id_list和goods_sign必须传入其中一个，建议传入goods_sign
-        /// </summary>
-        [JsonProperty("goods_sign")]
-        public string GoodsSign { get; set; }
+        [JsonProperty("goods_sign_list")]
+        public List<string> GoodsSignList { get; set; }
         /// <summary>
         /// true--生成多人团推广链接 false--生成单人团推广链接（默认false）1、单人团推广链接：用户访问单人团推广链接，可直接购买商品无需拼团。2、多人团推广链接：用户访问双人团推广链接开团，若用户分享给他人参团，则开团者和参团者的佣金均结算给推手
         /// </summary>

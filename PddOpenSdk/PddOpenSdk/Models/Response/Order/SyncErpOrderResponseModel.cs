@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Response.Order
     public partial class SyncErpOrderResponseModel : PddResponseModel
     {
         /// <summary>
-        /// 是否成功
-        /// </summary>
-        [JsonProperty("success")]
-        public bool? Success { get; set; }
-        /// <summary>
         /// 错误代码
         /// </summary>
         [JsonProperty("error_code")]
@@ -23,6 +18,11 @@ namespace PddOpenSdk.Models.Response.Order
         /// </summary>
         [JsonProperty("result")]
         public bool? Result { get; set; }
+        /// <summary>
+        /// 是否成功
+        /// </summary>
+        [JsonProperty("success")]
+        public bool? Success { get; set; }
 
     }
 
