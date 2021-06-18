@@ -302,7 +302,7 @@ namespace PddOpenSdk.Services
 
     public class ErrorResponse
     {
-        public Error_Response Value { get; set; }
+        public Error_Response Error_Response { get; set; }
     }
 
     public class Error_Response

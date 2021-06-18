@@ -34,7 +34,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
             // 获取当前时间戳，并构造加密字段
             var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
-            var url = @$"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
+            var url = $@"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
 
             client = new WebsocketClient(new Uri(url));
 
