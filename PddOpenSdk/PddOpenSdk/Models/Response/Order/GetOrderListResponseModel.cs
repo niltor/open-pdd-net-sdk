@@ -174,7 +174,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("discount_amount")]
                 public double? DiscountAmount { get; set; }
                 /// <summary>
-                /// 商品金额，单位：元，商品金额=商品销售价格*商品数量-改价金额（接口暂无该字段）
+                /// 商品金额，单位：元，商品金额=商品销售价格*商品数量-订单改价折扣金额
                 /// </summary>
                 [JsonProperty("goods_amount")]
                 public double? GoodsAmount { get; set; }
@@ -413,6 +413,11 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("gift_list")]
                 public List<GiftListResponseModel> GiftList { get; set; }
+                /// <summary>
+                /// 订单多包裹发货时使用的其他发货快递信息
+                /// </summary>
+                [JsonProperty("extra_delivery_list")]
+                public List<ExtraDeliveryListResponseModel> ExtraDeliveryList { get; set; }
                 public partial class CardInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>
@@ -634,6 +639,20 @@ namespace PddOpenSdk.Models.Response.Order
                     /// </summary>
                     [JsonProperty("sku_id")]
                     public long? SkuId { get; set; }
+
+                }
+                public partial class ExtraDeliveryListResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 快递运单号
+                    /// </summary>
+                    [JsonProperty("tracking_number")]
+                    public string TrackingNumber { get; set; }
+                    /// <summary>
+                    /// 快递公司编号
+                    /// </summary>
+                    [JsonProperty("logistics_id")]
+                    public int? LogisticsId { get; set; }
 
                 }
 

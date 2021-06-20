@@ -11,7 +11,7 @@ namespace PddOpenSdk.Models.Response.Finance
         public partial class FinanceBalanceDailyBillUrlGetResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 下载url
+            /// 货款账单下载 URL
             /// </summary>
             [JsonProperty("download_url")]
             public string DownloadUrl { get; set; }

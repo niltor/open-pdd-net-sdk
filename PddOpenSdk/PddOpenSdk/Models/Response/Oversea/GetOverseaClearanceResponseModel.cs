@@ -31,7 +31,7 @@ namespace PddOpenSdk.Models.Response.Oversea
             [JsonProperty("pay_no")]
             public string PayNo { get; set; }
             /// <summary>
-            /// 支付方式，枚举值：WEIXIN,ALIPAY
+            /// 支付方式，枚举值：WEIXIN,ALIPAY,DUODUOPAY
             /// </summary>
             [JsonProperty("pay_type")]
             public string PayType { get; set; }

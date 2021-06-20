@@ -33,6 +33,22 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 同意退款
+        /// </summary>
+        public async Task<AgreeRefundResponseModel> AgreeRefundAsync(AgreeRefundRequestModel agreeRefund)
+        {
+            var result = await PostAsync<AgreeRefundRequestModel, AgreeRefundResponseModel>("pdd.refund.agree", agreeRefund);
+            return result;
+        }
+        /// <summary>
+        /// 商家换货发货
+        /// </summary>
+        public async Task<ShippingRefundExchangeResponseModel> ShippingRefundExchangeAsync(ShippingRefundExchangeRequestModel shippingRefundExchange)
+        {
+            var result = await PostAsync<ShippingRefundExchangeRequestModel, ShippingRefundExchangeResponseModel>("pdd.refund.exchange.shipping", shippingRefundExchange);
+            return result;
+        }
+        /// <summary>
         /// 售后单详情接口
         /// </summary>
         public async Task<GetRefundInformationResponseModel> GetRefundInformationAsync(GetRefundInformationRequestModel getRefundInformation)
@@ -46,6 +62,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetRefundListIncrementResponseModel> GetRefundListIncrementAsync(GetRefundListIncrementRequestModel getRefundListIncrement)
         {
             var result = await PostAsync<GetRefundListIncrementRequestModel, GetRefundListIncrementResponseModel>("pdd.refund.list.increment.get", getRefundListIncrement);
+            return result;
+        }
+        /// <summary>
+        /// 商家售后同意退货
+        /// </summary>
+        public async Task<AgreeRefundReturngoodsResponseModel> AgreeRefundReturngoodsAsync(AgreeRefundReturngoodsRequestModel agreeRefundReturngoods)
+        {
+            var result = await PostAsync<AgreeRefundReturngoodsRequestModel, AgreeRefundReturngoodsResponseModel>("pdd.refund.returngoods.agree", agreeRefundReturngoods);
             return result;
         }
         /// <summary>

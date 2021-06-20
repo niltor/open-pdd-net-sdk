@@ -243,7 +243,7 @@ namespace PddOpenSdk.Models.Request.WayBill
                         [JsonProperty("town")]
                         public string Town { get; set; }
                         /// <summary>
-                        /// 国家
+                        /// 国家/地区
                         /// </summary>
                         [JsonProperty("country")]
                         public string Country { get; set; }

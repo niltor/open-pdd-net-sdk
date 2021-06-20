@@ -10,12 +10,12 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("goods_id")]
         public long GoodsId { get; set; }
         /// <summary>
-        /// 市场价 （单位分）
+        /// 参考价 （单位分）
         /// </summary>
         [JsonProperty("market_price")]
         public long? MarketPrice { get; set; }
         /// <summary>
-        /// 市场价 （单位元）
+        /// 参考价 （单位元）
         /// </summary>
         [JsonProperty("market_price_in_yuan")]
         public string MarketPriceInYuan { get; set; }

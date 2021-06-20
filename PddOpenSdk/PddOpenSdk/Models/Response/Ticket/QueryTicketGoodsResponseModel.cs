@@ -62,7 +62,7 @@ namespace PddOpenSdk.Models.Response.Ticket
             [JsonProperty("goods_status")]
             public int? GoodsStatus { get; set; }
             /// <summary>
-            /// 商品市场价，单位为分。
+            /// 商品参考价，单位为分。
             /// </summary>
             [JsonProperty("market_price")]
             public long? MarketPrice { get; set; }

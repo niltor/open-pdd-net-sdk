@@ -40,7 +40,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("cost_template_id")]
         public long? CostTemplateId { get; set; }
         /// <summary>
-        /// 国家ID，0-中国，暂时只传0（普通商品）
+        /// 地区/国家ID，0-中国，暂时只传0（普通商品）
         /// </summary>
         [JsonProperty("country_id")]
         public int? CountryId { get; set; }
@@ -140,7 +140,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("mai_jia_zi_ti")]
         public string MaiJiaZiTi { get; set; }
         /// <summary>
-        /// 市场价格，单位为分
+        /// 参考价格，单位为分
         /// </summary>
         [JsonProperty("market_price")]
         public long? MarketPrice { get; set; }
@@ -259,6 +259,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("is_group_pre_sale")]
         public int? IsGroupPreSale { get; set; }
+        /// <summary>
+        /// 是否sku预售，1：是，0：否
+        /// </summary>
+        [JsonProperty("is_sku_pre_sale")]
+        public int? IsSkuPreSale { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>
@@ -489,6 +494,11 @@ namespace PddOpenSdk.Models.Request.Goods
             /// </summary>
             [JsonProperty("sku_properties")]
             public List<SkuPropertiesRequestModel> SkuProperties { get; set; }
+            /// <summary>
+            /// sku预售时间戳，单位秒；不更新传null，取消传0，更新传实际值
+            /// </summary>
+            [JsonProperty("sku_pre_sale_time")]
+            public int? SkuPreSaleTime { get; set; }
             public partial class OverseaSkuRequestModel : PddRequestModel
             {
                 /// <summary>

@@ -9,7 +9,7 @@ namespace PddOpenSdk.Services.PddApi
         public LogisticsApi() { }
         public LogisticsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
-        /// 获取拼多多标准国家地址库
+        /// 获取拼多多标准地址库
         /// </summary>
         public async Task<GetLogisticsAddressResponseModel> GetLogisticsAddressAsync(GetLogisticsAddressRequestModel getLogisticsAddress)
         {

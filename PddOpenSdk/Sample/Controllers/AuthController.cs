@@ -15,7 +15,7 @@ namespace Sample.Controllers
     {
         private readonly IWebHostEnvironment _env;
         private readonly PddService _pdd;
-        private readonly string AccessToken = "7f7fb3f53dc74417a32ecd920396c4791fefa93f";
+        //private readonly string AccessToken = "";
         public AuthController(PddService pdd, IWebHostEnvironment env)
         {
             _pdd = pdd;
@@ -76,7 +76,7 @@ namespace Sample.Controllers
 
             var result = await _pdd.DdkApi.GetDdkGoodsRecommendAsync(model);
             // 获取Pdd官方返回的错误信息
-            var errorResponse = _pdd.DdkApi.ErrorResponse.Value;
+            var errorResponse = _pdd.DdkApi.ErrorResponse.Error_Response;
             Console.WriteLine(errorResponse.Error_msg);
             return Json(result);
         }

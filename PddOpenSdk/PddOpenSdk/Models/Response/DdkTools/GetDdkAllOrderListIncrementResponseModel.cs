@@ -24,6 +24,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
             public partial class OrderListResponseModel : PddResponseModel
             {
                 /// <summary>
+                /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
+                /// </summary>
+                [JsonProperty("activity_tags")]
+                public List<int?> ActivityTags { get; set; }
+                /// <summary>
                 /// 多多客工具id
                 /// </summary>
                 [JsonProperty("auth_duo_id")]
@@ -98,6 +103,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 /// </summary>
                 [JsonProperty("is_direct")]
                 public int? IsDirect { get; set; }
+                /// <summary>
+                /// 店铺id
+                /// </summary>
+                [JsonProperty("mall_id")]
+                public long? MallId { get; set; }
                 /// <summary>
                 /// 实际支付金额，单位为分
                 /// </summary>
@@ -214,10 +224,25 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("share_rate")]
                 public int? ShareRate { get; set; }
                 /// <summary>
-                /// 优势渠道专属商品补贴金额。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+                /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
                 /// </summary>
                 [JsonProperty("subsidy_amount")]
                 public int? SubsidyAmount { get; set; }
+                /// <summary>
+                /// 等级补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+                /// </summary>
+                [JsonProperty("subsidy_duo_amount_level")]
+                public int? SubsidyDuoAmountLevel { get; set; }
+                /// <summary>
+                /// 千万补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+                /// </summary>
+                [JsonProperty("subsidy_duo_amount_ten_million")]
+                public int? SubsidyDuoAmountTenMillion { get; set; }
+                /// <summary>
+                /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴
+                /// </summary>
+                [JsonProperty("subsidy_type")]
+                public int? SubsidyType { get; set; }
                 /// <summary>
                 /// 订单推广类型
                 /// </summary>

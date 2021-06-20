@@ -48,6 +48,16 @@ namespace PddOpenSdk.Models.Response.Util
                 /// </summary>
                 [JsonProperty("error_msg")]
                 public string ErrorMsg { get; set; }
+                /// <summary>
+                /// 虚拟号类型：0-非虚拟号 1-虚拟号
+                /// </summary>
+                [JsonProperty("virtual_number_type")]
+                public int? VirtualNumberType { get; set; }
+                /// <summary>
+                /// 虚拟号分机号
+                /// </summary>
+                [JsonProperty("virtual_identify_number")]
+                public string VirtualIdentifyNumber { get; set; }
 
             }
 

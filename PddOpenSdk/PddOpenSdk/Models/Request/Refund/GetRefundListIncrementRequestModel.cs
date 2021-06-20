@@ -33,6 +33,11 @@ namespace PddOpenSdk.Models.Request.Refund
         /// </summary>
         [JsonProperty("start_updated_at")]
         public long StartUpdatedAt { get; set; }
+        /// <summary>
+        /// 订单号。若入参含订单号，则可查询订单下的全部售后单。且入参中除订单号，page，page_size外的其他查询条件不起作用（标记必填的仍旧需要输入）。
+        /// </summary>
+        [JsonProperty("order_sn")]
+        public string OrderSn { get; set; }
 
     }
 

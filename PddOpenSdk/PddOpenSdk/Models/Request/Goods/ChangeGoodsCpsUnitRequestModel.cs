@@ -48,6 +48,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("remain_quantity")]
         public long? RemainQuantity { get; set; }
+        /// <summary>
+        /// 优惠券领取后的有效使用时间天数
+        /// </summary>
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
 
     }
 

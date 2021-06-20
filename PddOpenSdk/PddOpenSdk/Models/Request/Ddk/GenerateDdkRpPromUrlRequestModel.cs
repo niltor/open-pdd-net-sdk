@@ -10,22 +10,22 @@ namespace PddOpenSdk.Models.Request.Ddk
         [JsonProperty("amount")]
         public long? Amount { get; set; }
         /// <summary>
-        /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，6-购物车，10-生成绑定备案链接，12-砸金蛋；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
+        /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，6-购物车，10-生成绑定备案链接，12-砸金蛋，13-一元购；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
         /// </summary>
         [JsonProperty("channel_type")]
         public int? ChannelType { get; set; }
         /// <summary>
-        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key
+        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。（如果使用GET请求，请使用URLEncode处理参数）
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
         /// <summary>
-        /// 转盘自定义参数
+        /// 一元购自定义参数，json格式，例如:{"goods_sign":"Y9b2_0uSWMFPGSaVwvfZAlm_y2ADLWZl_JQ7UYaS80K"}
         /// </summary>
-        [JsonProperty("diy_lottery_param")]
-        public DiyLotteryParamRequestModel DiyLotteryParam { get; set; }
+        [JsonProperty("diy_one_yuan_param")]
+        public DiyOneYuanParamRequestModel DiyOneYuanParam { get; set; }
         /// <summary>
-        /// 红包自定义参数
+        /// 红包自定义参数，json格式
         /// </summary>
         [JsonProperty("diy_red_packet_param")]
         public DiyRedPacketParamRequestModel DiyRedPacketParam { get; set; }
@@ -59,37 +59,13 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("scratch_card_amount")]
         public long? ScratchCardAmount { get; set; }
-        public partial class DiyLotteryParamRequestModel : PddRequestModel
+        public partial class DiyOneYuanParamRequestModel : PddRequestModel
         {
             /// <summary>
-            /// 优先展示类目
+            /// 商品goodsSign，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
             /// </summary>
-            [JsonProperty("opt_id")]
-            public int? OptId { get; set; }
-            /// <summary>
-            /// 自定义价格和商品佣金区间
-            /// </summary>
-            [JsonProperty("range_items")]
-            public List<RangeItemsRequestModel> RangeItems { get; set; }
-            public partial class RangeItemsRequestModel : PddRequestModel
-            {
-                /// <summary>
-                /// 区间的开始值
-                /// </summary>
-                [JsonProperty("range_from")]
-                public long? RangeFrom { get; set; }
-                /// <summary>
-                /// range_id为1表示价格（单位分）， range_id为2表示商品佣金（单位千分之几)
-                /// </summary>
-                [JsonProperty("range_id")]
-                public int? RangeId { get; set; }
-                /// <summary>
-                /// 区间的结束值
-                /// </summary>
-                [JsonProperty("range_to")]
-                public long? RangeTo { get; set; }
-
-            }
+            [JsonProperty("goods_sign")]
+            public string GoodsSign { get; set; }
 
         }
         public partial class DiyRedPacketParamRequestModel : PddRequestModel

@@ -4,11 +4,6 @@ namespace PddOpenSdk.Models.Request.Invoice
     public partial class QueryInvoiceApplicationRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 申请流水号
-        /// </summary>
-        [JsonProperty("application_id")]
-        public long? ApplicationId { get; set; }
-        /// <summary>
         /// 订单号；订单号和申请时间必填其一
         /// </summary>
         [JsonProperty("order_sn")]

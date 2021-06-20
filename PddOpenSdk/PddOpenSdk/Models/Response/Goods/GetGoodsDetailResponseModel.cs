@@ -37,7 +37,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("cost_template_id")]
             public long? CostTemplateId { get; set; }
             /// <summary>
-            /// 国家id
+            /// 地区/国家id
             /// </summary>
             [JsonProperty("country_id")]
             public int? CountryId { get; set; }
@@ -137,7 +137,7 @@ namespace PddOpenSdk.Models.Response.Goods
             [JsonProperty("mai_jia_zi_ti")]
             public string MaiJiaZiTi { get; set; }
             /// <summary>
-            /// 市场价格，单位为分
+            /// 参考价格，单位为分
             /// </summary>
             [JsonProperty("market_price")]
             public long? MarketPrice { get; set; }
@@ -261,6 +261,11 @@ namespace PddOpenSdk.Models.Response.Goods
             /// </summary>
             [JsonProperty("is_group_pre_sale")]
             public int? IsGroupPreSale { get; set; }
+            /// <summary>
+            /// 是否sku预售，0：否，1：是
+            /// </summary>
+            [JsonProperty("is_sku_pre_sale")]
+            public int? IsSkuPreSale { get; set; }
             public partial class GoodsPropertyListResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -438,6 +443,11 @@ namespace PddOpenSdk.Models.Response.Goods
                 /// </summary>
                 [JsonProperty("sku_property_list")]
                 public List<SkuPropertyListResponseModel> SkuPropertyList { get; set; }
+                /// <summary>
+                /// sku预售时间，单位秒
+                /// </summary>
+                [JsonProperty("sku_pre_sale_time")]
+                public int? SkuPreSaleTime { get; set; }
                 public partial class OverseaSkuResponseModel : PddResponseModel
                 {
                     /// <summary>

@@ -34,10 +34,20 @@ namespace PddOpenSdk.Models.Response.Ddk
             public partial class ListResponseModel : PddResponseModel
             {
                 /// <summary>
+                /// 活动佣金比例，千分比（特定活动期间的佣金比例）
+                /// </summary>
+                [JsonProperty("activity_promotion_rate")]
+                public long? ActivityPromotionRate { get; set; }
+                /// <summary>
                 /// 商品活动标记数组，例：[4,7]，4-秒杀 7-百亿补贴等
                 /// </summary>
                 [JsonProperty("activity_tags")]
                 public List<int?> ActivityTags { get; set; }
+                /// <summary>
+                /// 商品品牌词信息，如“苹果”、“阿迪达斯”、“李宁”等
+                /// </summary>
+                [JsonProperty("brand_name")]
+                public string BrandName { get; set; }
                 /// <summary>
                 /// 商品类目id
                 /// </summary>
@@ -94,7 +104,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("desc_txt")]
                 public string DescTxt { get; set; }
                 /// <summary>
-                /// 额外优惠券
+                /// 额外优惠券，单位为分
                 /// </summary>
                 [JsonProperty("extra_coupon_amount")]
                 public long? ExtraCouponAmount { get; set; }
@@ -239,10 +249,15 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("share_rate")]
                 public int? ShareRate { get; set; }
                 /// <summary>
-                /// 优势渠道专属商品补贴金额。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+                /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
                 /// </summary>
                 [JsonProperty("subsidy_amount")]
                 public int? SubsidyAmount { get; set; }
+                /// <summary>
+                /// 千万补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+                /// </summary>
+                [JsonProperty("subsidy_duo_amount_ten_million")]
+                public int? SubsidyDuoAmountTenMillion { get; set; }
                 /// <summary>
                 /// 优惠标签列表，包括："X元券","比全网低X元","服务费","精选素材","近30天低价","同款低价","同款好评","同款热销","旗舰店","一降到底","招商优选","商家优选","好价再降X元","全站销量XX","实时热销榜第X名","实时好评榜第X名","额外补X元"等
                 /// </summary>

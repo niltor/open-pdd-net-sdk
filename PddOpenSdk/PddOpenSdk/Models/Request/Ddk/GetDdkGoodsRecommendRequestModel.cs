@@ -5,7 +5,7 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class GetDdkGoodsRecommendRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
+        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，10913-招商礼金商品，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
         /// </summary>
         [JsonProperty("activity_tags")]
         public List<int?> ActivityTags { get; set; }

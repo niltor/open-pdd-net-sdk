@@ -260,7 +260,7 @@ namespace PddOpenSdk.Models.Response.Goods
                         /// <summary>
                         /// 缺重包退规则：0不可选、1可选、2必选
                         /// </summary>
-                        [JsonProperty("lack_of_weight_claimRule")]
+                        [JsonProperty("lack_of_weight_claim_rule")]
                         public int? LackOfWeightClaimRule { get; set; }
                         /// <summary>
                         /// 全国联保规则：0不可选、1可选

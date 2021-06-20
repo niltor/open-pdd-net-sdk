@@ -80,6 +80,14 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<AddressOrderUpdateRequestModel, AddressOrderUpdateResponseModel>("pdd.order.update.address", addressOrderUpdate);
             return result;
         }
+        /// <summary>
+        /// 订单额外运单信息上传
+        /// </summary>
+        public async Task<LogisticsOrderUploadExtraResponseModel> LogisticsOrderUploadExtraAsync(LogisticsOrderUploadExtraRequestModel logisticsOrderUploadExtra)
+        {
+            var result = await PostAsync<LogisticsOrderUploadExtraRequestModel, LogisticsOrderUploadExtraResponseModel>("pdd.order.upload.extra.logistics", logisticsOrderUploadExtra);
+            return result;
+        }
 
     }
 }

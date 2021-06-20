@@ -105,7 +105,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 商品国家接口
+        /// 商品地区/国家接口
         /// </summary>
         public async Task<GetGoodsCountryResponseModel> GetGoodsCountryAsync(GetGoodsCountryRequestModel getGoodsCountry)
         {
@@ -198,6 +198,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<CommitGoodsEditGoodsResponseModel> CommitGoodsEditGoodsAsync(CommitGoodsEditGoodsRequestModel commitGoodsEditGoods)
         {
             var result = await PostAsync<CommitGoodsEditGoodsRequestModel, CommitGoodsEditGoodsResponseModel>("pdd.goods.edit.goods.commit", commitGoodsEditGoods);
+            return result;
+        }
+        /// <summary>
+        /// 文件详情查询
+        /// </summary>
+        public async Task<GetGoodsFileInfoResponseModel> GetGoodsFileInfoAsync(GetGoodsFileInfoRequestModel getGoodsFileInfo)
+        {
+            var result = await PostAsync<GetGoodsFileInfoRequestModel, GetGoodsFileInfoResponseModel>("pdd.goods.file.info.get", getGoodsFileInfo);
             return result;
         }
         /// <summary>

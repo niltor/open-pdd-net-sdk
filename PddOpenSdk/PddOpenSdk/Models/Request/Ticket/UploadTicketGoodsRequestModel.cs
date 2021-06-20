@@ -60,7 +60,7 @@ namespace PddOpenSdk.Models.Request.Ticket
         [JsonProperty("is_submit")]
         public int? IsSubmit { get; set; }
         /// <summary>
-        /// 商品市场价，单位为分，必须高于最高的sku单买价。新增商品时必填。
+        /// 商品参考价，单位为分，必须高于最高的sku单买价。新增商品时必填。
         /// </summary>
         [JsonProperty("market_price")]
         public long? MarketPrice { get; set; }
@@ -89,13 +89,18 @@ namespace PddOpenSdk.Models.Request.Ticket
         /// </summary>
         [JsonProperty("sync_goods_operate")]
         public int? SyncGoodsOperate { get; set; }
+        /// <summary>
+        /// 是否获取商品发布警告信息，默认为忽略
+        /// </summary>
+        [JsonProperty("ignore_edit_warn")]
+        public bool? IgnoreEditWarn { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>
             /// 轮播视频id
             /// </summary>
             [JsonProperty("file_id")]
-            public long FileId { get; set; }
+            public long? FileId { get; set; }
             /// <summary>
             /// 轮播视频url
             /// </summary>
@@ -114,7 +119,7 @@ namespace PddOpenSdk.Models.Request.Ticket
             /// 引用属性id
             /// </summary>
             [JsonProperty("ref_pid")]
-            public long RefPid { get; set; }
+            public long? RefPid { get; set; }
             /// <summary>
             /// 规格id，仅对于销售属性入参，和sku中的spec对应
             /// </summary>
@@ -153,7 +158,7 @@ namespace PddOpenSdk.Models.Request.Ticket
             /// 上架状态。0=已下架，1=已上架。新建sku时不传时表示上架。
             /// </summary>
             [JsonProperty("is_onsale")]
-            public int IsOnsale { get; set; }
+            public int? IsOnsale { get; set; }
             /// <summary>
             /// sku外部编码，同其他接口中的outer_id 、out_id、out_sku_sn、outer_sku_sn、out_sku_id、outer_sku_id 都为商家编码（sku维度）。
             /// </summary>
@@ -183,7 +188,7 @@ namespace PddOpenSdk.Models.Request.Ticket
             /// 商品规格列表，从pdd.goods.cat.template.get中获取销售属性规格id后，再在pdd.goods.spec.id.get获取spec_id。spec_id需要和goods_properties中的对应。对于多种规格，需要传每个规格的spec_id的值，如[20,5]。在发布后不可修改。
             /// </summary>
             [JsonProperty("spec_id_list")]
-            public List<long> SpecIdList { get; set; }
+            public List<long?> SpecIdList { get; set; }
             /// <summary>
             /// SKU预览图。图片格式支持JPEG/JPG/PNG， 图片尺寸长宽比1：1且尺寸不低于480px，图片大小最高1MB。先通过pdd.goods.image.upload上传图片
             /// </summary>
@@ -200,17 +205,17 @@ namespace PddOpenSdk.Models.Request.Ticket
                 /// 拼团价，单位为分。
                 /// </summary>
                 [JsonProperty("group_price")]
-                public long GroupPrice { get; set; }
+                public long? GroupPrice { get; set; }
                 /// <summary>
                 /// 库存增减。比如传-10表示将对应的sku库存减10。
                 /// </summary>
                 [JsonProperty("quantity_delta")]
-                public long QuantityDelta { get; set; }
+                public long? QuantityDelta { get; set; }
                 /// <summary>
                 /// 单买价，单位为分。
                 /// </summary>
                 [JsonProperty("single_price")]
-                public long SinglePrice { get; set; }
+                public long? SinglePrice { get; set; }
 
             }
 

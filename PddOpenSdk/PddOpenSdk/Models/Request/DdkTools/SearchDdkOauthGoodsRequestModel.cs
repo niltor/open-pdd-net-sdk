@@ -5,7 +5,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
     public partial class SearchDdkOauthGoodsRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
+        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，10913-招商礼金商品，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
         /// </summary>
         [JsonProperty("activity_tags")]
         public List<int?> ActivityTags { get; set; }
@@ -25,7 +25,7 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("cat_id")]
         public long? CatId { get; set; }
         /// <summary>
-        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为： {"uid":"11111","sid":"22222"} ，其中 uid 为用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 为上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。
+        /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。（如果使用GET请求，请使用URLEncode处理参数）
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
@@ -94,6 +94,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
         /// </summary>
         [JsonProperty("sort_type")]
         public int? SortType { get; set; }
+        /// <summary>
+        /// 是否使用个性化推荐，true表示使用，false表示不使用，默认true。
+        /// </summary>
+        [JsonProperty("use_customized")]
+        public bool? UseCustomized { get; set; }
         /// <summary>
         /// 是否只返回优惠券的商品，false返回所有商品，true只返回有优惠券的商品
         /// </summary>
