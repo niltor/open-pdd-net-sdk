@@ -26,7 +26,7 @@
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIcon>logo.jpg</PackageIcon>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-    <Version>2.3.3</Version>
+    <Version>2.3.4</Version>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 

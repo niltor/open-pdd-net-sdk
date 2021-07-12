@@ -90,7 +90,9 @@ public async Task<ActionResult> MultiTenantAsync()
 
 `XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
 
-- 心跳检测每10秒进行一次，后续会添加更多自定义内容。
+- 心跳检测间隔可在`appsetting.json`配置中进行配置，可参考`Sample`项目中的配置。
+此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。
+
 
 
 #### 2.1.0及以前版本

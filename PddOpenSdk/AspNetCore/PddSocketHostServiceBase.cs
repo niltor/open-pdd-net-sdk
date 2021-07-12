@@ -21,6 +21,8 @@ namespace MSDev.PddOpenSdk.AspNetCore
 
         protected WebsocketClient client;
         public static string socketUrl = "wss://message-api.pinduoduo.com";
+
+        public int HeartBeatSeconds { get; set; } = 5;
         public IServiceProvider Services { get; }
         public PddSocketHostServiceBase(
             ILogger<PddSocketHostServiceBase> logger,
@@ -30,6 +32,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
             _logger = logger;
             Services = services;
             _options = options.Value;
+            HeartBeatSeconds = _options.HeartBeatSeconds;
 
             // 获取当前时间戳，并构造加密字段
             var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
@@ -44,8 +47,8 @@ namespace MSDev.PddOpenSdk.AspNetCore
             _logger.LogInformation("socket 线程启动.");
             _logger.LogInformation("socket 开始连接.");
             OpenSocketAsync().Wait();
-            _timer = new Timer(KeepOnline, null, TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(10));
-            _logger.LogInformation("socket 心跳定时器运行.");
+            _timer = new Timer(KeepOnline, null, TimeSpan.FromSeconds(3), TimeSpan.FromSeconds(HeartBeatSeconds));
+            _logger.LogInformation("socket 心跳定时器已运行.");
             return Task.CompletedTask;
         }
 
@@ -99,7 +102,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
         {
             client.ReconnectionHappened.Subscribe(info =>
                 {
-                    //_logger.LogInformation($"Reconnection happened, type: {info.Type}");
+                    _logger.LogInformation($"Reconnection happened, type: {info.Type}");
                 });
 
         }

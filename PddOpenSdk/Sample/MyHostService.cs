@@ -11,9 +11,11 @@ namespace Sample
 {
     public class MyHostService : PddSocketHostServiceBase
     {
+
         public MyHostService(ILogger<MyHostService> logger, IServiceProvider services, IOptions<PddOptions> options) : base(logger, services, options)
         {
-
+            // 可在此处设置心中间隔，会覆盖配置中的值 
+            HeartBeatSeconds = 5;
         }
 
         public override void OnMessage()
