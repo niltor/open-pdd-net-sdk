@@ -15,7 +15,9 @@ services.AddPdd();
 "Pdd": {
     "ClientId": "",
     "ClientSecret": "",
-    "RedirectUri": ""
+    "RedirectUri": ""，
+    // 心跳间隔
+    "HeartBeatSeconds": 5
 }
 ```
 - 然后在控制器使用注入服务
