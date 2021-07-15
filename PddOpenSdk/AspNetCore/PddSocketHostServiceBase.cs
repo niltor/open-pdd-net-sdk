@@ -20,7 +20,7 @@ namespace MSDev.PddOpenSdk.AspNetCore
         protected Timer _timer; // 定时发送，避免被断开
 
         protected WebsocketClient client;
-        public static string socketUrl = "wss://message-api.pinduoduo.com";
+        public string socketUrl;
 
         public int HeartBeatSeconds { get; set; } = 5;
         public IServiceProvider Services { get; }
@@ -37,6 +37,15 @@ namespace MSDev.PddOpenSdk.AspNetCore
             // 获取当前时间戳，并构造加密字段
             var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
+
+            if (string.IsNullOrEmpty(_options.SocketUrl))
+            {
+                socketUrl = "wss://message-api.pinduoduo.com";
+            }
+            else
+            {
+                socketUrl = _options.SocketUrl;
+            }
             var url = $@"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
 
             client = new WebsocketClient(new Uri(url));

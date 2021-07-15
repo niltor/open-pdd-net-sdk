@@ -16,6 +16,7 @@ services.AddPdd();
     "ClientId": "",
     "ClientSecret": "",
     "RedirectUri": ""，
+    "SocketUrl": "",
     // 心跳间隔
     "HeartBeatSeconds": 5
 }
