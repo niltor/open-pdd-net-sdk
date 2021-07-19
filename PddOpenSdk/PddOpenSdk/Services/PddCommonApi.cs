@@ -64,14 +64,7 @@ namespace PddOpenSdk.Services
             {
                 dic.Add("access_token", AccessToken);
             }
-#if NET452
-            var Unix = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            dic.Add("timestamp", (long)(DateTime.UtcNow - Unix).TotalMilliseconds);
-#endif
-#if NETSTANDARD2_0
             dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
-
-#endif
             if (dic.Keys.Any(k => k == "type"))
             {
                 dic.Remove("type");
