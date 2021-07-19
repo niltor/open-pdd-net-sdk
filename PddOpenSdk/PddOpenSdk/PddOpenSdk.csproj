@@ -14,7 +14,7 @@
     <PackageReleaseNotes>
       拼多多SDK核心类库
       已更新同步到最新(202106)
-      去除netfx 兼容性判断
+      添加类库方法的 注释提示显示
     </PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
