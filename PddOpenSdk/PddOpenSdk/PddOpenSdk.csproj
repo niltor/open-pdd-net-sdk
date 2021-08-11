@@ -14,7 +14,7 @@
     <PackageReleaseNotes>
       拼多多SDK核心类库
       已更新同步到最新(202106)
-      添加类库方法的 注释提示显示
+      修复签名排序
     </PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
@@ -25,7 +25,7 @@
     <FileVersion>0.1.0.0</FileVersion>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIcon>logo.jpg</PackageIcon>
-    <Version>2.4.2</Version>
+    <Version>2.4.3</Version>
     <PackageId>MSDev.PddOpenSdk</PackageId>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <Copyright />

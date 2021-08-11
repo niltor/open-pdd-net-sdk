@@ -214,7 +214,9 @@ namespace PddOpenSdk.Services
             string signString = "";
             // 反射处理非基本类型字段的json转换
             string[] types = { "String", "DateTime", "Int64", "Boolean", "Float", "Double", "Long", "Int32" };
-            foreach (var item in dic.Keys.ToArray())
+            var orderedKeys = dic.Keys.ToList();
+            orderedKeys.Sort(string.CompareOrdinal);
+            foreach (var item in orderedKeys)
             {
                 if (!types.Contains(dic[item]?.GetType().Name))
                 {
