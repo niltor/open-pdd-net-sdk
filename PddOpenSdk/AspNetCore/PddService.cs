@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PddOpenSdk.Models;
@@ -107,11 +108,13 @@ namespace PddOpenSdk.AspNetCore
         /// </summary>
         public SmsVendorApi SmsVendorApi { get; }
         private readonly PddOptions _options;
+        private ILogger<PddService> _logger;
         public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
 
-        public PddService(IOptions<PddOptions> options)
+        public PddService(IOptions<PddOptions> options, ILogger<PddService> logger)
         {
             _options = options.Value;
+            _logger = logger;
 
             AuthApi = new AuthApi(_options.ClientId, _options.ClientSecret, _options.AccessToken, _options.CallbackUrl);
             SmsVendorApi = new SmsVendorApi(_options.ClientId, _options.ClientSecret, _options.AccessToken);
@@ -194,16 +197,30 @@ namespace PddOpenSdk.AspNetCore
                 }
 
                 var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
-                using (var hc = new HttpClient())
+                try
                 {
-                    var response = await hc.PostAsync(TokenUrl, data);
-                    string jsonString = await response.Content.ReadAsStringAsync();
-                    System.Console.WriteLine(jsonString);
-                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                    using (var hc = new HttpClient())
+                    {
+                        var response = await hc.PostAsync(TokenUrl, data);
 
-                    SetToken(result.AccessToken);
-                    return result;
+                        if (response.IsSuccessStatusCode)
+                        {
+                            string jsonString = await response.Content.ReadAsStringAsync();
+                            var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                            SetToken(result.AccessToken);
+                            return result;
+                        }
+                        else
+                        {
+                            _logger.LogError(await response.Content.ReadAsStringAsync());
+                        }
+                    }
                 }
+                catch (System.Exception ex)
+                {
+                    _logger.LogError(ex.Message);
+                }
+
             }
             return default;
         }
