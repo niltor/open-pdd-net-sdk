@@ -1,5 +1,7 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PddOpenSdk.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -18,6 +20,10 @@ namespace PddOpenSdk.Services.PddApi
         /// </summary>
         public static readonly string MmsURL = "https://mms.pinduoduo.com/open.html";
         /// <summary>
+        /// 店铺Web
+        /// </summary>
+        public static readonly string FuwuWebUrl = "https://fuwu.pinduoduo.com/service-market/auth";
+        /// <summary>
         /// 移动端授权地址
         /// </summary>
         public static readonly string MaiURL = "https://mai.pinduoduo.com/h5-login.html";
@@ -25,6 +31,7 @@ namespace PddOpenSdk.Services.PddApi
         /// 多多客授权地址
         /// </summary>
         public static readonly string DDKUrl = "https://jinbao.pinduoduo.com/open.html";
+
         public AuthApi() { }
         public AuthApi(string clientId, string clientSecret, string accessToken, string redirectUrl)
             : base(clientId, clientSecret, accessToken)
@@ -36,7 +43,6 @@ namespace PddOpenSdk.Services.PddApi
         /// 获取Token请求
         /// </summary>
         /// <param name="code"></param>
-        /// <param name="redirectUri"></param>
         /// <param name="state"></param>
         /// <returns></returns>
         public async Task<AccessTokenResponseModel> GetAccessTokenAsync(string code, string state = null)
@@ -61,10 +67,29 @@ namespace PddOpenSdk.Services.PddApi
                 using (var hc = new HttpClient())
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
-                    string jsonString = await response.Content.ReadAsStringAsync();
-                    System.Console.WriteLine(jsonString);
-                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
-                    return result;
+                    ErrorResponse = new ErrorResponse();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string jsonString = await response.Content.ReadAsStringAsync();
+                        var jObject = JObject.Parse(jsonString);
+                        if (jObject.TryGetValue("error_response", out var errorResponse))
+                        {
+                            ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonString);
+                            Console.WriteLine("错误信息:" + errorResponse.ToString());
+                            return default;
+                        }
+                        else
+                        {
+                            var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                            return result;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
+                    }
+
                 }
             }
             return default;
@@ -110,12 +135,11 @@ namespace PddOpenSdk.Services.PddApi
         /// <summary>
         /// 获取网页授权地址
         /// </summary>
-        /// <param name="callbackUrl"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        public string GetWebOAuthUrl(string callbackUrl, string state = null)
+        public string GetWebOAuthUrl(string state = null)
         {
-            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl;
+            string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
             if (!string.IsNullOrEmpty(state))
             {
                 url += "&state=" + state;
@@ -140,7 +164,6 @@ namespace PddOpenSdk.Services.PddApi
         /// <summary>
         /// 多多客授权
         /// </summary>
-        /// <param name="callbackUrl"></param>
         /// <param name="state"></param>
         /// <returns></returns>
         public string GetDDKOAuthUrl(string state = null)
@@ -152,5 +175,6 @@ namespace PddOpenSdk.Services.PddApi
             }
             return url;
         }
+
     }
 }

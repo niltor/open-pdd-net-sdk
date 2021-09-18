@@ -1,7 +1,9 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PddOpenSdk.Models;
+using PddOpenSdk.Services;
 using PddOpenSdk.Services.PddApi;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -107,6 +109,8 @@ namespace PddOpenSdk.AspNetCore
         /// 短信供应商API
         /// </summary>
         public SmsVendorApi SmsVendorApi { get; }
+
+        public ErrorResponse ErrorResponse;
         private readonly PddOptions _options;
         private ILogger<PddService> _logger;
         public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
@@ -206,9 +210,19 @@ namespace PddOpenSdk.AspNetCore
                         if (response.IsSuccessStatusCode)
                         {
                             string jsonString = await response.Content.ReadAsStringAsync();
-                            var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
-                            SetToken(result.AccessToken);
-                            return result;
+                            var jObject = JObject.Parse(jsonString);
+                            if (jObject.TryGetValue("error_response", out var errorResponse))
+                            {
+                                ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonString);
+                                _logger.LogError("错误信息:" + errorResponse.ToString());
+                                return default;
+                            }
+                            else
+                            {
+                                var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                                SetToken(result.AccessToken);
+                                return result;
+                            }
                         }
                         else
                         {

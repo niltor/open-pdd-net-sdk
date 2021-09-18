@@ -89,14 +89,14 @@ namespace PddOpenSdk.Services
             try
             {
                 var response = await client.PostAsync("https://gw-upload.pinduoduo.com/api/upload", content);
-                //ErrorResponse = new ErrorResponse();
+                ErrorResponse = new ErrorResponse();
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResult = await response.Content.ReadAsStringAsync();
                     var jObject = JObject.Parse(jsonResult);
                     if (jObject.TryGetValue("error_response", out var errorResponse))
                     {
-                        //ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonResult);
+                        ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonResult);
                         Console.WriteLine("错误信息:" + errorResponse.ToString());
                         return default;
                     }

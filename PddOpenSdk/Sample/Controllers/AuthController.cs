@@ -23,7 +23,7 @@ namespace Sample.Controllers
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetDDKOAuthUrl();
+            string url = _pdd.AuthApi.GetWebOAuthUrl();
             ViewData["url"] = url;
             return View();
         }
