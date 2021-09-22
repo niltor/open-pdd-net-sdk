@@ -23,7 +23,7 @@ namespace Sample.Controllers
         }
         public IActionResult Index()
         {
-            string url = _pdd.AuthApi.GetWebOAuthUrl();
+            string url = _pdd.AuthApi.GetDDKOAuthUrl();
             ViewData["url"] = url;
             return View();
         }
@@ -97,6 +97,20 @@ namespace Sample.Controllers
             };
             var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model);
             return Json(base64);
+
+        }
+
+        /// <summary>
+        /// 图片stream上传
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ActionResult> TestImageStreamUpload()
+        {
+            //_pdd.GoodsApi.AccessToken = AccessToken;
+            var filePath = Path.Combine(_env.WebRootPath, "images", "logo.png");
+            var model = new UploadGoodsFilespaceImageRequestModel { FilePath = filePath };
+            var result = await _pdd.GoodsApi.UploadGoodsFilespaceImageAsync(model);
+            return Json(result);
         }
 
         /// <summary>
