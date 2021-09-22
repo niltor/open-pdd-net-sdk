@@ -168,7 +168,6 @@ namespace Console
             PddCatInfos = await GetCatListAsync();
             if (PddCatInfos.Count > 0)
             {
-
                 var currentPath = Directory.GetCurrentDirectory();
                 var resultPath = Path.Combine(currentPath, "Services", "PddApi");
                 // 创建目录
@@ -177,11 +176,13 @@ namespace Console
                     Directory.CreateDirectory(resultPath);
                 }
 
-                foreach (var pddCatInfo in PddCatInfos)
+                Parallel.ForEach(PddCatInfos, new ParallelOptions
                 {
-
+                    MaxDegreeOfParallelism = 3,
+                },
+                async (pddCatInfo) =>
+                {
                     PddDocInfos = await GetApiDocListByCatAsync(pddCatInfo.Id);
-
                     // 获取映射类名
                     CatMapClassName.TryGetValue(pddCatInfo.Id.ToString(), out string className);
                     if (PddDocInfos.Count > 0)
@@ -206,7 +207,8 @@ namespace Console
                         }
                         SaveApiClass(className, methodsContent);
                     }
-                }
+                });
+                System.Console.WriteLine("Get All done!");
             }
         }
 
@@ -255,9 +257,15 @@ $@"/// <summary>
             }
             SaveResponseModel(responseModelName, responseContent, requestClassName);
 
+            var postName = "PostAsync";
+            // 如果是文件类型
+            if (doc.RequestParamList.Any(p => p.ParamType == ParamType.File))
+            {
+                postName = "PostFileAsync";
+            }
             return $@"{methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
 {{
-    var result = await PostAsync<{paramsModelType},{responseModelName}>(""{doc.ScopeName}"",{paramsModelName});
+    var result = await {postName}<{paramsModelType},{responseModelName}>(""{doc.ScopeName}"",{paramsModelName});
     return result;
 }}
 ";

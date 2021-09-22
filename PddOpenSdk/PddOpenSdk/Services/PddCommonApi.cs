@@ -132,15 +132,9 @@ namespace PddOpenSdk.Services
             {
                 throw new Exception("请检查是否设置ClientId、ClientSecret");
             }
-
             // 类型转换到字典
             var dic = Function.ToDictionary(model);
 
-            // 判断是否为文件上传
-            if (dic.Keys.Any(k => k == "file_path"))
-            {
-                return await PostFileAsync<TModel, TResult>(type, model);
-            }
             // 添加公共参数
             dic.Add("client_id", ClientId);
             dic.Add("data_type", "JSON");
