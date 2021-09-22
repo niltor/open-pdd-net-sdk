@@ -186,6 +186,36 @@ namespace PddOpenSdk.Models.Response.Refund
             /// </summary>
             [JsonProperty("sku_id_exchange")]
             public string SkuIdExchange { get; set; }
+            /// <summary>
+            /// 商家换货发货的省份编码（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_province_id")]
+            public long? ExchangeReceiverProvinceId { get; set; }
+            /// <summary>
+            /// 商家换货发货的省份（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_province")]
+            public string ExchangeReceiverProvince { get; set; }
+            /// <summary>
+            /// 商家换货发货的城市编码（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_city_id")]
+            public long? ExchangeReceiverCityId { get; set; }
+            /// <summary>
+            /// 商家换货发货的城市（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_city")]
+            public string ExchangeReceiverCity { get; set; }
+            /// <summary>
+            /// 商家换货发货的区县编码（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_town_id")]
+            public long? ExchangeReceiverTownId { get; set; }
+            /// <summary>
+            /// 商家换货发货的区县（消费者地址）
+            /// </summary>
+            [JsonProperty("exchange_receiver_town")]
+            public string ExchangeReceiverTown { get; set; }
 
         }
 

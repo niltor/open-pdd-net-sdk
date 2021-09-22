@@ -49,14 +49,6 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 非拼面单报备接口
-        /// </summary>
-        public async Task<ReportOpenWaybillTypeResponseModel> ReportOpenWaybillTypeAsync(ReportOpenWaybillTypeRequestModel reportOpenWaybillType)
-        {
-            var result = await PostAsync<ReportOpenWaybillTypeRequestModel, ReportOpenWaybillTypeResponseModel>("pdd.open.waybill.type.report", reportOpenWaybillType);
-            return result;
-        }
-        /// <summary>
         /// 获取Access Token
         /// </summary>
         public async Task<CreatePopAuthTokenResponseModel> CreatePopAuthTokenAsync(CreatePopAuthTokenRequestModel createPopAuthToken)

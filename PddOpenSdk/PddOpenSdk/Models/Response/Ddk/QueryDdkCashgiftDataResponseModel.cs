@@ -12,6 +12,11 @@ namespace PddOpenSdk.Models.Response.Ddk
         public partial class CashgiftDataResponseResponseModel : PddResponseModel
         {
             /// <summary>
+            /// 礼金账户余额，单位为分
+            /// </summary>
+            [JsonProperty("available_balance")]
+            public long? AvailableBalance { get; set; }
+            /// <summary>
             /// 多多礼金数据列表
             /// </summary>
             [JsonProperty("list")]
@@ -54,10 +59,10 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("fetch_quantity")]
                 public int? FetchQuantity { get; set; }
                 /// <summary>
-                /// 商品信息
+                /// 商品列表信息
                 /// </summary>
-                [JsonProperty("goods_info")]
-                public GoodsInfoResponseModel GoodsInfo { get; set; }
+                [JsonProperty("goods_info_list")]
+                public List<GoodsInfoListResponseModel> GoodsInfoList { get; set; }
                 /// <summary>
                 /// 礼金订单使用的券总金额，单位为分（实时数据）
                 /// </summary>
@@ -98,7 +103,7 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("status")]
                 public int? Status { get; set; }
-                public partial class GoodsInfoResponseModel : PddResponseModel
+                public partial class GoodsInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>
                     /// 商品优惠券面额，单位为分
@@ -116,15 +121,15 @@ namespace PddOpenSdk.Models.Response.Ddk
                     [JsonProperty("goods_price")]
                     public long? GoodsPrice { get; set; }
                     /// <summary>
+                    /// 商品goodsSign，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
+                    /// </summary>
+                    [JsonProperty("goods_sign")]
+                    public string GoodsSign { get; set; }
+                    /// <summary>
                     /// 商品佣金比例，千分比
                     /// </summary>
                     [JsonProperty("rate")]
                     public int? Rate { get; set; }
-                    /// <summary>
-                    /// 招商团长duoid
-                    /// </summary>
-                    [JsonProperty("zs_duo_id")]
-                    public long? ZsDuoId { get; set; }
 
                 }
 

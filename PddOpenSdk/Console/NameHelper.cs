@@ -17,8 +17,9 @@ namespace Console
         /// <param name="name">参数名</param>
         /// <param name="type">参数类型</param>
         /// <param name="isMust">是否必须</param>
+        /// <param name="hasChild">是否有子元素，有的话，才构建新对象</param>
         /// <returns></returns>
-        public static string GetAttributionName(string name, string type, long isMust = 1, string modelType = "RequestModel")
+        public static string GetAttributionName(string name, string type, long isMust = 1, string modelType = "RequestModel", bool hasChild = true)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -56,7 +57,14 @@ namespace Console
                     type = "Dictionary<string, object>";
                     break;
                 case "object":
-                    type = Function.ToPascalCase(name + modelType);
+                    if (hasChild)
+                    {
+                        type = Function.ToPascalCase(name + modelType);
+                    }
+                    else
+                    {
+                        type = "object";
+                    }
                     break;
                 case "string":
                     break;
@@ -66,10 +74,9 @@ namespace Console
             }
             if (isArray)
             {
-                // TODO:可使用复数形式
+                // 可使用复数形式
                 type = $"List<{type}>";
             }
-
             attributionName = $"public {type} {name} {{get;set;}}\r\n";
             return attributionName;
         }

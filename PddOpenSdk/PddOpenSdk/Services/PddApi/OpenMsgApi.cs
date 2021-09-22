@@ -9,14 +9,6 @@ namespace PddOpenSdk.Services.PddApi
         public OpenMsgApi() { }
         public OpenMsgApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
-        /// 根据运单号查询短信发送记录
-        /// </summary>
-        public async Task<RecordOpenMsgServiceQueryExpressMsgResponseModel> RecordOpenMsgServiceQueryExpressMsgAsync(RecordOpenMsgServiceQueryExpressMsgRequestModel recordOpenMsgServiceQueryExpressMsg)
-        {
-            var result = await PostAsync<RecordOpenMsgServiceQueryExpressMsgRequestModel, RecordOpenMsgServiceQueryExpressMsgResponseModel>("pdd.open.msg.service.query.express.msg.record", recordOpenMsgServiceQueryExpressMsg);
-            return result;
-        }
-        /// <summary>
         /// 查询短信发送记录
         /// </summary>
         public async Task<RecordOpenMsgServiceQueryMsgResponseModel> RecordOpenMsgServiceQueryMsgAsync(RecordOpenMsgServiceQueryMsgRequestModel recordOpenMsgServiceQueryMsg)

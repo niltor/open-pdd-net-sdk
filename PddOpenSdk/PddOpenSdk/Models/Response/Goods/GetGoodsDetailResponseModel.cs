@@ -326,12 +326,12 @@ namespace PddOpenSdk.Models.Response.Goods
             public partial class GoodsTravelAttrResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 日历商品类型1:旅行类,2:住宿类,3:票务类
+                /// 出行人是否必填（默认是）
                 /// </summary>
                 [JsonProperty("need_tourist")]
                 public bool? NeedTourist { get; set; }
                 /// <summary>
-                /// 出行人是否必填（默认是）
+                /// 日历商品类型1:旅行类,2:住宿类,3:票务类
                 /// </summary>
                 [JsonProperty("type")]
                 public int? Type { get; set; }

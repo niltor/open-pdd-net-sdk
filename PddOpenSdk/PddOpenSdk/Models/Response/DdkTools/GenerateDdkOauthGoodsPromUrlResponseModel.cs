@@ -24,7 +24,7 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("mobile_short_url")]
                 public string MobileShortUrl { get; set; }
                 /// <summary>
-                /// 使用此推广链接，用户安装拼多多APP的情况下会唤起APP，否则唤起H5页面
+                /// 使用此推广链接，用户安装微信的情况下，默认拉起拼多多福利券微信小程序，否则唤起H5页面
                 /// </summary>
                 [JsonProperty("mobile_url")]
                 public string MobileUrl { get; set; }

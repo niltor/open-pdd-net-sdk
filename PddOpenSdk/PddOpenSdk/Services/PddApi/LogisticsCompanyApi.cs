@@ -73,11 +73,35 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
+        /// 寄件实操回告接口
+        /// </summary>
+        public async Task<NotifyServiceMailBizactionResponseModel> NotifyServiceMailBizactionAsync(NotifyServiceMailBizactionRequestModel notifyServiceMailBizaction)
+        {
+            var result = await PostAsync<NotifyServiceMailBizactionRequestModel, NotifyServiceMailBizactionResponseModel>("pdd.service.mail.bizaction.notify", notifyServiceMailBizaction);
+            return result;
+        }
+        /// <summary>
+        /// 柜子状态变更通知接口
+        /// </summary>
+        public async Task<NotifyServiceMailBoxStatusResponseModel> NotifyServiceMailBoxStatusAsync(NotifyServiceMailBoxStatusRequestModel notifyServiceMailBoxStatus)
+        {
+            var result = await PostAsync<NotifyServiceMailBoxStatusRequestModel, NotifyServiceMailBoxStatusResponseModel>("pdd.service.mail.box.status.notify", notifyServiceMailBoxStatus);
+            return result;
+        }
+        /// <summary>
         /// 轨迹订阅接口
         /// </summary>
         public async Task<SubLogisticsCoTrackResponseModel> SubLogisticsCoTrackAsync(SubLogisticsCoTrackRequestModel subLogisticsCoTrack)
         {
             var result = await PostAsync<SubLogisticsCoTrackRequestModel, SubLogisticsCoTrackResponseModel>("pdd.logistics.co.track.sub", subLogisticsCoTrack);
+            return result;
+        }
+        /// <summary>
+        /// 获取丰巢开平的access_token
+        /// </summary>
+        public async Task<AuthServiceMailOrderFcResponseModel> AuthServiceMailOrderFcAsync(AuthServiceMailOrderFcRequestModel authServiceMailOrderFc)
+        {
+            var result = await PostAsync<AuthServiceMailOrderFcRequestModel, AuthServiceMailOrderFcResponseModel>("pdd.service.mail.order.fc.auth", authServiceMailOrderFc);
             return result;
         }
         /// <summary>

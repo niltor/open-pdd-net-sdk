@@ -175,12 +175,10 @@ namespace Console
                 {
                     Directory.CreateDirectory(resultPath);
                 }
-
                 Parallel.ForEach(PddCatInfos, new ParallelOptions
                 {
-                    MaxDegreeOfParallelism = 3,
-                },
-                async (pddCatInfo) =>
+                    MaxDegreeOfParallelism = 3
+                }, async (pddCatInfo) =>
                 {
                     PddDocInfos = await GetApiDocListByCatAsync(pddCatInfo.Id);
                     // 获取映射类名
@@ -197,21 +195,20 @@ namespace Console
                             {
                                 if (!pddDocInfo.ScopeTips.ToLower().Equals("new"))
                                 {
-                                    continue;
+                                    return;
                                 }
                             }
                             var docDetail = await GetDocDetailByIdAsync(pddDocInfo.Id);
                             methodsContent += BuildRequestMethod(docDetail, className);
                             System.Console.WriteLine($"[{totalNumber}]" + docDetail.ScopeName + "...Done!");
-
                         }
                         SaveApiClass(className, methodsContent);
                     }
                 });
-                System.Console.WriteLine("Get All done!");
+                Task.WaitAll();
+                System.Console.WriteLine("Get All " + totalNumber + " done!");
             }
         }
-
 
         /// <summary>
         /// 生成接口请求方法
@@ -265,7 +262,7 @@ $@"/// <summary>
             }
             return $@"{methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
 {{
-    var result = await {postName}<{paramsModelType},{responseModelName}>(""{doc.ScopeName}"",{paramsModelName});
+    var result = await {postName}<{paramsModelType}, {responseModelName}>(""{doc.ScopeName}"", {paramsModelName});
     return result;
 }}
 ";
@@ -301,7 +298,7 @@ $@"/// <summary>
                     param.ParamName = "file_path";
                 }
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value, hasChild: param.ChildrenNum>0);
 
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
@@ -348,7 +345,8 @@ $@"/// <summary>
             foreach (var param in currentParamLists)
             {
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel");
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel",param.ChildrenNum>0);
+
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)

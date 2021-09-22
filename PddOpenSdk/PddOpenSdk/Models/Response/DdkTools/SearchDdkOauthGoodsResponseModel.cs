@@ -54,6 +54,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("brand_name")]
                 public string BrandName { get; set; }
                 /// <summary>
+                /// 全局礼金金额，单位分
+                /// </summary>
+                [JsonProperty("cash_gift_amount")]
+                public long? CashGiftAmount { get; set; }
+                /// <summary>
                 /// 商品类目id
                 /// </summary>
                 [JsonProperty("cat_ids")]
@@ -179,6 +184,11 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("has_mall_coupon")]
                 public bool? HasMallCoupon { get; set; }
                 /// <summary>
+                /// 商品是否有素材(图文、视频)
+                /// </summary>
+                [JsonProperty("has_material")]
+                public bool? HasMaterial { get; set; }
+                /// <summary>
                 /// 物流分
                 /// </summary>
                 [JsonProperty("lgst_txt")]
@@ -299,15 +309,15 @@ namespace PddOpenSdk.Models.Response.DdkTools
                 [JsonProperty("search_id")]
                 public string SearchId { get; set; }
                 /// <summary>
-                /// 服务标签: 4-送货入户并安装,5-送货入户,6-电子发票,9-坏果包赔,11-闪电退款,12-24小时发货,13-48小时发货,17-顺丰包邮,18-只换不修,19-全国联保,20-分期付款,24-极速退款,25-品质保障,26-缺重包退,27-当日发货,28-可定制化,29-预约配送,1000001-正品发票,1000002-送货入户并安装
-                /// </summary>
-                [JsonProperty("service_tags")]
-                public List<long?> ServiceTags { get; set; }
-                /// <summary>
                 /// 服务分
                 /// </summary>
                 [JsonProperty("serv_txt")]
                 public string ServTxt { get; set; }
+                /// <summary>
+                /// 服务标签: 4-送货入户并安装,5-送货入户,6-电子发票,9-坏果包赔,11-闪电退款,12-24小时发货,13-48小时发货,17-顺丰包邮,18-只换不修,19-全国联保,20-分期付款,24-极速退款,25-品质保障,26-缺重包退,27-当日发货,28-可定制化,29-预约配送,1000001-正品发票,1000002-送货入户并安装
+                /// </summary>
+                [JsonProperty("service_tags")]
+                public List<long?> ServiceTags { get; set; }
                 /// <summary>
                 /// 招商分成服务费比例，千分比
                 /// </summary>

@@ -34,6 +34,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("brand_name")]
                 public string BrandName { get; set; }
                 /// <summary>
+                /// 全局礼金金额，单位分
+                /// </summary>
+                [JsonProperty("cash_gift_amount")]
+                public long? CashGiftAmount { get; set; }
+                /// <summary>
                 /// 商品类目ID，使用pdd.goods.cats.get接口获取
                 /// </summary>
                 [JsonProperty("cat_id")]
@@ -224,6 +229,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("mall_name")]
                 public string MallName { get; set; }
                 /// <summary>
+                /// 商品素材列表
+                /// </summary>
+                [JsonProperty("material_list")]
+                public List<MaterialListResponseModel> MaterialList { get; set; }
+                /// <summary>
                 /// 店铺类型，1-个人，2-企业，3-旗舰店，4-专卖店，5-专营店，6-普通店（未传为全部）
                 /// </summary>
                 [JsonProperty("merchant_type")]
@@ -318,6 +328,40 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("zs_duo_id")]
                 public long? ZsDuoId { get; set; }
+                public partial class MaterialListResponseModel : PddResponseModel
+                {
+                    /// <summary>
+                    /// 素材ID
+                    /// </summary>
+                    [JsonProperty("id")]
+                    public string Id { get; set; }
+                    /// <summary>
+                    /// 图片列表
+                    /// </summary>
+                    [JsonProperty("image_list")]
+                    public List<string> ImageList { get; set; }
+                    /// <summary>
+                    /// 文字列表
+                    /// </summary>
+                    [JsonProperty("text_list")]
+                    public List<string> TextList { get; set; }
+                    /// <summary>
+                    /// 视频缩略图
+                    /// </summary>
+                    [JsonProperty("thumbnail_url")]
+                    public string ThumbnailUrl { get; set; }
+                    /// <summary>
+                    /// 素材类型，1-图文，2-视频
+                    /// </summary>
+                    [JsonProperty("type")]
+                    public int? Type { get; set; }
+                    /// <summary>
+                    /// 视频url
+                    /// </summary>
+                    [JsonProperty("video_url")]
+                    public string VideoUrl { get; set; }
+
+                }
 
             }
 

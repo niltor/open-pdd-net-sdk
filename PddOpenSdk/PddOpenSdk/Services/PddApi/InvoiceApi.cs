@@ -9,6 +9,14 @@ namespace PddOpenSdk.Services.PddApi
         public InvoiceApi() { }
         public InvoiceApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
+        /// 自动开票发票查询
+        /// </summary>
+        public async Task<QueryEinvoiceInfoResponseModel> QueryEinvoiceInfoAsync(QueryEinvoiceInfoRequestModel queryEinvoiceInfo)
+        {
+            var result = await PostAsync<QueryEinvoiceInfoRequestModel, QueryEinvoiceInfoResponseModel>("pdd.einvoice.info.query", queryEinvoiceInfo);
+            return result;
+        }
+        /// <summary>
         /// 开票申请单查询
         /// </summary>
         public async Task<QueryInvoiceApplicationResponseModel> QueryInvoiceApplicationAsync(QueryInvoiceApplicationRequestModel queryInvoiceApplication)

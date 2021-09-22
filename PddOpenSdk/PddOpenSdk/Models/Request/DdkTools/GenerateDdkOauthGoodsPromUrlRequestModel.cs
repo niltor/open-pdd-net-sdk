@@ -60,6 +60,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("goods_sign_list")]
         public List<string> GoodsSignList { get; set; }
         /// <summary>
+        /// 素材ID，可以通过商品详情接口获取商品素材信息
+        /// </summary>
+        [JsonProperty("material_id")]
+        public string MaterialId { get; set; }
+        /// <summary>
         /// true--生成多人团推广链接 false--生成单人团推广链接（默认false）1、单人团推广链接：用户访问单人团推广链接，可直接购买商品无需拼团。2、多人团推广链接：用户访问双人团推广链接开团，若用户分享给他人参团，则开团者和参团者的佣金均结算给推手
         /// </summary>
         [JsonProperty("multi_group")]

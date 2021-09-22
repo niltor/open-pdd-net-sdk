@@ -30,6 +30,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("force_auth_duo_id")]
         public bool? ForceAuthDuoId { get; set; }
         /// <summary>
+        /// 商品主图类型：1-场景图，2-白底图，默认为0
+        /// </summary>
+        [JsonProperty("goods_img_type")]
+        public int? GoodsImgType { get; set; }
+        /// <summary>
         /// 商品goodsSign列表，相似商品推荐场景时必传，仅取数组的第一位，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
         /// </summary>
         [JsonProperty("goods_sign_list")]

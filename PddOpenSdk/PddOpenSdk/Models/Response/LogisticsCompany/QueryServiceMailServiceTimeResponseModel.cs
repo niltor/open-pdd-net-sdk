@@ -31,6 +31,11 @@ namespace PddOpenSdk.Models.Response.LogisticsCompany
             /// </summary>
             [JsonProperty("serviceTimes")]
             public List<ServiceTimesResponseModel> ServiceTimes { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            [JsonProperty("serviceOptions")]
+            public ServiceOptionsResponseModel ServiceOptions { get; set; }
             public partial class ServiceTimesResponseModel : PddResponseModel
             {
                 /// <summary>
@@ -48,6 +53,20 @@ namespace PddOpenSdk.Models.Response.LogisticsCompany
                 /// </summary>
                 [JsonProperty("serviceDate")]
                 public string ServiceDate { get; set; }
+
+            }
+            public partial class ServiceOptionsResponseModel : PddResponseModel
+            {
+                /// <summary>
+                /// 
+                /// </summary>
+                [JsonProperty("canSend")]
+                public bool? CanSend { get; set; }
+                /// <summary>
+                /// 
+                /// </summary>
+                [JsonProperty("canReceivce")]
+                public bool? CanReceivce { get; set; }
 
             }
 

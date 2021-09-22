@@ -88,6 +88,14 @@ namespace PddOpenSdk.Services.PddApi
             var result = await PostAsync<LogisticsOrderUploadExtraRequestModel, LogisticsOrderUploadExtraResponseModel>("pdd.order.upload.extra.logistics", logisticsOrderUploadExtra);
             return result;
         }
+        /// <summary>
+        /// 虚拟业务信息查询接口
+        /// </summary>
+        public async Task<GetOrderVirtualInformationResponseModel> GetOrderVirtualInformationAsync(GetOrderVirtualInformationRequestModel getOrderVirtualInformation)
+        {
+            var result = await PostAsync<GetOrderVirtualInformationRequestModel, GetOrderVirtualInformationResponseModel>("pdd.order.virtual.information.get", getOrderVirtualInformation);
+            return result;
+        }
 
     }
 }

@@ -19,15 +19,15 @@ namespace PddOpenSdk.Models.Response.Goods
             public partial class MeasurementListResponseModel : PddResponseModel
             {
                 /// <summary>
-                /// 描述
-                /// </summary>
-                [JsonProperty("desc")]
-                public string Desc { get; set; }
-                /// <summary>
                 /// 编码
                 /// </summary>
                 [JsonProperty("code")]
                 public string Code { get; set; }
+                /// <summary>
+                /// 说明
+                /// </summary>
+                [JsonProperty("desc")]
+                public string Desc { get; set; }
 
             }
 

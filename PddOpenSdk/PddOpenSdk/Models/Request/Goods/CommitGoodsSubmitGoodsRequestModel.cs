@@ -33,17 +33,17 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 叶子类目ID
         /// </summary>
         [JsonProperty("cat_id")]
-        public long CatId { get; set; }
+        public long? CatId { get; set; }
         /// <summary>
         /// 物流运费模板ID，可使用pdd.logistics.template.get获取
         /// </summary>
         [JsonProperty("cost_template_id")]
-        public long CostTemplateId { get; set; }
+        public long? CostTemplateId { get; set; }
         /// <summary>
         /// 地区/国家ID，0-中国，暂时只传0（普通商品）
         /// </summary>
         [JsonProperty("country_id")]
-        public int CountryId { get; set; }
+        public int? CountryId { get; set; }
         /// <summary>
         /// 团购人数
         /// </summary>
@@ -113,7 +113,12 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡，15-商家卡券，19-平台卡券，暂时支持1-普通商品的上架 19-平台卡券
         /// </summary>
         [JsonProperty("goods_type")]
-        public int GoodsType { get; set; }
+        public int? GoodsType { get; set; }
+        /// <summary>
+        /// 是否获取商品发布警告信息，默认为否
+        /// </summary>
+        [JsonProperty("ignore_edit_warn")]
+        public bool? IgnoreEditWarn { get; set; }
         /// <summary>
         /// 商品主图，请参考拼多多首页大图，如果商品参加部分活动则必填，否则无法参加活动; a. 尺寸750 x 352px; b. 大小100k以内; c. 图片格式仅支持JPG,PNG格式; d. 图片背景应以纯白为主, 商品图案居中显示; e. 图片不可以添加任何品牌相关文字或logo
         /// </summary>
@@ -123,7 +128,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 是否支持正品发票
         /// </summary>
         [JsonProperty("invoice_status")]
-        public int InvoiceStatus { get; set; }
+        public int? InvoiceStatus { get; set; }
         /// <summary>
         /// 是否需要上报海关，现阶段入参默认false，入参true会失败
         /// </summary>
@@ -133,7 +138,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 是否支持假一赔十，false-不支持，true-支持
         /// </summary>
         [JsonProperty("is_folt")]
-        public bool IsFolt { get; set; }
+        public bool? IsFolt { get; set; }
         /// <summary>
         /// 是否成团预售
         /// </summary>
@@ -143,12 +148,17 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 是否预售,true-预售商品，false-非预售商品
         /// </summary>
         [JsonProperty("is_pre_sale")]
-        public bool IsPreSale { get; set; }
+        public bool? IsPreSale { get; set; }
         /// <summary>
         /// 是否7天无理由退换货，true-支持，false-不支持
         /// </summary>
         [JsonProperty("is_refundable")]
-        public bool IsRefundable { get; set; }
+        public bool? IsRefundable { get; set; }
+        /// <summary>
+        /// 是否sku预售，1：是，0：否
+        /// </summary>
+        [JsonProperty("is_sku_pre_sale")]
+        public int? IsSkuPreSale { get; set; }
         /// <summary>
         /// 缺重包退
         /// </summary>
@@ -163,7 +173,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 参考价格，单位为分
         /// </summary>
         [JsonProperty("market_price")]
-        public long MarketPrice { get; set; }
+        public long? MarketPrice { get; set; }
         /// <summary>
         /// 0:提交， 1：保存（默认提交）
         /// </summary>
@@ -218,7 +228,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 是否二手商品，true -二手商品 ，false-全新商品
         /// </summary>
         [JsonProperty("second_hand")]
-        public bool SecondHand { get; set; }
+        public bool? SecondHand { get; set; }
         /// <summary>
         /// 上门安装模版id
         /// </summary>
@@ -228,7 +238,7 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 承诺发货时间（ 秒），48小时或24小时，is_pre_sale为1时不必传
         /// </summary>
         [JsonProperty("shipment_limit_second")]
-        public long ShipmentLimitSecond { get; set; }
+        public long? ShipmentLimitSecond { get; set; }
         /// <summary>
         /// sku对象列表,实例：[{; 	"is_onsale": 1,; 	"limit_quantity": 999,; 	"price": "2200",; 	"weight": 1000,; 	"multi_price": "1900",; 	"thumb_url": "http://t06img.yangkeduo.com/images/2018-04-15/ced035033b5d40b589140af882621c03.jpg",; 	"out_sku_sn": "L",; 	"quantity": 100,; 	"spec_id_list": "[25]",; 	"oversea_sku": {; 		"measurement_code": "计量单位编码",; 		"taxation": "税费",; 		"specifications": "规格"; 	}; }]
         /// </summary>
@@ -274,16 +284,6 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
-        /// <summary>
-        /// 是否sku预售，1：是，0：否
-        /// </summary>
-        [JsonProperty("is_sku_pre_sale")]
-        public int? IsSkuPreSale { get; set; }
-        /// <summary>
-        /// 是否获取商品发布警告信息，默认为忽略
-        /// </summary>
-        [JsonProperty("ignore_edit_warn")]
-        public bool? IgnoreEditWarn { get; set; }
         public partial class CarouselVideoRequestModel : PddRequestModel
         {
             /// <summary>
@@ -453,7 +453,7 @@ namespace PddOpenSdk.Models.Request.Goods
             /// sku上架状态，0-已下架，1-上架中
             /// </summary>
             [JsonProperty("is_onsale")]
-            public int IsOnsale { get; set; }
+            public int? IsOnsale { get; set; }
             /// <summary>
             /// sku送装参数：长度
             /// </summary>
@@ -463,12 +463,12 @@ namespace PddOpenSdk.Models.Request.Goods
             /// sku购买限制，只入参999
             /// </summary>
             [JsonProperty("limit_quantity")]
-            public long LimitQuantity { get; set; }
+            public long? LimitQuantity { get; set; }
             /// <summary>
             /// 商品团购价格
             /// </summary>
             [JsonProperty("multi_price")]
-            public long MultiPrice { get; set; }
+            public long? MultiPrice { get; set; }
             /// <summary>
             /// 商品sku外部编码
             /// </summary>
@@ -488,12 +488,17 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 商品单买价格
             /// </summary>
             [JsonProperty("price")]
-            public long Price { get; set; }
+            public long? Price { get; set; }
             /// <summary>
             /// 商品sku库存初始数量，后续库存update只使用stocks.update接口进行调用
             /// </summary>
             [JsonProperty("quantity")]
-            public long Quantity { get; set; }
+            public long? Quantity { get; set; }
+            /// <summary>
+            /// sku预售时间戳，单位秒；不更新传null，取消传0，更新传实际值
+            /// </summary>
+            [JsonProperty("sku_pre_sale_time")]
+            public int? SkuPreSaleTime { get; set; }
             /// <summary>
             /// sku属性
             /// </summary>
@@ -503,7 +508,7 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku
             /// </summary>
             [JsonProperty("spec_id_list")]
-            public List<long> SpecIdList { get; set; }
+            public List<long?> SpecIdList { get; set; }
             /// <summary>
             /// sku预览图，预览图尺寸：等宽高，且高度不低于480px，现已支持1M大小，越清晰越好卖，SKU预览图格式：仅支持JPG,PNG格式
             /// </summary>
@@ -513,12 +518,7 @@ namespace PddOpenSdk.Models.Request.Goods
             /// 重量，单位为g
             /// </summary>
             [JsonProperty("weight")]
-            public long Weight { get; set; }
-            /// <summary>
-            /// sku预售时间戳，单位秒
-            /// </summary>
-            [JsonProperty("sku_pre_sale_time")]
-            public int? SkuPreSaleTime { get; set; }
+            public long? Weight { get; set; }
             public partial class OverseaSkuRequestModel : PddRequestModel
             {
                 /// <summary>
@@ -535,7 +535,7 @@ namespace PddOpenSdk.Models.Request.Goods
                 /// 税费
                 /// </summary>
                 [JsonProperty("taxation")]
-                public int Taxation { get; set; }
+                public int? Taxation { get; set; }
 
             }
             public partial class SkuPropertiesRequestModel : PddRequestModel
@@ -549,7 +549,7 @@ namespace PddOpenSdk.Models.Request.Goods
                 /// 属性id
                 /// </summary>
                 [JsonProperty("ref_pid")]
-                public long RefPid { get; set; }
+                public long? RefPid { get; set; }
                 /// <summary>
                 /// 属性值
                 /// </summary>

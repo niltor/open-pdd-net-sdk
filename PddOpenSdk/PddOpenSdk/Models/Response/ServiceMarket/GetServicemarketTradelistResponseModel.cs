@@ -39,11 +39,6 @@ namespace PddOpenSdk.Models.Response.ServiceMarket
                 [JsonProperty("created_at")]
                 public int? CreatedAt { get; set; }
                 /// <summary>
-                /// 交易流水号
-                /// </summary>
-                [JsonProperty("flow_id")]
-                public long? FlowId { get; set; }
-                /// <summary>
                 /// 资金流向，1-收入，2-支出
                 /// </summary>
                 [JsonProperty("group_type")]

@@ -29,12 +29,12 @@ namespace PddOpenSdk.Models.Request.Invoice
         [JsonProperty("status")]
         public int? Status { get; set; }
         /// <summary>
-        /// 申请结束时间, 时间戳（毫秒）
+        /// 申请结束时间, 时间戳（单位毫秒，查询时间间隔不可超过15天）
         /// </summary>
         [JsonProperty("update_end_time")]
         public long? UpdateEndTime { get; set; }
         /// <summary>
-        /// 申请开始时间, 时间戳（毫秒）
+        /// 申请开始时间, 时间戳（单位毫秒，查询时间间隔不可超过15天）
         /// </summary>
         [JsonProperty("update_start_time")]
         public long? UpdateStartTime { get; set; }

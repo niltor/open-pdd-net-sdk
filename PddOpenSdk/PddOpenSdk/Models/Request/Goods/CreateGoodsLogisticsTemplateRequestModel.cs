@@ -28,17 +28,17 @@ namespace PddOpenSdk.Models.Request.Goods
         /// 发货地省份id
         /// </summary>
         [JsonProperty("province_id")]
-        public int? ProvinceId { get; set; }
+        public int ProvinceId { get; set; }
         /// <summary>
         /// 发货地城市id
         /// </summary>
         [JsonProperty("city_id")]
-        public int? CityId { get; set; }
+        public int CityId { get; set; }
         /// <summary>
         /// 发货地区id
         /// </summary>
         [JsonProperty("district_id")]
-        public int? DistrictId { get; set; }
+        public int DistrictId { get; set; }
         public partial class CostTemplateListRequestModel : PddRequestModel
         {
             /// <summary>
@@ -52,7 +52,7 @@ namespace PddOpenSdk.Models.Request.Goods
             [JsonProperty("first_cost")]
             public long FirstCost { get; set; }
             /// <summary>
-            /// 续重或续件
+            /// 续重或续件，续重时单位为克且数值须为1000的整数倍
             /// </summary>
             [JsonProperty("add_standard")]
             public long AddStandard { get; set; }

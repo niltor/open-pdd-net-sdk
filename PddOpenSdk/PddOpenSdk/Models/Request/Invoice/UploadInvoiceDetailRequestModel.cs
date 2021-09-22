@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 namespace PddOpenSdk.Models.Request.Invoice
 {
     public partial class UploadInvoiceDetailRequestModel : PddRequestModel
@@ -17,17 +18,22 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// 开票金额，整数，单位：分
         /// </summary>
         [JsonProperty("invoice_amount")]
-        public long InvoiceAmount { get; set; }
+        public long? InvoiceAmount { get; set; }
         /// <summary>
         /// 发票代码
         /// </summary>
         [JsonProperty("invoice_code")]
         public string InvoiceCode { get; set; }
         /// <summary>
-        /// 发票内容，pdf文件，转码base64编码
+        /// 发票内容，pdf文件(电票回传)，图片文件(专票回传)，转码base64编码
         /// </summary>
         [JsonProperty("invoice_file_content")]
         public string InvoiceFileContent { get; set; }
+        /// <summary>
+        /// 多张发票列表（如果本字段为空，invoice_code、invoice_no、invoice_amount、invoice_file_content这四个字段必须填写）
+        /// </summary>
+        [JsonProperty("invoice_item_list")]
+        public List<InvoiceItemListRequestModel> InvoiceItemList { get; set; }
         /// <summary>
         /// 发票种类：0-电子发票，1-纸质发票，2-专票；目前只支持0
         /// </summary>
@@ -68,6 +74,16 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// </summary>
         [JsonProperty("original_invoice_no")]
         public string OriginalInvoiceNo { get; set; }
+        /// <summary>
+        /// 专票回传必填，专票邮寄快递公司编码，见https://open.pinduoduo.com/application/document/api?id=pdd.logistics.companies.get返回的快递公司编码
+        /// </summary>
+        [JsonProperty("paper_shipping_id")]
+        public int? PaperShippingId { get; set; }
+        /// <summary>
+        /// 专票回传必填，专票邮寄运单号
+        /// </summary>
+        [JsonProperty("paper_tracking_number")]
+        public string PaperTrackingNumber { get; set; }
         /// <summary>
         /// 开票人
         /// </summary>
@@ -118,6 +134,40 @@ namespace PddOpenSdk.Models.Request.Invoice
         /// </summary>
         [JsonProperty("tax_rate")]
         public int TaxRate { get; set; }
+        public partial class InvoiceItemListRequestModel : PddRequestModel
+        {
+            /// <summary>
+            /// 开票金额 单位:分
+            /// </summary>
+            [JsonProperty("invoice_amount")]
+            public long InvoiceAmount { get; set; }
+            /// <summary>
+            /// 发票代码
+            /// </summary>
+            [JsonProperty("invoice_code")]
+            public string InvoiceCode { get; set; }
+            /// <summary>
+            /// 发票内容，pdf文件(电票回传)，图片文件(专票回传)，转码base64编码
+            /// </summary>
+            [JsonProperty("invoice_file_content")]
+            public string InvoiceFileContent { get; set; }
+            /// <summary>
+            /// 发票号码
+            /// </summary>
+            [JsonProperty("invoice_no")]
+            public string InvoiceNo { get; set; }
+            /// <summary>
+            /// 原蓝票代码（红票必填）
+            /// </summary>
+            [JsonProperty("original_invoice_code")]
+            public string OriginalInvoiceCode { get; set; }
+            /// <summary>
+            /// 原蓝票号码（红票必填）
+            /// </summary>
+            [JsonProperty("original_invoice_no")]
+            public string OriginalInvoiceNo { get; set; }
+
+        }
 
     }
 

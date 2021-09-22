@@ -11,7 +11,7 @@ namespace PddOpenSdk.Models.Response.Goods
         public partial class GoodsLogisticsSerTemplateDeleteResponseResponseModel : PddResponseModel
         {
             /// <summary>
-            /// 是否成功
+            /// is_success
             /// </summary>
             [JsonProperty("is_success")]
             public bool? IsSuccess { get; set; }

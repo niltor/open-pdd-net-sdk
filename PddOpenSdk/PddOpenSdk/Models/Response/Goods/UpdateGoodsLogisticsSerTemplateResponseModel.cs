@@ -6,9 +6,9 @@ namespace PddOpenSdk.Models.Response.Goods
         /// <summary>
         /// response
         /// </summary>
-        [JsonProperty("goods_logistics_ser_template_create_response")]
-        public GoodsLogisticsSerTemplateCreateResponseResponseModel GoodsLogisticsSerTemplateCreateResponse { get; set; }
-        public partial class GoodsLogisticsSerTemplateCreateResponseResponseModel : PddResponseModel
+        [JsonProperty("goods_logistics_ser_template_update_response")]
+        public GoodsLogisticsSerTemplateUpdateResponseResponseModel GoodsLogisticsSerTemplateUpdateResponse { get; set; }
+        public partial class GoodsLogisticsSerTemplateUpdateResponseResponseModel : PddResponseModel
         {
             /// <summary>
             /// 模版id

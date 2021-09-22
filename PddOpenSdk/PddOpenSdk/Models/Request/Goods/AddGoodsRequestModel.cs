@@ -200,7 +200,7 @@ namespace PddOpenSdk.Models.Request.Goods
         [JsonProperty("shang_men_an_zhuang")]
         public string ShangMenAnZhuang { get; set; }
         /// <summary>
-        /// 承诺发货时间（ 秒），普通、进口商品可选48小时或24小时；直邮、直供商品只能入参120小时；is_pre_sale为true时不必传
+        /// 承诺发货时间（秒），普通、进口商品可选48小时或24小时；直邮商品（goods_type=4）只可入参120小时，直供商品（goods_type=3）只可入参96小时；is_pre_sale为true时不必传
         /// </summary>
         [JsonProperty("shipment_limit_second")]
         public long ShipmentLimitSecond { get; set; }

@@ -35,6 +35,36 @@ namespace PddOpenSdk.Models.Request.LogisticsCompany
             /// </summary>
             [JsonProperty("postType")]
             public string PostType { get; set; }
+            /// <summary>
+            /// 收件省名称
+            /// </summary>
+            [JsonProperty("receiveProvName")]
+            public string ReceiveProvName { get; set; }
+            /// <summary>
+            /// 收件市名称
+            /// </summary>
+            [JsonProperty("receiveCityName")]
+            public string ReceiveCityName { get; set; }
+            /// <summary>
+            /// 收件区名称
+            /// </summary>
+            [JsonProperty("receiveDistrictName")]
+            public string ReceiveDistrictName { get; set; }
+            /// <summary>
+            /// 收件街道名称
+            /// </summary>
+            [JsonProperty("receiveStreetName")]
+            public string ReceiveStreetName { get; set; }
+            /// <summary>
+            /// 收件详细地址
+            /// </summary>
+            [JsonProperty("receiveAddrDetail")]
+            public string ReceiveAddrDetail { get; set; }
+            /// <summary>
+            /// 扩展信息； options如果不存在，说明不需要对发货地收货地校验
+            /// </summary>
+            [JsonProperty("attributes")]
+            public string Attributes { get; set; }
 
         }
 

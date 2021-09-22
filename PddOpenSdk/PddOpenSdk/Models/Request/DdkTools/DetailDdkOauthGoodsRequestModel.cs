@@ -9,6 +9,11 @@ namespace PddOpenSdk.Models.Request.DdkTools
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
         /// <summary>
+        /// 商品主图类型：1-场景图，2-白底图，默认为0
+        /// </summary>
+        [JsonProperty("goods_img_type")]
+        public int? GoodsImgType { get; set; }
+        /// <summary>
         /// 商品goodsSign，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
         /// </summary>
         [JsonProperty("goods_sign")]

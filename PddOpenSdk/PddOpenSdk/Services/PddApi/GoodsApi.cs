@@ -57,7 +57,7 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 获取商品类目属性
+        /// 获取商品类目属性(已废弃)
         /// </summary>
         public async Task<GetGoodsCatTemplateResponseModel> GetGoodsCatTemplateAsync(GetGoodsCatTemplateRequestModel getGoodsCatTemplate)
         {
@@ -213,7 +213,7 @@ namespace PddOpenSdk.Services.PddApi
         /// </summary>
         public async Task<UploadGoodsFilespaceImageResponseModel> UploadGoodsFilespaceImageAsync(UploadGoodsFilespaceImageRequestModel uploadGoodsFilespaceImage)
         {
-            var result = await PostAsync<UploadGoodsFilespaceImageRequestModel, UploadGoodsFilespaceImageResponseModel>("pdd.goods.filespace.image.upload", uploadGoodsFilespaceImage);
+            var result = await PostFileAsync<UploadGoodsFilespaceImageRequestModel, UploadGoodsFilespaceImageResponseModel>("pdd.goods.filespace.image.upload", uploadGoodsFilespaceImage);
             return result;
         }
         /// <summary>
@@ -358,6 +358,14 @@ namespace PddOpenSdk.Services.PddApi
         public async Task<GetGoodsOuterCatMappingResponseModel> GetGoodsOuterCatMappingAsync(GetGoodsOuterCatMappingRequestModel getGoodsOuterCatMapping)
         {
             var result = await PostAsync<GetGoodsOuterCatMappingRequestModel, GetGoodsOuterCatMappingResponseModel>("pdd.goods.outer.cat.mapping.get", getGoodsOuterCatMapping);
+            return result;
+        }
+        /// <summary>
+        /// 商品价格核实
+        /// </summary>
+        public async Task<CheckGoodsPriceResponseModel> CheckGoodsPriceAsync(CheckGoodsPriceRequestModel checkGoodsPrice)
+        {
+            var result = await PostAsync<CheckGoodsPriceRequestModel, CheckGoodsPriceResponseModel>("pdd.goods.price.check", checkGoodsPrice);
             return result;
         }
         /// <summary>

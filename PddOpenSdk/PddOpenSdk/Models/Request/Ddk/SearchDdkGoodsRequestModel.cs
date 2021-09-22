@@ -5,20 +5,20 @@ namespace PddOpenSdk.Models.Request.Ddk
     public partial class SearchDdkGoodsRequestModel : PddRequestModel
     {
         /// <summary>
-        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，10913-招商礼金商品，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
+        /// 活动商品标记数组，例：[4,7]，4-秒杀，7-百亿补贴，10851-千万补贴，11055-多多星选，10913-招商礼金商品，31-品牌黑标，10564-精选爆品-官方直推爆款，10584-精选爆品-团长推荐，24-品牌高佣，其他的值请忽略
         /// </summary>
         [JsonProperty("activity_tags")]
         public List<int?> ActivityTags { get; set; }
-        /// <summary>
-        /// 自定义屏蔽一级/二级/三级类目ID，自定义数量不超过20个;使用pdd.goods.cats.get接口获取cat_id
-        /// </summary>
-        [JsonProperty("block_cats")]
-        public List<int?> BlockCats { get; set; }
         /// <summary>
         /// 屏蔽商品类目包：1-拼多多小程序屏蔽的类目&关键词;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药
         /// </summary>
         [JsonProperty("block_cat_packages")]
         public List<int?> BlockCatPackages { get; set; }
+        /// <summary>
+        /// 自定义屏蔽一级/二级/三级类目ID，自定义数量不超过20个;使用pdd.goods.cats.get接口获取cat_id
+        /// </summary>
+        [JsonProperty("block_cats")]
+        public List<int?> BlockCats { get; set; }
         /// <summary>
         /// 商品类目ID，使用pdd.goods.cats.get接口获取
         /// </summary>
@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Request.Ddk
         /// </summary>
         [JsonProperty("custom_parameters")]
         public string CustomParameters { get; set; }
+        /// <summary>
+        /// 商品主图类型：1-场景图，2-白底图，默认为0
+        /// </summary>
+        [JsonProperty("goods_img_type")]
+        public int? GoodsImgType { get; set; }
         /// <summary>
         /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
         /// </summary>

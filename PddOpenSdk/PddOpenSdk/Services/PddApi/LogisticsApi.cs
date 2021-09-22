@@ -33,27 +33,11 @@ namespace PddOpenSdk.Services.PddApi
             return result;
         }
         /// <summary>
-        /// 在线下单订单下发接口
-        /// </summary>
-        public async Task<CreateLogisticsOnlineResponseModel> CreateLogisticsOnlineAsync(CreateLogisticsOnlineRequestModel createLogisticsOnline)
-        {
-            var result = await PostAsync<CreateLogisticsOnlineRequestModel, CreateLogisticsOnlineResponseModel>("pdd.logistics.online.create", createLogisticsOnline);
-            return result;
-        }
-        /// <summary>
         /// 订单发货通知接口
         /// </summary>
         public async Task<SendLogisticsOnlineResponseModel> SendLogisticsOnlineAsync(SendLogisticsOnlineRequestModel sendLogisticsOnline)
         {
             var result = await PostAsync<SendLogisticsOnlineRequestModel, SendLogisticsOnlineResponseModel>("pdd.logistics.online.send", sendLogisticsOnline);
-            return result;
-        }
-        /// <summary>
-        /// 根据订单号查询在线下单状态
-        /// </summary>
-        public async Task<QueryLogisticsOnlineStatusResponseModel> QueryLogisticsOnlineStatusAsync(QueryLogisticsOnlineStatusRequestModel queryLogisticsOnlineStatus)
-        {
-            var result = await PostAsync<QueryLogisticsOnlineStatusRequestModel, QueryLogisticsOnlineStatusResponseModel>("pdd.logistics.online.status.query", queryLogisticsOnlineStatus);
             return result;
         }
         /// <summary>

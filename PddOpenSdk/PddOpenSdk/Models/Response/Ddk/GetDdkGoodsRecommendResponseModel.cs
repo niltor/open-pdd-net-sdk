@@ -49,6 +49,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 [JsonProperty("brand_name")]
                 public string BrandName { get; set; }
                 /// <summary>
+                /// 全局礼金金额，单位分
+                /// </summary>
+                [JsonProperty("cash_gift_amount")]
+                public long? CashGiftAmount { get; set; }
+                /// <summary>
                 /// 商品类目id
                 /// </summary>
                 [JsonProperty("cat_id")]
@@ -153,6 +158,11 @@ namespace PddOpenSdk.Models.Response.Ddk
                 /// </summary>
                 [JsonProperty("has_coupon")]
                 public bool? HasCoupon { get; set; }
+                /// <summary>
+                /// 商品是否有素材(图文、视频)
+                /// </summary>
+                [JsonProperty("has_material")]
+                public bool? HasMaterial { get; set; }
                 /// <summary>
                 /// 物流分
                 /// </summary>

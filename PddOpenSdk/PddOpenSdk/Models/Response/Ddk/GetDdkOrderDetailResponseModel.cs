@@ -97,6 +97,11 @@ namespace PddOpenSdk.Models.Response.Ddk
             [JsonProperty("mall_id")]
             public long? MallId { get; set; }
             /// <summary>
+            /// 非补贴订单原因，例如："商品补贴达上限"，"达到单个用户下单上限"，"非指定落地页直推订单"，"订单超过2个月未审核成功"等
+            /// </summary>
+            [JsonProperty("no_subsidy_reason")]
+            public string NoSubsidyReason { get; set; }
+            /// <summary>
             /// 订单价格（分）
             /// </summary>
             [JsonProperty("order_amount")]
@@ -227,12 +232,12 @@ namespace PddOpenSdk.Models.Response.Ddk
             [JsonProperty("subsidy_duo_amount_level")]
             public int? SubsidyDuoAmountLevel { get; set; }
             /// <summary>
-            /// 千万补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+            /// 活动补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
             /// </summary>
             [JsonProperty("subsidy_duo_amount_ten_million")]
             public int? SubsidyDuoAmountTenMillion { get; set; }
             /// <summary>
-            /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴
+            /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选
             /// </summary>
             [JsonProperty("subsidy_type")]
             public int? SubsidyType { get; set; }

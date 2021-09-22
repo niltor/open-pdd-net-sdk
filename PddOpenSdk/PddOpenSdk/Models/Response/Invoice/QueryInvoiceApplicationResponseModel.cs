@@ -39,15 +39,20 @@ namespace PddOpenSdk.Models.Response.Invoice
                 [JsonProperty("invoice_amount")]
                 public string InvoiceAmount { get; set; }
                 /// <summary>
-                /// 发票种类：0-电子，1-纸质，2-专票；目前只支持0
+                /// 发票种类：0-电子，1-纸质，2-专票；目前只支持0和2
                 /// </summary>
                 [JsonProperty("invoice_kind")]
                 public int? InvoiceKind { get; set; }
                 /// <summary>
-                /// 发票类型：0-蓝票，1-红票；目前只支持0
+                /// 发票类型：0-蓝票，1-红票
                 /// </summary>
                 [JsonProperty("invoice_type")]
                 public int? InvoiceType { get; set; }
+                /// <summary>
+                /// 开票方式 0=手动开票,1=自动开票
+                /// </summary>
+                [JsonProperty("invoice_way")]
+                public int? InvoiceWay { get; set; }
                 /// <summary>
                 /// 店铺id
                 /// </summary>

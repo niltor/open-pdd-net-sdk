@@ -404,7 +404,7 @@ namespace PddOpenSdk.Models.Response.Order
                 [JsonProperty("mkt_biz_type")]
                 public int? MktBizType { get; set; }
                 /// <summary>
-                /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源
+                /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单
                 /// </summary>
                 [JsonProperty("order_tag_list")]
                 public List<OrderTagListResponseModel> OrderTagList { get; set; }
@@ -418,6 +418,26 @@ namespace PddOpenSdk.Models.Response.Order
                 /// </summary>
                 [JsonProperty("extra_delivery_list")]
                 public List<ExtraDeliveryListResponseModel> ExtraDeliveryList { get; set; }
+                /// <summary>
+                /// 收件人姓名（打码）
+                /// </summary>
+                [JsonProperty("receiver_name_mask")]
+                public string ReceiverNameMask { get; set; }
+                /// <summary>
+                /// 收件人手机号（打码）
+                /// </summary>
+                [JsonProperty("receiver_phone_mask")]
+                public string ReceiverPhoneMask { get; set; }
+                /// <summary>
+                /// 详细地址（打码）
+                /// </summary>
+                [JsonProperty("address_mask")]
+                public string AddressMask { get; set; }
+                /// <summary>
+                /// 收件人地址（打码）
+                /// </summary>
+                [JsonProperty("receiver_address_mask")]
+                public string ReceiverAddressMask { get; set; }
                 public partial class CardInfoListResponseModel : PddResponseModel
                 {
                     /// <summary>

@@ -29,6 +29,11 @@ namespace PddOpenSdk.Models.Request.Goods
         /// </summary>
         [JsonProperty("sync_goods_operate")]
         public int? SyncGoodsOperate { get; set; }
+        /// <summary>
+        /// 是否获取商品发布警告信息，默认为忽略
+        /// </summary>
+        [JsonProperty("ignore_edit_warn")]
+        public bool? IgnoreEditWarn { get; set; }
         public partial class SkuPriceListRequestModel : PddRequestModel
         {
             /// <summary>

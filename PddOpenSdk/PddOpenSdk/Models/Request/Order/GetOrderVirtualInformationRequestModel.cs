@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
-namespace PddOpenSdk.Models.Request.Logistics
+namespace PddOpenSdk.Models.Request.Order
 {
-    public partial class QueryLogisticsOnlineStatusRequestModel : PddRequestModel
+    public partial class GetOrderVirtualInformationRequestModel : PddRequestModel
     {
         /// <summary>
         /// 订单号
