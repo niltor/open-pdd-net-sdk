@@ -10,27 +10,26 @@
     <Company>Geethin</Company>
     <Description>
       拼多多SDK ASP.NET Core依赖包
-      更新同步到最新(202106)！
-      添加对netcore 2.1/3.1 LTS版本支持
+      更新同步到最新(202109)！
     </Description>
     <PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
     <RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
     <PackageReleaseNotes>
       拼多多SDK ASP.NET Core依赖包
-      更新同步到最新(202106)！
-      修复签名排序
+      更新同步到最新(202109)！
     </PackageReleaseNotes>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
     <RepositoryType>git</RepositoryType>
     <PackageTags>aspnetcore,sdk,pdd,拼多多</PackageTags>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageIcon>logo.jpg</PackageIcon>
     <PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-    <Version>2.4.3</Version>
+    <Version>2.4.4</Version>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <PackageReadmeFile>README.MD</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.1|AnyCPU'">
@@ -99,6 +98,12 @@
     <None Include="..\logo.jpg">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.MD">
+      <Pack>True</Pack>
     </None>
   </ItemGroup>
 
