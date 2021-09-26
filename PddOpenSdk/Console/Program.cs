@@ -10,6 +10,7 @@ namespace Sample
             var helper = new PddApiDocHelper();
             await helper.Run();
 
+            await helper.GeneratePddServiceClassAsync();
             System.Console.WriteLine("finish");
             System.Console.ReadLine();
         }

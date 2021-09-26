@@ -1,5 +1,6 @@
 using Console.PddModels;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -51,7 +52,7 @@ namespace Console
             CatMapClassName.Add("15", "Promotion");
             CatMapClassName.Add("16", "Voucher");
             CatMapClassName.Add("17", "Invoice");
-            CatMapClassName.Add("18", "Mall");
+            CatMapClassName.Add("18", "MallShop");
 
             CatMapClassName.Add("20", "Util");
             CatMapClassName.Add("21", "Stock");
@@ -62,12 +63,13 @@ namespace Console
             CatMapClassName.Add("30", "ServiceMarket");
             CatMapClassName.Add("32", "SmsVendor");
 
-            CatMapClassName.Add("35", "User");
+            //CatMapClassName.Add("35", "User");
             CatMapClassName.Add("41", "Ad");
             CatMapClassName.Add("43", "Fds");
             CatMapClassName.Add("46", "Mall");
             CatMapClassName.Add("48", "Oversea");
             CatMapClassName.Add("49", "Ticket");
+            //CatMapClassName.Add("54", "PictureTool");
 
             // === 待定
             //CatMapClassName.Add("51", "");
@@ -298,7 +300,7 @@ $@"/// <summary>
                     param.ParamName = "file_path";
                 }
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value, hasChild: param.ChildrenNum>0);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value, hasChild: param.ChildrenNum > 0);
 
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
@@ -345,7 +347,7 @@ $@"/// <summary>
             foreach (var param in currentParamLists)
             {
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel",param.ChildrenNum>0);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel", param.ChildrenNum > 0);
 
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
@@ -468,6 +470,55 @@ namespace PddOpenSdk.Services.PddApi
 ";
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
 
+        }
+
+        /// <summary>
+        /// 生成PddService服务类
+        /// </summary>
+        public async Task GeneratePddServiceClassAsync()
+        {
+            // 1 获取说明注释
+            var catList = await GetCatListAsync();
+            // 2 构造属性
+            var propsContent = "";
+            catList.ForEach(cat =>
+            {
+                var comment = $"\t\t/// <summary>" + Environment.NewLine
+                    + $"\t\t/// {cat.Name}" + Environment.NewLine
+                    + "\t\t/// </summary>" + Environment.NewLine;
+                var propName = CatMapClassName.GetValueOrDefault(cat.Id.ToString()) + "Api";
+                if (!string.IsNullOrEmpty(propName))
+                {
+                    var prop = $"\t\tpublic {propName} {propName} {{ get; }}" + Environment.NewLine;
+                    propsContent += comment + prop;
+                }
+            });
+
+            // 3 构造构造方法/options/set token
+            string ctorContent = "AuthApi = new AuthApi(_options.ClientId, _options.ClientSecret, _options.AccessToken, _options.CallbackUrl);" + Environment.NewLine;
+            string ctorOptionConent = "AuthApi = new AuthApi(options.ClientId, options.ClientSecret, options.AccessToken, options.CallbackUrl);" + Environment.NewLine;
+            string setTokenContent = "";
+            CatMapClassName.ToList().ForEach(cat =>
+            {
+                var apiName = cat.Value + "Api";
+                ctorContent += "\t\t\t" + apiName + $" = new {apiName}(_options.ClientId, _options.ClientSecret, _options.AccessToken);" + Environment.NewLine;
+                ctorOptionConent += "\t\t\t" + apiName + $" = new {apiName}(options.ClientId, options.ClientSecret, options.AccessToken);" + Environment.NewLine;
+                setTokenContent += "\t\t\t" + apiName + ".AccessToken = accessToken;" + Environment.NewLine;
+            });
+            // 4 替换并写入
+            var path = Path.Combine(Environment.CurrentDirectory, "PddService.cs.tpl");
+            if (File.Exists(path))
+            {
+                var tplContent = File.ReadAllText(path);
+                tplContent = tplContent.Replace("{{$Properties}}", propsContent)
+                    .Replace("{{$Ctor}}", ctorContent)
+                    .Replace("{{$CtorOption}}", ctorOptionConent)
+                    .Replace("{{$SetToken}}", setTokenContent);
+
+                var currentPath = Directory.GetCurrentDirectory();
+                var servicePath = Path.Combine(currentPath, "..", "AspNetCore", "PddService.cs");
+                File.WriteAllText(servicePath, tplContent);
+            }
         }
 
         /// <summary>
