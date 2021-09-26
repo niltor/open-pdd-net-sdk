@@ -25,25 +25,25 @@ namespace PddOpenSdk.Models.Response.Ad
             /// 
             /// </summary>
             [JsonProperty("result")]
-            public ResultResponse Result { get; set; }
+            public ResultResponseModel Result { get; set; }
             /// <summary>
             /// 
             /// </summary>
             [JsonProperty("success")]
             public bool? Success { get; set; }
-            public partial class ResultResponse : PddResponseModel
+            public partial class ResultResponseModel : PddResponseModel
             {
                 /// <summary>
                 /// 
                 /// </summary>
                 [JsonProperty("result")]
-                public List<ResultResponseModel> Result { get; set; }
+                public List<ResultResponse> Result { get; set; }
                 /// <summary>
                 /// 
                 /// </summary>
                 [JsonProperty("total")]
                 public long? Total { get; set; }
-                public partial class ResultResponseModel : PddResponseModel
+                public partial class ResultResponse : PddResponseModel
                 {
                     /// <summary>
                     /// 商品类目Id

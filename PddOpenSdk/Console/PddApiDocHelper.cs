@@ -228,9 +228,10 @@ namespace Console
             }
             // 方法参数
             string methodComment =
-$@"/// <summary>
-/// {doc.ApiName}
-/// </summary>
+$@"
+        /// <summary>
+        /// {doc.ApiName}
+        /// </summary>
 ";
             string methodParams;
 
@@ -262,11 +263,11 @@ $@"/// <summary>
             {
                 postName = "PostFileAsync";
             }
-            return $@"{methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
-{{
-    var result = await {postName}<{paramsModelType}, {responseModelName}>(""{doc.ScopeName}"", {paramsModelName});
-    return result;
-}}
+            return @$"      {methodComment}public async Task<{responseModelName}> {methodName}Async({methodParams})
+        {{
+            var result = await {postName}<{paramsModelType}, {responseModelName}>(""{doc.ScopeName}"", {paramsModelName});
+            return result;
+        }}
 ";
         }
 
@@ -288,8 +289,8 @@ $@"/// <summary>
 
             var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
-            content = Function.AppendLine(content, $"public partial class {className} : PddRequestModel");
-            content = Function.AppendLine(content, "{");
+            content = Function.AppendLine(content, $"\tpublic partial class {className} : PddRequestModel");
+            content = Function.AppendLine(content, "\t{");
             string paramsContent = "";
             string childClass = "";
             foreach (var param in currentParamLists)
@@ -311,16 +312,17 @@ $@"/// <summary>
 
                 // 参数注释
                 var paramComment =
-$@"/// <summary>
-/// {param.ParamDesc?.Replace("\n", "; ")}
-/// </summary>
-[JsonProperty(""{param.ParamName}"")]
+$@"
+    /// <summary>
+    /// {param.ParamDesc?.Replace("\n", "; ")}
+    /// </summary>
+    [JsonProperty(""{param.ParamName}"")]
 ";
-                paramsContent += paramComment + attribution;
+                paramsContent += paramComment + "\t" + attribution;
             }
             content += paramsContent;
-            content += childClass + "\r\n";
-            content += "}\r\n";
+            content += childClass + Environment.NewLine;
+            content += "\t}" + Environment.NewLine;
             return content;
         }
 
@@ -340,8 +342,8 @@ $@"/// <summary>
 
             var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
-            content = Function.AppendLine(content, $"public partial class {className} : PddResponseModel");
-            content = Function.AppendLine(content, "{");
+            content = Function.AppendLine(content, $"\tpublic partial class {className} : PddResponseModel");
+            content = Function.AppendLine(content, "\t{");
             string paramsContent = "";
             string childClass = "";
             foreach (var param in currentParamLists)
@@ -357,18 +359,19 @@ $@"/// <summary>
                 }
                 // 参数注释
                 var paramComment =
-$@"/// <summary>
-/// {param.ParamDesc?.Replace("\n", "; ")}
-/// </summary>
-[JsonProperty(""{param.ParamName}"")]
+$@"
+    /// <summary>
+    /// {param.ParamDesc?.Replace(Environment.NewLine, "; ")}
+    /// </summary>
+    [JsonProperty(""{param.ParamName}"")]
 ";
 
                 paramsContent += paramComment + attribution;
                 //System.Console.WriteLine(paramType + " " + paramName);
             }
             content += paramsContent;
-            content += childClass + "\r\n";
-            content += "}\r\n";
+            content += childClass + Environment.NewLine;
+            content += "\t}" + Environment.NewLine;
             return content;
         }
 
@@ -480,16 +483,16 @@ namespace PddOpenSdk.Services.PddApi
             // 1 获取说明注释
             var catList = await GetCatListAsync();
             // 2 构造属性
-            var propsContent = "";
+            var propsContent = "\t\tpublic AuthApi AuthApi { get; }" + Environment.NewLine;
             catList.ForEach(cat =>
             {
                 var comment = $"\t\t/// <summary>" + Environment.NewLine
                     + $"\t\t/// {cat.Name}" + Environment.NewLine
                     + "\t\t/// </summary>" + Environment.NewLine;
-                var propName = CatMapClassName.GetValueOrDefault(cat.Id.ToString()) + "Api";
+                var propName = CatMapClassName.GetValueOrDefault(cat.Id.ToString());
                 if (!string.IsNullOrEmpty(propName))
                 {
-                    var prop = $"\t\tpublic {propName} {propName} {{ get; }}" + Environment.NewLine;
+                    var prop = $"\t\tpublic {propName}Api {propName}Api {{ get; }}" + Environment.NewLine;
                     propsContent += comment + prop;
                 }
             });

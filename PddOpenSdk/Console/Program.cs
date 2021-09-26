@@ -8,9 +8,10 @@ namespace Sample
         private static async Task Main(string[] args)
         {
             var helper = new PddApiDocHelper();
-            await helper.Run();
-
+            await helper.Run().ConfigureAwait(false);
             await helper.GeneratePddServiceClassAsync();
+
+            Task.WaitAll();
             System.Console.WriteLine("finish");
             System.Console.ReadLine();
         }

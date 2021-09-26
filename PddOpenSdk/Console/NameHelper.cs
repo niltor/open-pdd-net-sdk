@@ -1,3 +1,5 @@
+using System;
+
 namespace Console
 {
     /// <summary>
@@ -77,7 +79,7 @@ namespace Console
                 // 可使用复数形式
                 type = $"List<{type}>";
             }
-            attributionName = $"public {type} {name} {{get;set;}}\r\n";
+            attributionName = $"public {type} {name} {{ get; set; }}" + Environment.NewLine;
             return attributionName;
         }
     }

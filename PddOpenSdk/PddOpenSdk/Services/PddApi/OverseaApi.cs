@@ -9,27 +9,19 @@ namespace PddOpenSdk.Services.PddApi
         public OverseaApi() { }
         public OverseaApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
         /// <summary>
-        /// 保税仓信息查询接口
+        /// 虚拟游戏类区服列表接口
         /// </summary>
-        public async Task<GetMallInfoBondedWarehouseResponseModel> GetMallInfoBondedWarehouseAsync(GetMallInfoBondedWarehouseRequestModel getMallInfoBondedWarehouse)
+        public async Task<QueryVirtualGameServerResponseModel> QueryVirtualGameServerAsync(QueryVirtualGameServerRequestModel queryVirtualGameServer)
         {
-            var result = await PostAsync<GetMallInfoBondedWarehouseRequestModel, GetMallInfoBondedWarehouseResponseModel>("pdd.mall.info.bonded.warehouse.get", getMallInfoBondedWarehouse);
+            var result = await PostAsync<QueryVirtualGameServerRequestModel, QueryVirtualGameServerResponseModel>("pdd.virtual.game.server.query", queryVirtualGameServer);
             return result;
         }
         /// <summary>
-        /// 获取多多国际清关材料
+        /// 虚拟类目发货通知接口
         /// </summary>
-        public async Task<GetOverseaClearanceResponseModel> GetOverseaClearanceAsync(GetOverseaClearanceRequestModel getOverseaClearance)
+        public async Task<NotifyVirtualMobileChargeResponseModel> NotifyVirtualMobileChargeAsync(NotifyVirtualMobileChargeRequestModel notifyVirtualMobileCharge)
         {
-            var result = await PostAsync<GetOverseaClearanceRequestModel, GetOverseaClearanceResponseModel>("pdd.oversea.clearance.get", getOverseaClearance);
-            return result;
-        }
-        /// <summary>
-        /// 同步海淘订单申报失败情况
-        /// </summary>
-        public async Task<NotifyOverseaDeclarationFailResponseModel> NotifyOverseaDeclarationFailAsync(NotifyOverseaDeclarationFailRequestModel notifyOverseaDeclarationFail)
-        {
-            var result = await PostAsync<NotifyOverseaDeclarationFailRequestModel, NotifyOverseaDeclarationFailResponseModel>("pdd.oversea.declaration.fail.notify", notifyOverseaDeclarationFail);
+            var result = await PostAsync<NotifyVirtualMobileChargeRequestModel, NotifyVirtualMobileChargeResponseModel>("pdd.virtual.mobile.charge.notify", notifyVirtualMobileCharge);
             return result;
         }
 
