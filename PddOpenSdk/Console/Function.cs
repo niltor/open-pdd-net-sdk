@@ -1,9 +1,4 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 
 namespace Console
 {
@@ -18,8 +13,8 @@ namespace Console
         /// <returns></returns>
         public static Dictionary<string, TValue> ToDictionary<TValue>(object obj, OrderType sort)
         {
-            var json = JsonConvert.SerializeObject(obj);
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, TValue>>(json);
+            var json = JsonSerializer.Serialize(obj);
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, TValue>>(json);
             if (sort == OrderType.ASC)
             {
                 return dictionary.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);

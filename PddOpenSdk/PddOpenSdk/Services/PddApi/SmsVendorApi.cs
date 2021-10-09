@@ -1,29 +1,28 @@
 
 using PddOpenSdk.Models.Request.SmsVendor;
 using PddOpenSdk.Models.Response.SmsVendor;
-using System.Threading.Tasks;
-namespace PddOpenSdk.Services.PddApi
+namespace PddOpenSdk.Services.PddApi;
+public class SmsVendorApi : PddCommonApi
 {
-    public class SmsVendorApi : PddCommonApi
-    {
-        public SmsVendorApi() { }
-        public SmsVendorApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
-        /// <summary>
-        /// 短信明细回执
-        /// </summary>
-        public async Task<PushSmsDetailbillResponseModel> PushSmsDetailbillAsync(PushSmsDetailbillRequestModel pushSmsDetailbill)
-        {
-            var result = await PostAsync<PushSmsDetailbillRequestModel, PushSmsDetailbillResponseModel>("pdd.sms.detailbill.push", pushSmsDetailbill);
-            return result;
-        }
-        /// <summary>
-        /// 投诉号码上传
-        /// </summary>
-        public async Task<CreateSmsVendorComplaintResponseModel> CreateSmsVendorComplaintAsync(CreateSmsVendorComplaintRequestModel createSmsVendorComplaint)
-        {
-            var result = await PostAsync<CreateSmsVendorComplaintRequestModel, CreateSmsVendorComplaintResponseModel>("pdd.sms.vendor.complaint.create", createSmsVendorComplaint);
-            return result;
-        }
+    public SmsVendorApi() { }
+    public SmsVendorApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
+    /// <summary>
+    /// 短信明细回执
+    /// </summary>
+    public async Task<PushSmsDetailbillResponse> PushSmsDetailbillAsync(PushSmsDetailbill pushSmsDetailbill)
+    {
+        var result = await PostAsync<PushSmsDetailbill, PushSmsDetailbillResponse>("pdd.sms.detailbill.push", pushSmsDetailbill);
+        return result;
     }
+
+    /// <summary>
+    /// 投诉号码上传
+    /// </summary>
+    public async Task<CreateSmsVendorComplaintResponse> CreateSmsVendorComplaintAsync(CreateSmsVendorComplaint createSmsVendorComplaint)
+    {
+        var result = await PostAsync<CreateSmsVendorComplaint, CreateSmsVendorComplaintResponse>("pdd.sms.vendor.complaint.create", createSmsVendorComplaint);
+        return result;
+    }
+
 }

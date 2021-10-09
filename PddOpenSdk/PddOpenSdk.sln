@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28606.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk", "PddOpenSdk\PddOpenSdk.csproj", "{48424733-B8B0-4B39-A918-79E50EB662F6}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{5410623D-B263-49EB-92BB-B9BF82629E56}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk.AspNetCore", "AspNetCore\PddOpenSdk.AspNetCore.csproj", "{9B2B8A99-835B-45C5-9415-D74A3630C27A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample2.1", "Sample2.1\Sample2.1.csproj", "{C5067057-B754-4388-B9C8-8A56BBDC26D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{9B2B8A99-835B-45C5-9415-D74A3630C27A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B2B8A99-835B-45C5-9415-D74A3630C27A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B2B8A99-835B-45C5-9415-D74A3630C27A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5067057-B754-4388-B9C8-8A56BBDC26D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5067057-B754-4388-B9C8-8A56BBDC26D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5067057-B754-4388-B9C8-8A56BBDC26D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5067057-B754-4388-B9C8-8A56BBDC26D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

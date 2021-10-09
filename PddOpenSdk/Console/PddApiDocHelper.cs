@@ -1,12 +1,6 @@
-using Console.PddModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using Console.PddModels;
 
 namespace Console
 {
@@ -91,7 +85,7 @@ namespace Console
             try
             {
                 var response = await hc.GetStringAsync(ListUrl);
-                var result = JsonConvert.DeserializeObject<ListResponseModel>(response);
+                var result = JsonSerializer.Deserialize<ListResponseModel>(response);
                 return result.Result;
             }
             catch (System.Exception e)
@@ -110,13 +104,13 @@ namespace Console
         {
             using (var hc = new HttpClient())
             {
-                var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
+                var requestContent = new StringContent(JsonSerializer.Serialize(new { id }), Encoding.UTF8,
                                                        "application/json");
                 var response = await hc.PostAsync(CatUrl, requestContent);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<CatListResponseModel>(json);
+                    var result = JsonSerializer.Deserialize<CatListResponseModel>(json);
                     return result.Result.DocList;
                 }
             }
@@ -132,13 +126,13 @@ namespace Console
         {
             using (var hc = new HttpClient())
             {
-                var requestContent = new StringContent(JsonConvert.SerializeObject(new { id }), Encoding.UTF8,
+                var requestContent = new StringContent(JsonSerializer.Serialize(new { id }), Encoding.UTF8,
                                                        "application/json");
                 var response = await hc.PostAsync(DocInfoUrl, requestContent);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<ApiDocResponseModel>(json, ParamTypeConverter.Singleton);
+                    var result = JsonSerializer.Deserialize<ApiDocResponseModel>(json);
                     return result.Result;
                 }
             }
@@ -236,14 +230,14 @@ $@"
             string methodParams;
 
             // 创建请求模型类
-            string paramsModelType = methodName + "RequestModel";
+            string paramsModelType = methodName;
             string requestContent = BuildRequestModel(paramsModelType, doc.RequestParamList);
             SaveRequestModel(paramsModelType, requestContent, requestClassName);
             string paramsModelName = methodName.First().ToString().ToLower() + methodName.Substring(1);
             methodParams = paramsModelType + " " + paramsModelName;
 
             // 创建返回模型类
-            string responseModelName = methodName + "ResponseModel";
+            string responseModelName = methodName + "Response";
             // 根据返回示例生成
             string responseContent = BuildResponseModel(responseModelName, doc.ResponseParamList);
             if (string.IsNullOrEmpty(responseContent))
@@ -259,7 +253,7 @@ $@"
 
             var postName = "PostAsync";
             // 如果是文件类型
-            if (doc.RequestParamList.Any(p => p.ParamType == ParamType.File))
+            if (doc.RequestParamList.Any(p => p.ParamType == "FILE"))
             {
                 postName = "PostFileAsync";
             }
@@ -284,30 +278,30 @@ $@"
             {
                 return default;
             }
-
             className = className.Replace("$", "");
 
+            string suffix = "Model";
             var currentParamLists = paramLists.Where(p => p.ParentId == parentId).ToList();
             string content = "";
-            content = Function.AppendLine(content, $"\tpublic partial class {className} : PddRequestModel");
+            content = Function.AppendLine(content, $"\tpublic partial class {className}");
             content = Function.AppendLine(content, "\t{");
             string paramsContent = "";
             string childClass = "";
             foreach (var param in currentParamLists)
             {
                 // 对文件属性名进行特殊处理
-                if (param.ParamType == ParamType.File)
+                if (param.ParamType == "FILE")
                 {
                     param.ParamName = "file_path";
                 }
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value, hasChild: param.ChildrenNum > 0);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), param.IsMust.Value, suffix, hasChild: param.ChildrenNum > 0);
 
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
-                    childClass += BuildRequestModel(paramName + "RequestModel", paramLists, (int)param.Id);
+                    childClass += BuildRequestModel(paramName + suffix, paramLists, (int)param.Id);
                 }
 
                 // 参数注释
@@ -316,7 +310,7 @@ $@"
     /// <summary>
     /// {param.ParamDesc?.Replace("\n", "; ")}
     /// </summary>
-    [JsonProperty(""{param.ParamName}"")]
+    [JsonPropertyName(""{param.ParamName}"")]
 ";
                 paramsContent += paramComment + "\t" + attribution;
             }
@@ -349,13 +343,13 @@ $@"
             foreach (var param in currentParamLists)
             {
 
-                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "ResponseModel", param.ChildrenNum > 0);
+                var attribution = NameHelper.GetAttributionName(param.ParamName, ConvertParamType(param.ParamType), 0, "Response", param.ChildrenNum > 0);
 
                 var paramName = Function.ToPascalCase(param.ParamName.Replace("_", " "))?.Replace(" ", "")?.Replace("$", "");
                 // 如果是对象类型，生成子类模型
                 if (param.ChildrenNum > 0)
                 {
-                    childClass += BuildResponseModel(paramName + "ResponseModel", paramLists, (int)param.Id);
+                    childClass += BuildResponseModel(paramName + "Response", paramLists, (int)param.Id);
                 }
                 // 参数注释
                 var paramComment =
@@ -363,7 +357,7 @@ $@"
     /// <summary>
     /// {param.ParamDesc?.Replace(Environment.NewLine, "; ")}
     /// </summary>
-    [JsonProperty(""{param.ParamName}"")]
+    [JsonPropertyName(""{param.ParamName}"")]
 ";
 
                 paramsContent += paramComment + attribution;
@@ -400,13 +394,9 @@ $@"
                 dir = "." + dir;
             }
 
-            string namespaceBlock = Function.AppendLine("", "using System.Collections.Generic;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, "using Newtonsoft.Json;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, $"using PddOpenSdk.Models.Request;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Request{dir}");
-            namespaceBlock = Function.AppendLine(namespaceBlock, "{");
+            string namespaceBlock = Function.AppendLine("", $"using PddOpenSdk.Models.Request;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Request{dir};");
             classContent = Function.AppendLine(classContent, namespaceBlock, true);
-            classContent = Function.AppendLine(classContent, "}");
             string fileName = className;
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
         }
@@ -434,13 +424,9 @@ $@"
                 dir = "." + dir;
             }
 
-            string namespaceBlock = Function.AppendLine("", "using System.Collections.Generic;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, "using Newtonsoft.Json;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, "using PddOpenSdk.Models.Response;");
-            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Response{dir}");
-            namespaceBlock = Function.AppendLine(namespaceBlock, "{");
+            string namespaceBlock = Function.AppendLine("", "using PddOpenSdk.Models.Response;");
+            namespaceBlock = Function.AppendLine(namespaceBlock, $"namespace PddOpenSdk.Models.Response{dir};");
             classContent = Function.AppendLine(classContent, namespaceBlock, true);
-            classContent = Function.AppendLine(classContent, "}");
 
             string fileName = className;
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), classContent);
@@ -460,15 +446,11 @@ $@"
             string content = $@"
 using PddOpenSdk.Models.Request.{Function.ToPascalCase(className)};
 using PddOpenSdk.Models.Response.{Function.ToPascalCase(className)};
-using System.Threading.Tasks;
-using System.Collections.Generic;
-namespace PddOpenSdk.Services.PddApi
-{{
-    public class {fileName} : PddCommonApi {{
-        public {fileName}(){{}}
-        public {fileName}(string clientId, string clientSecret, string accessToken): base(clientId, clientSecret, accessToken){{}}
-        {classContent}
-    }}
+namespace PddOpenSdk.Services.PddApi;
+public class {fileName} : PddCommonApi {{
+    public {fileName}(){{}}
+    public {fileName}(string clientId, string clientSecret, string accessToken): base(clientId, clientSecret, accessToken){{}}
+    {classContent}
 }}
 ";
             File.WriteAllText(Path.Combine(resultPath, fileName + ".cs"), content);
@@ -529,54 +511,16 @@ namespace PddOpenSdk.Services.PddApi
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        protected string ConvertParamType(ParamType type)
+        protected string ConvertParamType(string type)
         {
-            string result = string.Empty;
-            switch (type)
+            return type.ToLower() switch
             {
-                case ParamType.Double:
-                    result = "double";
-                    break;
-                case ParamType.Integer:
-                    result = "int";
-                    break;
-                case ParamType.IntegerArray:
-                    result = "int[]";
-                    break;
-                case ParamType.Long:
-                    result = "long";
-                    break;
-                case ParamType.LongArray:
-                    result = "long[]";
-                    break;
-                case ParamType.Object:
-                    result = "object";
-                    break;
-                case ParamType.ObjectArray:
-                    result = "object[]";
-                    break;
-                case ParamType.StringArray:
-                    result = "string[]";
-                    break;
-                case ParamType.String:
-                    result = "string";
-                    break;
-                case ParamType.Boolean:
-                    result = "boolean";
-                    break;
-                case ParamType.Map:
-                    result = "map";
-                    break;
-                case ParamType.MapArray:
-                    result = "map[]";
-                    break;
-                case ParamType.File:
-                    result = "string";
-                    break;
-                default:
-                    break;
-            }
-            return result;
+                "file" => "string",
+                "integer" => "int",
+                "integer[]" => "int[]",
+                "void" => "string",
+                _ => type.ToLower(),
+            };
         }
     }
 }

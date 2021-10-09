@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MSDev.PddOpenSdk.AspNetCore;
 using MSDev.PddOpenSdk.Models;
-using Newtonsoft.Json;
 using PddOpenSdk.AspNetCore;
 using System;
 
@@ -23,7 +22,7 @@ namespace Sample
             // 接收信息
             client.MessageReceived.Subscribe((message) =>
              {
-                 var msg = JsonConvert.DeserializeObject<SocketMessageModel>(message.Text);
+                 var msg = JsonSerializer.Deserialize<SocketMessageModel>(message.Text);
                  if (msg.CommandType.ToLower().Equals("heartbeat"))
                  {
                      // TODO:心跳报文不处理
