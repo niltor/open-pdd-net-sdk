@@ -12,7 +12,7 @@ public partial class QueryTicketGoods
     /// 商品id入参商品id时，表示查询该商品的线上商品信息。。
     /// </summary>
     [JsonPropertyName("goods_id")]
-    public long? GoodsId { get; set; }
+    public long GoodsId { get; set; }
 
 }
 

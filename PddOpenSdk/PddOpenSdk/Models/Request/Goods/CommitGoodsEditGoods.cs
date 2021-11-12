@@ -69,6 +69,12 @@ public partial class CommitGoodsEditGoods
     public int? DeliveryOneDay { get; set; }
 
     /// <summary>
+    /// 发货方式。0：无物流发货；1：有物流发货。
+    /// </summary>
+    [JsonPropertyName("delivery_type")]
+    public int? DeliveryType { get; set; }
+
+    /// <summary>
     /// 商品详情图：; a. 尺寸要求宽度处于480~1200px之间，高度0-1500px之间; b. 大小1M以内; c. 数量限制在20张之间; d. 图片格式仅支持JPG,PNG格式; e. 点击上传时，支持批量上传详情图
     /// </summary>
     [JsonPropertyName("detail_gallery")]
@@ -111,7 +117,7 @@ public partial class CommitGoodsEditGoods
     public GoodsTravelAttrModel GoodsTravelAttr { get; set; }
 
     /// <summary>
-    /// 1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡，15-商家卡券，19-平台卡券，暂时支持1-普通商品的上架 19-平台卡券
+    /// 1-国内普通商品，2-一般贸易，3-保税仓BBC直供，4-海外BC直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡，15-商家卡券，18-海外CC行邮 19-平台卡券
     /// </summary>
     [JsonPropertyName("goods_type")]
     public int? GoodsType { get; set; }
@@ -141,6 +147,12 @@ public partial class CommitGoodsEditGoods
     public bool? IsFolt { get; set; }
 
     /// <summary>
+    /// 是否成团预售。0：不是；1:是。
+    /// </summary>
+    [JsonPropertyName("is_group_pre_sale")]
+    public int? IsGroupPreSale { get; set; }
+
+    /// <summary>
     /// 是否预售,true-预售商品，false-非预售商品
     /// </summary>
     [JsonPropertyName("is_pre_sale")]
@@ -151,6 +163,12 @@ public partial class CommitGoodsEditGoods
     /// </summary>
     [JsonPropertyName("is_refundable")]
     public bool? IsRefundable { get; set; }
+
+    /// <summary>
+    /// 是否sku预售，1：是，0：否
+    /// </summary>
+    [JsonPropertyName("is_sku_pre_sale")]
+    public int? IsSkuPreSale { get; set; }
 
     /// <summary>
     /// 缺重包退
@@ -295,24 +313,6 @@ public partial class CommitGoodsEditGoods
     /// </summary>
     [JsonPropertyName("zhi_huan_bu_xiu")]
     public int? ZhiHuanBuXiu { get; set; }
-
-    /// <summary>
-    /// 发货方式。0：无物流发货；1：有物流发货。
-    /// </summary>
-    [JsonPropertyName("delivery_type")]
-    public int? DeliveryType { get; set; }
-
-    /// <summary>
-    /// 是否成团预售。0：不是；1:是。
-    /// </summary>
-    [JsonPropertyName("is_group_pre_sale")]
-    public int? IsGroupPreSale { get; set; }
-
-    /// <summary>
-    /// 是否sku预售，1：是，0：否
-    /// </summary>
-    [JsonPropertyName("is_sku_pre_sale")]
-    public int? IsSkuPreSale { get; set; }
     public partial class CarouselVideoModel
     {
 
@@ -561,6 +561,18 @@ public partial class CommitGoodsEditGoods
         public long Quantity { get; set; }
 
         /// <summary>
+        /// sku预售时间戳，单位秒；不更新传null，取消传0，更新传实际值
+        /// </summary>
+        [JsonPropertyName("sku_pre_sale_time")]
+        public int? SkuPreSaleTime { get; set; }
+
+        /// <summary>
+        /// sku属性
+        /// </summary>
+        [JsonPropertyName("sku_properties")]
+        public List<SkuPropertiesModel> SkuProperties { get; set; }
+
+        /// <summary>
         /// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku
         /// </summary>
         [JsonPropertyName("spec_id_list")]
@@ -577,18 +589,6 @@ public partial class CommitGoodsEditGoods
         /// </summary>
         [JsonPropertyName("weight")]
         public long Weight { get; set; }
-
-        /// <summary>
-        /// sku属性
-        /// </summary>
-        [JsonPropertyName("sku_properties")]
-        public List<SkuPropertiesModel> SkuProperties { get; set; }
-
-        /// <summary>
-        /// sku预售时间戳，单位秒；不更新传null，取消传0，更新传实际值
-        /// </summary>
-        [JsonPropertyName("sku_pre_sale_time")]
-        public int? SkuPreSaleTime { get; set; }
         public partial class OverseaSkuModel
         {
 

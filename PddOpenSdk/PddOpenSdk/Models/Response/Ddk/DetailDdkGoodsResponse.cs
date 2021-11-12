@@ -361,6 +361,12 @@ public partial class DetailDdkGoodsResponse : PddResponseModel
             public int? ShareRate { get; set; }
 
             /// <summary>
+            /// sku列表
+            /// </summary>
+            [JsonPropertyName("sku_list")]
+            public List<SkuListResponse> SkuList { get; set; }
+
+            /// <summary>
             /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
             /// </summary>
             [JsonPropertyName("subsidy_amount")]
@@ -427,6 +433,68 @@ public partial class DetailDdkGoodsResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("video_url")]
                 public string VideoUrl { get; set; }
+
+            }
+            public partial class SkuListResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 上下架状态: 1-上架, 0-下架
+                /// </summary>
+                [JsonPropertyName("is_onsale")]
+                public int? IsOnsale { get; set; }
+
+                /// <summary>
+                /// 最小成团价，单位分
+                /// </summary>
+                [JsonPropertyName("min_group_price")]
+                public long? MinGroupPrice { get; set; }
+
+                /// <summary>
+                /// sku预览图
+                /// </summary>
+                [JsonPropertyName("sku_thumb_url")]
+                public string SkuThumbUrl { get; set; }
+
+                /// <summary>
+                /// 商品规格列表
+                /// </summary>
+                [JsonPropertyName("spec_list")]
+                public List<SpecListResponse> SpecList { get; set; }
+                public partial class SpecListResponse : PddResponseModel
+                {
+
+                    /// <summary>
+                    /// 规格备注
+                    /// </summary>
+                    [JsonPropertyName("note")]
+                    public string Note { get; set; }
+
+                    /// <summary>
+                    /// 父规格id
+                    /// </summary>
+                    [JsonPropertyName("parent_spec_id")]
+                    public long? ParentSpecId { get; set; }
+
+                    /// <summary>
+                    /// 父规格名称。例如："型号"为父规格名称，"xx款"为该父规格下的子规格名称。
+                    /// </summary>
+                    [JsonPropertyName("parent_spec_value")]
+                    public string ParentSpecValue { get; set; }
+
+                    /// <summary>
+                    /// 规格id
+                    /// </summary>
+                    [JsonPropertyName("spec_id")]
+                    public long? SpecId { get; set; }
+
+                    /// <summary>
+                    /// 规格名称。例如："xx款"为规格名称, "型号"为该规格的父规格名称。
+                    /// </summary>
+                    [JsonPropertyName("spec_value")]
+                    public string SpecValue { get; set; }
+
+                }
 
             }
 

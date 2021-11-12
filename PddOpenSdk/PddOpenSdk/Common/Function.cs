@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Security.Cryptography;
 
 namespace PddOpenSdk.Common
 {

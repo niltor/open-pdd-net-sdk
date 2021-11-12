@@ -1,12 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using PddOpenSdk.Models;
-using PddOpenSdk.Services;
-using PddOpenSdk.Services.PddApi;
-using System.Net.Http;
-using System.Text;
-
-namespace PddOpenSdk.AspNetCore;
+﻿namespace PddOpenSdk.AspNetCore;
     /// <summary>
     /// 批多多服务
     /// </summary>

@@ -9,6 +9,12 @@ public partial class UpdateGoodsSkuPrice
     public long GoodsId { get; set; }
 
     /// <summary>
+    /// 是否获取商品发布警告信息，默认为忽略
+    /// </summary>
+    [JsonPropertyName("ignore_edit_warn")]
+    public bool? IgnoreEditWarn { get; set; }
+
+    /// <summary>
     /// 参考价 （单位分）
     /// </summary>
     [JsonPropertyName("market_price")]
@@ -31,12 +37,6 @@ public partial class UpdateGoodsSkuPrice
     /// </summary>
     [JsonPropertyName("sync_goods_operate")]
     public int? SyncGoodsOperate { get; set; }
-
-    /// <summary>
-    /// 是否获取商品发布警告信息，默认为忽略
-    /// </summary>
-    [JsonPropertyName("ignore_edit_warn")]
-    public bool? IgnoreEditWarn { get; set; }
     public partial class SkuPriceListModel
     {
 

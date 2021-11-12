@@ -26,28 +26,28 @@ public partial class PageAdApiGoodsQueryResponse : PddResponseModel
         /// 
         /// </summary>
         [JsonPropertyName("result")]
-        public ResultResponse Result { get; set; }
+        public ResultResponseModel Result { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("success")]
         public bool? Success { get; set; }
-        public partial class ResultResponse : PddResponseModel
+        public partial class ResultResponseModel : PddResponseModel
         {
 
             /// <summary>
             /// 
             /// </summary>
             [JsonPropertyName("result")]
-            public List<ResultItemResponse> Result { get; set; }
+            public List<ResultResponse> Result { get; set; }
 
             /// <summary>
             /// 
             /// </summary>
             [JsonPropertyName("total")]
             public long? Total { get; set; }
-            public partial class ResultItemResponse : PddResponseModel
+            public partial class ResultResponse : PddResponseModel
             {
 
                 /// <summary>

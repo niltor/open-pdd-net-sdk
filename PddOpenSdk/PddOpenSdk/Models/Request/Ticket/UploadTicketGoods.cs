@@ -63,6 +63,12 @@ public partial class UploadTicketGoods
     public List<GoodsPropertiesModel> GoodsProperties { get; set; }
 
     /// <summary>
+    /// 是否获取商品发布警告信息，默认为忽略
+    /// </summary>
+    [JsonPropertyName("ignore_edit_warn")]
+    public bool? IgnoreEditWarn { get; set; }
+
+    /// <summary>
     /// 是否提交本次编辑，0=不提交，表示仅保存草稿，不进行提交，不会进行校验；1=提交，表示提交本次编辑内容，会进行校验；不传时默认为提交
     /// </summary>
     [JsonPropertyName("is_submit")]
@@ -103,12 +109,6 @@ public partial class UploadTicketGoods
     /// </summary>
     [JsonPropertyName("sync_goods_operate")]
     public int? SyncGoodsOperate { get; set; }
-
-    /// <summary>
-    /// 是否获取商品发布警告信息，默认为忽略
-    /// </summary>
-    [JsonPropertyName("ignore_edit_warn")]
-    public bool? IgnoreEditWarn { get; set; }
     public partial class CarouselVideoModel
     {
 

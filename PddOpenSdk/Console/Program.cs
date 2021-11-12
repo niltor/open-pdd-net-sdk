@@ -10,7 +10,7 @@ namespace Sample
             await helper.Run();
             await helper.GeneratePddServiceClassAsync();
 
-
+            Task.WaitAll();
             System.Console.WriteLine("finish");
             System.Console.ReadLine();
         }

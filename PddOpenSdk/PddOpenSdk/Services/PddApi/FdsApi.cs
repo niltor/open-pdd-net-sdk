@@ -61,4 +61,13 @@ public class FdsApi : PddCommonApi
         return result;
     }
 
+    /// <summary>
+    /// 电子面单回传额外运单号
+    /// </summary>
+    public async Task<SlaveFdsWaybillReturnResponse> SlaveFdsWaybillReturnAsync(SlaveFdsWaybillReturn slaveFdsWaybillReturn)
+    {
+        var result = await PostAsync<SlaveFdsWaybillReturn, SlaveFdsWaybillReturnResponse>("pdd.fds.waybill.return.slave", slaveFdsWaybillReturn);
+        return result;
+    }
+
 }

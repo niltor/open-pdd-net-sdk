@@ -21,6 +21,12 @@ public partial class DetailDdkGoods
     public string GoodsSign { get; set; }
 
     /// <summary>
+    /// 是否获取sku信息，默认false不返回
+    /// </summary>
+    [JsonPropertyName("need_sku_info")]
+    public bool? NeedSkuInfo { get; set; }
+
+    /// <summary>
     /// 推广位id
     /// </summary>
     [JsonPropertyName("pid")]

@@ -9,7 +9,7 @@ public partial class GenerateDdkOauthRpPromUrl
     public long? Amount { get; set; }
 
     /// <summary>
-    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，13-一元购C端页面，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，18-一元购B端页面，19-多多品牌星选B端页面，20-多多品牌星选C端页面；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
+    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，13-一元购C端页面，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，18-一元购B端页面，19-多多品牌星选B端页面，20-多多品牌星选C端页面，23-超级红包，24-礼金全场N折活动B端页面；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
     /// </summary>
     [JsonPropertyName("channel_type")]
     public int? ChannelType { get; set; }

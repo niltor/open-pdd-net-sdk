@@ -377,7 +377,7 @@ $@"
         protected void SaveRequestModel(string className, string classContent, string dir = "")
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "Request", dir);
+            var resultPath = Path.Combine(currentPath, "..", "PddOpenSdk", "Models", "Request", dir);
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
@@ -407,7 +407,7 @@ $@"
         protected void SaveResponseModel(string className, string classContent, string dir = "")
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Models", "Response", dir);
+            var resultPath = Path.Combine(currentPath, "..", "PddOpenSdk", "Models", "Response", dir);
             // 创建目录
             if (!Directory.Exists(resultPath))
             {
@@ -438,7 +438,7 @@ $@"
         protected void SaveApiClass(string className, string classContent)
         {
             var currentPath = Directory.GetCurrentDirectory();
-            var resultPath = Path.Combine(currentPath, "Services", "PddApi");
+            var resultPath = Path.Combine(currentPath, "..", "PddOpenSdk", "Services", "PddApi");
 
             string fileName = Function.ToPascalCase(className) + "Api";
             // 处理重复类名的情况

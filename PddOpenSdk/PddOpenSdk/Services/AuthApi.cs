@@ -1,7 +1,3 @@
-
-using System.Net.Http;
-using PddOpenSdk.Models;
-
 namespace PddOpenSdk.Services.PddApi
 {
     public class AuthApi : PddCommonApi

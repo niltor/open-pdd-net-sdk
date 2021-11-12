@@ -223,6 +223,12 @@ public partial class GetDdkAllOrderListIncrementResponse : PddResponseModel
             public long? PromotionRate { get; set; }
 
             /// <summary>
+            /// 超级红包补贴类型：0-非红包补贴订单，1-季度新用户补贴
+            /// </summary>
+            [JsonPropertyName("red_packet_type")]
+            public int? RedPacketType { get; set; }
+
+            /// <summary>
             /// 场景工具商佣金
             /// </summary>
             [JsonPropertyName("scene_at_market_fee")]
@@ -295,7 +301,7 @@ public partial class GetDdkAllOrderListIncrementResponse : PddResponseModel
             public int? SubsidyType { get; set; }
 
             /// <summary>
-            /// 订单推广类型
+            /// 下单场景类型：0-单品推广，1-红包活动推广，4-多多进宝商城推广，7-今日爆款，8-品牌清仓，9-1.9包邮，77-刮刮卡活动推广，94-充值中心，101-品牌黑卡，103-百亿补贴频道，104-内购清单频道，105-超级红包
             /// </summary>
             [JsonPropertyName("type")]
             public long? Type { get; set; }

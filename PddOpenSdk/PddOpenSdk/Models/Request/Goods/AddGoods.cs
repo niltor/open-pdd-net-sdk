@@ -69,6 +69,12 @@ public partial class AddGoods
     public int? DeliveryOneDay { get; set; }
 
     /// <summary>
+    /// 发货方式。0：无物流发货；1：有物流发货。
+    /// </summary>
+    [JsonPropertyName("delivery_type")]
+    public int? DeliveryType { get; set; }
+
+    /// <summary>
     /// 商品详情图：; a. 尺寸要求宽度处于480~1200px之间，高度0-1500px之间; b. 大小1M以内; c. 数量限制在20张之间; d. 图片格式仅支持JPG,PNG格式; e. 点击上传时，支持批量上传详情图
     /// </summary>
     [JsonPropertyName("detail_gallery")]
@@ -111,10 +117,16 @@ public partial class AddGoods
     public GoodsTravelAttrModel GoodsTravelAttr { get; set; }
 
     /// <summary>
-    /// 1-国内普通商品，2-进口，3-直供（保税），4-直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡，15-商家卡券，19-平台卡券
+    /// 1-国内普通商品，2-一般贸易，3-保税仓BBC直供，4-海外BC直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡，15-商家卡券，18-海外CC行邮  19-平台卡券
     /// </summary>
     [JsonPropertyName("goods_type")]
     public int GoodsType { get; set; }
+
+    /// <summary>
+    /// 是否获取商品发布警告信息，默认为忽略
+    /// </summary>
+    [JsonPropertyName("ignore_edit_warn")]
+    public bool? IgnoreEditWarn { get; set; }
 
     /// <summary>
     /// 商品主图，请参考拼多多首页大图，如果商品参加部分活动则必填，否则无法参加活动; a. 尺寸750 x 352px; b. 大小100k以内; c. 图片格式仅支持JPG,PNG格式; d. 图片背景应以纯白为主, 商品图案居中显示; e. 图片不可以添加任何品牌相关文字或logo
@@ -141,6 +153,12 @@ public partial class AddGoods
     public bool IsFolt { get; set; }
 
     /// <summary>
+    /// 是否成团预售。0：不是；1:是。
+    /// </summary>
+    [JsonPropertyName("is_group_pre_sale")]
+    public int? IsGroupPreSale { get; set; }
+
+    /// <summary>
     /// 是否预售,true-预售商品，false-非预售商品
     /// </summary>
     [JsonPropertyName("is_pre_sale")]
@@ -151,6 +169,12 @@ public partial class AddGoods
     /// </summary>
     [JsonPropertyName("is_refundable")]
     public bool IsRefundable { get; set; }
+
+    /// <summary>
+    /// 是否sku预售，1：是，0：否
+    /// </summary>
+    [JsonPropertyName("is_sku_pre_sale")]
+    public int? IsSkuPreSale { get; set; }
 
     /// <summary>
     /// 缺重包退
@@ -295,30 +319,6 @@ public partial class AddGoods
     /// </summary>
     [JsonPropertyName("zhi_huan_bu_xiu")]
     public int? ZhiHuanBuXiu { get; set; }
-
-    /// <summary>
-    /// 发货方式。0：无物流发货；1：有物流发货。
-    /// </summary>
-    [JsonPropertyName("delivery_type")]
-    public int? DeliveryType { get; set; }
-
-    /// <summary>
-    /// 是否成团预售。0：不是；1:是。
-    /// </summary>
-    [JsonPropertyName("is_group_pre_sale")]
-    public int? IsGroupPreSale { get; set; }
-
-    /// <summary>
-    /// 是否sku预售，1：是，0：否
-    /// </summary>
-    [JsonPropertyName("is_sku_pre_sale")]
-    public int? IsSkuPreSale { get; set; }
-
-    /// <summary>
-    /// 是否获取商品发布警告信息，默认为忽略
-    /// </summary>
-    [JsonPropertyName("ignore_edit_warn")]
-    public bool? IgnoreEditWarn { get; set; }
     public partial class CarouselVideoModel
     {
 
@@ -567,6 +567,18 @@ public partial class AddGoods
         public long Quantity { get; set; }
 
         /// <summary>
+        /// sku预售时间戳，单位秒
+        /// </summary>
+        [JsonPropertyName("sku_pre_sale_time")]
+        public int? SkuPreSaleTime { get; set; }
+
+        /// <summary>
+        /// sku属性
+        /// </summary>
+        [JsonPropertyName("sku_properties")]
+        public List<SkuPropertiesModel> SkuProperties { get; set; }
+
+        /// <summary>
         /// 商品规格列表，根据pdd.goods.spec.id.get生成的规格属性id，例如：颜色规格下商家新增白色和黑色，大小规格下商家新增L和XL，则由4种spec组合，入参一种组合即可，在skulist中需要有4个spec组合的sku，示例：[20,5]
         /// </summary>
         [JsonPropertyName("spec_id_list")]
@@ -583,18 +595,6 @@ public partial class AddGoods
         /// </summary>
         [JsonPropertyName("weight")]
         public long Weight { get; set; }
-
-        /// <summary>
-        /// sku属性
-        /// </summary>
-        [JsonPropertyName("sku_properties")]
-        public List<SkuPropertiesModel> SkuProperties { get; set; }
-
-        /// <summary>
-        /// sku预售时间戳，单位秒
-        /// </summary>
-        [JsonPropertyName("sku_pre_sale_time")]
-        public int? SkuPreSaleTime { get; set; }
         public partial class OverseaSkuModel
         {
 

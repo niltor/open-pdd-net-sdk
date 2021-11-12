@@ -129,7 +129,7 @@ public partial class CommitGoodsSubmitGoods
     public GoodsTravelAttrModel GoodsTravelAttr { get; set; }
 
     /// <summary>
-    /// 1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡，15-商家卡券，19-平台卡券，暂时支持1-普通商品的上架 19-平台卡券
+    /// 1-国内普通商品，2-一般贸易，3-保税仓BBC直供，4-海外BC直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡，15-商家卡券，18-海外CC行邮 19-平台卡券
     /// </summary>
     [JsonPropertyName("goods_type")]
     public int? GoodsType { get; set; }

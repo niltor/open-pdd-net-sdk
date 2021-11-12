@@ -1,10 +1,7 @@
-﻿using System.Security.Cryptography;
-using System.Threading;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Hosting;
 using MSDev.PddOpenSdk.Models;
 using PddOpenSdk.AspNetCore;
+using System.Security.Cryptography;
 using Websocket.Client;
 
 namespace MSDev.PddOpenSdk.AspNetCore;

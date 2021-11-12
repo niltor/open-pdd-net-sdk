@@ -65,6 +65,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public int? DeliveryOneDay { get; set; }
 
         /// <summary>
+        /// 发货方式。0：无物流发货；1：有物流发货。
+        /// </summary>
+        [JsonPropertyName("delivery_type")]
+        public int? DeliveryType { get; set; }
+
+        /// <summary>
         /// 商品详情图
         /// </summary>
         [JsonPropertyName("detail_gallery_list")]
@@ -107,7 +113,7 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public GoodsTravelAttrResponse GoodsTravelAttr { get; set; }
 
         /// <summary>
-        /// 商品类型：1-国内普通商品，2-进口，3-国外海淘，4-直邮 ,5-流量,6-话费,7,优惠券;8-QQ充值,9-加油卡 暂时支持1-普通商品的上架
+        /// 商品类型：1-国内普通商品，2-一般贸易，3-保税仓BBC直供，4-海外BC直邮 ,5-流量 ,6-话费 ,7-优惠券 ,8-QQ充值 ,9-加油卡，15-商家卡券，18-海外CC行邮 19-平台卡券
         /// </summary>
         [JsonPropertyName("goods_type")]
         public int? GoodsType { get; set; }
@@ -137,6 +143,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public int? IsFolt { get; set; }
 
         /// <summary>
+        /// 是否成团预售。0：不是；1:是。
+        /// </summary>
+        [JsonPropertyName("is_group_pre_sale")]
+        public int? IsGroupPreSale { get; set; }
+
+        /// <summary>
         /// 是否预售,1-预售商品，0-非预售商品
         /// </summary>
         [JsonPropertyName("is_pre_sale")]
@@ -147,6 +159,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("is_refundable")]
         public int? IsRefundable { get; set; }
+
+        /// <summary>
+        /// 是否sku预售，0：否，1：是
+        /// </summary>
+        [JsonPropertyName("is_sku_pre_sale")]
+        public int? IsSkuPreSale { get; set; }
 
         /// <summary>
         /// 缺重包退
@@ -173,12 +191,6 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public long? OrderLimit { get; set; }
 
         /// <summary>
-        /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
-        /// </summary>
-        [JsonPropertyName("outer_goods_id")]
-        public string OuterGoodsId { get; set; }
-
-        /// <summary>
         /// 第三方商品Id
         /// </summary>
         [JsonPropertyName("out_source_goods_id")]
@@ -189,6 +201,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("out_source_type")]
         public int? OutSourceType { get; set; }
+
+        /// <summary>
+        /// 商家编码（商品维度），同其他接口中的outer_goods_id 、out_goods_id、out_goods_sn、outer_goods_sn 都为商家编码（goods维度）。
+        /// </summary>
+        [JsonPropertyName("outer_goods_id")]
+        public string OuterGoodsId { get; set; }
 
         /// <summary>
         /// oversea_goods
@@ -297,24 +315,6 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
-
-        /// <summary>
-        /// 发货方式。0：无物流发货；1：有物流发货。
-        /// </summary>
-        [JsonPropertyName("delivery_type")]
-        public int? DeliveryType { get; set; }
-
-        /// <summary>
-        /// 是否成团预售。0：不是；1:是。
-        /// </summary>
-        [JsonPropertyName("is_group_pre_sale")]
-        public int? IsGroupPreSale { get; set; }
-
-        /// <summary>
-        /// 是否sku预售，0：否，1：是
-        /// </summary>
-        [JsonPropertyName("is_sku_pre_sale")]
-        public int? IsSkuPreSale { get; set; }
         public partial class GoodsPropertyListResponse : PddResponseModel
         {
 
@@ -501,6 +501,18 @@ public partial class GetGoodsDetailResponse : PddResponseModel
             public long? SkuId { get; set; }
 
             /// <summary>
+            /// sku预售时间，单位秒
+            /// </summary>
+            [JsonPropertyName("sku_pre_sale_time")]
+            public int? SkuPreSaleTime { get; set; }
+
+            /// <summary>
+            /// sku属性
+            /// </summary>
+            [JsonPropertyName("sku_property_list")]
+            public List<SkuPropertyListResponse> SkuPropertyList { get; set; }
+
+            /// <summary>
             /// 商品规格列表
             /// </summary>
             [JsonPropertyName("spec")]
@@ -517,18 +529,6 @@ public partial class GetGoodsDetailResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("weight")]
             public long? Weight { get; set; }
-
-            /// <summary>
-            /// sku属性
-            /// </summary>
-            [JsonPropertyName("sku_property_list")]
-            public List<SkuPropertyListResponse> SkuPropertyList { get; set; }
-
-            /// <summary>
-            /// sku预售时间，单位秒
-            /// </summary>
-            [JsonPropertyName("sku_pre_sale_time")]
-            public int? SkuPreSaleTime { get; set; }
             public partial class OverseaSkuResponse : PddResponseModel
             {
 
@@ -549,34 +549,6 @@ public partial class GetGoodsDetailResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("taxation")]
                 public int? Taxation { get; set; }
-
-            }
-            public partial class SpecResponse : PddResponseModel
-            {
-
-                /// <summary>
-                /// 自定义规格所属的规格ID
-                /// </summary>
-                [JsonPropertyName("parent_id")]
-                public long? ParentId { get; set; }
-
-                /// <summary>
-                /// 商品规格ID对应的规格名称
-                /// </summary>
-                [JsonPropertyName("parent_name")]
-                public string ParentName { get; set; }
-
-                /// <summary>
-                /// 自定义规格ID
-                /// </summary>
-                [JsonPropertyName("spec_id")]
-                public long? SpecId { get; set; }
-
-                /// <summary>
-                /// 自定义规格名称
-                /// </summary>
-                [JsonPropertyName("spec_name")]
-                public string SpecName { get; set; }
 
             }
             public partial class SkuPropertyListResponse : PddResponseModel
@@ -605,6 +577,34 @@ public partial class GetGoodsDetailResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("vid")]
                 public long? Vid { get; set; }
+
+            }
+            public partial class SpecResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 自定义规格所属的规格ID
+                /// </summary>
+                [JsonPropertyName("parent_id")]
+                public long? ParentId { get; set; }
+
+                /// <summary>
+                /// 商品规格ID对应的规格名称
+                /// </summary>
+                [JsonPropertyName("parent_name")]
+                public string ParentName { get; set; }
+
+                /// <summary>
+                /// 自定义规格ID
+                /// </summary>
+                [JsonPropertyName("spec_id")]
+                public long? SpecId { get; set; }
+
+                /// <summary>
+                /// 自定义规格名称
+                /// </summary>
+                [JsonPropertyName("spec_name")]
+                public string SpecName { get; set; }
 
             }
 
