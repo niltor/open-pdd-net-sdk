@@ -102,10 +102,9 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
     /// </summary>
     public virtual void OnReconnectiong()
     {
-        client.ReconnectionHappened.Subscribe(info =>
-            {
-                _logger.LogInformation($"Reconnection happened, type: {info.Type}");
-            });
+        client.ReconnectionHappened.Subscribe(info => {
+            _logger.LogInformation($"Reconnection happened, type: {info.Type}");
+        });
 
     }
 

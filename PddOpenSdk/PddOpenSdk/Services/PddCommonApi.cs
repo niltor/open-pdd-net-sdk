@@ -8,7 +8,7 @@ public class PddCommonApi
     /// <summary>
     /// 请求接口
     /// </summary>
-    private static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
+    private readonly static string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
     public string AccessToken { get; set; }
     public string ClientId { get; set; }
     public string ClientSecret { get; set; }

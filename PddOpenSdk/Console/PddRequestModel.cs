@@ -1,9 +1,8 @@
-namespace Sample
+namespace Sample;
+
+/// <summary>
+/// 拼多多请求模型
+/// </summary>
+public class PddRequestModel
 {
-    /// <summary>
-    /// 拼多多请求模型
-    /// </summary>
-    public class PddRequestModel
-    {
-    }
 }
