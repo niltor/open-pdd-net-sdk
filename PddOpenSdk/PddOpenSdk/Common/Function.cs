@@ -1,10 +1,4 @@
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace PddOpenSdk.Common
 {
@@ -13,18 +7,17 @@ namespace PddOpenSdk.Common
         /// <summary>
         /// 对象转字典
         /// </summary>
-        /// <typeparam name="TValue"></typeparam>
         /// <param name="obj"></param>
         /// <param name="sort">排序</param>
         /// <returns></returns>
         public static Dictionary<string, object> ToDictionary(object obj, OrderType? sort = OrderType.ASC)
         {
-            var json = JsonConvert.SerializeObject(obj, new JsonSerializerSettings
+            var json = JsonSerializer.Serialize(obj, new JsonSerializerOptions
             {
-                NullValueHandling = NullValueHandling.Ignore
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             });
 
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
             dictionary = dictionary
                 .Where(d => d.Value != null && !string.IsNullOrEmpty(d.Value?.ToString()))
                     .ToDictionary((d) => d.Key, (d) => d.Value);

@@ -1,12 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PddOpenSdk.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PddOpenSdk.Services.PddApi
 {
     public class AuthApi : PddCommonApi
@@ -63,7 +54,7 @@ namespace PddOpenSdk.Services.PddApi
                     dic.Add("state", state);
                 }
 
-                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+                var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
                 using (var hc = new HttpClient())
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
@@ -72,16 +63,16 @@ namespace PddOpenSdk.Services.PddApi
                     if (response.IsSuccessStatusCode)
                     {
                         string jsonString = await response.Content.ReadAsStringAsync();
-                        var jObject = JObject.Parse(jsonString);
-                        if (jObject.TryGetValue("error_response", out var errorResponse))
+                        var jObject = JsonDocument.Parse(jsonString);
+                        if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                         {
-                            ErrorResponse = JsonConvert.DeserializeObject<ErrorResponse>(jsonString);
+                            ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonString);
                             Console.WriteLine("错误信息:" + errorResponse.ToString());
                             return default;
                         }
                         else
                         {
-                            var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                            var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
                             return result;
                         }
                     }
@@ -118,13 +109,13 @@ namespace PddOpenSdk.Services.PddApi
                     dic.Add("state", state);
                 }
 
-                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+                var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
                 using (var hc = new HttpClient())
                 {
                     var response = await hc.PostAsync(TokenUrl, data);
                     string jsonString = await response.Content.ReadAsStringAsync();
                     System.Console.WriteLine(jsonString);
-                    var result = JsonConvert.DeserializeObject<AccessTokenResponseModel>(jsonString);
+                    var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
 
                     return result;
                 }

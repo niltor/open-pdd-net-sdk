@@ -1,285 +1,159 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-
-namespace Console.PddModels
+﻿namespace Console.PddModels
 {
     public class ApiDocResponseModel
     {
-        [JsonProperty("success")]
+        [JsonPropertyName("success")]
         public bool Success { get; set; }
 
-        [JsonProperty("errorCode")]
+        [JsonPropertyName("errorCode")]
         public long ErrorCode { get; set; }
 
-        [JsonProperty("errorMsg")]
+        [JsonPropertyName("errorMsg")]
         public object ErrorMsg { get; set; }
 
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public ApiDocDetail Result { get; set; }
     }
 
     public class ApiDocDetail
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("catId")]
+        [JsonPropertyName("catId")]
         public long CatId { get; set; }
 
-        [JsonProperty("apiName")]
+        [JsonPropertyName("apiName")]
         public string ApiName { get; set; }
 
-        [JsonProperty("scopeName")]
+        [JsonPropertyName("scopeName")]
         public string ScopeName { get; set; }
 
-        [JsonProperty("usageScenarios")]
+        [JsonPropertyName("usageScenarios")]
         public string UsageScenarios { get; set; }
 
-        [JsonProperty("needOauth")]
+        [JsonPropertyName("needOauth")]
         public long NeedOauth { get; set; }
 
-        [JsonProperty("responseCodeExample")]
+        [JsonPropertyName("responseCodeExample")]
         public string ResponseCodeExample { get; set; }
 
-        [JsonProperty("requestParamList")]
+        [JsonPropertyName("requestParamList")]
         public List<ParamList> RequestParamList { get; set; }
 
-        [JsonProperty("responseParamList")]
+        [JsonPropertyName("responseParamList")]
         public List<ParamList> ResponseParamList { get; set; }
 
-        [JsonProperty("errorParamList")]
+        [JsonPropertyName("errorParamList")]
         public List<ErrorParamList> ErrorParamList { get; set; }
 
-        [JsonProperty("limiters")]
+        [JsonPropertyName("limiters")]
         public List<Limiter> Limiters { get; set; }
 
-        [JsonProperty("permissionsPkgs")]
+        [JsonPropertyName("permissionsPkgs")]
         public List<PermissionsPkg> PermissionsPkgs { get; set; }
 
-        [JsonProperty("sdkDemos")]
+        [JsonPropertyName("sdkDemos")]
         public List<SdkDemo> SdkDemos { get; set; }
     }
 
     public partial class ErrorParamList
     {
-        [JsonProperty("errorCode")]
+        [JsonPropertyName("errorCode")]
         public string ErrorCode { get; set; }
 
-        [JsonProperty("errorMsg")]
+        [JsonPropertyName("errorMsg")]
         public string ErrorMsg { get; set; }
 
-        [JsonProperty("solution")]
+        [JsonPropertyName("solution")]
         public string Solution { get; set; }
 
-        [JsonProperty("outerErrorCode")]
+        [JsonPropertyName("outerErrorCode")]
         public string OuterErrorCode { get; set; }
     }
 
     public partial class Limiter
     {
-        [JsonProperty("limiterLevel")]
+        [JsonPropertyName("limiterLevel")]
         public long LimiterLevel { get; set; }
 
-        [JsonProperty("timeRange")]
+        [JsonPropertyName("timeRange")]
         public long TimeRange { get; set; }
 
-        [JsonProperty("times")]
+        [JsonPropertyName("times")]
         public long Times { get; set; }
     }
 
     public partial class PermissionsPkg
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("appTypeList")]
+        [JsonPropertyName("appTypeList")]
         public List<AppTypeList> AppTypeList { get; set; }
     }
 
     public partial class AppTypeList
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 
     public partial class ParamList
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("parentId")]
+        [JsonPropertyName("parentId")]
         public long ParentId { get; set; }
 
-        [JsonProperty("childrenNum")]
+        [JsonPropertyName("childrenNum")]
         public long ChildrenNum { get; set; }
 
-        [JsonProperty("paramName")]
+        [JsonPropertyName("paramName")]
         public string ParamName { get; set; }
 
-        [JsonProperty("paramType")]
-        public ParamType ParamType { get; set; }
+        [JsonPropertyName("paramType")]
+        public string ParamType { get; set; }
 
-        [JsonProperty("isMust", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("isMust")]
         public long? IsMust { get; set; } = 0;
 
-        [JsonProperty("defaultValue", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("defaultValue")]
         public string DefaultValue { get; set; }
 
-        [JsonProperty("example")]
+        [JsonPropertyName("example")]
         public string Example { get; set; }
 
-        [JsonProperty("paramDesc")]
+        [JsonPropertyName("paramDesc")]
         public string ParamDesc { get; set; }
 
-        [JsonProperty("sourcePath")]
+        [JsonPropertyName("sourcePath")]
         public object SourcePath { get; set; }
     }
 
     public partial class SdkDemo
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
+        [JsonPropertyName("description")]
         public string Description { get; set; }
 
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     }
 
     public enum ParamType { Double, Integer, Long, Object, ObjectArray, StringArray, Boolean, String, IntegerArray, LongArray, Map, MapArray, File };
 
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                ParamTypeConverter.Singleton,
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }
 
-    internal class ParamTypeConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t)
-        {
-            return t == typeof(ParamType) || t == typeof(ParamType?);
-        }
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null)
-            {
-                return null;
-            }
-
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "DOUBLE":
-                    return ParamType.Double;
-                case "INTEGER":
-                    return ParamType.Integer;
-                case "LONG":
-                    return ParamType.Long;
-                case "OBJECT":
-                    return ParamType.Object;
-                case "OBJECT[]":
-                    return ParamType.ObjectArray;
-                case "STRING[]":
-                    return ParamType.StringArray;
-                case "LONG[]":
-                    return ParamType.LongArray;
-                case "INTEGER[]":
-                    return ParamType.IntegerArray;
-                case "STRING":
-                case "VOID":
-                    return ParamType.String;
-                case "BOOLEAN":
-                    return ParamType.Boolean;
-                case "MAP":
-                    return ParamType.Map;
-                case "MAP[]":
-                    return ParamType.MapArray;
-                case "FILE":
-                    return ParamType.File;
-                default:
-                    return ParamType.Object;
-
-            }
-
-            throw new Exception("Cannot unmarshal type ParamType " + value);
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (ParamType)untypedValue;
-            switch (value)
-            {
-                case ParamType.Double:
-                    serializer.Serialize(writer, "double");
-                    return;
-                case ParamType.Integer:
-                    serializer.Serialize(writer, "int");
-                    return;
-                case ParamType.IntegerArray:
-                    serializer.Serialize(writer, "int[]");
-                    return;
-                case ParamType.Long:
-                    serializer.Serialize(writer, "long");
-                    return;
-                case ParamType.LongArray:
-                    serializer.Serialize(writer, "long[]");
-                    return;
-                case ParamType.Object:
-                    serializer.Serialize(writer, "object");
-                    return;
-                case ParamType.ObjectArray:
-                    serializer.Serialize(writer, "object[]");
-                    return;
-                case ParamType.StringArray:
-                    serializer.Serialize(writer, "string[]");
-                    return;
-                case ParamType.String:
-                    serializer.Serialize(writer, "string");
-                    return;
-                case ParamType.Boolean:
-                    serializer.Serialize(writer, "boolean");
-                    return;
-                case ParamType.Map:
-                    serializer.Serialize(writer, "map");
-                    return;
-                case ParamType.MapArray:
-                    serializer.Serialize(writer, "map[]");
-                    return;
-                default:
-                    serializer.Serialize(writer, "string");
-                    return;
-            }
-            throw new Exception("Cannot marshal type ParamType");
-        }
-
-        public static readonly ParamTypeConverter Singleton = new ParamTypeConverter();
-    }
 }

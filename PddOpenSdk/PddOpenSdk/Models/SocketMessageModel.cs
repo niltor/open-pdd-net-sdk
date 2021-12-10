@@ -1,22 +1,17 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace MSDev.PddOpenSdk.Models
+﻿namespace MSDev.PddOpenSdk.Models
 {
     public class SocketMessageModel
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
-        [JsonProperty("commandType")]
+        [JsonPropertyName("commandType")]
         public string CommandType { get; set; }
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public long Time { get; set; } = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-        [JsonProperty("message")]
+        [JsonPropertyName("message")]
         public Message Message { get; set; }
-        [JsonProperty("sendTime")]
+        [JsonPropertyName("sendTime")]
         public long SendTime { get; set; }
-
-
 
         public SocketMessageModel()
         {
@@ -32,17 +27,17 @@ namespace MSDev.PddOpenSdk.Models
         /**  
 	     * 消息类型  
 	     */
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
         /**  
 	     * 商户ID  
 	     */
-        [JsonProperty("mallID")]
+        [JsonPropertyName("mallID")]
         public long MallID { get; set; }
         /**  
 	     * 消息属性内容  
 	     */
-        [JsonProperty("content")]
+        [JsonPropertyName("content")]
         public string Content { get; set; }
     }
 

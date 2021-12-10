@@ -4,10 +4,8 @@ using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Request.Goods;
 using Sample.Models;
-using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Sample.Controllers
 {
@@ -56,7 +54,7 @@ namespace Sample.Controllers
             });
             await service.GetAccessTokenAsync(code: "");
             var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
-                new GetDdkGoodsRecommendRequestModel
+                new GetDdkGoodsRecommend
                 {
                     CatId = 20100
                 });
@@ -69,7 +67,7 @@ namespace Sample.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Test()
         {
-            var model = new GetDdkGoodsRecommendRequestModel
+            var model = new GetDdkGoodsRecommend
             {
                 CatId = 20100
             };
@@ -91,7 +89,7 @@ namespace Sample.Controllers
             byte[] bytes = System.IO.File.ReadAllBytes(filePath);
             string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
 
-            var model = new UploadGoodsImageRequestModel
+            var model = new UploadGoodsImage
             {
                 Image = base64
             };
@@ -108,7 +106,7 @@ namespace Sample.Controllers
         {
             //_pdd.GoodsApi.AccessToken = AccessToken;
             var filePath = Path.Combine(_env.WebRootPath, "images", "logo.png");
-            var model = new UploadGoodsFilespaceImageRequestModel { FilePath = filePath };
+            var model = new UploadGoodsFilespaceImage { FilePath = filePath };
             var result = await _pdd.GoodsApi.UploadGoodsFilespaceImageAsync(model);
             return Json(result);
         }
@@ -119,7 +117,7 @@ namespace Sample.Controllers
         /// <returns></returns>
         public async Task<ActionResult> TestGoodsUpload()
         {
-            var model = new AddGoodsRequestModel
+            var model = new AddGoods
             {
                 GoodsName = "葡萄",
                 GoodsType = 1,
@@ -133,12 +131,12 @@ namespace Sample.Controllers
                 IsRefundable = true,
                 SecondHand = false,
                 IsFolt = true,
-                SkuList = new System.Collections.Generic.List<AddGoodsRequestModel.SkuListRequestModel>
+                SkuList = new List<AddGoods.SkuListModel>
                 {
-                    new AddGoodsRequestModel.SkuListRequestModel
+                    new AddGoods.SkuListModel
                     {
                        ThumbUrl = "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
-                       OverseaSku = new AddGoodsRequestModel.SkuListRequestModel.OverseaSkuRequestModel
+                       OverseaSku = new AddGoods.SkuListModel.OverseaSkuModel
                        {
                            MeasurementCode = "123",
                            Taxation = 0,
@@ -153,12 +151,12 @@ namespace Sample.Controllers
                        IsOnsale = 1
                     }
                 },
-                CarouselGallery = new System.Collections.Generic.List<string>
+                CarouselGallery = new List<string>
                 {
                     "https://t00img.yangkeduo.com/goods/images/2019-03-09/dacebcdc-9c26-479c-9174-f3ecf0b579b6.jpg",
                     "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
                 },
-                DetailGallery = new System.Collections.Generic.List<string>
+                DetailGallery = new List<string>
                 {
                     "https://t00img.yangkeduo.com/goods/images/2019-03-09/0a1ee8e4-e94e-4d5c-89ab-fe4a4e163ee9.jpg"
                 }

@@ -1,5 +1,4 @@
 using Console;
-using System.Threading.Tasks;
 
 namespace Sample
 {
@@ -8,7 +7,7 @@ namespace Sample
         private static async Task Main(string[] args)
         {
             var helper = new PddApiDocHelper();
-            await helper.Run().ConfigureAwait(false);
+            await helper.Run();
             await helper.GeneratePddServiceClassAsync();
 
             Task.WaitAll();

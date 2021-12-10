@@ -1,17 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using PddOpenSdk.Models;
-using PddOpenSdk.Services;
-using PddOpenSdk.Services.PddApi;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PddOpenSdk.AspNetCore
-{
+﻿namespace PddOpenSdk.AspNetCore;
     /// <summary>
     /// 批多多服务
     /// </summary>
@@ -129,4 +116,4 @@ namespace PddOpenSdk.AspNetCore
             return default;
         }
     }
-}
+

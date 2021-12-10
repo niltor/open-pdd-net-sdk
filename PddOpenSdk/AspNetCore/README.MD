@@ -2,7 +2,7 @@
 
 先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample)。
 
 - 在 Startup.cs 中注入服务
 
@@ -31,7 +31,7 @@ public YourController(PddService pdd)
 }
 ```
 
-#### 2.2.0及以后版本
+#### 在控制器中使用
 ```csharp
 /// <summary>
 /// 测试获取token
@@ -91,47 +91,10 @@ public async Task<ActionResult> MultiTenantAsync()
             });
     ```
 
-`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
+`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample/MyHostService.cs)项目。
 
 - 心跳检测间隔可在`appsetting.json`配置中进行配置，可参考`Sample`项目中的配置。
 此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。
 
-
-
-#### 2.1.0及以前版本
-
-- 获取 AccessToken
-```csharp
-/// <summary>
-/// 测试获取token
-/// </summary>
-/// <param name="code"></param>
-/// <returns></returns>
-public async Task<IActionResult> Callback(string code)
-{
-    var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
-    // 自行维护Token过期时间
-    return Content(token.AccessToken);
-}
-```
-
-- 调用其他接口
-
-  **获取 AccessToken 之后才能正常调用其他接口。**
-
-```csharp
-public async Task<ActionResult> Test()
-{
-    // 构造请求模型
-    var requestModel = new SearchDdkGoodsRequestModel
-    {
-        SortType = 0,
-        WithCoupon = false
-    };
-    // 调用相应接口方法
-    var result = await _pdd.DdkApi.SearchDdkGoodsAsync(requestModel);
-    return Content(JsonConvert.SerializeObject(result));
-}
-```
 
 > 所有方法名与官方文档保持一致，并有中文注释提醒，只是更改了命名规范，非常容易查找使用。

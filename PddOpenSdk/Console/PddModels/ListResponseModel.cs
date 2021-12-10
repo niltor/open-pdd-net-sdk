@@ -1,29 +1,26 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace Console.PddModels
+﻿namespace Console.PddModels
 {
     public partial class ListResponseModel
     {
-        [JsonProperty("success")]
+        [JsonPropertyName("success")]
         public bool Success { get; set; }
 
-        [JsonProperty("errorCode")]
+        [JsonPropertyName("errorCode")]
         public long ErrorCode { get; set; }
 
-        [JsonProperty("errorMsg")]
+        [JsonPropertyName("errorMsg")]
         public object ErrorMsg { get; set; }
 
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public List<PddCatInfo> Result { get; set; }
     }
 
     public class PddCatInfo
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     }
 }

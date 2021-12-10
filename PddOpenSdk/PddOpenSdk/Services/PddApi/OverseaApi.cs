@@ -1,29 +1,46 @@
 
 using PddOpenSdk.Models.Request.Oversea;
 using PddOpenSdk.Models.Response.Oversea;
-using System.Threading.Tasks;
-namespace PddOpenSdk.Services.PddApi
+namespace PddOpenSdk.Services.PddApi;
+public class OverseaApi : PddCommonApi
 {
-    public class OverseaApi : PddCommonApi
-    {
-        public OverseaApi() { }
-        public OverseaApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
-        /// <summary>
-        /// 虚拟游戏类区服列表接口
-        /// </summary>
-        public async Task<QueryVirtualGameServerResponseModel> QueryVirtualGameServerAsync(QueryVirtualGameServerRequestModel queryVirtualGameServer)
-        {
-            var result = await PostAsync<QueryVirtualGameServerRequestModel, QueryVirtualGameServerResponseModel>("pdd.virtual.game.server.query", queryVirtualGameServer);
-            return result;
-        }
-        /// <summary>
-        /// 虚拟类目发货通知接口
-        /// </summary>
-        public async Task<NotifyVirtualMobileChargeResponseModel> NotifyVirtualMobileChargeAsync(NotifyVirtualMobileChargeRequestModel notifyVirtualMobileCharge)
-        {
-            var result = await PostAsync<NotifyVirtualMobileChargeRequestModel, NotifyVirtualMobileChargeResponseModel>("pdd.virtual.mobile.charge.notify", notifyVirtualMobileCharge);
-            return result;
-        }
+    public OverseaApi() { }
+    public OverseaApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
+    /// <summary>
+    /// 保税仓信息查询接口
+    /// </summary>
+    public async Task<GetMallInfoBondedWarehouseResponse> GetMallInfoBondedWarehouseAsync(GetMallInfoBondedWarehouse getMallInfoBondedWarehouse)
+    {
+        var result = await PostAsync<GetMallInfoBondedWarehouse, GetMallInfoBondedWarehouseResponse>("pdd.mall.info.bonded.warehouse.get", getMallInfoBondedWarehouse);
+        return result;
     }
+
+    /// <summary>
+    /// 获取多多国际清关材料
+    /// </summary>
+    public async Task<GetOverseaClearanceResponse> GetOverseaClearanceAsync(GetOverseaClearance getOverseaClearance)
+    {
+        var result = await PostAsync<GetOverseaClearance, GetOverseaClearanceResponse>("pdd.oversea.clearance.get", getOverseaClearance);
+        return result;
+    }
+
+    /// <summary>
+    /// 海淘报关服务商调用的加签接口实现
+    /// </summary>
+    public async Task<SignOverseaCustomsClearanceGetResponse> SignOverseaCustomsClearanceGetAsync(SignOverseaCustomsClearanceGet signOverseaCustomsClearanceGet)
+    {
+        var result = await PostAsync<SignOverseaCustomsClearanceGet, SignOverseaCustomsClearanceGetResponse>("pdd.oversea.customs.clearance.get.sign", signOverseaCustomsClearanceGet);
+        return result;
+    }
+
+    /// <summary>
+    /// 同步海淘订单申报失败情况
+    /// </summary>
+    public async Task<NotifyOverseaDeclarationFailResponse> NotifyOverseaDeclarationFailAsync(NotifyOverseaDeclarationFail notifyOverseaDeclarationFail)
+    {
+        var result = await PostAsync<NotifyOverseaDeclarationFail, NotifyOverseaDeclarationFailResponse>("pdd.oversea.declaration.fail.notify", notifyOverseaDeclarationFail);
+        return result;
+    }
+
 }

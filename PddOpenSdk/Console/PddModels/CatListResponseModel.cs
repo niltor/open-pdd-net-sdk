@@ -1,59 +1,57 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
+﻿
 namespace Console.PddModels
 {
     public partial class CatListResponseModel
     {
-        [JsonProperty("success")]
+        [JsonPropertyName("success")]
         public bool Success { get; set; }
 
-        [JsonProperty("errorCode")]
+        [JsonPropertyName("errorCode")]
         public long ErrorCode { get; set; }
 
-        [JsonProperty("errorMsg")]
+        [JsonPropertyName("errorMsg")]
         public object ErrorMsg { get; set; }
 
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public CatListResult Result { get; set; }
     }
 
     public class CatListResult
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("catName")]
+        [JsonPropertyName("catName")]
         public string CatName { get; set; }
 
-        [JsonProperty("docList")]
+        [JsonPropertyName("docList")]
         public List<PddDocInfo> DocList { get; set; }
     }
 
     public partial class PddDocInfo
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("scopeName")]
+        [JsonPropertyName("scopeName")]
         public string ScopeName { get; set; }
 
-        [JsonProperty("scopeNameId")]
+        [JsonPropertyName("scopeNameId")]
         public long ScopeNameId { get; set; }
 
-        [JsonProperty("apiName")]
+        [JsonPropertyName("apiName")]
         public string ApiName { get; set; }
 
-        [JsonProperty("usageScenarios")]
+        [JsonPropertyName("usageScenarios")]
         public string UsageScenarios { get; set; }
 
-        [JsonProperty("createdAt")]
+        [JsonPropertyName("createdAt")]
         public long CreatedAt { get; set; }
 
-        [JsonProperty("updatedAt")]
+        [JsonPropertyName("updatedAt")]
         public long UpdatedAt { get; set; }
 
-        [JsonProperty("scopeTips")]
+        [JsonPropertyName("scopeTips")]
         public string ScopeTips { get; set; }
     }
 }
