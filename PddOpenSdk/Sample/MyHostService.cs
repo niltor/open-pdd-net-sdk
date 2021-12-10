@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 using MSDev.PddOpenSdk.AspNetCore;
 using MSDev.PddOpenSdk.Models;
 using PddOpenSdk.AspNetCore;
-using System;
 
 namespace Sample
 {
@@ -21,24 +20,25 @@ namespace Sample
         {
             // 接收信息
             client.MessageReceived.Subscribe((message) =>
-             {
-                 var msg = JsonSerializer.Deserialize<SocketMessageModel>(message.Text);
-                 if (msg.CommandType.ToLower().Equals("heartbeat"))
-                 {
-                     // TODO:心跳报文不处理
-                 }
-                 else
-                 {
-                     // TODO:自定义处理逻辑
-                     _logger.LogInformation("报文:" + msg.Message.Content);
-                     using (var scope = Services.CreateScope())
-                     {
-                         // 获取你自己的数据库上下文服务
-                         //var context = scope.ServiceProvider.GetRequiredService<DbContext>();
-                     }
-                 }
-             });
-        }
+            {
+                var msg = JsonSerializer.Deserialize<SocketMessageModel>(message.Text);
+                // 心跳报文不处理
+                if (!msg.CommandType.ToLower().Equals("heartbeat"))
+                {
+                    // TODO:自定义处理逻辑
+                    _logger.LogInformation("报文:" + msg.Message.Content);
+                    using var scope = Services.CreateScope();
+                    // 获取数据库上下文
+                    //var context = scope.ServiceProvider.GetRequiredService<DbContext>();
 
+                    // ack确认，不确认消息会积压，重复发送
+                    if (client.IsRunning)
+                    {
+                        msg.CommandType = "Ack";
+                        client.Send(JsonSerializer.Serialize(msg));
+                    }
+                }
+            });
+        }
     }
 }

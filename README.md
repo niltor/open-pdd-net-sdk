@@ -1,6 +1,6 @@
 # 说明文档
 
-[![Build status](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=1)
+[![Build status](https://dev.azure.com/geethinOrg/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/msdev-zpty/pdd-open-net-sdk/_build/latest?definitionId=1)
 [![NuGet](https://img.shields.io/nuget/v/MSDev.PddOpenSdk.AspNetCore.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
 [![NuGet](https://img.shields.io/nuget/dt/MSDev.PddOpenSdk.AspNetCore.svg)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
 [![Join the chat at https://gitter.im/open-pdd-net-sdk/Lobby](https://badges.gitter.im/open-pdd-net-sdk/Lobby.svg)](https://gitter.im/open-pdd-net-sdk/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -10,14 +10,13 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 ## **特别说明**
 
 - 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
-- `2.2.0 `版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
-- `2.3.0` 提供消息服务支持，核心类库不再支持 `.net framework`.
+- `6.0 `版本开始，目标框架统一调整到`.net6.0`。
 ## 更新说明
-更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/dev/CHANGELOG.md)。
+更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/v6/CHANGELOG.md)。
 
 ## 类库说明
 
-核心类库 `MSDev.PddOpenSdk` 支持基于 .Net Standardv2.0 的项目，支持 ~~.NetFramework 4.5.2+~~，**C#8.0**。
+核心类库 `MSDev.PddOpenSdk` 支持基于 `.net6.0` 的项目，**C#10.0**。
 控制台、客户端等类型项目可使用。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
@@ -36,17 +35,16 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 
 适用于客户端、控制台等程序，Web应用请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`。
 
-支持 ~~`.Net Framework4.5.2`~~ 及`Net Standard 2.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+支持 `NET6.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
-使用示例:
-
-#### 2.2.0及以后版本
+### 使用示例:
+#### 使用clientId等创建服务并获取token
 ```csharp
 var service = new PddService(new PddOptions
 {
     ClientId = "",
     ClientSecret = "",
-    CallbackUrl = ""，
+    CallbackUrl = ""
 });
 // 获取token
 await service.GetAccessTokenAsync(code: "");
@@ -56,38 +54,6 @@ var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
     {
         CatId = 20100
     });
-```
-
-#### 2.1.0及以前版本：
-- 基本请求及错误信息
-```csharp
-class Program
-{
-    static async Task Main(string[] args)
-    {
-        // 设置ClientId与ClientSecret
-        PddCommonApi.ClientId = "ID";
-        PddCommonApi.ClientSecret = "Secret";
-        // 先使用code换取token
-        string code = "";
-        var authApi = new AuthApi();
-        await authApi.GetAccessTokenAsync(code);
-    
-        // 构造请求内容
-        var model = new GenDdkWeappQrcodeUrlRequestModel
-        {
-            PId = "123133",
-            GoodsIdList = new System.Collections.Generic.List<long> { 1122, 331323 }
-        };
-        var api = new DdkApi();
-        var result = await api.GenDdkWeappQrcodeUrlAsync(model);
-
-        // 获取Pdd官方返回的错误信息
-        var errorResponse = _pdd.DdkApi.ErrorResponse.Value;
-        Console.WriteLine(errorResponse.Error_msg);
-
-    }
-}
 ```
 
 - 图片上传示例
@@ -108,7 +74,7 @@ class Program
 
 先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample)。
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample)。
 
 - 在 Startup.cs 中注入服务
 
@@ -136,7 +102,7 @@ public YourController(PddService pdd)
 }
 ```
 
-#### 2.2.0及以后版本
+#### 在控制器中使用
 ```csharp
 /// <summary>
 /// 测试获取token
@@ -202,41 +168,6 @@ public async Task<ActionResult> MultiTenantAsync()
 - 心跳检测间隔可在`appsetting.json`配置中进行配置，可参考`Sample`项目中的配置。
 此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。
 
-#### 2.1.0及以前版本
-
-- 获取 AccessToken
-```csharp
-/// <summary>
-/// 测试获取token
-/// </summary>
-/// <param name="code"></param>
-/// <returns></returns>
-public async Task<IActionResult> Callback(string code)
-{
-    var token = await _pdd.AuthApi.GetAccessTokenAsync(code);
-    // 自行维护Token过期时间
-    return Content(token.AccessToken);
-}
-```
-
-- 调用其他接口
-
-  **获取 AccessToken 之后才能正常调用其他接口。**
-
-```csharp
-public async Task<ActionResult> Test()
-{
-    // 构造请求模型
-    var requestModel = new SearchDdkGoodsRequestModel
-    {
-        SortType = 0,
-        WithCoupon = false
-    };
-    // 调用相应接口方法
-    var result = await _pdd.DdkApi.SearchDdkGoodsAsync(requestModel);
-    return Content(JsonConvert.SerializeObject(result));
-}
-```
 
 > 所有方法名与官方文档保持一致，并有中文注释提醒，只是更改了命名规范，非常容易查找使用。
 

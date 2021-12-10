@@ -4,10 +4,8 @@ using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Request.Goods;
 using Sample.Models;
-using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace Sample.Controllers
 {

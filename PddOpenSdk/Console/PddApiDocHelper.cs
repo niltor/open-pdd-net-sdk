@@ -1,6 +1,6 @@
+using Console.PddModels;
 using System.IO;
 using System.Net.Http;
-using Console.PddModels;
 
 namespace Console
 {
