@@ -110,7 +110,7 @@ public class PddService
     public ErrorResponse ErrorResponse;
     private readonly PddOptions _options;
     private ILogger<PddService> _logger;
-    public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
+    public readonly static string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
 
     public PddService(IOptions<PddOptions> options, ILogger<PddService> logger)
     {

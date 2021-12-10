@@ -1,9 +1,8 @@
-namespace PddOpenSdk.Models.Request
+namespace PddOpenSdk.Models.Request;
+
+/// <summary>
+/// 拼多多请求模型
+/// </summary>
+public class PddRequestModel
 {
-    /// <summary>
-    /// 拼多多请求模型
-    /// </summary>
-    public class PddRequestModel
-    {
-    }
 }

@@ -6,60 +6,56 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PddOpenSdk.AspNetCore;
 
-namespace Sample
+namespace Sample;
+
+public class Startup
 {
-    public class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        Configuration = configuration;
+    }
 
-        public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<CookiePolicyOptions>(options => {
+            // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
+        // 获取选项
+        services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
+        // 拼多多服务
+        services.AddPdd();
+
+        services.AddControllers()
+            .AddJsonOptions(options => {
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
-            // 获取选项
-            services.Configure<PddOptions>(Configuration.GetSection("Pdd"));
-            // 拼多多服务
-            services.AddPdd();
+    }
 
-            services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-                    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-                });
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            //app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseRouting();
-            //app.UseCookiePolicy();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            });
+            app.UseDeveloperExceptionPage();
         }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+        }
+        //app.UseHttpsRedirection();
+        app.UseStaticFiles();
+        app.UseRouting();
+        //app.UseCookiePolicy();
+        app.UseEndpoints(endpoints => {
+            endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        });
     }
 }
