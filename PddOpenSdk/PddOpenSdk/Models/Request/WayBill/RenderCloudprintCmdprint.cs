@@ -23,6 +23,12 @@ public partial class RenderCloudprintCmdprint
         public string ClientType { get; set; }
 
         /// <summary>
+        /// 返回值编码方式，枚举值：gzip(默认值)、gzip_byte(推荐值)
+        /// </summary>
+        [JsonPropertyName("cmd_encoding")]
+        public string CmdEncoding { get; set; }
+
+        /// <summary>
         /// 打印配置
         /// </summary>
         [JsonPropertyName("config")]
@@ -35,22 +41,16 @@ public partial class RenderCloudprintCmdprint
         public DocumentModel Document { get; set; }
 
         /// <summary>
-        /// 打印机名称
-        /// </summary>
-        [JsonPropertyName("printer_name")]
-        public string PrinterName { get; set; }
-
-        /// <summary>
         /// 枚举值：CPCL、TSPL
         /// </summary>
         [JsonPropertyName("print_command_type")]
         public string PrintCommandType { get; set; }
 
         /// <summary>
-        /// 返回值编码方式，枚举值：gzip(默认值)、gzip_byte(推荐值)
+        /// 打印机名称
         /// </summary>
-        [JsonPropertyName("cmd_encoding")]
-        public string CmdEncoding { get; set; }
+        [JsonPropertyName("printer_name")]
+        public string PrinterName { get; set; }
         public partial class ConfigModel
         {
 

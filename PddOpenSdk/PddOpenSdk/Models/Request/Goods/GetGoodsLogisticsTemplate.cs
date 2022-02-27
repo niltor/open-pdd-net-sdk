@@ -14,5 +14,11 @@ public partial class GetGoodsLogisticsTemplate
     [JsonPropertyName("page_size")]
     public int? PageSize { get; set; }
 
+    /// <summary>
+    /// 0-新发布商品，1-编辑商品。如传值为空，平台默认为发布商品
+    /// </summary>
+    [JsonPropertyName("goods_status")]
+    public int? GoodsStatus { get; set; }
+
 }
 

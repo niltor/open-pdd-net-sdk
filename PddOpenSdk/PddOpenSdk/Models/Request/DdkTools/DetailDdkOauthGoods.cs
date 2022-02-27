@@ -21,7 +21,7 @@ public partial class DetailDdkOauthGoods
     public string GoodsSign { get; set; }
 
     /// <summary>
-    /// 是否获取sku信息，默认false不返回
+    /// 是否获取sku信息，默认false不返回。（特殊渠道权限，需额外申请）
     /// </summary>
     [JsonPropertyName("need_sku_info")]
     public bool? NeedSkuInfo { get; set; }

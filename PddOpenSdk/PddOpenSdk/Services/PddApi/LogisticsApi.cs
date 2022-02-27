@@ -17,6 +17,15 @@ public class LogisticsApi : PddCommonApi
     }
 
     /// <summary>
+    /// 获取可发货快递接口
+    /// </summary>
+    public async Task<RecommendLogisticsAvailableCompanyResponse> RecommendLogisticsAvailableCompanyAsync(RecommendLogisticsAvailableCompany recommendLogisticsAvailableCompany)
+    {
+        var result = await PostAsync<RecommendLogisticsAvailableCompany, RecommendLogisticsAvailableCompanyResponse>("pdd.logistics.available.company.recommend", recommendLogisticsAvailableCompany);
+        return result;
+    }
+
+    /// <summary>
     /// 快递公司查看接口
     /// </summary>
     public async Task<GetLogisticsCompaniesResponse> GetLogisticsCompaniesAsync(GetLogisticsCompanies getLogisticsCompanies)

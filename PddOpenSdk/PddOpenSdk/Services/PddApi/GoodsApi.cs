@@ -251,6 +251,15 @@ public class GoodsApi : PddCommonApi
     }
 
     /// <summary>
+    /// 商品图片上传接口
+    /// </summary>
+    public async Task<UploadGoodsImgResponse> UploadGoodsImgAsync(UploadGoodsImg uploadGoodsImg)
+    {
+        var result = await PostFileAsync<UploadGoodsImg, UploadGoodsImgResponse>("pdd.goods.img.upload", uploadGoodsImg);
+        return result;
+    }
+
+    /// <summary>
     /// 商品详情接口
     /// </summary>
     public async Task<GetGoodsInformationResponse> GetGoodsInformationAsync(GetGoodsInformation getGoodsInformation)

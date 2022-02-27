@@ -23,7 +23,7 @@
 		<FileVersion>0.1.0.0</FileVersion>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageIcon>logo.jpg</PackageIcon>
-		<Version>6.0.0-rc</Version>
+		<Version>6.0.0</Version>
 		<PackageId>MSDev.PddOpenSdk</PackageId>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<Copyright />

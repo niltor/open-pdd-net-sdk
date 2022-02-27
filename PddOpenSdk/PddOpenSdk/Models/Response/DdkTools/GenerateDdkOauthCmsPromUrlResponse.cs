@@ -123,6 +123,12 @@ public partial class GenerateDdkOauthCmsPromUrlResponse : PddResponseModel
                 public string ShortUrl { get; set; }
 
                 /// <summary>
+                /// 使用此推广链接，用户安装多多团长APP的情况下会唤起APP（需客户端支持schema跳转协议）
+                /// </summary>
+                [JsonPropertyName("tz_schema_url")]
+                public string TzSchemaUrl { get; set; }
+
+                /// <summary>
                 /// 双人团长链接，唤起H5页面
                 /// </summary>
                 [JsonPropertyName("url")]
@@ -155,6 +161,12 @@ public partial class GenerateDdkOauthCmsPromUrlResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("short_url")]
                 public string ShortUrl { get; set; }
+
+                /// <summary>
+                /// 使用此推广链接，用户安装多多团长APP的情况下会唤起APP（需客户端支持schema跳转协议）
+                /// </summary>
+                [JsonPropertyName("tz_schema_url")]
+                public string TzSchemaUrl { get; set; }
 
                 /// <summary>
                 /// 普通推广长链接，唤起H5页面

@@ -27,6 +27,12 @@ public partial class CreateDdkOauthCashgift
     public int? CouponAmount { get; set; }
 
     /// <summary>
+    /// 满减门槛，单位为分。满减门槛至少需为礼金券面额的2倍，仅对固定面额礼金券生效。
+    /// </summary>
+    [JsonPropertyName("coupon_threshold_amount")]
+    public int? CouponThresholdAmount { get; set; }
+
+    /// <summary>
     /// 活动持续时间，validity_time_type为 1 时必填。相对时间类型为天级时，最大值为30，即领取后30天内有效；相对时间类型为小时级时，最大值为24，即领取后24小时内有效；相对时间类型为分钟级时，则最大值为60，即领取后60分钟内有效。
     /// </summary>
     [JsonPropertyName("duration")]
@@ -63,19 +69,19 @@ public partial class CreateDdkOauthCashgift
     public bool? GenerateFlexibleCoupon { get; set; }
 
     /// <summary>
-    /// 是否开启全场景推广，默认false不开启全场景推广，仅支持固定面额礼金券
+    /// 是否开启全场景推广，默认false不开启全场景推广，仅支持固定面额且限定商品的礼金活动。
     /// </summary>
     [JsonPropertyName("generate_global")]
     public bool? GenerateGlobal { get; set; }
 
     /// <summary>
-    /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，支持通过goodsSign查询商品。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
+    /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，最多可支持传20个商品；若传空，则为不限商品礼金，不支持创建不限商品灵活礼金。goodsSign使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
     /// </summary>
     [JsonPropertyName("goods_sign_list")]
     public List<string> GoodsSignList { get; set; }
 
     /// <summary>
-    /// 活动单链接可推广礼金数，默认无限制，最小值为1。
+    /// 活动单链接可领券数量，默认无限制，最小值为1。
     /// </summary>
     [JsonPropertyName("link_acquire_limit")]
     public long? LinkAcquireLimit { get; set; }
@@ -99,7 +105,7 @@ public partial class CreateDdkOauthCashgift
     public long? Quantity { get; set; }
 
     /// <summary>
-    /// 收益保护开关，默认false, 表示关闭，仅支持固定面额的礼金活动。开启状态下，系统将根据设置内容进行监控，当监控项满足冻结条件时，系统自动冻结礼金暂停推广，防止资金损失。（可通过多多礼金状态更新接口自行恢复推广）
+    /// 收益保护开关，默认false表示关闭，仅支持固定面额且限定商品的礼金活动。开启状态下，系统将根据设置内容进行监控，当监控项满足冻结条件时，系统自动冻结礼金暂停推广，防止资金损失。（可通过多多礼金状态更新接口自行恢复推广）
     /// </summary>
     [JsonPropertyName("rate_decrease_monitor")]
     public bool? RateDecreaseMonitor { get; set; }
@@ -117,7 +123,7 @@ public partial class CreateDdkOauthCashgift
     public long? TotalAmount { get; set; }
 
     /// <summary>
-    /// 单用户可领券数量上限，默认为1。
+    /// 单用户可领券数量，可设置范围为1~10张，默认为1张。
     /// </summary>
     [JsonPropertyName("user_limit")]
     public int? UserLimit { get; set; }
