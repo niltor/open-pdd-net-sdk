@@ -191,7 +191,7 @@ public class PddCommonApi
             .OrderBy(d => d.Key)
             .ToDictionary((d) => d.Key, (d) => d.Value);
         // 拼接
-        string signString = "";
+        var signString = "";
         // 反射处理非基本类型字段的json转换
         string[] types = { "String", "DateTime", "Int64", "Boolean", "Float", "Double", "Long", "Int32" };
         var orderedKeys = dic.Keys.ToList();

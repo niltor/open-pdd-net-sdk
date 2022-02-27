@@ -55,32 +55,29 @@ public class AuthApi : PddCommonApi
             }
 
             var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
-            using (var hc = new HttpClient())
-            {
-                var response = await hc.PostAsync(TokenUrl, data);
-                ErrorResponse = new ErrorResponse();
+            using var hc = new HttpClient();
+            var response = await hc.PostAsync(TokenUrl, data);
+            ErrorResponse = new ErrorResponse();
 
-                if (response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var jObject = JsonDocument.Parse(jsonString);
+                if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                 {
-                    string jsonString = await response.Content.ReadAsStringAsync();
-                    var jObject = JsonDocument.Parse(jsonString);
-                    if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
-                    {
-                        ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonString);
-                        Console.WriteLine("错误信息:" + errorResponse.ToString());
-                        return default;
-                    }
-                    else
-                    {
-                        var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
-                        return result;
-                    }
+                    ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonString);
+                    Console.WriteLine("错误信息:" + errorResponse.ToString());
+                    return default;
                 }
                 else
                 {
-                    Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
+                    var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
+                    return result;
                 }
-
+            }
+            else
+            {
+                Console.WriteLine("网络请求错误：" + response.ReasonPhrase + ":" + response.StatusCode);
             }
         }
         return default;
@@ -110,15 +107,13 @@ public class AuthApi : PddCommonApi
             }
 
             var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
-            using (var hc = new HttpClient())
-            {
-                var response = await hc.PostAsync(TokenUrl, data);
-                string jsonString = await response.Content.ReadAsStringAsync();
-                System.Console.WriteLine(jsonString);
-                var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
+            using var hc = new HttpClient();
+            var response = await hc.PostAsync(TokenUrl, data);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            System.Console.WriteLine(jsonString);
+            var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
 
-                return result;
-            }
+            return result;
         }
         return default;
     }
@@ -130,7 +125,7 @@ public class AuthApi : PddCommonApi
     /// <returns></returns>
     public string GetWebOAuthUrl(string state = null)
     {
-        string url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
+        var url = MmsURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
         if (!string.IsNullOrEmpty(state))
         {
             url += "&state=" + state;
@@ -145,7 +140,7 @@ public class AuthApi : PddCommonApi
     /// <returns></returns>
     public string GetH5OAuthUrl(string callbackUrl, string state = null)
     {
-        string url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl + "&view=h5";
+        var url = MaiURL + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + callbackUrl + "&view=h5";
         if (!string.IsNullOrEmpty(state))
         {
             url += "&state=" + state;
@@ -159,7 +154,7 @@ public class AuthApi : PddCommonApi
     /// <returns></returns>
     public string GetDDKOAuthUrl(string state = null)
     {
-        string url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
+        var url = DDKUrl + "?response_type=code&client_id=" + ClientId + "&redirect_uri=" + RedirectUri;
         if (!string.IsNullOrEmpty(state))
         {
             url += "&state=" + state;
