@@ -29,7 +29,7 @@ public class Startup
         // 拼多多服务
         services.AddPdd();
 
-        services.AddControllers()
+        services.AddControllersWithViews()
             .AddJsonOptions(options => {
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
