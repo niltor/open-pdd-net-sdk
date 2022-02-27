@@ -71,8 +71,8 @@ public class AuthController : Controller
 
         var result = await _pdd.DdkApi.GetDdkGoodsRecommendAsync(model);
         // 获取Pdd官方返回的错误信息
-        var errorResponse = _pdd.DdkApi.ErrorResponse.Error_Response;
-        Console.WriteLine(errorResponse.Error_msg);
+        var errorResponse = _pdd.DdkApi.ErrorResponse.ErrorResponse;
+        Console.WriteLine(errorResponse.ErrorMsg);
         return Json(result);
     }
 

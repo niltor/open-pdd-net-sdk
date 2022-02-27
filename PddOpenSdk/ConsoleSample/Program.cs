@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using MSDev.PddOpenSdk;
+﻿using MSDev.PddOpenSdk;
 using PddOpenSdk.Models.Request.Ddk;
 using System.Text.Json;
 

@@ -228,7 +228,7 @@ $@"
         string paramsModelType = methodName;
         string requestContent = BuildRequestModel(paramsModelType, doc.RequestParamList);
         SaveRequestModel(paramsModelType, requestContent, requestClassName);
-        string paramsModelName = methodName.First().ToString().ToLower() + methodName.Substring(1);
+        string paramsModelName = methodName.First().ToString().ToLower() + methodName[1..];
         methodParams = paramsModelType + " " + paramsModelName;
 
         // 创建返回模型类

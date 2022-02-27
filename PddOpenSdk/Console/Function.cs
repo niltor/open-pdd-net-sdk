@@ -39,7 +39,7 @@ public class Function
         var title = myTI.ToTitleCase(words);
         if (title == words)
         {
-            title = title.First().ToString() + title.Substring(1);
+            title = title.First().ToString() + title[1..];
         }
         return title;
     }
@@ -71,7 +71,7 @@ public class Function
         {
             return string.Empty;
         }
-        return char.ToUpper(str[0]) + str.Substring(1);
+        return char.ToUpper(str[0]) + str[1..];
     }
 
     /// <summary>
