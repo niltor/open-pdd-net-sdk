@@ -169,9 +169,9 @@ public class PddApiDocHelper
             {
                 Directory.CreateDirectory(resultPath);
             }
-            Parallel.ForEach(PddCatInfos, new ParallelOptions {
+            await Parallel.ForEachAsync(PddCatInfos, new ParallelOptions {
                 MaxDegreeOfParallelism = 3
-            }, async (pddCatInfo) => {
+            }, async (pddCatInfo, token) => {
                 PddDocInfos = await GetApiDocListByCatAsync(pddCatInfo.Id);
                 // 获取映射类名
                 CatMapClassName.TryGetValue(pddCatInfo.Id.ToString(), out string className);
@@ -197,7 +197,6 @@ public class PddApiDocHelper
                     SaveApiClass(className, methodsContent);
                 }
             });
-            Task.WaitAll();
             System.Console.WriteLine("Get All " + totalNumber + " done!");
         }
     }
