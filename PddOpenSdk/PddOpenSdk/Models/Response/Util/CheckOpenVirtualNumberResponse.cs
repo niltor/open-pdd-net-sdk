@@ -37,12 +37,6 @@ public partial class CheckOpenVirtualNumberResponse : PddResponseModel
             public string ErrorMsg { get; set; }
 
             /// <summary>
-            /// 虚拟号过期的时间戳
-            /// </summary>
-            [JsonPropertyName("expired_timestamp")]
-            public long? ExpiredTimestamp { get; set; }
-
-            /// <summary>
             /// 是否订单所绑定的虚拟号，true是，false否
             /// </summary>
             [JsonPropertyName("match")]

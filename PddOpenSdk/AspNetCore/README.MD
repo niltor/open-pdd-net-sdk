@@ -15,8 +15,7 @@ services.AddPdd();
 "Pdd": {
     "ClientId": "",
     "ClientSecret": "",
-    "RedirectUri": ""，
-    "SocketUrl": "",
+    "CallbackUrl": "",
     // 心跳间隔
     "HeartBeatSeconds": 5
 }
@@ -68,6 +67,19 @@ public async Task<ActionResult> MultiTenantAsync()
         });
     return Json(result);
 }
+```
+- 图片上传示例
+```csharp
+    var filePath = Path.Combine("images", "logo.png");
+    byte[] bytes = System.IO.File.ReadAllBytes(filePath);
+
+    // 构造图片上传内容
+    string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
+    var model = new UploadGoodsImageRequestModel
+    {
+        Image = base64
+    };
+    var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model)
 ```
 #### 使用socket消息订阅服务
 

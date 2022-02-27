@@ -59,6 +59,12 @@ public partial class GetDdkOauthOrderDetailResponse : PddResponseModel
         public string FailReason { get; set; }
 
         /// <summary>
+        /// 商品一级类目名称
+        /// </summary>
+        [JsonPropertyName("goods_category_name")]
+        public string GoodsCategoryName { get; set; }
+
+        /// <summary>
         /// 商品id
         /// </summary>
         [JsonPropertyName("goods_id")]
@@ -111,6 +117,12 @@ public partial class GetDdkOauthOrderDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("mall_id")]
         public long? MallId { get; set; }
+
+        /// <summary>
+        /// 店铺名称
+        /// </summary>
+        [JsonPropertyName("mall_name")]
+        public string MallName { get; set; }
 
         /// <summary>
         /// 非补贴订单原因，例如："商品补贴达上限"，"达到单个用户下单上限"，"非指定落地页直推订单"，"订单超过2个月未审核成功"等
@@ -287,7 +299,7 @@ public partial class GetDdkOauthOrderDetailResponse : PddResponseModel
         public int? SubsidyDuoAmountTenMillion { get; set; }
 
         /// <summary>
-        /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选
+        /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选，4-品牌优选
         /// </summary>
         [JsonPropertyName("subsidy_type")]
         public int? SubsidyType { get; set; }

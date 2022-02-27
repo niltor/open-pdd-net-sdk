@@ -26,15 +26,6 @@ public class OverseaApi : PddCommonApi
     }
 
     /// <summary>
-    /// 海淘报关服务商调用的加签接口实现
-    /// </summary>
-    public async Task<SignOverseaCustomsClearanceGetResponse> SignOverseaCustomsClearanceGetAsync(SignOverseaCustomsClearanceGet signOverseaCustomsClearanceGet)
-    {
-        var result = await PostAsync<SignOverseaCustomsClearanceGet, SignOverseaCustomsClearanceGetResponse>("pdd.oversea.customs.clearance.get.sign", signOverseaCustomsClearanceGet);
-        return result;
-    }
-
-    /// <summary>
     /// 同步海淘订单申报失败情况
     /// </summary>
     public async Task<NotifyOverseaDeclarationFailResponse> NotifyOverseaDeclarationFailAsync(NotifyOverseaDeclarationFail notifyOverseaDeclarationFail)

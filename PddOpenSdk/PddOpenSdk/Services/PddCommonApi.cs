@@ -16,7 +16,7 @@ public class PddCommonApi
     public string Ace { get; set; }
     protected static HttpClient client = new() { Timeout = TimeSpan.FromSeconds(10) };
 
-    public ErrorResponse ErrorResponse;
+    public PddErrorResponseModel ErrorResponse;
 
     public PddCommonApi()
     {
@@ -76,14 +76,14 @@ public class PddCommonApi
         try
         {
             var response = await client.PostAsync("https://gw-upload.pinduoduo.com/api/upload", content);
-            ErrorResponse = new ErrorResponse();
+            ErrorResponse = new PddErrorResponseModel();
             if (response.IsSuccessStatusCode)
             {
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var jObject = JsonDocument.Parse(jsonResult);
                 if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                 {
-                    ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonResult);
+                    ErrorResponse = JsonSerializer.Deserialize<PddErrorResponseModel>(jsonResult);
                     Console.WriteLine("错误信息:" + errorResponse.ToString());
                     return default;
                 }
@@ -148,14 +148,14 @@ public class PddCommonApi
         try
         {
             var response = await client.PostAsync(ApiUrl, data);
-            ErrorResponse = new ErrorResponse();
+            ErrorResponse = new PddErrorResponseModel();
             if (response.IsSuccessStatusCode)
             {
                 var jsonResult = await response.Content.ReadAsStringAsync();
                 var jObject = JsonDocument.Parse(jsonResult);
                 if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                 {
-                    ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonResult);
+                    ErrorResponse = JsonSerializer.Deserialize<PddErrorResponseModel>(jsonResult);
                     Console.WriteLine("错误信息:" + errorResponse.ToString());
                     return default;
                 }
@@ -191,7 +191,7 @@ public class PddCommonApi
             .OrderBy(d => d.Key)
             .ToDictionary((d) => d.Key, (d) => d.Value);
         // 拼接
-        string signString = "";
+        var signString = "";
         // 反射处理非基本类型字段的json转换
         string[] types = { "String", "DateTime", "Int64", "Boolean", "Float", "Double", "Long", "Int32" };
         var orderedKeys = dic.Keys.ToList();
@@ -260,19 +260,4 @@ public class CommonReqeustParams
     /// API输入参数签名结果，签名算法参考开放平台接入指南第三部分底部
     /// </summary>
     public string Sign { get; set; }
-}
-
-
-public class ErrorResponse
-{
-    public Error_Response Error_Response { get; set; }
-}
-
-public class Error_Response
-{
-    public string Error_msg { get; set; }
-    public string Sub_msg { get; set; }
-    public object Sub_code { get; set; }
-    public int Error_code { get; set; }
-    public string Request_id { get; set; }
 }

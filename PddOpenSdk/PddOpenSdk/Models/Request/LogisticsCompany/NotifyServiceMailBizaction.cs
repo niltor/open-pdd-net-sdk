@@ -101,6 +101,12 @@ public partial class NotifyServiceMailBizaction
         public string MailOrderSn { get; set; }
 
         /// <summary>
+        /// 小件员修改后的收件人信息
+        /// </summary>
+        [JsonPropertyName("modifyReceiverInfo")]
+        public ModifyReceiverInfoModel ModifyReceiverInfo { get; set; }
+
+        /// <summary>
         /// 其他费用，单位分
         /// </summary>
         [JsonPropertyName("otherPrice")]
@@ -125,6 +131,12 @@ public partial class NotifyServiceMailBizaction
         public string PickCode { get; set; }
 
         /// <summary>
+        /// 寄件类型，HOME_DELIVERY-上门取件
+        /// </summary>
+        [JsonPropertyName("postType")]
+        public string PostType { get; set; }
+
+        /// <summary>
         /// 小件员code
         /// </summary>
         [JsonPropertyName("postmanCode")]
@@ -143,22 +155,10 @@ public partial class NotifyServiceMailBizaction
         public string PostmanPhone { get; set; }
 
         /// <summary>
-        /// 寄件类型，HOME_DELIVERY-上门取件
-        /// </summary>
-        [JsonPropertyName("postType")]
-        public string PostType { get; set; }
-
-        /// <summary>
         /// 取消原因code
         /// </summary>
         [JsonPropertyName("reasonCode")]
         public string ReasonCode { get; set; }
-
-        /// <summary>
-        /// 改约开始时间- changeAppoint节点必填
-        /// </summary>
-        [JsonPropertyName("startTime")]
-        public string StartTime { get; set; }
 
         /// <summary>
         /// 滞留原因
@@ -167,10 +167,22 @@ public partial class NotifyServiceMailBizaction
         public string RetentionReason { get; set; }
 
         /// <summary>
-        /// 小件员修改后的收件人信息
+        /// 改约开始时间- changeAppoint节点必填
         /// </summary>
-        [JsonPropertyName("modifyReceiverInfo")]
-        public ModifyReceiverInfoModel ModifyReceiverInfo { get; set; }
+        [JsonPropertyName("startTime")]
+        public string StartTime { get; set; }
+
+        /// <summary>
+        /// 最终服务商确认的收件人信息
+        /// </summary>
+        [JsonPropertyName("confirmReceiverInfo")]
+        public ConfirmReceiverInfoModel ConfirmReceiverInfo { get; set; }
+
+        /// <summary>
+        /// 最终服务商确认的寄件人信息
+        /// </summary>
+        [JsonPropertyName("confirmSenderInfo")]
+        public ConfirmSenderInfoModel ConfirmSenderInfo { get; set; }
         public partial class ModifyReceiverInfoModel
         {
 
@@ -221,6 +233,110 @@ public partial class NotifyServiceMailBizaction
             /// </summary>
             [JsonPropertyName("telephone")]
             public string Telephone { get; set; }
+
+        }
+        public partial class ConfirmReceiverInfoModel
+        {
+
+            /// <summary>
+            /// 联系人姓名
+            /// </summary>
+            [JsonPropertyName("contactName")]
+            public string ContactName { get; set; }
+
+            /// <summary>
+            /// 联系人手机号
+            /// </summary>
+            [JsonPropertyName("mobile")]
+            public string Mobile { get; set; }
+
+            /// <summary>
+            /// 联系人电话号码
+            /// </summary>
+            [JsonPropertyName("telephone")]
+            public string Telephone { get; set; }
+
+            /// <summary>
+            /// 省名称
+            /// </summary>
+            [JsonPropertyName("provName")]
+            public string ProvName { get; set; }
+
+            /// <summary>
+            /// 市名称
+            /// </summary>
+            [JsonPropertyName("cityName")]
+            public string CityName { get; set; }
+
+            /// <summary>
+            /// 区名称
+            /// </summary>
+            [JsonPropertyName("areaName")]
+            public string AreaName { get; set; }
+
+            /// <summary>
+            /// 街道名称
+            /// </summary>
+            [JsonPropertyName("streetName")]
+            public string StreetName { get; set; }
+
+            /// <summary>
+            /// 详细地址
+            /// </summary>
+            [JsonPropertyName("addrDetail")]
+            public string AddrDetail { get; set; }
+
+        }
+        public partial class ConfirmSenderInfoModel
+        {
+
+            /// <summary>
+            /// 联系人姓名
+            /// </summary>
+            [JsonPropertyName("contactName")]
+            public string ContactName { get; set; }
+
+            /// <summary>
+            /// 联系人手机号
+            /// </summary>
+            [JsonPropertyName("mobile")]
+            public string Mobile { get; set; }
+
+            /// <summary>
+            /// 联系人电话号码
+            /// </summary>
+            [JsonPropertyName("telephone")]
+            public string Telephone { get; set; }
+
+            /// <summary>
+            /// 省名称
+            /// </summary>
+            [JsonPropertyName("provName")]
+            public string ProvName { get; set; }
+
+            /// <summary>
+            /// 市名称
+            /// </summary>
+            [JsonPropertyName("cityName")]
+            public string CityName { get; set; }
+
+            /// <summary>
+            /// 区名称
+            /// </summary>
+            [JsonPropertyName("areaName")]
+            public string AreaName { get; set; }
+
+            /// <summary>
+            /// 街道名称
+            /// </summary>
+            [JsonPropertyName("streetName")]
+            public string StreetName { get; set; }
+
+            /// <summary>
+            /// 详细地址
+            /// </summary>
+            [JsonPropertyName("addrDetail")]
+            public string AddrDetail { get; set; }
 
         }
 

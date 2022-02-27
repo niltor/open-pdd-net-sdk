@@ -38,37 +38,45 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 支持 `NET6.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 ### 使用示例:
-#### 使用clientId等创建服务并获取token
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/ConsoleSample)。
 ```csharp
-var service = new PddService(new PddOptions
+using MSDev.PddOpenSdk;
+using PddOpenSdk.Models.Request.Ddk;
+using System.Text.Json;
+
+// 替代下面配置信息
+var client = new PddClient(new ClientConfig
 {
-    ClientId = "",
-    ClientSecret = "",
-    CallbackUrl = ""
+    ClientId = "YourClientId",
+    ClientSecret = "YourClientSecret",
+    CallbackUrl = "YourCallbackUrl"
 });
-// 获取token
-await service.GetAccessTokenAsync(code: "");
+
+// 需要先拿到授权返回的code
+var code = "";
+// 使用code换取token
+var token = await client.GetAccessTokenAsync(code);
+
+if (token == null)
+{
+    Console.WriteLine(client.ErrorResponse.ErrorMsg);
+}
+else
+{
+    Console.WriteLine("token:"+ token.AccessToken); 
+}
 // 接口请求
-var result = await service.DdkApi.GetDdkGoodsRecommendAsync(
-    new GetDdkGoodsRecommendRequestModel
+var result = await client.DdkApi.GetDdkGoodsRecommendAsync(
+    new GetDdkGoodsRecommend
     {
         CatId = 20100
     });
+
+var response = result.GoodsBasicDetailResponse;
+Console.WriteLine(JsonSerializer.Serialize(response));
+
 ```
 
-- 图片上传示例
-```csharp
-    var filePath = Path.Combine("images", "logo.png");
-    byte[] bytes = System.IO.File.ReadAllBytes(filePath);
-
-    // 构造图片上传内容
-    string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
-    var model = new UploadGoodsImageRequestModel
-    {
-        Image = base64
-    };
-    var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model)
-```
 
 ### ASP.NET Core 项目使用
 
@@ -87,7 +95,7 @@ services.AddPdd();
 "Pdd": {
     "ClientId": "",
     "ClientSecret": "",
-    "RedirectUri": "",
+    "CallbackUrl": "",
     // 心跳间隔
     "HeartBeatSeconds": 5
 }
@@ -141,6 +149,20 @@ public async Task<ActionResult> MultiTenantAsync()
 }
 ```
 
+- 图片上传示例
+```csharp
+    var filePath = Path.Combine("images", "logo.png");
+    byte[] bytes = System.IO.File.ReadAllBytes(filePath);
+
+    // 构造图片上传内容
+    string base64 = "data:image/png;base64," + Convert.ToBase64String(bytes);
+    var model = new UploadGoodsImageRequestModel
+    {
+        Image = base64
+    };
+    var result = await _pdd.GoodsApi.UploadGoodsImageAsync(model)
+```
+
 #### 使用socket消息订阅服务
 
 - 在`StartUp.cs`添加`PddOption`选项。
@@ -163,7 +185,7 @@ public async Task<ActionResult> MultiTenantAsync()
             });
     ```
 
-`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/dev/PddOpenSdk/Sample/MyHostService.cs)项目。
+`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample/MyHostService.cs)项目。
 
 - 心跳检测间隔可在`appsetting.json`配置中进行配置，可参考`Sample`项目中的配置。
 此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。

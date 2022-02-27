@@ -98,6 +98,15 @@ public class OrderApi : PddCommonApi
     }
 
     /// <summary>
+    /// 订单关联运单信息上传
+    /// </summary>
+    public async Task<LogisticsOrderUploadRelationResponse> LogisticsOrderUploadRelationAsync(LogisticsOrderUploadRelation logisticsOrderUploadRelation)
+    {
+        var result = await PostAsync<LogisticsOrderUploadRelation, LogisticsOrderUploadRelationResponse>("pdd.order.upload.relation.logistics", logisticsOrderUploadRelation);
+        return result;
+    }
+
+    /// <summary>
     /// 虚拟业务信息查询接口
     /// </summary>
     public async Task<GetOrderVirtualInformationResponse> GetOrderVirtualInformationAsync(GetOrderVirtualInformation getOrderVirtualInformation)

@@ -1,3 +1,4 @@
+using MSDev.PddOpenSdk.Models;
 namespace PddOpenSdk.AspNetCore;
 /// <summary>
 /// 批多多服务
@@ -106,11 +107,10 @@ public class PddService
     /// </summary>
     public TicketApi TicketApi { get; }
 
-
     public ErrorResponse ErrorResponse;
     private readonly PddOptions _options;
     private ILogger<PddService> _logger;
-    public readonly static string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
+    public static readonly string TokenUrl = "https://open-api.pinduoduo.com/oauth/token";
 
     public PddService(IOptions<PddOptions> options, ILogger<PddService> logger)
     {
@@ -227,31 +227,29 @@ public class PddService
             var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
             try
             {
-                using (var hc = new HttpClient())
-                {
-                    var response = await hc.PostAsync(TokenUrl, data);
+                using var hc = new HttpClient();
+                var response = await hc.PostAsync(TokenUrl, data);
 
-                    if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    var jObject = JsonDocument.Parse(jsonString);
+                    if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                     {
-                        string jsonString = await response.Content.ReadAsStringAsync();
-                        var jObject = JsonDocument.Parse(jsonString);
-                        if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
-                        {
-                            ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonString);
-                            _logger.LogError("错误信息:" + errorResponse.ToString());
-                            return default;
-                        }
-                        else
-                        {
-                            var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
-                            SetToken(result.AccessToken);
-                            return result;
-                        }
+                        ErrorResponse = JsonSerializer.Deserialize<PddErrorResponseModel>(jsonString).ErrorResponse;
+                        return default;
                     }
                     else
                     {
-                        _logger.LogError(await response.Content.ReadAsStringAsync());
+                        var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
+                        Console.WriteLine(result.AccessToken);
+                        SetToken(result.AccessToken);
+                        return result;
                     }
+                }
+                else
+                {
+                    Console.WriteLine(await response.Content.ReadAsStringAsync());
                 }
             }
             catch (System.Exception ex)
@@ -280,16 +278,14 @@ public class PddService
             }
 
             var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
-            using (var hc = new HttpClient())
-            {
-                var response = await hc.PostAsync(TokenUrl, data);
-                string jsonString = await response.Content.ReadAsStringAsync();
-                System.Console.WriteLine(jsonString);
-                var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
+            using var hc = new HttpClient();
+            var response = await hc.PostAsync(TokenUrl, data);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(jsonString);
+            var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
 
-                SetToken(result.AccessToken);
-                return result;
-            }
+            SetToken(result.AccessToken);
+            return result;
         }
         return default;
     }

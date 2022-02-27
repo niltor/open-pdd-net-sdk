@@ -8,83 +8,56 @@ public class RefundApi : PddCommonApi
     public RefundApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
     /// <summary>
-    /// 退货入库
+    /// 获取拼多多标准地址库
     /// </summary>
-    public async Task<UpdateNextoneLogisticsWarehouseResponse> UpdateNextoneLogisticsWarehouseAsync(UpdateNextoneLogisticsWarehouse updateNextoneLogisticsWarehouse)
+    public async Task<GetLogisticsAddressResponse> GetLogisticsAddressAsync(GetLogisticsAddress getLogisticsAddress)
     {
-        var result = await PostAsync<UpdateNextoneLogisticsWarehouse, UpdateNextoneLogisticsWarehouseResponse>("pdd.nextone.logistics.warehouse.update", updateNextoneLogisticsWarehouse);
+        var result = await PostAsync<GetLogisticsAddress, GetLogisticsAddressResponse>("pdd.logistics.address.get", getLogisticsAddress);
         return result;
     }
 
     /// <summary>
-    /// 取消发货
+    /// 获取可发货快递接口
     /// </summary>
-    public async Task<CancelRdcPddgeniusSendgoodsResponse> CancelRdcPddgeniusSendgoodsAsync(CancelRdcPddgeniusSendgoods cancelRdcPddgeniusSendgoods)
+    public async Task<RecommendLogisticsAvailableCompanyResponse> RecommendLogisticsAvailableCompanyAsync(RecommendLogisticsAvailableCompany recommendLogisticsAvailableCompany)
     {
-        var result = await PostAsync<CancelRdcPddgeniusSendgoods, CancelRdcPddgeniusSendgoodsResponse>("pdd.rdc.pddgenius.sendgoods.cancel", cancelRdcPddgeniusSendgoods);
+        var result = await PostAsync<RecommendLogisticsAvailableCompany, RecommendLogisticsAvailableCompanyResponse>("pdd.logistics.available.company.recommend", recommendLogisticsAvailableCompany);
         return result;
     }
 
     /// <summary>
-    /// 获取商家退货地址库
+    /// 快递公司查看接口
     /// </summary>
-    public async Task<GetRefundAddressListResponse> GetRefundAddressListAsync(GetRefundAddressList getRefundAddressList)
+    public async Task<GetLogisticsCompaniesResponse> GetLogisticsCompaniesAsync(GetLogisticsCompanies getLogisticsCompanies)
     {
-        var result = await PostAsync<GetRefundAddressList, GetRefundAddressListResponse>("pdd.refund.address.list.get", getRefundAddressList);
+        var result = await PostAsync<GetLogisticsCompanies, GetLogisticsCompaniesResponse>("pdd.logistics.companies.get", getLogisticsCompanies);
         return result;
     }
 
     /// <summary>
-    /// 同意退款
+    /// ISV物流轨迹推送消息订阅接口
     /// </summary>
-    public async Task<AgreeRefundResponse> AgreeRefundAsync(AgreeRefund agreeRefund)
+    public async Task<SubLogisticsIsvTraceNotifyResponse> SubLogisticsIsvTraceNotifyAsync(SubLogisticsIsvTraceNotify subLogisticsIsvTraceNotify)
     {
-        var result = await PostAsync<AgreeRefund, AgreeRefundResponse>("pdd.refund.agree", agreeRefund);
+        var result = await PostAsync<SubLogisticsIsvTraceNotify, SubLogisticsIsvTraceNotifyResponse>("pdd.logistics.isv.trace.notify.sub", subLogisticsIsvTraceNotify);
         return result;
     }
 
     /// <summary>
-    /// 商家换货发货
+    /// 订单发货通知接口
     /// </summary>
-    public async Task<ShippingRefundExchangeResponse> ShippingRefundExchangeAsync(ShippingRefundExchange shippingRefundExchange)
+    public async Task<SendLogisticsOnlineResponse> SendLogisticsOnlineAsync(SendLogisticsOnline sendLogisticsOnline)
     {
-        var result = await PostAsync<ShippingRefundExchange, ShippingRefundExchangeResponse>("pdd.refund.exchange.shipping", shippingRefundExchange);
+        var result = await PostAsync<SendLogisticsOnline, SendLogisticsOnlineResponse>("pdd.logistics.online.send", sendLogisticsOnline);
         return result;
     }
 
     /// <summary>
-    /// 售后单详情接口
+    /// 轨迹查询接口
     /// </summary>
-    public async Task<GetRefundInformationResponse> GetRefundInformationAsync(GetRefundInformation getRefundInformation)
+    public async Task<GetLogisticsOrdertraceResponse> GetLogisticsOrdertraceAsync(GetLogisticsOrdertrace getLogisticsOrdertrace)
     {
-        var result = await PostAsync<GetRefundInformation, GetRefundInformationResponse>("pdd.refund.information.get", getRefundInformation);
-        return result;
-    }
-
-    /// <summary>
-    /// 售后列表接口
-    /// </summary>
-    public async Task<GetRefundListIncrementResponse> GetRefundListIncrementAsync(GetRefundListIncrement getRefundListIncrement)
-    {
-        var result = await PostAsync<GetRefundListIncrement, GetRefundListIncrementResponse>("pdd.refund.list.increment.get", getRefundListIncrement);
-        return result;
-    }
-
-    /// <summary>
-    /// 商家售后同意退货
-    /// </summary>
-    public async Task<AgreeRefundReturngoodsResponse> AgreeRefundReturngoodsAsync(AgreeRefundReturngoods agreeRefundReturngoods)
-    {
-        var result = await PostAsync<AgreeRefundReturngoods, AgreeRefundReturngoodsResponse>("pdd.refund.returngoods.agree", agreeRefundReturngoods);
-        return result;
-    }
-
-    /// <summary>
-    /// 售后校验接口
-    /// </summary>
-    public async Task<CheckRefundStatusResponse> CheckRefundStatusAsync(CheckRefundStatus checkRefundStatus)
-    {
-        var result = await PostAsync<CheckRefundStatus, CheckRefundStatusResponse>("pdd.refund.status.check", checkRefundStatus);
+        var result = await PostAsync<GetLogisticsOrdertrace, GetLogisticsOrdertraceResponse>("pdd.logistics.ordertrace.get", getLogisticsOrdertrace);
         return result;
     }
 

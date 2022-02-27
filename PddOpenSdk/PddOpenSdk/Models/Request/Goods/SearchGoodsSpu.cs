@@ -29,19 +29,19 @@ public partial class SearchGoodsSpu
         public long? RefPid { get; set; }
 
         /// <summary>
+        /// 关键属性值，需要从pdd.goods.cat.rule.get中获取。当要根据关键属性匹配时，和vid必须入参其一。
+        /// </summary>
+        [JsonPropertyName("value")]
+        public string Value { get; set; }
+
+        /// <summary>
         /// 属性值单位
         /// </summary>
         [JsonPropertyName("value_unit")]
         public string ValueUnit { get; set; }
 
         /// <summary>
-        /// 关键属性值，需要从pdd.goods.cat.template.get中获取。当要根据关键属性匹配时，和vid必须入参其一。
-        /// </summary>
-        [JsonPropertyName("value")]
-        public string Value { get; set; }
-
-        /// <summary>
-        /// 关键属性值ID，需要从pdd.goods.cat.template.get中获取规则。当要根据关键属性匹配时，和value必须入参其一。
+        /// 关键属性值ID，需要从pdd.goods.cat.rule.get中获取规则。当要根据关键属性匹配时，和value必须入参其一。
         /// </summary>
         [JsonPropertyName("vid")]
         public long? Vid { get; set; }

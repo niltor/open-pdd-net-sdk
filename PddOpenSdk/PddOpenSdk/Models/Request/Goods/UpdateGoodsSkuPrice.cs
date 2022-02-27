@@ -44,7 +44,7 @@ public partial class UpdateGoodsSkuPrice
         /// 拼团购买价格（单位分）
         /// </summary>
         [JsonPropertyName("group_price")]
-        public long GroupPrice { get; set; }
+        public long? GroupPrice { get; set; }
 
         /// <summary>
         /// sku上架状态，0-已下架，1-上架中
@@ -56,7 +56,7 @@ public partial class UpdateGoodsSkuPrice
         /// 单独购买价格（单位分）
         /// </summary>
         [JsonPropertyName("single_price")]
-        public long SinglePrice { get; set; }
+        public long? SinglePrice { get; set; }
 
         /// <summary>
         /// sku标识
