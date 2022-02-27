@@ -57,7 +57,7 @@ public class AuthApi : PddCommonApi
             var data = new StringContent(JsonSerializer.Serialize(dic), Encoding.UTF8, "application/json");
             using var hc = new HttpClient();
             var response = await hc.PostAsync(TokenUrl, data);
-            ErrorResponse = new ErrorResponse();
+            ErrorResponse = new PddErrorResponseModel();
 
             if (response.IsSuccessStatusCode)
             {
@@ -65,7 +65,7 @@ public class AuthApi : PddCommonApi
                 var jObject = JsonDocument.Parse(jsonString);
                 if (jObject.RootElement.TryGetProperty("error_response", out var errorResponse))
                 {
-                    ErrorResponse = JsonSerializer.Deserialize<ErrorResponse>(jsonString);
+                    ErrorResponse = JsonSerializer.Deserialize<PddErrorResponseModel>(jsonString);
                     Console.WriteLine("错误信息:" + errorResponse.ToString());
                     return default;
                 }
