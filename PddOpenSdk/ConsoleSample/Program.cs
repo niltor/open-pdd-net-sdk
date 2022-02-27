@@ -4,6 +4,7 @@ using MSDev.PddOpenSdk;
 using PddOpenSdk.Models.Request.Ddk;
 using System.Text.Json;
 
+// 替代下面配置信息
 var client = new PddClient(new ClientConfig
 {
     ClientId = "YourClientId",
@@ -11,9 +12,9 @@ var client = new PddClient(new ClientConfig
     CallbackUrl = "YourCallbackUrl"
 });
 
-// 网页授权获取code 
-var code = "df55b7b7a62545fc8bc639e4fce595e607437327";
-// 获取token
+// 需要先拿到授权返回的code
+var code = "";
+// 使用code换取token
 var token = await client.GetAccessTokenAsync(code);
 
 if (token == null)
