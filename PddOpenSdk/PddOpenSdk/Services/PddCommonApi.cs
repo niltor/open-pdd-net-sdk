@@ -1,3 +1,6 @@
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+
 namespace PddOpenSdk.Services;
 
 /// <summary>
@@ -17,7 +20,10 @@ public class PddCommonApi
     protected static HttpClient client = new() { Timeout = TimeSpan.FromSeconds(10) };
 
     public PddErrorResponseModel ErrorResponse;
-
+    JsonSerializerOptions jsonoptions = new() {
+        Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+        WriteIndented = true
+    };
     public PddCommonApi()
     {
     }
@@ -142,7 +148,7 @@ public class PddCommonApi
         dic.Add("type", type);
         // 添加签名
         var paramsDic = BuildSign(dic);
-        var jsonBody = JsonSerializer.Serialize(paramsDic);
+        var jsonBody = JsonSerializer.Serialize(paramsDic, jsonoptions);
         var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
         try
@@ -200,7 +206,7 @@ public class PddCommonApi
         {
             if (!types.Contains(dic[item]?.GetType().Name))
             {
-                dic[item] = JsonSerializer.Serialize(dic[item]);
+                dic[item] = JsonSerializer.Serialize(dic[item], jsonoptions);
             }
             dic.TryGetValue(item, out var value);
             // 布尔值大写造成的签名错误
