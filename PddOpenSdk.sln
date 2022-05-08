@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk", "PddOpenSdk\PddOpenSdk.csproj", "{48424733-B8B0-4B39-A918-79E50EB662F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk", "src\PddOpenSdk\PddOpenSdk.csproj", "{48424733-B8B0-4B39-A918-79E50EB662F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Console\Console.csproj", "{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "src\Console\Console.csproj", "{8F8048AF-5805-4DE4-B029-D72A9DAEAF21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csproj", "{5410623D-B263-49EB-92BB-B9BF82629E56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "src\Sample\Sample.csproj", "{5410623D-B263-49EB-92BB-B9BF82629E56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk.AspNetCore", "AspNetCore\PddOpenSdk.AspNetCore.csproj", "{9B2B8A99-835B-45C5-9415-D74A3630C27A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PddOpenSdk.AspNetCore", "src\AspNetCore\PddOpenSdk.AspNetCore.csproj", "{9B2B8A99-835B-45C5-9415-D74A3630C27A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7033B9A4-346E-4F20-AFA7-039C693C61CD}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,7 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSample", "ConsoleSample\ConsoleSample.csproj", "{0C4C0C1D-C069-497B-876D-2E2D54BB460F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleSample", "src\ConsoleSample\ConsoleSample.csproj", "{0C4C0C1D-C069-497B-876D-2E2D54BB460F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{92FCAA40-5FD2-41FE-B68D-1E681FA3F0B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sdk.Test", "test\Sdk.Test\Sdk.Test.csproj", "{1CEED467-72AB-490A-8D9F-945AD2A8DEEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +49,16 @@ Global
 		{0C4C0C1D-C069-497B-876D-2E2D54BB460F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C4C0C1D-C069-497B-876D-2E2D54BB460F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C4C0C1D-C069-497B-876D-2E2D54BB460F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CEED467-72AB-490A-8D9F-945AD2A8DEEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CEED467-72AB-490A-8D9F-945AD2A8DEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CEED467-72AB-490A-8D9F-945AD2A8DEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CEED467-72AB-490A-8D9F-945AD2A8DEEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CEED467-72AB-490A-8D9F-945AD2A8DEEC} = {92FCAA40-5FD2-41FE-B68D-1E681FA3F0B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4BB66BDA-C431-4ABA-A0D8-7BF8E317CEB5}
