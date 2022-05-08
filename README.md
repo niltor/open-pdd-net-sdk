@@ -12,7 +12,7 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 - 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
 - `6.0 `版本开始，目标框架统一调整到`.net6.0`。
 ## 更新说明
-更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/v6/CHANGELOG.md)。
+更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/v6/docs/CHANGELOG.md)。
 
 ## 类库说明
 
@@ -38,7 +38,7 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 支持 `NET6.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 ### 使用示例:
-最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/ConsoleSample)。
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/src/ConsoleSample)。
 ```csharp
 using MSDev.PddOpenSdk;
 using PddOpenSdk.Models.Request.Ddk;
@@ -82,7 +82,7 @@ Console.WriteLine(JsonSerializer.Serialize(response));
 
 先安装Nuget 包 `MSDev.PddOpenSdk.AspNetCore`。
 
-最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample)。
+最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/src/Sample)。
 
 - 在 Startup.cs 中注入服务
 
@@ -185,7 +185,7 @@ public async Task<ActionResult> MultiTenantAsync()
             });
     ```
 
-`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/Sample/MyHostService.cs)项目。
+`XXXHostService` 类可参考[Sample](https://github.com/niltor/open-pdd-net-sdk/tree/v6/src/Sample/MyHostService.cs)项目。
 
 - 心跳检测间隔可在`appsetting.json`配置中进行配置，可参考`Sample`项目中的配置。
 此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。
