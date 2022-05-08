@@ -1,4 +1,6 @@
 using System.Globalization;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace PddOpenSdk.Common;
 
@@ -12,14 +14,27 @@ public class Function
     /// <returns></returns>
     public static Dictionary<string, object> ToDictionary(object obj, OrderType? sort = OrderType.ASC)
     {
-        var json = JsonSerializer.Serialize(obj, new JsonSerializerOptions {
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-        });
+        var dictionary = new Dictionary<string, object>();
+        var properties = obj.GetType().GetProperties().ToList();
 
-        var dictionary = JsonSerializer.Deserialize<Dictionary<string, object>>(json);
-        dictionary = dictionary
-            .Where(d => d.Value != null && !string.IsNullOrEmpty(d.Value?.ToString()))
-                .ToDictionary((d) => d.Key, (d) => d.Value);
+        // 优先使用自定义名称，否则使用属性名
+        properties.ForEach(p => {
+            var attribute = p.GetCustomAttributes(typeof(JsonPropertyNameAttribute), false).LastOrDefault();
+            // 空值忽略
+            var value = p.GetValue(obj);
+            if (value != null)
+            {
+                if (attribute != null)
+                {
+                    var jsonPropertyName = (JsonPropertyNameAttribute)attribute;
+                    dictionary.Add(jsonPropertyName.Name, value);
+                }
+                else
+                {
+                    dictionary.Add(p.Name, value);
+                }
+            }
+        });
 
         if (sort == OrderType.ASC)
         {
