@@ -17,13 +17,18 @@ public class PddCommonApi
     public string ClientSecret { get; set; }
     public string RedirectUri { get; set; }
     public string Ace { get; set; }
-    protected static HttpClient client = new() { Timeout = TimeSpan.FromSeconds(10) };
+
+    protected static HttpClient Client = new() { Timeout = TimeSpan.FromSeconds(10) };
 
     public PddErrorResponseModel ErrorResponse;
-    JsonSerializerOptions jsonoptions = new() {
+
+    private readonly JsonSerializerOptions JsonOptions = new() {
         Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault,
+        ReferenceHandler = ReferenceHandler.IgnoreCycles,
         WriteIndented = true
     };
+
     public PddCommonApi()
     {
     }
@@ -148,12 +153,12 @@ public class PddCommonApi
         dic.Add("type", type);
         // 添加签名
         var paramsDic = BuildSign(dic);
-        var jsonBody = JsonSerializer.Serialize(paramsDic, jsonoptions);
+        var jsonBody = JsonSerializer.Serialize(paramsDic, JsonOptions);
         var data = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
         try
         {
-            var response = await client.PostAsync(ApiUrl, data);
+            var response = await Client.PostAsync(ApiUrl, data);
             ErrorResponse = new PddErrorResponseModel();
             if (response.IsSuccessStatusCode)
             {
@@ -206,7 +211,7 @@ public class PddCommonApi
         {
             if (!types.Contains(dic[item]?.GetType().Name))
             {
-                dic[item] = JsonSerializer.Serialize(dic[item], jsonoptions);
+                dic[item] = JsonSerializer.Serialize(dic[item], JsonOptions);
             }
             dic.TryGetValue(item, out var value);
             // 布尔值大写造成的签名错误

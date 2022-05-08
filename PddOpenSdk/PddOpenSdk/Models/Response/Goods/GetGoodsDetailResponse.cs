@@ -77,6 +77,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public List<string> DetailGalleryList { get; set; }
 
         /// <summary>
+        /// 卡券类商品属性
+        /// </summary>
+        [JsonPropertyName("elec_goods_attributes")]
+        public ElecGoodsAttributesResponse ElecGoodsAttributes { get; set; }
+
+        /// <summary>
         /// 商品描述
         /// </summary>
         [JsonPropertyName("goods_desc")]
@@ -293,6 +299,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public string TinyName { get; set; }
 
         /// <summary>
+        /// 满2件折扣，可选范围0-100, 0表示取消，95表示95折，设置需先查询规则接口获取实际可填范围
+        /// </summary>
+        [JsonPropertyName("two_pieces_discount")]
+        public int? TwoPiecesDiscount { get; set; }
+
+        /// <summary>
         /// 商品视频
         /// </summary>
         [JsonPropertyName("video_gallery")]
@@ -315,6 +327,34 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("zhi_huan_bu_xiu")]
         public int? ZhiHuanBuXiu { get; set; }
+        public partial class ElecGoodsAttributesResponse : PddResponseModel
+        {
+
+            /// <summary>
+            /// 开始时间（timeType=1时必填表示核销的开始时间）（精确到毫秒）
+            /// </summary>
+            [JsonPropertyName("begin_time")]
+            public long? BeginTime { get; set; }
+
+            /// <summary>
+            /// 天数内有效（timeType=3必填，表示发货后几天内核销）
+            /// </summary>
+            [JsonPropertyName("days_time")]
+            public int? DaysTime { get; set; }
+
+            /// <summary>
+            /// 截止时间（timeType=1,2时必填，表示发货后核销的截止时间）（精确到毫秒）
+            /// </summary>
+            [JsonPropertyName("end_time")]
+            public long? EndTime { get; set; }
+
+            /// <summary>
+            /// 卡券核销类型（1：起始时间内有效，2：发货后后至截止时间内有效，3：发货后多少天内有效）
+            /// </summary>
+            [JsonPropertyName("time_type")]
+            public int? TimeType { get; set; }
+
+        }
         public partial class GoodsPropertyListResponse : PddResponseModel
         {
 

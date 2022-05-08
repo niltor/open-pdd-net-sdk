@@ -33,6 +33,12 @@ public partial class GetGoodsCatRuleResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("spu_rule")]
         public SpuRuleResponse SpuRule { get; set; }
+
+        /// <summary>
+        /// 满2件折扣相关规则
+        /// </summary>
+        [JsonPropertyName("two_pieces_discount_rule")]
+        public TwoPiecesDiscountRuleResponse TwoPiecesDiscountRule { get; set; }
         public partial class GoodsPropertiesRuleResponse : PddResponseModel
         {
 
@@ -153,12 +159,6 @@ public partial class GetGoodsCatRuleResponse : PddResponseModel
                 public List<ShowConditionResponse> ShowCondition { get; set; }
 
                 /// <summary>
-                /// 属性值列表
-                /// </summary>
-                [JsonPropertyName("values")]
-                public List<ValuesResponse> Values { get; set; }
-
-                /// <summary>
                 /// 小数点允许最大精度，为0时代表不允许输入小数。对数值类属性值限制。
                 /// </summary>
                 [JsonPropertyName("value_precision")]
@@ -169,6 +169,12 @@ public partial class GetGoodsCatRuleResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("value_unit")]
                 public List<string> ValueUnit { get; set; }
+
+                /// <summary>
+                /// 属性值列表
+                /// </summary>
+                [JsonPropertyName("values")]
+                public List<ValuesResponse> Values { get; set; }
                 public partial class ShowConditionResponse : PddResponseModel
                 {
 
@@ -381,6 +387,34 @@ public partial class GetGoodsCatRuleResponse : PddResponseModel
                 public long? RefPid { get; set; }
 
             }
+
+        }
+        public partial class TwoPiecesDiscountRuleResponse : PddResponseModel
+        {
+
+            /// <summary>
+            /// 是否必须设置
+            /// </summary>
+            [JsonPropertyName("if_must_two_pieces_discount")]
+            public bool? IfMustTwoPiecesDiscount { get; set; }
+
+            /// <summary>
+            /// 允许的最大折扣
+            /// </summary>
+            [JsonPropertyName("max_two_pieces_discount")]
+            public int? MaxTwoPiecesDiscount { get; set; }
+
+            /// <summary>
+            /// 允许的最小折扣
+            /// </summary>
+            [JsonPropertyName("min_two_pieces_discount")]
+            public int? MinTwoPiecesDiscount { get; set; }
+
+            /// <summary>
+            /// 推荐的折扣
+            /// </summary>
+            [JsonPropertyName("recommend_two_pieces_discount")]
+            public int? RecommendTwoPiecesDiscount { get; set; }
 
         }
 

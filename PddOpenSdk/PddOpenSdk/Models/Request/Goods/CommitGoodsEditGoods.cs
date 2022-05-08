@@ -297,6 +297,12 @@ public partial class CommitGoodsEditGoods
     public string TinyName { get; set; }
 
     /// <summary>
+    /// 满2件折扣，可选范围0-100, 0表示取消，95表示95折，设置需先查询规则接口获取实际可填范围
+    /// </summary>
+    [JsonPropertyName("two_pieces_discount")]
+    public int? TwoPiecesDiscount { get; set; }
+
+    /// <summary>
     /// 保税仓，只在goods_type为直供商品时有效（现阶段暂不支持）
     /// </summary>
     [JsonPropertyName("warehouse")]
@@ -313,6 +319,12 @@ public partial class CommitGoodsEditGoods
     /// </summary>
     [JsonPropertyName("zhi_huan_bu_xiu")]
     public int? ZhiHuanBuXiu { get; set; }
+
+    /// <summary>
+    /// 是否自动补充标品属性
+    /// </summary>
+    [JsonPropertyName("auto_fill_spu_property")]
+    public bool? AutoFillSpuProperty { get; set; }
     public partial class CarouselVideoModel
     {
 

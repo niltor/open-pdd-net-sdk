@@ -385,13 +385,13 @@ public partial class SearchDdkOauthGoodsResponse : PddResponseModel
             public int? ShareRate { get; set; }
 
             /// <summary>
-            /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+            /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动]
             /// </summary>
             [JsonPropertyName("subsidy_amount")]
             public int? SubsidyAmount { get; set; }
 
             /// <summary>
-            /// 千万补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+            /// 官方活动给渠道的收入补贴金额，不允许直接给下级代理展示，单位为分
             /// </summary>
             [JsonPropertyName("subsidy_duo_amount_ten_million")]
             public int? SubsidyDuoAmountTenMillion { get; set; }

@@ -181,6 +181,12 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             public int? FreeSf { get; set; }
 
             /// <summary>
+            /// 赠品额外运单列表
+            /// </summary>
+            [JsonPropertyName("gift_delivery_list")]
+            public List<GiftDeliveryListResponse> GiftDeliveryList { get; set; }
+
+            /// <summary>
             /// 赠品列表
             /// </summary>
             [JsonPropertyName("gift_list")]
@@ -191,6 +197,18 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("goods_amount")]
             public double? GoodsAmount { get; set; }
+
+            /// <summary>
+            /// 团id
+            /// </summary>
+            [JsonPropertyName("group_order_id")]
+            public long? GroupOrderId { get; set; }
+
+            /// <summary>
+            /// 团身份。0-团员，1-团长
+            /// </summary>
+            [JsonPropertyName("group_role")]
+            public int? GroupRole { get; set; }
 
             /// <summary>
             /// 成团状态：0：拼团中、1：已成团、2：团失败
@@ -295,13 +313,13 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             public int? OrderStatus { get; set; }
 
             /// <summary>
-            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟
+            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟，same_city_distribution=同城配送，has_subsidy_postage=补贴运费红包，has_sf_express_service=顺丰加价，community_group=小区团购，has_ship_additional=加运费发顺丰，ship_additional_order=加运费补差价订单
             /// </summary>
             [JsonPropertyName("order_tag_list")]
             public List<OrderTagListResponse> OrderTagList { get; set; }
 
             /// <summary>
-            /// 支付金额（元），支付金额=商品金额-折扣金额+邮费
+            /// 支付金额（元），支付金额=商品金额-折扣金额+邮费+服务费
             /// </summary>
             [JsonPropertyName("pay_amount")]
             public double? PayAmount { get; set; }
@@ -341,6 +359,12 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("pre_sale_time")]
             public string PreSaleTime { get; set; }
+
+            /// <summary>
+            /// 承诺送达时间
+            /// </summary>
+            [JsonPropertyName("promise_delivery_time")]
+            public string PromiseDeliveryTime { get; set; }
 
             /// <summary>
             /// 收件地省份
@@ -421,6 +445,12 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             public string RemarkTagName { get; set; }
 
             /// <summary>
+            /// 补寄额外运单列表
+            /// </summary>
+            [JsonPropertyName("resend_delivery_list")]
+            public List<ResendDeliveryListResponse> ResendDeliveryList { get; set; }
+
+            /// <summary>
             /// 退货包运费，1:是，0:否
             /// </summary>
             [JsonPropertyName("return_freight_payer")]
@@ -443,6 +473,12 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("seller_discount")]
             public double? SellerDiscount { get; set; }
+
+            /// <summary>
+            /// 服务费明细列表，sf_express_fee=顺丰加价服务
+            /// </summary>
+            [JsonPropertyName("service_fee_detail")]
+            public List<ServiceFeeDetailResponse> ServiceFeeDetail { get; set; }
 
             /// <summary>
             /// 发货时间
@@ -521,6 +557,18 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("yyps_time")]
             public string YypsTime { get; set; }
+
+            /// <summary>
+            /// 关联的加运费发顺丰的补差价订单
+            /// </summary>
+            [JsonPropertyName("ship_additional_link_order")]
+            public string ShipAdditionalLinkOrder { get; set; }
+
+            /// <summary>
+            /// 加运费补差价订单的原单
+            /// </summary>
+            [JsonPropertyName("ship_additional_origin_order")]
+            public string ShipAdditionalOriginOrder { get; set; }
             public partial class CardInfoListResponse : PddResponseModel
             {
 
@@ -548,6 +596,22 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
 
                 /// <summary>
                 /// 快递运单号
+                /// </summary>
+                [JsonPropertyName("tracking_number")]
+                public string TrackingNumber { get; set; }
+
+            }
+            public partial class GiftDeliveryListResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 快递ID
+                /// </summary>
+                [JsonPropertyName("logistics_id")]
+                public int? LogisticsId { get; set; }
+
+                /// <summary>
+                /// 运单号
                 /// </summary>
                 [JsonPropertyName("tracking_number")]
                 public string TrackingNumber { get; set; }
@@ -769,6 +833,38 @@ public partial class GetOrderNumberListIncrementResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("value")]
                 public int? Value { get; set; }
+
+            }
+            public partial class ResendDeliveryListResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 快递ID
+                /// </summary>
+                [JsonPropertyName("logistics_id")]
+                public int? LogisticsId { get; set; }
+
+                /// <summary>
+                /// 运单号
+                /// </summary>
+                [JsonPropertyName("tracking_number")]
+                public string TrackingNumber { get; set; }
+
+            }
+            public partial class ServiceFeeDetailResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 服务费金额，单位：元
+                /// </summary>
+                [JsonPropertyName("service_fee")]
+                public double? ServiceFee { get; set; }
+
+                /// <summary>
+                /// 服务费类型
+                /// </summary>
+                [JsonPropertyName("service_name")]
+                public string ServiceName { get; set; }
 
             }
             public partial class StepOrderInfoResponse : PddResponseModel

@@ -303,6 +303,12 @@ public partial class AddGoods
     public string TinyName { get; set; }
 
     /// <summary>
+    /// 满2件折扣，可选范围0-100, 0表示取消，95表示95折，设置需先查询规则接口获取实际可填范围
+    /// </summary>
+    [JsonPropertyName("two_pieces_discount")]
+    public int? TwoPiecesDiscount { get; set; }
+
+    /// <summary>
     /// 保税仓，只在goods_type=3（直供商品）时入参，入参枚举值为：宁波保税仓、杭州保税仓、广州保税仓、深圳保税仓、重庆保税仓、郑州保税仓、福建保税仓、天津保税仓、上海保税仓、银川保税仓、成都保税仓
     /// </summary>
     [JsonPropertyName("warehouse")]
@@ -313,17 +319,18 @@ public partial class AddGoods
     /// </summary>
     [JsonPropertyName("warm_tips")]
     public string WarmTips { get; set; }
-    /// <summary>
-    /// 满2件折扣，可选范围0-100, 0表示取消，95表示95折，设置需先查询规则接口获取实际可填范围
-    /// </summary>
-    [JsonPropertyName("two_pieces_discount")]
-    public int TwoPiecesDiscount { get; set; }
 
     /// <summary>
     /// 只换不修的天数，目前只支持0和365
     /// </summary>
     [JsonPropertyName("zhi_huan_bu_xiu")]
     public int? ZhiHuanBuXiu { get; set; }
+
+    /// <summary>
+    /// 是否自动补充标品属性
+    /// </summary>
+    [JsonPropertyName("auto_fill_spu_property")]
+    public bool? AutoFillSpuProperty { get; set; }
     public partial class CarouselVideoModel
     {
 

@@ -9,6 +9,12 @@ public partial class NotifyVirtualMobileCharge
     public List<ChargeCertiModel> ChargeCerti { get; set; }
 
     /// <summary>
+    /// 电子发票信息 0-不支持开具  1-支持开具
+    /// </summary>
+    [JsonPropertyName("ele_invoice")]
+    public int? EleInvoice { get; set; }
+
+    /// <summary>
     /// 拼多多订单编码
     /// </summary>
     [JsonPropertyName("order_sn")]

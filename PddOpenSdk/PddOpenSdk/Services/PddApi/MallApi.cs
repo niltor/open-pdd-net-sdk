@@ -8,11 +8,29 @@ public class MallApi : PddCommonApi
     public MallApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
     /// <summary>
+    /// 新增门店组
+    /// </summary>
+    public async Task<PostMallInfoGroupAddResponse> PostMallInfoGroupAddAsync(PostMallInfoGroupAdd postMallInfoGroupAdd)
+    {
+        var result = await PostAsync<PostMallInfoGroupAdd, PostMallInfoGroupAddResponse>("pdd.mall.info.group.add.post", postMallInfoGroupAdd);
+        return result;
+    }
+
+    /// <summary>
     /// 门店组添加门店
     /// </summary>
     public async Task<PostMallInfoGroupAddStoreResponse> PostMallInfoGroupAddStoreAsync(PostMallInfoGroupAddStore postMallInfoGroupAddStore)
     {
         var result = await PostAsync<PostMallInfoGroupAddStore, PostMallInfoGroupAddStoreResponse>("pdd.mall.info.group.add.store.post", postMallInfoGroupAddStore);
+        return result;
+    }
+
+    /// <summary>
+    /// 删除门店组
+    /// </summary>
+    public async Task<PostMallInfoGroupDeleteResponse> PostMallInfoGroupDeleteAsync(PostMallInfoGroupDelete postMallInfoGroupDelete)
+    {
+        var result = await PostAsync<PostMallInfoGroupDelete, PostMallInfoGroupDeleteResponse>("pdd.mall.info.group.delete.post", postMallInfoGroupDelete);
         return result;
     }
 
@@ -26,11 +44,29 @@ public class MallApi : PddCommonApi
     }
 
     /// <summary>
+    /// 查询店铺下门店组列表
+    /// </summary>
+    public async Task<PostMallInfoGroupQueryResponse> PostMallInfoGroupQueryAsync(PostMallInfoGroupQuery postMallInfoGroupQuery)
+    {
+        var result = await PostAsync<PostMallInfoGroupQuery, PostMallInfoGroupQueryResponse>("pdd.mall.info.group.query.post", postMallInfoGroupQuery);
+        return result;
+    }
+
+    /// <summary>
     /// 门店组删除门店
     /// </summary>
     public async Task<GetMallInfoGroupRemoveStoreResponse> GetMallInfoGroupRemoveStoreAsync(GetMallInfoGroupRemoveStore getMallInfoGroupRemoveStore)
     {
         var result = await PostAsync<GetMallInfoGroupRemoveStore, GetMallInfoGroupRemoveStoreResponse>("pdd.mall.info.group.remove.store.get", getMallInfoGroupRemoveStore);
+        return result;
+    }
+
+    /// <summary>
+    /// 编辑门店组
+    /// </summary>
+    public async Task<PostMallInfoGroupUpdateResponse> PostMallInfoGroupUpdateAsync(PostMallInfoGroupUpdate postMallInfoGroupUpdate)
+    {
+        var result = await PostAsync<PostMallInfoGroupUpdate, PostMallInfoGroupUpdateResponse>("pdd.mall.info.group.update.post", postMallInfoGroupUpdate);
         return result;
     }
 

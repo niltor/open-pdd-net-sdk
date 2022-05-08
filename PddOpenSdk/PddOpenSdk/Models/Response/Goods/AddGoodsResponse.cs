@@ -22,6 +22,12 @@ public partial class AddGoodsResponse : PddResponseModel
         [JsonPropertyName("goods_id")]
         public long? GoodsId { get; set; }
 
+        /// <summary>
+        /// 商品匹配到的标品ID
+        /// </summary>
+        [JsonPropertyName("matched_spu_id")]
+        public long? MatchedSpuId { get; set; }
+
     }
 
 }

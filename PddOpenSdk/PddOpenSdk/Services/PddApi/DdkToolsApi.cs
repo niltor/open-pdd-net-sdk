@@ -151,4 +151,13 @@ public class DdkToolsApi : PddCommonApi
         return result;
     }
 
+    /// <summary>
+    /// 多多客工具生成单品推广小程序二维码
+    /// </summary>
+    public async Task<GenDdkOauthWeappQrcodeUrlResponse> GenDdkOauthWeappQrcodeUrlAsync(GenDdkOauthWeappQrcodeUrl genDdkOauthWeappQrcodeUrl)
+    {
+        var result = await PostAsync<GenDdkOauthWeappQrcodeUrl, GenDdkOauthWeappQrcodeUrlResponse>("pdd.ddk.oauth.weapp.qrcode.url.gen", genDdkOauthWeappQrcodeUrl);
+        return result;
+    }
+
 }

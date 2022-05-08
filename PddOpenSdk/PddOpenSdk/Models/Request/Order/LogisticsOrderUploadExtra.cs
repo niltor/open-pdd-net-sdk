@@ -13,6 +13,12 @@ public partial class LogisticsOrderUploadExtra
     /// </summary>
     [JsonPropertyName("order_sn")]
     public string OrderSn { get; set; }
+
+    /// <summary>
+    /// 额外运单类型，1=分包发货，2=补发商品，3=发放赠品
+    /// </summary>
+    [JsonPropertyName("extra_track_type")]
+    public int? ExtraTrackType { get; set; }
     public partial class ExtraTrackListModel
     {
 

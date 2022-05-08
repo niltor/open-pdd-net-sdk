@@ -129,7 +129,7 @@ public partial class QueryAdApiReportEntityReportResponse : PddResponseModel
                 public long? Impression { get; set; }
 
                 /// <summary>
-                /// 店铺收藏数
+                /// 店铺关注数
                 /// </summary>
                 [JsonPropertyName("mallFavNum")]
                 public long? MallFavNum { get; set; }
@@ -233,7 +233,7 @@ public partial class QueryAdApiReportEntityReportResponse : PddResponseModel
                 public long? Impression { get; set; }
 
                 /// <summary>
-                /// 店铺收藏数
+                /// 店铺关注数
                 /// </summary>
                 [JsonPropertyName("mallFavNum")]
                 public long? MallFavNum { get; set; }

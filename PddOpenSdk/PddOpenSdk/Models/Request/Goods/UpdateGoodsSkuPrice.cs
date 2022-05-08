@@ -37,6 +37,12 @@ public partial class UpdateGoodsSkuPrice
     /// </summary>
     [JsonPropertyName("sync_goods_operate")]
     public int? SyncGoodsOperate { get; set; }
+
+    /// <summary>
+    /// 满2件折扣，可选范围0-100, 0表示取消，95表示95折，设置需先查询规则接口获取实际可填范围
+    /// </summary>
+    [JsonPropertyName("two_pieces_discount")]
+    public int? TwoPiecesDiscount { get; set; }
     public partial class SkuPriceListModel
     {
 

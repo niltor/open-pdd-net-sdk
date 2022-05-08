@@ -217,6 +217,12 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public string PId { get; set; }
 
             /// <summary>
+            /// 平台券金额，表示该订单使用的平台券金额，单位分
+            /// </summary>
+            [JsonPropertyName("platform_discount")]
+            public long? PlatformDiscount { get; set; }
+
+            /// <summary>
             /// 比价状态：0：正常，1：比价
             /// </summary>
             [JsonPropertyName("price_compare_status")]
@@ -283,7 +289,7 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public int? ShareRate { get; set; }
 
             /// <summary>
-            /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动-千万补贴]，报名入口：https://jinbao.pinduoduo.com/ten-million-subsidy/entry
+            /// 优势渠道专属商品补贴金额，单位为分。针对优质渠道的补贴活动，指定优势渠道可通过推广该商品获取相应补贴。补贴活动入口：[进宝网站-官方活动]
             /// </summary>
             [JsonPropertyName("subsidy_amount")]
             public int? SubsidyAmount { get; set; }
@@ -295,13 +301,13 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public int? SubsidyDuoAmountLevel { get; set; }
 
             /// <summary>
-            /// 活动补贴给渠道的收入补贴，不允许直接给下级代理展示，单位为分
+            /// 官方活动给渠道的收入补贴金额，不允许直接给下级代理展示，单位为分
             /// </summary>
             [JsonPropertyName("subsidy_duo_amount_ten_million")]
             public int? SubsidyDuoAmountTenMillion { get; set; }
 
             /// <summary>
-            /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选，4-品牌优选
+            /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选，4-品牌优选，5-千万神券
             /// </summary>
             [JsonPropertyName("subsidy_type")]
             public int? SubsidyType { get; set; }

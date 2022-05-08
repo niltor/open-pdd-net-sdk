@@ -9,6 +9,12 @@ public partial class GenDdkResourceUrl
     public string CustomParameters { get; set; }
 
     /// <summary>
+    /// 是否返回 schema URL
+    /// </summary>
+    [JsonPropertyName("generate_schema_url")]
+    public bool? GenerateSchemaUrl { get; set; }
+
+    /// <summary>
     /// 是否生成拼多多福利券微信小程序推广信息
     /// </summary>
     [JsonPropertyName("generate_we_app")]

@@ -1,4 +1,3 @@
-using MSDev.PddOpenSdk.Models;
 using PddOpenSdk.Services.PddApi;
 
 namespace MSDev.PddOpenSdk;

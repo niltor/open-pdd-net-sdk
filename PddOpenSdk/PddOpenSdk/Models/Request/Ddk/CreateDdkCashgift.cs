@@ -21,13 +21,19 @@ public partial class CreateDdkCashgift
     public bool? AutoTake { get; set; }
 
     /// <summary>
-    /// 礼金券面额，单位为分，创建固定面额礼金券必填（创建灵活面额礼金券时，券面额 = 商品券后价 - 期望礼金券后价）
+    /// 创建礼金类型：1-普通满减礼金；2-不限商品满减礼金；3-免单礼金；4-灵活面额礼金。默认为普通满减礼金
+    /// </summary>
+    [JsonPropertyName("cashgift_type")]
+    public int? CashgiftType { get; set; }
+
+    /// <summary>
+    /// 礼金券面额，单位为分，创建普通满减礼金、不限商品满减礼金和免单礼金时，该字段必填；创建灵活面额礼金时，该字段传空，券面额 = 商品券后价 - 期望礼金券后价，由系统自动计算
     /// </summary>
     [JsonPropertyName("coupon_amount")]
     public int? CouponAmount { get; set; }
 
     /// <summary>
-    /// 满减门槛，单位为分。满减门槛至少需为礼金券面额的2倍，仅对固定面额礼金券生效。
+    /// 满减门槛，单位为分。对于普通满减礼金和不限商品满减礼金，满减门槛至少需为礼金券面额的2倍
     /// </summary>
     [JsonPropertyName("coupon_threshold_amount")]
     public int? CouponThresholdAmount { get; set; }
@@ -39,13 +45,13 @@ public partial class CreateDdkCashgift
     public int? Duration { get; set; }
 
     /// <summary>
-    /// 期望礼金券后价，单位为分，最小值为1。创建灵活券 (generate_flexible_coupon为true) 时必填
+    /// 期望礼金券后价，单位为分，最小值为1。创建灵活面额礼金时必填
     /// </summary>
     [JsonPropertyName("except_amount")]
     public int? ExceptAmount { get; set; }
 
     /// <summary>
-    /// 领券是否过风控，默认true为过风控。
+    /// 是否打开风控保护开关，默认false关闭
     /// </summary>
     [JsonPropertyName("fetch_risk_check")]
     public bool? FetchRiskCheck { get; set; }
@@ -63,19 +69,13 @@ public partial class CreateDdkCashgift
     public int? FreezeWatchType { get; set; }
 
     /// <summary>
-    /// 是否为灵活面额礼金券，默认false为固定面额礼金券
-    /// </summary>
-    [JsonPropertyName("generate_flexible_coupon")]
-    public bool? GenerateFlexibleCoupon { get; set; }
-
-    /// <summary>
-    /// 是否开启全场景推广，默认false不开启全场景推广，仅支持固定面额且限定商品的礼金活动。
+    /// 是否开启全场景推广，默认false不开启全场景推广，仅支持普通满减礼金和免单礼金
     /// </summary>
     [JsonPropertyName("generate_global")]
     public bool? GenerateGlobal { get; set; }
 
     /// <summary>
-    /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，最多可支持传20个商品；若传空，则为不限商品礼金，不支持创建不限商品灵活礼金。goodsSign使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
+    /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，最多可支持传20个商品。创建普通满减礼金、免单礼金和灵活面额礼金时，该字段必填；创建不限商品满减礼金时，该字段传空。goodsSign使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
     /// </summary>
     [JsonPropertyName("goods_sign_list")]
     public List<string> GoodsSignList { get; set; }
@@ -99,13 +99,13 @@ public partial class CreateDdkCashgift
     public List<string> PIdList { get; set; }
 
     /// <summary>
-    /// 礼金券数量，创建固定面额礼金券必填（创建灵活面额礼金券时，礼金券数量不固定，礼金总预算用完为止）
+    /// 礼金券数量，创建普通满减礼金、不限商品满减礼金或免单礼金时，该字段必填；创建灵活面额礼金时，礼金券数量不固定，礼金总预算用完为止，该字段不传
     /// </summary>
     [JsonPropertyName("quantity")]
     public long? Quantity { get; set; }
 
     /// <summary>
-    /// 收益保护开关，默认false表示关闭，仅支持固定面额且限定商品的礼金活动。开启状态下，系统将根据设置内容进行监控，当监控项满足冻结条件时，系统自动冻结礼金暂停推广，防止资金损失。（可通过多多礼金状态更新接口自行恢复推广）
+    /// 收益保护开关，默认false关闭，仅支持普通满减礼金和免单礼金。开启状态下，系统将根据设置内容进行监控，当监控项满足冻结条件时，系统自动冻结礼金暂停推广，防止资金损失（您可通过多多礼金状态更新接口自行恢复推广）
     /// </summary>
     [JsonPropertyName("rate_decrease_monitor")]
     public bool? RateDecreaseMonitor { get; set; }
@@ -117,7 +117,7 @@ public partial class CreateDdkCashgift
     public int? RelativeTimeType { get; set; }
 
     /// <summary>
-    /// 礼金总预算，单位为分，创建灵活券 (generate_flexible_coupon为true) 时必填。默认情况，总金额 = 礼金券数量 * 礼金券面额
+    /// 礼金总预算，单位为分，创建灵活面额礼金时必填。其他情况，总金额 = 礼金券数量 * 礼金券面额
     /// </summary>
     [JsonPropertyName("total_amount")]
     public long? TotalAmount { get; set; }
