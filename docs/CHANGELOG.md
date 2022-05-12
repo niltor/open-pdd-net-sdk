@@ -1,5 +1,8 @@
 # 更新日志
 
+## 2022/05/12
+- socket ack更新，官方更改了类型标识，同步更新。感谢`w2d1`的反馈。
+
 ## 2022/05/08 V6.0.1
 - 修复: `GetOrderListResponse`对象中`ItemList`中的`goods_id`修改为`long`类型，官方文档为string，实际返回不为string，造成反序列化失败
 - 修复: 关于构造的请求内容格式不对的问题，已将对象转字典的方法进行处理，不使用`System.Text.Json`进行处理。

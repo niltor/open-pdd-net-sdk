@@ -31,20 +31,7 @@ public class MyHostService : PddSocketHostServiceBase
                 //var context = scope.ServiceProvider.GetRequiredService<DbContext>();
 
                 // ack确认，不确认消息会积压，重复发送
-                if (client.IsRunning)
-                {
-                    // 构建 ackMessage
-                    var ackMessage = new AckMessage {
-                        CommandType = CommandType.Ack,
-                        Id = serverMessage.Id,
-                        MallId = serverMessage.Message.MallID,
-                        SendTime = serverMessage.SendTime,
-                        Time = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-                        Type = serverMessage.Message.Type
-                    };
-
-                    client.Send(JsonSerializer.Serialize(ackMessage));
-                }
+               AckMessage(serverMessage);
             }
         });
     }

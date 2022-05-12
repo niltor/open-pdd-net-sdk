@@ -67,7 +67,7 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
     /// <param name="state"></param>
     public void KeepOnline(object state)
     {
-        var msg = new SocketMessageModel("HeartBeat");
+        var msg = new SocketMessageModel(CommandType.HeartBeat);
         if (client.IsRunning)
         {
             client.Send(JsonSerializer.Serialize(msg));
@@ -89,12 +89,38 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
         OnReconnectiong();
     }
 
+
     public virtual void OnMessage()
     {
         // 接收信息
-        client.MessageReceived.Subscribe(msg =>
-            _logger.LogInformation($"Message received: {msg}")
-        );
+        client.MessageReceived.Subscribe(msg => {
+            _logger.LogInformation($"Message received: {msg}");
+            var serverMessage = JsonSerializer.Deserialize<SocketMessageModel>(msg.Text);
+            AckMessage(serverMessage);
+        });
+    }
+
+
+    /// <summary>
+    /// 发送ack消息
+    /// </summary>
+    /// <param name="serverMessage"></param>
+    public void AckMessage(SocketMessageModel serverMessage)
+    {
+        if (client.IsRunning)
+        {
+            // 构建 ackMessage
+            var ackMessage = new AckMessage {
+                CommandType = CommandType.Ack,
+                Id = serverMessage.Id,
+                MallId = serverMessage.Message.MallID,
+                SendTime = serverMessage.SendTime,
+                Time = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                Type = serverMessage.Message.Type
+            };
+
+            client.Send(JsonSerializer.Serialize(ackMessage));
+        }
     }
 
     /// <summary>
