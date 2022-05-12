@@ -20,12 +20,12 @@ public class MyHostService : PddSocketHostServiceBase
     {
         // 接收信息
         client.MessageReceived.Subscribe((message) => {
-            var msg = JsonSerializer.Deserialize<SocketMessageModel>(message.Text);
+            var serverMessage = JsonSerializer.Deserialize<SocketMessageModel>(message.Text);
             // 心跳报文不处理
-            if (!msg.CommandType.ToLower().Equals("heartbeat"))
+            if (serverMessage.CommandType != CommandType.HeartBeat)
             {
                 // TODO:自定义处理逻辑
-                _logger.LogInformation("报文:" + msg.Message.Content);
+                _logger.LogInformation("报文:" + serverMessage.Message.Content);
                 using var scope = Services.CreateScope();
                 // 获取数据库上下文
                 //var context = scope.ServiceProvider.GetRequiredService<DbContext>();
@@ -33,8 +33,17 @@ public class MyHostService : PddSocketHostServiceBase
                 // ack确认，不确认消息会积压，重复发送
                 if (client.IsRunning)
                 {
-                    msg.CommandType = "Ack";
-                    client.Send(JsonSerializer.Serialize(msg));
+                    // 构建 ackMessage
+                    var ackMessage = new AckMessage {
+                        CommandType = CommandType.Ack,
+                        Id = serverMessage.Id,
+                        MallId = serverMessage.Message.MallID,
+                        SendTime = serverMessage.SendTime,
+                        Time = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                        Type = serverMessage.Message.Type
+                    };
+
+                    client.Send(JsonSerializer.Serialize(ackMessage));
                 }
             }
         });
