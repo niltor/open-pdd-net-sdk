@@ -37,7 +37,7 @@ public partial class QueryInvoiceApplicationResponse : PddResponseModel
             public int? BusinessType { get; set; }
 
             /// <summary>
-            /// 开票金额，暂为null，取买家实付
+            /// 开票金额，单位：分
             /// </summary>
             [JsonPropertyName("invoice_amount")]
             public string InvoiceAmount { get; set; }

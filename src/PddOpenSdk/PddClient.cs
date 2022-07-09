@@ -1,6 +1,9 @@
+
+using PddOpenSdk.Models;
+using PddOpenSdk.Services;
 using PddOpenSdk.Services.PddApi;
 
-namespace MSDev.PddOpenSdk;
+namespace PddOpenSdk;
 /// <summary>
 /// 批多多服务
 /// </summary>

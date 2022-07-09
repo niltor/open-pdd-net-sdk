@@ -340,6 +340,12 @@ public partial class GetDdkOrderDetailResponse : PddResponseModel
         [JsonPropertyName("zs_duo_id")]
         public long? ZsDuoId { get; set; }
 
+        /// <summary>
+        /// 补贴订单备注
+        /// </summary>
+        [JsonPropertyName("subsidy_order_remark")]
+        public string SubsidyOrderRemark { get; set; }
+
     }
 
 }

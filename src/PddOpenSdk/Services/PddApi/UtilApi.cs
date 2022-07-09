@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Util;
 using PddOpenSdk.Models.Response.Util;
+
 namespace PddOpenSdk.Services.PddApi;
 public class UtilApi : PddCommonApi
 {
@@ -67,6 +68,33 @@ public class UtilApi : PddCommonApi
     public async Task<RefreshPopAuthTokenResponse> RefreshPopAuthTokenAsync(RefreshPopAuthToken refreshPopAuthToken)
     {
         var result = await PostAsync<RefreshPopAuthToken, RefreshPopAuthTokenResponse>("pdd.pop.auth.token.refresh", refreshPopAuthToken);
+        return result;
+    }
+
+    /// <summary>
+    /// 店铺关联关系上报
+    /// </summary>
+    public async Task<ReportPopMallBindRelationResponse> ReportPopMallBindRelationAsync(ReportPopMallBindRelation reportPopMallBindRelation)
+    {
+        var result = await PostAsync<ReportPopMallBindRelation, ReportPopMallBindRelationResponse>("pdd.pop.mall.bind.relation.report", reportPopMallBindRelation);
+        return result;
+    }
+
+    /// <summary>
+    /// 获取店铺关联ticket
+    /// </summary>
+    public async Task<GetPopMallBindTicketResponse> GetPopMallBindTicketAsync(GetPopMallBindTicket getPopMallBindTicket)
+    {
+        var result = await PostAsync<GetPopMallBindTicket, GetPopMallBindTicketResponse>("pdd.pop.mall.bind.ticket.get", getPopMallBindTicket);
+        return result;
+    }
+
+    /// <summary>
+    /// 获取被关联店铺Access Token
+    /// </summary>
+    public async Task<GetPopMallBindTokenResponse> GetPopMallBindTokenAsync(GetPopMallBindToken getPopMallBindToken)
+    {
+        var result = await PostAsync<GetPopMallBindToken, GetPopMallBindTokenResponse>("pdd.pop.mall.bind.token.get", getPopMallBindToken);
         return result;
     }
 

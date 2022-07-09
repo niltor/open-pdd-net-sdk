@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Ad;
 using PddOpenSdk.Models.Response.Ad;
+
 namespace PddOpenSdk.Services.PddApi;
 public class AdApi : PddCommonApi
 {
@@ -211,6 +212,15 @@ public class AdApi : PddCommonApi
     public async Task<OcpcAdApiPlanUpdatePlanToResponse> OcpcAdApiPlanUpdatePlanToAsync(OcpcAdApiPlanUpdatePlanTo ocpcAdApiPlanUpdatePlanTo)
     {
         var result = await PostAsync<OcpcAdApiPlanUpdatePlanTo, OcpcAdApiPlanUpdatePlanToResponse>("pdd.ad.api.plan.update.plan.to.ocpc", ocpcAdApiPlanUpdatePlanTo);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询活动报表信息
+    /// </summary>
+    public async Task<QueryAdApiReportActivityReportResponse> QueryAdApiReportActivityReportAsync(QueryAdApiReportActivityReport queryAdApiReportActivityReport)
+    {
+        var result = await PostAsync<QueryAdApiReportActivityReport, QueryAdApiReportActivityReportResponse>("pdd.ad.api.report.activity.report.query", queryAdApiReportActivityReport);
         return result;
     }
 

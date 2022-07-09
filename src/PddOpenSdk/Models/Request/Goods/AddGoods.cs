@@ -3,6 +3,12 @@ public partial class AddGoods
 {
 
     /// <summary>
+    /// 是否自动补充标品属性
+    /// </summary>
+    [JsonPropertyName("auto_fill_spu_property")]
+    public bool? AutoFillSpuProperty { get; set; }
+
+    /// <summary>
     /// 坏果包赔
     /// </summary>
     [JsonPropertyName("bad_fruit_claim")]
@@ -183,6 +189,12 @@ public partial class AddGoods
     public int? LackOfWeightClaim { get; set; }
 
     /// <summary>
+    /// 本地服务id
+    /// </summary>
+    [JsonPropertyName("local_service_id_list")]
+    public List<int?> LocalServiceIdList { get; set; }
+
+    /// <summary>
     /// 买家自提模版id
     /// </summary>
     [JsonPropertyName("mai_jia_zi_ti")]
@@ -267,6 +279,12 @@ public partial class AddGoods
     public long ShipmentLimitSecond { get; set; }
 
     /// <summary>
+    /// 门店组id
+    /// </summary>
+    [JsonPropertyName("shop_group_id")]
+    public long? ShopGroupId { get; set; }
+
+    /// <summary>
     /// 尺码表id
     /// </summary>
     [JsonPropertyName("size_spec_id")]
@@ -325,12 +343,6 @@ public partial class AddGoods
     /// </summary>
     [JsonPropertyName("zhi_huan_bu_xiu")]
     public int? ZhiHuanBuXiu { get; set; }
-
-    /// <summary>
-    /// 是否自动补充标品属性
-    /// </summary>
-    [JsonPropertyName("auto_fill_spu_property")]
-    public bool? AutoFillSpuProperty { get; set; }
     public partial class CarouselVideoModel
     {
 

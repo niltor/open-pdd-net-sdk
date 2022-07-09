@@ -9,7 +9,7 @@ public partial class GenerateDdkRpPromUrl
     public long? Amount { get; set; }
 
     /// <summary>
-    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，23-超级红包，24-礼金全场N折活动B端页面，27-带货赢千万，28-满减券活动B端页面，29-满减券活动C端页面，30-免单B端页面，31-免单C端页面，32-转盘得现金B端页面，33-转盘得现金C端页面，34-千万神券C端页面，35-千万神券B端页面；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
+    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，23-超级红包，24-礼金全场N折活动B端页面，27-带货赢千万，28-满减券活动B端页面，29-满减券活动C端页面，30-免单B端页面，31-免单C端页面，32-转盘得现金B端页面，33-转盘得现金C端页面，34-千万神券C端页面，35-千万神券B端页面，37-超级红包B端推品页；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289
     /// </summary>
     [JsonPropertyName("channel_type")]
     public int? ChannelType { get; set; }
@@ -31,6 +31,12 @@ public partial class GenerateDdkRpPromUrl
     /// </summary>
     [JsonPropertyName("diy_red_packet_param")]
     public DiyRedPacketParamModel DiyRedPacketParam { get; set; }
+
+    /// <summary>
+    /// 超级红包自定义参数，json格式
+    /// </summary>
+    [JsonPropertyName("diy_sp_red_packet_param")]
+    public DiySpRedPacketParamModel DiySpRedPacketParam { get; set; }
 
     /// <summary>
     /// 是否生成qq小程序
@@ -67,6 +73,12 @@ public partial class GenerateDdkRpPromUrl
     /// </summary>
     [JsonPropertyName("scratch_card_amount")]
     public long? ScratchCardAmount { get; set; }
+
+    /// <summary>
+    /// 招商DuoID
+    /// </summary>
+    [JsonPropertyName("zs_duo_id")]
+    public long? ZsDuoId { get; set; }
     public partial class DiyOneYuanParamModel
     {
 
@@ -131,6 +143,16 @@ public partial class GenerateDdkRpPromUrl
             public long? RangeTo { get; set; }
 
         }
+
+    }
+    public partial class DiySpRedPacketParamModel
+    {
+
+        /// <summary>
+        /// 商品goodsSign，支持通过goodsSign置顶落地页商品。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
+        /// </summary>
+        [JsonPropertyName("goods_sign")]
+        public string GoodsSign { get; set; }
 
     }
 

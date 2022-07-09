@@ -301,7 +301,7 @@ public partial class GetOrderInformationResponse : PddResponseModel
             public int? OrderStatus { get; set; }
 
             /// <summary>
-            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟，same_city_distribution=同城配送，has_subsidy_postage=补贴运费红包，has_sf_express_service=顺丰加价，community_group=小区团购，has_ship_additional=加运费发顺丰，ship_additional_order=加运费补差价订单
+            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟，same_city_distribution=同城配送，has_subsidy_postage=补贴运费红包，has_sf_express_service=顺丰加价，community_group=小区团购，has_ship_additional=加运费发顺丰，ship_additional_order=加运费补差价订单，conso_order=集运订单
             /// </summary>
             [JsonPropertyName("order_tag_list")]
             public List<OrderTagListResponse> OrderTagList { get; set; }
@@ -469,6 +469,18 @@ public partial class GetOrderInformationResponse : PddResponseModel
             public List<ServiceFeeDetailResponse> ServiceFeeDetail { get; set; }
 
             /// <summary>
+            /// 关联的加运费发顺丰的补差价订单
+            /// </summary>
+            [JsonPropertyName("ship_additional_link_order")]
+            public string ShipAdditionalLinkOrder { get; set; }
+
+            /// <summary>
+            /// 加运费补差价订单的原单
+            /// </summary>
+            [JsonPropertyName("ship_additional_origin_order")]
+            public string ShipAdditionalOriginOrder { get; set; }
+
+            /// <summary>
             /// 发货时间
             /// </summary>
             [JsonPropertyName("shipping_time")]
@@ -551,18 +563,6 @@ public partial class GetOrderInformationResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("yyps_time")]
             public string YypsTime { get; set; }
-
-            /// <summary>
-            /// 关联的加运费发顺丰的补差价订单
-            /// </summary>
-            [JsonPropertyName("ship_additional_link_order")]
-            public string ShipAdditionalLinkOrder { get; set; }
-
-            /// <summary>
-            /// 加运费补差价订单的原单
-            /// </summary>
-            [JsonPropertyName("ship_additional_origin_order")]
-            public string ShipAdditionalOriginOrder { get; set; }
             public partial class CardInfoListResponse : PddResponseModel
             {
 

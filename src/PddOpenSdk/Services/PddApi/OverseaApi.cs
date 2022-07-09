@@ -1,11 +1,21 @@
 
 using PddOpenSdk.Models.Request.Oversea;
 using PddOpenSdk.Models.Response.Oversea;
+
 namespace PddOpenSdk.Services.PddApi;
 public class OverseaApi : PddCommonApi
 {
     public OverseaApi() { }
     public OverseaApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
+
+    /// <summary>
+    /// 海淘服务商上传商品备案信息
+    /// </summary>
+    public async Task<RecordCustomsSendGoodsResponse> RecordCustomsSendGoodsAsync(RecordCustomsSendGoods recordCustomsSendGoods)
+    {
+        var result = await PostAsync<RecordCustomsSendGoods, RecordCustomsSendGoodsResponse>("pdd.customs.send.goods.record", recordCustomsSendGoods);
+        return result;
+    }
 
     /// <summary>
     /// 保税仓信息查询接口

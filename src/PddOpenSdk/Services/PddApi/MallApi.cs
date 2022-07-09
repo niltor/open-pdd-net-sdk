@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Mall;
 using PddOpenSdk.Models.Response.Mall;
+
 namespace PddOpenSdk.Services.PddApi;
 public class MallApi : PddCommonApi
 {

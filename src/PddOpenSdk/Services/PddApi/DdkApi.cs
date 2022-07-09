@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Ddk;
 using PddOpenSdk.Models.Response.Ddk;
+
 namespace PddOpenSdk.Services.PddApi;
 public class DdkApi : PddCommonApi
 {
@@ -98,24 +99,6 @@ public class DdkApi : PddCommonApi
     }
 
     /// <summary>
-    /// 用时间段查询推广订单接口
-    /// </summary>
-    public async Task<GetDdkOrderListRangeResponse> GetDdkOrderListRangeAsync(GetDdkOrderListRange getDdkOrderListRange)
-    {
-        var result = await PostAsync<GetDdkOrderListRange, GetDdkOrderListRangeResponse>("pdd.ddk.order.list.range.get", getDdkOrderListRange);
-        return result;
-    }
-
-    /// <summary>
-    /// 生成营销工具推广链接
-    /// </summary>
-    public async Task<GenerateDdkRpPromUrlResponse> GenerateDdkRpPromUrlAsync(GenerateDdkRpPromUrl generateDdkRpPromUrl)
-    {
-        var result = await PostAsync<GenerateDdkRpPromUrl, GenerateDdkRpPromUrlResponse>("pdd.ddk.rp.prom.url.generate", generateDdkRpPromUrl);
-        return result;
-    }
-
-    /// <summary>
     /// 多多进宝商品查询
     /// </summary>
     public async Task<SearchDdkGoodsResponse> SearchDdkGoodsAsync(SearchDdkGoods searchDdkGoods)
@@ -143,20 +126,29 @@ public class DdkApi : PddCommonApi
     }
 
     /// <summary>
-    /// 创建多多礼金
+    /// 多多进宝商品推荐API
     /// </summary>
-    public async Task<CreateDdkCashgiftResponse> CreateDdkCashgiftAsync(CreateDdkCashgift createDdkCashgift)
+    public async Task<GetDdkGoodsRecommendResponse> GetDdkGoodsRecommendAsync(GetDdkGoodsRecommend getDdkGoodsRecommend)
     {
-        var result = await PostAsync<CreateDdkCashgift, CreateDdkCashgiftResponse>("pdd.ddk.cashgift.create", createDdkCashgift);
+        var result = await PostAsync<GetDdkGoodsRecommend, GetDdkGoodsRecommendResponse>("pdd.ddk.goods.recommend.get", getDdkGoodsRecommend);
         return result;
     }
 
     /// <summary>
-    /// 查询订单详情
+    /// 生成营销工具推广链接
     /// </summary>
-    public async Task<GetDdkOrderDetailResponse> GetDdkOrderDetailAsync(GetDdkOrderDetail getDdkOrderDetail)
+    public async Task<GenerateDdkRpPromUrlResponse> GenerateDdkRpPromUrlAsync(GenerateDdkRpPromUrl generateDdkRpPromUrl)
     {
-        var result = await PostAsync<GetDdkOrderDetail, GetDdkOrderDetailResponse>("pdd.ddk.order.detail.get", getDdkOrderDetail);
+        var result = await PostAsync<GenerateDdkRpPromUrl, GenerateDdkRpPromUrlResponse>("pdd.ddk.rp.prom.url.generate", generateDdkRpPromUrl);
+        return result;
+    }
+
+    /// <summary>
+    /// 用时间段查询推广订单接口
+    /// </summary>
+    public async Task<GetDdkOrderListRangeResponse> GetDdkOrderListRangeAsync(GetDdkOrderListRange getDdkOrderListRange)
+    {
+        var result = await PostAsync<GetDdkOrderListRange, GetDdkOrderListRangeResponse>("pdd.ddk.order.list.range.get", getDdkOrderListRange);
         return result;
     }
 
@@ -170,11 +162,20 @@ public class DdkApi : PddCommonApi
     }
 
     /// <summary>
-    /// 多多进宝商品推荐API
+    /// 查询订单详情
     /// </summary>
-    public async Task<GetDdkGoodsRecommendResponse> GetDdkGoodsRecommendAsync(GetDdkGoodsRecommend getDdkGoodsRecommend)
+    public async Task<GetDdkOrderDetailResponse> GetDdkOrderDetailAsync(GetDdkOrderDetail getDdkOrderDetail)
     {
-        var result = await PostAsync<GetDdkGoodsRecommend, GetDdkGoodsRecommendResponse>("pdd.ddk.goods.recommend.get", getDdkGoodsRecommend);
+        var result = await PostAsync<GetDdkOrderDetail, GetDdkOrderDetailResponse>("pdd.ddk.order.detail.get", getDdkOrderDetail);
+        return result;
+    }
+
+    /// <summary>
+    /// 创建多多礼金
+    /// </summary>
+    public async Task<CreateDdkCashgiftResponse> CreateDdkCashgiftAsync(CreateDdkCashgift createDdkCashgift)
+    {
+        var result = await PostAsync<CreateDdkCashgift, CreateDdkCashgiftResponse>("pdd.ddk.cashgift.create", createDdkCashgift);
         return result;
     }
 

@@ -1,4 +1,4 @@
-namespace PddOpenSdk.Models.Request;
+namespace PddOpenSdk.Models;
 
 /// <summary>
 /// 拼多多请求模型

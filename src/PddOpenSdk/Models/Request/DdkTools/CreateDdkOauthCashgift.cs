@@ -128,23 +128,5 @@ public partial class CreateDdkOauthCashgift
     [JsonPropertyName("user_limit")]
     public int? UserLimit { get; set; }
 
-    /// <summary>
-    /// 券批次使用结束时间, validity_time_type为 2 时必填。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-    /// </summary>
-    [JsonPropertyName("validity_end_time")]
-    public long? ValidityEndTime { get; set; }
-
-    /// <summary>
-    /// 券批次使用开始时间, validity_time_type为 2 时必填。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-    /// </summary>
-    [JsonPropertyName("validity_start_time")]
-    public long? ValidityStartTime { get; set; }
-
-    /// <summary>
-    /// 有效期类型：1-领取后几天内有效；2-固定时间内有效
-    /// </summary>
-    [JsonPropertyName("validity_time_type")]
-    public int ValidityTimeType { get; set; }
-
 }
 

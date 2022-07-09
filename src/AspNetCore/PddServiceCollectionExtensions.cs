@@ -1,6 +1,6 @@
-using PddOpenSdk.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Microsoft.Extensions.DependencyInjection;
+namespace PddOpenSdk.AspNetCore;
 public static class PddServiceExtensions
 {
 

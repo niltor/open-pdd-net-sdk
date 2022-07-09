@@ -55,16 +55,16 @@ public partial class BatchOpenDecryptResponse : PddResponseModel
             public string ErrorMsg { get; set; }
 
             /// <summary>
-            /// 虚拟号类型：0-非虚拟号 1-虚拟号
-            /// </summary>
-            [JsonPropertyName("virtual_number_type")]
-            public int? VirtualNumberType { get; set; }
-
-            /// <summary>
             /// 虚拟号分机号
             /// </summary>
             [JsonPropertyName("virtual_identify_number")]
             public string VirtualIdentifyNumber { get; set; }
+
+            /// <summary>
+            /// 虚拟号类型：0-非虚拟号 1-虚拟号
+            /// </summary>
+            [JsonPropertyName("virtual_number_type")]
+            public int? VirtualNumberType { get; set; }
 
         }
 

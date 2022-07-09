@@ -1,4 +1,3 @@
-
 namespace PddOpenSdk.Models;
 
 public class AccessTokenResponseModel

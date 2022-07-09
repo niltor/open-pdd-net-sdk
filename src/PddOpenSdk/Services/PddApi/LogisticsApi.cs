@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Logistics;
 using PddOpenSdk.Models.Response.Logistics;
+
 namespace PddOpenSdk.Services.PddApi;
 public class LogisticsApi : PddCommonApi
 {
@@ -58,6 +59,15 @@ public class LogisticsApi : PddCommonApi
     public async Task<GetLogisticsOrdertraceResponse> GetLogisticsOrdertraceAsync(GetLogisticsOrdertrace getLogisticsOrdertrace)
     {
         var result = await PostAsync<GetLogisticsOrdertrace, GetLogisticsOrdertraceResponse>("pdd.logistics.ordertrace.get", getLogisticsOrdertrace);
+        return result;
+    }
+
+    /// <summary>
+    /// 快递公司网点拆分配置推送接口
+    /// </summary>
+    public async Task<PushLogisticsTscOrgSplitCfgResponse> PushLogisticsTscOrgSplitCfgAsync(PushLogisticsTscOrgSplitCfg pushLogisticsTscOrgSplitCfg)
+    {
+        var result = await PostAsync<PushLogisticsTscOrgSplitCfg, PushLogisticsTscOrgSplitCfgResponse>("pdd.logistics.tsc.org.split.cfg.push", pushLogisticsTscOrgSplitCfg);
         return result;
     }
 

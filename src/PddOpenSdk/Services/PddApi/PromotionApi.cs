@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.Promotion;
 using PddOpenSdk.Models.Response.Promotion;
+
 namespace PddOpenSdk.Services.PddApi;
 public class PromotionApi : PddCommonApi
 {

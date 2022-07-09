@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+
+using PddOpenSdk.Models.Request.Goods;
+
 using PddOpenSdk.AspNetCore;
 using PddOpenSdk.Models.Request.Ddk;
-using PddOpenSdk.Models.Request.Goods;
+
 using Sample.Models;
+
 using System.Diagnostics;
 using System.IO;
 

@@ -179,6 +179,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         public int? LackOfWeightClaim { get; set; }
 
         /// <summary>
+        /// 本地服务id
+        /// </summary>
+        [JsonPropertyName("local_service_id_list")]
+        public List<int?> LocalServiceIdList { get; set; }
+
+        /// <summary>
         /// 买家自提模版id
         /// </summary>
         [JsonPropertyName("mai_jia_zi_ti")]
@@ -255,6 +261,18 @@ public partial class GetGoodsDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("shipment_limit_second")]
         public long? ShipmentLimitSecond { get; set; }
+
+        /// <summary>
+        /// 门店组id
+        /// </summary>
+        [JsonPropertyName("shop_group_id")]
+        public long? ShopGroupId { get; set; }
+
+        /// <summary>
+        /// 门店组名称
+        /// </summary>
+        [JsonPropertyName("shop_group_name")]
+        public string ShopGroupName { get; set; }
 
         /// <summary>
         /// 尺码表id

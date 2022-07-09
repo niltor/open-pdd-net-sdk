@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Runtime.InteropServices;
-
-namespace MSDev.PddOpenSdk.Models;
+﻿namespace PddOpenSdk.Models;
 
 public class SocketMessageModel
 {

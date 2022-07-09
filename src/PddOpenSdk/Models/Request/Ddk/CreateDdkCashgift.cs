@@ -39,7 +39,7 @@ public partial class CreateDdkCashgift
     public int? CouponThresholdAmount { get; set; }
 
     /// <summary>
-    /// 活动持续时间，validity_time_type为 1 时必填。相对时间类型为天级时，最大值为30，即领取后30天内有效；相对时间类型为小时级时，最大值为24，即领取后24小时内有效；相对时间类型为分钟级时，则最大值为60，即领取后60分钟内有效。
+    /// 使用有效期，相对时间类型为天级时，最大值为30，即领取后30天内有效；相对时间类型为小时级时，最大值为24，即领取后24小时内有效；相对时间类型为分钟级时，则最大值为60，即领取后60分钟内有效。
     /// </summary>
     [JsonPropertyName("duration")]
     public int? Duration { get; set; }
@@ -111,7 +111,7 @@ public partial class CreateDdkCashgift
     public bool? RateDecreaseMonitor { get; set; }
 
     /// <summary>
-    /// 相对时间类型：1-天级；2-小时级；3-分钟级，有效期类型validityTimeType = 1时必填，默认为1。 例如: relative_time_type = 2, duration = 15, 表示领取后15小时内有效。
+    /// 相对时间类型：1-天级；2-小时级；3-分钟级，默认为1。 例如: relative_time_type = 2,duration = 15, 表示领取后15小时内有效。
     /// </summary>
     [JsonPropertyName("relative_time_type")]
     public int? RelativeTimeType { get; set; }
@@ -127,24 +127,6 @@ public partial class CreateDdkCashgift
     /// </summary>
     [JsonPropertyName("user_limit")]
     public int? UserLimit { get; set; }
-
-    /// <summary>
-    /// 券批次使用结束时间, validity_time_type为 2 时必填。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-    /// </summary>
-    [JsonPropertyName("validity_end_time")]
-    public long? ValidityEndTime { get; set; }
-
-    /// <summary>
-    /// 券批次使用开始时间, validity_time_type为 2 时必填。note：此时间为时间戳，指格林威治时间 1970 年01 月 01 日 00 时 00 分 00 秒(北京时间 1970 年 01 月 01 日 08 时 00 分 00 秒)起至现在的总秒数
-    /// </summary>
-    [JsonPropertyName("validity_start_time")]
-    public long? ValidityStartTime { get; set; }
-
-    /// <summary>
-    /// 有效期类型：1-领取后几天内有效；2-固定时间内有效
-    /// </summary>
-    [JsonPropertyName("validity_time_type")]
-    public int ValidityTimeType { get; set; }
 
 }
 

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MSDev.PddOpenSdk.AspNetCore;
-using MSDev.PddOpenSdk.Models;
+
 using PddOpenSdk.AspNetCore;
+using PddOpenSdk.Models;
 
 namespace Sample;
 

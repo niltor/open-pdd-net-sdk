@@ -1,4 +1,4 @@
-﻿using MSDev.PddOpenSdk;
+﻿using PddOpenSdk;
 using PddOpenSdk.Models.Request.Ddk;
 using System.Text.Json;
 

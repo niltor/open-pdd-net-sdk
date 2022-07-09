@@ -1,4 +1,4 @@
-namespace MSDev.PddOpenSdk;
+namespace PddOpenSdk;
 
 public class ClientConfig
 {

@@ -1,5 +1,4 @@
-﻿
-namespace MSDev.PddOpenSdk.Models;
+﻿namespace PddOpenSdk.Models;
 
 public partial class PddErrorResponseModel
 {

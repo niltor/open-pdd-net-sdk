@@ -1,6 +1,4 @@
 using System.Globalization;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 
 namespace PddOpenSdk.Common;
 
@@ -36,18 +34,9 @@ public class Function
             }
         });
 
-        if (sort == OrderType.ASC)
-        {
-            return dictionary.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);
-        }
-        else if (sort == OrderType.DESC)
-        {
-            return dictionary.OrderByDescending(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value);
-        }
-        else
-        {
-            return dictionary;
-        }
+        return sort == OrderType.ASC
+            ? dictionary.OrderBy(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value)
+            : sort == OrderType.DESC ? dictionary.OrderByDescending(d => d.Key).ToDictionary((d) => d.Key, (d) => d.Value) : dictionary;
     }
     /// <summary>
     /// 将英文转化为首字母大写
@@ -83,14 +72,7 @@ public class Function
     {
         var hashOfInput = GetMd5Hash(md5Hash, input);
         var comparer = StringComparer.OrdinalIgnoreCase;
-        if (0 == comparer.Compare(hashOfInput, hash))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return 0 == comparer.Compare(hashOfInput, hash);
     }
 }
 

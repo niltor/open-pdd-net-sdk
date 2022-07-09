@@ -1,4 +1,7 @@
-namespace PddOpenSdk.Services.PddApi;
+
+using PddOpenSdk.Models;
+
+namespace PddOpenSdk.Services;
 
 public class AuthApi : PddCommonApi
 {
@@ -110,7 +113,7 @@ public class AuthApi : PddCommonApi
             using var hc = new HttpClient();
             var response = await hc.PostAsync(TokenUrl, data);
             var jsonString = await response.Content.ReadAsStringAsync();
-            System.Console.WriteLine(jsonString);
+            Console.WriteLine(jsonString);
             var result = JsonSerializer.Deserialize<AccessTokenResponseModel>(jsonString);
 
             return result;

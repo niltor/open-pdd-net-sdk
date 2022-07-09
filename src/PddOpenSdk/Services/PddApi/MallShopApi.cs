@@ -1,6 +1,7 @@
 
 using PddOpenSdk.Models.Request.MallShop;
 using PddOpenSdk.Models.Response.MallShop;
+
 namespace PddOpenSdk.Services.PddApi;
 public class MallShopApi : PddCommonApi
 {
@@ -22,6 +23,15 @@ public class MallShopApi : PddCommonApi
     public async Task<GetMallInfoResponse> GetMallInfoAsync(GetMallInfo getMallInfo)
     {
         var result = await PostAsync<GetMallInfo, GetMallInfoResponse>("pdd.mall.info.get", getMallInfo);
+        return result;
+    }
+
+    /// <summary>
+    /// 判断是否对商家展示某个通知
+    /// </summary>
+    public async Task<CheckMallNotificationTypeShowResponse> CheckMallNotificationTypeShowAsync(CheckMallNotificationTypeShow checkMallNotificationTypeShow)
+    {
+        var result = await PostAsync<CheckMallNotificationTypeShow, CheckMallNotificationTypeShowResponse>("pdd.mall.notification.type.show.check", checkMallNotificationTypeShow);
         return result;
     }
 

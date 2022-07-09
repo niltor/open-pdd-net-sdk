@@ -201,6 +201,12 @@ public partial class CommitGoodsSubmitGoods
     public int? LackOfWeightClaim { get; set; }
 
     /// <summary>
+    /// 本地服务id
+    /// </summary>
+    [JsonPropertyName("local_service_id_list")]
+    public List<int?> LocalServiceIdList { get; set; }
+
+    /// <summary>
     /// 买家自提模版id
     /// </summary>
     [JsonPropertyName("mai_jia_zi_ti")]
@@ -289,6 +295,12 @@ public partial class CommitGoodsSubmitGoods
     /// </summary>
     [JsonPropertyName("shipment_limit_second")]
     public long? ShipmentLimitSecond { get; set; }
+
+    /// <summary>
+    /// 门店组id
+    /// </summary>
+    [JsonPropertyName("shop_group_id")]
+    public long? ShopGroupId { get; set; }
 
     /// <summary>
     /// sku对象列表,实例：[{; 	"is_onsale": 1,; 	"limit_quantity": 999,; 	"price": "2200",; 	"weight": 1000,; 	"multi_price": "1900",; 	"thumb_url": "http://t06img.yangkeduo.com/images/2018-04-15/ced035033b5d40b589140af882621c03.jpg",; 	"out_sku_sn": "L",; 	"quantity": 100,; 	"spec_id_list": "[25]",; 	"oversea_sku": {; 		"measurement_code": "计量单位编码",; 		"taxation": "税费",; 		"specifications": "规格"; 	}; }]

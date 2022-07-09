@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Hosting;
-using MSDev.PddOpenSdk.Models;
-using PddOpenSdk.AspNetCore;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
+
+using Microsoft.Extensions.Hosting;
+
 using Websocket.Client;
 
-namespace MSDev.PddOpenSdk.AspNetCore;
+namespace PddOpenSdk.AspNetCore;
 
 public class PddSocketHostServiceBase : IHostedService, IDisposable
 {
@@ -31,14 +31,7 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
         var currentTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
         var digest = Digest(_options.ClientId, _options.ClientSecret, currentTime);
 
-        if (string.IsNullOrEmpty(_options.SocketUrl))
-        {
-            socketUrl = "wss://message-api.pinduoduo.com";
-        }
-        else
-        {
-            socketUrl = _options.SocketUrl;
-        }
+        socketUrl = string.IsNullOrEmpty(_options.SocketUrl) ? "wss://message-api.pinduoduo.com" : _options.SocketUrl;
         var url = $@"{socketUrl}/message/{_options.ClientId}/{currentTime}/{digest}";
 
         client = new WebsocketClient(new Uri(url));
@@ -140,7 +133,7 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
         var data = hash.ComputeHash(Encoding.UTF8.GetBytes(clientId + sysTime.ToString() + secret));
         var sb = new StringBuilder();
 
-        for (int i = 0; i < data.Length; i++)
+        for (var i = 0; i < data.Length; i++)
         {
             sb.Append(data[i].ToString("x2"));
         }
