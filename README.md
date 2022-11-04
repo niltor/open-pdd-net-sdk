@@ -9,6 +9,8 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 ## **特别说明**
 
 - 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
+- `2.2.0 `版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
+- `2.3.0` 提供消息服务支持，核心类库不再支持 `.net framework`.
 - `6.0 `版本开始，目标框架统一调整到`.net6.0`。
 ## 更新说明
 更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/v6/docs/CHANGELOG.md)。
