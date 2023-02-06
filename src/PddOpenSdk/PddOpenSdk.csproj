@@ -31,12 +31,19 @@
 		<SignAssembly>False</SignAssembly>
 		<Title>PddOpenSdk</Title>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<PackageReadmeFile>README.MD</PackageReadmeFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\logo.jpg">
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="README.MD">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
