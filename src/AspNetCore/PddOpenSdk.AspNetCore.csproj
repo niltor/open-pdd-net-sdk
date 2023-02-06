@@ -6,16 +6,12 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Authors>NilTor</Authors>
+		<Authors>NilTor,AterDev</Authors>
 		<Company>Geethin</Company>
-		<Description>
-			拼多多SDK ASP.NET Core依赖包
-		</Description>
+		<Description>拼多多SDK ASP.NET Core依赖包</Description>
 		<PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
-		<PackageReleaseNotes>
-			更新同步到最新(202207)！
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>更新同步到最新(202302),添加对.net7的支持</PackageReleaseNotes>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<FileVersion>0.1.0.0</FileVersion>
 		<RepositoryType>git</RepositoryType>
@@ -23,14 +19,15 @@
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageIcon>logo.jpg</PackageIcon>
 		<PackageId>MSDev.PddOpenSdk.AspNetCore</PackageId>
-		<Version>6.0.3</Version>
+		<Version>7.0.0-rc</Version>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<NoWarn>1701;1702;1591</NoWarn>
+		<Title>PddOpenSdk.AspNetCore</Title>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
@@ -42,9 +39,9 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
 		<PackageReference Include="Websocket.Client" Version="4.3.38" />
-	
+
 	</ItemGroup>
-		<ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
+	<ItemGroup Condition="'$(TargetFramework)'=='net7.0'">
 		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />

@@ -4,14 +4,10 @@
 		<RootNamespace>PddOpenSdk</RootNamespace>
 		<LangVersion>latest</LangVersion>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Authors>NilTor</Authors>
+		<Authors>NilTor,AterDev</Authors>
 		<Company>Geethin</Company>
-		<Description>
-			拼多多SDK核心类库
-		</Description>
-		<PackageReleaseNotes>
-			已更新同步到最新(202207)
-		</PackageReleaseNotes>
+		<Description>拼多多开放平台.NET SDK核心类库</Description>
+		<PackageReleaseNotes>已更新同步到最新(202302)，添加对.net7 的支持</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -21,17 +17,20 @@
 		<FileVersion>0.1.0.0</FileVersion>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageIcon>logo.jpg</PackageIcon>
-		<Version>6.0.3</Version>
+		<Version>7.0.0-rc</Version>
 		<PackageId>MSDev.PddOpenSdk</PackageId>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<Copyright />
 		<OutputType>Library</OutputType>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
 		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<NoWarn>1701;1702;1591;1570</NoWarn>
+		<SignAssembly>False</SignAssembly>
+		<Title>PddOpenSdk</Title>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\logo.jpg">
