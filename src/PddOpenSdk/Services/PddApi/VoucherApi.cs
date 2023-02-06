@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Voucher;
 using PddOpenSdk.Models.Response.Voucher;
-
 namespace PddOpenSdk.Services.PddApi;
 public class VoucherApi : PddCommonApi
 {
@@ -41,15 +40,6 @@ public class VoucherApi : PddCommonApi
     public async Task<SendVoucherPhysicalGoodsResponse> SendVoucherPhysicalGoodsAsync(SendVoucherPhysicalGoods sendVoucherPhysicalGoods)
     {
         var result = await PostAsync<SendVoucherPhysicalGoods, SendVoucherPhysicalGoodsResponse>("pdd.voucher.physical.goods.send", sendVoucherPhysicalGoods);
-        return result;
-    }
-
-    /// <summary>
-    /// 实时卡券查询外部订单号
-    /// </summary>
-    public async Task<GetVoucherRealtimeOrdernoResponse> GetVoucherRealtimeOrdernoAsync(GetVoucherRealtimeOrderno getVoucherRealtimeOrderno)
-    {
-        var result = await PostAsync<GetVoucherRealtimeOrderno, GetVoucherRealtimeOrdernoResponse>("pdd.voucher.realtime.orderno.get", getVoucherRealtimeOrderno);
         return result;
     }
 

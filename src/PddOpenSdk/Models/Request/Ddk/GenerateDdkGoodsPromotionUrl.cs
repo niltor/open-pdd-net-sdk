@@ -45,6 +45,12 @@ public partial class GenerateDdkGoodsPromotionUrl
     public bool? GenerateSchemaUrl { get; set; }
 
     /// <summary>
+    /// 获取微信ShortLink链接，仅支持单个商品，单个渠道每天生成的shortLink数量有限，请合理生成shortLink链接
+    /// </summary>
+    [JsonPropertyName("generate_short_link")]
+    public bool? GenerateShortLink { get; set; }
+
+    /// <summary>
     /// 是否生成短链接，true-是，false-否
     /// </summary>
     [JsonPropertyName("generate_short_url")]
@@ -55,6 +61,12 @@ public partial class GenerateDdkGoodsPromotionUrl
     /// </summary>
     [JsonPropertyName("generate_we_app")]
     public bool? GenerateWeApp { get; set; }
+
+    /// <summary>
+    /// 获取微信小程序码，仅支持单个商品
+    /// </summary>
+    [JsonPropertyName("generate_weixin_code")]
+    public bool? GenerateWeixinCode { get; set; }
 
     /// <summary>
     /// 商品goodsSign列表，例如：["c9r2omogKFFAc7WBwvbZU1ikIb16_J3CTa8HNN"]，支持批量生链。goodsSign是加密后的goodsId, goodsId已下线，请使用goodsSign来替代。使用说明：https://jinbao.pinduoduo.com/qa-system?questionId=252
@@ -91,6 +103,12 @@ public partial class GenerateDdkGoodsPromotionUrl
     /// </summary>
     [JsonPropertyName("zs_duo_id")]
     public long? ZsDuoId { get; set; }
+
+    /// <summary>
+    /// 是否生成商品推广分享图，仅支持单个商品
+    /// </summary>
+    [JsonPropertyName("generate_share_image")]
+    public bool? GenerateShareImage { get; set; }
 
 }
 

@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Ad;
 using PddOpenSdk.Models.Response.Ad;
-
 namespace PddOpenSdk.Services.PddApi;
 public class AdApi : PddCommonApi
 {
@@ -252,6 +251,24 @@ public class AdApi : PddCommonApi
     }
 
     /// <summary>
+    /// 查询全站推广分天报表数据
+    /// </summary>
+    public async Task<QueryAdApiReportTrDailyReportResponse> QueryAdApiReportTrDailyReportAsync(QueryAdApiReportTrDailyReport queryAdApiReportTrDailyReport)
+    {
+        var result = await PostAsync<QueryAdApiReportTrDailyReport, QueryAdApiReportTrDailyReportResponse>("pdd.ad.api.report.tr.daily.report.query", queryAdApiReportTrDailyReport);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询全站推广小时报表数据
+    /// </summary>
+    public async Task<QueryAdApiReportTrHourlyReportResponse> QueryAdApiReportTrHourlyReportAsync(QueryAdApiReportTrHourlyReport queryAdApiReportTrHourlyReport)
+    {
+        var result = await PostAsync<QueryAdApiReportTrHourlyReport, QueryAdApiReportTrHourlyReportResponse>("pdd.ad.api.report.tr.hourly.report.query", queryAdApiReportTrHourlyReport);
+        return result;
+    }
+
+    /// <summary>
     /// 删除定向/资源位
     /// </summary>
     public async Task<DeleteAdApiUnitBidResponse> DeleteAdApiUnitBidAsync(DeleteAdApiUnitBid deleteAdApiUnitBid)
@@ -419,6 +436,96 @@ public class AdApi : PddCommonApi
     public async Task<ListAdApiUnitQueryResponse> ListAdApiUnitQueryAsync(ListAdApiUnitQuery listAdApiUnitQuery)
     {
         var result = await PostAsync<ListAdApiUnitQuery, ListAdApiUnitQueryResponse>("pdd.ad.api.unit.query.list", listAdApiUnitQuery);
+        return result;
+    }
+
+    /// <summary>
+    /// 创建全站推广广告
+    /// </summary>
+    public async Task<CreateAdApiUnitTrResponse> CreateAdApiUnitTrAsync(CreateAdApiUnitTr createAdApiUnitTr)
+    {
+        var result = await PostAsync<CreateAdApiUnitTr, CreateAdApiUnitTrResponse>("pdd.ad.api.unit.tr.create", createAdApiUnitTr);
+        return result;
+    }
+
+    /// <summary>
+    /// 删除全站推广单元
+    /// </summary>
+    public async Task<DeleteAdApiUnitTrResponse> DeleteAdApiUnitTrAsync(DeleteAdApiUnitTr deleteAdApiUnitTr)
+    {
+        var result = await PostAsync<DeleteAdApiUnitTr, DeleteAdApiUnitTrResponse>("pdd.ad.api.unit.tr.delete", deleteAdApiUnitTr);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询全站推广广告信息
+    /// </summary>
+    public async Task<InfoAdApiUnitTrListAdResponse> InfoAdApiUnitTrListAdAsync(InfoAdApiUnitTrListAd infoAdApiUnitTrListAd)
+    {
+        var result = await PostAsync<InfoAdApiUnitTrListAd, InfoAdApiUnitTrListAdResponse>("pdd.ad.api.unit.tr.list.ad.info", infoAdApiUnitTrListAd);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询商品全站推广建议出价权限信息
+    /// </summary>
+    public async Task<PrivilegeAdApiUnitTrListGoodsBidResponse> PrivilegeAdApiUnitTrListGoodsBidAsync(PrivilegeAdApiUnitTrListGoodsBid privilegeAdApiUnitTrListGoodsBid)
+    {
+        var result = await PostAsync<PrivilegeAdApiUnitTrListGoodsBid, PrivilegeAdApiUnitTrListGoodsBidResponse>("pdd.ad.api.unit.tr.list.goods.bid.privilege", privilegeAdApiUnitTrListGoodsBid);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询商品全站推广建议出价
+    /// </summary>
+    public async Task<SuggestAdApiUnitTrListGoodsBidResponse> SuggestAdApiUnitTrListGoodsBidAsync(SuggestAdApiUnitTrListGoodsBid suggestAdApiUnitTrListGoodsBid)
+    {
+        var result = await PostAsync<SuggestAdApiUnitTrListGoodsBid, SuggestAdApiUnitTrListGoodsBidResponse>("pdd.ad.api.unit.tr.list.goods.bid.suggest", suggestAdApiUnitTrListGoodsBid);
+        return result;
+    }
+
+    /// <summary>
+    /// 更新全站推广名称
+    /// </summary>
+    public async Task<NameAdApiUnitTrUpdateAdResponse> NameAdApiUnitTrUpdateAdAsync(NameAdApiUnitTrUpdateAd nameAdApiUnitTrUpdateAd)
+    {
+        var result = await PostAsync<NameAdApiUnitTrUpdateAd, NameAdApiUnitTrUpdateAdResponse>("pdd.ad.api.unit.tr.update.ad.name", nameAdApiUnitTrUpdateAd);
+        return result;
+    }
+
+    /// <summary>
+    /// 批量启停全站推广广告
+    /// </summary>
+    public async Task<StatusAdApiUnitTrUpdateDataOperateResponse> StatusAdApiUnitTrUpdateDataOperateAsync(StatusAdApiUnitTrUpdateDataOperate statusAdApiUnitTrUpdateDataOperate)
+    {
+        var result = await PostAsync<StatusAdApiUnitTrUpdateDataOperate, StatusAdApiUnitTrUpdateDataOperateResponse>("pdd.ad.api.unit.tr.update.data.operate.status", statusAdApiUnitTrUpdateDataOperate);
+        return result;
+    }
+
+    /// <summary>
+    /// 更新全站推广日预算
+    /// </summary>
+    public async Task<CostAdApiUnitTrUpdateMaxResponse> CostAdApiUnitTrUpdateMaxAsync(CostAdApiUnitTrUpdateMax costAdApiUnitTrUpdateMax)
+    {
+        var result = await PostAsync<CostAdApiUnitTrUpdateMax, CostAdApiUnitTrUpdateMaxResponse>("pdd.ad.api.unit.tr.update.max.cost", costAdApiUnitTrUpdateMax);
+        return result;
+    }
+
+    /// <summary>
+    /// 更新全站推广成交出价
+    /// </summary>
+    public async Task<BidAdApiUnitTrUpdateOptimizationResponse> BidAdApiUnitTrUpdateOptimizationAsync(BidAdApiUnitTrUpdateOptimization bidAdApiUnitTrUpdateOptimization)
+    {
+        var result = await PostAsync<BidAdApiUnitTrUpdateOptimization, BidAdApiUnitTrUpdateOptimizationResponse>("pdd.ad.api.unit.tr.update.optimization.bid", bidAdApiUnitTrUpdateOptimization);
+        return result;
+    }
+
+    /// <summary>
+    /// 更新全站推广目标投产比
+    /// </summary>
+    public async Task<RoiAdApiUnitTrUpdateTargetResponse> RoiAdApiUnitTrUpdateTargetAsync(RoiAdApiUnitTrUpdateTarget roiAdApiUnitTrUpdateTarget)
+    {
+        var result = await PostAsync<RoiAdApiUnitTrUpdateTarget, RoiAdApiUnitTrUpdateTargetResponse>("pdd.ad.api.unit.tr.update.target.roi", roiAdApiUnitTrUpdateTarget);
         return result;
     }
 

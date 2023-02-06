@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Finance;
 using PddOpenSdk.Models.Response.Finance;
-
 namespace PddOpenSdk.Services.PddApi;
 public class FinanceApi : PddCommonApi
 {

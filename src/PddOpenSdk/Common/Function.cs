@@ -62,7 +62,7 @@ public class Function
         var sBuilder = new StringBuilder();
         for (var i = 0; i < data.Length; i++)
         {
-            sBuilder.Append(data[i].ToString("x2"));
+            _ = sBuilder.Append(data[i].ToString("x2"));
         }
         return sBuilder.ToString();
     }

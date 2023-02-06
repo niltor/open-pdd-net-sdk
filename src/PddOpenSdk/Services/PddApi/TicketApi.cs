@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Ticket;
 using PddOpenSdk.Models.Response.Ticket;
-
 namespace PddOpenSdk.Services.PddApi;
 public class TicketApi : PddCommonApi
 {

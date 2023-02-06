@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.OpenMsg;
 using PddOpenSdk.Models.Response.OpenMsg;
-
 namespace PddOpenSdk.Services.PddApi;
 public class OpenMsgApi : PddCommonApi
 {

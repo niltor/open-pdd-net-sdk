@@ -33,7 +33,7 @@ public partial class MsgOpenMsgServiceSend
     public long TemplateCode { get; set; }
 
     /// <summary>
-    /// 短信模板变量对应的实际值，JSON格式
+    /// 短信模板变量对应的实际值，JSON格式,示例："${param}","aaa"，注意${}符号勿遗漏
     /// </summary>
     [JsonPropertyName("template_param")]
     public Dictionary<string, object> TemplateParam { get; set; }

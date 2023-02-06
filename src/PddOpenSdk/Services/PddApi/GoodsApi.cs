@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Goods;
 using PddOpenSdk.Models.Response.Goods;
-
 namespace PddOpenSdk.Services.PddApi;
 public class GoodsApi : PddCommonApi
 {
@@ -243,6 +242,15 @@ public class GoodsApi : PddCommonApi
     }
 
     /// <summary>
+    /// 商品映射查询接口
+    /// </summary>
+    public async Task<RelationGoodsGetResponse> RelationGoodsGetAsync(RelationGoodsGet relationGoodsGet)
+    {
+        var result = await PostAsync<RelationGoodsGet, RelationGoodsGetResponse>("pdd.goods.get.relation", relationGoodsGet);
+        return result;
+    }
+
+    /// <summary>
     /// 商品图片上传接口
     /// </summary>
     public async Task<UploadGoodsImageResponse> UploadGoodsImageAsync(UploadGoodsImage uploadGoodsImage)
@@ -428,6 +436,15 @@ public class GoodsApi : PddCommonApi
     public async Task<UpdateGoodsQuantityResponse> UpdateGoodsQuantityAsync(UpdateGoodsQuantity updateGoodsQuantity)
     {
         var result = await PostAsync<UpdateGoodsQuantity, UpdateGoodsQuantityResponse>("pdd.goods.quantity.update", updateGoodsQuantity);
+        return result;
+    }
+
+    /// <summary>
+    /// 商品关联信息设置接口
+    /// </summary>
+    public async Task<SetGoodsRelationResponse> SetGoodsRelationAsync(SetGoodsRelation setGoodsRelation)
+    {
+        var result = await PostAsync<SetGoodsRelation, SetGoodsRelationResponse>("pdd.goods.relation.set", setGoodsRelation);
         return result;
     }
 

@@ -1,4 +1,4 @@
-﻿using MSDev.PddOpenSdk.Models;
+﻿using PddOpenSdk.Models;
 namespace PddOpenSdk.AspNetCore;
 /// <summary>
 /// 批多多服务

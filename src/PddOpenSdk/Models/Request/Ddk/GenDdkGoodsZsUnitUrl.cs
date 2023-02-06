@@ -9,6 +9,12 @@ public partial class GenDdkGoodsZsUnitUrl
     public string CustomParameters { get; set; }
 
     /// <summary>
+    /// 是否生成微信shortlink链接，仅支持单品，单个渠道每天生成的shortLink数量有限，请合理生成shortLink链接
+    /// </summary>
+    [JsonPropertyName("generate_short_link")]
+    public bool? GenerateShortLink { get; set; }
+
+    /// <summary>
     /// 渠道id
     /// </summary>
     [JsonPropertyName("pid")]

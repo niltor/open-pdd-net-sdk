@@ -65,6 +65,24 @@ public partial class GenerateDdkGoodsPromotionUrlResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("we_app_info")]
             public WeAppInfoResponse WeAppInfo { get; set; }
+
+            /// <summary>
+            /// 微信小程序码
+            /// </summary>
+            [JsonPropertyName("weixin_code")]
+            public string WeixinCode { get; set; }
+
+            /// <summary>
+            /// 微信ShortLink链接
+            /// </summary>
+            [JsonPropertyName("weixin_short_link")]
+            public string WeixinShortLink { get; set; }
+
+            /// <summary>
+            /// 商品推广分享图
+            /// </summary>
+            [JsonPropertyName("share_image_url")]
+            public string ShareImageUrl { get; set; }
             public partial class QqAppInfoResponse : PddResponseModel
             {
 

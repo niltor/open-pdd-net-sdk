@@ -3,10 +3,22 @@ public partial class MsgOpenMsgServiceSendExpress
 {
 
     /// <summary>
+    /// 业务请求唯一标识
+    /// </summary>
+    [JsonPropertyName("out_id")]
+    public string OutId { get; set; }
+
+    /// <summary>
     /// 短信签名名称
     /// </summary>
     [JsonPropertyName("sign_name")]
     public string SignName { get; set; }
+
+    /// <summary>
+    /// 上行短信扩展码
+    /// </summary>
+    [JsonPropertyName("sms_up_extend_code")]
+    public string SmsUpExtendCode { get; set; }
 
     /// <summary>
     /// 短信模板CODE
@@ -15,7 +27,7 @@ public partial class MsgOpenMsgServiceSendExpress
     public long TemplateCode { get; set; }
 
     /// <summary>
-    /// 短信模板变量JSON集合(与手机号对应)与按照手机号发短信一致key变量名 value变量值
+    /// 短信模板变量JSON集合(与手机号对应)与按照手机号发短信一致key变量名 value变量值,示例："${param}","aaa"，注意${}符号勿遗漏
     /// </summary>
     [JsonPropertyName("template_param_json")]
     public List<Dictionary<string, object>> TemplateParamJson { get; set; }
@@ -31,18 +43,6 @@ public partial class MsgOpenMsgServiceSendExpress
     /// </summary>
     [JsonPropertyName("wp_code")]
     public string WpCode { get; set; }
-
-    /// <summary>
-    /// 业务请求唯一标识
-    /// </summary>
-    [JsonPropertyName("out_id")]
-    public string OutId { get; set; }
-
-    /// <summary>
-    /// 上行短信扩展码
-    /// </summary>
-    [JsonPropertyName("sms_up_extend_code")]
-    public string SmsUpExtendCode { get; set; }
     public partial class TemplateParamJsonModel
     {
 

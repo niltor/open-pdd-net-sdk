@@ -111,6 +111,12 @@ public partial class GenerateDdkRpPromUrlResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("we_app_info")]
             public WeAppInfoResponse WeAppInfo { get; set; }
+
+            /// <summary>
+            /// 微信shortLink，该字段支持超红c端活动页、超红二合一、b端推品页，单个渠道每天生成的shortLink数量有限，请合理生成shortLink链接
+            /// </summary>
+            [JsonPropertyName("weixin_short_link")]
+            public string WeixinShortLink { get; set; }
             public partial class QqAppInfoResponse : PddResponseModel
             {
 

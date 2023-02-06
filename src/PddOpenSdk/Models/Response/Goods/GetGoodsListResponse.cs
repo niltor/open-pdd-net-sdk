@@ -128,6 +128,46 @@ public partial class GetGoodsListResponse : PddResponseModel
                 [JsonPropertyName("spec")]
                 public string Spec { get; set; }
 
+                /// <summary>
+                /// 规格信息
+                /// </summary>
+                [JsonPropertyName("spec_details")]
+                public List<SpecDetailsResponse> SpecDetails { get; set; }
+                public partial class SpecDetailsResponse : PddResponseModel
+                {
+
+                    /// <summary>
+                    /// 父规格id
+                    /// </summary>
+                    [JsonPropertyName("parent_id")]
+                    public long? ParentId { get; set; }
+
+                    /// <summary>
+                    /// 父规格名
+                    /// </summary>
+                    [JsonPropertyName("parent_name")]
+                    public string ParentName { get; set; }
+
+                    /// <summary>
+                    /// 子规格id
+                    /// </summary>
+                    [JsonPropertyName("spec_id")]
+                    public long? SpecId { get; set; }
+
+                    /// <summary>
+                    /// 子规格名称
+                    /// </summary>
+                    [JsonPropertyName("spec_name")]
+                    public string SpecName { get; set; }
+
+                    /// <summary>
+                    /// 规则备注
+                    /// </summary>
+                    [JsonPropertyName("spec_note")]
+                    public string SpecNote { get; set; }
+
+                }
+
             }
 
         }

@@ -68,11 +68,11 @@ public class PddCommonApi
         dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds());
         if (dic.Keys.Any(k => k == "type"))
         {
-            dic.Remove("type");
+            _ = dic.Remove("type");
         }
         if (dic.Keys.Any(k => k == "file_path"))
         {
-            dic.Remove("file_path");
+            _ = dic.Remove("file_path");
         }
         dic.Add("type", type);
         // 添加签名
@@ -151,7 +151,7 @@ public class PddCommonApi
 
         if (dic.Keys.Any(k => k == "type"))
         {
-            dic.Remove("type");
+            _ = dic.Remove("type");
         }
         dic.Add("type", type);
         // 添加签名
@@ -216,7 +216,7 @@ public class PddCommonApi
             {
                 dic[item] = JsonSerializer.Serialize(dic[item], JsonOptions);
             }
-            dic.TryGetValue(item, out var value);
+            _ = dic.TryGetValue(item, out var value);
             // 布尔值大写造成的签名错误
             if (value.ToString().ToLower().Equals("false"))
             {

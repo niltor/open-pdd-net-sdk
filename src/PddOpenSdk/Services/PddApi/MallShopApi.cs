@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.MallShop;
 using PddOpenSdk.Models.Response.MallShop;
-
 namespace PddOpenSdk.Services.PddApi;
 public class MallShopApi : PddCommonApi
 {

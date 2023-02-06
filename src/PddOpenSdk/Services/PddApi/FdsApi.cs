@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Fds;
 using PddOpenSdk.Models.Response.Fds;
-
 namespace PddOpenSdk.Services.PddApi;
 public class FdsApi : PddCommonApi
 {

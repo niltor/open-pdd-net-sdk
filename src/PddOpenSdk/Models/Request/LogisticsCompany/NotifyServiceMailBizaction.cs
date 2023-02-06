@@ -41,10 +41,28 @@ public partial class NotifyServiceMailBizaction
         public int? CheckPrice { get; set; }
 
         /// <summary>
+        /// 核价方式（当前实操为checkWeightPrice时必填）： weight:按照重量核价； volume：按照体积核价
+        /// </summary>
+        [JsonPropertyName("checkPriceType")]
+        public string CheckPriceType { get; set; }
+
+        /// <summary>
         /// 核重重量，单位克
         /// </summary>
         [JsonPropertyName("checkWeight")]
         public int? CheckWeight { get; set; }
+
+        /// <summary>
+        /// 最终服务商确认的收件人信息
+        /// </summary>
+        [JsonPropertyName("confirmReceiverInfo")]
+        public ConfirmReceiverInfoModel ConfirmReceiverInfo { get; set; }
+
+        /// <summary>
+        /// 最终服务商确认的寄件人信息
+        /// </summary>
+        [JsonPropertyName("confirmSenderInfo")]
+        public ConfirmSenderInfoModel ConfirmSenderInfo { get; set; }
 
         /// <summary>
         /// 改约结束时间- changeAppoint必填
@@ -77,6 +95,12 @@ public partial class NotifyServiceMailBizaction
         public int? FreightPrice { get; set; }
 
         /// <summary>
+        /// 高度（当前核价方式为volume时必填），单位是厘米
+        /// </summary>
+        [JsonPropertyName("height")]
+        public int? Height { get; set; }
+
+        /// <summary>
         /// 保费，单位分
         /// </summary>
         [JsonPropertyName("insurancePrice")]
@@ -87,6 +111,12 @@ public partial class NotifyServiceMailBizaction
         /// </summary>
         [JsonPropertyName("insuranceValue")]
         public int? InsuranceValue { get; set; }
+
+        /// <summary>
+        /// 长度（当前核价方式为volume时必填），单位是厘米
+        /// </summary>
+        [JsonPropertyName("length")]
+        public int? Length { get; set; }
 
         /// <summary>
         /// 运单号
@@ -173,16 +203,114 @@ public partial class NotifyServiceMailBizaction
         public string StartTime { get; set; }
 
         /// <summary>
-        /// 最终服务商确认的收件人信息
+        /// 宽度（当前核价方式为volume时必填），单位是厘米
         /// </summary>
-        [JsonPropertyName("confirmReceiverInfo")]
-        public ConfirmReceiverInfoModel ConfirmReceiverInfo { get; set; }
+        [JsonPropertyName("width")]
+        public int? Width { get; set; }
+        public partial class ConfirmReceiverInfoModel
+        {
 
-        /// <summary>
-        /// 最终服务商确认的寄件人信息
-        /// </summary>
-        [JsonPropertyName("confirmSenderInfo")]
-        public ConfirmSenderInfoModel ConfirmSenderInfo { get; set; }
+            /// <summary>
+            /// 详细地址
+            /// </summary>
+            [JsonPropertyName("addrDetail")]
+            public string AddrDetail { get; set; }
+
+            /// <summary>
+            /// 区名称
+            /// </summary>
+            [JsonPropertyName("areaName")]
+            public string AreaName { get; set; }
+
+            /// <summary>
+            /// 市名称
+            /// </summary>
+            [JsonPropertyName("cityName")]
+            public string CityName { get; set; }
+
+            /// <summary>
+            /// 联系人姓名
+            /// </summary>
+            [JsonPropertyName("contactName")]
+            public string ContactName { get; set; }
+
+            /// <summary>
+            /// 联系人手机号
+            /// </summary>
+            [JsonPropertyName("mobile")]
+            public string Mobile { get; set; }
+
+            /// <summary>
+            /// 省名称
+            /// </summary>
+            [JsonPropertyName("provName")]
+            public string ProvName { get; set; }
+
+            /// <summary>
+            /// 街道名称
+            /// </summary>
+            [JsonPropertyName("streetName")]
+            public string StreetName { get; set; }
+
+            /// <summary>
+            /// 联系人电话号码
+            /// </summary>
+            [JsonPropertyName("telephone")]
+            public string Telephone { get; set; }
+
+        }
+        public partial class ConfirmSenderInfoModel
+        {
+
+            /// <summary>
+            /// 详细地址
+            /// </summary>
+            [JsonPropertyName("addrDetail")]
+            public string AddrDetail { get; set; }
+
+            /// <summary>
+            /// 区名称
+            /// </summary>
+            [JsonPropertyName("areaName")]
+            public string AreaName { get; set; }
+
+            /// <summary>
+            /// 市名称
+            /// </summary>
+            [JsonPropertyName("cityName")]
+            public string CityName { get; set; }
+
+            /// <summary>
+            /// 联系人姓名
+            /// </summary>
+            [JsonPropertyName("contactName")]
+            public string ContactName { get; set; }
+
+            /// <summary>
+            /// 联系人手机号
+            /// </summary>
+            [JsonPropertyName("mobile")]
+            public string Mobile { get; set; }
+
+            /// <summary>
+            /// 省名称
+            /// </summary>
+            [JsonPropertyName("provName")]
+            public string ProvName { get; set; }
+
+            /// <summary>
+            /// 街道名称
+            /// </summary>
+            [JsonPropertyName("streetName")]
+            public string StreetName { get; set; }
+
+            /// <summary>
+            /// 联系人电话号码
+            /// </summary>
+            [JsonPropertyName("telephone")]
+            public string Telephone { get; set; }
+
+        }
         public partial class ModifyReceiverInfoModel
         {
 
@@ -233,110 +361,6 @@ public partial class NotifyServiceMailBizaction
             /// </summary>
             [JsonPropertyName("telephone")]
             public string Telephone { get; set; }
-
-        }
-        public partial class ConfirmReceiverInfoModel
-        {
-
-            /// <summary>
-            /// 联系人姓名
-            /// </summary>
-            [JsonPropertyName("contactName")]
-            public string ContactName { get; set; }
-
-            /// <summary>
-            /// 联系人手机号
-            /// </summary>
-            [JsonPropertyName("mobile")]
-            public string Mobile { get; set; }
-
-            /// <summary>
-            /// 联系人电话号码
-            /// </summary>
-            [JsonPropertyName("telephone")]
-            public string Telephone { get; set; }
-
-            /// <summary>
-            /// 省名称
-            /// </summary>
-            [JsonPropertyName("provName")]
-            public string ProvName { get; set; }
-
-            /// <summary>
-            /// 市名称
-            /// </summary>
-            [JsonPropertyName("cityName")]
-            public string CityName { get; set; }
-
-            /// <summary>
-            /// 区名称
-            /// </summary>
-            [JsonPropertyName("areaName")]
-            public string AreaName { get; set; }
-
-            /// <summary>
-            /// 街道名称
-            /// </summary>
-            [JsonPropertyName("streetName")]
-            public string StreetName { get; set; }
-
-            /// <summary>
-            /// 详细地址
-            /// </summary>
-            [JsonPropertyName("addrDetail")]
-            public string AddrDetail { get; set; }
-
-        }
-        public partial class ConfirmSenderInfoModel
-        {
-
-            /// <summary>
-            /// 联系人姓名
-            /// </summary>
-            [JsonPropertyName("contactName")]
-            public string ContactName { get; set; }
-
-            /// <summary>
-            /// 联系人手机号
-            /// </summary>
-            [JsonPropertyName("mobile")]
-            public string Mobile { get; set; }
-
-            /// <summary>
-            /// 联系人电话号码
-            /// </summary>
-            [JsonPropertyName("telephone")]
-            public string Telephone { get; set; }
-
-            /// <summary>
-            /// 省名称
-            /// </summary>
-            [JsonPropertyName("provName")]
-            public string ProvName { get; set; }
-
-            /// <summary>
-            /// 市名称
-            /// </summary>
-            [JsonPropertyName("cityName")]
-            public string CityName { get; set; }
-
-            /// <summary>
-            /// 区名称
-            /// </summary>
-            [JsonPropertyName("areaName")]
-            public string AreaName { get; set; }
-
-            /// <summary>
-            /// 街道名称
-            /// </summary>
-            [JsonPropertyName("streetName")]
-            public string StreetName { get; set; }
-
-            /// <summary>
-            /// 详细地址
-            /// </summary>
-            [JsonPropertyName("addrDetail")]
-            public string AddrDetail { get; set; }
 
         }
 

@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Pmc;
 using PddOpenSdk.Models.Response.Pmc;
-
 namespace PddOpenSdk.Services.PddApi;
 public class PmcApi : PddCommonApi
 {

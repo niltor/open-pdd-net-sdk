@@ -1,12 +1,56 @@
 
 using PddOpenSdk.Models.Request.WayBill;
 using PddOpenSdk.Models.Response.WayBill;
-
 namespace PddOpenSdk.Services.PddApi;
 public class WayBillApi : PddCommonApi
 {
     public WayBillApi() { }
     public WayBillApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
+
+    /// <summary>
+    /// 云打印
+    /// </summary>
+    public async Task<PrintCloudResponse> PrintCloudAsync(PrintCloud printCloud)
+    {
+        var result = await PostAsync<PrintCloud, PrintCloudResponse>("pdd.cloud.print", printCloud);
+        return result;
+    }
+
+    /// <summary>
+    /// 云打印任务查询
+    /// </summary>
+    public async Task<QueryCloudPrintTaskResponse> QueryCloudPrintTaskAsync(QueryCloudPrintTask queryCloudPrintTask)
+    {
+        var result = await PostAsync<QueryCloudPrintTask, QueryCloudPrintTaskResponse>("pdd.cloud.print.task.query", queryCloudPrintTask);
+        return result;
+    }
+
+    /// <summary>
+    /// 云打印验证码
+    /// </summary>
+    public async Task<CodeCloudPrintVerifyResponse> CodeCloudPrintVerifyAsync(CodeCloudPrintVerify codeCloudPrintVerify)
+    {
+        var result = await PostAsync<CodeCloudPrintVerify, CodeCloudPrintVerifyResponse>("pdd.cloud.print.verify.code", codeCloudPrintVerify);
+        return result;
+    }
+
+    /// <summary>
+    /// 云打印机绑定
+    /// </summary>
+    public async Task<BindCloudPrinterResponse> BindCloudPrinterAsync(BindCloudPrinter bindCloudPrinter)
+    {
+        var result = await PostAsync<BindCloudPrinter, BindCloudPrinterResponse>("pdd.cloud.printer.bind", bindCloudPrinter);
+        return result;
+    }
+
+    /// <summary>
+    /// 云打印机状态查询
+    /// </summary>
+    public async Task<QueryCloudPrinterStatusResponse> QueryCloudPrinterStatusAsync(QueryCloudPrinterStatus queryCloudPrinterStatus)
+    {
+        var result = await PostAsync<QueryCloudPrinterStatus, QueryCloudPrinterStatusResponse>("pdd.cloud.printer.status.query", queryCloudPrinterStatus);
+        return result;
+    }
 
     /// <summary>
     /// 生成打印机渲染命令（通过打印机命令打印）

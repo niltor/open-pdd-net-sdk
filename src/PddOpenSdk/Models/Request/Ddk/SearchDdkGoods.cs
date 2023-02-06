@@ -9,7 +9,7 @@ public partial class SearchDdkGoods
     public List<int?> ActivityTags { get; set; }
 
     /// <summary>
-    /// 屏蔽商品类目包：1-拼多多小程序屏蔽的类目&关键词;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药
+    /// 屏蔽商品类目包：1-拼多多小程序屏蔽的类目&关键词;2-虚拟类目;3-医疗器械;4-处方药;5-非处方药;6-冬奥元素相关商品
     /// </summary>
     [JsonPropertyName("block_cat_packages")]
     public List<int?> BlockCatPackages { get; set; }

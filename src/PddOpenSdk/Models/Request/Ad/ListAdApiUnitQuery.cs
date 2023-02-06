@@ -3,13 +3,13 @@ public partial class ListAdApiUnitQuery
 {
 
     /// <summary>
-    /// 报表数据开始日期
+    /// 报表数据开始日期 格式：yyyy-MM-dd HH:mm:ss
     /// </summary>
     [JsonPropertyName("beginDate")]
     public string BeginDate { get; set; }
 
     /// <summary>
-    /// 报表数据截止日期
+    /// 报表数据截止日期 格式：yyyy-MM-dd HH:mm:ss
     /// </summary>
     [JsonPropertyName("endDate")]
     public string EndDate { get; set; }

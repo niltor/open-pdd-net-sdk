@@ -3,7 +3,7 @@ public partial class GenerateDdkCmsPromUrl
 {
 
     /// <summary>
-    /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城"；不传值为默认商城
+    /// 0, "1.9包邮"；1, "今日爆款"； 2, "品牌清仓"； 4,"PC端专属商城(已下线，会生成默认商城链接)"；不传值为默认商城
     /// </summary>
     [JsonPropertyName("channel_type")]
     public int? ChannelType { get; set; }

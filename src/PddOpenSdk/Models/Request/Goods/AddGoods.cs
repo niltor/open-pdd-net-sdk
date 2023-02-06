@@ -391,7 +391,7 @@ public partial class AddGoods
     {
 
         /// <summary>
-        /// 组id，非销售属性不用传
+        /// 属性值分组ID，非销售属性不用传
         /// </summary>
         [JsonPropertyName("group_id")]
         public int? GroupId { get; set; }
@@ -409,7 +409,7 @@ public partial class AddGoods
         public string Note { get; set; }
 
         /// <summary>
-        /// 父属性id，非销售属性不用传
+        /// 父规格ID，非销售属性不用传
         /// </summary>
         [JsonPropertyName("parent_spec_id")]
         public long? ParentSpecId { get; set; }
@@ -421,7 +421,7 @@ public partial class AddGoods
         public long? RefPid { get; set; }
 
         /// <summary>
-        /// 属性id，非销售属性不用传
+        /// 规格ID，非销售属性不用传
         /// </summary>
         [JsonPropertyName("spec_id")]
         public long? SpecId { get; set; }

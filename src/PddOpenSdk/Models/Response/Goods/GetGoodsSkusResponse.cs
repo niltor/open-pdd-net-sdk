@@ -90,6 +90,12 @@ public partial class GetGoodsSkusResponse : PddResponseModel
             [JsonPropertyName("spec_name")]
             public string SpecName { get; set; }
 
+            /// <summary>
+            /// 规格备注
+            /// </summary>
+            [JsonPropertyName("spec_note")]
+            public string SpecNote { get; set; }
+
         }
 
     }

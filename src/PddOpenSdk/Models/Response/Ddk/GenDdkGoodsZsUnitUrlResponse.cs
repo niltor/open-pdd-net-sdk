@@ -58,6 +58,12 @@ public partial class GenDdkGoodsZsUnitUrlResponse : PddResponseModel
         [JsonPropertyName("url")]
         public string Url { get; set; }
 
+        /// <summary>
+        /// 微信shortlink链接（唤起微信小程序）
+        /// </summary>
+        [JsonPropertyName("weixin_short_link")]
+        public string WeixinShortLink { get; set; }
+
     }
 
 }

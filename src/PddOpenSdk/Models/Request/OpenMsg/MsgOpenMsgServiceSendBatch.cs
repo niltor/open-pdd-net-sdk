@@ -33,7 +33,7 @@ public partial class MsgOpenMsgServiceSendBatch
     public long TemplateCode { get; set; }
 
     /// <summary>
-    /// 短信模板变量JSON集合(与手机号对应)
+    /// 短信模板变量JSON集合(与手机号对应),示例："${param}","aaa"，注意${}符号勿遗漏
     /// </summary>
     [JsonPropertyName("template_param_json")]
     public List<Dictionary<string, object>> TemplateParamJson { get; set; }

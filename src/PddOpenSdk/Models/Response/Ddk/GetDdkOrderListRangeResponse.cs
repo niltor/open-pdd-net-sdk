@@ -37,6 +37,12 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public long? AuthDuoId { get; set; }
 
             /// <summary>
+            /// 预判断是否为代购订单，-1（默认）表示未出结果，0表示预判不是代购订单，1表示代购订单，具体请以最后审核状态为准
+            /// </summary>
+            [JsonPropertyName("bandan_risk_consult")]
+            public int? BandanRiskConsult { get; set; }
+
+            /// <summary>
             /// 结算批次号
             /// </summary>
             [JsonPropertyName("batch_no")]
@@ -67,7 +73,7 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public string CustomParameters { get; set; }
 
             /// <summary>
-            /// 订单审核失败原因
+            /// 订单审核失败/惩罚原因
             /// </summary>
             [JsonPropertyName("fail_reason")]
             public string FailReason { get; set; }
@@ -307,6 +313,12 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             public int? SubsidyDuoAmountTenMillion { get; set; }
 
             /// <summary>
+            /// 补贴订单备注
+            /// </summary>
+            [JsonPropertyName("subsidy_order_remark")]
+            public string SubsidyOrderRemark { get; set; }
+
+            /// <summary>
             /// 订单补贴类型：0-非补贴订单，1-千万补贴，2-社群补贴，3-多多星选，4-品牌优选，5-千万神券
             /// </summary>
             [JsonPropertyName("subsidy_type")]
@@ -323,12 +335,6 @@ public partial class GetDdkOrderListRangeResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("zs_duo_id")]
             public long? ZsDuoId { get; set; }
-
-            /// <summary>
-            /// 补贴订单备注
-            /// </summary>
-            [JsonPropertyName("subsidy_order_remark")]
-            public string SubsidyOrderRemark { get; set; }
 
         }
 

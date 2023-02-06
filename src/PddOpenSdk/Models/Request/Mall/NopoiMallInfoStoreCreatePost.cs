@@ -3,13 +3,13 @@ public partial class NopoiMallInfoStoreCreatePost
 {
 
     /// <summary>
-    /// 门店营业状态
+    /// 门店营业状态（0:营业中 1:暂停营业）
     /// </summary>
     [JsonPropertyName("business_status")]
     public int BusinessStatus { get; set; }
 
     /// <summary>
-    /// 一周营业时间
+    /// 一周营业时间，例：[1,2,3,4,5,6,7]
     /// </summary>
     [JsonPropertyName("business_week_list")]
     public List<int> BusinessWeekList { get; set; }
@@ -27,7 +27,7 @@ public partial class NopoiMallInfoStoreCreatePost
     public string District { get; set; }
 
     /// <summary>
-    /// 结束营业时间
+    /// 结束营业时间，例："19:00"
     /// </summary>
     [JsonPropertyName("end_business_hour")]
     public string EndBusinessHour { get; set; }
@@ -51,7 +51,7 @@ public partial class NopoiMallInfoStoreCreatePost
     public string Province { get; set; }
 
     /// <summary>
-    /// 起始营业时间
+    /// 起始营业时间，例："07:00"
     /// </summary>
     [JsonPropertyName("start_business_hour")]
     public string StartBusinessHour { get; set; }

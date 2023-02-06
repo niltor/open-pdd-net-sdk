@@ -406,6 +406,36 @@ public partial class GetGoodsDetailResponse : PddResponseModel
             [JsonPropertyName("vvalue")]
             public string Vvalue { get; set; }
 
+            /// <summary>
+            /// 属性值分组ID
+            /// </summary>
+            [JsonPropertyName("group_id")]
+            public int? GroupId { get; set; }
+
+            /// <summary>
+            /// 图片URL
+            /// </summary>
+            [JsonPropertyName("img_url")]
+            public string ImgUrl { get; set; }
+
+            /// <summary>
+            /// 备注
+            /// </summary>
+            [JsonPropertyName("note")]
+            public string Note { get; set; }
+
+            /// <summary>
+            /// 父规格ID
+            /// </summary>
+            [JsonPropertyName("parent_spec_id")]
+            public long? ParentSpecId { get; set; }
+
+            /// <summary>
+            /// 规格ID
+            /// </summary>
+            [JsonPropertyName("spec_id")]
+            public long? SpecId { get; set; }
+
         }
         public partial class GoodsTradeAttrResponse : PddResponseModel
         {
@@ -663,6 +693,12 @@ public partial class GetGoodsDetailResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("spec_name")]
                 public string SpecName { get; set; }
+
+                /// <summary>
+                /// 规格备注
+                /// </summary>
+                [JsonPropertyName("spec_note")]
+                public string SpecNote { get; set; }
 
             }
 

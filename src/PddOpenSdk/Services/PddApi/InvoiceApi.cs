@@ -1,7 +1,6 @@
 
 using PddOpenSdk.Models.Request.Invoice;
 using PddOpenSdk.Models.Response.Invoice;
-
 namespace PddOpenSdk.Services.PddApi;
 public class InvoiceApi : PddCommonApi
 {

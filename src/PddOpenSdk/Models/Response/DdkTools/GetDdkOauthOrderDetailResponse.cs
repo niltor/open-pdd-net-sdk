@@ -53,7 +53,7 @@ public partial class GetDdkOauthOrderDetailResponse : PddResponseModel
         public string CustomParameters { get; set; }
 
         /// <summary>
-        /// 订单审核失败原因
+        /// 订单审核失败/惩罚原因
         /// </summary>
         [JsonPropertyName("fail_reason")]
         public string FailReason { get; set; }
@@ -327,6 +327,12 @@ public partial class GetDdkOauthOrderDetailResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("zs_duo_id")]
         public long? ZsDuoId { get; set; }
+
+        /// <summary>
+        /// 预判断是否为代购订单，-1（默认）表示未出结果，0表示预判不是代购订单，1表示代购订单，具体请以最后审核状态为准
+        /// </summary>
+        [JsonPropertyName("bandan_risk_consult")]
+        public int? BandanRiskConsult { get; set; }
 
     }
 
