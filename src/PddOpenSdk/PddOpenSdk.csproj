@@ -31,7 +31,7 @@
 		<SignAssembly>False</SignAssembly>
 		<Title>PddOpenSdk</Title>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<PackageReadmeFile>README.MD</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\logo.jpg">
@@ -40,9 +40,10 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-	  <None Update="README.MD">
+	  <None Include="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

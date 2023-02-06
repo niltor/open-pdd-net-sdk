@@ -28,7 +28,7 @@
 		<NoWarn>1701;1702;1591</NoWarn>
 		<Title>PddOpenSdk.AspNetCore</Title>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<PackageReadmeFile>README.MD</PackageReadmeFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
@@ -62,10 +62,13 @@
 			<Pack>True</Pack>
 			<PackagePath></PackagePath>
 		</None>
-		<None Include="..\PddOpenSdk\README.MD">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
