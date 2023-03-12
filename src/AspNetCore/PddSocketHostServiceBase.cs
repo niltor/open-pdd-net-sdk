@@ -17,10 +17,7 @@ public class PddSocketHostServiceBase : IHostedService, IDisposable
 
     public int HeartBeatSeconds { get; set; } = 5;
     public IServiceProvider Services { get; }
-    public PddSocketHostServiceBase(
-        ILogger<PddSocketHostServiceBase> logger,
-        IServiceProvider services,
-        IOptions<PddOptions> options)
+    public PddSocketHostServiceBase( ILogger<PddSocketHostServiceBase> logger, IServiceProvider services, IOptions<PddOptions> options)
     {
         _logger = logger;
         Services = services;
