@@ -6,6 +6,8 @@ public class AccessTokenResponseModel
     public string[] Scope { get; set; }
     [JsonPropertyName("access_token")]
     public string AccessToken { get; set; }
+    [JsonPropertyName("expires_at")]
+    public long ExpiresAt { get; set; }
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
     [JsonPropertyName("refresh_token")]
