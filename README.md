@@ -1,5 +1,6 @@
 # 说明文档
-[![Build status](https://dev.azure.com/geethinOrg/pdd-open-net-sdk/_apis/build/status/pdd-open-net-sdk-CI)](https://dev.azure.com/geethinOrg/pdd-open-net-sdk/_build/latest?definitionId=4)
+[![publish](https://github.com/niltor/open-pdd-net-sdk/actions/workflows/publish.yml/badge.svg?branch=nuget)](https://github.com/niltor/open-pdd-net-sdk/actions/workflows/publish.yml)
+
 [![NuGet](https://img.shields.io/nuget/v/MSDev.PddOpenSdk.AspNetCore.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
 [![NuGet](https://img.shields.io/nuget/dt/MSDev.PddOpenSdk.AspNetCore.svg)](https://www.nuget.org/packages/MSDev.PddOpenSdk.AspNetCore/)
 
