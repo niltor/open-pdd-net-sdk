@@ -31,6 +31,7 @@ jobs:
         
     - name: Pack
       run: |
+        pwd
         dotnet pack .\src\PddOpenSdk\PddOpenSdk.csproj -o ./pack
         dotnet pack .\src\AspNetCore\PddOpenSdk.AspNetCore.csproj -o ./pack
         
