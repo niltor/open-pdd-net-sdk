@@ -26,16 +26,16 @@ jobs:
       
     - name: Build
       run: |
-        dotnet build .\src\PddOpenSdk\PddOpenSdk.csproj --no-restore
-        dotnet build .\src\AspNetCore\PddOpenSdk.AspNetCore.csproj --no-restore
+        dotnet build ./src/PddOpenSdk/PddOpenSdk.csproj --no-restore
+        dotnet build ./src/AspNetCore/PddOpenSdk.AspNetCore.csproj --no-restore
         
     - name: Pack
       run: |
-        dotnet pack .\src\PddOpenSdk\PddOpenSdk.csproj -o ./pack
-        dotnet pack .\src\AspNetCore\PddOpenSdk.AspNetCore.csproj -o ./pack
+        dotnet pack ./src/PddOpenSdk/PddOpenSdk.csproj -o ./pack
+        dotnet pack ./src/AspNetCore/PddOpenSdk.AspNetCore.csproj -o ./pack
         
     - name: Publish to Nuget
       run: |
-        dotnet nuget push .\pack\ -k ${vars.NUGET_KEY} --source https://api.nuget.org/v3/index.json
-        dotnet nuget push .\pack\ -k ${vars.PAT} --source https://nuget.pkg.github.com/niltor/index.json
+        dotnet nuget push ./pack/ -k ${vars.NUGET_KEY} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push ./pack/ -k ${vars.PAT} --source https://nuget.pkg.github.com/niltor/index.json
         
