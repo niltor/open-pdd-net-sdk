@@ -36,6 +36,6 @@ jobs:
         
     - name: Publish to Nuget
       run: |
-        dotnet nuget push ./pack/ -k ${vars.NUGET_KEY} --source https://api.nuget.org/v3/index.json
-        dotnet nuget push ./pack/ -k ${vars.PAT} --source https://nuget.pkg.github.com/niltor/index.json
+        dotnet nuget push ./pack/ -k ${{ vars.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
+        dotnet nuget push ./pack/ -k ${{ vars.PAT }} --source https://nuget.pkg.github.com/niltor/index.json
         
