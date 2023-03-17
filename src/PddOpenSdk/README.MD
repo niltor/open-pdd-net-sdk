@@ -1,6 +1,6 @@
 # PddOpenSdk 核心类库使用
 
-支持 `NET6.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+支持 `NET6.0+` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 ## 使用示例:
 最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/PddOpenSdk/ConsoleSample)。

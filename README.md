@@ -8,16 +8,17 @@ open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
 ## **特别说明**
 
-- 遇到任何问题可通过底部联系方式反馈，作者会第一时间进行处理！
-- `2.2.0 `版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0。
+- `2.2.0 `版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0.
 - `2.3.0` 提供消息服务支持，核心类库不再支持 `.net framework`.
-- `6.0 `版本开始，目标框架统一调整到`.net6.0`。
+- `6.0 `版本开始，目标框架统一调整到`.NET6`.
+- `7.0 `版本，同时支持`.NET6` 和`.NET7`.
+
 ## 更新说明
 更新文档已经迁移到[`CHANGELOG.md`](https://github.com/niltor/open-pdd-net-sdk/blob/v6/docs/CHANGELOG.md)。
 
 ## 类库说明
 
-核心类库 `MSDev.PddOpenSdk` 支持基于 `.net6.0` 的项目，**C#10.0**。
+核心类库 `MSDev.PddOpenSdk` 支持基于 `.NET6.0+` 的项目，**C#10.0**。
 控制台、客户端等类型项目可使用。
 
 ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接通过注入服务的方式使用。
@@ -36,7 +37,7 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 
 适用于客户端、控制台等程序，Web应用请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`。
 
-支持 `NET6.0` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+支持 `NET6.0+` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
 ### 使用示例:
 最新[示例代码](https://github.com/niltor/open-pdd-net-sdk/tree/v6/src/ConsoleSample)。
