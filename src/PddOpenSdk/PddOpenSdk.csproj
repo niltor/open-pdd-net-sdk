@@ -7,7 +7,7 @@
 		<Authors>NilTor,AterDev</Authors>
 		<Company>Geethin</Company>
 		<Description>拼多多开放平台.NET SDK核心类库</Description>
-		<PackageReleaseNotes>已更新同步到最新(202302)，添加对.net7 的支持</PackageReleaseNotes>
+		<PackageReleaseNotes>同步官方接口到最新(202306)</PackageReleaseNotes>
 		<PackageProjectUrl>https://github.com/niltor/open-pdd-net-sdk</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/niltor/open-pdd-net-sdk</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
@@ -17,7 +17,7 @@
 		<FileVersion>0.1.0.0</FileVersion>
 		<PackageLicenseUrl></PackageLicenseUrl>
 		<PackageIcon>logo.jpg</PackageIcon>
-		<Version>7.0.0</Version>
+		<Version>7.0.1</Version>
 		<PackageId>MSDev.PddOpenSdk</PackageId>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<Copyright />

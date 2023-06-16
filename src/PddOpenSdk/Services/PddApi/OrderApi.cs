@@ -8,83 +8,137 @@ public class OrderApi : PddCommonApi
     public OrderApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
     /// <summary>
-    /// 退货入库
+    /// erp打单信息同步
     /// </summary>
-    public async Task<UpdateNextoneLogisticsWarehouseResponse> UpdateNextoneLogisticsWarehouseAsync(UpdateNextoneLogisticsWarehouse updateNextoneLogisticsWarehouse)
+    public async Task<SyncErpOrderResponse> SyncErpOrderAsync(SyncErpOrder syncErpOrder)
     {
-        var result = await PostAsync<UpdateNextoneLogisticsWarehouse, UpdateNextoneLogisticsWarehouseResponse>("pdd.nextone.logistics.warehouse.update", updateNextoneLogisticsWarehouse);
+        var result = await PostAsync<SyncErpOrder, SyncErpOrderResponse>("pdd.erp.order.sync", syncErpOrder);
         return result;
     }
 
     /// <summary>
-    /// 取消发货
+    /// 跨境全托管发货单详情接口
     /// </summary>
-    public async Task<CancelRdcPddgeniusSendgoodsResponse> CancelRdcPddgeniusSendgoodsAsync(CancelRdcPddgeniusSendgoods cancelRdcPddgeniusSendgoods)
+    public async Task<GetFulfillmentInformationResponse> GetFulfillmentInformationAsync(GetFulfillmentInformation getFulfillmentInformation)
     {
-        var result = await PostAsync<CancelRdcPddgeniusSendgoods, CancelRdcPddgeniusSendgoodsResponse>("pdd.rdc.pddgenius.sendgoods.cancel", cancelRdcPddgeniusSendgoods);
+        var result = await PostAsync<GetFulfillmentInformation, GetFulfillmentInformationResponse>("pdd.fulfillment.information.get", getFulfillmentInformation);
         return result;
     }
 
     /// <summary>
-    /// 获取商家退货地址库
+    /// 跨境全托管发货单列表查询接口（根据成交时间）
     /// </summary>
-    public async Task<GetRefundAddressListResponse> GetRefundAddressListAsync(GetRefundAddressList getRefundAddressList)
+    public async Task<GetFulfillmentListResponse> GetFulfillmentListAsync(GetFulfillmentList getFulfillmentList)
     {
-        var result = await PostAsync<GetRefundAddressList, GetRefundAddressListResponse>("pdd.refund.address.list.get", getRefundAddressList);
+        var result = await PostAsync<GetFulfillmentList, GetFulfillmentListResponse>("pdd.fulfillment.list.get", getFulfillmentList);
         return result;
     }
 
     /// <summary>
-    /// 同意退款
+    /// 跨境全托管发货单增量接口
     /// </summary>
-    public async Task<AgreeRefundResponse> AgreeRefundAsync(AgreeRefund agreeRefund)
+    public async Task<GetFulfillmentListIncrementResponse> GetFulfillmentListIncrementAsync(GetFulfillmentListIncrement getFulfillmentListIncrement)
     {
-        var result = await PostAsync<AgreeRefund, AgreeRefundResponse>("pdd.refund.agree", agreeRefund);
+        var result = await PostAsync<GetFulfillmentListIncrement, GetFulfillmentListIncrementResponse>("pdd.fulfillment.list.increment.get", getFulfillmentListIncrement);
         return result;
     }
 
     /// <summary>
-    /// 商家换货发货
+    /// 订单基础信息列表查询接口（根据成交时间）
     /// </summary>
-    public async Task<ShippingRefundExchangeResponse> ShippingRefundExchangeAsync(ShippingRefundExchange shippingRefundExchange)
+    public async Task<GetOrderBasicListResponse> GetOrderBasicListAsync(GetOrderBasicList getOrderBasicList)
     {
-        var result = await PostAsync<ShippingRefundExchange, ShippingRefundExchangeResponse>("pdd.refund.exchange.shipping", shippingRefundExchange);
+        var result = await PostAsync<GetOrderBasicList, GetOrderBasicListResponse>("pdd.order.basic.list.get", getOrderBasicList);
         return result;
     }
 
     /// <summary>
-    /// 售后单详情接口
+    /// 订单详情
     /// </summary>
-    public async Task<GetRefundInformationResponse> GetRefundInformationAsync(GetRefundInformation getRefundInformation)
+    public async Task<GetOrderInformationResponse> GetOrderInformationAsync(GetOrderInformation getOrderInformation)
     {
-        var result = await PostAsync<GetRefundInformation, GetRefundInformationResponse>("pdd.refund.information.get", getRefundInformation);
+        var result = await PostAsync<GetOrderInformation, GetOrderInformationResponse>("pdd.order.information.get", getOrderInformation);
         return result;
     }
 
     /// <summary>
-    /// 售后列表接口
+    /// 订单列表查询接口（根据成交时间）
     /// </summary>
-    public async Task<GetRefundListIncrementResponse> GetRefundListIncrementAsync(GetRefundListIncrement getRefundListIncrement)
+    public async Task<GetOrderListResponse> GetOrderListAsync(GetOrderList getOrderList)
     {
-        var result = await PostAsync<GetRefundListIncrement, GetRefundListIncrementResponse>("pdd.refund.list.increment.get", getRefundListIncrement);
+        var result = await PostAsync<GetOrderList, GetOrderListResponse>("pdd.order.list.get", getOrderList);
         return result;
     }
 
     /// <summary>
-    /// 商家售后同意退货
+    /// 编辑商家订单备注
     /// </summary>
-    public async Task<AgreeRefundReturngoodsResponse> AgreeRefundReturngoodsAsync(AgreeRefundReturngoods agreeRefundReturngoods)
+    public async Task<UpdateOrderNoteResponse> UpdateOrderNoteAsync(UpdateOrderNote updateOrderNote)
     {
-        var result = await PostAsync<AgreeRefundReturngoods, AgreeRefundReturngoodsResponse>("pdd.refund.returngoods.agree", agreeRefundReturngoods);
+        var result = await PostAsync<UpdateOrderNote, UpdateOrderNoteResponse>("pdd.order.note.update", updateOrderNote);
         return result;
     }
 
     /// <summary>
-    /// 售后校验接口
+    /// 订单增量接口
     /// </summary>
-    public async Task<CheckRefundStatusResponse> CheckRefundStatusAsync(CheckRefundStatus checkRefundStatus)
+    public async Task<GetOrderNumberListIncrementResponse> GetOrderNumberListIncrementAsync(GetOrderNumberListIncrement getOrderNumberListIncrement)
     {
-        var result = await PostAsync<CheckRefundStatus, CheckRefundStatusResponse>("pdd.refund.status.check", checkRefundStatus);
+        var result = await PostAsync<GetOrderNumberListIncrement, GetOrderNumberListIncrementResponse>("pdd.order.number.list.increment.get", getOrderNumberListIncrement);
+        return result;
+    }
+
+    /// <summary>
+    /// 查询订单承诺信息
+    /// </summary>
+    public async Task<GetOrderPromiseInfoResponse> GetOrderPromiseInfoAsync(GetOrderPromiseInfo getOrderPromiseInfo)
+    {
+        var result = await PostAsync<GetOrderPromiseInfo, GetOrderPromiseInfoResponse>("pdd.order.promise.info.get", getOrderPromiseInfo);
+        return result;
+    }
+
+    /// <summary>
+    /// 订单状态
+    /// </summary>
+    public async Task<GetOrderStatusResponse> GetOrderStatusAsync(GetOrderStatus getOrderStatus)
+    {
+        var result = await PostAsync<GetOrderStatus, GetOrderStatusResponse>("pdd.order.status.get", getOrderStatus);
+        return result;
+    }
+
+    /// <summary>
+    /// 修改订单收件地址接口
+    /// </summary>
+    public async Task<AddressOrderUpdateResponse> AddressOrderUpdateAsync(AddressOrderUpdate addressOrderUpdate)
+    {
+        var result = await PostAsync<AddressOrderUpdate, AddressOrderUpdateResponse>("pdd.order.update.address", addressOrderUpdate);
+        return result;
+    }
+
+    /// <summary>
+    /// 订单额外运单信息上传
+    /// </summary>
+    public async Task<LogisticsOrderUploadExtraResponse> LogisticsOrderUploadExtraAsync(LogisticsOrderUploadExtra logisticsOrderUploadExtra)
+    {
+        var result = await PostAsync<LogisticsOrderUploadExtra, LogisticsOrderUploadExtraResponse>("pdd.order.upload.extra.logistics", logisticsOrderUploadExtra);
+        return result;
+    }
+
+    /// <summary>
+    /// 订单关联运单信息上传
+    /// </summary>
+    public async Task<LogisticsOrderUploadRelationResponse> LogisticsOrderUploadRelationAsync(LogisticsOrderUploadRelation logisticsOrderUploadRelation)
+    {
+        var result = await PostAsync<LogisticsOrderUploadRelation, LogisticsOrderUploadRelationResponse>("pdd.order.upload.relation.logistics", logisticsOrderUploadRelation);
+        return result;
+    }
+
+    /// <summary>
+    /// 虚拟业务信息查询接口
+    /// </summary>
+    public async Task<GetOrderVirtualInformationResponse> GetOrderVirtualInformationAsync(GetOrderVirtualInformation getOrderVirtualInformation)
+    {
+        var result = await PostAsync<GetOrderVirtualInformation, GetOrderVirtualInformationResponse>("pdd.order.virtual.information.get", getOrderVirtualInformation);
         return result;
     }
 

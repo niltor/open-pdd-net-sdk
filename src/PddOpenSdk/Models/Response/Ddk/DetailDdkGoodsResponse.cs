@@ -445,6 +445,12 @@ public partial class DetailDdkGoodsResponse : PddResponseModel
                 public int? IsOnsale { get; set; }
 
                 /// <summary>
+                /// 进宝算价结果，单位分
+                /// </summary>
+                [JsonPropertyName("jinbao_goods_price")]
+                public long? JinbaoGoodsPrice { get; set; }
+
+                /// <summary>
                 /// 最小成团价，单位分
                 /// </summary>
                 [JsonPropertyName("min_group_price")]

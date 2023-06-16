@@ -44,6 +44,15 @@ public class WayBillApi : PddCommonApi
     }
 
     /// <summary>
+    /// 云打印机设置
+    /// </summary>
+    public async Task<SettingCloudPrinterResponse> SettingCloudPrinterAsync(SettingCloudPrinter settingCloudPrinter)
+    {
+        var result = await PostAsync<SettingCloudPrinter, SettingCloudPrinterResponse>("pdd.cloud.printer.setting", settingCloudPrinter);
+        return result;
+    }
+
+    /// <summary>
     /// 云打印机状态查询
     /// </summary>
     public async Task<QueryCloudPrinterStatusResponse> QueryCloudPrinterStatusAsync(QueryCloudPrinterStatus queryCloudPrinterStatus)
@@ -53,29 +62,11 @@ public class WayBillApi : PddCommonApi
     }
 
     /// <summary>
-    /// 生成打印机渲染命令（通过打印机命令打印）
-    /// </summary>
-    public async Task<RenderCloudprintCmdprintResponse> RenderCloudprintCmdprintAsync(RenderCloudprintCmdprint renderCloudprintCmdprint)
-    {
-        var result = await PostAsync<RenderCloudprintCmdprint, RenderCloudprintCmdprintResponse>("pdd.cloudprint.cmdprint.render", renderCloudprintCmdprint);
-        return result;
-    }
-
-    /// <summary>
     /// 获取商家的自定义区模板信息
     /// </summary>
     public async Task<GetCloudprintCustomaresResponse> GetCloudprintCustomaresAsync(GetCloudprintCustomares getCloudprintCustomares)
     {
         var result = await PostAsync<GetCloudprintCustomares, GetCloudprintCustomaresResponse>("pdd.cloudprint.customares.get", getCloudprintCustomares);
-        return result;
-    }
-
-    /// <summary>
-    /// 获取所有已支持便携式打印机
-    /// </summary>
-    public async Task<GetCloudprintPortableprinterResponse> GetCloudprintPortableprinterAsync(GetCloudprintPortableprinter getCloudprintPortableprinter)
-    {
-        var result = await PostAsync<GetCloudprintPortableprinter, GetCloudprintPortableprinterResponse>("pdd.cloudprint.portableprinter.get", getCloudprintPortableprinter);
         return result;
     }
 
