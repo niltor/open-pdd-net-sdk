@@ -11,13 +11,13 @@ public partial class GenDdkGoodsZsUnitUrlResponse : PddResponseModel
     {
 
         /// <summary>
-        /// 推广短链接（可唤起拼多多app）
+        /// 对应出参mobile_url的短链接，与mobile_url功能一致
         /// </summary>
         [JsonPropertyName("mobile_short_url")]
         public string MobileShortUrl { get; set; }
 
         /// <summary>
-        /// 推广长链接（唤起拼多多app）
+        /// 普通长链，微信环境下进入领券页点领券拉起小程序，浏览器环境下直接拉起APP，未安装拼多多APP时落地页点领券拉起登录页
         /// </summary>
         [JsonPropertyName("mobile_url")]
         public string MobileUrl { get; set; }
@@ -47,19 +47,19 @@ public partial class GenDdkGoodsZsUnitUrlResponse : PddResponseModel
         public string MultiGroupUrl { get; set; }
 
         /// <summary>
-        /// 对应出参url的短链接，与url功能一致。
+        /// 对应出参url的短链接，与url功能一致
         /// </summary>
         [JsonPropertyName("short_url")]
         public string ShortUrl { get; set; }
 
         /// <summary>
-        /// 普通推广长链接，唤起H5页面
+        /// 普通长链。微信环境下进入领券页点领券拉起小程序，浏览器环境下优先拉起微信小程序
         /// </summary>
         [JsonPropertyName("url")]
         public string Url { get; set; }
 
         /// <summary>
-        /// 微信shortlink链接（唤起微信小程序）
+        /// 小程序短链，点击可直接唤起微信小程序
         /// </summary>
         [JsonPropertyName("weixin_short_link")]
         public string WeixinShortLink { get; set; }

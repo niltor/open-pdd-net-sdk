@@ -610,4 +610,13 @@ public class GoodsApi : PddCommonApi
         return result;
     }
 
+    /// <summary>
+    /// 跨境全托管商品标签码
+    /// </summary>
+    public async Task<CodeSelectGoodsLabelResponse> CodeSelectGoodsLabelAsync(CodeSelectGoodsLabel codeSelectGoodsLabel)
+    {
+        var result = await PostAsync<CodeSelectGoodsLabel, CodeSelectGoodsLabelResponse>("pdd.select.goods.label.code", codeSelectGoodsLabel);
+        return result;
+    }
+
 }

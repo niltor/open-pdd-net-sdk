@@ -15,7 +15,7 @@ public partial class GenerateDdkGoodsPromotionUrl
     public string CashGiftName { get; set; }
 
     /// <summary>
-    /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为：  {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。（如果使用GET请求，请使用URLEncode处理参数）
+    /// 自定义参数，为链接打上自定义标签；自定义参数最长限制64个字节；格式为： {"uid":"11111","sid":"22222"} ，其中 uid 用户唯一标识，可自行加密后传入，每个用户仅且对应一个标识，必填； sid 上下文信息标识，例如sessionId等，非必填。该json字符串中也可以加入其他自定义的key。若进行cid投放，生链的时候不填充custom_parameters，后续在推广前原始链接上拼接custom_parameters。（如果使用GET请求，请使用URLEncode处理参数）
     /// </summary>
     [JsonPropertyName("custom_parameters")]
     public string CustomParameters { get; set; }
@@ -43,6 +43,12 @@ public partial class GenerateDdkGoodsPromotionUrl
     /// </summary>
     [JsonPropertyName("generate_schema_url")]
     public bool? GenerateSchemaUrl { get; set; }
+
+    /// <summary>
+    /// 是否生成商品推广分享图，仅支持单个商品
+    /// </summary>
+    [JsonPropertyName("generate_share_image")]
+    public bool? GenerateShareImage { get; set; }
 
     /// <summary>
     /// 获取微信ShortLink链接，仅支持单个商品，单个渠道每天生成的shortLink数量有限，请合理生成shortLink链接
@@ -103,12 +109,6 @@ public partial class GenerateDdkGoodsPromotionUrl
     /// </summary>
     [JsonPropertyName("zs_duo_id")]
     public long? ZsDuoId { get; set; }
-
-    /// <summary>
-    /// 是否生成商品推广分享图，仅支持单个商品
-    /// </summary>
-    [JsonPropertyName("generate_share_image")]
-    public bool? GenerateShareImage { get; set; }
 
 }
 

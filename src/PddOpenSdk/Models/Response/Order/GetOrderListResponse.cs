@@ -121,6 +121,12 @@ public partial class GetOrderListResponse : PddResponseModel
             public string ConfirmTime { get; set; }
 
             /// <summary>
+            /// 集运信息
+            /// </summary>
+            [JsonPropertyName("consolidate_info")]
+            public ConsolidateInfoResponse ConsolidateInfo { get; set; }
+
+            /// <summary>
             /// 国家或地区
             /// </summary>
             [JsonPropertyName("country")]
@@ -313,7 +319,7 @@ public partial class GetOrderListResponse : PddResponseModel
             public int? OrderStatus { get; set; }
 
             /// <summary>
-            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟，same_city_distribution=同城配送，has_subsidy_postage=补贴运费红包，has_sf_express_service=顺丰加价，community_group=小区团购，has_ship_additional=加运费发顺丰，ship_additional_order=加运费补差价订单，conso_order=集运订单
+            /// 订单标签列表，no_trace_delivery=无痕发货，only_support_replace=只换不修，duoduo_wholesale=多多批发，return_freight_payer=退货包运费，free_sf=顺丰包邮，support_nationwide_warranty=全国联保，self_contained=门店自提，delivery_one_day=当日发货，oversea_tracing=全球购溯源，distributional_sale=分销订单，open_in_festival=不打烊，region_black_delay_shipping=发货时间可延迟，same_city_distribution=同城配送，has_subsidy_postage=补贴运费红包，has_sf_express_service=顺丰加价，community_group=小区团购，has_ship_additional=加运费发顺丰，ship_additional_order=加运费补差价订单，conso_order=集运订单，allergy_refund=过敏包退，professional_appraisal=专业鉴定，ship_hold=暂停发货
             /// </summary>
             [JsonPropertyName("order_tag_list")]
             public List<OrderTagListResponse> OrderTagList { get; set; }
@@ -583,6 +589,16 @@ public partial class GetOrderListResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("mask_password")]
                 public string MaskPassword { get; set; }
+
+            }
+            public partial class ConsolidateInfoResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 集运类型   0 - 香港集运、1 - 新疆中转、2-哈萨克斯坦集运、3-西藏中转
+                /// </summary>
+                [JsonPropertyName("consolidate_type")]
+                public int? ConsolidateType { get; set; }
 
             }
             public partial class ExtraDeliveryListResponse : PddResponseModel
