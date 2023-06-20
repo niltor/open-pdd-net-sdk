@@ -704,7 +704,7 @@ public partial class GetOrderListResponse : PddResponseModel
                 /// 商品编码
                 /// </summary>
                 [JsonPropertyName("goods_id")]
-                public string GoodsId { get; set; }
+                public long? GoodsId { get; set; }
 
                 /// <summary>
                 /// 商品图片
@@ -746,7 +746,7 @@ public partial class GetOrderListResponse : PddResponseModel
                 /// 商品sku编码
                 /// </summary>
                 [JsonPropertyName("sku_id")]
-                public string SkuId { get; set; }
+                public long? SkuId { get; set; }
 
             }
             public partial class OrderDepotInfoResponse : PddResponseModel
