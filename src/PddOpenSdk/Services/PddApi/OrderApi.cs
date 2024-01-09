@@ -17,42 +17,6 @@ public class OrderApi : PddCommonApi
     }
 
     /// <summary>
-    /// 跨境全托管发货单详情接口
-    /// </summary>
-    public async Task<GetFulfillmentInformationResponse> GetFulfillmentInformationAsync(GetFulfillmentInformation getFulfillmentInformation)
-    {
-        var result = await PostAsync<GetFulfillmentInformation, GetFulfillmentInformationResponse>("pdd.fulfillment.information.get", getFulfillmentInformation);
-        return result;
-    }
-
-    /// <summary>
-    /// 跨境全托管发货单列表查询接口（根据成交时间）
-    /// </summary>
-    public async Task<GetFulfillmentListResponse> GetFulfillmentListAsync(GetFulfillmentList getFulfillmentList)
-    {
-        var result = await PostAsync<GetFulfillmentList, GetFulfillmentListResponse>("pdd.fulfillment.list.get", getFulfillmentList);
-        return result;
-    }
-
-    /// <summary>
-    /// 跨境全托管发货单增量接口
-    /// </summary>
-    public async Task<GetFulfillmentListIncrementResponse> GetFulfillmentListIncrementAsync(GetFulfillmentListIncrement getFulfillmentListIncrement)
-    {
-        var result = await PostAsync<GetFulfillmentListIncrement, GetFulfillmentListIncrementResponse>("pdd.fulfillment.list.increment.get", getFulfillmentListIncrement);
-        return result;
-    }
-
-    /// <summary>
-    /// 订单基础信息列表查询接口（根据成交时间）
-    /// </summary>
-    public async Task<GetOrderBasicListResponse> GetOrderBasicListAsync(GetOrderBasicList getOrderBasicList)
-    {
-        var result = await PostAsync<GetOrderBasicList, GetOrderBasicListResponse>("pdd.order.basic.list.get", getOrderBasicList);
-        return result;
-    }
-
-    /// <summary>
     /// 订单详情
     /// </summary>
     public async Task<GetOrderInformationResponse> GetOrderInformationAsync(GetOrderInformation getOrderInformation)

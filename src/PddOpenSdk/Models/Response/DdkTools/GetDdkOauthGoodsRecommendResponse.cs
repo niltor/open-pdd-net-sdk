@@ -324,6 +324,12 @@ public partial class GetDdkOauthGoodsRecommendResponse : PddResponseModel
             [JsonPropertyName("unified_tags")]
             public List<string> UnifiedTags { get; set; }
 
+            /// <summary>
+            /// 补贴活动类型：0-无补贴，1-千万补贴，4-千万神券，6-佣金翻倍
+            /// </summary>
+            [JsonPropertyName("subsidy_goods_type")]
+            public int? SubsidyGoodsType { get; set; }
+
         }
 
     }

@@ -9,7 +9,7 @@ public partial class GenerateDdkRpPromUrl
     public long? Amount { get; set; }
 
     /// <summary>
-    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，23-超级红包，24-礼金全场N折活动B端页面，27-带货赢千万，28-满减券活动B端页面，29-满减券活动C端页面，30-免单B端页面，31-免单C端页面，32-转盘得现金B端页面，33-转盘得现金C端页面，34-千万神券C端页面，35-千万神券B端页面，36-爆品日历B端页面，37-超级红包B端推品页；红包推广权限申请流程链接：https://jinbao.pinduoduo.com/qa-system?questionId=289，39-母婴馆C端页面，40-母婴馆B端页面
+    /// 营销工具类型，必填：-1-活动列表，0-红包(需申请推广权限)，2–新人红包，3-刮刮卡，5-员工内购，10-生成绑定备案链接，12-砸金蛋，14-千万补贴B端页面，15-充值中心B端页面，16-千万补贴C端页面，17-千万补贴投票页面，23-超级红包，24-礼金全场N折活动B端页面，27-带货赢千万，28-满减券活动B端页面，29-满减券活动C端页面，30-免单B端页面，31-免单C端页面，32-转盘得现金B端页面，33-转盘得现金C端页面，34-千万神券C端页面，35-千万神券B端页面，36-爆品日历B端页面，37-超级红包B端推品页，39-母婴馆C端页面，40-母婴馆B端页面，41-限时折扣B端页面，42-超级红包9.9C端活动页
     /// </summary>
     [JsonPropertyName("channel_type")]
     public int? ChannelType { get; set; }
@@ -37,6 +37,12 @@ public partial class GenerateDdkRpPromUrl
     /// </summary>
     [JsonPropertyName("diy_sp_red_packet_param")]
     public DiySpRedPacketParamModel DiySpRedPacketParam { get; set; }
+
+    /// <summary>
+    /// 扩展参数
+    /// </summary>
+    [JsonPropertyName("ext_params")]
+    public Dictionary<string, object> ExtParams { get; set; }
 
     /// <summary>
     /// 是否生成qq小程序
@@ -91,12 +97,6 @@ public partial class GenerateDdkRpPromUrl
     /// </summary>
     [JsonPropertyName("zs_duo_id")]
     public long? ZsDuoId { get; set; }
-
-    /// <summary>
-    /// 扩展参数
-    /// </summary>
-    [JsonPropertyName("ext_params")]
-    public Dictionary<string, object> ExtParams { get; set; }
     public partial class DiyOneYuanParamModel
     {
 
@@ -173,22 +173,6 @@ public partial class GenerateDdkRpPromUrl
         public string GoodsSign { get; set; }
 
     }
-    public partial class TmccParamModel
-    {
-
-        /// <summary>
-        /// 置顶商品的goodsSign列表
-        /// </summary>
-        [JsonPropertyName("goods_signs")]
-        public List<string> GoodsSigns { get; set; }
-
-        /// <summary>
-        /// 指定活动id
-        /// </summary>
-        [JsonPropertyName("tmc_config_id")]
-        public long? TmcConfigId { get; set; }
-
-    }
     public partial class ExtParamsModel
     {
 
@@ -203,6 +187,22 @@ public partial class GenerateDdkRpPromUrl
         /// </summary>
         [JsonPropertyName("$value")]
         public string Value { get; set; }
+
+    }
+    public partial class TmccParamModel
+    {
+
+        /// <summary>
+        /// 置顶商品的goodsSign列表
+        /// </summary>
+        [JsonPropertyName("goods_signs")]
+        public List<string> GoodsSigns { get; set; }
+
+        /// <summary>
+        /// 指定活动id
+        /// </summary>
+        [JsonPropertyName("tmc_config_id")]
+        public long? TmcConfigId { get; set; }
 
     }
 

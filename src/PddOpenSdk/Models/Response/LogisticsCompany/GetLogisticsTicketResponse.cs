@@ -49,16 +49,16 @@ public partial class GetLogisticsTicketResponse : PddResponseModel
             public int? CompensateState { get; set; }
 
             /// <summary>
-            /// 工单创建时间戳
-            /// </summary>
-            [JsonPropertyName("created_at")]
-            public long? CreatedAt { get; set; }
-
-            /// <summary>
             /// create_type
             /// </summary>
             [JsonPropertyName("create_type")]
             public int? CreateType { get; set; }
+
+            /// <summary>
+            /// 工单创建时间戳
+            /// </summary>
+            [JsonPropertyName("created_at")]
+            public long? CreatedAt { get; set; }
 
             /// <summary>
             /// 备注
@@ -76,7 +76,7 @@ public partial class GetLogisticsTicketResponse : PddResponseModel
             /// 物流商回传凭证
             /// </summary>
             [JsonPropertyName("express_attachment")]
-            public List<string> ExpressAttachment { get; set; }
+            public List<ExpressAttachmentResponse> ExpressAttachment { get; set; }
 
             /// <summary>
             /// 物流商快递编码
@@ -209,6 +209,16 @@ public partial class GetLogisticsTicketResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("waybill_no")]
             public string WaybillNo { get; set; }
+            public partial class ExpressAttachmentResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 物流商回传凭证链接
+                /// </summary>
+                [JsonPropertyName("url")]
+                public string Url { get; set; }
+
+            }
 
         }
 

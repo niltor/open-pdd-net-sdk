@@ -26,28 +26,28 @@ public partial class PageAdApiGoodsQueryResponse : PddResponseModel
         /// 
         /// </summary>
         [JsonPropertyName("result")]
-        public ResultResponseModel Result { get; set; }
+        public ResultResponse Result { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [JsonPropertyName("success")]
         public bool? Success { get; set; }
-        public partial class ResultResponseModel : PddResponseModel
+        public partial class ResultResponse : PddResponseModel
         {
 
             /// <summary>
             /// 
             /// </summary>
             [JsonPropertyName("result")]
-            public List<ResultResponse> Result { get; set; }
+            public List<ResultResponseModel> Result { get; set; }
 
             /// <summary>
             /// 
             /// </summary>
             [JsonPropertyName("total")]
             public long? Total { get; set; }
-            public partial class ResultResponse : PddResponseModel
+            public partial class ResultResponseModel : PddResponseModel
             {
 
                 /// <summary>
@@ -97,12 +97,8 @@ public partial class PageAdApiGoodsQueryResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("thumbUrl")]
                 public string ThumbUrl { get; set; }
-
             }
-
         }
-
     }
-
 }
 

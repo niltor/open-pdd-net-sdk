@@ -75,6 +75,12 @@ public partial class QueryCloudPrintTaskResponse : PddResponseModel
                 public string PrintTaskId { get; set; }
 
                 /// <summary>
+                /// 是否推送给云打印机，只有打印失败的任务才有值，如果为true，需要重点关注是否打印完成
+                /// </summary>
+                [JsonPropertyName("pushed_to_printer")]
+                public bool? PushedToPrinter { get; set; }
+
+                /// <summary>
                 /// 快递公司编码
                 /// </summary>
                 [JsonPropertyName("ship_code")]

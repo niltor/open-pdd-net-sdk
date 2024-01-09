@@ -9,7 +9,7 @@ public partial class GetRefundInformationResponse : PddResponseModel
     public string AfterSalesReason { get; set; }
 
     /// <summary>
-    /// 售后状态 0：无售后 2：买家申请退款，待商家处理 3：退货退款，待商家处理 4：商家同意退款，退款中 5：平台同意退款，退款中 6：驳回退款，待买家处理 7：已同意退货退款,待用户发货 8：平台处理中 9：平台拒绝退款，退款关闭 10：退款成功 11：买家撤销 12：买家逾期未处理，退款失败 13：买家逾期，超过有效期 14：换货补寄待商家处理 15：换货补寄待用户处理 16：换货补寄成功 17：换货补寄失败 18：换货补寄待用户确认完成 21：待商家同意维修 22：待用户确认发货 24：维修关闭 25：维修成功 27：待用户确认收货 31：已同意拒收退款，待用户拒收 32：补寄待商家发货
+    /// 售后状态 0：无售后 2：买家申请退款，待商家处理 3：退货退款，待商家处理 4：商家同意退款，退款中 5：平台同意退款，退款中 6：驳回退款，待买家处理 7：已同意退货退款,待用户发货 8：平台处理中 9：平台拒绝退款，退款关闭 10：退款成功 11：买家撤销 12：买家逾期未处理，退款失败 13：买家逾期，超过有效期 14：换货补寄待商家处理 15：换货补寄待用户处理 16：换货补寄成功 17：换货补寄失败 18：换货补寄待用户确认完成 21：待商家同意维修 22：待用户确认发货 24：维修关闭 25：维修成功 27：待用户确认收货 31：已同意拒收退款，待用户拒收 32：补寄待商家发货 33：待商家召回
     /// </summary>
     [JsonPropertyName("after_sales_status")]
     public int? AfterSalesStatus { get; set; }
@@ -109,6 +109,12 @@ public partial class GetRefundInformationResponse : PddResponseModel
     /// </summary>
     [JsonPropertyName("refund_amount")]
     public int? RefundAmount { get; set; }
+
+    /// <summary>
+    /// 同意退款操作人角色0:"默认",1:"用户",2:"商家",3:"平台",4:"系统",5:"团长",6:"司机",7:"代理人"
+    /// </summary>
+    [JsonPropertyName("refund_operator_role")]
+    public int? RefundOperatorRole { get; set; }
 
     /// <summary>
     /// 用户申请输入的描述信息
@@ -227,16 +233,34 @@ public partial class GetRefundInformationResponse : PddResponseModel
         public string MerchantExchangeDetailAddress { get; set; }
 
         /// <summary>
+        /// 商家换货发货的详细地址（打码）
+        /// </summary>
+        [JsonPropertyName("merchant_exchange_detail_address_mask")]
+        public string MerchantExchangeDetailAddressMask { get; set; }
+
+        /// <summary>
         /// 商家换货发货的收货人手机号
         /// </summary>
         [JsonPropertyName("merchant_exchange_detail_phone")]
         public string MerchantExchangeDetailPhone { get; set; }
 
         /// <summary>
+        /// 商家换货发货的收货人手机号（打码）
+        /// </summary>
+        [JsonPropertyName("merchant_exchange_detail_phone_mask")]
+        public string MerchantExchangeDetailPhoneMask { get; set; }
+
+        /// <summary>
         /// 商家换货发货的收货人名字
         /// </summary>
         [JsonPropertyName("merchant_exchange_detail_receiver")]
         public string MerchantExchangeDetailReceiver { get; set; }
+
+        /// <summary>
+        /// 商家换货发货的收货人名字（打码）
+        /// </summary>
+        [JsonPropertyName("merchant_exchange_detail_receiver_mask")]
+        public string MerchantExchangeDetailReceiverMask { get; set; }
 
         /// <summary>
         /// 商家换货发货的物流id
@@ -255,24 +279,6 @@ public partial class GetRefundInformationResponse : PddResponseModel
         /// </summary>
         [JsonPropertyName("sku_id_exchange")]
         public string SkuIdExchange { get; set; }
-
-        /// <summary>
-        /// 商家换货发货的详细地址（打码）
-        /// </summary>
-        [JsonPropertyName("merchant_exchange_detail_address_mask")]
-        public string MerchantExchangeDetailAddressMask { get; set; }
-
-        /// <summary>
-        /// 商家换货发货的收货人手机号（打码）
-        /// </summary>
-        [JsonPropertyName("merchant_exchange_detail_phone_mask")]
-        public string MerchantExchangeDetailPhoneMask { get; set; }
-
-        /// <summary>
-        /// 商家换货发货的收货人名字（打码）
-        /// </summary>
-        [JsonPropertyName("merchant_exchange_detail_receiver_mask")]
-        public string MerchantExchangeDetailReceiverMask { get; set; }
 
     }
 

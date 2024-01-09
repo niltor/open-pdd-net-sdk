@@ -8,6 +8,24 @@ public class LogisticsApi : PddCommonApi
     public LogisticsApi(string clientId, string clientSecret, string accessToken) : base(clientId, clientSecret, accessToken) { }
 
     /// <summary>
+    /// 获取集运DWS设备采集数据
+    /// </summary>
+    public async Task<GetConsoDwsDataResponse> GetConsoDwsDataAsync(GetConsoDwsData getConsoDwsData)
+    {
+        var result = await PostAsync<GetConsoDwsData, GetConsoDwsDataResponse>("pdd.conso.dws.data.get", getConsoDwsData);
+        return result;
+    }
+
+    /// <summary>
+    /// 重抛逆向运单回传
+    /// </summary>
+    public async Task<CallbackHeavygoodsBackExpressResponse> CallbackHeavygoodsBackExpressAsync(CallbackHeavygoodsBackExpress callbackHeavygoodsBackExpress)
+    {
+        var result = await PostAsync<CallbackHeavygoodsBackExpress, CallbackHeavygoodsBackExpressResponse>("pdd.heavygoods.back.express.callback", callbackHeavygoodsBackExpress);
+        return result;
+    }
+
+    /// <summary>
     /// 获取拼多多标准地址库
     /// </summary>
     public async Task<GetLogisticsAddressResponse> GetLogisticsAddressAsync(GetLogisticsAddress getLogisticsAddress)
@@ -35,15 +53,6 @@ public class LogisticsApi : PddCommonApi
     }
 
     /// <summary>
-    /// 跨境全托管发货单发货
-    /// </summary>
-    public async Task<SendLogisticsFulfillmentResponse> SendLogisticsFulfillmentAsync(SendLogisticsFulfillment sendLogisticsFulfillment)
-    {
-        var result = await PostAsync<SendLogisticsFulfillment, SendLogisticsFulfillmentResponse>("pdd.logistics.fulfillment.send", sendLogisticsFulfillment);
-        return result;
-    }
-
-    /// <summary>
     /// ISV物流轨迹推送消息订阅接口
     /// </summary>
     public async Task<SubLogisticsIsvTraceNotifyResponse> SubLogisticsIsvTraceNotifyAsync(SubLogisticsIsvTraceNotify subLogisticsIsvTraceNotify)
@@ -67,6 +76,15 @@ public class LogisticsApi : PddCommonApi
     public async Task<GetLogisticsOrdertraceResponse> GetLogisticsOrdertraceAsync(GetLogisticsOrdertrace getLogisticsOrdertrace)
     {
         var result = await PostAsync<GetLogisticsOrdertrace, GetLogisticsOrdertraceResponse>("pdd.logistics.ordertrace.get", getLogisticsOrdertrace);
+        return result;
+    }
+
+    /// <summary>
+    /// 末端三段轨迹回传
+    /// </summary>
+    public async Task<SyncTailExpressTraceResponse> SyncTailExpressTraceAsync(SyncTailExpressTrace syncTailExpressTrace)
+    {
+        var result = await PostAsync<SyncTailExpressTrace, SyncTailExpressTraceResponse>("pdd.tail.express.trace.sync", syncTailExpressTrace);
         return result;
     }
 

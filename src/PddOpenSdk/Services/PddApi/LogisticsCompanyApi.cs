@@ -89,6 +89,15 @@ public class LogisticsCompanyApi : PddCommonApi
     }
 
     /// <summary>
+    /// 寄件核重信息回告
+    /// </summary>
+    public async Task<InfoServiceMailCheckWeightResponse> InfoServiceMailCheckWeightAsync(InfoServiceMailCheckWeight infoServiceMailCheckWeight)
+    {
+        var result = await PostAsync<InfoServiceMailCheckWeight, InfoServiceMailCheckWeightResponse>("pdd.service.mail.check.weight.info", infoServiceMailCheckWeight);
+        return result;
+    }
+
+    /// <summary>
     /// 轨迹订阅接口
     /// </summary>
     public async Task<SubLogisticsCoTrackResponse> SubLogisticsCoTrackAsync(SubLogisticsCoTrack subLogisticsCoTrack)

@@ -25,12 +25,6 @@ public partial class GetRefundListIncrementResponse : PddResponseModel
         {
 
             /// <summary>
-            /// 极速退款状态，"1"：有极速退款资格，"2"：极速退款失败, "3" 表示极速退款成功，其他表示非极速退款
-            /// </summary>
-            [JsonPropertyName("speed_refund_status")]
-            public string SpeedRefundStatus { get; set; }
-
-            /// <summary>
             /// 售后原因
             /// </summary>
             [JsonPropertyName("after_sale_reason")]
@@ -65,6 +59,12 @@ public partial class GetRefundListIncrementResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("discount_amount")]
             public string DiscountAmount { get; set; }
+
+            /// <summary>
+            /// 1纠纷退款 0非纠纷退款
+            /// </summary>
+            [JsonPropertyName("dispute_refund_status")]
+            public int? DisputeRefundStatus { get; set; }
 
             /// <summary>
             /// 商品图片
@@ -133,10 +133,34 @@ public partial class GetRefundListIncrementResponse : PddResponseModel
             public string RefundAmount { get; set; }
 
             /// <summary>
+            /// 同意退款操作人角色0:"默认",1:"用户",2:"商家",3:"平台",4:"系统",5:"团长",6:"司机",7:"代理人"
+            /// </summary>
+            [JsonPropertyName("refund_operator_role")]
+            public int? RefundOperatorRole { get; set; }
+
+            /// <summary>
+            /// 退货物流公司名称
+            /// </summary>
+            [JsonPropertyName("shipping_name")]
+            public string ShippingName { get; set; }
+
+            /// <summary>
             /// 商品规格ID
             /// </summary>
             [JsonPropertyName("sku_id")]
             public string SkuId { get; set; }
+
+            /// <summary>
+            /// 极速退款标志位 1：极速退款，0：非极速退款
+            /// </summary>
+            [JsonPropertyName("speed_refund_flag")]
+            public int? SpeedRefundFlag { get; set; }
+
+            /// <summary>
+            /// 极速退款状态，"1"：有极速退款资格，"2"：极速退款失败, "3" 表示极速退款成功，其他表示非极速退款
+            /// </summary>
+            [JsonPropertyName("speed_refund_status")]
+            public string SpeedRefundStatus { get; set; }
 
             /// <summary>
             /// 快递运单号
@@ -151,28 +175,10 @@ public partial class GetRefundListIncrementResponse : PddResponseModel
             public string UpdatedTime { get; set; }
 
             /// <summary>
-            /// 极速退款标志位 1：极速退款，0：非极速退款
-            /// </summary>
-            [JsonPropertyName("speed_refund_flag")]
-            public int? SpeedRefundFlag { get; set; }
-
-            /// <summary>
-            /// 退货物流公司名称
-            /// </summary>
-            [JsonPropertyName("shipping_name")]
-            public string ShippingName { get; set; }
-
-            /// <summary>
             /// 0-未勾选 1-消费者选择的收货状态为未收到货 2-消费者选择的收货状态为已收到货
             /// </summary>
             [JsonPropertyName("user_shipping_status")]
             public string UserShippingStatus { get; set; }
-
-            /// <summary>
-            /// 1纠纷退款 0非纠纷退款
-            /// </summary>
-            [JsonPropertyName("dispute_refund_status")]
-            public int? DisputeRefundStatus { get; set; }
 
         }
 

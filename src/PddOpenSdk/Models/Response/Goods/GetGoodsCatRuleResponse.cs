@@ -283,7 +283,7 @@ public partial class GetGoodsCatRuleResponse : PddResponseModel
                 {
 
                     /// <summary>
-                    /// 坏了包赔规则：0不可选、1可选
+                    /// 坏了包赔规则：0不可选、1可选、2必选
                     /// </summary>
                     [JsonPropertyName("bad_claim_rule")]
                     public int? BadClaimRule { get; set; }

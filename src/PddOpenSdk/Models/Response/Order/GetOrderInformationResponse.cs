@@ -31,7 +31,7 @@ public partial class GetOrderInformationResponse : PddResponseModel
             public string AddressMask { get; set; }
 
             /// <summary>
-            /// 售后状态 0：无售后 2：买家申请退款，待商家处理 3：退货退款，待商家处理 4：商家同意退款，退款中 5：平台同意退款，退款中 6：驳回退款，待买家处理 7：已同意退货退款,待用户发货 8：平台处理中 9：平台拒绝退款，退款关闭 10：退款成功 11：买家撤销 12：买家逾期未处理，退款失败 13：买家逾期，超过有效期 14：换货补寄待商家处理 15：换货补寄待用户处理 16：换货补寄成功 17：换货补寄失败 18：换货补寄待用户确认完成 21：待商家同意维修 22：待用户确认发货 24：维修关闭 25：维修成功 27：待用户确认收货 31：已同意拒收退款，待用户拒收 32：补寄待商家发货
+            /// 售后状态 0：无售后 2：买家申请退款，待商家处理 3：退货退款，待商家处理 4：商家同意退款，退款中 5：平台同意退款，退款中 6：驳回退款，待买家处理 7：已同意退货退款,待用户发货 8：平台处理中 9：平台拒绝退款，退款关闭 10：退款成功 11：买家撤销 12：买家逾期未处理，退款失败 13：买家逾期，超过有效期 14：换货补寄待商家处理 15：换货补寄待用户处理 16：换货补寄成功 17：换货补寄失败 18：换货补寄待用户确认完成 21：待商家同意维修 22：待用户确认发货 24：维修关闭 25：维修成功 27：待用户确认收货 31：已同意拒收退款，待用户拒收 32：补寄待商家发货 33：同意召回后退款，待商家召回
             /// </summary>
             [JsonPropertyName("after_sales_status")]
             public int? AfterSalesStatus { get; set; }
@@ -155,6 +155,12 @@ public partial class GetOrderInformationResponse : PddResponseModel
             /// </summary>
             [JsonPropertyName("discount_amount")]
             public double? DiscountAmount { get; set; }
+
+            /// <summary>
+            /// 多多支付立减金额，单位：元
+            /// </summary>
+            [JsonPropertyName("duo_duo_pay_reduction")]
+            public double? DuoDuoPayReduction { get; set; }
 
             /// <summary>
             /// 是否多多批发，1-是，0-否
@@ -361,6 +367,12 @@ public partial class GetOrderInformationResponse : PddResponseModel
             public string PromiseDeliveryTime { get; set; }
 
             /// <summary>
+            /// 优惠券信息
+            /// </summary>
+            [JsonPropertyName("promotion_detail_list")]
+            public List<PromotionDetailListResponse> PromotionDetailList { get; set; }
+
+            /// <summary>
             /// 收件地省份
             /// </summary>
             [JsonPropertyName("province")]
@@ -493,7 +505,7 @@ public partial class GetOrderInformationResponse : PddResponseModel
             public string ShippingTime { get; set; }
 
             /// <summary>
-            /// 创建交易时的物流方式(1-预约配送)
+            /// 创建交易时的物流方式(1-预约配送，2-1小时达，3-消费者预约送达)
             /// </summary>
             [JsonPropertyName("shipping_type")]
             public int? ShippingType { get; set; }
@@ -589,7 +601,7 @@ public partial class GetOrderInformationResponse : PddResponseModel
             {
 
                 /// <summary>
-                /// 集运类型   0 - 香港集运、1 - 新疆中转、2-哈萨克斯坦集运、3-西藏中转
+                /// 集运类型 0-中国香港集运、1-中国新疆中转、2-哈萨克斯坦集运、3-中国西藏中转、5-日本集运、6-中国台湾集运、7-韩国集运、8-新加坡集运、9-马来西亚集运、10-泰国集运、11-越南集运、12-吉尔吉斯斯坦集运、13-乌兹别克斯坦集运
                 /// </summary>
                 [JsonPropertyName("consolidate_type")]
                 public int? ConsolidateType { get; set; }
@@ -843,6 +855,22 @@ public partial class GetOrderInformationResponse : PddResponseModel
                 /// </summary>
                 [JsonPropertyName("value")]
                 public int? Value { get; set; }
+
+            }
+            public partial class PromotionDetailListResponse : PddResponseModel
+            {
+
+                /// <summary>
+                /// 优惠金额（元）
+                /// </summary>
+                [JsonPropertyName("discount_amount")]
+                public double? DiscountAmount { get; set; }
+
+                /// <summary>
+                /// 优惠券类型。30-以旧换新优惠（优惠金额已包含平台优惠金额里）
+                /// </summary>
+                [JsonPropertyName("promotion_type")]
+                public int? PromotionType { get; set; }
 
             }
             public partial class ResendDeliveryListResponse : PddResponseModel

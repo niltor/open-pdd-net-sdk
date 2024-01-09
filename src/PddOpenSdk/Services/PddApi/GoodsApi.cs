@@ -134,38 +134,11 @@ public class GoodsApi : PddCommonApi
     }
 
     /// <summary>
-    /// 设置全店推广API
-    /// </summary>
-    public async Task<CreateGoodsCpsMallUnitResponse> CreateGoodsCpsMallUnitAsync(CreateGoodsCpsMallUnit createGoodsCpsMallUnit)
-    {
-        var result = await PostAsync<CreateGoodsCpsMallUnit, CreateGoodsCpsMallUnitResponse>("pdd.goods.cps.mall.unit.create", createGoodsCpsMallUnit);
-        return result;
-    }
-
-    /// <summary>
-    /// 暂停全店推广API
-    /// </summary>
-    public async Task<PauseGoodsCpsMallUnitResponse> PauseGoodsCpsMallUnitAsync(PauseGoodsCpsMallUnit pauseGoodsCpsMallUnit)
-    {
-        var result = await PostAsync<PauseGoodsCpsMallUnit, PauseGoodsCpsMallUnitResponse>("pdd.goods.cps.mall.unit.pause", pauseGoodsCpsMallUnit);
-        return result;
-    }
-
-    /// <summary>
     /// 查询全店推广API
     /// </summary>
     public async Task<QueryGoodsCpsMallUnitResponse> QueryGoodsCpsMallUnitAsync(QueryGoodsCpsMallUnit queryGoodsCpsMallUnit)
     {
         var result = await PostAsync<QueryGoodsCpsMallUnit, QueryGoodsCpsMallUnitResponse>("pdd.goods.cps.mall.unit.query", queryGoodsCpsMallUnit);
-        return result;
-    }
-
-    /// <summary>
-    /// 恢复全店推广API
-    /// </summary>
-    public async Task<ResumeGoodsCpsMallUnitResponse> ResumeGoodsCpsMallUnitAsync(ResumeGoodsCpsMallUnit resumeGoodsCpsMallUnit)
-    {
-        var result = await PostAsync<ResumeGoodsCpsMallUnit, ResumeGoodsCpsMallUnitResponse>("pdd.goods.cps.mall.unit.resume", resumeGoodsCpsMallUnit);
         return result;
     }
 
@@ -593,6 +566,15 @@ public class GoodsApi : PddCommonApi
     }
 
     /// <summary>
+    /// 商品视频上传接口
+    /// </summary>
+    public async Task<UploadGoodsVideoResponse> UploadGoodsVideoAsync(UploadGoodsVideo uploadGoodsVideo)
+    {
+        var result = await PostFileAsync<UploadGoodsVideo, UploadGoodsVideoResponse>("pdd.goods.video.upload", uploadGoodsVideo);
+        return result;
+    }
+
+    /// <summary>
     /// 商品sku计量单位枚举
     /// </summary>
     public async Task<ListGooodsSkuMeasurementResponse> ListGooodsSkuMeasurementAsync(ListGooodsSkuMeasurement listGooodsSkuMeasurement)
@@ -607,15 +589,6 @@ public class GoodsApi : PddCommonApi
     public async Task<TemplateOneExpressCostResponse> TemplateOneExpressCostAsync(TemplateOneExpressCost templateOneExpressCost)
     {
         var result = await PostAsync<TemplateOneExpressCost, TemplateOneExpressCostResponse>("pdd.one.express.cost.template", templateOneExpressCost);
-        return result;
-    }
-
-    /// <summary>
-    /// 跨境全托管商品标签码
-    /// </summary>
-    public async Task<CodeSelectGoodsLabelResponse> CodeSelectGoodsLabelAsync(CodeSelectGoodsLabel codeSelectGoodsLabel)
-    {
-        var result = await PostAsync<CodeSelectGoodsLabel, CodeSelectGoodsLabelResponse>("pdd.select.goods.label.code", codeSelectGoodsLabel);
         return result;
     }
 
