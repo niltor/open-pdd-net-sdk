@@ -25,8 +25,8 @@ jobs:
       
     - name: Build
       run: |
-        dotnet build -c release ./src/PddOpenSdk/PddOpenSdk.csproj --no-restore
-        dotnet build -c release ./src/AspNetCore/PddOpenSdk.AspNetCore.csproj --no-restore
+        dotnet build -c release ./src/PddOpenSdk/PddOpenSdk.csproj
+        dotnet build -c release ./src/AspNetCore/PddOpenSdk.AspNetCore.csproj
         
     - name: Pack
       run: |
