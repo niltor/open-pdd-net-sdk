@@ -7,7 +7,7 @@
 
 open-pdd-net-sdk，拼多多开放平台 DotNet SDK。
 
-## **特别说明**
+## 特别说明
 
 - `2.2.0`版本开始，将提供多商户支持，同时将目标框架统一调整到.net5.0.
 - `2.3.0` 提供消息服务支持，核心类库不再支持 `.net framework`.
@@ -37,9 +37,9 @@ ASP.NET Core 项目请使用 Nuget 包 `MSDev.PddOpenSdk.AspNetCore`，可直接
 
 ### PddOpenSdk 核心类库使用
 
-适用于客户端、控制台等程序，Web应用请使用Nuget包 `MSDev.PddOpenSdk.AspNetCore`。
+适用于客户端、控制台等程序。支持 `NET6.0+` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
 
-支持 `NET6.0+` ，安装 Nuget 包 `MSDev.PddOpenSdk`。
+Web应用请使用`MSDev.PddOpenSdk.AspNetCore`。
 
 ### 使用示例
 
@@ -204,8 +204,6 @@ public async Task<ActionResult> MultiTenantAsync()
 此外可在自定义的`XXXHostService`类中的构造方法中设置`HeartBeartSeconds`值，会覆盖配置中的值。
 
 > 所有方法名与官方文档保持一致，并有中文注释提醒，只是更改了命名规范，非常容易查找使用。
-
-## 已知问题
 
 ## 问题反馈
 
